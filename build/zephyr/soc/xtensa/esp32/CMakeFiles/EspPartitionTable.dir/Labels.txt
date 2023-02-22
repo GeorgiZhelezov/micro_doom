@@ -1,0 +1,13 @@
+# Target labels
+ EspPartitionTable
+# Source files and their labels
+/home/gez/workspaces/eclipse/esp_doom/build/zephyr/soc/xtensa/esp32/CMakeFiles/EspPartitionTable
+/home/gez/workspaces/eclipse/esp_doom/build/zephyr/soc/xtensa/esp32/CMakeFiles/EspPartitionTable.rule
+/home/gez/workspaces/eclipse/esp_doom/build/zephyr/soc/xtensa/esp32/CMakeFiles/EspPartitionTable-complete.rule
+/home/gez/workspaces/eclipse/esp_doom/build/zephyr/soc/xtensa/esp32/EspPartitionTable-prefix/src/EspPartitionTable-stamp/EspPartitionTable-build.rule
+/home/gez/workspaces/eclipse/esp_doom/build/zephyr/soc/xtensa/esp32/EspPartitionTable-prefix/src/EspPartitionTable-stamp/EspPartitionTable-configure.rule
+/home/gez/workspaces/eclipse/esp_doom/build/zephyr/soc/xtensa/esp32/EspPartitionTable-prefix/src/EspPartitionTable-stamp/EspPartitionTable-download.rule
+/home/gez/workspaces/eclipse/esp_doom/build/zephyr/soc/xtensa/esp32/EspPartitionTable-prefix/src/EspPartitionTable-stamp/EspPartitionTable-install.rule
+/home/gez/workspaces/eclipse/esp_doom/build/zephyr/soc/xtensa/esp32/EspPartitionTable-prefix/src/EspPartitionTable-stamp/EspPartitionTable-mkdir.rule
+/home/gez/workspaces/eclipse/esp_doom/build/zephyr/soc/xtensa/esp32/EspPartitionTable-prefix/src/EspPartitionTable-stamp/EspPartitionTable-patch.rule
+/home/gez/workspaces/eclipse/esp_doom/build/zephyr/soc/xtensa/esp32/EspPartitionTable-prefix/src/EspPartitionTable-stamp/EspPartitionTable-update.rule

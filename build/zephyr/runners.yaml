@@ -1,0 +1,89 @@
+# Available runners configured by board.cmake.
+runners:
+- esp32
+- openocd
+- esp32
+- esp32
+- esp32
+- esp32
+- esp32
+
+# Default flash runner if --runner is not given.
+flash-runner: esp32
+
+# Default debug runner if --runner is not given.
+debug-runner: openocd
+
+# Common runner configuration values.
+config:
+  board_dir: /home/gez/sdks/zephyr/zephyr/boards/xtensa/esp32
+  # Build outputs:
+  elf_file: zephyr.elf
+  bin_file: zephyr.bin
+  # Host tools:
+  gdb: /home/gez/sdks/zephyr/toolchains/xtensa-espressif_esp32_zephyr-elf/bin/xtensa-espressif_esp32_zephyr-elf-gdb
+  openocd: /home/gez/sdks/zephyr/toolchains/sysroots/x86_64-pokysdk-linux/usr/bin/openocd
+  openocd_search:
+    - /home/gez/sdks/zephyr/toolchains/sysroots/x86_64-pokysdk-linux/usr/share/openocd/scripts
+
+# Runner specific arguments
+args:
+  esp32:
+    - --esp-idf-path=/home/gez/sdks/zephyr/modules/hal/espressif
+    - --esp-flash-bootloader=/home/gez/workspaces/eclipse/esp_doom/build/esp-idf/build/bootloader/bootloader.bin
+    - --esp-flash-partition_table=/home/gez/workspaces/eclipse/esp_doom/build/esp-idf/build/partitions_singleapp.bin
+    - --esp-partition-table-address=0x8000
+    - --esp-boot-address=0x1000
+    - --esp-app-address=0x10000
+  openocd:
+    - --cmd-load
+    - flash write_image erase
+    - --cmd-verify
+    - verify_image
+    - --no-init
+    - --no-halt
+    - --no-targets
+    - --no-load
+    - --gdb-init
+    - set remote hardware-watchpoint-limit 2
+    - --gdb-init
+    - flushregs
+    - --gdb-init
+    - mon reset halt
+    - --gdb-init
+    - thb main
+  esp32:
+    - --esp-idf-path=/home/gez/sdks/zephyr/modules/hal/espressif
+    - --esp-flash-bootloader=/home/gez/workspaces/eclipse/esp_doom/build/esp-idf/build/bootloader/bootloader.bin
+    - --esp-flash-partition_table=/home/gez/workspaces/eclipse/esp_doom/build/esp-idf/build/partitions_singleapp.bin
+    - --esp-partition-table-address=0x8000
+    - --esp-boot-address=0x1000
+    - --esp-app-address=0x10000
+  esp32:
+    - --esp-idf-path=/home/gez/sdks/zephyr/modules/hal/espressif
+    - --esp-flash-bootloader=/home/gez/workspaces/eclipse/esp_doom/build/esp-idf/build/bootloader/bootloader.bin
+    - --esp-flash-partition_table=/home/gez/workspaces/eclipse/esp_doom/build/esp-idf/build/partitions_singleapp.bin
+    - --esp-partition-table-address=0x8000
+    - --esp-boot-address=0x1000
+    - --esp-app-address=0x10000
+  esp32:
+    - --esp-idf-path=/home/gez/sdks/zephyr/modules/hal/espressif
+    - --esp-flash-bootloader=/home/gez/workspaces/eclipse/esp_doom/build/esp-idf/build/bootloader/bootloader.bin
+    - --esp-flash-partition_table=/home/gez/workspaces/eclipse/esp_doom/build/esp-idf/build/partitions_singleapp.bin
+    - --esp-partition-table-address=0x8000
+    - --esp-boot-address=0x1000
+    - --esp-app-address=0x10000
+  esp32:
+    - --esp-idf-path=/home/gez/sdks/zephyr/modules/hal/espressif
+    - --esp-flash-bootloader=/home/gez/workspaces/eclipse/esp_doom/build/esp-idf/build/bootloader/bootloader.bin
+    - --esp-flash-partition_table=/home/gez/workspaces/eclipse/esp_doom/build/esp-idf/build/partitions_singleapp.bin
+    - --esp-partition-table-address=0x8000
+    - --esp-boot-address=0x1000
+    - --esp-app-address=0x10000
+  esp32:
+    - --esp-idf-path=/home/gez/sdks/zephyr/modules/hal/espressif
+    - --esp-flash-bootloader=/home/gez/workspaces/eclipse/esp_doom/build/esp-idf/build/bootloader/bootloader.bin
+    - --esp-flash-partition_table=/home/gez/workspaces/eclipse/esp_doom/build/esp-idf/build/partitions_singleapp.bin
+    - --esp-partition-table-address=0x8000
+    - --esp-boot-address=0x1000
+    - --esp-app-address=0x10000
