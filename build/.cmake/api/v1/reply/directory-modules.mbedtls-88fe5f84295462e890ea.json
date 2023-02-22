@@ -1,0 +1,14 @@
+{
+	"backtraceGraph" : 
+	{
+		"commands" : [],
+		"files" : [],
+		"nodes" : []
+	},
+	"installers" : [],
+	"paths" : 
+	{
+		"build" : "modules/mbedtls",
+		"source" : "/home/gez/sdks/zephyr/zephyr/modules/mbedtls"
+	}
+}

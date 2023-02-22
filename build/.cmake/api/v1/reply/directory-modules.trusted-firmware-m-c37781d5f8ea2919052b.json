@@ -1,0 +1,14 @@
+{
+	"backtraceGraph" : 
+	{
+		"commands" : [],
+		"files" : [],
+		"nodes" : []
+	},
+	"installers" : [],
+	"paths" : 
+	{
+		"build" : "modules/trusted-firmware-m",
+		"source" : "/home/gez/sdks/zephyr/zephyr/modules/trusted-firmware-m"
+	}
+}

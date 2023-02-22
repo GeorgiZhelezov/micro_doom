@@ -1,0 +1,14 @@
+{
+	"backtraceGraph" : 
+	{
+		"commands" : [],
+		"files" : [],
+		"nodes" : []
+	},
+	"installers" : [],
+	"paths" : 
+	{
+		"build" : "modules/loramac-node",
+		"source" : "/home/gez/sdks/zephyr/zephyr/modules/loramac-node"
+	}
+}

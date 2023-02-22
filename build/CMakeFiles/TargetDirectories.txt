@@ -77,6 +77,9 @@
 /home/gez/workspaces/eclipse/esp_doom/build/zephyr/subsys/canbus/CMakeFiles/rebuild_cache.dir
 /home/gez/workspaces/eclipse/esp_doom/build/zephyr/subsys/debug/CMakeFiles/edit_cache.dir
 /home/gez/workspaces/eclipse/esp_doom/build/zephyr/subsys/debug/CMakeFiles/rebuild_cache.dir
+/home/gez/workspaces/eclipse/esp_doom/build/zephyr/subsys/debug/coredump/CMakeFiles/subsys__debug__coredump.dir
+/home/gez/workspaces/eclipse/esp_doom/build/zephyr/subsys/debug/coredump/CMakeFiles/edit_cache.dir
+/home/gez/workspaces/eclipse/esp_doom/build/zephyr/subsys/debug/coredump/CMakeFiles/rebuild_cache.dir
 /home/gez/workspaces/eclipse/esp_doom/build/zephyr/subsys/fb/CMakeFiles/edit_cache.dir
 /home/gez/workspaces/eclipse/esp_doom/build/zephyr/subsys/fb/CMakeFiles/rebuild_cache.dir
 /home/gez/workspaces/eclipse/esp_doom/build/zephyr/subsys/fs/CMakeFiles/edit_cache.dir
@@ -85,8 +88,6 @@
 /home/gez/workspaces/eclipse/esp_doom/build/zephyr/subsys/ipc/CMakeFiles/rebuild_cache.dir
 /home/gez/workspaces/eclipse/esp_doom/build/zephyr/subsys/logging/CMakeFiles/edit_cache.dir
 /home/gez/workspaces/eclipse/esp_doom/build/zephyr/subsys/logging/CMakeFiles/rebuild_cache.dir
-/home/gez/workspaces/eclipse/esp_doom/build/zephyr/subsys/logging/backends/CMakeFiles/edit_cache.dir
-/home/gez/workspaces/eclipse/esp_doom/build/zephyr/subsys/logging/backends/CMakeFiles/rebuild_cache.dir
 /home/gez/workspaces/eclipse/esp_doom/build/zephyr/subsys/mgmt/CMakeFiles/edit_cache.dir
 /home/gez/workspaces/eclipse/esp_doom/build/zephyr/subsys/mgmt/CMakeFiles/rebuild_cache.dir
 /home/gez/workspaces/eclipse/esp_doom/build/zephyr/subsys/modbus/CMakeFiles/edit_cache.dir
@@ -135,6 +136,12 @@
 /home/gez/workspaces/eclipse/esp_doom/build/zephyr/drivers/console/CMakeFiles/drivers__console.dir
 /home/gez/workspaces/eclipse/esp_doom/build/zephyr/drivers/console/CMakeFiles/edit_cache.dir
 /home/gez/workspaces/eclipse/esp_doom/build/zephyr/drivers/console/CMakeFiles/rebuild_cache.dir
+/home/gez/workspaces/eclipse/esp_doom/build/zephyr/drivers/display/CMakeFiles/drivers__display.dir
+/home/gez/workspaces/eclipse/esp_doom/build/zephyr/drivers/display/CMakeFiles/edit_cache.dir
+/home/gez/workspaces/eclipse/esp_doom/build/zephyr/drivers/display/CMakeFiles/rebuild_cache.dir
+/home/gez/workspaces/eclipse/esp_doom/build/zephyr/drivers/dma/CMakeFiles/drivers__dma.dir
+/home/gez/workspaces/eclipse/esp_doom/build/zephyr/drivers/dma/CMakeFiles/edit_cache.dir
+/home/gez/workspaces/eclipse/esp_doom/build/zephyr/drivers/dma/CMakeFiles/rebuild_cache.dir
 /home/gez/workspaces/eclipse/esp_doom/build/zephyr/drivers/entropy/CMakeFiles/drivers__entropy.dir
 /home/gez/workspaces/eclipse/esp_doom/build/zephyr/drivers/entropy/CMakeFiles/edit_cache.dir
 /home/gez/workspaces/eclipse/esp_doom/build/zephyr/drivers/entropy/CMakeFiles/rebuild_cache.dir
@@ -147,6 +154,9 @@
 /home/gez/workspaces/eclipse/esp_doom/build/zephyr/drivers/serial/CMakeFiles/drivers__serial.dir
 /home/gez/workspaces/eclipse/esp_doom/build/zephyr/drivers/serial/CMakeFiles/edit_cache.dir
 /home/gez/workspaces/eclipse/esp_doom/build/zephyr/drivers/serial/CMakeFiles/rebuild_cache.dir
+/home/gez/workspaces/eclipse/esp_doom/build/zephyr/drivers/spi/CMakeFiles/drivers__spi.dir
+/home/gez/workspaces/eclipse/esp_doom/build/zephyr/drivers/spi/CMakeFiles/edit_cache.dir
+/home/gez/workspaces/eclipse/esp_doom/build/zephyr/drivers/spi/CMakeFiles/rebuild_cache.dir
 /home/gez/workspaces/eclipse/esp_doom/build/zephyr/drivers/timer/CMakeFiles/drivers__timer.dir
 /home/gez/workspaces/eclipse/esp_doom/build/zephyr/drivers/timer/CMakeFiles/edit_cache.dir
 /home/gez/workspaces/eclipse/esp_doom/build/zephyr/drivers/timer/CMakeFiles/rebuild_cache.dir

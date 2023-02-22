@@ -1,0 +1,14 @@
+{
+	"backtraceGraph" : 
+	{
+		"commands" : [],
+		"files" : [],
+		"nodes" : []
+	},
+	"installers" : [],
+	"paths" : 
+	{
+		"build" : "modules/canopennode",
+		"source" : "/home/gez/sdks/zephyr/zephyr/modules/canopennode"
+	}
+}

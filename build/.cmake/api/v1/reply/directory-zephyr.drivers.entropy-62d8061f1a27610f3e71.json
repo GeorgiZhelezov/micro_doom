@@ -1,0 +1,14 @@
+{
+	"backtraceGraph" : 
+	{
+		"commands" : [],
+		"files" : [],
+		"nodes" : []
+	},
+	"installers" : [],
+	"paths" : 
+	{
+		"build" : "zephyr/drivers/entropy",
+		"source" : "/home/gez/sdks/zephyr/zephyr/drivers/entropy"
+	}
+}

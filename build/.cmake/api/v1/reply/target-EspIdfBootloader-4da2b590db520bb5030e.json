@@ -1,0 +1,134 @@
+{
+	"backtrace" : 2,
+	"backtraceGraph" : 
+	{
+		"commands" : 
+		[
+			"add_custom_target",
+			"ExternalProject_Add"
+		],
+		"files" : 
+		[
+			"/usr/share/cmake/Modules/ExternalProject.cmake",
+			"/home/gez/sdks/zephyr/zephyr/soc/xtensa/esp32/CMakeLists.txt"
+		],
+		"nodes" : 
+		[
+			{
+				"file" : 1
+			},
+			{
+				"command" : 1,
+				"file" : 1,
+				"line" : 34,
+				"parent" : 0
+			},
+			{
+				"command" : 0,
+				"file" : 0,
+				"line" : 3985,
+				"parent" : 1
+			}
+		]
+	},
+	"folder" : 
+	{
+		"name" : "ExternalProjectTargets/EspIdfBootloader"
+	},
+	"id" : "EspIdfBootloader::@fc4f5861dcdb93132ef1",
+	"name" : "EspIdfBootloader",
+	"paths" : 
+	{
+		"build" : "zephyr/soc/xtensa/esp32",
+		"source" : "/home/gez/sdks/zephyr/zephyr/soc/xtensa/esp32"
+	},
+	"sourceGroups" : 
+	[
+		{
+			"name" : "",
+			"sourceIndexes" : 
+			[
+				0
+			]
+		},
+		{
+			"name" : "CMake Rules",
+			"sourceIndexes" : 
+			[
+				1,
+				2,
+				3,
+				4,
+				5,
+				6,
+				7,
+				8,
+				9
+			]
+		}
+	],
+	"sources" : 
+	[
+		{
+			"backtrace" : 2,
+			"isGenerated" : true,
+			"path" : "build/zephyr/soc/xtensa/esp32/CMakeFiles/EspIdfBootloader",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 0,
+			"isGenerated" : true,
+			"path" : "build/zephyr/soc/xtensa/esp32/CMakeFiles/EspIdfBootloader.rule",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 0,
+			"isGenerated" : true,
+			"path" : "build/zephyr/soc/xtensa/esp32/CMakeFiles/EspIdfBootloader-complete.rule",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 0,
+			"isGenerated" : true,
+			"path" : "build/esp-idf/src/EspIdfBootloader-stamp/EspIdfBootloader-build.rule",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 0,
+			"isGenerated" : true,
+			"path" : "build/esp-idf/src/EspIdfBootloader-stamp/EspIdfBootloader-configure.rule",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 0,
+			"isGenerated" : true,
+			"path" : "build/esp-idf/src/EspIdfBootloader-stamp/EspIdfBootloader-download.rule",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 0,
+			"isGenerated" : true,
+			"path" : "build/esp-idf/src/EspIdfBootloader-stamp/EspIdfBootloader-install.rule",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 0,
+			"isGenerated" : true,
+			"path" : "build/esp-idf/src/EspIdfBootloader-stamp/EspIdfBootloader-mkdir.rule",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 0,
+			"isGenerated" : true,
+			"path" : "build/esp-idf/src/EspIdfBootloader-stamp/EspIdfBootloader-patch.rule",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 0,
+			"isGenerated" : true,
+			"path" : "build/esp-idf/src/EspIdfBootloader-stamp/EspIdfBootloader-update.rule",
+			"sourceGroupIndex" : 1
+		}
+	],
+	"type" : "UTILITY"
+}
