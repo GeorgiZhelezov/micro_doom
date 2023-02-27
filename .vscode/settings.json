@@ -1,0 +1,11 @@
+{
+	"files.associations": {
+		"log.h": "c",
+		"*.tcc": "c",
+		"cstdio": "c",
+		"display.h": "c",
+		"ssd16xx.h": "c",
+		"mb_display.h": "c",
+		"display_st7789v.h": "c"
+	}
+}

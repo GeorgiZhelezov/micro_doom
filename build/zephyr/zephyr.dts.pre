@@ -695,6 +695,15 @@
  {
   display-ctrl = &st7789v_st7789v_waveshare_240x240;
  };
+
+ leds
+ {
+  compatible = "gpio-leds";
+  display_bl: display_bl_node
+  {
+   gpios = <&gpio0 4 (0 << 0)>;
+  };
+ };
 };
 
 &uart0
@@ -734,15 +743,15 @@
   reg = <0>;
   cmd-data-gpios = <&gpio0 16 (1 << 0)>;
   reset-gpios = <&gpio0 23 (1 << 0)>;
-  width = <240>;
-  height = <135>;
-  x-offset = <0>;
-  y-offset = <0>;
+  height = <240>;
+  width = <135>;
+  x-offset = <52>;
+  y-offset = <40>;
   vcom = <0x19>;
   gctrl = <0x35>;
   vrhs = <0x12>;
   vdvs = <0x20>;
-  mdac = <0x00>;
+  mdac = <0x0>;
   gamma = <0x01>;
   colmod = <0x05>;
   lcm = <0x2c>;

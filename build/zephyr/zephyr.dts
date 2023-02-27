@@ -285,10 +285,10 @@
 				reg = < 0x0 >;
 				cmd-data-gpios = < &gpio0 0x10 0x1 >;
 				reset-gpios = < &gpio0 0x17 0x1 >;
-				width = < 0xf0 >;
-				height = < 0x87 >;
-				x-offset = < 0x0 >;
-				y-offset = < 0x0 >;
+				height = < 0xf0 >;
+				width = < 0x87 >;
+				x-offset = < 0x34 >;
+				y-offset = < 0x28 >;
 				vcom = < 0x19 >;
 				gctrl = < 0x35 >;
 				vrhs = < 0x12 >;
@@ -510,6 +510,12 @@
 			min-residency-us = < 0x7d0 >;
 			exit-latency-us = < 0xd4 >;
 			phandle = < 0xd >;
+		};
+	};
+	leds {
+		compatible = "gpio-leds";
+		display_bl: display_bl_node {
+			gpios = < &gpio0 0x4 0x0 >;
 		};
 	};
 };
