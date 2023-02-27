@@ -1,24 +1,14 @@
-/*
- * Copyright (c) 2012-2014 Wind River Systems, Inc.
- *
- * SPDX-License-Identifier: Apache-2.0
- */
-
 #include <zephyr/kernel.h>
 
-#include <zephyr/display/cfb.h>
 #include <zephyr/drivers/display.h>
-
-#include <stdio.h>
-#include <string.h>
 
 #include <zephyr/device.h>
 #include <zephyr/drivers/gpio.h>
 
-#include <main.h>
+#include "user_test_images.h"
 
 #include <zephyr/logging/log.h>
-LOG_MODULE_REGISTER(user_main, LOG_LEVEL_INF);
+LOG_MODULE_REGISTER(user_display, LOG_LEVEL_INF);
 
 static const struct device *display_dev = DEVICE_DT_GET(DT_ALIAS(display_ctrl));
 static const struct gpio_dt_spec display_pin_bl   = GPIO_DT_SPEC_GET(DT_NODELABEL(display_bl), gpios);
@@ -34,19 +24,28 @@ const struct display_buffer_descriptor desc =
 	.pitch    = 1,
 };
 
-void main(void)
+static void user_display_swap_bytes(uint16_t *buff, size_t len)
+{
+	//color correction
+	for (size_t i = 0, temp = 0; i < len; i++)
+	{
+		temp = buff[i];
+		buff[i] = buff[i] >> 8;
+		buff[i] = buff[i] | ((temp & 0x00ff) << 8);
+	}
+}
+
+void user_display_test_image(void)
+{
+	user_display_swap_bytes(test_image, test_image_size);
+	display_write(display_dev, 0, 0, &desc, test_image);
+}
+
+void user_display_init(void)
 {
 	int ret = 0;
 	gpio_pin_configure_dt(&display_pin_bl, GPIO_OUTPUT_INACTIVE);
 	gpio_pin_set_dt(&display_pin_bl, 0);
-
-	//color correction
-	for (size_t i = 0, temp = 0; i < test_image_size; i++)
-	{
-		temp = test_image[i];
-		test_image[i] = test_image[i] >> 8;
-		test_image[i] = test_image[i] | ((temp & 0x00ff) << 8);
-	}
 
 	if (!device_is_ready(display_dev))
 	{
@@ -60,12 +59,5 @@ void main(void)
 		LOG_INF("BLANKING OFF ERR %d ", ret);
 	}
 
-	display_write(display_dev, 0, 0, &desc, test_image);
-
 	gpio_pin_set_dt(&display_pin_bl, 1);
-	while(1)
-	{
-		LOG_INF("Hello World! %s", CONFIG_BOARD);
-		k_sleep(K_MSEC(1000));
-	}
 }

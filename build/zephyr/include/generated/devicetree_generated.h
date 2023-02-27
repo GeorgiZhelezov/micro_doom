@@ -5,7 +5,7 @@
  *   /home/gez/workspaces/eclipse/esp_doom/build/zephyr/zephyr.dts.pre
  *
  * Directories with bindings:
- *   /home/gez/sdks/zephyr/zephyr/dts/bindings
+ *   $ZEPHYR_BASE/dts/bindings
  *
  * Node dependency ordering (ordinal and path):
  *   0   /
@@ -380,7 +380,7 @@
  * Node identifier: DT_N_S_soc_S_interrupt_controller_3ff00104
  *
  * Binding (compatible = espressif,esp32-intc):
- *   /home/gez/sdks/zephyr/zephyr/dts/bindings/interrupt-controller/espressif,esp32-intc.yaml
+ *   $ZEPHYR_BASE/dts/bindings/interrupt-controller/espressif,esp32-intc.yaml
  *
  * (Descriptions have moved to the Devicetree Bindings Index
  * in the documentation.)
@@ -528,7 +528,7 @@
  * Node identifier: DT_N_S_soc_S_rtc_3ff48000
  *
  * Binding (compatible = espressif,esp32-rtc):
- *   /home/gez/sdks/zephyr/zephyr/dts/bindings/clock/espressif,esp32-rtc.yaml
+ *   $ZEPHYR_BASE/dts/bindings/clock/espressif,esp32-rtc.yaml
  *
  * (Descriptions have moved to the Devicetree Bindings Index
  * in the documentation.)
@@ -669,7 +669,7 @@
  * Node identifier: DT_N_S_eth
  *
  * Binding (compatible = espressif,esp32-eth):
- *   /home/gez/sdks/zephyr/zephyr/dts/bindings/ethernet/espressif,esp32-eth.yaml
+ *   $ZEPHYR_BASE/dts/bindings/ethernet/espressif,esp32-eth.yaml
  *
  * (Descriptions have moved to the Devicetree Bindings Index
  * in the documentation.)
@@ -844,7 +844,7 @@
  * Node identifier: DT_N_S_mdio
  *
  * Binding (compatible = espressif,esp32-mdio):
- *   /home/gez/sdks/zephyr/zephyr/dts/bindings/mdio/espressif,esp32-mdio.yaml
+ *   $ZEPHYR_BASE/dts/bindings/mdio/espressif,esp32-mdio.yaml
  *
  * (Descriptions have moved to the Devicetree Bindings Index
  * in the documentation.)
@@ -1019,7 +1019,7 @@
  * Node identifier: DT_N_S_wifi
  *
  * Binding (compatible = espressif,esp32-wifi):
- *   /home/gez/sdks/zephyr/zephyr/dts/bindings/wifi/espressif,esp32-wifi.yaml
+ *   $ZEPHYR_BASE/dts/bindings/wifi/espressif,esp32-wifi.yaml
  *
  * (Descriptions have moved to the Devicetree Bindings Index
  * in the documentation.)
@@ -1137,7 +1137,7 @@
  * Node identifier: DT_N_S_buttons
  *
  * Binding (compatible = gpio-keys):
- *   /home/gez/sdks/zephyr/zephyr/dts/bindings/input/gpio-keys.yaml
+ *   $ZEPHYR_BASE/dts/bindings/input/gpio-keys.yaml
  *
  * (Descriptions have moved to the Devicetree Bindings Index
  * in the documentation.)
@@ -1285,7 +1285,7 @@
  * Node identifier: DT_N_S_soc_S_gpio_S_gpio_3ff44000
  *
  * Binding (compatible = espressif,esp32-gpio):
- *   /home/gez/sdks/zephyr/zephyr/dts/bindings/gpio/espressif,esp32-gpio.yaml
+ *   $ZEPHYR_BASE/dts/bindings/gpio/espressif,esp32-gpio.yaml
  *
  * (Descriptions have moved to the Devicetree Bindings Index
  * in the documentation.)
@@ -1664,7 +1664,7 @@
  * Node identifier: DT_N_S_power_states_S_deep_sleep
  *
  * Binding (compatible = zephyr,power-state):
- *   /home/gez/sdks/zephyr/zephyr/dts/bindings/power/zephyr,power-state.yaml
+ *   $ZEPHYR_BASE/dts/bindings/power/zephyr,power-state.yaml
  *
  * (Descriptions have moved to the Devicetree Bindings Index
  * in the documentation.)
@@ -1775,7 +1775,7 @@
  * Node identifier: DT_N_S_power_states_S_light_sleep
  *
  * Binding (compatible = zephyr,power-state):
- *   /home/gez/sdks/zephyr/zephyr/dts/bindings/power/zephyr,power-state.yaml
+ *   $ZEPHYR_BASE/dts/bindings/power/zephyr,power-state.yaml
  *
  * (Descriptions have moved to the Devicetree Bindings Index
  * in the documentation.)
@@ -1882,7 +1882,7 @@
  * Node identifier: DT_N_S_cpus_S_cpu_0
  *
  * Binding (compatible = cdns,tensilica-xtensa-lx6):
- *   /home/gez/sdks/zephyr/zephyr/dts/bindings/cpu/cdns,tensilica-xtensa-lx6.yaml
+ *   $ZEPHYR_BASE/dts/bindings/cpu/cdns,tensilica-xtensa-lx6.yaml
  *
  * (Descriptions have moved to the Devicetree Bindings Index
  * in the documentation.)
@@ -1992,7 +1992,7 @@
  * Node identifier: DT_N_S_cpus_S_cpu_1
  *
  * Binding (compatible = cdns,tensilica-xtensa-lx6):
- *   /home/gez/sdks/zephyr/zephyr/dts/bindings/cpu/cdns,tensilica-xtensa-lx6.yaml
+ *   $ZEPHYR_BASE/dts/bindings/cpu/cdns,tensilica-xtensa-lx6.yaml
  *
  * (Descriptions have moved to the Devicetree Bindings Index
  * in the documentation.)
@@ -2084,7 +2084,7 @@
  * Node identifier: DT_N_S_leds
  *
  * Binding (compatible = gpio-leds):
- *   /home/gez/sdks/zephyr/zephyr/dts/bindings/led/gpio-leds.yaml
+ *   $ZEPHYR_BASE/dts/bindings/led/gpio-leds.yaml
  *
  * (Descriptions have moved to the Devicetree Bindings Index
  * in the documentation.)
@@ -2228,7 +2228,7 @@
  * Node identifier: DT_N_S_pin_controller
  *
  * Binding (compatible = espressif,esp32-pinctrl):
- *   /home/gez/sdks/zephyr/zephyr/dts/bindings/pinctrl/espressif,esp32-pinctrl.yaml
+ *   $ZEPHYR_BASE/dts/bindings/pinctrl/espressif,esp32-pinctrl.yaml
  *
  * (Descriptions have moved to the Devicetree Bindings Index
  * in the documentation.)
@@ -3640,7 +3640,7 @@
  * Node identifier: DT_N_S_soc_S_adc_3ff48800
  *
  * Binding (compatible = espressif,esp32-adc):
- *   /home/gez/sdks/zephyr/zephyr/dts/bindings/adc/espressif,esp32-adc.yaml
+ *   $ZEPHYR_BASE/dts/bindings/adc/espressif,esp32-adc.yaml
  *
  * (Descriptions have moved to the Devicetree Bindings Index
  * in the documentation.)
@@ -3781,7 +3781,7 @@
  * Node identifier: DT_N_S_soc_S_adc_3ff48890
  *
  * Binding (compatible = espressif,esp32-adc):
- *   /home/gez/sdks/zephyr/zephyr/dts/bindings/adc/espressif,esp32-adc.yaml
+ *   $ZEPHYR_BASE/dts/bindings/adc/espressif,esp32-adc.yaml
  *
  * (Descriptions have moved to the Devicetree Bindings Index
  * in the documentation.)
@@ -3922,7 +3922,7 @@
  * Node identifier: DT_N_S_soc_S_can_3ff6b000
  *
  * Binding (compatible = espressif,esp32-twai):
- *   /home/gez/sdks/zephyr/zephyr/dts/bindings/can/espressif,esp32-twai.yaml
+ *   $ZEPHYR_BASE/dts/bindings/can/espressif,esp32-twai.yaml
  *
  * (Descriptions have moved to the Devicetree Bindings Index
  * in the documentation.)
@@ -4092,7 +4092,7 @@
  * Node identifier: DT_N_S_soc_S_counter_3ff5f000
  *
  * Binding (compatible = espressif,esp32-timer):
- *   /home/gez/sdks/zephyr/zephyr/dts/bindings/counter/espressif,esp32-timer.yaml
+ *   $ZEPHYR_BASE/dts/bindings/counter/espressif,esp32-timer.yaml
  *
  * (Descriptions have moved to the Devicetree Bindings Index
  * in the documentation.)
@@ -4255,7 +4255,7 @@
  * Node identifier: DT_N_S_soc_S_counter_3ff5f024
  *
  * Binding (compatible = espressif,esp32-timer):
- *   /home/gez/sdks/zephyr/zephyr/dts/bindings/counter/espressif,esp32-timer.yaml
+ *   $ZEPHYR_BASE/dts/bindings/counter/espressif,esp32-timer.yaml
  *
  * (Descriptions have moved to the Devicetree Bindings Index
  * in the documentation.)
@@ -4418,7 +4418,7 @@
  * Node identifier: DT_N_S_soc_S_counter_3ff60000
  *
  * Binding (compatible = espressif,esp32-timer):
- *   /home/gez/sdks/zephyr/zephyr/dts/bindings/counter/espressif,esp32-timer.yaml
+ *   $ZEPHYR_BASE/dts/bindings/counter/espressif,esp32-timer.yaml
  *
  * (Descriptions have moved to the Devicetree Bindings Index
  * in the documentation.)
@@ -4581,7 +4581,7 @@
  * Node identifier: DT_N_S_soc_S_counter_3ff60024
  *
  * Binding (compatible = espressif,esp32-timer):
- *   /home/gez/sdks/zephyr/zephyr/dts/bindings/counter/espressif,esp32-timer.yaml
+ *   $ZEPHYR_BASE/dts/bindings/counter/espressif,esp32-timer.yaml
  *
  * (Descriptions have moved to the Devicetree Bindings Index
  * in the documentation.)
@@ -4744,7 +4744,7 @@
  * Node identifier: DT_N_S_soc_S_dac_3ff48800
  *
  * Binding (compatible = espressif,esp32-dac):
- *   /home/gez/sdks/zephyr/zephyr/dts/bindings/dac/espressif,esp32-dac.yaml
+ *   $ZEPHYR_BASE/dts/bindings/dac/espressif,esp32-dac.yaml
  *
  * (Descriptions have moved to the Devicetree Bindings Index
  * in the documentation.)
@@ -4910,7 +4910,7 @@
  * Node identifier: DT_N_S_soc_S_i2c_3ff53000
  *
  * Binding (compatible = espressif,esp32-i2c):
- *   /home/gez/sdks/zephyr/zephyr/dts/bindings/i2c/espressif,esp32-i2c.yaml
+ *   $ZEPHYR_BASE/dts/bindings/i2c/espressif,esp32-i2c.yaml
  *
  * (Descriptions have moved to the Devicetree Bindings Index
  * in the documentation.)
@@ -5120,7 +5120,7 @@
  * Node identifier: DT_N_S_soc_S_i2c_3ff67000
  *
  * Binding (compatible = espressif,esp32-i2c):
- *   /home/gez/sdks/zephyr/zephyr/dts/bindings/i2c/espressif,esp32-i2c.yaml
+ *   $ZEPHYR_BASE/dts/bindings/i2c/espressif,esp32-i2c.yaml
  *
  * (Descriptions have moved to the Devicetree Bindings Index
  * in the documentation.)
@@ -5492,7 +5492,7 @@
  * Node identifier: DT_N_S_soc_S_memory_3ffe5230
  *
  * Binding (compatible = mmio-sram):
- *   /home/gez/sdks/zephyr/zephyr/dts/bindings/sram/mmio-sram.yaml
+ *   $ZEPHYR_BASE/dts/bindings/sram/mmio-sram.yaml
  *
  * (Descriptions have moved to the Devicetree Bindings Index
  * in the documentation.)
@@ -5586,7 +5586,7 @@
  * Node identifier: DT_N_S_soc_S_ipm_3ffe5a30
  *
  * Binding (compatible = espressif,esp32-ipm):
- *   /home/gez/sdks/zephyr/zephyr/dts/bindings/ipm/espressif,esp32-ipm.yaml
+ *   $ZEPHYR_BASE/dts/bindings/ipm/espressif,esp32-ipm.yaml
  *
  * (Descriptions have moved to the Devicetree Bindings Index
  * in the documentation.)
@@ -5759,7 +5759,7 @@
  * Node identifier: DT_N_S_soc_S_ledc_3ff59000
  *
  * Binding (compatible = espressif,esp32-ledc):
- *   /home/gez/sdks/zephyr/zephyr/dts/bindings/pwm/espressif,esp32-ledc.yaml
+ *   $ZEPHYR_BASE/dts/bindings/pwm/espressif,esp32-ledc.yaml
  *
  * (Descriptions have moved to the Devicetree Bindings Index
  * in the documentation.)
@@ -5907,7 +5907,7 @@
  * Node identifier: DT_N_S_soc_S_mcpwm_3ff5e000
  *
  * Binding (compatible = espressif,esp32-mcpwm):
- *   /home/gez/sdks/zephyr/zephyr/dts/bindings/pwm/espressif,esp32-mcpwm.yaml
+ *   $ZEPHYR_BASE/dts/bindings/pwm/espressif,esp32-mcpwm.yaml
  *
  * (Descriptions have moved to the Devicetree Bindings Index
  * in the documentation.)
@@ -6073,7 +6073,7 @@
  * Node identifier: DT_N_S_soc_S_mcpwm_3ff6c000
  *
  * Binding (compatible = espressif,esp32-mcpwm):
- *   /home/gez/sdks/zephyr/zephyr/dts/bindings/pwm/espressif,esp32-mcpwm.yaml
+ *   $ZEPHYR_BASE/dts/bindings/pwm/espressif,esp32-mcpwm.yaml
  *
  * (Descriptions have moved to the Devicetree Bindings Index
  * in the documentation.)
@@ -6239,7 +6239,7 @@
  * Node identifier: DT_N_S_soc_S_memory_3ffb0000
  *
  * Binding (compatible = mmio-sram):
- *   /home/gez/sdks/zephyr/zephyr/dts/bindings/sram/mmio-sram.yaml
+ *   $ZEPHYR_BASE/dts/bindings/sram/mmio-sram.yaml
  *
  * (Descriptions have moved to the Devicetree Bindings Index
  * in the documentation.)
@@ -6332,7 +6332,7 @@
  * Node identifier: DT_N_S_soc_S_memory_3ffe5630
  *
  * Binding (compatible = mmio-sram):
- *   /home/gez/sdks/zephyr/zephyr/dts/bindings/sram/mmio-sram.yaml
+ *   $ZEPHYR_BASE/dts/bindings/sram/mmio-sram.yaml
  *
  * (Descriptions have moved to the Devicetree Bindings Index
  * in the documentation.)
@@ -6425,7 +6425,7 @@
  * Node identifier: DT_N_S_soc_S_pcnt_3ff57000
  *
  * Binding (compatible = espressif,esp32-pcnt):
- *   /home/gez/sdks/zephyr/zephyr/dts/bindings/sensor/espressif,esp32-pcnt.yaml
+ *   $ZEPHYR_BASE/dts/bindings/sensor/espressif,esp32-pcnt.yaml
  *
  * (Descriptions have moved to the Devicetree Bindings Index
  * in the documentation.)
@@ -6591,7 +6591,7 @@
  * Node identifier: DT_N_S_soc_S_spi_3ff65000
  *
  * Binding (compatible = espressif,esp32-spi):
- *   /home/gez/sdks/zephyr/zephyr/dts/bindings/spi/espressif,esp32-spi.yaml
+ *   $ZEPHYR_BASE/dts/bindings/spi/espressif,esp32-spi.yaml
  *
  * (Descriptions have moved to the Devicetree Bindings Index
  * in the documentation.)
@@ -6787,7 +6787,7 @@
  * Node identifier: DT_N_S_soc_S_trng_3ff75144
  *
  * Binding (compatible = espressif,esp32-trng):
- *   /home/gez/sdks/zephyr/zephyr/dts/bindings/rng/espressif,esp32-trng.yaml
+ *   $ZEPHYR_BASE/dts/bindings/rng/espressif,esp32-trng.yaml
  *
  * (Descriptions have moved to the Devicetree Bindings Index
  * in the documentation.)
@@ -6908,7 +6908,7 @@
  * Node identifier: DT_N_S_soc_S_uart_3ff40000
  *
  * Binding (compatible = espressif,esp32-uart):
- *   /home/gez/sdks/zephyr/zephyr/dts/bindings/serial/espressif,esp32-uart.yaml
+ *   $ZEPHYR_BASE/dts/bindings/serial/espressif,esp32-uart.yaml
  *
  * (Descriptions have moved to the Devicetree Bindings Index
  * in the documentation.)
@@ -7091,7 +7091,7 @@
  * Node identifier: DT_N_S_soc_S_uart_3ff50000
  *
  * Binding (compatible = espressif,esp32-uart):
- *   /home/gez/sdks/zephyr/zephyr/dts/bindings/serial/espressif,esp32-uart.yaml
+ *   $ZEPHYR_BASE/dts/bindings/serial/espressif,esp32-uart.yaml
  *
  * (Descriptions have moved to the Devicetree Bindings Index
  * in the documentation.)
@@ -7289,7 +7289,7 @@
  * Node identifier: DT_N_S_soc_S_uart_3ff6e000
  *
  * Binding (compatible = espressif,esp32-uart):
- *   /home/gez/sdks/zephyr/zephyr/dts/bindings/serial/espressif,esp32-uart.yaml
+ *   $ZEPHYR_BASE/dts/bindings/serial/espressif,esp32-uart.yaml
  *
  * (Descriptions have moved to the Devicetree Bindings Index
  * in the documentation.)
@@ -7487,7 +7487,7 @@
  * Node identifier: DT_N_S_soc_S_watchdog_3ff5f048
  *
  * Binding (compatible = espressif,esp32-watchdog):
- *   /home/gez/sdks/zephyr/zephyr/dts/bindings/watchdog/espressif,esp32-watchdog.yaml
+ *   $ZEPHYR_BASE/dts/bindings/watchdog/espressif,esp32-watchdog.yaml
  *
  * (Descriptions have moved to the Devicetree Bindings Index
  * in the documentation.)
@@ -7638,7 +7638,7 @@
  * Node identifier: DT_N_S_soc_S_watchdog_3ff60048
  *
  * Binding (compatible = espressif,esp32-watchdog):
- *   /home/gez/sdks/zephyr/zephyr/dts/bindings/watchdog/espressif,esp32-watchdog.yaml
+ *   $ZEPHYR_BASE/dts/bindings/watchdog/espressif,esp32-watchdog.yaml
  *
  * (Descriptions have moved to the Devicetree Bindings Index
  * in the documentation.)
@@ -7804,7 +7804,7 @@
  * Node identifier: DT_N_S_soc_S_flash_controller_3ff42000
  *
  * Binding (compatible = espressif,esp32-flash-controller):
- *   /home/gez/sdks/zephyr/zephyr/dts/bindings/flash_controller/espressif,esp32-flash-controller.yaml
+ *   $ZEPHYR_BASE/dts/bindings/flash_controller/espressif,esp32-flash-controller.yaml
  *
  * (Descriptions have moved to the Devicetree Bindings Index
  * in the documentation.)
@@ -7902,7 +7902,7 @@
  * Node identifier: DT_N_S_soc_S_flash_controller_3ff42000_S_flash_0
  *
  * Binding (compatible = soc-nv-flash):
- *   /home/gez/sdks/zephyr/zephyr/dts/bindings/mtd/soc-nv-flash.yaml
+ *   $ZEPHYR_BASE/dts/bindings/mtd/soc-nv-flash.yaml
  *
  * (Descriptions have moved to the Devicetree Bindings Index
  * in the documentation.)
@@ -8024,7 +8024,7 @@
  * Node identifier: DT_N_S_soc_S_flash_controller_3ff42000_S_flash_0_S_partitions
  *
  * Binding (compatible = fixed-partitions):
- *   /home/gez/sdks/zephyr/zephyr/dts/bindings/mtd/fixed-partitions.yaml
+ *   $ZEPHYR_BASE/dts/bindings/mtd/fixed-partitions.yaml
  *
  * (Descriptions have moved to the Devicetree Bindings Index
  * in the documentation.)
@@ -8674,7 +8674,7 @@
  * Node identifier: DT_N_S_soc_S_gpio_S_gpio_3ff44800
  *
  * Binding (compatible = espressif,esp32-gpio):
- *   /home/gez/sdks/zephyr/zephyr/dts/bindings/gpio/espressif,esp32-gpio.yaml
+ *   $ZEPHYR_BASE/dts/bindings/gpio/espressif,esp32-gpio.yaml
  *
  * (Descriptions have moved to the Devicetree Bindings Index
  * in the documentation.)
@@ -8817,7 +8817,7 @@
  * Node identifier: DT_N_S_soc_S_rtc_3ff48000_S_rtc_timer
  *
  * Binding (compatible = espressif,esp32-rtc-timer):
- *   /home/gez/sdks/zephyr/zephyr/dts/bindings/counter/espressif,esp32-rtc-timer.yaml
+ *   $ZEPHYR_BASE/dts/bindings/counter/espressif,esp32-rtc-timer.yaml
  *
  * (Descriptions have moved to the Devicetree Bindings Index
  * in the documentation.)
@@ -8941,7 +8941,7 @@
  * Node identifier: DT_N_S_soc_S_spi_3ff64000
  *
  * Binding (compatible = espressif,esp32-spi):
- *   /home/gez/sdks/zephyr/zephyr/dts/bindings/spi/espressif,esp32-spi.yaml
+ *   $ZEPHYR_BASE/dts/bindings/spi/espressif,esp32-spi.yaml
  *
  * (Descriptions have moved to the Devicetree Bindings Index
  * in the documentation.)
@@ -9138,7 +9138,7 @@
  * Node identifier: DT_N_S_soc_S_spi_3ff64000_S_st7789v_0
  *
  * Binding (compatible = sitronix,st7789v):
- *   /home/gez/sdks/zephyr/zephyr/dts/bindings/display/sitronix,st7789v.yaml
+ *   $ZEPHYR_BASE/dts/bindings/display/sitronix,st7789v.yaml
  *
  * (Descriptions have moved to the Devicetree Bindings Index
  * in the documentation.)

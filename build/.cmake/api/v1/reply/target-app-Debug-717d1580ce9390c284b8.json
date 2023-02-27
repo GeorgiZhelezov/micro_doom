@@ -135,6 +135,12 @@
 				"file" : 4,
 				"line" : 14,
 				"parent" : 0
+			},
+			{
+				"command" : 8,
+				"file" : 4,
+				"line" : 15,
+				"parent" : 0
 			}
 		]
 	},
@@ -589,7 +595,8 @@
 			"language" : "C",
 			"sourceIndexes" : 
 			[
-				0
+				0,
+				1
 			]
 		}
 	],
@@ -638,7 +645,8 @@
 			"name" : "Source Files",
 			"sourceIndexes" : 
 			[
-				0
+				0,
+				1
 			]
 		}
 	],
@@ -647,7 +655,13 @@
 		{
 			"backtrace" : 19,
 			"compileGroupIndex" : 0,
-			"path" : "src/main.c",
+			"path" : "src/user_main.c",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 20,
+			"compileGroupIndex" : 0,
+			"path" : "src/user_display.c",
 			"sourceGroupIndex" : 0
 		}
 	],
