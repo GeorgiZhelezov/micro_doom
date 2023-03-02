@@ -129,6 +129,10 @@ zephyr/libzephyr.a(esp_efuse_api_key_esp32.c.obj)
                               (--whole-archive)
 zephyr/libzephyr.a(esp_efuse_utility.c.obj)
                               (--whole-archive)
+zephyr/libzephyr.a(bootloader_flash_config_esp32.c.obj)
+                              (--whole-archive)
+zephyr/libzephyr.a(bootloader_efuse_esp32.c.obj)
+                              (--whole-archive)
 zephyr/libzephyr.a(esp_system_api.c.obj)
                               (--whole-archive)
 zephyr/libzephyr.a(dport_access.c.obj)
@@ -1016,7 +1020,7 @@ Discarded input sections
  .rodata.cfb_print.str1.4
                 0x0000000000000000       0x43 zephyr/libzephyr.a(cfb.c.obj)
  .text.cfb_print
-                0x0000000000000000       0xb2 zephyr/libzephyr.a(cfb.c.obj)
+                0x0000000000000000       0xba zephyr/libzephyr.a(cfb.c.obj)
  .rodata.cfb_invert_area.str1.4
                 0x0000000000000000       0x28 zephyr/libzephyr.a(cfb.c.obj)
  .text.cfb_invert_area
@@ -1891,8 +1895,6 @@ Discarded input sections
  .debug_line    0x0000000000000000      0xc88 zephyr/libzephyr.a(esp_efuse_utility.c.obj)
  .debug_str     0x0000000000000000      0x5e9 zephyr/libzephyr.a(esp_efuse_utility.c.obj)
  .comment       0x0000000000000000       0x21 zephyr/libzephyr.a(esp_efuse_utility.c.obj)
- .literal.k_msleep
-                0x0000000000000000        0x4 zephyr/libzephyr.a(esp_efuse_api.c.obj)
  .literal.esp_efuse_read_field_blob
                 0x0000000000000000       0x18 zephyr/libzephyr.a(esp_efuse_api.c.obj)
  .literal.esp_efuse_read_field_bit
@@ -1922,16 +1924,14 @@ Discarded input sections
  .text          0x0000000000000000        0x0 zephyr/libzephyr.a(esp_efuse_api.c.obj)
  .data          0x0000000000000000        0x0 zephyr/libzephyr.a(esp_efuse_api.c.obj)
  .bss           0x0000000000000000        0x0 zephyr/libzephyr.a(esp_efuse_api.c.obj)
- .text.k_msleep
-                0x0000000000000000       0x22 zephyr/libzephyr.a(esp_efuse_api.c.obj)
  .text.esp_efuse_read_field_blob
-                0x0000000000000000       0x65 zephyr/libzephyr.a(esp_efuse_api.c.obj)
+                0x0000000000000000       0x69 zephyr/libzephyr.a(esp_efuse_api.c.obj)
  .text.esp_efuse_read_field_bit
                 0x0000000000000000       0x28 zephyr/libzephyr.a(esp_efuse_api.c.obj)
  .text.esp_efuse_read_field_cnt
                 0x0000000000000000       0x49 zephyr/libzephyr.a(esp_efuse_api.c.obj)
  .text.esp_efuse_write_field_blob
-                0x0000000000000000       0x7d zephyr/libzephyr.a(esp_efuse_api.c.obj)
+                0x0000000000000000       0x7f zephyr/libzephyr.a(esp_efuse_api.c.obj)
  .text.esp_efuse_write_field_cnt
                 0x0000000000000000       0x8f zephyr/libzephyr.a(esp_efuse_api.c.obj)
  .text.esp_efuse_write_field_bit
@@ -1949,22 +1949,22 @@ Discarded input sections
  .text.esp_efuse_batch_write_begin
                 0x0000000000000000       0x26 zephyr/libzephyr.a(esp_efuse_api.c.obj)
  .text.esp_efuse_batch_write_cancel
-                0x0000000000000000       0x2f zephyr/libzephyr.a(esp_efuse_api.c.obj)
+                0x0000000000000000       0x30 zephyr/libzephyr.a(esp_efuse_api.c.obj)
  .text.esp_efuse_batch_write_commit
                 0x0000000000000000       0x42 zephyr/libzephyr.a(esp_efuse_api.c.obj)
  .bss.s_batch_writing_mode
                 0x0000000000000000        0x4 zephyr/libzephyr.a(esp_efuse_api.c.obj)
  ._k_mutex.static.s_efuse_lock
                 0x0000000000000000       0x14 zephyr/libzephyr.a(esp_efuse_api.c.obj)
- .debug_frame   0x0000000000000000      0x178 zephyr/libzephyr.a(esp_efuse_api.c.obj)
- .debug_info    0x0000000000000000     0x14e0 zephyr/libzephyr.a(esp_efuse_api.c.obj)
- .debug_abbrev  0x0000000000000000      0x434 zephyr/libzephyr.a(esp_efuse_api.c.obj)
- .debug_loc     0x0000000000000000      0x705 zephyr/libzephyr.a(esp_efuse_api.c.obj)
+ .debug_frame   0x0000000000000000      0x160 zephyr/libzephyr.a(esp_efuse_api.c.obj)
+ .debug_info    0x0000000000000000     0x12e0 zephyr/libzephyr.a(esp_efuse_api.c.obj)
+ .debug_abbrev  0x0000000000000000      0x3a1 zephyr/libzephyr.a(esp_efuse_api.c.obj)
+ .debug_loc     0x0000000000000000      0x606 zephyr/libzephyr.a(esp_efuse_api.c.obj)
  .debug_aranges
-                0x0000000000000000       0x90 zephyr/libzephyr.a(esp_efuse_api.c.obj)
- .debug_ranges  0x0000000000000000       0x98 zephyr/libzephyr.a(esp_efuse_api.c.obj)
- .debug_line    0x0000000000000000     0x125d zephyr/libzephyr.a(esp_efuse_api.c.obj)
- .debug_str     0x0000000000000000      0xc12 zephyr/libzephyr.a(esp_efuse_api.c.obj)
+                0x0000000000000000       0x88 zephyr/libzephyr.a(esp_efuse_api.c.obj)
+ .debug_ranges  0x0000000000000000       0x90 zephyr/libzephyr.a(esp_efuse_api.c.obj)
+ .debug_line    0x0000000000000000     0x11db zephyr/libzephyr.a(esp_efuse_api.c.obj)
+ .debug_str     0x0000000000000000      0xb85 zephyr/libzephyr.a(esp_efuse_api.c.obj)
  .comment       0x0000000000000000       0x21 zephyr/libzephyr.a(esp_efuse_api.c.obj)
  .literal.esp_efuse_set_write_protect
                 0x0000000000000000        0x8 zephyr/libzephyr.a(esp_efuse_api_key_esp32.c.obj)
@@ -2130,6 +2130,68 @@ Discarded input sections
  .debug_line    0x0000000000000000     0x1453 zephyr/libzephyr.a(esp_efuse_utility.c.obj)
  .debug_str     0x0000000000000000      0x93f zephyr/libzephyr.a(esp_efuse_utility.c.obj)
  .comment       0x0000000000000000       0x21 zephyr/libzephyr.a(esp_efuse_utility.c.obj)
+ .literal.bootloader_flash_update_id
+                0x0000000000000000        0x8 zephyr/libzephyr.a(bootloader_flash_config_esp32.c.obj)
+ .literal.bootloader_flash_update_size
+                0x0000000000000000        0x4 zephyr/libzephyr.a(bootloader_flash_config_esp32.c.obj)
+ .iram1.0.literal
+                0x0000000000000000       0x10 zephyr/libzephyr.a(bootloader_flash_config_esp32.c.obj)
+ .iram1.1.literal
+                0x0000000000000000        0x8 zephyr/libzephyr.a(bootloader_flash_config_esp32.c.obj)
+ .iram1.2.literal
+                0x0000000000000000       0x60 zephyr/libzephyr.a(bootloader_flash_config_esp32.c.obj)
+ .iram1.3.literal
+                0x0000000000000000       0x18 zephyr/libzephyr.a(bootloader_flash_config_esp32.c.obj)
+ .literal.bootloader_flash_get_wp_pin
+                0x0000000000000000        0x8 zephyr/libzephyr.a(bootloader_flash_config_esp32.c.obj)
+ .text          0x0000000000000000        0x0 zephyr/libzephyr.a(bootloader_flash_config_esp32.c.obj)
+ .data          0x0000000000000000        0x0 zephyr/libzephyr.a(bootloader_flash_config_esp32.c.obj)
+ .bss           0x0000000000000000        0x0 zephyr/libzephyr.a(bootloader_flash_config_esp32.c.obj)
+ .text.bootloader_flash_update_id
+                0x0000000000000000       0x10 zephyr/libzephyr.a(bootloader_flash_config_esp32.c.obj)
+ .text.bootloader_flash_update_size
+                0x0000000000000000        0xa zephyr/libzephyr.a(bootloader_flash_config_esp32.c.obj)
+ .iram1.0       0x0000000000000000       0x6e zephyr/libzephyr.a(bootloader_flash_config_esp32.c.obj)
+ .iram1.1       0x0000000000000000       0x50 zephyr/libzephyr.a(bootloader_flash_config_esp32.c.obj)
+ .iram1.2       0x0000000000000000      0x1ec zephyr/libzephyr.a(bootloader_flash_config_esp32.c.obj)
+ .iram1.3       0x0000000000000000       0xb3 zephyr/libzephyr.a(bootloader_flash_config_esp32.c.obj)
+ .text.bootloader_flash_get_wp_pin
+                0x0000000000000000       0x46 zephyr/libzephyr.a(bootloader_flash_config_esp32.c.obj)
+ .debug_frame   0x0000000000000000       0xb8 zephyr/libzephyr.a(bootloader_flash_config_esp32.c.obj)
+ .debug_info    0x0000000000000000      0x7ec zephyr/libzephyr.a(bootloader_flash_config_esp32.c.obj)
+ .debug_abbrev  0x0000000000000000      0x249 zephyr/libzephyr.a(bootloader_flash_config_esp32.c.obj)
+ .debug_loc     0x0000000000000000      0x36b zephyr/libzephyr.a(bootloader_flash_config_esp32.c.obj)
+ .debug_aranges
+                0x0000000000000000       0x50 zephyr/libzephyr.a(bootloader_flash_config_esp32.c.obj)
+ .debug_ranges  0x0000000000000000       0x40 zephyr/libzephyr.a(bootloader_flash_config_esp32.c.obj)
+ .debug_line    0x0000000000000000      0x8f6 zephyr/libzephyr.a(bootloader_flash_config_esp32.c.obj)
+ .debug_str     0x0000000000000000      0x6b9 zephyr/libzephyr.a(bootloader_flash_config_esp32.c.obj)
+ .comment       0x0000000000000000       0x21 zephyr/libzephyr.a(bootloader_flash_config_esp32.c.obj)
+ .literal.bootloader_common_get_chip_revision
+                0x0000000000000000        0xc zephyr/libzephyr.a(bootloader_efuse_esp32.c.obj)
+ .literal.bootloader_common_get_chip_ver_pkg
+                0x0000000000000000        0x4 zephyr/libzephyr.a(bootloader_efuse_esp32.c.obj)
+ .literal.bootloader_clock_get_rated_freq_mhz
+                0x0000000000000000        0x4 zephyr/libzephyr.a(bootloader_efuse_esp32.c.obj)
+ .text          0x0000000000000000        0x0 zephyr/libzephyr.a(bootloader_efuse_esp32.c.obj)
+ .data          0x0000000000000000        0x0 zephyr/libzephyr.a(bootloader_efuse_esp32.c.obj)
+ .bss           0x0000000000000000        0x0 zephyr/libzephyr.a(bootloader_efuse_esp32.c.obj)
+ .text.bootloader_common_get_chip_revision
+                0x0000000000000000       0x4c zephyr/libzephyr.a(bootloader_efuse_esp32.c.obj)
+ .text.bootloader_common_get_chip_ver_pkg
+                0x0000000000000000       0x23 zephyr/libzephyr.a(bootloader_efuse_esp32.c.obj)
+ .text.bootloader_clock_get_rated_freq_mhz
+                0x0000000000000000       0x2d zephyr/libzephyr.a(bootloader_efuse_esp32.c.obj)
+ .debug_frame   0x0000000000000000       0x58 zephyr/libzephyr.a(bootloader_efuse_esp32.c.obj)
+ .debug_info    0x0000000000000000      0x15f zephyr/libzephyr.a(bootloader_efuse_esp32.c.obj)
+ .debug_abbrev  0x0000000000000000       0xa3 zephyr/libzephyr.a(bootloader_efuse_esp32.c.obj)
+ .debug_loc     0x0000000000000000       0xa5 zephyr/libzephyr.a(bootloader_efuse_esp32.c.obj)
+ .debug_aranges
+                0x0000000000000000       0x30 zephyr/libzephyr.a(bootloader_efuse_esp32.c.obj)
+ .debug_ranges  0x0000000000000000       0x20 zephyr/libzephyr.a(bootloader_efuse_esp32.c.obj)
+ .debug_line    0x0000000000000000      0x253 zephyr/libzephyr.a(bootloader_efuse_esp32.c.obj)
+ .debug_str     0x0000000000000000      0x2d9 zephyr/libzephyr.a(bootloader_efuse_esp32.c.obj)
+ .comment       0x0000000000000000       0x21 zephyr/libzephyr.a(bootloader_efuse_esp32.c.obj)
  .literal.esp_register_shutdown_handler
                 0x0000000000000000        0x4 zephyr/libzephyr.a(esp_system_api.c.obj)
  .literal.esp_unregister_shutdown_handler
@@ -5693,10 +5755,10 @@ noinit          0x000000003ffe5230     0xd800
                 0x000000003ffe6a30                dram0_seg_1_heap
                 0x000000003fff2a30                . = ALIGN (0x8)
                 0x00000000000198f4                _image_irom_start = LOADADDR (.flash.text)
-                0x0000000000005d0c                _image_irom_size = ((LOADADDR (.flash.text) + SIZEOF (.flash.text)) - _image_irom_start)
+                0x0000000000005d48                _image_irom_size = ((LOADADDR (.flash.text) + SIZEOF (.flash.text)) - _image_irom_start)
                 0x00000000400d0020                _image_irom_vaddr = ADDR (.flash.text)
 
-.flash.text     0x00000000400d0020     0x5d0c load address 0x00000000000198f4
+.flash.text     0x00000000400d0020     0x5d48 load address 0x00000000000198f4
                 0x00000000400d0020                _stext = .
                 0x00000000400d0020                _text_start = ABSOLUTE (.)
  *libnet80211.a:(SORT_BY_ALIGNMENT(.wifi0iram) SORT_BY_ALIGNMENT(.wifi0iram.*) SORT_BY_ALIGNMENT(.wifislpiram) SORT_BY_ALIGNMENT(.wifislpiram.*))
@@ -6815,403 +6877,403 @@ noinit          0x000000003ffe5230     0xd800
                 0x00000000400d437c       0x56 zephyr/drivers/gpio/libdrivers__gpio.a(gpio_esp32.c.obj)
  *fill*         0x00000000400d43d2        0x2 
  .text.gpio_esp32_pin_interrupt_configure
-                0x00000000400d43d4       0xa4 zephyr/drivers/gpio/libdrivers__gpio.a(gpio_esp32.c.obj)
+                0x00000000400d43d4       0xe4 zephyr/drivers/gpio/libdrivers__gpio.a(gpio_esp32.c.obj)
  .text.gpio_esp32_manage_callback
-                0x00000000400d4478       0x16 zephyr/drivers/gpio/libdrivers__gpio.a(gpio_esp32.c.obj)
- *fill*         0x00000000400d448e        0x2 
+                0x00000000400d44b8       0x16 zephyr/drivers/gpio/libdrivers__gpio.a(gpio_esp32.c.obj)
+ *fill*         0x00000000400d44ce        0x2 
  .text.gpio_esp32_config
-                0x00000000400d4490      0x3db zephyr/drivers/gpio/libdrivers__gpio.a(gpio_esp32.c.obj)
+                0x00000000400d44d0      0x3d7 zephyr/drivers/gpio/libdrivers__gpio.a(gpio_esp32.c.obj)
                                         0x3e7 (size before relaxing)
- *fill*         0x00000000400d486b        0x1 
+ *fill*         0x00000000400d48a7        0x1 
  .text.gpio_esp32_init
-                0x00000000400d486c       0x28 zephyr/drivers/gpio/libdrivers__gpio.a(gpio_esp32.c.obj)
+                0x00000000400d48a8       0x28 zephyr/drivers/gpio/libdrivers__gpio.a(gpio_esp32.c.obj)
  .text.gpio_ll_output_disable
-                0x00000000400d4894       0x4f zephyr/drivers/pinctrl/libdrivers__pinctrl.a(pinctrl_esp32.c.obj)
- *fill*         0x00000000400d48e3        0x1 
+                0x00000000400d48d0       0x4f zephyr/drivers/pinctrl/libdrivers__pinctrl.a(pinctrl_esp32.c.obj)
+ *fill*         0x00000000400d491f        0x1 
  .text.rtcio_ll_pullup_enable
-                0x00000000400d48e4       0x27 zephyr/drivers/pinctrl/libdrivers__pinctrl.a(pinctrl_esp32.c.obj)
- *fill*         0x00000000400d490b        0x1 
+                0x00000000400d4920       0x27 zephyr/drivers/pinctrl/libdrivers__pinctrl.a(pinctrl_esp32.c.obj)
+ *fill*         0x00000000400d4947        0x1 
  .text.rtcio_ll_pullup_disable
-                0x00000000400d490c       0x2c zephyr/drivers/pinctrl/libdrivers__pinctrl.a(pinctrl_esp32.c.obj)
+                0x00000000400d4948       0x2c zephyr/drivers/pinctrl/libdrivers__pinctrl.a(pinctrl_esp32.c.obj)
  .text.rtcio_ll_pulldown_enable
-                0x00000000400d4938       0x27 zephyr/drivers/pinctrl/libdrivers__pinctrl.a(pinctrl_esp32.c.obj)
- *fill*         0x00000000400d495f        0x1 
+                0x00000000400d4974       0x27 zephyr/drivers/pinctrl/libdrivers__pinctrl.a(pinctrl_esp32.c.obj)
+ *fill*         0x00000000400d499b        0x1 
  .text.rtcio_ll_pulldown_disable
-                0x00000000400d4960       0x2c zephyr/drivers/pinctrl/libdrivers__pinctrl.a(pinctrl_esp32.c.obj)
+                0x00000000400d499c       0x2c zephyr/drivers/pinctrl/libdrivers__pinctrl.a(pinctrl_esp32.c.obj)
  .text.esp32_pin_apply_config
-                0x00000000400d498c      0x28c zephyr/drivers/pinctrl/libdrivers__pinctrl.a(pinctrl_esp32.c.obj)
+                0x00000000400d49c8      0x28c zephyr/drivers/pinctrl/libdrivers__pinctrl.a(pinctrl_esp32.c.obj)
                                         0x298 (size before relaxing)
  .text.esp32_pin_configure
-                0x00000000400d4c18      0x10e zephyr/drivers/pinctrl/libdrivers__pinctrl.a(pinctrl_esp32.c.obj)
+                0x00000000400d4c54      0x10e zephyr/drivers/pinctrl/libdrivers__pinctrl.a(pinctrl_esp32.c.obj)
                                         0x112 (size before relaxing)
- *fill*         0x00000000400d4d26        0x2 
+ *fill*         0x00000000400d4d62        0x2 
  .text.pinctrl_configure_pins
-                0x00000000400d4d28       0x2a zephyr/drivers/pinctrl/libdrivers__pinctrl.a(pinctrl_esp32.c.obj)
-                0x00000000400d4d28                pinctrl_configure_pins
- *fill*         0x00000000400d4d52        0x2 
+                0x00000000400d4d64       0x2a zephyr/drivers/pinctrl/libdrivers__pinctrl.a(pinctrl_esp32.c.obj)
+                0x00000000400d4d64                pinctrl_configure_pins
+ *fill*         0x00000000400d4d8e        0x2 
  .text.uart_esp32_config_get
-                0x00000000400d4d54       0xdd zephyr/drivers/serial/libdrivers__serial.a(uart_esp32.c.obj)
- *fill*         0x00000000400d4e31        0x3 
+                0x00000000400d4d90       0xdd zephyr/drivers/serial/libdrivers__serial.a(uart_esp32.c.obj)
+ *fill*         0x00000000400d4e6d        0x3 
  .text.pinctrl_apply_state
-                0x00000000400d4e34       0x22 zephyr/drivers/serial/libdrivers__serial.a(uart_esp32.c.obj)
+                0x00000000400d4e70       0x22 zephyr/drivers/serial/libdrivers__serial.a(uart_esp32.c.obj)
                                          0x26 (size before relaxing)
- *fill*         0x00000000400d4e56        0x2 
+ *fill*         0x00000000400d4e92        0x2 
  .text.uart_esp32_configure
-                0x00000000400d4e58      0x13e zephyr/drivers/serial/libdrivers__serial.a(uart_esp32.c.obj)
+                0x00000000400d4e94      0x13e zephyr/drivers/serial/libdrivers__serial.a(uart_esp32.c.obj)
                                         0x176 (size before relaxing)
- *fill*         0x00000000400d4f96        0x2 
+ *fill*         0x00000000400d4fd2        0x2 
  .text.uart_esp32_init
-                0x00000000400d4f98       0x11 zephyr/drivers/serial/libdrivers__serial.a(uart_esp32.c.obj)
- *fill*         0x00000000400d4fa9        0x3 
+                0x00000000400d4fd4       0x11 zephyr/drivers/serial/libdrivers__serial.a(uart_esp32.c.obj)
+ *fill*         0x00000000400d4fe5        0x3 
  .text.uart_esp32_poll_out
-                0x00000000400d4fac       0x34 zephyr/drivers/serial/libdrivers__serial.a(uart_esp32.c.obj)
+                0x00000000400d4fe8       0x34 zephyr/drivers/serial/libdrivers__serial.a(uart_esp32.c.obj)
  .text.uart_esp32_poll_in
-                0x00000000400d4fe0       0xa1 zephyr/drivers/serial/libdrivers__serial.a(uart_esp32.c.obj)
- *fill*         0x00000000400d5081        0x3 
+                0x00000000400d501c       0xa1 zephyr/drivers/serial/libdrivers__serial.a(uart_esp32.c.obj)
+ *fill*         0x00000000400d50bd        0x3 
  .text.z_impl_gpio_pin_configure
-                0x00000000400d5084       0x55 zephyr/drivers/spi/libdrivers__spi.a(spi_esp32_spim.c.obj)
- *fill*         0x00000000400d50d9        0x3 
+                0x00000000400d50c0       0x55 zephyr/drivers/spi/libdrivers__spi.a(spi_esp32_spim.c.obj)
+ *fill*         0x00000000400d5115        0x3 
  .text.gpio_pin_configure_dt
-                0x00000000400d50dc       0x18 zephyr/drivers/spi/libdrivers__spi.a(spi_esp32_spim.c.obj)
+                0x00000000400d5118       0x18 zephyr/drivers/spi/libdrivers__spi.a(spi_esp32_spim.c.obj)
  .text.gpio_pin_set
-                0x00000000400d50f4       0x23 zephyr/drivers/spi/libdrivers__spi.a(spi_esp32_spim.c.obj)
+                0x00000000400d5130       0x23 zephyr/drivers/spi/libdrivers__spi.a(spi_esp32_spim.c.obj)
                                          0x26 (size before relaxing)
- *fill*         0x00000000400d5117        0x1 
+ *fill*         0x00000000400d5153        0x1 
  .text.spi_context_buffers_setup
-                0x00000000400d5118       0x62 zephyr/drivers/spi/libdrivers__spi.a(spi_esp32_spim.c.obj)
- *fill*         0x00000000400d517a        0x2 
+                0x00000000400d5154       0x62 zephyr/drivers/spi/libdrivers__spi.a(spi_esp32_spim.c.obj)
+ *fill*         0x00000000400d51b6        0x2 
  .text._spi_context_cs_control
-                0x00000000400d517c       0x47 zephyr/drivers/spi/libdrivers__spi.a(spi_esp32_spim.c.obj)
+                0x00000000400d51b8       0x47 zephyr/drivers/spi/libdrivers__spi.a(spi_esp32_spim.c.obj)
                                          0x4f (size before relaxing)
- *fill*         0x00000000400d51c3        0x1 
+ *fill*         0x00000000400d51ff        0x1 
  .text.spi_context_unlock_unconditionally
-                0x00000000400d51c4       0x1a zephyr/drivers/spi/libdrivers__spi.a(spi_esp32_spim.c.obj)
+                0x00000000400d5200       0x1a zephyr/drivers/spi/libdrivers__spi.a(spi_esp32_spim.c.obj)
                                          0x22 (size before relaxing)
- *fill*         0x00000000400d51de        0x2 
+ *fill*         0x00000000400d521a        0x2 
  .text.spi_esp32_release
-                0x00000000400d51e0        0xc zephyr/drivers/spi/libdrivers__spi.a(spi_esp32_spim.c.obj)
+                0x00000000400d521c        0xc zephyr/drivers/spi/libdrivers__spi.a(spi_esp32_spim.c.obj)
                                          0x10 (size before relaxing)
  .text.spi_context_release
-                0x00000000400d51ec       0x1b zephyr/drivers/spi/libdrivers__spi.a(spi_esp32_spim.c.obj)
- *fill*         0x00000000400d5207        0x1 
- .text.spi_context_complete
-                0x00000000400d5208       0x3b zephyr/drivers/spi/libdrivers__spi.a(spi_esp32_spim.c.obj)
-                                         0x3f (size before relaxing)
+                0x00000000400d5228       0x1b zephyr/drivers/spi/libdrivers__spi.a(spi_esp32_spim.c.obj)
  *fill*         0x00000000400d5243        0x1 
+ .text.spi_context_complete
+                0x00000000400d5244       0x3b zephyr/drivers/spi/libdrivers__spi.a(spi_esp32_spim.c.obj)
+                                         0x3f (size before relaxing)
+ *fill*         0x00000000400d527f        0x1 
  .text.spi_esp32_complete
-                0x00000000400d5244       0x38 zephyr/drivers/spi/libdrivers__spi.a(spi_esp32_spim.c.obj)
+                0x00000000400d5280       0x38 zephyr/drivers/spi/libdrivers__spi.a(spi_esp32_spim.c.obj)
                                          0x3c (size before relaxing)
  .text.spi_context_lock
-                0x00000000400d527c       0x2e zephyr/drivers/spi/libdrivers__spi.a(spi_esp32_spim.c.obj)
- *fill*         0x00000000400d52aa        0x2 
+                0x00000000400d52b8       0x2e zephyr/drivers/spi/libdrivers__spi.a(spi_esp32_spim.c.obj)
+ *fill*         0x00000000400d52e6        0x2 
  .text.spi_esp32_get_frame_size
-                0x00000000400d52ac       0x20 zephyr/drivers/spi/libdrivers__spi.a(spi_esp32_spim.c.obj)
+                0x00000000400d52e8       0x20 zephyr/drivers/spi/libdrivers__spi.a(spi_esp32_spim.c.obj)
  .text.spi_context_cs_configure_all
-                0x00000000400d52cc       0x45 zephyr/drivers/spi/libdrivers__spi.a(spi_esp32_spim.c.obj)
+                0x00000000400d5308       0x45 zephyr/drivers/spi/libdrivers__spi.a(spi_esp32_spim.c.obj)
                                          0x49 (size before relaxing)
- *fill*         0x00000000400d5311        0x3 
+ *fill*         0x00000000400d534d        0x3 
  .text.pinctrl_apply_state
-                0x00000000400d5314       0x22 zephyr/drivers/spi/libdrivers__spi.a(spi_esp32_spim.c.obj)
+                0x00000000400d5350       0x22 zephyr/drivers/spi/libdrivers__spi.a(spi_esp32_spim.c.obj)
                                          0x26 (size before relaxing)
- *fill*         0x00000000400d5336        0x2 
+ *fill*         0x00000000400d5372        0x2 
  .text.transceive
-                0x00000000400d5338       0x80 zephyr/drivers/spi/libdrivers__spi.a(spi_esp32_spim.c.obj)
+                0x00000000400d5374       0x80 zephyr/drivers/spi/libdrivers__spi.a(spi_esp32_spim.c.obj)
                                          0x94 (size before relaxing)
  .text.spi_esp32_transceive_async
-                0x00000000400d53b8       0x18 zephyr/drivers/spi/libdrivers__spi.a(spi_esp32_spim.c.obj)
+                0x00000000400d53f4       0x18 zephyr/drivers/spi/libdrivers__spi.a(spi_esp32_spim.c.obj)
                                          0x1c (size before relaxing)
  .text.spi_esp32_transceive
-                0x00000000400d53d0       0x18 zephyr/drivers/spi/libdrivers__spi.a(spi_esp32_spim.c.obj)
+                0x00000000400d540c       0x18 zephyr/drivers/spi/libdrivers__spi.a(spi_esp32_spim.c.obj)
                                          0x1c (size before relaxing)
  .text.spi_esp32_init_dma
-                0x00000000400d53e8       0xb2 zephyr/drivers/spi/libdrivers__spi.a(spi_esp32_spim.c.obj)
+                0x00000000400d5424       0xb2 zephyr/drivers/spi/libdrivers__spi.a(spi_esp32_spim.c.obj)
                                          0xb6 (size before relaxing)
- *fill*         0x00000000400d549a        0x2 
+ *fill*         0x00000000400d54d6        0x2 
  .text.spi_esp32_init
-                0x00000000400d549c       0x42 zephyr/drivers/spi/libdrivers__spi.a(spi_esp32_spim.c.obj)
+                0x00000000400d54d8       0x42 zephyr/drivers/spi/libdrivers__spi.a(spi_esp32_spim.c.obj)
                                          0x4a (size before relaxing)
- *fill*         0x00000000400d54de        0x2 
+ *fill*         0x00000000400d551a        0x2 
  .text._OffsetAbsSyms
-                0x00000000400d54e0        0x5 zephyr/CMakeFiles/offsets.dir/./arch/xtensa/core/offsets/offsets.c.obj
-                0x00000000400d54e0                _OffsetAbsSyms
- *fill*         0x00000000400d54e5        0x0 
- *fill*         0x00000000400d54e5        0x0 
- *fill*         0x00000000400d54e5        0x3 
+                0x00000000400d551c        0x5 zephyr/CMakeFiles/offsets.dir/./arch/xtensa/core/offsets/offsets.c.obj
+                0x00000000400d551c                _OffsetAbsSyms
+ *fill*         0x00000000400d5521        0x0 
+ *fill*         0x00000000400d5521        0x0 
+ *fill*         0x00000000400d5521        0x3 
  .text.gpio_pin_set_raw
-                0x00000000400d54e8       0x30 app/libapp.a(user_display.c.obj)
- *fill*         0x00000000400d5518        0x0 
+                0x00000000400d5524       0x30 app/libapp.a(user_display.c.obj)
+ *fill*         0x00000000400d5554        0x0 
  .text.user_display_swap_bytes
-                0x00000000400d5518       0x27 app/libapp.a(user_display.c.obj)
- *fill*         0x00000000400d553f        0x0 
- *fill*         0x00000000400d553f        0x1 
+                0x00000000400d5554       0x27 app/libapp.a(user_display.c.obj)
+ *fill*         0x00000000400d557b        0x0 
+ *fill*         0x00000000400d557b        0x1 
  .text.hex2char
-                0x00000000400d5540       0x2a zephyr/libzephyr.a(hex.c.obj)
-                0x00000000400d5540                hex2char
- *fill*         0x00000000400d556a        0x0 
- *fill*         0x00000000400d556a        0x2 
+                0x00000000400d557c       0x2a zephyr/libzephyr.a(hex.c.obj)
+                0x00000000400d557c                hex2char
+ *fill*         0x00000000400d55a6        0x0 
+ *fill*         0x00000000400d55a6        0x2 
  .text.chunk_mem
-                0x00000000400d556c        0xc zephyr/libzephyr.a(heap.c.obj)
+                0x00000000400d55a8        0xc zephyr/libzephyr.a(heap.c.obj)
  .text.free_list_remove_bidx
-                0x00000000400d5578       0x52 zephyr/libzephyr.a(heap.c.obj)
- *fill*         0x00000000400d55ca        0x2 
+                0x00000000400d55b4       0x52 zephyr/libzephyr.a(heap.c.obj)
+ *fill*         0x00000000400d5606        0x2 
  .text.free_list_add_bidx
-                0x00000000400d55cc       0x66 zephyr/libzephyr.a(heap.c.obj)
- *fill*         0x00000000400d5632        0x2 
+                0x00000000400d5608       0x66 zephyr/libzephyr.a(heap.c.obj)
+ *fill*         0x00000000400d566e        0x2 
  .text.split_chunks
-                0x00000000400d5634       0x3e zephyr/libzephyr.a(heap.c.obj)
- *fill*         0x00000000400d5672        0x2 
+                0x00000000400d5670       0x3e zephyr/libzephyr.a(heap.c.obj)
+ *fill*         0x00000000400d56ae        0x2 
  .text.merge_chunks
-                0x00000000400d5674       0x34 zephyr/libzephyr.a(heap.c.obj)
+                0x00000000400d56b0       0x34 zephyr/libzephyr.a(heap.c.obj)
  .text.mem_to_chunkid
-                0x00000000400d56a8        0xe zephyr/libzephyr.a(heap.c.obj)
- *fill*         0x00000000400d56b6        0x0 
- *fill*         0x00000000400d56b6        0x0 
- *fill*         0x00000000400d56b6        0x0 
- *fill*         0x00000000400d56b6        0x0 
- *fill*         0x00000000400d56b6        0x0 
- *fill*         0x00000000400d56b6        0x2 
+                0x00000000400d56e4        0xe zephyr/libzephyr.a(heap.c.obj)
+ *fill*         0x00000000400d56f2        0x0 
+ *fill*         0x00000000400d56f2        0x0 
+ *fill*         0x00000000400d56f2        0x0 
+ *fill*         0x00000000400d56f2        0x0 
+ *fill*         0x00000000400d56f2        0x0 
+ *fill*         0x00000000400d56f2        0x2 
  .text._ConfigAbsSyms
-                0x00000000400d56b8        0x5 zephyr/libzephyr.a(configs.c.obj)
-                0x00000000400d56b8                _ConfigAbsSyms
- *fill*         0x00000000400d56bd        0x0 
- *fill*         0x00000000400d56bd        0x3 
+                0x00000000400d56f4        0x5 zephyr/libzephyr.a(configs.c.obj)
+                0x00000000400d56f4                _ConfigAbsSyms
+ *fill*         0x00000000400d56f9        0x0 
+ *fill*         0x00000000400d56f9        0x3 
  .text.sys_trace_idle
-                0x00000000400d56c0        0x5 zephyr/libzephyr.a(tracing_none.c.obj)
-                0x00000000400d56c0                sys_trace_idle
- *fill*         0x00000000400d56c5        0x0 
- *fill*         0x00000000400d56c5        0x0 
- *fill*         0x00000000400d56c5        0x0 
- *fill*         0x00000000400d56c5        0x0 
- *fill*         0x00000000400d56c5        0x0 
- *fill*         0x00000000400d56c5        0x0 
- *fill*         0x00000000400d56c5        0x3 
+                0x00000000400d56fc        0x5 zephyr/libzephyr.a(tracing_none.c.obj)
+                0x00000000400d56fc                sys_trace_idle
+ *fill*         0x00000000400d5701        0x0 
+ *fill*         0x00000000400d5701        0x0 
+ *fill*         0x00000000400d5701        0x0 
+ *fill*         0x00000000400d5701        0x0 
+ *fill*         0x00000000400d5701        0x0 
+ *fill*         0x00000000400d5701        0x0 
+ *fill*         0x00000000400d5701        0x3 
  .text.spi_ll_set_command
-                0x00000000400d56c8       0x5d zephyr/libzephyr.a(spi_hal_iram.c.obj)
- *fill*         0x00000000400d5725        0x3 
+                0x00000000400d5704       0x5d zephyr/libzephyr.a(spi_hal_iram.c.obj)
+ *fill*         0x00000000400d5761        0x3 
  .text.spi_ll_set_address
-                0x00000000400d5728       0x93 zephyr/libzephyr.a(spi_hal_iram.c.obj)
- *fill*         0x00000000400d57bb        0x0 
- *fill*         0x00000000400d57bb        0x0 
- *fill*         0x00000000400d57bb        0x0 
- *fill*         0x00000000400d57bb        0x0 
- *fill*         0x00000000400d57bb        0x1 
+                0x00000000400d5764       0x93 zephyr/libzephyr.a(spi_hal_iram.c.obj)
+ *fill*         0x00000000400d57f7        0x0 
+ *fill*         0x00000000400d57f7        0x0 
+ *fill*         0x00000000400d57f7        0x0 
+ *fill*         0x00000000400d57f7        0x0 
+ *fill*         0x00000000400d57f7        0x1 
  .text.spi_hal_usr_is_done
-                0x00000000400d57bc        0xf zephyr/libzephyr.a(spi_hal_iram.c.obj)
-                0x00000000400d57bc                spi_hal_usr_is_done
- *fill*         0x00000000400d57cb        0x0 
- *fill*         0x00000000400d57cb        0x0 
- *fill*         0x00000000400d57cb        0x1 
+                0x00000000400d57f8        0xf zephyr/libzephyr.a(spi_hal_iram.c.obj)
+                0x00000000400d57f8                spi_hal_usr_is_done
+ *fill*         0x00000000400d5807        0x0 
+ *fill*         0x00000000400d5807        0x0 
+ *fill*         0x00000000400d5807        0x1 
  .text.uart_hal_set_stop_bits
-                0x00000000400d57cc       0x5d zephyr/libzephyr.a(uart_hal.c.obj)
-                0x00000000400d57cc                uart_hal_set_stop_bits
- *fill*         0x00000000400d5829        0x3 
+                0x00000000400d5808       0x5d zephyr/libzephyr.a(uart_hal.c.obj)
+                0x00000000400d5808                uart_hal_set_stop_bits
+ *fill*         0x00000000400d5865        0x3 
  .text.uart_hal_get_stop_bits
-                0x00000000400d582c       0x2c zephyr/libzephyr.a(uart_hal.c.obj)
-                0x00000000400d582c                uart_hal_get_stop_bits
+                0x00000000400d5868       0x2c zephyr/libzephyr.a(uart_hal.c.obj)
+                0x00000000400d5868                uart_hal_get_stop_bits
  .text.uart_hal_set_data_bit_num
-                0x00000000400d5858       0x1f zephyr/libzephyr.a(uart_hal.c.obj)
-                0x00000000400d5858                uart_hal_set_data_bit_num
- *fill*         0x00000000400d5877        0x1 
+                0x00000000400d5894       0x1f zephyr/libzephyr.a(uart_hal.c.obj)
+                0x00000000400d5894                uart_hal_set_data_bit_num
+ *fill*         0x00000000400d58b3        0x1 
  .text.uart_hal_get_data_bit_num
-                0x00000000400d5878       0x11 zephyr/libzephyr.a(uart_hal.c.obj)
-                0x00000000400d5878                uart_hal_get_data_bit_num
- *fill*         0x00000000400d5889        0x3 
+                0x00000000400d58b4       0x11 zephyr/libzephyr.a(uart_hal.c.obj)
+                0x00000000400d58b4                uart_hal_get_data_bit_num
+ *fill*         0x00000000400d58c5        0x3 
  .text.uart_hal_set_parity
-                0x00000000400d588c       0x35 zephyr/libzephyr.a(uart_hal.c.obj)
-                0x00000000400d588c                uart_hal_set_parity
- *fill*         0x00000000400d58c1        0x3 
+                0x00000000400d58c8       0x35 zephyr/libzephyr.a(uart_hal.c.obj)
+                0x00000000400d58c8                uart_hal_set_parity
+ *fill*         0x00000000400d58fd        0x3 
  .text.uart_hal_get_parity
-                0x00000000400d58c4       0x26 zephyr/libzephyr.a(uart_hal.c.obj)
-                0x00000000400d58c4                uart_hal_get_parity
- *fill*         0x00000000400d58ea        0x0 
- *fill*         0x00000000400d58ea        0x2 
+                0x00000000400d5900       0x26 zephyr/libzephyr.a(uart_hal.c.obj)
+                0x00000000400d5900                uart_hal_get_parity
+ *fill*         0x00000000400d5926        0x0 
+ *fill*         0x00000000400d5926        0x2 
  .text.uart_hal_get_hw_flow_ctrl
-                0x00000000400d58ec       0x28 zephyr/libzephyr.a(uart_hal.c.obj)
-                0x00000000400d58ec                uart_hal_get_hw_flow_ctrl
+                0x00000000400d5928       0x28 zephyr/libzephyr.a(uart_hal.c.obj)
+                0x00000000400d5928                uart_hal_get_hw_flow_ctrl
  .text.uart_hal_set_rxfifo_full_thr
-                0x00000000400d5914       0x1d zephyr/libzephyr.a(uart_hal.c.obj)
-                0x00000000400d5914                uart_hal_set_rxfifo_full_thr
- *fill*         0x00000000400d5931        0x3 
+                0x00000000400d5950       0x1d zephyr/libzephyr.a(uart_hal.c.obj)
+                0x00000000400d5950                uart_hal_set_rxfifo_full_thr
+ *fill*         0x00000000400d596d        0x3 
  .text.uart_hal_get_symb_len
-                0x00000000400d5934       0x67 zephyr/libzephyr.a(uart_hal.c.obj)
-                0x00000000400d5934                uart_hal_get_symb_len
- *fill*         0x00000000400d599b        0x0 
- *fill*         0x00000000400d599b        0x0 
- *fill*         0x00000000400d599b        0x0 
- *fill*         0x00000000400d599b        0x0 
- *fill*         0x00000000400d599b        0x0 
- *fill*         0x00000000400d599b        0x0 
- *fill*         0x00000000400d599b        0x0 
- *fill*         0x00000000400d599b        0x0 
- *fill*         0x00000000400d599b        0x0 
- *fill*         0x00000000400d599b        0x0 
- *fill*         0x00000000400d599b        0x0 
- *fill*         0x00000000400d599b        0x0 
- *fill*         0x00000000400d599b        0x0 
- *fill*         0x00000000400d599b        0x0 
- *fill*         0x00000000400d599b        0x0 
- *fill*         0x00000000400d599b        0x0 
- *fill*         0x00000000400d599b        0x0 
- *fill*         0x00000000400d599b        0x0 
- *fill*         0x00000000400d599b        0x0 
- *fill*         0x00000000400d599b        0x0 
- *fill*         0x00000000400d599b        0x0 
- *fill*         0x00000000400d599b        0x0 
- *fill*         0x00000000400d599b        0x0 
- *fill*         0x00000000400d599b        0x0 
- *fill*         0x00000000400d599b        0x0 
- *fill*         0x00000000400d599b        0x0 
- *fill*         0x00000000400d599b        0x0 
- *fill*         0x00000000400d599b        0x0 
- *fill*         0x00000000400d599b        0x0 
- *fill*         0x00000000400d599b        0x0 
- *fill*         0x00000000400d599b        0x0 
- *fill*         0x00000000400d599b        0x0 
- *fill*         0x00000000400d599b        0x0 
- *fill*         0x00000000400d599b        0x0 
- *fill*         0x00000000400d599b        0x0 
- *fill*         0x00000000400d599b        0x0 
- *fill*         0x00000000400d599b        0x0 
- *fill*         0x00000000400d599b        0x0 
- *fill*         0x00000000400d599b        0x0 
- *fill*         0x00000000400d599b        0x0 
- *fill*         0x00000000400d599b        0x0 
- *fill*         0x00000000400d599b        0x1 
+                0x00000000400d5970       0x67 zephyr/libzephyr.a(uart_hal.c.obj)
+                0x00000000400d5970                uart_hal_get_symb_len
+ *fill*         0x00000000400d59d7        0x0 
+ *fill*         0x00000000400d59d7        0x0 
+ *fill*         0x00000000400d59d7        0x0 
+ *fill*         0x00000000400d59d7        0x0 
+ *fill*         0x00000000400d59d7        0x0 
+ *fill*         0x00000000400d59d7        0x0 
+ *fill*         0x00000000400d59d7        0x0 
+ *fill*         0x00000000400d59d7        0x0 
+ *fill*         0x00000000400d59d7        0x0 
+ *fill*         0x00000000400d59d7        0x0 
+ *fill*         0x00000000400d59d7        0x0 
+ *fill*         0x00000000400d59d7        0x0 
+ *fill*         0x00000000400d59d7        0x0 
+ *fill*         0x00000000400d59d7        0x0 
+ *fill*         0x00000000400d59d7        0x0 
+ *fill*         0x00000000400d59d7        0x0 
+ *fill*         0x00000000400d59d7        0x0 
+ *fill*         0x00000000400d59d7        0x0 
+ *fill*         0x00000000400d59d7        0x0 
+ *fill*         0x00000000400d59d7        0x0 
+ *fill*         0x00000000400d59d7        0x0 
+ *fill*         0x00000000400d59d7        0x0 
+ *fill*         0x00000000400d59d7        0x0 
+ *fill*         0x00000000400d59d7        0x0 
+ *fill*         0x00000000400d59d7        0x0 
+ *fill*         0x00000000400d59d7        0x0 
+ *fill*         0x00000000400d59d7        0x0 
+ *fill*         0x00000000400d59d7        0x0 
+ *fill*         0x00000000400d59d7        0x0 
+ *fill*         0x00000000400d59d7        0x0 
+ *fill*         0x00000000400d59d7        0x0 
+ *fill*         0x00000000400d59d7        0x0 
+ *fill*         0x00000000400d59d7        0x0 
+ *fill*         0x00000000400d59d7        0x0 
+ *fill*         0x00000000400d59d7        0x0 
+ *fill*         0x00000000400d59d7        0x0 
+ *fill*         0x00000000400d59d7        0x0 
+ *fill*         0x00000000400d59d7        0x0 
+ *fill*         0x00000000400d59d7        0x0 
+ *fill*         0x00000000400d59d7        0x0 
+ *fill*         0x00000000400d59d7        0x0 
+ *fill*         0x00000000400d59d7        0x1 
  .text._stdout_hook_default
-                0x00000000400d599c        0x7 zephyr/lib/libc/minimal/liblib__libc__minimal.a(stdout_console.c.obj)
- *fill*         0x00000000400d59a3        0x0 
- *fill*         0x00000000400d59a3        0x0 
- *fill*         0x00000000400d59a3        0x0 
- *fill*         0x00000000400d59a3        0x0 
- *fill*         0x00000000400d59a3        0x0 
- *fill*         0x00000000400d59a3        0x0 
- *fill*         0x00000000400d59a3        0x0 
- *fill*         0x00000000400d59a3        0x0 
- *fill*         0x00000000400d59a3        0x0 
- *fill*         0x00000000400d59a3        0x0 
- *fill*         0x00000000400d59a3        0x0 
- *fill*         0x00000000400d59a3        0x0 
- *fill*         0x00000000400d59a3        0x0 
- *fill*         0x00000000400d59a3        0x0 
- *fill*         0x00000000400d59a3        0x0 
- *fill*         0x00000000400d59a3        0x0 
- *fill*         0x00000000400d59a3        0x0 
- *fill*         0x00000000400d59a3        0x1 
+                0x00000000400d59d8        0x7 zephyr/lib/libc/minimal/liblib__libc__minimal.a(stdout_console.c.obj)
+ *fill*         0x00000000400d59df        0x0 
+ *fill*         0x00000000400d59df        0x0 
+ *fill*         0x00000000400d59df        0x0 
+ *fill*         0x00000000400d59df        0x0 
+ *fill*         0x00000000400d59df        0x0 
+ *fill*         0x00000000400d59df        0x0 
+ *fill*         0x00000000400d59df        0x0 
+ *fill*         0x00000000400d59df        0x0 
+ *fill*         0x00000000400d59df        0x0 
+ *fill*         0x00000000400d59df        0x0 
+ *fill*         0x00000000400d59df        0x0 
+ *fill*         0x00000000400d59df        0x0 
+ *fill*         0x00000000400d59df        0x0 
+ *fill*         0x00000000400d59df        0x0 
+ *fill*         0x00000000400d59df        0x0 
+ *fill*         0x00000000400d59df        0x0 
+ *fill*         0x00000000400d59df        0x0 
+ *fill*         0x00000000400d59df        0x1 
  .text.clock_control_esp32_async_on
-                0x00000000400d59a4        0x8 zephyr/drivers/clock_control/libdrivers__clock_control.a(clock_control_esp32.c.obj)
- *fill*         0x00000000400d59ac        0x0 
- *fill*         0x00000000400d59ac        0x0 
- *fill*         0x00000000400d59ac        0x0 
- *fill*         0x00000000400d59ac        0x0 
- *fill*         0x00000000400d59ac        0x0 
+                0x00000000400d59e0        0x8 zephyr/drivers/clock_control/libdrivers__clock_control.a(clock_control_esp32.c.obj)
+ *fill*         0x00000000400d59e8        0x0 
+ *fill*         0x00000000400d59e8        0x0 
+ *fill*         0x00000000400d59e8        0x0 
+ *fill*         0x00000000400d59e8        0x0 
+ *fill*         0x00000000400d59e8        0x0 
  .text.gpio_pin_set_raw
-                0x00000000400d59ac       0x30 zephyr/drivers/display/libdrivers__display.a(display_st7789v.c.obj)
- *fill*         0x00000000400d59dc        0x0 
+                0x00000000400d59e8       0x30 zephyr/drivers/display/libdrivers__display.a(display_st7789v.c.obj)
+ *fill*         0x00000000400d5a18        0x0 
  .text.spi_write_dt
-                0x00000000400d59dc       0x16 zephyr/drivers/display/libdrivers__display.a(display_st7789v.c.obj)
- *fill*         0x00000000400d59f2        0x2 
+                0x00000000400d5a18       0x16 zephyr/drivers/display/libdrivers__display.a(display_st7789v.c.obj)
+ *fill*         0x00000000400d5a2e        0x2 
  .text.st7789v_set_lcd_margins
-                0x00000000400d59f4        0xd zephyr/drivers/display/libdrivers__display.a(display_st7789v.c.obj)
- *fill*         0x00000000400d5a01        0x0 
- *fill*         0x00000000400d5a01        0x0 
- *fill*         0x00000000400d5a01        0x3 
+                0x00000000400d5a30        0xd zephyr/drivers/display/libdrivers__display.a(display_st7789v.c.obj)
+ *fill*         0x00000000400d5a3d        0x0 
+ *fill*         0x00000000400d5a3d        0x0 
+ *fill*         0x00000000400d5a3d        0x3 
  .text.st7789v_read
-                0x00000000400d5a04        0x8 zephyr/drivers/display/libdrivers__display.a(display_st7789v.c.obj)
- *fill*         0x00000000400d5a0c        0x0 
+                0x00000000400d5a40        0x8 zephyr/drivers/display/libdrivers__display.a(display_st7789v.c.obj)
+ *fill*         0x00000000400d5a48        0x0 
  .text.st7789v_get_framebuffer
-                0x00000000400d5a0c        0x7 zephyr/drivers/display/libdrivers__display.a(display_st7789v.c.obj)
- *fill*         0x00000000400d5a13        0x1 
+                0x00000000400d5a48        0x7 zephyr/drivers/display/libdrivers__display.a(display_st7789v.c.obj)
+ *fill*         0x00000000400d5a4f        0x1 
  .text.st7789v_set_brightness
-                0x00000000400d5a14        0x8 zephyr/drivers/display/libdrivers__display.a(display_st7789v.c.obj)
+                0x00000000400d5a50        0x8 zephyr/drivers/display/libdrivers__display.a(display_st7789v.c.obj)
  .text.st7789v_set_contrast
-                0x00000000400d5a1c        0x8 zephyr/drivers/display/libdrivers__display.a(display_st7789v.c.obj)
- *fill*         0x00000000400d5a24        0x0 
- *fill*         0x00000000400d5a24        0x0 
- *fill*         0x00000000400d5a24        0x0 
- *fill*         0x00000000400d5a24        0x0 
- *fill*         0x00000000400d5a24        0x0 
- *fill*         0x00000000400d5a24        0x0 
+                0x00000000400d5a58        0x8 zephyr/drivers/display/libdrivers__display.a(display_st7789v.c.obj)
+ *fill*         0x00000000400d5a60        0x0 
+ *fill*         0x00000000400d5a60        0x0 
+ *fill*         0x00000000400d5a60        0x0 
+ *fill*         0x00000000400d5a60        0x0 
+ *fill*         0x00000000400d5a60        0x0 
+ *fill*         0x00000000400d5a60        0x0 
  .text.entropy_esp32_init
-                0x00000000400d5a24        0x7 zephyr/drivers/entropy/libdrivers__entropy.a(entropy_esp32.c.obj)
- *fill*         0x00000000400d5a2b        0x0 
- *fill*         0x00000000400d5a2b        0x0 
- *fill*         0x00000000400d5a2b        0x1 
+                0x00000000400d5a60        0x7 zephyr/drivers/entropy/libdrivers__entropy.a(entropy_esp32.c.obj)
+ *fill*         0x00000000400d5a67        0x0 
+ *fill*         0x00000000400d5a67        0x0 
+ *fill*         0x00000000400d5a67        0x1 
  .text.gpio_ll_output_enable
-                0x00000000400d5a2c       0x3f zephyr/drivers/gpio/libdrivers__gpio.a(gpio_esp32.c.obj)
- *fill*         0x00000000400d5a6b        0x0 
- *fill*         0x00000000400d5a6b        0x0 
- *fill*         0x00000000400d5a6b        0x1 
+                0x00000000400d5a68       0x3f zephyr/drivers/gpio/libdrivers__gpio.a(gpio_esp32.c.obj)
+ *fill*         0x00000000400d5aa7        0x0 
+ *fill*         0x00000000400d5aa7        0x0 
+ *fill*         0x00000000400d5aa7        0x1 
  .text.sys_slist_remove
-                0x00000000400d5a6c       0x26 zephyr/drivers/gpio/libdrivers__gpio.a(gpio_esp32.c.obj)
- *fill*         0x00000000400d5a92        0x0 
- *fill*         0x00000000400d5a92        0x0 
- *fill*         0x00000000400d5a92        0x2 
+                0x00000000400d5aa8       0x26 zephyr/drivers/gpio/libdrivers__gpio.a(gpio_esp32.c.obj)
+ *fill*         0x00000000400d5ace        0x0 
+ *fill*         0x00000000400d5ace        0x0 
+ *fill*         0x00000000400d5ace        0x2 
  .text.gpio_fire_callbacks
-                0x00000000400d5a94       0x3e zephyr/drivers/gpio/libdrivers__gpio.a(gpio_esp32.c.obj)
- *fill*         0x00000000400d5ad2        0x2 
+                0x00000000400d5ad0       0x3e zephyr/drivers/gpio/libdrivers__gpio.a(gpio_esp32.c.obj)
+ *fill*         0x00000000400d5b0e        0x2 
  .text.gpio_esp32_port_get_raw
-                0x00000000400d5ad4       0x26 zephyr/drivers/gpio/libdrivers__gpio.a(gpio_esp32.c.obj)
- *fill*         0x00000000400d5afa        0x2 
+                0x00000000400d5b10       0x26 zephyr/drivers/gpio/libdrivers__gpio.a(gpio_esp32.c.obj)
+ *fill*         0x00000000400d5b36        0x2 
  .text.gpio_esp32_port_set_masked_raw
-                0x00000000400d5afc       0x50 zephyr/drivers/gpio/libdrivers__gpio.a(gpio_esp32.c.obj)
+                0x00000000400d5b38       0x50 zephyr/drivers/gpio/libdrivers__gpio.a(gpio_esp32.c.obj)
  .text.gpio_esp32_port_set_bits_raw
-                0x00000000400d5b4c       0x23 zephyr/drivers/gpio/libdrivers__gpio.a(gpio_esp32.c.obj)
- *fill*         0x00000000400d5b6f        0x1 
+                0x00000000400d5b88       0x23 zephyr/drivers/gpio/libdrivers__gpio.a(gpio_esp32.c.obj)
+ *fill*         0x00000000400d5bab        0x1 
  .text.gpio_esp32_port_clear_bits_raw
-                0x00000000400d5b70       0x23 zephyr/drivers/gpio/libdrivers__gpio.a(gpio_esp32.c.obj)
- *fill*         0x00000000400d5b93        0x1 
+                0x00000000400d5bac       0x23 zephyr/drivers/gpio/libdrivers__gpio.a(gpio_esp32.c.obj)
+ *fill*         0x00000000400d5bcf        0x1 
  .text.gpio_esp32_port_toggle_bits
-                0x00000000400d5b94       0x3f zephyr/drivers/gpio/libdrivers__gpio.a(gpio_esp32.c.obj)
- *fill*         0x00000000400d5bd3        0x0 
- *fill*         0x00000000400d5bd3        0x0 
- *fill*         0x00000000400d5bd3        0x1 
+                0x00000000400d5bd0       0x3f zephyr/drivers/gpio/libdrivers__gpio.a(gpio_esp32.c.obj)
+ *fill*         0x00000000400d5c0f        0x0 
+ *fill*         0x00000000400d5c0f        0x0 
+ *fill*         0x00000000400d5c0f        0x1 
  .text.gpio_esp32_get_pending_int
-                0x00000000400d5bd4       0x56 zephyr/drivers/gpio/libdrivers__gpio.a(gpio_esp32.c.obj)
- *fill*         0x00000000400d5c2a        0x0 
- *fill*         0x00000000400d5c2a        0x2 
+                0x00000000400d5c10       0x56 zephyr/drivers/gpio/libdrivers__gpio.a(gpio_esp32.c.obj)
+ *fill*         0x00000000400d5c66        0x0 
+ *fill*         0x00000000400d5c66        0x2 
  .text.pinctrl_lookup_state
-                0x00000000400d5c2c       0x2d zephyr/drivers/pinctrl/libdrivers__pinctrl.a(common.c.obj)
-                0x00000000400d5c2c                pinctrl_lookup_state
- *fill*         0x00000000400d5c59        0x0 
- *fill*         0x00000000400d5c59        0x3 
+                0x00000000400d5c68       0x2d zephyr/drivers/pinctrl/libdrivers__pinctrl.a(common.c.obj)
+                0x00000000400d5c68                pinctrl_lookup_state
+ *fill*         0x00000000400d5c95        0x0 
+ *fill*         0x00000000400d5c95        0x3 
  .text.gpio_ll_output_enable
-                0x00000000400d5c5c       0x3f zephyr/drivers/pinctrl/libdrivers__pinctrl.a(pinctrl_esp32.c.obj)
- *fill*         0x00000000400d5c9b        0x0 
- *fill*         0x00000000400d5c9b        0x0 
- *fill*         0x00000000400d5c9b        0x0 
- *fill*         0x00000000400d5c9b        0x0 
- *fill*         0x00000000400d5c9b        0x1 
+                0x00000000400d5c98       0x3f zephyr/drivers/pinctrl/libdrivers__pinctrl.a(pinctrl_esp32.c.obj)
+ *fill*         0x00000000400d5cd7        0x0 
+ *fill*         0x00000000400d5cd7        0x0 
+ *fill*         0x00000000400d5cd7        0x0 
+ *fill*         0x00000000400d5cd7        0x0 
+ *fill*         0x00000000400d5cd7        0x1 
  .text.uart_esp32_err_check
-                0x00000000400d5c9c       0x13 zephyr/drivers/serial/libdrivers__serial.a(uart_esp32.c.obj)
- *fill*         0x00000000400d5caf        0x0 
- *fill*         0x00000000400d5caf        0x0 
- *fill*         0x00000000400d5caf        0x0 
- *fill*         0x00000000400d5caf        0x0 
- *fill*         0x00000000400d5caf        0x0 
- *fill*         0x00000000400d5caf        0x0 
- *fill*         0x00000000400d5caf        0x1 
+                0x00000000400d5cd8       0x13 zephyr/drivers/serial/libdrivers__serial.a(uart_esp32.c.obj)
+ *fill*         0x00000000400d5ceb        0x0 
+ *fill*         0x00000000400d5ceb        0x0 
+ *fill*         0x00000000400d5ceb        0x0 
+ *fill*         0x00000000400d5ceb        0x0 
+ *fill*         0x00000000400d5ceb        0x0 
+ *fill*         0x00000000400d5ceb        0x0 
+ *fill*         0x00000000400d5ceb        0x1 
  .text.gpio_pin_set_raw
-                0x00000000400d5cb0       0x30 zephyr/drivers/spi/libdrivers__spi.a(spi_esp32_spim.c.obj)
- *fill*         0x00000000400d5ce0        0x0 
+                0x00000000400d5cec       0x30 zephyr/drivers/spi/libdrivers__spi.a(spi_esp32_spim.c.obj)
+ *fill*         0x00000000400d5d1c        0x0 
  .text.spi_context_get_next_buf
-                0x00000000400d5ce0       0x2e zephyr/drivers/spi/libdrivers__spi.a(spi_esp32_spim.c.obj)
- *fill*         0x00000000400d5d0e        0x0 
- *fill*         0x00000000400d5d0e        0x2 
+                0x00000000400d5d1c       0x2e zephyr/drivers/spi/libdrivers__spi.a(spi_esp32_spim.c.obj)
+ *fill*         0x00000000400d5d4a        0x0 
+ *fill*         0x00000000400d5d4a        0x2 
  .text.spi_esp32_transfer_ongoing
-                0x00000000400d5d10       0x19 zephyr/drivers/spi/libdrivers__spi.a(spi_esp32_spim.c.obj)
- *fill*         0x00000000400d5d29        0x0 
- *fill*         0x00000000400d5d29        0x0 
- *fill*         0x00000000400d5d29        0x0 
- *fill*         0x00000000400d5d29        0x0 
- *fill*         0x00000000400d5d29        0x0 
- *fill*         0x00000000400d5d29        0x0 
- *fill*         0x00000000400d5d29        0x0 
- *fill*         0x00000000400d5d29        0x0 
- *fill*         0x00000000400d5d29        0x0 
-                0x00000000400d5d2c                . = ALIGN (0x4)
- *fill*         0x00000000400d5d29        0x3 
-                0x00000000400d5d2c                _text_end = ABSOLUTE (.)
-                0x00000000400d5d2c                _etext = .
+                0x00000000400d5d4c       0x19 zephyr/drivers/spi/libdrivers__spi.a(spi_esp32_spim.c.obj)
+ *fill*         0x00000000400d5d65        0x0 
+ *fill*         0x00000000400d5d65        0x0 
+ *fill*         0x00000000400d5d65        0x0 
+ *fill*         0x00000000400d5d65        0x0 
+ *fill*         0x00000000400d5d65        0x0 
+ *fill*         0x00000000400d5d65        0x0 
+ *fill*         0x00000000400d5d65        0x0 
+ *fill*         0x00000000400d5d65        0x0 
+ *fill*         0x00000000400d5d65        0x0 
+                0x00000000400d5d68                . = ALIGN (0x4)
+ *fill*         0x00000000400d5d65        0x3 
+                0x00000000400d5d68                _text_end = ABSOLUTE (.)
+                0x00000000400d5d68                _etext = .
                 0x0000000000000000                _flash_cache_start = ABSOLUTE (0x0)
                 0x000000003ffe3f20                _heap_sentry = 0x3ffe3f20
 
@@ -7497,7 +7559,7 @@ noinit          0x000000003ffe5230     0xd800
 .debug_pubnames
  *(SORT_BY_ALIGNMENT(.debug_pubnames))
 
-.debug_info     0x0000000000000000    0x6a547
+.debug_info     0x0000000000000000    0x6a698
  *(SORT_BY_ALIGNMENT(.debug_info) SORT_BY_ALIGNMENT(.gnu.linkonce.wi.*))
  .debug_info    0x0000000000000000      0x182 zephyr/CMakeFiles/zephyr_final.dir/dev_handles.c.obj
  .debug_info    0x0000000000000182      0x118 zephyr/CMakeFiles/zephyr_final.dir/isr_tables.c.obj
@@ -7531,57 +7593,57 @@ noinit          0x000000003ffe5230     0xd800
  .debug_info    0x000000000001af96      0x548 zephyr/libzephyr.a(esp_clk.c.obj)
  .debug_info    0x000000000001b4de     0x23b1 zephyr/libzephyr.a(rtc_clk.c.obj)
  .debug_info    0x000000000001d88f      0x3cd zephyr/libzephyr.a(rtc_init.c.obj)
- .debug_info    0x000000000001dc5c      0x573 zephyr/libzephyr.a(rtc_time.c.obj)
- .debug_info    0x000000000001e1cf      0xa27 zephyr/libzephyr.a(rtc_clk_init.c.obj)
- .debug_info    0x000000000001ebf6     0x22e2 zephyr/libzephyr.a(esp_timer.c.obj)
- .debug_info    0x0000000000020ed8      0xc21 zephyr/libzephyr.a(esp_timer_impl_lac.c.obj)
- .debug_info    0x0000000000021af9      0x877 zephyr/libzephyr.a(periph_ctrl.c.obj)
- .debug_info    0x0000000000022370      0x3a3 zephyr/libzephyr.a(log_noos.c.obj)
- .debug_info    0x0000000000022713      0x987 zephyr/libzephyr.a(log.c.obj)
- .debug_info    0x000000000002309a      0x233 zephyr/libzephyr.a(interrupt_controller_hal.c.obj)
- .debug_info    0x00000000000232cd      0x1f2 zephyr/libzephyr.a(interrupt_descriptor_table.c.obj)
- .debug_info    0x00000000000234bf      0x72e zephyr/libzephyr.a(heap_caps.c.obj)
- .debug_info    0x0000000000023bed      0x1b8 zephyr/arch/common/libarch__common.a(sw_isr_common.c.obj)
- .debug_info    0x0000000000023da5       0xd4 zephyr/arch/arch/xtensa/core/libarch__xtensa__core.a(cpu_idle.c.obj)
- .debug_info    0x0000000000023e79     0x111b zephyr/arch/arch/xtensa/core/libarch__xtensa__core.a(fatal.c.obj)
- .debug_info    0x0000000000024f94       0x24 zephyr/arch/arch/xtensa/core/libarch__xtensa__core.a(window_vectors.S.obj)
- .debug_info    0x0000000000024fb8       0x22 zephyr/arch/arch/xtensa/core/libarch__xtensa__core.a(xtensa-asm2-util.S.obj)
- .debug_info    0x0000000000024fda     0x8588 zephyr/arch/arch/xtensa/core/libarch__xtensa__core.a(xtensa-asm2.c.obj)
- .debug_info    0x000000000002d562      0x511 zephyr/arch/arch/xtensa/core/libarch__xtensa__core.a(xtensa_backtrace.c.obj)
- .debug_info    0x000000000002da73       0x23 zephyr/arch/arch/xtensa/core/libarch__xtensa__core.a(debug_helpers_asm.S.obj)
- .debug_info    0x000000000002da96      0x3ea zephyr/arch/arch/xtensa/core/libarch__xtensa__core.a(coredump.c.obj)
- .debug_info    0x000000000002de80      0x121 zephyr/lib/libc/minimal/liblib__libc__minimal.a(abort.c.obj)
- .debug_info    0x000000000002dfa1      0x7a9 zephyr/lib/libc/minimal/liblib__libc__minimal.a(string.c.obj)
- .debug_info    0x000000000002e74a      0x56b zephyr/lib/libc/minimal/liblib__libc__minimal.a(stdout_console.c.obj)
- .debug_info    0x000000000002ecb5      0xafd zephyr/subsys/debug/coredump/libsubsys__debug__coredump.a(coredump_core.c.obj)
- .debug_info    0x000000000002f7b2     0x1c98 zephyr/subsys/debug/coredump/libsubsys__debug__coredump.a(coredump_backend_logging.c.obj)
- .debug_info    0x000000000003144a     0x2b0f zephyr/drivers/interrupt_controller/libdrivers__interrupt_controller.a(intc_esp32.c.obj)
- .debug_info    0x0000000000033f59     0x1064 zephyr/drivers/clock_control/libdrivers__clock_control.a(clock_control_esp32.c.obj)
- .debug_info    0x0000000000034fbd      0x78d zephyr/drivers/console/libdrivers__console.a(uart_console.c.obj)
- .debug_info    0x000000000003574a     0x5a1f zephyr/drivers/display/libdrivers__display.a(display_st7789v.c.obj)
- .debug_info    0x000000000003b169      0x4c2 zephyr/drivers/entropy/libdrivers__entropy.a(entropy_esp32.c.obj)
- .debug_info    0x000000000003b62b     0x4f73 zephyr/drivers/gpio/libdrivers__gpio.a(gpio_esp32.c.obj)
- .debug_info    0x000000000004059e      0x19a zephyr/drivers/pinctrl/libdrivers__pinctrl.a(common.c.obj)
- .debug_info    0x0000000000040738     0x17e7 zephyr/drivers/pinctrl/libdrivers__pinctrl.a(pinctrl_esp32.c.obj)
- .debug_info    0x0000000000041f1f     0x281a zephyr/drivers/serial/libdrivers__serial.a(uart_esp32.c.obj)
- .debug_info    0x0000000000044739     0xc3d7 zephyr/drivers/spi/libdrivers__spi.a(spi_esp32_spim.c.obj)
- .debug_info    0x0000000000050b10      0x78c zephyr/drivers/timer/libdrivers__timer.a(xtensa_sys_timer.c.obj)
- .debug_info    0x000000000005129c      0x6a0 zephyr/kernel/libkernel.a(device.c.obj)
- .debug_info    0x000000000005193c     0x2076 zephyr/kernel/libkernel.a(fatal.c.obj)
- .debug_info    0x00000000000539b2     0x17b1 zephyr/kernel/libkernel.a(init.c.obj)
- .debug_info    0x0000000000055163      0x95b zephyr/kernel/libkernel.a(kheap.c.obj)
- .debug_info    0x0000000000055abe     0x29de zephyr/kernel/libkernel.a(thread.c.obj)
- .debug_info    0x000000000005849c      0x21f zephyr/kernel/libkernel.a(idle.c.obj)
- .debug_info    0x00000000000586bb      0xc9a zephyr/kernel/libkernel.a(sem.c.obj)
- .debug_info    0x0000000000059355     0x6ed5 zephyr/kernel/libkernel.a(sched.c.obj)
- .debug_info    0x000000000006022a     0x18d4 zephyr/kernel/libkernel.a(timeout.c.obj)
- .debug_info    0x0000000000061afe     0x2b46 zephyr/kernel/libkernel.a(poll.c.obj)
- .debug_info    0x0000000000064644      0xb66 zephyr/kernel/libkernel.a(mempool.c.obj)
- .debug_info    0x00000000000651aa       0xc5 zephyr/kernel/libkernel.a(banner.c.obj)
- .debug_info    0x000000000006526f      0x81c zephyr/kernel/libkernel.a(system_work_q.c.obj)
- .debug_info    0x0000000000065a8b     0x4abc zephyr/kernel/libkernel.a(work.c.obj)
+ .debug_info    0x000000000001dc5c      0x64a zephyr/libzephyr.a(rtc_time.c.obj)
+ .debug_info    0x000000000001e2a6      0xa27 zephyr/libzephyr.a(rtc_clk_init.c.obj)
+ .debug_info    0x000000000001eccd     0x22e2 zephyr/libzephyr.a(esp_timer.c.obj)
+ .debug_info    0x0000000000020faf      0xc21 zephyr/libzephyr.a(esp_timer_impl_lac.c.obj)
+ .debug_info    0x0000000000021bd0      0x877 zephyr/libzephyr.a(periph_ctrl.c.obj)
+ .debug_info    0x0000000000022447      0x3a3 zephyr/libzephyr.a(log_noos.c.obj)
+ .debug_info    0x00000000000227ea      0x987 zephyr/libzephyr.a(log.c.obj)
+ .debug_info    0x0000000000023171      0x233 zephyr/libzephyr.a(interrupt_controller_hal.c.obj)
+ .debug_info    0x00000000000233a4      0x1f2 zephyr/libzephyr.a(interrupt_descriptor_table.c.obj)
+ .debug_info    0x0000000000023596      0x72e zephyr/libzephyr.a(heap_caps.c.obj)
+ .debug_info    0x0000000000023cc4      0x1b8 zephyr/arch/common/libarch__common.a(sw_isr_common.c.obj)
+ .debug_info    0x0000000000023e7c       0xd4 zephyr/arch/arch/xtensa/core/libarch__xtensa__core.a(cpu_idle.c.obj)
+ .debug_info    0x0000000000023f50     0x111b zephyr/arch/arch/xtensa/core/libarch__xtensa__core.a(fatal.c.obj)
+ .debug_info    0x000000000002506b       0x24 zephyr/arch/arch/xtensa/core/libarch__xtensa__core.a(window_vectors.S.obj)
+ .debug_info    0x000000000002508f       0x22 zephyr/arch/arch/xtensa/core/libarch__xtensa__core.a(xtensa-asm2-util.S.obj)
+ .debug_info    0x00000000000250b1     0x8588 zephyr/arch/arch/xtensa/core/libarch__xtensa__core.a(xtensa-asm2.c.obj)
+ .debug_info    0x000000000002d639      0x511 zephyr/arch/arch/xtensa/core/libarch__xtensa__core.a(xtensa_backtrace.c.obj)
+ .debug_info    0x000000000002db4a       0x23 zephyr/arch/arch/xtensa/core/libarch__xtensa__core.a(debug_helpers_asm.S.obj)
+ .debug_info    0x000000000002db6d      0x3ea zephyr/arch/arch/xtensa/core/libarch__xtensa__core.a(coredump.c.obj)
+ .debug_info    0x000000000002df57      0x121 zephyr/lib/libc/minimal/liblib__libc__minimal.a(abort.c.obj)
+ .debug_info    0x000000000002e078      0x7a9 zephyr/lib/libc/minimal/liblib__libc__minimal.a(string.c.obj)
+ .debug_info    0x000000000002e821      0x56b zephyr/lib/libc/minimal/liblib__libc__minimal.a(stdout_console.c.obj)
+ .debug_info    0x000000000002ed8c      0xafd zephyr/subsys/debug/coredump/libsubsys__debug__coredump.a(coredump_core.c.obj)
+ .debug_info    0x000000000002f889     0x1c98 zephyr/subsys/debug/coredump/libsubsys__debug__coredump.a(coredump_backend_logging.c.obj)
+ .debug_info    0x0000000000031521     0x2b0f zephyr/drivers/interrupt_controller/libdrivers__interrupt_controller.a(intc_esp32.c.obj)
+ .debug_info    0x0000000000034030     0x1064 zephyr/drivers/clock_control/libdrivers__clock_control.a(clock_control_esp32.c.obj)
+ .debug_info    0x0000000000035094      0x78d zephyr/drivers/console/libdrivers__console.a(uart_console.c.obj)
+ .debug_info    0x0000000000035821     0x5a1f zephyr/drivers/display/libdrivers__display.a(display_st7789v.c.obj)
+ .debug_info    0x000000000003b240      0x4c2 zephyr/drivers/entropy/libdrivers__entropy.a(entropy_esp32.c.obj)
+ .debug_info    0x000000000003b702     0x5002 zephyr/drivers/gpio/libdrivers__gpio.a(gpio_esp32.c.obj)
+ .debug_info    0x0000000000040704      0x19a zephyr/drivers/pinctrl/libdrivers__pinctrl.a(common.c.obj)
+ .debug_info    0x000000000004089e     0x17e7 zephyr/drivers/pinctrl/libdrivers__pinctrl.a(pinctrl_esp32.c.obj)
+ .debug_info    0x0000000000042085     0x281a zephyr/drivers/serial/libdrivers__serial.a(uart_esp32.c.obj)
+ .debug_info    0x000000000004489f     0xc3d7 zephyr/drivers/spi/libdrivers__spi.a(spi_esp32_spim.c.obj)
+ .debug_info    0x0000000000050c76      0x78c zephyr/drivers/timer/libdrivers__timer.a(xtensa_sys_timer.c.obj)
+ .debug_info    0x0000000000051402      0x6a0 zephyr/kernel/libkernel.a(device.c.obj)
+ .debug_info    0x0000000000051aa2     0x2076 zephyr/kernel/libkernel.a(fatal.c.obj)
+ .debug_info    0x0000000000053b18     0x17b1 zephyr/kernel/libkernel.a(init.c.obj)
+ .debug_info    0x00000000000552c9      0x95b zephyr/kernel/libkernel.a(kheap.c.obj)
+ .debug_info    0x0000000000055c24     0x29c9 zephyr/kernel/libkernel.a(thread.c.obj)
+ .debug_info    0x00000000000585ed      0x21f zephyr/kernel/libkernel.a(idle.c.obj)
+ .debug_info    0x000000000005880c      0xc9a zephyr/kernel/libkernel.a(sem.c.obj)
+ .debug_info    0x00000000000594a6     0x6ed5 zephyr/kernel/libkernel.a(sched.c.obj)
+ .debug_info    0x000000000006037b     0x18d4 zephyr/kernel/libkernel.a(timeout.c.obj)
+ .debug_info    0x0000000000061c4f     0x2b46 zephyr/kernel/libkernel.a(poll.c.obj)
+ .debug_info    0x0000000000064795      0xb66 zephyr/kernel/libkernel.a(mempool.c.obj)
+ .debug_info    0x00000000000652fb       0xc5 zephyr/kernel/libkernel.a(banner.c.obj)
+ .debug_info    0x00000000000653c0      0x81c zephyr/kernel/libkernel.a(system_work_q.c.obj)
+ .debug_info    0x0000000000065bdc     0x4abc zephyr/kernel/libkernel.a(work.c.obj)
 
-.debug_abbrev   0x0000000000000000     0xdfbd
+.debug_abbrev   0x0000000000000000     0xe00c
  *(SORT_BY_ALIGNMENT(.debug_abbrev))
  .debug_abbrev  0x0000000000000000       0x64 zephyr/CMakeFiles/zephyr_final.dir/dev_handles.c.obj
  .debug_abbrev  0x0000000000000064       0xd2 zephyr/CMakeFiles/zephyr_final.dir/isr_tables.c.obj
@@ -7615,74 +7677,74 @@ noinit          0x000000003ffe5230     0xd800
  .debug_abbrev  0x0000000000003edb      0x20e zephyr/libzephyr.a(esp_clk.c.obj)
  .debug_abbrev  0x00000000000040e9      0x4a9 zephyr/libzephyr.a(rtc_clk.c.obj)
  .debug_abbrev  0x0000000000004592      0x156 zephyr/libzephyr.a(rtc_init.c.obj)
- .debug_abbrev  0x00000000000046e8      0x1c2 zephyr/libzephyr.a(rtc_time.c.obj)
- .debug_abbrev  0x00000000000048aa      0x2b5 zephyr/libzephyr.a(rtc_clk_init.c.obj)
- .debug_abbrev  0x0000000000004b5f      0x5fa zephyr/libzephyr.a(esp_timer.c.obj)
- .debug_abbrev  0x0000000000005159      0x441 zephyr/libzephyr.a(esp_timer_impl_lac.c.obj)
- .debug_abbrev  0x000000000000559a      0x1c0 zephyr/libzephyr.a(periph_ctrl.c.obj)
- .debug_abbrev  0x000000000000575a      0x1c3 zephyr/libzephyr.a(log_noos.c.obj)
- .debug_abbrev  0x000000000000591d      0x3ca zephyr/libzephyr.a(log.c.obj)
- .debug_abbrev  0x0000000000005ce7      0x119 zephyr/libzephyr.a(interrupt_controller_hal.c.obj)
- .debug_abbrev  0x0000000000005e00       0xd9 zephyr/libzephyr.a(interrupt_descriptor_table.c.obj)
- .debug_abbrev  0x0000000000005ed9      0x26b zephyr/libzephyr.a(heap_caps.c.obj)
- .debug_abbrev  0x0000000000006144      0x133 zephyr/arch/common/libarch__common.a(sw_isr_common.c.obj)
- .debug_abbrev  0x0000000000006277       0x8f zephyr/arch/arch/xtensa/core/libarch__xtensa__core.a(cpu_idle.c.obj)
- .debug_abbrev  0x0000000000006306      0x399 zephyr/arch/arch/xtensa/core/libarch__xtensa__core.a(fatal.c.obj)
- .debug_abbrev  0x000000000000669f       0x14 zephyr/arch/arch/xtensa/core/libarch__xtensa__core.a(window_vectors.S.obj)
- .debug_abbrev  0x00000000000066b3       0x12 zephyr/arch/arch/xtensa/core/libarch__xtensa__core.a(xtensa-asm2-util.S.obj)
- .debug_abbrev  0x00000000000066c5      0x523 zephyr/arch/arch/xtensa/core/libarch__xtensa__core.a(xtensa-asm2.c.obj)
- .debug_abbrev  0x0000000000006be8      0x1e4 zephyr/arch/arch/xtensa/core/libarch__xtensa__core.a(xtensa_backtrace.c.obj)
- .debug_abbrev  0x0000000000006dcc       0x14 zephyr/arch/arch/xtensa/core/libarch__xtensa__core.a(debug_helpers_asm.S.obj)
- .debug_abbrev  0x0000000000006de0      0x189 zephyr/arch/arch/xtensa/core/libarch__xtensa__core.a(coredump.c.obj)
- .debug_abbrev  0x0000000000006f69       0xb7 zephyr/lib/libc/minimal/liblib__libc__minimal.a(abort.c.obj)
- .debug_abbrev  0x0000000000007020      0x191 zephyr/lib/libc/minimal/liblib__libc__minimal.a(string.c.obj)
- .debug_abbrev  0x00000000000071b1      0x215 zephyr/lib/libc/minimal/liblib__libc__minimal.a(stdout_console.c.obj)
- .debug_abbrev  0x00000000000073c6      0x2f4 zephyr/subsys/debug/coredump/libsubsys__debug__coredump.a(coredump_core.c.obj)
- .debug_abbrev  0x00000000000076ba      0x2c6 zephyr/subsys/debug/coredump/libsubsys__debug__coredump.a(coredump_backend_logging.c.obj)
- .debug_abbrev  0x0000000000007980      0x55e zephyr/drivers/interrupt_controller/libdrivers__interrupt_controller.a(intc_esp32.c.obj)
- .debug_abbrev  0x0000000000007ede      0x3fa zephyr/drivers/clock_control/libdrivers__clock_control.a(clock_control_esp32.c.obj)
- .debug_abbrev  0x00000000000082d8      0x36e zephyr/drivers/console/libdrivers__console.a(uart_console.c.obj)
- .debug_abbrev  0x0000000000008646      0x551 zephyr/drivers/display/libdrivers__display.a(display_st7789v.c.obj)
- .debug_abbrev  0x0000000000008b97      0x246 zephyr/drivers/entropy/libdrivers__entropy.a(entropy_esp32.c.obj)
- .debug_abbrev  0x0000000000008ddd      0x651 zephyr/drivers/gpio/libdrivers__gpio.a(gpio_esp32.c.obj)
- .debug_abbrev  0x000000000000942e       0xd0 zephyr/drivers/pinctrl/libdrivers__pinctrl.a(common.c.obj)
- .debug_abbrev  0x00000000000094fe      0x440 zephyr/drivers/pinctrl/libdrivers__pinctrl.a(pinctrl_esp32.c.obj)
- .debug_abbrev  0x000000000000993e      0x54f zephyr/drivers/serial/libdrivers__serial.a(uart_esp32.c.obj)
- .debug_abbrev  0x0000000000009e8d      0x68a zephyr/drivers/spi/libdrivers__spi.a(spi_esp32_spim.c.obj)
- .debug_abbrev  0x000000000000a517      0x2f2 zephyr/drivers/timer/libdrivers__timer.a(xtensa_sys_timer.c.obj)
- .debug_abbrev  0x000000000000a809      0x369 zephyr/kernel/libkernel.a(device.c.obj)
- .debug_abbrev  0x000000000000ab72      0x3e7 zephyr/kernel/libkernel.a(fatal.c.obj)
- .debug_abbrev  0x000000000000af59      0x622 zephyr/kernel/libkernel.a(init.c.obj)
- .debug_abbrev  0x000000000000b57b      0x340 zephyr/kernel/libkernel.a(kheap.c.obj)
- .debug_abbrev  0x000000000000b8bb      0x5d5 zephyr/kernel/libkernel.a(thread.c.obj)
- .debug_abbrev  0x000000000000be90      0x156 zephyr/kernel/libkernel.a(idle.c.obj)
- .debug_abbrev  0x000000000000bfe6      0x32e zephyr/kernel/libkernel.a(sem.c.obj)
- .debug_abbrev  0x000000000000c314      0x6bf zephyr/kernel/libkernel.a(sched.c.obj)
- .debug_abbrev  0x000000000000c9d3      0x4ca zephyr/kernel/libkernel.a(timeout.c.obj)
- .debug_abbrev  0x000000000000ce9d      0x5c8 zephyr/kernel/libkernel.a(poll.c.obj)
- .debug_abbrev  0x000000000000d465      0x30d zephyr/kernel/libkernel.a(mempool.c.obj)
- .debug_abbrev  0x000000000000d772       0x8c zephyr/kernel/libkernel.a(banner.c.obj)
- .debug_abbrev  0x000000000000d7fe      0x1ef zephyr/kernel/libkernel.a(system_work_q.c.obj)
- .debug_abbrev  0x000000000000d9ed      0x5d0 zephyr/kernel/libkernel.a(work.c.obj)
+ .debug_abbrev  0x00000000000046e8      0x218 zephyr/libzephyr.a(rtc_time.c.obj)
+ .debug_abbrev  0x0000000000004900      0x2b5 zephyr/libzephyr.a(rtc_clk_init.c.obj)
+ .debug_abbrev  0x0000000000004bb5      0x5fa zephyr/libzephyr.a(esp_timer.c.obj)
+ .debug_abbrev  0x00000000000051af      0x441 zephyr/libzephyr.a(esp_timer_impl_lac.c.obj)
+ .debug_abbrev  0x00000000000055f0      0x1c0 zephyr/libzephyr.a(periph_ctrl.c.obj)
+ .debug_abbrev  0x00000000000057b0      0x1c3 zephyr/libzephyr.a(log_noos.c.obj)
+ .debug_abbrev  0x0000000000005973      0x3ca zephyr/libzephyr.a(log.c.obj)
+ .debug_abbrev  0x0000000000005d3d      0x119 zephyr/libzephyr.a(interrupt_controller_hal.c.obj)
+ .debug_abbrev  0x0000000000005e56       0xd9 zephyr/libzephyr.a(interrupt_descriptor_table.c.obj)
+ .debug_abbrev  0x0000000000005f2f      0x26b zephyr/libzephyr.a(heap_caps.c.obj)
+ .debug_abbrev  0x000000000000619a      0x133 zephyr/arch/common/libarch__common.a(sw_isr_common.c.obj)
+ .debug_abbrev  0x00000000000062cd       0x8f zephyr/arch/arch/xtensa/core/libarch__xtensa__core.a(cpu_idle.c.obj)
+ .debug_abbrev  0x000000000000635c      0x399 zephyr/arch/arch/xtensa/core/libarch__xtensa__core.a(fatal.c.obj)
+ .debug_abbrev  0x00000000000066f5       0x14 zephyr/arch/arch/xtensa/core/libarch__xtensa__core.a(window_vectors.S.obj)
+ .debug_abbrev  0x0000000000006709       0x12 zephyr/arch/arch/xtensa/core/libarch__xtensa__core.a(xtensa-asm2-util.S.obj)
+ .debug_abbrev  0x000000000000671b      0x523 zephyr/arch/arch/xtensa/core/libarch__xtensa__core.a(xtensa-asm2.c.obj)
+ .debug_abbrev  0x0000000000006c3e      0x1e4 zephyr/arch/arch/xtensa/core/libarch__xtensa__core.a(xtensa_backtrace.c.obj)
+ .debug_abbrev  0x0000000000006e22       0x14 zephyr/arch/arch/xtensa/core/libarch__xtensa__core.a(debug_helpers_asm.S.obj)
+ .debug_abbrev  0x0000000000006e36      0x189 zephyr/arch/arch/xtensa/core/libarch__xtensa__core.a(coredump.c.obj)
+ .debug_abbrev  0x0000000000006fbf       0xb7 zephyr/lib/libc/minimal/liblib__libc__minimal.a(abort.c.obj)
+ .debug_abbrev  0x0000000000007076      0x191 zephyr/lib/libc/minimal/liblib__libc__minimal.a(string.c.obj)
+ .debug_abbrev  0x0000000000007207      0x215 zephyr/lib/libc/minimal/liblib__libc__minimal.a(stdout_console.c.obj)
+ .debug_abbrev  0x000000000000741c      0x2f4 zephyr/subsys/debug/coredump/libsubsys__debug__coredump.a(coredump_core.c.obj)
+ .debug_abbrev  0x0000000000007710      0x2c6 zephyr/subsys/debug/coredump/libsubsys__debug__coredump.a(coredump_backend_logging.c.obj)
+ .debug_abbrev  0x00000000000079d6      0x55e zephyr/drivers/interrupt_controller/libdrivers__interrupt_controller.a(intc_esp32.c.obj)
+ .debug_abbrev  0x0000000000007f34      0x3fa zephyr/drivers/clock_control/libdrivers__clock_control.a(clock_control_esp32.c.obj)
+ .debug_abbrev  0x000000000000832e      0x36e zephyr/drivers/console/libdrivers__console.a(uart_console.c.obj)
+ .debug_abbrev  0x000000000000869c      0x551 zephyr/drivers/display/libdrivers__display.a(display_st7789v.c.obj)
+ .debug_abbrev  0x0000000000008bed      0x246 zephyr/drivers/entropy/libdrivers__entropy.a(entropy_esp32.c.obj)
+ .debug_abbrev  0x0000000000008e33      0x651 zephyr/drivers/gpio/libdrivers__gpio.a(gpio_esp32.c.obj)
+ .debug_abbrev  0x0000000000009484       0xd0 zephyr/drivers/pinctrl/libdrivers__pinctrl.a(common.c.obj)
+ .debug_abbrev  0x0000000000009554      0x440 zephyr/drivers/pinctrl/libdrivers__pinctrl.a(pinctrl_esp32.c.obj)
+ .debug_abbrev  0x0000000000009994      0x54f zephyr/drivers/serial/libdrivers__serial.a(uart_esp32.c.obj)
+ .debug_abbrev  0x0000000000009ee3      0x68a zephyr/drivers/spi/libdrivers__spi.a(spi_esp32_spim.c.obj)
+ .debug_abbrev  0x000000000000a56d      0x2f2 zephyr/drivers/timer/libdrivers__timer.a(xtensa_sys_timer.c.obj)
+ .debug_abbrev  0x000000000000a85f      0x369 zephyr/kernel/libkernel.a(device.c.obj)
+ .debug_abbrev  0x000000000000abc8      0x3e7 zephyr/kernel/libkernel.a(fatal.c.obj)
+ .debug_abbrev  0x000000000000afaf      0x622 zephyr/kernel/libkernel.a(init.c.obj)
+ .debug_abbrev  0x000000000000b5d1      0x340 zephyr/kernel/libkernel.a(kheap.c.obj)
+ .debug_abbrev  0x000000000000b911      0x5ce zephyr/kernel/libkernel.a(thread.c.obj)
+ .debug_abbrev  0x000000000000bedf      0x156 zephyr/kernel/libkernel.a(idle.c.obj)
+ .debug_abbrev  0x000000000000c035      0x32e zephyr/kernel/libkernel.a(sem.c.obj)
+ .debug_abbrev  0x000000000000c363      0x6bf zephyr/kernel/libkernel.a(sched.c.obj)
+ .debug_abbrev  0x000000000000ca22      0x4ca zephyr/kernel/libkernel.a(timeout.c.obj)
+ .debug_abbrev  0x000000000000ceec      0x5c8 zephyr/kernel/libkernel.a(poll.c.obj)
+ .debug_abbrev  0x000000000000d4b4      0x30d zephyr/kernel/libkernel.a(mempool.c.obj)
+ .debug_abbrev  0x000000000000d7c1       0x8c zephyr/kernel/libkernel.a(banner.c.obj)
+ .debug_abbrev  0x000000000000d84d      0x1ef zephyr/kernel/libkernel.a(system_work_q.c.obj)
+ .debug_abbrev  0x000000000000da3c      0x5d0 zephyr/kernel/libkernel.a(work.c.obj)
 
-.debug_line     0x0000000000000000    0x3d888
+.debug_line     0x0000000000000000    0x3da10
  *(SORT_BY_ALIGNMENT(.debug_line) SORT_BY_ALIGNMENT(.debug_line.*) SORT_BY_ALIGNMENT(.debug_line_end))
  .debug_line    0x0000000000000000       0xdc zephyr/CMakeFiles/zephyr_final.dir/dev_handles.c.obj
  .debug_line    0x00000000000000dc       0xe1 zephyr/CMakeFiles/zephyr_final.dir/isr_tables.c.obj
- .debug_line    0x00000000000001bd      0x1ae zephyr/CMakeFiles/offsets.dir/./arch/xtensa/core/offsets/offsets.c.obj
- .debug_line    0x000000000000036b      0x391 app/libapp.a(user_main.c.obj)
- .debug_line    0x00000000000006fc      0x9d2 app/libapp.a(user_display.c.obj)
- .debug_line    0x00000000000010ce     0x226f zephyr/libzephyr.a(cbprintf_packaged.c.obj)
- .debug_line    0x000000000000333d      0x55b zephyr/libzephyr.a(hex.c.obj)
- .debug_line    0x0000000000003898      0x611 zephyr/libzephyr.a(printk.c.obj)
- .debug_line    0x0000000000003ea9      0x35d zephyr/libzephyr.a(thread_entry.c.obj)
- .debug_line    0x0000000000004206     0x270d zephyr/libzephyr.a(heap.c.obj)
- .debug_line    0x0000000000006913     0x1e23 zephyr/libzephyr.a(cbprintf_complete.c.obj)
- .debug_line    0x0000000000008736      0x73e zephyr/libzephyr.a(configs.c.obj)
- .debug_line    0x0000000000008e74      0xab9 zephyr/libzephyr.a(soc.c.obj)
- .debug_line    0x000000000000992d       0x85 zephyr/libzephyr.a(loader.c.obj)
- .debug_line    0x00000000000099b2      0x15b zephyr/libzephyr.a(thread_info.c.obj)
- .debug_line    0x0000000000009b0d     0x13b8 zephyr/libzephyr.a(cfb.c.obj)
+ .debug_line    0x00000000000001bd      0x178 zephyr/CMakeFiles/offsets.dir/./arch/xtensa/core/offsets/offsets.c.obj
+ .debug_line    0x0000000000000335      0x391 app/libapp.a(user_main.c.obj)
+ .debug_line    0x00000000000006c6      0x9d2 app/libapp.a(user_display.c.obj)
+ .debug_line    0x0000000000001098     0x226f zephyr/libzephyr.a(cbprintf_packaged.c.obj)
+ .debug_line    0x0000000000003307      0x55b zephyr/libzephyr.a(hex.c.obj)
+ .debug_line    0x0000000000003862      0x611 zephyr/libzephyr.a(printk.c.obj)
+ .debug_line    0x0000000000003e73      0x35d zephyr/libzephyr.a(thread_entry.c.obj)
+ .debug_line    0x00000000000041d0     0x270d zephyr/libzephyr.a(heap.c.obj)
+ .debug_line    0x00000000000068dd     0x1e23 zephyr/libzephyr.a(cbprintf_complete.c.obj)
+ .debug_line    0x0000000000008700      0x75c zephyr/libzephyr.a(configs.c.obj)
+ .debug_line    0x0000000000008e5c      0xab9 zephyr/libzephyr.a(soc.c.obj)
+ .debug_line    0x0000000000009915       0x85 zephyr/libzephyr.a(loader.c.obj)
+ .debug_line    0x000000000000999a      0x15b zephyr/libzephyr.a(thread_info.c.obj)
+ .debug_line    0x0000000000009af5     0x13d0 zephyr/libzephyr.a(cfb.c.obj)
  .debug_line    0x000000000000aec5      0x10b zephyr/libzephyr.a(cfb_fonts.c.obj)
  .debug_line    0x000000000000afd0      0x498 zephyr/libzephyr.a(log_minimal.c.obj)
  .debug_line    0x000000000000b468       0xc2 zephyr/libzephyr.a(tracing_none.c.obj)
@@ -7699,55 +7761,55 @@ noinit          0x000000003ffe5230     0xd800
  .debug_line    0x00000000000111ae      0x4af zephyr/libzephyr.a(esp_clk.c.obj)
  .debug_line    0x000000000001165d     0x1a7d zephyr/libzephyr.a(rtc_clk.c.obj)
  .debug_line    0x00000000000130da      0x7d9 zephyr/libzephyr.a(rtc_init.c.obj)
- .debug_line    0x00000000000138b3      0x79d zephyr/libzephyr.a(rtc_time.c.obj)
- .debug_line    0x0000000000014050      0x82f zephyr/libzephyr.a(rtc_clk_init.c.obj)
- .debug_line    0x000000000001487f     0x1a4b zephyr/libzephyr.a(esp_timer.c.obj)
- .debug_line    0x00000000000162ca      0xd6f zephyr/libzephyr.a(esp_timer_impl_lac.c.obj)
- .debug_line    0x0000000000017039      0xdf2 zephyr/libzephyr.a(periph_ctrl.c.obj)
- .debug_line    0x0000000000017e2b      0x323 zephyr/libzephyr.a(log_noos.c.obj)
- .debug_line    0x000000000001814e      0xa27 zephyr/libzephyr.a(log.c.obj)
- .debug_line    0x0000000000018b75      0x1f8 zephyr/libzephyr.a(interrupt_controller_hal.c.obj)
- .debug_line    0x0000000000018d6d      0x155 zephyr/libzephyr.a(interrupt_descriptor_table.c.obj)
- .debug_line    0x0000000000018ec2      0x527 zephyr/libzephyr.a(heap_caps.c.obj)
- .debug_line    0x00000000000193e9      0x180 zephyr/arch/common/libarch__common.a(sw_isr_common.c.obj)
- .debug_line    0x0000000000019569       0xff zephyr/arch/arch/xtensa/core/libarch__xtensa__core.a(cpu_idle.c.obj)
- .debug_line    0x0000000000019668      0x719 zephyr/arch/arch/xtensa/core/libarch__xtensa__core.a(fatal.c.obj)
- .debug_line    0x0000000000019d81      0x220 zephyr/arch/arch/xtensa/core/libarch__xtensa__core.a(window_vectors.S.obj)
- .debug_line    0x0000000000019fa1      0x37a zephyr/arch/arch/xtensa/core/libarch__xtensa__core.a(xtensa-asm2-util.S.obj)
- .debug_line    0x000000000001a31b     0x1b6b zephyr/arch/arch/xtensa/core/libarch__xtensa__core.a(xtensa-asm2.c.obj)
- .debug_line    0x000000000001be86      0x68b zephyr/arch/arch/xtensa/core/libarch__xtensa__core.a(xtensa_backtrace.c.obj)
- .debug_line    0x000000000001c511       0xa9 zephyr/arch/arch/xtensa/core/libarch__xtensa__core.a(debug_helpers_asm.S.obj)
- .debug_line    0x000000000001c5ba      0x525 zephyr/arch/arch/xtensa/core/libarch__xtensa__core.a(coredump.c.obj)
- .debug_line    0x000000000001cadf      0x197 zephyr/lib/libc/minimal/liblib__libc__minimal.a(abort.c.obj)
- .debug_line    0x000000000001cc76      0xe79 zephyr/lib/libc/minimal/liblib__libc__minimal.a(string.c.obj)
- .debug_line    0x000000000001daef      0x54b zephyr/lib/libc/minimal/liblib__libc__minimal.a(stdout_console.c.obj)
- .debug_line    0x000000000001e03a      0x71b zephyr/subsys/debug/coredump/libsubsys__debug__coredump.a(coredump_core.c.obj)
- .debug_line    0x000000000001e755      0x65b zephyr/subsys/debug/coredump/libsubsys__debug__coredump.a(coredump_backend_logging.c.obj)
- .debug_line    0x000000000001edb0     0x2c04 zephyr/drivers/interrupt_controller/libdrivers__interrupt_controller.a(intc_esp32.c.obj)
- .debug_line    0x00000000000219b4      0xd13 zephyr/drivers/clock_control/libdrivers__clock_control.a(clock_control_esp32.c.obj)
- .debug_line    0x00000000000226c7      0x415 zephyr/drivers/console/libdrivers__console.a(uart_console.c.obj)
- .debug_line    0x0000000000022adc     0x17b2 zephyr/drivers/display/libdrivers__display.a(display_st7789v.c.obj)
- .debug_line    0x000000000002428e      0x484 zephyr/drivers/entropy/libdrivers__entropy.a(entropy_esp32.c.obj)
- .debug_line    0x0000000000024712     0x24b8 zephyr/drivers/gpio/libdrivers__gpio.a(gpio_esp32.c.obj)
- .debug_line    0x0000000000026bca      0x1da zephyr/drivers/pinctrl/libdrivers__pinctrl.a(common.c.obj)
- .debug_line    0x0000000000026da4      0xf42 zephyr/drivers/pinctrl/libdrivers__pinctrl.a(pinctrl_esp32.c.obj)
- .debug_line    0x0000000000027ce6      0xcc9 zephyr/drivers/serial/libdrivers__serial.a(uart_esp32.c.obj)
- .debug_line    0x00000000000289af     0x292a zephyr/drivers/spi/libdrivers__spi.a(spi_esp32_spim.c.obj)
- .debug_line    0x000000000002b2d9      0x76b zephyr/drivers/timer/libdrivers__timer.a(xtensa_sys_timer.c.obj)
- .debug_line    0x000000000002ba44      0x73b zephyr/kernel/libkernel.a(device.c.obj)
- .debug_line    0x000000000002c17f      0x6e1 zephyr/kernel/libkernel.a(fatal.c.obj)
- .debug_line    0x000000000002c860      0xe10 zephyr/kernel/libkernel.a(init.c.obj)
- .debug_line    0x000000000002d670      0x7ac zephyr/kernel/libkernel.a(kheap.c.obj)
- .debug_line    0x000000000002de1c     0x1608 zephyr/kernel/libkernel.a(thread.c.obj)
- .debug_line    0x000000000002f424      0x295 zephyr/kernel/libkernel.a(idle.c.obj)
- .debug_line    0x000000000002f6b9      0x893 zephyr/kernel/libkernel.a(sem.c.obj)
- .debug_line    0x000000000002ff4c     0x570d zephyr/kernel/libkernel.a(sched.c.obj)
- .debug_line    0x0000000000035659     0x18c0 zephyr/kernel/libkernel.a(timeout.c.obj)
- .debug_line    0x0000000000036f19     0x24e5 zephyr/kernel/libkernel.a(poll.c.obj)
- .debug_line    0x00000000000393fe      0x6bc zephyr/kernel/libkernel.a(mempool.c.obj)
- .debug_line    0x0000000000039aba       0xad zephyr/kernel/libkernel.a(banner.c.obj)
- .debug_line    0x0000000000039b67      0x2d7 zephyr/kernel/libkernel.a(system_work_q.c.obj)
- .debug_line    0x0000000000039e3e     0x3a4a zephyr/kernel/libkernel.a(work.c.obj)
+ .debug_line    0x00000000000138b3      0x85d zephyr/libzephyr.a(rtc_time.c.obj)
+ .debug_line    0x0000000000014110      0x82f zephyr/libzephyr.a(rtc_clk_init.c.obj)
+ .debug_line    0x000000000001493f     0x1a4b zephyr/libzephyr.a(esp_timer.c.obj)
+ .debug_line    0x000000000001638a      0xd6f zephyr/libzephyr.a(esp_timer_impl_lac.c.obj)
+ .debug_line    0x00000000000170f9      0xdf2 zephyr/libzephyr.a(periph_ctrl.c.obj)
+ .debug_line    0x0000000000017eeb      0x323 zephyr/libzephyr.a(log_noos.c.obj)
+ .debug_line    0x000000000001820e      0xa27 zephyr/libzephyr.a(log.c.obj)
+ .debug_line    0x0000000000018c35      0x1f8 zephyr/libzephyr.a(interrupt_controller_hal.c.obj)
+ .debug_line    0x0000000000018e2d      0x155 zephyr/libzephyr.a(interrupt_descriptor_table.c.obj)
+ .debug_line    0x0000000000018f82      0x527 zephyr/libzephyr.a(heap_caps.c.obj)
+ .debug_line    0x00000000000194a9      0x180 zephyr/arch/common/libarch__common.a(sw_isr_common.c.obj)
+ .debug_line    0x0000000000019629       0xff zephyr/arch/arch/xtensa/core/libarch__xtensa__core.a(cpu_idle.c.obj)
+ .debug_line    0x0000000000019728      0x719 zephyr/arch/arch/xtensa/core/libarch__xtensa__core.a(fatal.c.obj)
+ .debug_line    0x0000000000019e41      0x220 zephyr/arch/arch/xtensa/core/libarch__xtensa__core.a(window_vectors.S.obj)
+ .debug_line    0x000000000001a061      0x37a zephyr/arch/arch/xtensa/core/libarch__xtensa__core.a(xtensa-asm2-util.S.obj)
+ .debug_line    0x000000000001a3db     0x1b6b zephyr/arch/arch/xtensa/core/libarch__xtensa__core.a(xtensa-asm2.c.obj)
+ .debug_line    0x000000000001bf46      0x68b zephyr/arch/arch/xtensa/core/libarch__xtensa__core.a(xtensa_backtrace.c.obj)
+ .debug_line    0x000000000001c5d1       0xa9 zephyr/arch/arch/xtensa/core/libarch__xtensa__core.a(debug_helpers_asm.S.obj)
+ .debug_line    0x000000000001c67a      0x525 zephyr/arch/arch/xtensa/core/libarch__xtensa__core.a(coredump.c.obj)
+ .debug_line    0x000000000001cb9f      0x197 zephyr/lib/libc/minimal/liblib__libc__minimal.a(abort.c.obj)
+ .debug_line    0x000000000001cd36      0xe79 zephyr/lib/libc/minimal/liblib__libc__minimal.a(string.c.obj)
+ .debug_line    0x000000000001dbaf      0x54b zephyr/lib/libc/minimal/liblib__libc__minimal.a(stdout_console.c.obj)
+ .debug_line    0x000000000001e0fa      0x71b zephyr/subsys/debug/coredump/libsubsys__debug__coredump.a(coredump_core.c.obj)
+ .debug_line    0x000000000001e815      0x65b zephyr/subsys/debug/coredump/libsubsys__debug__coredump.a(coredump_backend_logging.c.obj)
+ .debug_line    0x000000000001ee70     0x2c04 zephyr/drivers/interrupt_controller/libdrivers__interrupt_controller.a(intc_esp32.c.obj)
+ .debug_line    0x0000000000021a74      0xd11 zephyr/drivers/clock_control/libdrivers__clock_control.a(clock_control_esp32.c.obj)
+ .debug_line    0x0000000000022785      0x415 zephyr/drivers/console/libdrivers__console.a(uart_console.c.obj)
+ .debug_line    0x0000000000022b9a     0x17b2 zephyr/drivers/display/libdrivers__display.a(display_st7789v.c.obj)
+ .debug_line    0x000000000002434c      0x484 zephyr/drivers/entropy/libdrivers__entropy.a(entropy_esp32.c.obj)
+ .debug_line    0x00000000000247d0     0x2582 zephyr/drivers/gpio/libdrivers__gpio.a(gpio_esp32.c.obj)
+ .debug_line    0x0000000000026d52      0x1da zephyr/drivers/pinctrl/libdrivers__pinctrl.a(common.c.obj)
+ .debug_line    0x0000000000026f2c      0xf42 zephyr/drivers/pinctrl/libdrivers__pinctrl.a(pinctrl_esp32.c.obj)
+ .debug_line    0x0000000000027e6e      0xcc9 zephyr/drivers/serial/libdrivers__serial.a(uart_esp32.c.obj)
+ .debug_line    0x0000000000028b37     0x292a zephyr/drivers/spi/libdrivers__spi.a(spi_esp32_spim.c.obj)
+ .debug_line    0x000000000002b461      0x76b zephyr/drivers/timer/libdrivers__timer.a(xtensa_sys_timer.c.obj)
+ .debug_line    0x000000000002bbcc      0x73b zephyr/kernel/libkernel.a(device.c.obj)
+ .debug_line    0x000000000002c307      0x6e1 zephyr/kernel/libkernel.a(fatal.c.obj)
+ .debug_line    0x000000000002c9e8      0xe10 zephyr/kernel/libkernel.a(init.c.obj)
+ .debug_line    0x000000000002d7f8      0x7ac zephyr/kernel/libkernel.a(kheap.c.obj)
+ .debug_line    0x000000000002dfa4     0x1608 zephyr/kernel/libkernel.a(thread.c.obj)
+ .debug_line    0x000000000002f5ac      0x295 zephyr/kernel/libkernel.a(idle.c.obj)
+ .debug_line    0x000000000002f841      0x893 zephyr/kernel/libkernel.a(sem.c.obj)
+ .debug_line    0x00000000000300d4     0x570d zephyr/kernel/libkernel.a(sched.c.obj)
+ .debug_line    0x00000000000357e1     0x18c0 zephyr/kernel/libkernel.a(timeout.c.obj)
+ .debug_line    0x00000000000370a1     0x24e5 zephyr/kernel/libkernel.a(poll.c.obj)
+ .debug_line    0x0000000000039586      0x6bc zephyr/kernel/libkernel.a(mempool.c.obj)
+ .debug_line    0x0000000000039c42       0xad zephyr/kernel/libkernel.a(banner.c.obj)
+ .debug_line    0x0000000000039cef      0x2d7 zephyr/kernel/libkernel.a(system_work_q.c.obj)
+ .debug_line    0x0000000000039fc6     0x3a4a zephyr/kernel/libkernel.a(work.c.obj)
 
 .debug_frame    0x0000000000000000     0x4700
  *(SORT_BY_ALIGNMENT(.debug_frame))
@@ -7826,7 +7888,7 @@ noinit          0x000000003ffe5230     0xd800
  .debug_frame   0x00000000000046b0       0x28 /home/gez/sdks/zephyr/toolchains/xtensa-espressif_esp32_zephyr-elf/bin/../lib/gcc/xtensa-espressif_esp32_zephyr-elf/12.1.0/libgcc.a(_udivdi3.o)
  .debug_frame   0x00000000000046d8       0x28 /home/gez/sdks/zephyr/toolchains/xtensa-espressif_esp32_zephyr-elf/bin/../lib/gcc/xtensa-espressif_esp32_zephyr-elf/12.1.0/libgcc.a(_umoddi3.o)
 
-.debug_str      0x0000000000000000     0xdb0b
+.debug_str      0x0000000000000000     0xdb00
  *(SORT_BY_ALIGNMENT(.debug_str))
  .debug_str     0x0000000000000000      0x288 zephyr/CMakeFiles/zephyr_final.dir/dev_handles.c.obj
                                         0x2c9 (size before relaxing)
@@ -7892,73 +7954,73 @@ noinit          0x000000003ffe5230     0xd800
                                        0x126d (size before relaxing)
  .debug_str     0x000000000000726d       0xed zephyr/libzephyr.a(rtc_init.c.obj)
                                         0x333 (size before relaxing)
- .debug_str     0x000000000000735a      0x15f zephyr/libzephyr.a(rtc_time.c.obj)
-                                        0x527 (size before relaxing)
- .debug_str     0x00000000000074b9       0xf6 zephyr/libzephyr.a(rtc_clk_init.c.obj)
+ .debug_str     0x000000000000735a      0x17f zephyr/libzephyr.a(rtc_time.c.obj)
+                                        0x6f4 (size before relaxing)
+ .debug_str     0x00000000000074d9       0xf6 zephyr/libzephyr.a(rtc_clk_init.c.obj)
                                         0xa9a (size before relaxing)
- .debug_str     0x00000000000075af      0x518 zephyr/libzephyr.a(esp_timer.c.obj)
+ .debug_str     0x00000000000075cf      0x518 zephyr/libzephyr.a(esp_timer.c.obj)
                                        0x108d (size before relaxing)
- .debug_str     0x0000000000007ac7      0x221 zephyr/libzephyr.a(esp_timer_impl_lac.c.obj)
+ .debug_str     0x0000000000007ae7      0x221 zephyr/libzephyr.a(esp_timer_impl_lac.c.obj)
                                         0xdca (size before relaxing)
- .debug_str     0x0000000000007ce8      0x14b zephyr/libzephyr.a(periph_ctrl.c.obj)
+ .debug_str     0x0000000000007d08      0x14b zephyr/libzephyr.a(periph_ctrl.c.obj)
                                         0x7c9 (size before relaxing)
- .debug_str     0x0000000000007e33      0x104 zephyr/libzephyr.a(log_noos.c.obj)
+ .debug_str     0x0000000000007e53      0x104 zephyr/libzephyr.a(log_noos.c.obj)
                                         0x4cd (size before relaxing)
- .debug_str     0x0000000000007f37      0x25c zephyr/libzephyr.a(log.c.obj)
+ .debug_str     0x0000000000007f57      0x25c zephyr/libzephyr.a(log.c.obj)
                                         0x581 (size before relaxing)
- .debug_str     0x0000000000008193      0x17b zephyr/libzephyr.a(interrupt_controller_hal.c.obj)
+ .debug_str     0x00000000000081b3      0x17b zephyr/libzephyr.a(interrupt_controller_hal.c.obj)
                                         0x34a (size before relaxing)
- .debug_str     0x000000000000830e       0x79 zephyr/libzephyr.a(interrupt_descriptor_table.c.obj)
+ .debug_str     0x000000000000832e       0x79 zephyr/libzephyr.a(interrupt_descriptor_table.c.obj)
                                         0x46c (size before relaxing)
- .debug_str     0x0000000000008387      0x156 zephyr/libzephyr.a(heap_caps.c.obj)
+ .debug_str     0x00000000000083a7      0x156 zephyr/libzephyr.a(heap_caps.c.obj)
                                         0x560 (size before relaxing)
- .debug_str     0x00000000000084dd       0x7b zephyr/arch/common/libarch__common.a(sw_isr_common.c.obj)
+ .debug_str     0x00000000000084fd       0x7b zephyr/arch/common/libarch__common.a(sw_isr_common.c.obj)
                                         0x272 (size before relaxing)
- .debug_str     0x0000000000008558       0x5c zephyr/arch/arch/xtensa/core/libarch__xtensa__core.a(cpu_idle.c.obj)
+ .debug_str     0x0000000000008578       0x5c zephyr/arch/arch/xtensa/core/libarch__xtensa__core.a(cpu_idle.c.obj)
                                         0x224 (size before relaxing)
- .debug_str     0x00000000000085b4      0x156 zephyr/arch/arch/xtensa/core/libarch__xtensa__core.a(fatal.c.obj)
+ .debug_str     0x00000000000085d4      0x156 zephyr/arch/arch/xtensa/core/libarch__xtensa__core.a(fatal.c.obj)
                                         0xa0c (size before relaxing)
- .debug_str     0x000000000000870a       0x3f zephyr/arch/arch/xtensa/core/libarch__xtensa__core.a(window_vectors.S.obj)
+ .debug_str     0x000000000000872a       0x3f zephyr/arch/arch/xtensa/core/libarch__xtensa__core.a(window_vectors.S.obj)
                                          0x77 (size before relaxing)
- .debug_str     0x0000000000008749       0x41 zephyr/arch/arch/xtensa/core/libarch__xtensa__core.a(xtensa-asm2-util.S.obj)
+ .debug_str     0x0000000000008769       0x41 zephyr/arch/arch/xtensa/core/libarch__xtensa__core.a(xtensa-asm2-util.S.obj)
                                          0x79 (size before relaxing)
- .debug_str     0x000000000000878a      0x25e zephyr/arch/arch/xtensa/core/libarch__xtensa__core.a(xtensa-asm2.c.obj)
+ .debug_str     0x00000000000087aa      0x25e zephyr/arch/arch/xtensa/core/libarch__xtensa__core.a(xtensa-asm2.c.obj)
                                         0xc89 (size before relaxing)
- .debug_str     0x00000000000089e8      0x151 zephyr/arch/arch/xtensa/core/libarch__xtensa__core.a(xtensa_backtrace.c.obj)
+ .debug_str     0x0000000000008a08      0x151 zephyr/arch/arch/xtensa/core/libarch__xtensa__core.a(xtensa_backtrace.c.obj)
                                         0x359 (size before relaxing)
- .debug_str     0x0000000000008b39       0x42 zephyr/arch/arch/xtensa/core/libarch__xtensa__core.a(debug_helpers_asm.S.obj)
+ .debug_str     0x0000000000008b59       0x42 zephyr/arch/arch/xtensa/core/libarch__xtensa__core.a(debug_helpers_asm.S.obj)
                                          0x7a (size before relaxing)
- .debug_str     0x0000000000008b7b      0x1eb zephyr/arch/arch/xtensa/core/libarch__xtensa__core.a(coredump.c.obj)
+ .debug_str     0x0000000000008b9b      0x1eb zephyr/arch/arch/xtensa/core/libarch__xtensa__core.a(coredump.c.obj)
                                         0x3ea (size before relaxing)
- .debug_str     0x0000000000008d66       0x44 zephyr/lib/libc/minimal/liblib__libc__minimal.a(abort.c.obj)
+ .debug_str     0x0000000000008d86       0x44 zephyr/lib/libc/minimal/liblib__libc__minimal.a(abort.c.obj)
                                         0x2a4 (size before relaxing)
- .debug_str     0x0000000000008daa       0xe5 zephyr/lib/libc/minimal/liblib__libc__minimal.a(string.c.obj)
+ .debug_str     0x0000000000008dca       0xe5 zephyr/lib/libc/minimal/liblib__libc__minimal.a(string.c.obj)
                                         0x2d7 (size before relaxing)
- .debug_str     0x0000000000008e8f       0xb5 zephyr/lib/libc/minimal/liblib__libc__minimal.a(stdout_console.c.obj)
+ .debug_str     0x0000000000008eaf       0xb5 zephyr/lib/libc/minimal/liblib__libc__minimal.a(stdout_console.c.obj)
                                         0x459 (size before relaxing)
- .debug_str     0x0000000000008f44      0x2f6 zephyr/subsys/debug/coredump/libsubsys__debug__coredump.a(coredump_core.c.obj)
+ .debug_str     0x0000000000008f64      0x2f6 zephyr/subsys/debug/coredump/libsubsys__debug__coredump.a(coredump_core.c.obj)
                                         0x9b1 (size before relaxing)
- .debug_str     0x000000000000923a      0x110 zephyr/subsys/debug/coredump/libsubsys__debug__coredump.a(coredump_backend_logging.c.obj)
+ .debug_str     0x000000000000925a      0x110 zephyr/subsys/debug/coredump/libsubsys__debug__coredump.a(coredump_backend_logging.c.obj)
                                         0xa87 (size before relaxing)
- .debug_str     0x000000000000934a      0x555 zephyr/drivers/interrupt_controller/libdrivers__interrupt_controller.a(intc_esp32.c.obj)
+ .debug_str     0x000000000000936a      0x555 zephyr/drivers/interrupt_controller/libdrivers__interrupt_controller.a(intc_esp32.c.obj)
                                         0xeff (size before relaxing)
- .debug_str     0x000000000000989f      0x348 zephyr/drivers/clock_control/libdrivers__clock_control.a(clock_control_esp32.c.obj)
+ .debug_str     0x00000000000098bf      0x348 zephyr/drivers/clock_control/libdrivers__clock_control.a(clock_control_esp32.c.obj)
                                        0x1039 (size before relaxing)
- .debug_str     0x0000000000009be7      0x144 zephyr/drivers/console/libdrivers__console.a(uart_console.c.obj)
+ .debug_str     0x0000000000009c07      0x144 zephyr/drivers/console/libdrivers__console.a(uart_console.c.obj)
                                         0x4dc (size before relaxing)
- .debug_str     0x0000000000009d2b      0x428 zephyr/drivers/display/libdrivers__display.a(display_st7789v.c.obj)
+ .debug_str     0x0000000000009d4b      0x428 zephyr/drivers/display/libdrivers__display.a(display_st7789v.c.obj)
                                        0x1451 (size before relaxing)
- .debug_str     0x000000000000a153      0x138 zephyr/drivers/entropy/libdrivers__entropy.a(entropy_esp32.c.obj)
+ .debug_str     0x000000000000a173      0x138 zephyr/drivers/entropy/libdrivers__entropy.a(entropy_esp32.c.obj)
                                         0x424 (size before relaxing)
- .debug_str     0x000000000000a28b      0x7a4 zephyr/drivers/gpio/libdrivers__gpio.a(gpio_esp32.c.obj)
+ .debug_str     0x000000000000a2ab      0x7a4 zephyr/drivers/gpio/libdrivers__gpio.a(gpio_esp32.c.obj)
                                        0x1b10 (size before relaxing)
- .debug_str     0x000000000000aa2f       0xb5 zephyr/drivers/pinctrl/libdrivers__pinctrl.a(common.c.obj)
+ .debug_str     0x000000000000aa4f       0xb5 zephyr/drivers/pinctrl/libdrivers__pinctrl.a(common.c.obj)
                                         0x291 (size before relaxing)
- .debug_str     0x000000000000aae4      0x122 zephyr/drivers/pinctrl/libdrivers__pinctrl.a(pinctrl_esp32.c.obj)
+ .debug_str     0x000000000000ab04      0x122 zephyr/drivers/pinctrl/libdrivers__pinctrl.a(pinctrl_esp32.c.obj)
                                         0xa76 (size before relaxing)
- .debug_str     0x000000000000ac06      0x5d9 zephyr/drivers/serial/libdrivers__serial.a(uart_esp32.c.obj)
+ .debug_str     0x000000000000ac26      0x5d9 zephyr/drivers/serial/libdrivers__serial.a(uart_esp32.c.obj)
                                        0x15ab (size before relaxing)
- .debug_str     0x000000000000b1df      0x5b9 zephyr/drivers/spi/libdrivers__spi.a(spi_esp32_spim.c.obj)
+ .debug_str     0x000000000000b1ff      0x599 zephyr/drivers/spi/libdrivers__spi.a(spi_esp32_spim.c.obj)
                                        0x3006 (size before relaxing)
  .debug_str     0x000000000000b798      0x14b zephyr/drivers/timer/libdrivers__timer.a(xtensa_sys_timer.c.obj)
                                         0x43d (size before relaxing)
@@ -7970,28 +8032,28 @@ noinit          0x000000003ffe5230     0xd800
                                         0xdc2 (size before relaxing)
  .debug_str     0x000000000000bf89      0x11f zephyr/kernel/libkernel.a(kheap.c.obj)
                                         0x5f5 (size before relaxing)
- .debug_str     0x000000000000c0a8      0x40f zephyr/kernel/libkernel.a(thread.c.obj)
-                                        0xf54 (size before relaxing)
- .debug_str     0x000000000000c4b7       0x5e zephyr/kernel/libkernel.a(idle.c.obj)
+ .debug_str     0x000000000000c0a8      0x404 zephyr/kernel/libkernel.a(thread.c.obj)
+                                        0xf49 (size before relaxing)
+ .debug_str     0x000000000000c4ac       0x5e zephyr/kernel/libkernel.a(idle.c.obj)
                                         0x2e2 (size before relaxing)
- .debug_str     0x000000000000c515       0x9c zephyr/kernel/libkernel.a(sem.c.obj)
+ .debug_str     0x000000000000c50a       0x9c zephyr/kernel/libkernel.a(sem.c.obj)
                                         0x7d2 (size before relaxing)
- .debug_str     0x000000000000c5b1      0x8b0 zephyr/kernel/libkernel.a(sched.c.obj)
+ .debug_str     0x000000000000c5a6      0x8b0 zephyr/kernel/libkernel.a(sched.c.obj)
                                        0x1686 (size before relaxing)
- .debug_str     0x000000000000ce61      0x144 zephyr/kernel/libkernel.a(timeout.c.obj)
+ .debug_str     0x000000000000ce56      0x144 zephyr/kernel/libkernel.a(timeout.c.obj)
                                         0xa67 (size before relaxing)
- .debug_str     0x000000000000cfa5      0x435 zephyr/kernel/libkernel.a(poll.c.obj)
+ .debug_str     0x000000000000cf9a      0x435 zephyr/kernel/libkernel.a(poll.c.obj)
                                         0xe95 (size before relaxing)
- .debug_str     0x000000000000d3da       0x7d zephyr/kernel/libkernel.a(mempool.c.obj)
+ .debug_str     0x000000000000d3cf       0x7d zephyr/kernel/libkernel.a(mempool.c.obj)
                                         0x7db (size before relaxing)
- .debug_str     0x000000000000d457       0x2d zephyr/kernel/libkernel.a(banner.c.obj)
+ .debug_str     0x000000000000d44c       0x2d zephyr/kernel/libkernel.a(banner.c.obj)
                                         0x1f9 (size before relaxing)
- .debug_str     0x000000000000d484       0x8e zephyr/kernel/libkernel.a(system_work_q.c.obj)
+ .debug_str     0x000000000000d479       0x8e zephyr/kernel/libkernel.a(system_work_q.c.obj)
                                         0x740 (size before relaxing)
- .debug_str     0x000000000000d512      0x5f9 zephyr/kernel/libkernel.a(work.c.obj)
+ .debug_str     0x000000000000d507      0x5f9 zephyr/kernel/libkernel.a(work.c.obj)
                                        0x113a (size before relaxing)
 
-.debug_loc      0x0000000000000000    0x207d6
+.debug_loc      0x0000000000000000    0x20836
  *(SORT_BY_ALIGNMENT(.debug_loc))
  .debug_loc     0x0000000000000000      0x489 app/libapp.a(user_display.c.obj)
  .debug_loc     0x0000000000000489     0x24b3 zephyr/libzephyr.a(cbprintf_packaged.c.obj)
@@ -8017,44 +8079,44 @@ noinit          0x000000003ffe5230     0xd800
  .debug_loc     0x000000000000d2bc      0x26f zephyr/libzephyr.a(rtc_clk_init.c.obj)
  .debug_loc     0x000000000000d52b      0xbd5 zephyr/libzephyr.a(esp_timer.c.obj)
  .debug_loc     0x000000000000e100      0x376 zephyr/libzephyr.a(esp_timer_impl_lac.c.obj)
- .debug_loc     0x000000000000e476      0x5d3 zephyr/libzephyr.a(periph_ctrl.c.obj)
- .debug_loc     0x000000000000ea49       0xda zephyr/libzephyr.a(log_noos.c.obj)
- .debug_loc     0x000000000000eb23      0x50e zephyr/libzephyr.a(log.c.obj)
- .debug_loc     0x000000000000f031       0xd3 zephyr/libzephyr.a(interrupt_controller_hal.c.obj)
- .debug_loc     0x000000000000f104      0x337 zephyr/libzephyr.a(heap_caps.c.obj)
- .debug_loc     0x000000000000f43b       0x4a zephyr/arch/common/libarch__common.a(sw_isr_common.c.obj)
- .debug_loc     0x000000000000f485       0x64 zephyr/arch/arch/xtensa/core/libarch__xtensa__core.a(fatal.c.obj)
- .debug_loc     0x000000000000f4e9      0xe5e zephyr/arch/arch/xtensa/core/libarch__xtensa__core.a(xtensa-asm2.c.obj)
- .debug_loc     0x0000000000010347      0x4ad zephyr/arch/arch/xtensa/core/libarch__xtensa__core.a(xtensa_backtrace.c.obj)
- .debug_loc     0x00000000000107f4       0x3a zephyr/arch/arch/xtensa/core/libarch__xtensa__core.a(coredump.c.obj)
- .debug_loc     0x000000000001082e      0x903 zephyr/lib/libc/minimal/liblib__libc__minimal.a(string.c.obj)
- .debug_loc     0x0000000000011131      0x2e2 zephyr/lib/libc/minimal/liblib__libc__minimal.a(stdout_console.c.obj)
- .debug_loc     0x0000000000011413      0x15c zephyr/subsys/debug/coredump/libsubsys__debug__coredump.a(coredump_core.c.obj)
- .debug_loc     0x000000000001156f      0x251 zephyr/subsys/debug/coredump/libsubsys__debug__coredump.a(coredump_backend_logging.c.obj)
- .debug_loc     0x00000000000117c0     0x17a4 zephyr/drivers/interrupt_controller/libdrivers__interrupt_controller.a(intc_esp32.c.obj)
- .debug_loc     0x0000000000012f64      0x3b3 zephyr/drivers/clock_control/libdrivers__clock_control.a(clock_control_esp32.c.obj)
- .debug_loc     0x0000000000013317       0xde zephyr/drivers/console/libdrivers__console.a(uart_console.c.obj)
- .debug_loc     0x00000000000133f5      0xc16 zephyr/drivers/display/libdrivers__display.a(display_st7789v.c.obj)
- .debug_loc     0x000000000001400b       0xfa zephyr/drivers/entropy/libdrivers__entropy.a(entropy_esp32.c.obj)
- .debug_loc     0x0000000000014105     0x1663 zephyr/drivers/gpio/libdrivers__gpio.a(gpio_esp32.c.obj)
- .debug_loc     0x0000000000015768       0x42 zephyr/drivers/pinctrl/libdrivers__pinctrl.a(common.c.obj)
- .debug_loc     0x00000000000157aa      0xaa2 zephyr/drivers/pinctrl/libdrivers__pinctrl.a(pinctrl_esp32.c.obj)
- .debug_loc     0x000000000001624c      0x50c zephyr/drivers/serial/libdrivers__serial.a(uart_esp32.c.obj)
- .debug_loc     0x0000000000016758     0x1242 zephyr/drivers/spi/libdrivers__spi.a(spi_esp32_spim.c.obj)
- .debug_loc     0x000000000001799a      0x217 zephyr/drivers/timer/libdrivers__timer.a(xtensa_sys_timer.c.obj)
- .debug_loc     0x0000000000017bb1      0x396 zephyr/kernel/libkernel.a(device.c.obj)
- .debug_loc     0x0000000000017f47      0x129 zephyr/kernel/libkernel.a(fatal.c.obj)
- .debug_loc     0x0000000000018070      0x381 zephyr/kernel/libkernel.a(init.c.obj)
- .debug_loc     0x00000000000183f1      0x2a9 zephyr/kernel/libkernel.a(kheap.c.obj)
- .debug_loc     0x000000000001869a      0x84f zephyr/kernel/libkernel.a(thread.c.obj)
- .debug_loc     0x0000000000018ee9       0x3f zephyr/kernel/libkernel.a(idle.c.obj)
- .debug_loc     0x0000000000018f28      0x320 zephyr/kernel/libkernel.a(sem.c.obj)
- .debug_loc     0x0000000000019248     0x2db2 zephyr/kernel/libkernel.a(sched.c.obj)
- .debug_loc     0x000000000001bffa      0x911 zephyr/kernel/libkernel.a(timeout.c.obj)
- .debug_loc     0x000000000001c90b     0x122e zephyr/kernel/libkernel.a(poll.c.obj)
- .debug_loc     0x000000000001db39      0x2b5 zephyr/kernel/libkernel.a(mempool.c.obj)
- .debug_loc     0x000000000001ddee       0x25 zephyr/kernel/libkernel.a(system_work_q.c.obj)
- .debug_loc     0x000000000001de13     0x29c3 zephyr/kernel/libkernel.a(work.c.obj)
+ .debug_loc     0x000000000000e476      0x5b5 zephyr/libzephyr.a(periph_ctrl.c.obj)
+ .debug_loc     0x000000000000ea2b       0xda zephyr/libzephyr.a(log_noos.c.obj)
+ .debug_loc     0x000000000000eb05      0x50e zephyr/libzephyr.a(log.c.obj)
+ .debug_loc     0x000000000000f013       0xd3 zephyr/libzephyr.a(interrupt_controller_hal.c.obj)
+ .debug_loc     0x000000000000f0e6      0x337 zephyr/libzephyr.a(heap_caps.c.obj)
+ .debug_loc     0x000000000000f41d       0x4a zephyr/arch/common/libarch__common.a(sw_isr_common.c.obj)
+ .debug_loc     0x000000000000f467       0x64 zephyr/arch/arch/xtensa/core/libarch__xtensa__core.a(fatal.c.obj)
+ .debug_loc     0x000000000000f4cb      0xe5e zephyr/arch/arch/xtensa/core/libarch__xtensa__core.a(xtensa-asm2.c.obj)
+ .debug_loc     0x0000000000010329      0x4ad zephyr/arch/arch/xtensa/core/libarch__xtensa__core.a(xtensa_backtrace.c.obj)
+ .debug_loc     0x00000000000107d6       0x3a zephyr/arch/arch/xtensa/core/libarch__xtensa__core.a(coredump.c.obj)
+ .debug_loc     0x0000000000010810      0x903 zephyr/lib/libc/minimal/liblib__libc__minimal.a(string.c.obj)
+ .debug_loc     0x0000000000011113      0x2e2 zephyr/lib/libc/minimal/liblib__libc__minimal.a(stdout_console.c.obj)
+ .debug_loc     0x00000000000113f5      0x15c zephyr/subsys/debug/coredump/libsubsys__debug__coredump.a(coredump_core.c.obj)
+ .debug_loc     0x0000000000011551      0x251 zephyr/subsys/debug/coredump/libsubsys__debug__coredump.a(coredump_backend_logging.c.obj)
+ .debug_loc     0x00000000000117a2     0x17a4 zephyr/drivers/interrupt_controller/libdrivers__interrupt_controller.a(intc_esp32.c.obj)
+ .debug_loc     0x0000000000012f46      0x3b3 zephyr/drivers/clock_control/libdrivers__clock_control.a(clock_control_esp32.c.obj)
+ .debug_loc     0x00000000000132f9       0xde zephyr/drivers/console/libdrivers__console.a(uart_console.c.obj)
+ .debug_loc     0x00000000000133d7      0xc16 zephyr/drivers/display/libdrivers__display.a(display_st7789v.c.obj)
+ .debug_loc     0x0000000000013fed       0xfa zephyr/drivers/entropy/libdrivers__entropy.a(entropy_esp32.c.obj)
+ .debug_loc     0x00000000000140e7     0x16e1 zephyr/drivers/gpio/libdrivers__gpio.a(gpio_esp32.c.obj)
+ .debug_loc     0x00000000000157c8       0x42 zephyr/drivers/pinctrl/libdrivers__pinctrl.a(common.c.obj)
+ .debug_loc     0x000000000001580a      0xaa2 zephyr/drivers/pinctrl/libdrivers__pinctrl.a(pinctrl_esp32.c.obj)
+ .debug_loc     0x00000000000162ac      0x50c zephyr/drivers/serial/libdrivers__serial.a(uart_esp32.c.obj)
+ .debug_loc     0x00000000000167b8     0x1242 zephyr/drivers/spi/libdrivers__spi.a(spi_esp32_spim.c.obj)
+ .debug_loc     0x00000000000179fa      0x217 zephyr/drivers/timer/libdrivers__timer.a(xtensa_sys_timer.c.obj)
+ .debug_loc     0x0000000000017c11      0x396 zephyr/kernel/libkernel.a(device.c.obj)
+ .debug_loc     0x0000000000017fa7      0x129 zephyr/kernel/libkernel.a(fatal.c.obj)
+ .debug_loc     0x00000000000180d0      0x381 zephyr/kernel/libkernel.a(init.c.obj)
+ .debug_loc     0x0000000000018451      0x2a9 zephyr/kernel/libkernel.a(kheap.c.obj)
+ .debug_loc     0x00000000000186fa      0x84f zephyr/kernel/libkernel.a(thread.c.obj)
+ .debug_loc     0x0000000000018f49       0x3f zephyr/kernel/libkernel.a(idle.c.obj)
+ .debug_loc     0x0000000000018f88      0x320 zephyr/kernel/libkernel.a(sem.c.obj)
+ .debug_loc     0x00000000000192a8     0x2db2 zephyr/kernel/libkernel.a(sched.c.obj)
+ .debug_loc     0x000000000001c05a      0x911 zephyr/kernel/libkernel.a(timeout.c.obj)
+ .debug_loc     0x000000000001c96b     0x122e zephyr/kernel/libkernel.a(poll.c.obj)
+ .debug_loc     0x000000000001db99      0x2b5 zephyr/kernel/libkernel.a(mempool.c.obj)
+ .debug_loc     0x000000000001de4e       0x25 zephyr/kernel/libkernel.a(system_work_q.c.obj)
+ .debug_loc     0x000000000001de73     0x29c3 zephyr/kernel/libkernel.a(work.c.obj)
 
 .debug_macinfo
  *(SORT_BY_ALIGNMENT(.debug_macinfo))
@@ -8232,6 +8294,8 @@ noinit          0x000000003ffe5230     0xd800
  .xtensa.info   0x0000000000000038        0x0 zephyr/libzephyr.a(esp_efuse_api.c.obj)
  .xtensa.info   0x0000000000000038        0x0 zephyr/libzephyr.a(esp_efuse_api_key_esp32.c.obj)
  .xtensa.info   0x0000000000000038        0x0 zephyr/libzephyr.a(esp_efuse_utility.c.obj)
+ .xtensa.info   0x0000000000000038        0x0 zephyr/libzephyr.a(bootloader_flash_config_esp32.c.obj)
+ .xtensa.info   0x0000000000000038        0x0 zephyr/libzephyr.a(bootloader_efuse_esp32.c.obj)
  .xtensa.info   0x0000000000000038        0x0 zephyr/libzephyr.a(esp_system_api.c.obj)
  .xtensa.info   0x0000000000000038        0x0 zephyr/libzephyr.a(dport_access.c.obj)
  .xtensa.info   0x0000000000000038        0x0 zephyr/libzephyr.a(stubs.c.obj)
@@ -8319,7 +8383,7 @@ noinit          0x000000003ffe5230     0xd800
  *(SORT_BY_ALIGNMENT(.xt.insn))
  *(SORT_BY_ALIGNMENT(.gnu.linkonce.x.*))
 
-.xt.prop        0x0000000000000000     0xaac4
+.xt.prop        0x0000000000000000     0xaadc
  *(SORT_BY_ALIGNMENT(.xt.prop))
  .xt.prop       0x0000000000000000        0xc zephyr/CMakeFiles/zephyr_final.dir/dev_handles.c.obj
                                          0x60 (size before relaxing)
@@ -8441,11 +8505,15 @@ noinit          0x000000003ffe5230     0xd800
  .xt.prop       0x0000000000003cf0        0x0 zephyr/libzephyr.a(esp_efuse_utility.c.obj)
                                         0x378 (size before relaxing)
  .xt.prop       0x0000000000003cf0        0x0 zephyr/libzephyr.a(esp_efuse_api.c.obj)
-                                        0x5a0 (size before relaxing)
+                                        0x570 (size before relaxing)
  .xt.prop       0x0000000000003cf0        0x0 zephyr/libzephyr.a(esp_efuse_api_key_esp32.c.obj)
                                         0x594 (size before relaxing)
  .xt.prop       0x0000000000003cf0        0x0 zephyr/libzephyr.a(esp_efuse_utility.c.obj)
                                         0x6cc (size before relaxing)
+ .xt.prop       0x0000000000003cf0        0x0 zephyr/libzephyr.a(bootloader_flash_config_esp32.c.obj)
+                                        0x33c (size before relaxing)
+ .xt.prop       0x0000000000003cf0        0x0 zephyr/libzephyr.a(bootloader_efuse_esp32.c.obj)
+                                        0x108 (size before relaxing)
  .xt.prop       0x0000000000003cf0        0x0 zephyr/libzephyr.a(esp_system_api.c.obj)
                                          0xe4 (size before relaxing)
  .xt.prop       0x0000000000003cf0        0x0 zephyr/libzephyr.a(dport_access.c.obj)
@@ -8526,78 +8594,78 @@ noinit          0x000000003ffe5230     0xd800
                                         0x60c (size before relaxing)
  .xt.prop       0x0000000000006a14       0xcc zephyr/drivers/entropy/libdrivers__entropy.a(entropy_esp32.c.obj)
                                          0xe4 (size before relaxing)
- .xt.prop       0x0000000000006ae0      0xa8c zephyr/drivers/gpio/libdrivers__gpio.a(gpio_esp32.c.obj)
-                                        0xb1c (size before relaxing)
- .xt.prop       0x000000000000756c       0x54 zephyr/drivers/pinctrl/libdrivers__pinctrl.a(common.c.obj)
- .xt.prop       0x00000000000075c0      0x48c zephyr/drivers/pinctrl/libdrivers__pinctrl.a(pinctrl_esp32.c.obj)
+ .xt.prop       0x0000000000006ae0      0xaa4 zephyr/drivers/gpio/libdrivers__gpio.a(gpio_esp32.c.obj)
+                                        0xb34 (size before relaxing)
+ .xt.prop       0x0000000000007584       0x54 zephyr/drivers/pinctrl/libdrivers__pinctrl.a(common.c.obj)
+ .xt.prop       0x00000000000075d8      0x48c zephyr/drivers/pinctrl/libdrivers__pinctrl.a(pinctrl_esp32.c.obj)
                                         0x4d4 (size before relaxing)
- .xt.prop       0x0000000000007a4c      0x474 zephyr/drivers/serial/libdrivers__serial.a(uart_esp32.c.obj)
+ .xt.prop       0x0000000000007a64      0x474 zephyr/drivers/serial/libdrivers__serial.a(uart_esp32.c.obj)
                                         0x4c8 (size before relaxing)
- .xt.prop       0x0000000000007ec0      0x924 zephyr/drivers/spi/libdrivers__spi.a(spi_esp32_spim.c.obj)
+ .xt.prop       0x0000000000007ed8      0x924 zephyr/drivers/spi/libdrivers__spi.a(spi_esp32_spim.c.obj)
                                         0xa14 (size before relaxing)
- .xt.prop       0x00000000000087e4        0x0 zephyr/drivers/spi/libdrivers__spi.a(spi_signal.c.obj)
+ .xt.prop       0x00000000000087fc        0x0 zephyr/drivers/spi/libdrivers__spi.a(spi_signal.c.obj)
                                          0x30 (size before relaxing)
- .xt.prop       0x00000000000087e4        0x0 zephyr/drivers/timer/libdrivers__timer.a(sys_clock_init.c.obj)
+ .xt.prop       0x00000000000087fc        0x0 zephyr/drivers/timer/libdrivers__timer.a(sys_clock_init.c.obj)
                                          0x48 (size before relaxing)
- .xt.prop       0x00000000000087e4      0x1b0 zephyr/drivers/timer/libdrivers__timer.a(xtensa_sys_timer.c.obj)
+ .xt.prop       0x00000000000087fc      0x1b0 zephyr/drivers/timer/libdrivers__timer.a(xtensa_sys_timer.c.obj)
                                         0x1d4 (size before relaxing)
- .xt.prop       0x0000000000008994       0xb4 zephyr/kernel/libkernel.a(device.c.obj)
+ .xt.prop       0x00000000000089ac       0xb4 zephyr/kernel/libkernel.a(device.c.obj)
                                         0x330 (size before relaxing)
- .xt.prop       0x0000000000008a48        0x0 zephyr/kernel/libkernel.a(errno.c.obj)
+ .xt.prop       0x0000000000008a60        0x0 zephyr/kernel/libkernel.a(errno.c.obj)
                                          0x3c (size before relaxing)
- .xt.prop       0x0000000000008a48      0x1bc zephyr/kernel/libkernel.a(fatal.c.obj)
+ .xt.prop       0x0000000000008a60      0x1bc zephyr/kernel/libkernel.a(fatal.c.obj)
                                         0x1e0 (size before relaxing)
- .xt.prop       0x0000000000008c04      0x258 zephyr/kernel/libkernel.a(init.c.obj)
+ .xt.prop       0x0000000000008c1c      0x258 zephyr/kernel/libkernel.a(init.c.obj)
                                         0x2f4 (size before relaxing)
- .xt.prop       0x0000000000008e5c      0x120 zephyr/kernel/libkernel.a(kheap.c.obj)
+ .xt.prop       0x0000000000008e74      0x120 zephyr/kernel/libkernel.a(kheap.c.obj)
                                         0x174 (size before relaxing)
- .xt.prop       0x0000000000008f7c      0x24c zephyr/kernel/libkernel.a(thread.c.obj)
+ .xt.prop       0x0000000000008f94      0x24c zephyr/kernel/libkernel.a(thread.c.obj)
                                         0x570 (size before relaxing)
- .xt.prop       0x00000000000091c8       0x24 zephyr/kernel/libkernel.a(idle.c.obj)
+ .xt.prop       0x00000000000091e0       0x24 zephyr/kernel/libkernel.a(idle.c.obj)
                                          0x60 (size before relaxing)
- .xt.prop       0x00000000000091ec        0x0 zephyr/kernel/libkernel.a(mutex.c.obj)
+ .xt.prop       0x0000000000009204        0x0 zephyr/kernel/libkernel.a(mutex.c.obj)
                                         0x24c (size before relaxing)
- .xt.prop       0x00000000000091ec       0xc0 zephyr/kernel/libkernel.a(sem.c.obj)
+ .xt.prop       0x0000000000009204       0xc0 zephyr/kernel/libkernel.a(sem.c.obj)
                                         0x15c (size before relaxing)
- .xt.prop       0x00000000000092ac      0xbc4 zephyr/kernel/libkernel.a(sched.c.obj)
+ .xt.prop       0x00000000000092c4      0xbc4 zephyr/kernel/libkernel.a(sched.c.obj)
                                        0x1410 (size before relaxing)
- .xt.prop       0x0000000000009e70      0x51c zephyr/kernel/libkernel.a(timeout.c.obj)
+ .xt.prop       0x0000000000009e88      0x51c zephyr/kernel/libkernel.a(timeout.c.obj)
                                         0x6f0 (size before relaxing)
- .xt.prop       0x000000000000a38c      0x1bc zephyr/kernel/libkernel.a(poll.c.obj)
+ .xt.prop       0x000000000000a3a4      0x1bc zephyr/kernel/libkernel.a(poll.c.obj)
                                         0x864 (size before relaxing)
- .xt.prop       0x000000000000a548      0x150 zephyr/kernel/libkernel.a(mempool.c.obj)
+ .xt.prop       0x000000000000a560      0x150 zephyr/kernel/libkernel.a(mempool.c.obj)
                                         0x1e0 (size before relaxing)
- .xt.prop       0x000000000000a698       0x30 zephyr/kernel/libkernel.a(banner.c.obj)
- .xt.prop       0x000000000000a6c8       0x54 zephyr/kernel/libkernel.a(system_work_q.c.obj)
- .xt.prop       0x000000000000a71c      0x3a8 zephyr/kernel/libkernel.a(work.c.obj)
+ .xt.prop       0x000000000000a6b0       0x30 zephyr/kernel/libkernel.a(banner.c.obj)
+ .xt.prop       0x000000000000a6e0       0x54 zephyr/kernel/libkernel.a(system_work_q.c.obj)
+ .xt.prop       0x000000000000a734      0x3a8 zephyr/kernel/libkernel.a(work.c.obj)
                                         0xb88 (size before relaxing)
- .xt.prop       0x000000000000aac4        0x0 /home/gez/sdks/zephyr/toolchains/xtensa-espressif_esp32_zephyr-elf/bin/../lib/gcc/xtensa-espressif_esp32_zephyr-elf/12.1.0/libgcc.a(_divsf3.o)
+ .xt.prop       0x000000000000aadc        0x0 /home/gez/sdks/zephyr/toolchains/xtensa-espressif_esp32_zephyr-elf/bin/../lib/gcc/xtensa-espressif_esp32_zephyr-elf/12.1.0/libgcc.a(_divsf3.o)
                                          0x24 (size before relaxing)
- .xt.prop       0x000000000000aac4        0x0 /home/gez/sdks/zephyr/toolchains/xtensa-espressif_esp32_zephyr-elf/bin/../lib/gcc/xtensa-espressif_esp32_zephyr-elf/12.1.0/libgcc.a(_addsubdf3.o)
+ .xt.prop       0x000000000000aadc        0x0 /home/gez/sdks/zephyr/toolchains/xtensa-espressif_esp32_zephyr-elf/bin/../lib/gcc/xtensa-espressif_esp32_zephyr-elf/12.1.0/libgcc.a(_addsubdf3.o)
                                         0x420 (size before relaxing)
- .xt.prop       0x000000000000aac4        0x0 /home/gez/sdks/zephyr/toolchains/xtensa-espressif_esp32_zephyr-elf/bin/../lib/gcc/xtensa-espressif_esp32_zephyr-elf/12.1.0/libgcc.a(_muldf3.o)
+ .xt.prop       0x000000000000aadc        0x0 /home/gez/sdks/zephyr/toolchains/xtensa-espressif_esp32_zephyr-elf/bin/../lib/gcc/xtensa-espressif_esp32_zephyr-elf/12.1.0/libgcc.a(_muldf3.o)
                                         0x228 (size before relaxing)
- .xt.prop       0x000000000000aac4        0x0 /home/gez/sdks/zephyr/toolchains/xtensa-espressif_esp32_zephyr-elf/bin/../lib/gcc/xtensa-espressif_esp32_zephyr-elf/12.1.0/libgcc.a(_divdf3.o)
+ .xt.prop       0x000000000000aadc        0x0 /home/gez/sdks/zephyr/toolchains/xtensa-espressif_esp32_zephyr-elf/bin/../lib/gcc/xtensa-espressif_esp32_zephyr-elf/12.1.0/libgcc.a(_divdf3.o)
                                         0x264 (size before relaxing)
- .xt.prop       0x000000000000aac4        0x0 /home/gez/sdks/zephyr/toolchains/xtensa-espressif_esp32_zephyr-elf/bin/../lib/gcc/xtensa-espressif_esp32_zephyr-elf/12.1.0/libgcc.a(_cmpdf2.o)
+ .xt.prop       0x000000000000aadc        0x0 /home/gez/sdks/zephyr/toolchains/xtensa-espressif_esp32_zephyr-elf/bin/../lib/gcc/xtensa-espressif_esp32_zephyr-elf/12.1.0/libgcc.a(_cmpdf2.o)
                                         0x288 (size before relaxing)
- .xt.prop       0x000000000000aac4        0x0 /home/gez/sdks/zephyr/toolchains/xtensa-espressif_esp32_zephyr-elf/bin/../lib/gcc/xtensa-espressif_esp32_zephyr-elf/12.1.0/libgcc.a(_fixdfdi.o)
+ .xt.prop       0x000000000000aadc        0x0 /home/gez/sdks/zephyr/toolchains/xtensa-espressif_esp32_zephyr-elf/bin/../lib/gcc/xtensa-espressif_esp32_zephyr-elf/12.1.0/libgcc.a(_fixdfdi.o)
                                          0xa8 (size before relaxing)
- .xt.prop       0x000000000000aac4        0x0 /home/gez/sdks/zephyr/toolchains/xtensa-espressif_esp32_zephyr-elf/bin/../lib/gcc/xtensa-espressif_esp32_zephyr-elf/12.1.0/libgcc.a(_floatsidf.o)
+ .xt.prop       0x000000000000aadc        0x0 /home/gez/sdks/zephyr/toolchains/xtensa-espressif_esp32_zephyr-elf/bin/../lib/gcc/xtensa-espressif_esp32_zephyr-elf/12.1.0/libgcc.a(_floatsidf.o)
                                          0x54 (size before relaxing)
- .xt.prop       0x000000000000aac4        0x0 /home/gez/sdks/zephyr/toolchains/xtensa-espressif_esp32_zephyr-elf/bin/../lib/gcc/xtensa-espressif_esp32_zephyr-elf/12.1.0/libgcc.a(_floatdidf.o)
+ .xt.prop       0x000000000000aadc        0x0 /home/gez/sdks/zephyr/toolchains/xtensa-espressif_esp32_zephyr-elf/bin/../lib/gcc/xtensa-espressif_esp32_zephyr-elf/12.1.0/libgcc.a(_floatdidf.o)
                                          0x9c (size before relaxing)
- .xt.prop       0x000000000000aac4        0x0 /home/gez/sdks/zephyr/toolchains/xtensa-espressif_esp32_zephyr-elf/bin/../lib/gcc/xtensa-espressif_esp32_zephyr-elf/12.1.0/libgcc.a(_truncdfsf2.o)
+ .xt.prop       0x000000000000aadc        0x0 /home/gez/sdks/zephyr/toolchains/xtensa-espressif_esp32_zephyr-elf/bin/../lib/gcc/xtensa-espressif_esp32_zephyr-elf/12.1.0/libgcc.a(_truncdfsf2.o)
                                          0xb4 (size before relaxing)
- .xt.prop       0x000000000000aac4        0x0 /home/gez/sdks/zephyr/toolchains/xtensa-espressif_esp32_zephyr-elf/bin/../lib/gcc/xtensa-espressif_esp32_zephyr-elf/12.1.0/libgcc.a(_extendsfdf2.o)
+ .xt.prop       0x000000000000aadc        0x0 /home/gez/sdks/zephyr/toolchains/xtensa-espressif_esp32_zephyr-elf/bin/../lib/gcc/xtensa-espressif_esp32_zephyr-elf/12.1.0/libgcc.a(_extendsfdf2.o)
                                          0x6c (size before relaxing)
- .xt.prop       0x000000000000aac4        0x0 /home/gez/sdks/zephyr/toolchains/xtensa-espressif_esp32_zephyr-elf/bin/../lib/gcc/xtensa-espressif_esp32_zephyr-elf/12.1.0/libgcc.a(_popcountsi2.o)
+ .xt.prop       0x000000000000aadc        0x0 /home/gez/sdks/zephyr/toolchains/xtensa-espressif_esp32_zephyr-elf/bin/../lib/gcc/xtensa-espressif_esp32_zephyr-elf/12.1.0/libgcc.a(_popcountsi2.o)
                                          0x30 (size before relaxing)
- .xt.prop       0x000000000000aac4        0x0 /home/gez/sdks/zephyr/toolchains/xtensa-espressif_esp32_zephyr-elf/bin/../lib/gcc/xtensa-espressif_esp32_zephyr-elf/12.1.0/libgcc.a(_divdi3.o)
+ .xt.prop       0x000000000000aadc        0x0 /home/gez/sdks/zephyr/toolchains/xtensa-espressif_esp32_zephyr-elf/bin/../lib/gcc/xtensa-espressif_esp32_zephyr-elf/12.1.0/libgcc.a(_divdi3.o)
                                         0x198 (size before relaxing)
- .xt.prop       0x000000000000aac4        0x0 /home/gez/sdks/zephyr/toolchains/xtensa-espressif_esp32_zephyr-elf/bin/../lib/gcc/xtensa-espressif_esp32_zephyr-elf/12.1.0/libgcc.a(_udivdi3.o)
+ .xt.prop       0x000000000000aadc        0x0 /home/gez/sdks/zephyr/toolchains/xtensa-espressif_esp32_zephyr-elf/bin/../lib/gcc/xtensa-espressif_esp32_zephyr-elf/12.1.0/libgcc.a(_udivdi3.o)
                                         0x180 (size before relaxing)
- .xt.prop       0x000000000000aac4        0x0 /home/gez/sdks/zephyr/toolchains/xtensa-espressif_esp32_zephyr-elf/bin/../lib/gcc/xtensa-espressif_esp32_zephyr-elf/12.1.0/libgcc.a(_umoddi3.o)
+ .xt.prop       0x000000000000aadc        0x0 /home/gez/sdks/zephyr/toolchains/xtensa-espressif_esp32_zephyr-elf/bin/../lib/gcc/xtensa-espressif_esp32_zephyr-elf/12.1.0/libgcc.a(_umoddi3.o)
                                         0x138 (size before relaxing)
  *(SORT_BY_ALIGNMENT(.xt.prop.*))
  *(SORT_BY_ALIGNMENT(.gnu.linkonce.prop.*))
@@ -8702,11 +8770,15 @@ noinit          0x000000003ffe5230     0xd800
  .xt.lit        0x0000000000000208        0x0 zephyr/libzephyr.a(esp_efuse_utility.c.obj)
                                          0x38 (size before relaxing)
  .xt.lit        0x0000000000000208        0x0 zephyr/libzephyr.a(esp_efuse_api.c.obj)
-                                         0x70 (size before relaxing)
+                                         0x68 (size before relaxing)
  .xt.lit        0x0000000000000208        0x0 zephyr/libzephyr.a(esp_efuse_api_key_esp32.c.obj)
                                          0x60 (size before relaxing)
  .xt.lit        0x0000000000000208        0x0 zephyr/libzephyr.a(esp_efuse_utility.c.obj)
                                          0x78 (size before relaxing)
+ .xt.lit        0x0000000000000208        0x0 zephyr/libzephyr.a(bootloader_flash_config_esp32.c.obj)
+                                         0x38 (size before relaxing)
+ .xt.lit        0x0000000000000208        0x0 zephyr/libzephyr.a(bootloader_efuse_esp32.c.obj)
+                                         0x18 (size before relaxing)
  .xt.lit        0x0000000000000208        0x0 zephyr/libzephyr.a(esp_system_api.c.obj)
                                          0x10 (size before relaxing)
  .xt.lit        0x0000000000000208        0x0 zephyr/libzephyr.a(dport_access.c.obj)
@@ -8963,7 +9035,7 @@ LOAD /home/gez/sdks/zephyr/toolchains/xtensa-espressif_esp32_zephyr-elf/bin/../l
                 [!provide]                        PROVIDE (dh_group2_prime = 0x3ff9ad22)
                 [!provide]                        PROVIDE (dh_group5_generator = 0x3ff9ad21)
                 [!provide]                        PROVIDE (dh_group5_prime = 0x3ff9ac61)
-                [!provide]                        PROVIDE (g_rom_spiflash_dummy_len_plus = 0x3ffae290)
+                0x000000003ffae290                PROVIDE (g_rom_spiflash_dummy_len_plus = 0x3ffae290)
                 [!provide]                        PROVIDE (ecc_env = 0x3ffb8d60)
                 [!provide]                        PROVIDE (ecc_Jacobian_InfinityPoint256 = 0x3ff972e8)
                 [!provide]                        PROVIDE (em_buf_env = 0x3ffb8d74)
@@ -8978,7 +9050,7 @@ LOAD /home/gez/sdks/zephyr/toolchains/xtensa-espressif_esp32_zephyr-elf/bin/../l
                 [!provide]                        PROVIDE (GF_Jacobian_Point_Double256 = 0x40016260)
                 [!provide]                        PROVIDE (GF_Point_Jacobian_To_Affine256 = 0x40016b0c)
                 [!provide]                        PROVIDE (g_phyFuns_instance = 0x3ffae0c4)
-                [!provide]                        PROVIDE (g_rom_flashchip = 0x3ffae270)
+                0x000000003ffae270                PROVIDE (g_rom_flashchip = 0x3ffae270)
                 [!provide]                        PROVIDE (gTxMsg = 0x3ffe0050)
                 [!provide]                        PROVIDE (hci_cmd_desc_root_tab = 0x3ff976d4)
                 [!provide]                        PROVIDE (hci_cmd_desc_tab_ctrl_bb = 0x3ff97b70)
@@ -10251,7 +10323,7 @@ LOAD /home/gez/sdks/zephyr/toolchains/xtensa-espressif_esp32_zephyr-elf/bin/../l
                 [!provide]                        PROVIDE (esp_rom_spiflash_prepare_encrypted_data = 0x40062e1c)
                 [!provide]                        PROVIDE (esp_rom_spiflash_select_qio_pins = 0x40061ddc)
                 [!provide]                        PROVIDE (esp_rom_spiflash_attach = 0x40062a6c)
-                [!provide]                        PROVIDE (esp_rom_spiflash_config_clk = 0x40062bc8)
+                0x0000000040062bc8                PROVIDE (esp_rom_spiflash_config_clk = 0x40062bc8)
                 [!provide]                        PROVIDE (g_rom_spiflash_chip = 0x3ffae270)
                 [!provide]                        PROVIDE (hci_le_rd_rem_used_feats_cmd_handler = 0x400417b4)
                 [!provide]                        PROVIDE (llcp_length_req_handler = 0x40043808)
@@ -10331,7 +10403,7 @@ LOAD /home/gez/sdks/zephyr/toolchains/xtensa-espressif_esp32_zephyr-elf/bin/../l
                 [!provide]                        PROVIDE (ets_set_idle_cb = 0x40006674)
                 [!provide]                        PROVIDE (ets_task = 0x40006688)
                 [!provide]                        PROVIDE (ets_efuse_get_8M_clock = 0x40008710)
-                [!provide]                        PROVIDE (ets_efuse_get_spiconfig = 0x40008658)
+                0x0000000040008658                PROVIDE (ets_efuse_get_spiconfig = 0x40008658)
                 [!provide]                        PROVIDE (ets_efuse_program_op = 0x40008628)
                 [!provide]                        PROVIDE (ets_efuse_read_op = 0x40008600)
                 [!provide]                        PROVIDE (ets_intr_lock = 0x400067b0)
@@ -10433,10 +10505,10 @@ LOAD /home/gez/sdks/zephyr/toolchains/xtensa-espressif_esp32_zephyr-elf/bin/../l
                 [!provide]                        PROVIDE (esp_rom_gpio_pad_pullup_only = gpio_pad_pullup)
                 [!provide]                        PROVIDE (esp_rom_gpio_pad_set_drv = gpio_pad_set_drv)
                 [!provide]                        PROVIDE (esp_rom_gpio_pad_unhold = gpio_pad_unhold)
-                [!provide]                        PROVIDE (esp_rom_gpio_connect_in_signal = gpio_matrix_in)
-                [!provide]                        PROVIDE (esp_rom_gpio_connect_out_signal = gpio_matrix_out)
+                0x0000000040009edc                PROVIDE (esp_rom_gpio_connect_in_signal = gpio_matrix_in)
+                0x0000000040009f0c                PROVIDE (esp_rom_gpio_connect_out_signal = gpio_matrix_out)
                 0x000000004005d144                PROVIDE (esp_rom_efuse_mac_address_crc8 = esp_crc8)
-                [!provide]                        PROVIDE (esp_rom_efuse_get_flash_gpio_info = ets_efuse_get_spiconfig)
+                0x0000000040008658                PROVIDE (esp_rom_efuse_get_flash_gpio_info = ets_efuse_get_spiconfig)
                 [!provide]                        PROVIDE (esp_rom_efuse_is_secure_boot_enabled = ets_efuse_secure_boot_enabled)
                 [!provide]                        PROVIDE (esp_rom_uart_flush_tx = uart_tx_flush)
                 0x0000000040009200                PROVIDE (esp_rom_uart_tx_one_char = uart_tx_one_char)

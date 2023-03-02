@@ -38,7 +38,6 @@
         "mdio_driver_api",
         "mipi_dsi_driver_api",
         "peci_driver_api",
-        "pinmux_driver_api",
         "ps2_driver_api",
         "ptp_clock_driver_api",
         "pwm_driver_api",
@@ -54,11 +53,11 @@
         "wdt_driver_api",
         "can_transceiver_driver_api",
         "uart_mux_driver_api",
-        "ec_host_cmd_periph_api",
         "its_driver_api",
         "pcie_ctrl_driver_api",
         "tcpc_driver_api",
         "ivshmem_driver_api",
+        "ec_host_cmd_backend_api",
         "ethphy_driver_api"
     ]
 }

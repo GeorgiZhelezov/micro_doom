@@ -57,6 +57,11 @@ DT_COMPAT_ALTR_NIOS2F := altr,nios2f
 config DT_HAS_ALTR_NIOS2F_ENABLED
 	def_bool $(dt_compat_enabled,$(DT_COMPAT_ALTR_NIOS2F))
 
+DT_COMPAT_ALTR_UART := altr,uart
+
+config DT_HAS_ALTR_UART_ENABLED
+	def_bool $(dt_compat_enabled,$(DT_COMPAT_ALTR_UART))
+
 DT_COMPAT_AMS_AS5600 := ams,as5600
 
 config DT_HAS_AMS_AS5600_ENABLED
@@ -456,6 +461,11 @@ DT_COMPAT_ASAHI_KASEI_AK8975 := asahi-kasei,ak8975
 
 config DT_HAS_ASAHI_KASEI_AK8975_ENABLED
 	def_bool $(dt_compat_enabled,$(DT_COMPAT_ASAHI_KASEI_AK8975))
+
+DT_COMPAT_ASAHI_KASEI_AKM09918C := asahi-kasei,akm09918c
+
+config DT_HAS_ASAHI_KASEI_AKM09918C_ENABLED
+	def_bool $(dt_compat_enabled,$(DT_COMPAT_ASAHI_KASEI_AKM09918C))
 
 DT_COMPAT_ASMEDIA_ASM2364 := asmedia,asm2364
 
@@ -1382,6 +1392,21 @@ DT_COMPAT_ILITEK_ILI9488 := ilitek,ili9488
 config DT_HAS_ILITEK_ILI9488_ENABLED
 	def_bool $(dt_compat_enabled,$(DT_COMPAT_ILITEK_ILI9488))
 
+DT_COMPAT_INFINEON_CAT1_GPIO := infineon,cat1-gpio
+
+config DT_HAS_INFINEON_CAT1_GPIO_ENABLED
+	def_bool $(dt_compat_enabled,$(DT_COMPAT_INFINEON_CAT1_GPIO))
+
+DT_COMPAT_INFINEON_CAT1_PINCTRL := infineon,cat1-pinctrl
+
+config DT_HAS_INFINEON_CAT1_PINCTRL_ENABLED
+	def_bool $(dt_compat_enabled,$(DT_COMPAT_INFINEON_CAT1_PINCTRL))
+
+DT_COMPAT_INFINEON_CAT1_UART := infineon,cat1-uart
+
+config DT_HAS_INFINEON_CAT1_UART_ENABLED
+	def_bool $(dt_compat_enabled,$(DT_COMPAT_INFINEON_CAT1_UART))
+
 DT_COMPAT_INFINEON_DPS310 := infineon,dps310
 
 config DT_HAS_INFINEON_DPS310_ENABLED
@@ -1987,6 +2012,11 @@ DT_COMPAT_MAXIM_MAX30101 := maxim,max30101
 config DT_HAS_MAXIM_MAX30101_ENABLED
 	def_bool $(dt_compat_enabled,$(DT_COMPAT_MAXIM_MAX30101))
 
+DT_COMPAT_MAXIM_MAX31855 := maxim,max31855
+
+config DT_HAS_MAXIM_MAX31855_ENABLED
+	def_bool $(dt_compat_enabled,$(DT_COMPAT_MAXIM_MAX31855))
+
 DT_COMPAT_MAXIM_MAX31875 := maxim,max31875
 
 config DT_HAS_MAXIM_MAX31875_ENABLED
@@ -2226,11 +2256,6 @@ DT_COMPAT_MICROCHIP_XEC_PINCTRL := microchip,xec-pinctrl
 
 config DT_HAS_MICROCHIP_XEC_PINCTRL_ENABLED
 	def_bool $(dt_compat_enabled,$(DT_COMPAT_MICROCHIP_XEC_PINCTRL))
-
-DT_COMPAT_MICROCHIP_XEC_PINMUX := microchip,xec-pinmux
-
-config DT_HAS_MICROCHIP_XEC_PINMUX_ENABLED
-	def_bool $(dt_compat_enabled,$(DT_COMPAT_MICROCHIP_XEC_PINMUX))
 
 DT_COMPAT_MICROCHIP_XEC_PS2 := microchip,xec-ps2
 
@@ -3472,11 +3497,6 @@ DT_COMPAT_NXP_LPC11U6X_PINCTRL := nxp,lpc11u6x-pinctrl
 config DT_HAS_NXP_LPC11U6X_PINCTRL_ENABLED
 	def_bool $(dt_compat_enabled,$(DT_COMPAT_NXP_LPC11U6X_PINCTRL))
 
-DT_COMPAT_NXP_LPC11U6X_PINMUX := nxp,lpc11u6x-pinmux
-
-config DT_HAS_NXP_LPC11U6X_PINMUX_ENABLED
-	def_bool $(dt_compat_enabled,$(DT_COMPAT_NXP_LPC11U6X_PINMUX))
-
 DT_COMPAT_NXP_LPC11U6X_SYSCON := nxp,lpc11u6x-syscon
 
 config DT_HAS_NXP_LPC11U6X_SYSCON_ENABLED
@@ -3566,6 +3586,11 @@ DT_COMPAT_NXP_PCAL6408A := nxp,pcal6408a
 
 config DT_HAS_NXP_PCAL6408A_ENABLED
 	def_bool $(dt_compat_enabled,$(DT_COMPAT_NXP_PCAL6408A))
+
+DT_COMPAT_NXP_PCAL6416A := nxp,pcal6416a
+
+config DT_HAS_NXP_PCAL6416A_ENABLED
+	def_bool $(dt_compat_enabled,$(DT_COMPAT_NXP_PCAL6416A))
 
 DT_COMPAT_NXP_PCF8574 := nxp,pcf8574
 
@@ -3946,6 +3971,11 @@ DT_COMPAT_ROCKTECH_RK043FN02H_CT := rocktech,rk043fn02h-ct
 
 config DT_HAS_ROCKTECH_RK043FN02H_CT_ENABLED
 	def_bool $(dt_compat_enabled,$(DT_COMPAT_ROCKTECH_RK043FN02H_CT))
+
+DT_COMPAT_ROHM_BD8LB600FS := rohm,bd8lb600fs
+
+config DT_HAS_ROHM_BD8LB600FS_ENABLED
+	def_bool $(dt_compat_enabled,$(DT_COMPAT_ROHM_BD8LB600FS))
 
 DT_COMPAT_ROHM_BH1750 := rohm,bh1750
 
@@ -4517,6 +4547,11 @@ DT_COMPAT_ST_STM32_BBRAM := st,stm32-bbram
 config DT_HAS_ST_STM32_BBRAM_ENABLED
 	def_bool $(dt_compat_enabled,$(DT_COMPAT_ST_STM32_BBRAM))
 
+DT_COMPAT_ST_STM32_BDMA := st,stm32-bdma
+
+config DT_HAS_ST_STM32_BDMA_ENABLED
+	def_bool $(dt_compat_enabled,$(DT_COMPAT_ST_STM32_BDMA))
+
 DT_COMPAT_ST_STM32_CAN := st,stm32-can
 
 config DT_HAS_ST_STM32_CAN_ENABLED
@@ -4876,6 +4911,16 @@ DT_COMPAT_ST_STM32F4_PLL_CLOCK := st,stm32f4-pll-clock
 
 config DT_HAS_ST_STM32F4_PLL_CLOCK_ENABLED
 	def_bool $(dt_compat_enabled,$(DT_COMPAT_ST_STM32F4_PLL_CLOCK))
+
+DT_COMPAT_ST_STM32F4_PLLI2S_CLOCK := st,stm32f4-plli2s-clock
+
+config DT_HAS_ST_STM32F4_PLLI2S_CLOCK_ENABLED
+	def_bool $(dt_compat_enabled,$(DT_COMPAT_ST_STM32F4_PLLI2S_CLOCK))
+
+DT_COMPAT_ST_STM32F412_PLLI2S_CLOCK := st,stm32f412-plli2s-clock
+
+config DT_HAS_ST_STM32F412_PLLI2S_CLOCK_ENABLED
+	def_bool $(dt_compat_enabled,$(DT_COMPAT_ST_STM32F412_PLLI2S_CLOCK))
 
 DT_COMPAT_ST_STM32F7_FLASH_CONTROLLER := st,stm32f7-flash-controller
 
@@ -5847,6 +5892,11 @@ DT_COMPAT_WORLDSEMI_WS2812_GPIO := worldsemi,ws2812-gpio
 config DT_HAS_WORLDSEMI_WS2812_GPIO_ENABLED
 	def_bool $(dt_compat_enabled,$(DT_COMPAT_WORLDSEMI_WS2812_GPIO))
 
+DT_COMPAT_WORLDSEMI_WS2812_I2S := worldsemi,ws2812-i2s
+
+config DT_HAS_WORLDSEMI_WS2812_I2S_ENABLED
+	def_bool $(dt_compat_enabled,$(DT_COMPAT_WORLDSEMI_WS2812_I2S))
+
 DT_COMPAT_WORLDSEMI_WS2812_SPI := worldsemi,ws2812-spi
 
 config DT_HAS_WORLDSEMI_WS2812_SPI_ENABLED
@@ -5981,11 +6031,6 @@ DT_COMPAT_ZEPHYR_DUMMY_DC := zephyr,dummy-dc
 
 config DT_HAS_ZEPHYR_DUMMY_DC_ENABLED
 	def_bool $(dt_compat_enabled,$(DT_COMPAT_ZEPHYR_DUMMY_DC))
-
-DT_COMPAT_ZEPHYR_EC_HOST_CMD_PERIPH_ESPI := zephyr,ec-host-cmd-periph-espi
-
-config DT_HAS_ZEPHYR_EC_HOST_CMD_PERIPH_ESPI_ENABLED
-	def_bool $(dt_compat_enabled,$(DT_COMPAT_ZEPHYR_EC_HOST_CMD_PERIPH_ESPI))
 
 DT_COMPAT_ZEPHYR_EMU_EEPROM := zephyr,emu-eeprom
 
@@ -6156,11 +6201,6 @@ DT_COMPAT_ZEPHYR_SDMMC_DISK := zephyr,sdmmc-disk
 
 config DT_HAS_ZEPHYR_SDMMC_DISK_ENABLED
 	def_bool $(dt_compat_enabled,$(DT_COMPAT_ZEPHYR_SDMMC_DISK))
-
-DT_COMPAT_ZEPHYR_SIM_EC_HOST_CMD_PERIPH := zephyr,sim-ec-host-cmd-periph
-
-config DT_HAS_ZEPHYR_SIM_EC_HOST_CMD_PERIPH_ENABLED
-	def_bool $(dt_compat_enabled,$(DT_COMPAT_ZEPHYR_SIM_EC_HOST_CMD_PERIPH))
 
 DT_COMPAT_ZEPHYR_SIM_EEPROM := zephyr,sim-eeprom
 

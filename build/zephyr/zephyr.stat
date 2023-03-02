@@ -10,7 +10,7 @@ ELF Header:
   Version:                           0x1
   Entry point address:               0x40084208
   Start of program headers:          52 (bytes into file)
-  Start of section headers:          1190680 (bytes into file)
+  Start of section headers:          1191848 (bytes into file)
   Flags:                             0x300
   Size of this header:               52 (bytes)
   Size of program headers:           32 (bytes)
@@ -27,9 +27,9 @@ Section Headers:
   [ 3] .iram0.vectors    PROGBITS        40080000 015720 000400 00  AX  0   0  4
   [ 4] text              PROGBITS        40080400 015b20 003f04 00  AX  0   0  4
   [ 5] .dram0.data       PROGBITS        3ffb0000 004c28 010960 00  WA  0   0  8
-  [ 6] .dram0.end        PROGBITS        3ffc0af8 01f730 000000 00   W  0   0  1
+  [ 6] .dram0.end        PROGBITS        3ffc0af8 01f76c 000000 00   W  0   0  1
   [ 7] rodata            PROGBITS        3f400040 000170 0048f0 00   A  0   0  4
-  [ 8] _RODATA_SECT[...] PROGBITS        3f404af8 01f730 000000 00   W  0   0  1
+  [ 8] _RODATA_SECT[...] PROGBITS        3f404af8 01f76c 000000 00   W  0   0  1
   [ 9] initlevel         PROGBITS        3f404930 004a60 000060 00   A  0   0  4
   [10] devices           PROGBITS        3f404990 004ac0 0000c0 00   A  0   0  4
   [11] device_handles    PROGBITS        3f404a50 004b80 000044 00   A  0   0  2
@@ -39,26 +39,26 @@ Section Headers:
   [15] device_states     PROGBITS        3ffc0a60 015688 000010 00  WA  0   0  1
   [16] k_heap_area       PROGBITS        3ffc0a70 015698 000028 00  WA  0   0  4
   [17] log_const_se[...] PROGBITS        3ffc0a98 0156c0 000060 00   A  0   0  4
-  [18] .rtc.text         PROGBITS        400c0000 01f730 000000 00   W  0   0  1
-  [19] .rtc.force_slow   PROGBITS        50000000 01f730 000000 00   W  0   0  1
-  [20] bss               NOBITS          3ffc0af8 01f730 001448 00  WA  0   0  8
-  [21] noinit            NOBITS          3ffe5230 01f730 00d800 00  WA  0   0 16
-  [22] .flash.text       PROGBITS        400d0020 019a24 005d0c 00  AX  0   0  4
-  [23] .comment          PROGBITS        00000000 01f730 000020 01  MS  0   0  1
-  [24] .debug_aranges    PROGBITS        00000000 01f750 001e10 00      0   0  8
-  [25] .debug_info       PROGBITS        00000000 021560 06a547 00      0   0  1
-  [26] .debug_abbrev     PROGBITS        00000000 08baa7 00dfbd 00      0   0  1
-  [27] .debug_line       PROGBITS        00000000 099a64 03d888 00      0   0  1
-  [28] .debug_frame      PROGBITS        00000000 0d72ec 004700 00      0   0  4
-  [29] .debug_str        PROGBITS        00000000 0db9ec 00db0b 01  MS  0   0  1
-  [30] .debug_loc        PROGBITS        00000000 0e94f7 0207d6 00      0   0  1
-  [31] .debug_ranges     PROGBITS        00000000 109cd0 001fa8 00      0   0  8
-  [32] .xtensa.info      NOTE            00000000 10bc78 000038 00      0   0  1
-  [33] .xt.prop          PROGBITS        00000000 10bcb0 00aac4 00      0   0  1
-  [34] .xt.lit           PROGBITS        00000000 116774 0004f0 00      0   0  1
-  [35] .symtab           SYMTAB          00000000 116c64 005770 10     36 520  4
-  [36] .strtab           STRTAB          00000000 11c3d4 00658e 00      0   0  1
-  [37] .shstrtab         STRTAB          00000000 122962 0001b3 00      0   0  1
+  [18] .rtc.text         PROGBITS        400c0000 01f76c 000000 00   W  0   0  1
+  [19] .rtc.force_slow   PROGBITS        50000000 01f76c 000000 00   W  0   0  1
+  [20] bss               NOBITS          3ffc0af8 01f770 001448 00  WA  0   0  8
+  [21] noinit            NOBITS          3ffe5230 01f770 00d800 00  WA  0   0 16
+  [22] .flash.text       PROGBITS        400d0020 019a24 005d48 00  AX  0   0  4
+  [23] .comment          PROGBITS        00000000 01f76c 000020 01  MS  0   0  1
+  [24] .debug_aranges    PROGBITS        00000000 01f790 001e10 00      0   0  8
+  [25] .debug_info       PROGBITS        00000000 0215a0 06a698 00      0   0  1
+  [26] .debug_abbrev     PROGBITS        00000000 08bc38 00e00c 00      0   0  1
+  [27] .debug_line       PROGBITS        00000000 099c44 03da10 00      0   0  1
+  [28] .debug_frame      PROGBITS        00000000 0d7654 004700 00      0   0  4
+  [29] .debug_str        PROGBITS        00000000 0dbd54 00db00 01  MS  0   0  1
+  [30] .debug_loc        PROGBITS        00000000 0e9854 020836 00      0   0  1
+  [31] .debug_ranges     PROGBITS        00000000 10a090 001fa8 00      0   0  8
+  [32] .xtensa.info      NOTE            00000000 10c038 000038 00      0   0  1
+  [33] .xt.prop          PROGBITS        00000000 10c070 00aadc 00      0   0  1
+  [34] .xt.lit           PROGBITS        00000000 116b4c 0004f0 00      0   0  1
+  [35] .symtab           SYMTAB          00000000 11703c 0057c0 10     36 522  4
+  [36] .strtab           STRTAB          00000000 11c7fc 0065f7 00      0   0  1
+  [37] .shstrtab         STRTAB          00000000 122df3 0001b3 00      0   0  1
 Key to Flags:
   W (write), A (alloc), X (execute), M (merge), S (strings), I (info),
   L (link order), O (extra OS processing required), G (group), T (TLS),
@@ -72,7 +72,7 @@ Program Headers:
   LOAD           0x000170 0x3f400040 0x00000040 0x04ab8 0x04ab8 RW  0x4
   LOAD           0x004c28 0x3ffb0000 0x00004af8 0x10af8 0x10af8 RW  0x8
   LOAD           0x015720 0x40080000 0x000155f0 0x04304 0x04304 R E 0x4
-  LOAD           0x019a24 0x400d0020 0x000198f4 0x05d0c 0x05d0c R E 0x4
+  LOAD           0x019a24 0x400d0020 0x000198f4 0x05d48 0x05d48 R E 0x4
   LOAD           0x000000 0x3ffc0af8 0x3ffc0af8 0x00000 0x01448 RW  0x8
   LOAD           0x000000 0x3ffe5230 0x3ffe5230 0x00000 0x0d800 RW  0x10
 

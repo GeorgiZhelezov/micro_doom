@@ -86,7 +86,6 @@
 /home/gez/workspaces/eclipse/esp_doom/build/zephyr/misc/generated/syscalls_links/include_zephyr_drivers_clock_control
 /home/gez/workspaces/eclipse/esp_doom/build/zephyr/misc/generated/syscalls_links/include_zephyr_drivers_console
 /home/gez/workspaces/eclipse/esp_doom/build/zephyr/misc/generated/syscalls_links/include_zephyr_drivers_dma
-/home/gez/workspaces/eclipse/esp_doom/build/zephyr/misc/generated/syscalls_links/include_zephyr_drivers_ec_host_cmd_periph
 /home/gez/workspaces/eclipse/esp_doom/build/zephyr/misc/generated/syscalls_links/include_zephyr_drivers_eeprom
 /home/gez/workspaces/eclipse/esp_doom/build/zephyr/misc/generated/syscalls_links/include_zephyr_drivers_flash
 /home/gez/workspaces/eclipse/esp_doom/build/zephyr/misc/generated/syscalls_links/include_zephyr_drivers_gpio
@@ -145,6 +144,7 @@
 /home/gez/workspaces/eclipse/esp_doom/build/zephyr/misc/generated/syscalls_links/include_zephyr_dt-bindings_usb-c
 /home/gez/workspaces/eclipse/esp_doom/build/zephyr/misc/generated/syscalls_links/include_zephyr_dt-bindings_pinctrl_renesas
 /home/gez/workspaces/eclipse/esp_doom/build/zephyr/misc/generated/syscalls_links/include_zephyr_linker_common-rom
+/home/gez/workspaces/eclipse/esp_doom/build/zephyr/misc/generated/syscalls_links/include_zephyr_mgmt_ec_host_cmd
 /home/gez/workspaces/eclipse/esp_doom/build/zephyr/misc/generated/syscalls_links/include_zephyr_mgmt_mcumgr
 /home/gez/workspaces/eclipse/esp_doom/build/zephyr/misc/generated/syscalls_links/include_zephyr_mgmt_mcumgr_grp
 /home/gez/workspaces/eclipse/esp_doom/build/zephyr/misc/generated/syscalls_links/include_zephyr_mgmt_mcumgr_mgmt

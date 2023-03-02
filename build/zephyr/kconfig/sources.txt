@@ -157,6 +157,7 @@
 /home/gez/sdks/zephyr/zephyr/drivers/bbram/Kconfig
 /home/gez/sdks/zephyr/zephyr/drivers/bbram/Kconfig.bbram_emul
 /home/gez/sdks/zephyr/zephyr/drivers/bbram/Kconfig.it8xxx2
+/home/gez/sdks/zephyr/zephyr/drivers/bbram/Kconfig.microchip
 /home/gez/sdks/zephyr/zephyr/drivers/bbram/Kconfig.npcx
 /home/gez/sdks/zephyr/zephyr/drivers/bbram/Kconfig.stm32
 /home/gez/sdks/zephyr/zephyr/drivers/bbram/Kconfig.xec
@@ -186,6 +187,7 @@
 /home/gez/sdks/zephyr/zephyr/drivers/clock_control/Kconfig.cavs
 /home/gez/sdks/zephyr/zephyr/drivers/clock_control/Kconfig.esp32
 /home/gez/sdks/zephyr/zephyr/drivers/clock_control/Kconfig.gd32
+/home/gez/sdks/zephyr/zephyr/drivers/clock_control/Kconfig.ifx_cat1
 /home/gez/sdks/zephyr/zephyr/drivers/clock_control/Kconfig.litex
 /home/gez/sdks/zephyr/zephyr/drivers/clock_control/Kconfig.lpc11u6x
 /home/gez/sdks/zephyr/zephyr/drivers/clock_control/Kconfig.mcux_ccm
@@ -297,7 +299,6 @@
 /home/gez/sdks/zephyr/zephyr/drivers/dma/Kconfig.stm32
 /home/gez/sdks/zephyr/zephyr/drivers/dma/Kconfig.xec
 /home/gez/sdks/zephyr/zephyr/drivers/dma/Kconfig.xmc4xxx
-/home/gez/sdks/zephyr/zephyr/drivers/ec_host_cmd_periph/Kconfig
 /home/gez/sdks/zephyr/zephyr/drivers/edac/Kconfig
 /home/gez/sdks/zephyr/zephyr/drivers/eeprom/Kconfig
 /home/gez/sdks/zephyr/zephyr/drivers/eeprom/Kconfig.eeprom_emu
@@ -379,6 +380,7 @@
 /home/gez/sdks/zephyr/zephyr/drivers/gpio/Kconfig
 /home/gez/sdks/zephyr/zephyr/drivers/gpio/Kconfig.andes_atcgpio100
 /home/gez/sdks/zephyr/zephyr/drivers/gpio/Kconfig.b91
+/home/gez/sdks/zephyr/zephyr/drivers/gpio/Kconfig.bd8lb600fs
 /home/gez/sdks/zephyr/zephyr/drivers/gpio/Kconfig.cc13xx_cc26xx
 /home/gez/sdks/zephyr/zephyr/drivers/gpio/Kconfig.cc32xx
 /home/gez/sdks/zephyr/zephyr/drivers/gpio/Kconfig.cmsdk_ahb
@@ -392,6 +394,7 @@
 /home/gez/sdks/zephyr/zephyr/drivers/gpio/Kconfig.fxl6408
 /home/gez/sdks/zephyr/zephyr/drivers/gpio/Kconfig.gd32
 /home/gez/sdks/zephyr/zephyr/drivers/gpio/Kconfig.gecko
+/home/gez/sdks/zephyr/zephyr/drivers/gpio/Kconfig.ifx_cat1
 /home/gez/sdks/zephyr/zephyr/drivers/gpio/Kconfig.imx
 /home/gez/sdks/zephyr/zephyr/drivers/gpio/Kconfig.intel
 /home/gez/sdks/zephyr/zephyr/drivers/gpio/Kconfig.it8xxx2
@@ -414,7 +417,7 @@
 /home/gez/sdks/zephyr/zephyr/drivers/gpio/Kconfig.nxp_s32
 /home/gez/sdks/zephyr/zephyr/drivers/gpio/Kconfig.pca953x
 /home/gez/sdks/zephyr/zephyr/drivers/gpio/Kconfig.pca95xx
-/home/gez/sdks/zephyr/zephyr/drivers/gpio/Kconfig.pcal6408a
+/home/gez/sdks/zephyr/zephyr/drivers/gpio/Kconfig.pcal64xxa
 /home/gez/sdks/zephyr/zephyr/drivers/gpio/Kconfig.pcf8574
 /home/gez/sdks/zephyr/zephyr/drivers/gpio/Kconfig.psoc6
 /home/gez/sdks/zephyr/zephyr/drivers/gpio/Kconfig.rcar
@@ -579,6 +582,7 @@
 /home/gez/sdks/zephyr/zephyr/drivers/pinctrl/Kconfig.esp32
 /home/gez/sdks/zephyr/zephyr/drivers/pinctrl/Kconfig.gd32
 /home/gez/sdks/zephyr/zephyr/drivers/pinctrl/Kconfig.gecko
+/home/gez/sdks/zephyr/zephyr/drivers/pinctrl/Kconfig.ifx_cat1
 /home/gez/sdks/zephyr/zephyr/drivers/pinctrl/Kconfig.imx
 /home/gez/sdks/zephyr/zephyr/drivers/pinctrl/Kconfig.it8xxx2
 /home/gez/sdks/zephyr/zephyr/drivers/pinctrl/Kconfig.kinetis
@@ -598,13 +602,6 @@
 /home/gez/sdks/zephyr/zephyr/drivers/pinctrl/Kconfig.xec
 /home/gez/sdks/zephyr/zephyr/drivers/pinctrl/Kconfig.xlnx
 /home/gez/sdks/zephyr/zephyr/drivers/pinctrl/Kconfig.xmc4xxx
-/home/gez/sdks/zephyr/zephyr/drivers/pinmux/Kconfig
-/home/gez/sdks/zephyr/zephyr/drivers/pinmux/Kconfig.lpc11u6x
-/home/gez/sdks/zephyr/zephyr/drivers/pinmux/Kconfig.mcux
-/home/gez/sdks/zephyr/zephyr/drivers/pinmux/Kconfig.mcux_lpc
-/home/gez/sdks/zephyr/zephyr/drivers/pinmux/Kconfig.rv32m1
-/home/gez/sdks/zephyr/zephyr/drivers/pinmux/Kconfig.stm32
-/home/gez/sdks/zephyr/zephyr/drivers/pinmux/Kconfig.xec
 /home/gez/sdks/zephyr/zephyr/drivers/pm_cpu_ops/Kconfig
 /home/gez/sdks/zephyr/zephyr/drivers/power_domain/Kconfig
 /home/gez/sdks/zephyr/zephyr/drivers/ps2/Kconfig
@@ -659,6 +656,7 @@
 /home/gez/sdks/zephyr/zephyr/drivers/sensor/adxl362/Kconfig
 /home/gez/sdks/zephyr/zephyr/drivers/sensor/adxl372/Kconfig
 /home/gez/sdks/zephyr/zephyr/drivers/sensor/ak8975/Kconfig
+/home/gez/sdks/zephyr/zephyr/drivers/sensor/akm09918c/Kconfig
 /home/gez/sdks/zephyr/zephyr/drivers/sensor/amg88xx/Kconfig
 /home/gez/sdks/zephyr/zephyr/drivers/sensor/ams_as5600/Kconfig
 /home/gez/sdks/zephyr/zephyr/drivers/sensor/ams_iAQcore/Kconfig
@@ -723,6 +721,7 @@
 /home/gez/sdks/zephyr/zephyr/drivers/sensor/max17055/Kconfig
 /home/gez/sdks/zephyr/zephyr/drivers/sensor/max17262/Kconfig
 /home/gez/sdks/zephyr/zephyr/drivers/sensor/max30101/Kconfig
+/home/gez/sdks/zephyr/zephyr/drivers/sensor/max31855/Kconfig
 /home/gez/sdks/zephyr/zephyr/drivers/sensor/max31875/Kconfig
 /home/gez/sdks/zephyr/zephyr/drivers/sensor/max44009/Kconfig
 /home/gez/sdks/zephyr/zephyr/drivers/sensor/max6675/Kconfig
@@ -774,6 +773,7 @@
 /home/gez/sdks/zephyr/zephyr/drivers/sensor/wsen_itds/Kconfig
 /home/gez/sdks/zephyr/zephyr/drivers/sensor/xmc4xxx_temp/Kconfig
 /home/gez/sdks/zephyr/zephyr/drivers/serial/Kconfig
+/home/gez/sdks/zephyr/zephyr/drivers/serial/Kconfig.altera
 /home/gez/sdks/zephyr/zephyr/drivers/serial/Kconfig.altera_jtag
 /home/gez/sdks/zephyr/zephyr/drivers/serial/Kconfig.apbuart
 /home/gez/sdks/zephyr/zephyr/drivers/serial/Kconfig.b91
@@ -784,6 +784,7 @@
 /home/gez/sdks/zephyr/zephyr/drivers/serial/Kconfig.esp32
 /home/gez/sdks/zephyr/zephyr/drivers/serial/Kconfig.gd32
 /home/gez/sdks/zephyr/zephyr/drivers/serial/Kconfig.gecko
+/home/gez/sdks/zephyr/zephyr/drivers/serial/Kconfig.ifx_cat1
 /home/gez/sdks/zephyr/zephyr/drivers/serial/Kconfig.imx
 /home/gez/sdks/zephyr/zephyr/drivers/serial/Kconfig.it8xxx2
 /home/gez/sdks/zephyr/zephyr/drivers/serial/Kconfig.leuart_gecko
@@ -950,6 +951,8 @@
 /home/gez/sdks/zephyr/zephyr/lib/open-amp/Kconfig
 /home/gez/sdks/zephyr/zephyr/lib/os/Kconfig
 /home/gez/sdks/zephyr/zephyr/lib/os/Kconfig.cbprintf
+/home/gez/sdks/zephyr/zephyr/lib/os/Kconfig.hash_func
+/home/gez/sdks/zephyr/zephyr/lib/os/Kconfig.hash_map
 /home/gez/sdks/zephyr/zephyr/lib/os/Kconfig.heap
 /home/gez/sdks/zephyr/zephyr/lib/posix/Kconfig
 /home/gez/sdks/zephyr/zephyr/lib/posix/getopt/Kconfig
@@ -1022,6 +1025,8 @@
 /home/gez/sdks/zephyr/zephyr/soc/xtensa/esp32_net/Kconfig.soc
 /home/gez/sdks/zephyr/zephyr/soc/xtensa/esp32s2/Kconfig.defconfig
 /home/gez/sdks/zephyr/zephyr/soc/xtensa/esp32s2/Kconfig.soc
+/home/gez/sdks/zephyr/zephyr/soc/xtensa/esp32s3/Kconfig.defconfig
+/home/gez/sdks/zephyr/zephyr/soc/xtensa/esp32s3/Kconfig.soc
 /home/gez/sdks/zephyr/zephyr/soc/xtensa/intel_adsp/Kconfig
 /home/gez/sdks/zephyr/zephyr/soc/xtensa/intel_adsp/Kconfig.defconfig
 /home/gez/sdks/zephyr/zephyr/soc/xtensa/intel_adsp/Kconfig.soc
@@ -1101,7 +1106,6 @@
 /home/gez/sdks/zephyr/zephyr/subsys/dsp/Kconfig
 /home/gez/sdks/zephyr/zephyr/subsys/emul/Kconfig
 /home/gez/sdks/zephyr/zephyr/subsys/emul/espi/Kconfig
-/home/gez/sdks/zephyr/zephyr/subsys/emul/i2c/Kconfig
 /home/gez/sdks/zephyr/zephyr/subsys/fb/Kconfig
 /home/gez/sdks/zephyr/zephyr/subsys/fs/Kconfig
 /home/gez/sdks/zephyr/zephyr/subsys/fs/Kconfig.fatfs
@@ -1147,6 +1151,7 @@
 /home/gez/sdks/zephyr/zephyr/subsys/lorawan/services/Kconfig
 /home/gez/sdks/zephyr/zephyr/subsys/mgmt/Kconfig
 /home/gez/sdks/zephyr/zephyr/subsys/mgmt/ec_host_cmd/Kconfig
+/home/gez/sdks/zephyr/zephyr/subsys/mgmt/ec_host_cmd/backends/Kconfig
 /home/gez/sdks/zephyr/zephyr/subsys/mgmt/hawkbit/Kconfig
 /home/gez/sdks/zephyr/zephyr/subsys/mgmt/mcumgr/Kconfig
 /home/gez/sdks/zephyr/zephyr/subsys/mgmt/mcumgr/grp/Kconfig
@@ -1250,6 +1255,7 @@
 /home/gez/sdks/zephyr/zephyr/subsys/usb/device_next/class/Kconfig.bt
 /home/gez/sdks/zephyr/zephyr/subsys/usb/device_next/class/Kconfig.cdc_acm
 /home/gez/sdks/zephyr/zephyr/subsys/usb/device_next/class/Kconfig.loopback
+/home/gez/sdks/zephyr/zephyr/subsys/usb/device_next/class/Kconfig.msc
 /home/gez/sdks/zephyr/zephyr/subsys/usb/device_next/class/Kconfig.template.instances_count
 /home/gez/sdks/zephyr/zephyr/subsys/usb/host/Kconfig
 /home/gez/sdks/zephyr/zephyr/subsys/usb/usb_c/Kconfig

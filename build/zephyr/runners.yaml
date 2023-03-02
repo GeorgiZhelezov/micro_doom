@@ -19,6 +19,7 @@ config:
   board_dir: /home/gez/sdks/zephyr/zephyr/boards/xtensa/esp32
   # Build outputs:
   elf_file: zephyr.elf
+  hex_file: zephyr.hex
   bin_file: zephyr.bin
   # Host tools:
   gdb: /home/gez/sdks/zephyr/toolchains/xtensa-espressif_esp32_zephyr-elf/bin/xtensa-espressif_esp32_zephyr-elf-gdb
