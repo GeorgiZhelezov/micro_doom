@@ -73,10 +73,12 @@
 #include <signal.h>
 #include <stdio.h>
 #include <stdlib.h>
-#include "nrf.h"
+// #include "nrf.h"
 unsigned int I_GetTimeMicrosecs()
 {
-    return NRF_TIMER3->CC[0];
+	//FIXME: add get microseconds function
+    // return NRF_TIMER3->CC[0];
+    return 0;
 }
 
 unsigned int I_GetTime(void)

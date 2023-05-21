@@ -59,6 +59,12 @@ config ZEPHYR_HAL_RPI_PICO_MODULE
 	bool
 	default y
 endmenu
+menu "silabs (/home/gez/sdks/zephyr/modules/hal/silabs)"
+osource "/home/gez/sdks/zephyr/modules/hal/silabs/zephyr/Kconfig"
+config ZEPHYR_SILABS_MODULE
+	bool
+	default y
+endmenu
 menu "hal_telink (/home/gez/sdks/zephyr/modules/hal/telink)"
 osource "/home/gez/sdks/zephyr/modules/hal/telink/Kconfig"
 config ZEPHYR_HAL_TELINK_MODULE
@@ -116,6 +122,12 @@ endmenu
 menu "picolibc (/home/gez/sdks/zephyr/modules/lib/picolibc)"
 osource "/home/gez/sdks/zephyr/modules/lib/picolibc/zephyr/Kconfig"
 config ZEPHYR_PICOLIBC_MODULE
+	bool
+	default y
+endmenu
+menu "segger (/home/gez/sdks/zephyr/modules/debug/segger)"
+osource "$(ZEPHYR_SEGGER_KCONFIG)"
+config ZEPHYR_SEGGER_MODULE
 	bool
 	default y
 endmenu

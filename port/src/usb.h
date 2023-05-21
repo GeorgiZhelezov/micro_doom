@@ -25,7 +25,7 @@
  */
 #ifndef USB_H
 #define USB_H
-#include "nrf.h"
+// #include "nrf.h"
 #include <stdbool.h>
 #include <stdint.h>
 // some USB defines
@@ -250,28 +250,28 @@ static inline uint32_t usbdWaitForEventAndClear(volatile uint32_t * eventReg, ui
 // wait for a specific event cause and clear it
 static inline void usbdEventcauseWaitAndClear(uint32_t eventcause)
 {
-    while (0 == (eventcause & NRF_USBD->EVENTCAUSE))
-    {
-        // do nothing
-    }
+    // while (0 == (eventcause & NRF_USBD->EVENTCAUSE))
+    // {
+    //     // do nothing
+    // }
     // clear event cause
-    NRF_USBD->EVENTCAUSE = eventcause;
-    __ISB();
-    __DSB();
+    // NRF_USBD->EVENTCAUSE = eventcause;
+    // __ISB();
+    // __DSB();
 }
 static inline void usbdTaskTrigger(volatile uint32_t * pTask)
 {
-    *pTask = 1;
-    __ISB();
-    __DSB();
+    // *pTask = 1;
+    // __ISB();
+    // __DSB();
 }
 static inline void disableUsbIrq()
 {
-    NVIC_DisableIRQ(USBD_IRQn);
+    // NVIC_DisableIRQ(USBD_IRQn);
 }
 static inline void enableUsbIrq()
 {
-    NVIC_EnableIRQ(USBD_IRQn);
+    // NVIC_EnableIRQ(USBD_IRQn);
 }
 
 uint8_t usbGetState();

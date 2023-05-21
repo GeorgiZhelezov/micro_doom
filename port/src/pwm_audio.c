@@ -28,7 +28,7 @@
 #pragma GCC optimize("Ofast") // we need to compile this code to be as fast as possible.
 #include "pwm_audio.h"
 #include "i_spi_support.h"
-#include "nrf.h"
+// #include "nrf.h"
 #include "sounds.h"
 #include "w_wad.h"
 #include "delay.h"
@@ -40,54 +40,54 @@ soundChannel_t soundChannels[MAX_CHANNELS];
 void initPwmAudio()
 {
     //
-    if (PORT_NUM_AUDIO_OUT == 0)
-    {
-        NRF_P0->PIN_CNF[PIN_AUDIO_OUT] = (GPIO_PIN_CNF_DIR_Output << GPIO_PIN_CNF_DIR_Pos) | (GPIO_PIN_CNF_DRIVE_H0H1 << GPIO_PIN_CNF_DRIVE_Pos) |
-                                         (GPIO_PIN_CNF_INPUT_Connect << GPIO_PIN_CNF_INPUT_Pos) | (GPIO_PIN_CNF_PULL_Disabled << GPIO_PIN_CNF_PULL_Pos) |
-                                         (GPIO_PIN_CNF_SENSE_Disabled << GPIO_PIN_CNF_SENSE_Pos);
-    }
-    else
-    {
-        NRF_P1->PIN_CNF[PIN_AUDIO_OUT] = (GPIO_PIN_CNF_DIR_Output << GPIO_PIN_CNF_DIR_Pos) | (GPIO_PIN_CNF_DRIVE_H0H1 << GPIO_PIN_CNF_DRIVE_Pos) |
-                                         (GPIO_PIN_CNF_INPUT_Connect << GPIO_PIN_CNF_INPUT_Pos) | (GPIO_PIN_CNF_PULL_Disabled << GPIO_PIN_CNF_PULL_Pos) |
-                                         (GPIO_PIN_CNF_SENSE_Disabled << GPIO_PIN_CNF_SENSE_Pos);
-    }
-    // configure TIMER1 as a counter to keep track of how many samples did we sent
-    NRF_TIMER1->BITMODE = TIMER_BITMODE_BITMODE_32Bit << TIMER_BITMODE_BITMODE_Pos;
-    NRF_TIMER1->SHORTS = TIMER_SHORTS_COMPARE1_CLEAR_Enabled << TIMER_SHORTS_COMPARE1_CLEAR_Pos;
-    NRF_TIMER1->PRESCALER = 0 << TIMER_PRESCALER_PRESCALER_Pos; // 16 MHz
-    NRF_TIMER1->MODE = TIMER_MODE_MODE_Counter << TIMER_MODE_MODE_Pos;
-    NRF_TIMER1->CC[1] = AUDIO_BUFFER_LENGTH * PWM_REFRESH_RATE;
-    NRF_TIMER1->TASKS_START = 1;
-    // USE TIMER 2 to capture on TIMER1 CC[0] the current count - so that we do not need to trigger
-    // task capture.
-    NRF_PPI->FORK[0].TEP = (uint32_t)&NRF_TIMER1->TASKS_CAPTURE[0];
-    // USE PPI to count each time a new PWM cycle starts
-    NRF_PPI->CH[PPI_CH_AUDIO].EEP = (uint32_t)&NRF_PWM0->EVENTS_PWMPERIODEND;
-    NRF_PPI->CH[PPI_CH_AUDIO].TEP = (uint32_t)&NRF_TIMER1->TASKS_COUNT;
-    NRF_PPI->CHENSET = (1 << PPI_CH_AUDIO);
-    //
-    NRF_PWM0->PSEL.OUT[0] =
-        (PORT_NUM_AUDIO_OUT << PWM_PSEL_OUT_PORT_Pos) | (PIN_AUDIO_OUT << PWM_PSEL_OUT_PIN_Pos) | (PWM_PSEL_OUT_CONNECT_Connected << PWM_PSEL_OUT_CONNECT_Pos);
-    NRF_PWM0->ENABLE = (PWM_ENABLE_ENABLE_Enabled << PWM_ENABLE_ENABLE_Pos);
-    NRF_PWM0->MODE = (PWM_MODE_UPDOWN_UpAndDown << PWM_MODE_UPDOWN_Pos);
-    NRF_PWM0->PRESCALER = (PWM_PRESCALER_PRESCALER_DIV_1 << PWM_PRESCALER_PRESCALER_Pos);
-    NRF_PWM0->COUNTERTOP = (PWM_COUNTER_TOP << PWM_COUNTERTOP_COUNTERTOP_Pos);
-    NRF_PWM0->LOOP = (1 << PWM_LOOP_CNT_Pos);
-    NRF_PWM0->DECODER = (PWM_DECODER_LOAD_Common << PWM_DECODER_LOAD_Pos) | (PWM_DECODER_MODE_RefreshCount << PWM_DECODER_MODE_Pos);
-    for (int i = 0; i < 2; i++)
-    {
-        NRF_PWM0->SEQ[i].PTR = ((uint32_t)(audioBuffer) << PWM_SEQ_PTR_PTR_Pos);
-        NRF_PWM0->SEQ[i].CNT = (AUDIO_BUFFER_LENGTH << PWM_SEQ_CNT_CNT_Pos);
-        // one sample per each new PWM period
-        NRF_PWM0->SEQ[i].REFRESH = PWM_REFRESH_RATE - 1;
-        // no delay
-        NRF_PWM0->SEQ[i].ENDDELAY = 0;
-    }
-    //
-    NRF_PWM0->SHORTS = PWM_SHORTS_LOOPSDONE_SEQSTART0_Enabled << PWM_SHORTS_LOOPSDONE_SEQSTART0_Pos;
-    // start
-    NRF_PWM0->TASKS_SEQSTART[0] = 1;
+    // if (PORT_NUM_AUDIO_OUT == 0)
+    // {
+    //     NRF_P0->PIN_CNF[PIN_AUDIO_OUT] = (GPIO_PIN_CNF_DIR_Output << GPIO_PIN_CNF_DIR_Pos) | (GPIO_PIN_CNF_DRIVE_H0H1 << GPIO_PIN_CNF_DRIVE_Pos) |
+    //                                      (GPIO_PIN_CNF_INPUT_Connect << GPIO_PIN_CNF_INPUT_Pos) | (GPIO_PIN_CNF_PULL_Disabled << GPIO_PIN_CNF_PULL_Pos) |
+    //                                      (GPIO_PIN_CNF_SENSE_Disabled << GPIO_PIN_CNF_SENSE_Pos);
+    // }
+    // else
+    // {
+    //     NRF_P1->PIN_CNF[PIN_AUDIO_OUT] = (GPIO_PIN_CNF_DIR_Output << GPIO_PIN_CNF_DIR_Pos) | (GPIO_PIN_CNF_DRIVE_H0H1 << GPIO_PIN_CNF_DRIVE_Pos) |
+    //                                      (GPIO_PIN_CNF_INPUT_Connect << GPIO_PIN_CNF_INPUT_Pos) | (GPIO_PIN_CNF_PULL_Disabled << GPIO_PIN_CNF_PULL_Pos) |
+    //                                      (GPIO_PIN_CNF_SENSE_Disabled << GPIO_PIN_CNF_SENSE_Pos);
+    // }
+    // // configure TIMER1 as a counter to keep track of how many samples did we sent
+    // NRF_TIMER1->BITMODE = TIMER_BITMODE_BITMODE_32Bit << TIMER_BITMODE_BITMODE_Pos;
+    // NRF_TIMER1->SHORTS = TIMER_SHORTS_COMPARE1_CLEAR_Enabled << TIMER_SHORTS_COMPARE1_CLEAR_Pos;
+    // NRF_TIMER1->PRESCALER = 0 << TIMER_PRESCALER_PRESCALER_Pos; // 16 MHz
+    // NRF_TIMER1->MODE = TIMER_MODE_MODE_Counter << TIMER_MODE_MODE_Pos;
+    // NRF_TIMER1->CC[1] = AUDIO_BUFFER_LENGTH * PWM_REFRESH_RATE;
+    // NRF_TIMER1->TASKS_START = 1;
+    // // USE TIMER 2 to capture on TIMER1 CC[0] the current count - so that we do not need to trigger
+    // // task capture.
+    // NRF_PPI->FORK[0].TEP = (uint32_t)&NRF_TIMER1->TASKS_CAPTURE[0];
+    // // USE PPI to count each time a new PWM cycle starts
+    // NRF_PPI->CH[PPI_CH_AUDIO].EEP = (uint32_t)&NRF_PWM0->EVENTS_PWMPERIODEND;
+    // NRF_PPI->CH[PPI_CH_AUDIO].TEP = (uint32_t)&NRF_TIMER1->TASKS_COUNT;
+    // NRF_PPI->CHENSET = (1 << PPI_CH_AUDIO);
+    // //
+    // NRF_PWM0->PSEL.OUT[0] =
+    //     (PORT_NUM_AUDIO_OUT << PWM_PSEL_OUT_PORT_Pos) | (PIN_AUDIO_OUT << PWM_PSEL_OUT_PIN_Pos) | (PWM_PSEL_OUT_CONNECT_Connected << PWM_PSEL_OUT_CONNECT_Pos);
+    // NRF_PWM0->ENABLE = (PWM_ENABLE_ENABLE_Enabled << PWM_ENABLE_ENABLE_Pos);
+    // NRF_PWM0->MODE = (PWM_MODE_UPDOWN_UpAndDown << PWM_MODE_UPDOWN_Pos);
+    // NRF_PWM0->PRESCALER = (PWM_PRESCALER_PRESCALER_DIV_1 << PWM_PRESCALER_PRESCALER_Pos);
+    // NRF_PWM0->COUNTERTOP = (PWM_COUNTER_TOP << PWM_COUNTERTOP_COUNTERTOP_Pos);
+    // NRF_PWM0->LOOP = (1 << PWM_LOOP_CNT_Pos);
+    // NRF_PWM0->DECODER = (PWM_DECODER_LOAD_Common << PWM_DECODER_LOAD_Pos) | (PWM_DECODER_MODE_RefreshCount << PWM_DECODER_MODE_Pos);
+    // for (int i = 0; i < 2; i++)
+    // {
+    //     NRF_PWM0->SEQ[i].PTR = ((uint32_t)(audioBuffer) << PWM_SEQ_PTR_PTR_Pos);
+    //     NRF_PWM0->SEQ[i].CNT = (AUDIO_BUFFER_LENGTH << PWM_SEQ_CNT_CNT_Pos);
+    //     // one sample per each new PWM period
+    //     NRF_PWM0->SEQ[i].REFRESH = PWM_REFRESH_RATE - 1;
+    //     // no delay
+    //     NRF_PWM0->SEQ[i].ENDDELAY = 0;
+    // }
+    // //
+    // NRF_PWM0->SHORTS = PWM_SHORTS_LOOPSDONE_SEQSTART0_Enabled << PWM_SHORTS_LOOPSDONE_SEQSTART0_Pos;
+    // // start
+    // NRF_PWM0->TASKS_SEQSTART[0] = 1;
 
     memset(soundChannels, 0, sizeof(soundChannels));
 }
@@ -130,8 +130,10 @@ void muteSound()
  */
 void updateSound()
 {
+	//FIXME: fix audio update call
     // where are we in our circular buffer?
-    uint32_t currentIdx = NRF_TIMER1->CC[0] / PWM_REFRESH_RATE;
+    uint32_t currentIdx = 0 / PWM_REFRESH_RATE;
+    // uint32_t currentIdx = NRF_TIMER1->CC[0] / PWM_REFRESH_RATE;
     // we cannot start updating the audio buffer just on next sample (which will occur in about 90us
     // from now). if frame rate is high enough, then the audio buffer is valid several samples after
     // currentIdx. therefore we can start updating the audio buffer AUDIO_BUFFER_DELAY samples after
@@ -192,15 +194,16 @@ void updateSound()
             // read audio bytes
             spiFlashGetData(tmpBuffer, AUDIO_BUFFER_LENGTH - AUDIO_BUFFER_DELAY);
 #else
+			//FIXME: looks like this is where audio data is read from the WAD in flash
             // reading through DMA is still faster than XIP
-            NRF_QSPI->READ.CNT = (sizeToRead + 3) & ~3; // round up to nearest 4 boundary
-            NRF_QSPI->READ.SRC = ((uint32_t)lumpPtr + soundChannels[ch].offset);
-            NRF_QSPI->READ.DST = (uint32_t)tmpBuffer;
-            NRF_QSPI->EVENTS_READY = 0;
-            NRF_QSPI->TASKS_READSTART = 1;
-            while (NRF_QSPI->EVENTS_READY == 0)
-                ;
-            NRF_QSPI->EVENTS_READY = 0;
+            // NRF_QSPI->READ.CNT = (sizeToRead + 3) & ~3; // round up to nearest 4 boundary
+            // NRF_QSPI->READ.SRC = ((uint32_t)lumpPtr + soundChannels[ch].offset);
+            // NRF_QSPI->READ.DST = (uint32_t)tmpBuffer;
+            // NRF_QSPI->EVENTS_READY = 0;
+            // NRF_QSPI->TASKS_READSTART = 1;
+            // while (NRF_QSPI->EVENTS_READY == 0)
+            //     ;
+            // NRF_QSPI->EVENTS_READY = 0;
 #endif
             //
             uint32_t stopIdx = (startIdx + sizeToRead) & (AUDIO_BUFFER_LENGTH - 1);

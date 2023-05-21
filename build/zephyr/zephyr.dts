@@ -37,7 +37,7 @@
 		};
 		shm0: memory@3ffe5630 {
 			compatible = "mmio-sram";
-			reg = < 0x3ffe5630 0x400 >;
+			reg = < 0x3ffe5630 0x3c00 >;
 		};
 		intc: interrupt-controller@3ff00104 {
 			#interrupt-cells = < 0x1 >;
@@ -69,7 +69,7 @@
 			#size-cells = < 0x1 >;
 			flash0: flash@0 {
 				compatible = "soc-nv-flash";
-				reg = < 0x0 0x400000 >;
+				reg = < 0x0 0x1000000 >;
 				erase-block-size = < 0x1000 >;
 				write-block-size = < 0x4 >;
 				status = "okay";
@@ -101,9 +101,9 @@
 				};
 			};
 		};
-		ipm0: ipm@3ffe5a30 {
+		ipm0: ipm@3ffed238 {
 			compatible = "espressif,esp32-ipm";
-			reg = < 0x3ffe5a30 0x8 >;
+			reg = < 0x3ffed238 0x8 >;
 			status = "disabled";
 			shared-memory = < &ipmmem0 >;
 			shared-memory-size = < 0x400 >;
@@ -433,6 +433,7 @@
 			phandle = < 0x4 >;
 			group1 {
 				pinmux = < 0x77fc1 >;
+				output-high;
 			};
 			group2 {
 				pinmux = < 0xff8383 >;

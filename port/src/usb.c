@@ -24,8 +24,8 @@
  *
  */
 #include "usb.h"
-#include "nrf.h"
-#include "nrf52_erratas.h"
+// #include "nrf.h"
+// #include "nrf52_erratas.h"
 #include "printf.h"
 #include "usbDeviceImplementation.h"
 #include <string.h>

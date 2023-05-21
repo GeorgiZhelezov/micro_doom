@@ -28,7 +28,7 @@
 extern "C"
 {
 #endif
-#include "nrf.h"
+// #include "nrf.h"
 #include "main.h"
 #include "delay.h"
 
@@ -36,42 +36,43 @@ extern "C"
 #if MINEWDONGLE
     static inline void DISPLAY_LATCH()
     {
+		//NOTE not sure what this is about
         // CS HIGH
-        GPIO_PORT(PORT_NUM_QSPI_NCS)->OUTSET = (1 << PIN_QSPI_NCS);
+        // GPIO_PORT(PORT_NUM_QSPI_NCS)->OUTSET = (1 << PIN_QSPI_NCS);
         // CLOCK LOW
-        GPIO_PORT(PORT_NUM_QSPI_CLK)->OUTCLR = (1 << PIN_QSPI_CLK);
-        delay(1);
+        // GPIO_PORT(PORT_NUM_QSPI_CLK)->OUTCLR = (1 << PIN_QSPI_CLK);
+        // delay(1);
         // CLOCK HIGH
-        GPIO_PORT(PORT_NUM_QSPI_CLK)->OUTSET = (1 << PIN_QSPI_CLK);
-        delay(1);
+        // GPIO_PORT(PORT_NUM_QSPI_CLK)->OUTSET = (1 << PIN_QSPI_CLK);
+        // delay(1);
         // RESTORE CLOCK LOW
-        GPIO_PORT(PORT_NUM_QSPI_CLK)->OUTCLR = (1 << PIN_QSPI_CLK);
-        delay(1);
+        // GPIO_PORT(PORT_NUM_QSPI_CLK)->OUTCLR = (1 << PIN_QSPI_CLK);
+        // delay(1);
     }
 // for those stupid boards that does not route out NCS...
 #if DISPLAY_USES_RESET_INSTEAD_OF_NCS
     static inline void DISPLAY_DC_HIGH()
     {
-        GPIO_PORT(PORT_NUM_DISPLAY_RESET)->OUTSET = (1 << PIN_DISPLAY_RESET);
-        GPIO_PORT(PORT_NUM_DISPLAY_DC)->OUTSET = (1 << PIN_DISPLAY_DC);
+        // GPIO_PORT(PORT_NUM_DISPLAY_RESET)->OUTSET = (1 << PIN_DISPLAY_RESET);
+        // GPIO_PORT(PORT_NUM_DISPLAY_DC)->OUTSET = (1 << PIN_DISPLAY_DC);
         DISPLAY_LATCH();
     }
     static inline void DISPLAY_DC_LOW()
     {
-        GPIO_PORT(PORT_NUM_DISPLAY_RESET)->OUTSET = (1 << PIN_DISPLAY_RESET);
-        GPIO_PORT(PORT_NUM_DISPLAY_DC)->OUTCLR = (1 << PIN_DISPLAY_DC);
+        // GPIO_PORT(PORT_NUM_DISPLAY_RESET)->OUTSET = (1 << PIN_DISPLAY_RESET);
+        // GPIO_PORT(PORT_NUM_DISPLAY_DC)->OUTCLR = (1 << PIN_DISPLAY_DC);
         DISPLAY_LATCH();
     }
     static inline void DISPLAY_RES_HIGH()
     {
-        GPIO_PORT(PORT_NUM_DISPLAY_RESET)->OUTSET = (1 << PIN_DISPLAY_RESET);
-        GPIO_PORT(PORT_NUM_DISPLAY_DC)->OUTSET = (1 << PIN_DISPLAY_DC);
+        // GPIO_PORT(PORT_NUM_DISPLAY_RESET)->OUTSET = (1 << PIN_DISPLAY_RESET);
+        // GPIO_PORT(PORT_NUM_DISPLAY_DC)->OUTSET = (1 << PIN_DISPLAY_DC);
         DISPLAY_LATCH();
     }
     static inline void DISPLAY_RES_LOW()
     {
-        GPIO_PORT(PORT_NUM_DISPLAY_RESET)->OUTCLR = (1 << PIN_DISPLAY_RESET);
-        GPIO_PORT(PORT_NUM_DISPLAY_DC)->OUTSET = (1 << PIN_DISPLAY_DC);
+        // GPIO_PORT(PORT_NUM_DISPLAY_RESET)->OUTCLR = (1 << PIN_DISPLAY_RESET);
+        // GPIO_PORT(PORT_NUM_DISPLAY_DC)->OUTSET = (1 << PIN_DISPLAY_DC);
         DISPLAY_LATCH();
     }
 // chip select always low, if defined

@@ -18,27 +18,27 @@
 extern "C" {
 #endif
 
-extern void z_impl_nrf_qspi_nor_base_clock_div_force(const struct device * dev, bool force);
+extern void z_impl_nrf_qspi_nor_xip_enable(const struct device * dev, bool enable);
 
 __pinned_func
-static inline void nrf_qspi_nor_base_clock_div_force(const struct device * dev, bool force)
+static inline void nrf_qspi_nor_xip_enable(const struct device * dev, bool enable)
 {
 #ifdef CONFIG_USERSPACE
 	if (z_syscall_trap()) {
 		union { uintptr_t x; const struct device * val; } parm0 = { .val = dev };
-		union { uintptr_t x; bool val; } parm1 = { .val = force };
-		(void) arch_syscall_invoke2(parm0.x, parm1.x, K_SYSCALL_NRF_QSPI_NOR_BASE_CLOCK_DIV_FORCE);
+		union { uintptr_t x; bool val; } parm1 = { .val = enable };
+		(void) arch_syscall_invoke2(parm0.x, parm1.x, K_SYSCALL_NRF_QSPI_NOR_XIP_ENABLE);
 		return;
 	}
 #endif
 	compiler_barrier();
-	z_impl_nrf_qspi_nor_base_clock_div_force(dev, force);
+	z_impl_nrf_qspi_nor_xip_enable(dev, enable);
 }
 
 #if defined(CONFIG_TRACING_SYSCALL)
 #ifndef DISABLE_SYSCALL_TRACING
 
-#define nrf_qspi_nor_base_clock_div_force(dev, force) do { 	sys_port_trace_syscall_enter(K_SYSCALL_NRF_QSPI_NOR_BASE_CLOCK_DIV_FORCE, nrf_qspi_nor_base_clock_div_force, dev, force); 	nrf_qspi_nor_base_clock_div_force(dev, force); 	sys_port_trace_syscall_exit(K_SYSCALL_NRF_QSPI_NOR_BASE_CLOCK_DIV_FORCE, nrf_qspi_nor_base_clock_div_force, dev, force); } while(false)
+#define nrf_qspi_nor_xip_enable(dev, enable) do { 	sys_port_trace_syscall_enter(K_SYSCALL_NRF_QSPI_NOR_XIP_ENABLE, nrf_qspi_nor_xip_enable, dev, enable); 	nrf_qspi_nor_xip_enable(dev, enable); 	sys_port_trace_syscall_exit(K_SYSCALL_NRF_QSPI_NOR_XIP_ENABLE, nrf_qspi_nor_xip_enable, dev, enable); } while(false)
 #endif
 #endif
 

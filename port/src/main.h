@@ -35,7 +35,7 @@
 #ifndef MAIN_H
 #define MAIN_H
 #include <stdbool.h>
-#include "nrf.h"
+// #include "nrf.h"
 #include "graphics.h"
 
 // 1: BLE DONGLE, 0 = ADAFRUIT CLUE
@@ -251,15 +251,15 @@
  */ 
 static inline void nh_enable_irq()
 {
-    __enable_irq();
+    // __enable_irq();
     // NRF_SPIM3->TASKS_RESUME = 1;
 }
 static inline void nh_disable_irq()
 {
     //    NRF_SPIM3->TASKS_SUSPEND = 1;
     // guess what? can't suspend SPIM3 because it is bugged.
-    while(displayData.dmaBusy);
-    __disable_irq();
+    // while(displayData.dmaBusy);
+    // __disable_irq();
 }
 #endif
 

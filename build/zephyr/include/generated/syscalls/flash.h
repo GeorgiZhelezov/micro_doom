@@ -264,6 +264,32 @@ static inline const struct flash_parameters * flash_get_parameters(const struct 
 #endif
 
 
+extern int z_impl_flash_ex_op(const struct device * dev, uint16_t code, const uintptr_t in, void * out);
+
+__pinned_func
+static inline int flash_ex_op(const struct device * dev, uint16_t code, const uintptr_t in, void * out)
+{
+#ifdef CONFIG_USERSPACE
+	if (z_syscall_trap()) {
+		union { uintptr_t x; const struct device * val; } parm0 = { .val = dev };
+		union { uintptr_t x; uint16_t val; } parm1 = { .val = code };
+		union { uintptr_t x; const uintptr_t val; } parm2 = { .val = in };
+		union { uintptr_t x; void * val; } parm3 = { .val = out };
+		return (int) arch_syscall_invoke4(parm0.x, parm1.x, parm2.x, parm3.x, K_SYSCALL_FLASH_EX_OP);
+	}
+#endif
+	compiler_barrier();
+	return z_impl_flash_ex_op(dev, code, in, out);
+}
+
+#if defined(CONFIG_TRACING_SYSCALL)
+#ifndef DISABLE_SYSCALL_TRACING
+
+#define flash_ex_op(dev, code, in, out) ({ 	int retval; 	sys_port_trace_syscall_enter(K_SYSCALL_FLASH_EX_OP, flash_ex_op, dev, code, in, out); 	retval = flash_ex_op(dev, code, in, out); 	sys_port_trace_syscall_exit(K_SYSCALL_FLASH_EX_OP, flash_ex_op, dev, code, in, out, retval); 	retval; })
+#endif
+#endif
+
+
 #ifdef __cplusplus
 }
 #endif

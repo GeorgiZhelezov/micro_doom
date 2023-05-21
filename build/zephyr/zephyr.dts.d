@@ -4,6 +4,7 @@ empty_file.o: /home/gez/sdks/zephyr/zephyr/misc/empty_file.c \
  /home/gez/sdks/zephyr/zephyr/dts/common/mem.h \
  /home/gez/sdks/zephyr/zephyr/dts/xtensa/xtensa.dtsi \
  /home/gez/sdks/zephyr/zephyr/dts/common/skeleton.dtsi \
+ /home/gez/sdks/zephyr/zephyr/include/zephyr/dt-bindings/adc/adc.h \
  /home/gez/sdks/zephyr/zephyr/include/zephyr/dt-bindings/gpio/gpio.h \
  /home/gez/sdks/zephyr/zephyr/include/zephyr/dt-bindings/i2c/i2c.h \
  /home/gez/sdks/zephyr/zephyr/include/zephyr/dt-bindings/clock/esp32_clock.h \

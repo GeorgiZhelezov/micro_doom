@@ -68,7 +68,7 @@
 #include "global_data.h"
 #include <stdint.h>
 #include "i_spi_support.h"
-#include "nrf.h"
+// #include "nrf.h"
 #include "main.h"
 #define FLASH_ALIGNMENT 4
 /* Flash organization
@@ -193,32 +193,36 @@ int getUserFlashRegionRemainingSpace()
 
 void flashErasePage(uint32_t *pageAddress)
 {
+	//FIXME: add flash erase page
+	
     nh_disable_irq();
     // enable write
     // Write enable
-    NRF_NVMC->CONFIG = NVMC_CONFIG_WEN_Een << NVMC_CONFIG_WEN_Pos;
-    while (NRF_NVMC->READY == NVMC_READY_READY_Busy){}
-    NRF_NVMC->ERASEPAGE = (uint32_t) pageAddress;
-    while (NRF_NVMC->READY == NVMC_READY_READY_Busy){}
-    NRF_NVMC->CONFIG = NVMC_CONFIG_WEN_Ren << NVMC_CONFIG_WEN_Pos;
-    while (NRF_NVMC->READY == NVMC_READY_READY_Busy){}
+    // NRF_NVMC->CONFIG = NVMC_CONFIG_WEN_Een << NVMC_CONFIG_WEN_Pos;
+    // while (NRF_NVMC->READY == NVMC_READY_READY_Busy){}
+    // NRF_NVMC->ERASEPAGE = (uint32_t) pageAddress;
+    // while (NRF_NVMC->READY == NVMC_READY_READY_Busy){}
+    // NRF_NVMC->CONFIG = NVMC_CONFIG_WEN_Ren << NVMC_CONFIG_WEN_Pos;
+    // while (NRF_NVMC->READY == NVMC_READY_READY_Busy){}
 
     nh_enable_irq();
 }
 void programFlashWord(uint32_t *address, uint32_t word)
 {
+	//FIXME: add flash write word
+	
     if (*address == 0xFFFFFFFF)
     {
         nh_disable_irq();
         // enable write
-        NRF_NVMC->CONFIG = NVMC_CONFIG_WEN_Wen << NVMC_CONFIG_WEN_Pos;
-        while (NRF_NVMC->READY == NVMC_READY_READY_Busy){}
-        // set address
-        *address = word;
-        __DMB();
-        while (NRF_NVMC->READY == NVMC_READY_READY_Busy){}
-        NRF_NVMC->CONFIG = NVMC_CONFIG_WEN_Ren << NVMC_CONFIG_WEN_Pos;
-        while (NRF_NVMC->READY == NVMC_READY_READY_Busy){}
+        // NRF_NVMC->CONFIG = NVMC_CONFIG_WEN_Wen << NVMC_CONFIG_WEN_Pos;
+        // while (NRF_NVMC->READY == NVMC_READY_READY_Busy){}
+        // // set address
+        // *address = word;
+        // __DMB();
+        // while (NRF_NVMC->READY == NVMC_READY_READY_Busy){}
+        // NRF_NVMC->CONFIG = NVMC_CONFIG_WEN_Ren << NVMC_CONFIG_WEN_Pos;
+        // while (NRF_NVMC->READY == NVMC_READY_READY_Busy){}
         nh_enable_irq();
     }
 }

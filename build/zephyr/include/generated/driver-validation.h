@@ -40,8 +40,6 @@
 
 #define Z_SYSCALL_DRIVER_GPIO(ptr, op) Z_SYSCALL_DRIVER_GEN(ptr, op, gpio, GPIO)
 
-#define Z_SYSCALL_DRIVER_GPIO_KEYS_API(ptr, op) Z_SYSCALL_DRIVER_GEN(ptr, op, gpio_keys_api, GPIO_KEYS_API)
-
 #define Z_SYSCALL_DRIVER_I2C(ptr, op) Z_SYSCALL_DRIVER_GEN(ptr, op, i2c, I2C)
 
 #define Z_SYSCALL_DRIVER_I2S(ptr, op) Z_SYSCALL_DRIVER_GEN(ptr, op, i2s, I2S)
@@ -62,8 +60,6 @@
 
 #define Z_SYSCALL_DRIVER_PECI(ptr, op) Z_SYSCALL_DRIVER_GEN(ptr, op, peci, PECI)
 
-#define Z_SYSCALL_DRIVER_PINMUX(ptr, op) Z_SYSCALL_DRIVER_GEN(ptr, op, pinmux, PINMUX)
-
 #define Z_SYSCALL_DRIVER_PS2(ptr, op) Z_SYSCALL_DRIVER_GEN(ptr, op, ps2, PS2)
 
 #define Z_SYSCALL_DRIVER_PTP_CLOCK(ptr, op) Z_SYSCALL_DRIVER_GEN(ptr, op, ptp_clock, PTP_CLOCK)
@@ -76,9 +72,13 @@
 
 #define Z_SYSCALL_DRIVER_RESET(ptr, op) Z_SYSCALL_DRIVER_GEN(ptr, op, reset, RESET)
 
+#define Z_SYSCALL_DRIVER_RTC(ptr, op) Z_SYSCALL_DRIVER_GEN(ptr, op, rtc, RTC)
+
 #define Z_SYSCALL_DRIVER_SDHC(ptr, op) Z_SYSCALL_DRIVER_GEN(ptr, op, sdhc, SDHC)
 
 #define Z_SYSCALL_DRIVER_SENSOR(ptr, op) Z_SYSCALL_DRIVER_GEN(ptr, op, sensor, SENSOR)
+
+#define Z_SYSCALL_DRIVER_SMBUS(ptr, op) Z_SYSCALL_DRIVER_GEN(ptr, op, smbus, SMBUS)
 
 #define Z_SYSCALL_DRIVER_SPI(ptr, op) Z_SYSCALL_DRIVER_GEN(ptr, op, spi, SPI)
 
@@ -94,15 +94,21 @@
 
 #define Z_SYSCALL_DRIVER_UART_MUX(ptr, op) Z_SYSCALL_DRIVER_GEN(ptr, op, uart_mux, UART_MUX)
 
-#define Z_SYSCALL_DRIVER_EC_HOST_CMD_PERIPH_API(ptr, op) Z_SYSCALL_DRIVER_GEN(ptr, op, ec_host_cmd_periph_api, EC_HOST_CMD_PERIPH_API)
-
 #define Z_SYSCALL_DRIVER_ITS(ptr, op) Z_SYSCALL_DRIVER_GEN(ptr, op, its, ITS)
 
 #define Z_SYSCALL_DRIVER_PCIE_CTRL(ptr, op) Z_SYSCALL_DRIVER_GEN(ptr, op, pcie_ctrl, PCIE_CTRL)
 
+#define Z_SYSCALL_DRIVER_SVC(ptr, op) Z_SYSCALL_DRIVER_GEN(ptr, op, svc, SVC)
+
+#define Z_SYSCALL_DRIVER_BC12_EMUL(ptr, op) Z_SYSCALL_DRIVER_GEN(ptr, op, bc12_emul, BC12_EMUL)
+
+#define Z_SYSCALL_DRIVER_BC12(ptr, op) Z_SYSCALL_DRIVER_GEN(ptr, op, bc12, BC12)
+
 #define Z_SYSCALL_DRIVER_TCPC(ptr, op) Z_SYSCALL_DRIVER_GEN(ptr, op, tcpc, TCPC)
 
 #define Z_SYSCALL_DRIVER_IVSHMEM(ptr, op) Z_SYSCALL_DRIVER_GEN(ptr, op, ivshmem, IVSHMEM)
+
+#define Z_SYSCALL_DRIVER_EC_HOST_CMD_BACKEND_API(ptr, op) Z_SYSCALL_DRIVER_GEN(ptr, op, ec_host_cmd_backend_api, EC_HOST_CMD_BACKEND_API)
 
 #define Z_SYSCALL_DRIVER_ETHPHY(ptr, op) Z_SYSCALL_DRIVER_GEN(ptr, op, ethphy, ETHPHY)
 #endif /* DRIVER_VALIDATION_GEN_H */

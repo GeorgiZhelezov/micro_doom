@@ -159,42 +159,43 @@ void initParallelKeyboard()
 #if KEYBOARD == RADIO_KEYBOARD
 void initRadioKeyboard()
 {
-    // Configure radio with 2Mbit Nordic proprietary mode
-    NRF_RADIO->MODE = RADIO_MODE_MODE_Nrf_1Mbit << RADIO_MODE_MODE_Pos;
+	//FIXME: add keyboard init functinoality
+    // // Configure radio with 2Mbit Nordic proprietary mode
+    // NRF_RADIO->MODE = RADIO_MODE_MODE_Nrf_1Mbit << RADIO_MODE_MODE_Pos;
 
-    // Configure packet with no S0,S1 or Length fields and 8-bit preamble.
-    NRF_RADIO->PCNF0 = (0 << RADIO_PCNF0_LFLEN_Pos) | (0 << RADIO_PCNF0_S0LEN_Pos) | (0 << RADIO_PCNF0_S1LEN_Pos) |
-                       (RADIO_PCNF0_S1INCL_Automatic << RADIO_PCNF0_S1INCL_Pos) | (RADIO_PCNF0_PLEN_8bit << RADIO_PCNF0_PLEN_Pos);
+    // // Configure packet with no S0,S1 or Length fields and 8-bit preamble.
+    // NRF_RADIO->PCNF0 = (0 << RADIO_PCNF0_LFLEN_Pos) | (0 << RADIO_PCNF0_S0LEN_Pos) | (0 << RADIO_PCNF0_S1LEN_Pos) |
+    //                    (RADIO_PCNF0_S1INCL_Automatic << RADIO_PCNF0_S1INCL_Pos) | (RADIO_PCNF0_PLEN_8bit << RADIO_PCNF0_PLEN_Pos);
 
-    // Configure static payload length of sizeof(radioKeys) bytes. 4 bytes address, little endian with whitening enabled.
-    NRF_RADIO->PCNF1 = (sizeof(radioKeys) << RADIO_PCNF1_MAXLEN_Pos) | (sizeof(radioKeys) << RADIO_PCNF1_STATLEN_Pos) | (4 << RADIO_PCNF1_BALEN_Pos) |
-                       (RADIO_PCNF1_ENDIAN_Little << RADIO_PCNF1_ENDIAN_Pos) | (RADIO_PCNF1_WHITEEN_Enabled << RADIO_PCNF1_WHITEEN_Pos);
+    // // Configure static payload length of sizeof(radioKeys) bytes. 4 bytes address, little endian with whitening enabled.
+    // NRF_RADIO->PCNF1 = (sizeof(radioKeys) << RADIO_PCNF1_MAXLEN_Pos) | (sizeof(radioKeys) << RADIO_PCNF1_STATLEN_Pos) | (4 << RADIO_PCNF1_BALEN_Pos) |
+    //                    (RADIO_PCNF1_ENDIAN_Little << RADIO_PCNF1_ENDIAN_Pos) | (RADIO_PCNF1_WHITEEN_Enabled << RADIO_PCNF1_WHITEEN_Pos);
 
-    // initialize whitening value
-    NRF_RADIO->DATAWHITEIV = 0x55;
+    // // initialize whitening value
+    // NRF_RADIO->DATAWHITEIV = 0x55;
 
-    // Configure address Prefix0 + Base0
-    NRF_RADIO->BASE0 = *(uint32_t *)rf_address;
-    NRF_RADIO->PREFIX0 = RF_ADDRESS_PREFIX << RADIO_PREFIX0_AP0_Pos;
+    // // Configure address Prefix0 + Base0
+    // NRF_RADIO->BASE0 = *(uint32_t *)rf_address;
+    // NRF_RADIO->PREFIX0 = RF_ADDRESS_PREFIX << RADIO_PREFIX0_AP0_Pos;
 
-    // Use logical address 0 (BASE0 + PREFIX0 byte 0)
-    NRF_RADIO->RXADDRESSES = RADIO_RXADDRESSES_ADDR0_Enabled << RADIO_RXADDRESSES_ADDR0_Pos;
+    // // Use logical address 0 (BASE0 + PREFIX0 byte 0)
+    // NRF_RADIO->RXADDRESSES = RADIO_RXADDRESSES_ADDR0_Enabled << RADIO_RXADDRESSES_ADDR0_Pos;
 
-    // Initialize CRC (three bytes)
-    NRF_RADIO->CRCCNF = (RADIO_CRCCNF_LEN_Three << RADIO_CRCCNF_LEN_Pos) | (RADIO_CRCCNF_SKIPADDR_Skip << RADIO_CRCCNF_SKIPADDR_Pos);
-    NRF_RADIO->CRCPOLY = 0x00AAAAAA;
-    NRF_RADIO->CRCINIT = 0x00345678;
+    // // Initialize CRC (three bytes)
+    // NRF_RADIO->CRCCNF = (RADIO_CRCCNF_LEN_Three << RADIO_CRCCNF_LEN_Pos) | (RADIO_CRCCNF_SKIPADDR_Skip << RADIO_CRCCNF_SKIPADDR_Pos);
+    // NRF_RADIO->CRCPOLY = 0x00AAAAAA;
+    // NRF_RADIO->CRCINIT = 0x00345678;
 
-    // Enable fast rampup, new in nRF52
-    NRF_RADIO->MODECNF0 = (RADIO_MODECNF0_DTX_B0 << RADIO_MODECNF0_DTX_Pos) | (RADIO_MODECNF0_RU_Fast << RADIO_MODECNF0_RU_Pos);
+    // // Enable fast rampup, new in nRF52
+    // NRF_RADIO->MODECNF0 = (RADIO_MODECNF0_DTX_B0 << RADIO_MODECNF0_DTX_Pos) | (RADIO_MODECNF0_RU_Fast << RADIO_MODECNF0_RU_Pos);
 
-    // receiving packets at 2400MHz
-    NRF_RADIO->FREQUENCY = 0 << RADIO_FREQUENCY_FREQUENCY_Pos;
-    // Configure address of the packet and logic address to use
-    NRF_RADIO->PACKETPTR = (uint32_t)&radioKeys;
+    // // receiving packets at 2400MHz
+    // NRF_RADIO->FREQUENCY = 0 << RADIO_FREQUENCY_FREQUENCY_Pos;
+    // // Configure address of the packet and logic address to use
+    // NRF_RADIO->PACKETPTR = (uint32_t)&radioKeys;
 
-    // Configure shortcuts to start as soon as READY event is received, and disable radio as soon as packet is received.
-    NRF_RADIO->SHORTS = (RADIO_SHORTS_READY_START_Enabled << RADIO_SHORTS_READY_START_Pos) | (RADIO_SHORTS_END_DISABLE_Enabled << RADIO_SHORTS_END_DISABLE_Pos);
+    // // Configure shortcuts to start as soon as READY event is received, and disable radio as soon as packet is received.
+    // NRF_RADIO->SHORTS = (RADIO_SHORTS_READY_START_Enabled << RADIO_SHORTS_READY_START_Pos) | (RADIO_SHORTS_END_DISABLE_Enabled << RADIO_SHORTS_END_DISABLE_Pos);
 
     // the keyboard must receive also audio packet. Let's set.
     initWirelessAudio();
@@ -218,62 +219,71 @@ void updateRadioKeyboard(uint8_t * keys)
 
 void initWirelessAudio()
 {
+	//FIXME: add audio init
+	
     muteSound();
-    NRF_TIMER1->CC[2] = 1;
-    // set interrupt when compare 2 is reached
-    NRF_TIMER1->INTENSET = TIMER_INTENSET_COMPARE2_Msk;
-    NVIC_EnableIRQ(TIMER1_IRQn);
-    NVIC_EnableIRQ(RADIO_IRQn);
+    // NRF_TIMER1->CC[2] = 1;
+    // // set interrupt when compare 2 is reached
+    // NRF_TIMER1->INTENSET = TIMER_INTENSET_COMPARE2_Msk;
+    // NVIC_EnableIRQ(TIMER1_IRQn);
+    // NVIC_EnableIRQ(RADIO_IRQn);
 }
 void disableWirelessAudio()
 {
+	//FIXME: add audio disable
+	
     muteSound();
-    delay(20); // wait 20 ms so that the mute is sent via wireless. TODO: find something better
-    NVIC_DisableIRQ(TIMER1_IRQn);
+    // delay(20); // wait 20 ms so that the mute is sent via wireless. TODO: find something better
+    // NVIC_DisableIRQ(TIMER1_IRQn);
 }
-void restoreWirelessAudio() { NVIC_EnableIRQ(TIMER1_IRQn); }
+void restoreWirelessAudio() 
+{ 
+	//FIXME: maybe continues audio packet transmission via TIMER1 ?
+	// NVIC_EnableIRQ(TIMER1_IRQn); 
+}
 void TIMER1_IRQHandler(void)
 {
-    // get current index, so that we know from which sample we should send. Note, this IRQ has the highest priority, it might be delayed, but not interrupted.
-    uint32_t currentCC0 = NRF_TIMER1->CC[0];
-    // clear event
-    NRF_TIMER1->EVENTS_COMPARE[2] = 0;
-    // set when we are going to send the next samples
-    NRF_TIMER1->CC[2] = (NRF_TIMER1->CC[2] + PWM_REFRESH_RATE * WIRELESS_DELAY_SAMPLES) & (AUDIO_BUFFER_LENGTH * PWM_REFRESH_RATE - 1);
-    uint32_t currentIndex = currentCC0 / PWM_REFRESH_RATE;
-    // fill the buffer
-    for (int i = 0; i < MAX_RF_SAMPLES; i++)
-    {
-        rfAudioSamples[i] = audioBuffer[(currentIndex + i) & (AUDIO_BUFFER_LENGTH - 1)];
-    }
-    // Now, it could happen that the connection got broken or whatever. We cannot start TX
-    // because we are in receive mode. Conversely, the gamepad will not start TX because it
-    // is not receiving audio packet. Then force disable
-    NRF_RADIO->TASKS_DISABLE = 1;
-    //
-    NRF_RADIO->PACKETPTR = (uint32_t)&rfAudioSamples[0];
-    // set length to transmit
-    NRF_RADIO->PCNF1 = (sizeof(rfAudioSamples) << RADIO_PCNF1_MAXLEN_Pos) | (sizeof(rfAudioSamples) << RADIO_PCNF1_STATLEN_Pos) | (4 << RADIO_PCNF1_BALEN_Pos) |
-                       (RADIO_PCNF1_ENDIAN_Little << RADIO_PCNF1_ENDIAN_Pos) | (RADIO_PCNF1_WHITEEN_Enabled << RADIO_PCNF1_WHITEEN_Pos);
-    // Clear disabled Event
-    NRF_RADIO->EVENTS_DISABLED = 0;
-    // enable transmit
-    NRF_RADIO->TASKS_TXEN = 1;
-    // Enable RADIO IRQ so that it will immediately listen to keyboard
-    NRF_RADIO->INTENSET = RADIO_INTENSET_DISABLED_Msk;
+	//FIXME: seems like this periodically fills up the audio buffer and sets when to send it
+    // // get current index, so that we know from which sample we should send. Note, this IRQ has the highest priority, it might be delayed, but not interrupted.
+    // uint32_t currentCC0 = NRF_TIMER1->CC[0];
+    // // clear event
+    // NRF_TIMER1->EVENTS_COMPARE[2] = 0;
+    // // set when we are going to send the next samples
+    // NRF_TIMER1->CC[2] = (NRF_TIMER1->CC[2] + PWM_REFRESH_RATE * WIRELESS_DELAY_SAMPLES) & (AUDIO_BUFFER_LENGTH * PWM_REFRESH_RATE - 1);
+    // uint32_t currentIndex = currentCC0 / PWM_REFRESH_RATE;
+    // // fill the buffer
+    // for (int i = 0; i < MAX_RF_SAMPLES; i++)
+    // {
+    //     rfAudioSamples[i] = audioBuffer[(currentIndex + i) & (AUDIO_BUFFER_LENGTH - 1)];
+    // }
+    // // Now, it could happen that the connection got broken or whatever. We cannot start TX
+    // // because we are in receive mode. Conversely, the gamepad will not start TX because it
+    // // is not receiving audio packet. Then force disable
+    // NRF_RADIO->TASKS_DISABLE = 1;
+    // //
+    // NRF_RADIO->PACKETPTR = (uint32_t)&rfAudioSamples[0];
+    // // set length to transmit
+    // NRF_RADIO->PCNF1 = (sizeof(rfAudioSamples) << RADIO_PCNF1_MAXLEN_Pos) | (sizeof(rfAudioSamples) << RADIO_PCNF1_STATLEN_Pos) | (4 << RADIO_PCNF1_BALEN_Pos) |
+    //                    (RADIO_PCNF1_ENDIAN_Little << RADIO_PCNF1_ENDIAN_Pos) | (RADIO_PCNF1_WHITEEN_Enabled << RADIO_PCNF1_WHITEEN_Pos);
+    // // Clear disabled Event
+    // NRF_RADIO->EVENTS_DISABLED = 0;
+    // // enable transmit
+    // NRF_RADIO->TASKS_TXEN = 1;
+    // // Enable RADIO IRQ so that it will immediately listen to keyboard
+    // NRF_RADIO->INTENSET = RADIO_INTENSET_DISABLED_Msk;
 }
 void RADIO_IRQHandler(void)
 {
-    NRF_RADIO->INTENCLR = RADIO_INTENSET_DISABLED_Msk;
-    // clear disabled event
-    NRF_RADIO->EVENTS_DISABLED = 0;
-    // set up packet pointer
-    NRF_RADIO->PACKETPTR = (uint32_t)&radioKeys;
-    // Configure static payload length of sizeof(radioKeys) bytes. 4 bytes address, little endian with whitening
-    // enabled.
-    NRF_RADIO->PCNF1 = (sizeof(radioKeys) << RADIO_PCNF1_MAXLEN_Pos) | (sizeof(radioKeys) << RADIO_PCNF1_STATLEN_Pos) | (4 << RADIO_PCNF1_BALEN_Pos) |
-                       (RADIO_PCNF1_ENDIAN_Little << RADIO_PCNF1_ENDIAN_Pos) | (RADIO_PCNF1_WHITEEN_Enabled << RADIO_PCNF1_WHITEEN_Pos);
-    NRF_RADIO->TASKS_RXEN = 1;
+    // NRF_RADIO->INTENCLR = RADIO_INTENSET_DISABLED_Msk;
+    // // clear disabled event
+    // NRF_RADIO->EVENTS_DISABLED = 0;
+    // // set up packet pointer
+    // NRF_RADIO->PACKETPTR = (uint32_t)&radioKeys;
+    // // Configure static payload length of sizeof(radioKeys) bytes. 4 bytes address, little endian with whitening
+    // // enabled.
+    // NRF_RADIO->PCNF1 = (sizeof(radioKeys) << RADIO_PCNF1_MAXLEN_Pos) | (sizeof(radioKeys) << RADIO_PCNF1_STATLEN_Pos) | (4 << RADIO_PCNF1_BALEN_Pos) |
+    //                    (RADIO_PCNF1_ENDIAN_Little << RADIO_PCNF1_ENDIAN_Pos) | (RADIO_PCNF1_WHITEEN_Enabled << RADIO_PCNF1_WHITEEN_Pos);
+    // NRF_RADIO->TASKS_RXEN = 1;
 }
 #endif
 void initKeyboard()

@@ -106,17 +106,20 @@ void startDisplayRefresh(uint8_t bufferNumber)
         displayData.displayDmaLineBuffersSent = 0;
         displayData.currentDmaFrameBuffer = displayData.displayFrameBuffer[bufferNumber];
         fillNextDmaLineBuffer();
+
+		//FIXME: add display refresh functionality
+		
         // enable shorts
-        NRF_SPIM3->EVENTS_STARTED = 0;
-        NRF_SPIM3->EVENTS_END = 0;
-        #if DISPLAY_SPIM_USES_SHORTS
-            NRF_SPIM3->SHORTS = SPIM_SHORTS_END_START_Enabled << SPIM_SHORTS_END_START_Pos; 
-            NRF_SPIM3->INTENSET = SPIM_INTENSET_STARTED_Msk;
-        #else
-            NRF_SPIM3->INTENSET = SPIM_INTENSET_STARTED_Msk | SPIM_INTENSET_END_Msk;
-        #endif
-        //
-        NRF_SPIM3->TASKS_START = 1;
+        // NRF_SPIM3->EVENTS_STARTED = 0;
+        // NRF_SPIM3->EVENTS_END = 0;
+        // #if DISPLAY_SPIM_USES_SHORTS
+        //     NRF_SPIM3->SHORTS = SPIM_SHORTS_END_START_Enabled << SPIM_SHORTS_END_START_Pos; 
+        //     NRF_SPIM3->INTENSET = SPIM_INTENSET_STARTED_Msk;
+        // #else
+        //     NRF_SPIM3->INTENSET = SPIM_INTENSET_STARTED_Msk | SPIM_INTENSET_END_Msk;
+        // #endif
+        // //
+        // NRF_SPIM3->TASKS_START = 1;
     }
 }
 //
@@ -225,7 +228,8 @@ static inline void fillNextDmaLineBuffer()
 {
     uint16_t * pLineBuffer = displayData.displayDmaLineBuffer[displayData.currentDisplayDmaLineBuffer];
 // displayData.pPalette is volatile.
-#if SLOW_WAY // left only for reference
+// #if SLOW_WAY // left only for reference
+#if 1 //NOTE: using C instead of assembly
     uint16_t * pPalette = (uint16_t *)displayData.pPalette;
 
     for (int i = 0; i < PIXELS_PER_DMA_LINE / 16; i++)
@@ -279,14 +283,16 @@ static inline void fillNextDmaLineBuffer()
     );
 #endif
     displayData.displayDmaLineBuffersSent++;
-    NRF_SPIM3->TXD.MAXCNT = PIXELS_PER_DMA_LINE * 2;
-    NRF_SPIM3->TXD.PTR = (uint32_t) displayData.displayDmaLineBuffer[displayData.currentDisplayDmaLineBuffer];
+	//FIXME also no clue how to connect this
+    // NRF_SPIM3->TXD.MAXCNT = PIXELS_PER_DMA_LINE * 2;
+    // NRF_SPIM3->TXD.PTR = (uint32_t) displayData.displayDmaLineBuffer[displayData.currentDisplayDmaLineBuffer];
     displayData.currentDisplayDmaLineBuffer = 1 - displayData.currentDisplayDmaLineBuffer;
 }
 void SPIM3_IRQHandler(void)
 {
+	//FIXME no clue how to connect this atm
     // fill next line. Enable shorts only if we have still more lines to print
-#if DISPLAY_SPIM_USES_SHORTS
+/* #if DISPLAY_SPIM_USES_SHORTS
     if (NRF_SPIM3->EVENTS_END)
     {
         NRF_SPIM3->EVENTS_END = 0;
@@ -353,5 +359,5 @@ void SPIM3_IRQHandler(void)
             NRF_SPIM3->TASKS_START = 1;
         }
     }
-#endif
+#endif */
 }

@@ -1,8 +1,9 @@
 #ifndef _KERNEL_VERSION_H_
 #define _KERNEL_VERSION_H_
 
-/* KERNEL and ZEPHYR_VERSION  values come from cmake/version.cmake
- * BUILD_VERSION  will be 'git describe', alternatively user defined BUILD_VERSION.
+/*  values come from cmake/version.cmake
+ * BUILD_VERSION related  values will be 'git describe',
+ * alternatively user defined BUILD_VERSION.
  */
 
 #define ZEPHYR_VERSION_CODE 197475
@@ -15,6 +16,6 @@
 #define KERNEL_PATCHLEVEL      99
 #define KERNEL_VERSION_STRING  "3.3.99"
 
-#define BUILD_VERSION          zephyr-v3.3.0-307-g7753f774616a
+#define BUILD_VERSION zephyr-v3.3.0-4123-gd01780fc9403
 
 #endif /* _KERNEL_VERSION_H_ */

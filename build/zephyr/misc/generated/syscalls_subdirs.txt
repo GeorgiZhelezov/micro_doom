@@ -16,6 +16,7 @@
 /home/gez/workspaces/eclipse/esp_doom/build/zephyr/misc/generated/syscalls_links/include_zephyr_dsp
 /home/gez/workspaces/eclipse/esp_doom/build/zephyr/misc/generated/syscalls_links/include_zephyr_dt-bindings
 /home/gez/workspaces/eclipse/esp_doom/build/zephyr/misc/generated/syscalls_links/include_zephyr_fs
+/home/gez/workspaces/eclipse/esp_doom/build/zephyr/misc/generated/syscalls_links/include_zephyr_input
 /home/gez/workspaces/eclipse/esp_doom/build/zephyr/misc/generated/syscalls_links/include_zephyr_ipc
 /home/gez/workspaces/eclipse/esp_doom/build/zephyr/misc/generated/syscalls_links/include_zephyr_kernel
 /home/gez/workspaces/eclipse/esp_doom/build/zephyr/misc/generated/syscalls_links/include_zephyr_linker
@@ -30,10 +31,12 @@
 /home/gez/workspaces/eclipse/esp_doom/build/zephyr/misc/generated/syscalls_links/include_zephyr_portability
 /home/gez/workspaces/eclipse/esp_doom/build/zephyr/misc/generated/syscalls_links/include_zephyr_posix
 /home/gez/workspaces/eclipse/esp_doom/build/zephyr/misc/generated/syscalls_links/include_zephyr_random
+/home/gez/workspaces/eclipse/esp_doom/build/zephyr/misc/generated/syscalls_links/include_zephyr_retention
 /home/gez/workspaces/eclipse/esp_doom/build/zephyr/misc/generated/syscalls_links/include_zephyr_rtio
 /home/gez/workspaces/eclipse/esp_doom/build/zephyr/misc/generated/syscalls_links/include_zephyr_sd
 /home/gez/workspaces/eclipse/esp_doom/build/zephyr/misc/generated/syscalls_links/include_zephyr_settings
 /home/gez/workspaces/eclipse/esp_doom/build/zephyr/misc/generated/syscalls_links/include_zephyr_shell
+/home/gez/workspaces/eclipse/esp_doom/build/zephyr/misc/generated/syscalls_links/include_zephyr_sip_svc
 /home/gez/workspaces/eclipse/esp_doom/build/zephyr/misc/generated/syscalls_links/include_zephyr_stats
 /home/gez/workspaces/eclipse/esp_doom/build/zephyr/misc/generated/syscalls_links/include_zephyr_storage
 /home/gez/workspaces/eclipse/esp_doom/build/zephyr/misc/generated/syscalls_links/include_zephyr_sys
@@ -105,6 +108,7 @@
 /home/gez/workspaces/eclipse/esp_doom/build/zephyr/misc/generated/syscalls_links/include_zephyr_drivers_rtc
 /home/gez/workspaces/eclipse/esp_doom/build/zephyr/misc/generated/syscalls_links/include_zephyr_drivers_sensor
 /home/gez/workspaces/eclipse/esp_doom/build/zephyr/misc/generated/syscalls_links/include_zephyr_drivers_serial
+/home/gez/workspaces/eclipse/esp_doom/build/zephyr/misc/generated/syscalls_links/include_zephyr_drivers_sip_svc
 /home/gez/workspaces/eclipse/esp_doom/build/zephyr/misc/generated/syscalls_links/include_zephyr_drivers_timer
 /home/gez/workspaces/eclipse/esp_doom/build/zephyr/misc/generated/syscalls_links/include_zephyr_drivers_uart
 /home/gez/workspaces/eclipse/esp_doom/build/zephyr/misc/generated/syscalls_links/include_zephyr_drivers_usb
@@ -113,6 +117,7 @@
 /home/gez/workspaces/eclipse/esp_doom/build/zephyr/misc/generated/syscalls_links/include_zephyr_drivers_i2c_target
 /home/gez/workspaces/eclipse/esp_doom/build/zephyr/misc/generated/syscalls_links/include_zephyr_drivers_misc_ft8xx
 /home/gez/workspaces/eclipse/esp_doom/build/zephyr/misc/generated/syscalls_links/include_zephyr_drivers_misc_grove_lcd
+/home/gez/workspaces/eclipse/esp_doom/build/zephyr/misc/generated/syscalls_links/include_zephyr_drivers_misc_pio_rpi_pico
 /home/gez/workspaces/eclipse/esp_doom/build/zephyr/misc/generated/syscalls_links/include_zephyr_drivers_pcie_endpoint
 /home/gez/workspaces/eclipse/esp_doom/build/zephyr/misc/generated/syscalls_links/include_zephyr_dt-bindings_adc
 /home/gez/workspaces/eclipse/esp_doom/build/zephyr/misc/generated/syscalls_links/include_zephyr_dt-bindings_clock
@@ -124,6 +129,7 @@
 /home/gez/workspaces/eclipse/esp_doom/build/zephyr/misc/generated/syscalls_links/include_zephyr_dt-bindings_flash_controller
 /home/gez/workspaces/eclipse/esp_doom/build/zephyr/misc/generated/syscalls_links/include_zephyr_dt-bindings_gpio
 /home/gez/workspaces/eclipse/esp_doom/build/zephyr/misc/generated/syscalls_links/include_zephyr_dt-bindings_i2c
+/home/gez/workspaces/eclipse/esp_doom/build/zephyr/misc/generated/syscalls_links/include_zephyr_dt-bindings_input
 /home/gez/workspaces/eclipse/esp_doom/build/zephyr/misc/generated/syscalls_links/include_zephyr_dt-bindings_interrupt-controller
 /home/gez/workspaces/eclipse/esp_doom/build/zephyr/misc/generated/syscalls_links/include_zephyr_dt-bindings_ipc_service
 /home/gez/workspaces/eclipse/esp_doom/build/zephyr/misc/generated/syscalls_links/include_zephyr_dt-bindings_led

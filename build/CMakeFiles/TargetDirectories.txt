@@ -1,5 +1,6 @@
 /home/gez/workspaces/eclipse/esp_doom/build/CMakeFiles/boards.dir
 /home/gez/workspaces/eclipse/esp_doom/build/CMakeFiles/shields.dir
+/home/gez/workspaces/eclipse/esp_doom/build/CMakeFiles/snippets.dir
 /home/gez/workspaces/eclipse/esp_doom/build/CMakeFiles/devicetree_target.dir
 /home/gez/workspaces/eclipse/esp_doom/build/CMakeFiles/menuconfig.dir
 /home/gez/workspaces/eclipse/esp_doom/build/CMakeFiles/guiconfig.dir
@@ -56,13 +57,16 @@
 /home/gez/workspaces/eclipse/esp_doom/build/zephyr/lib/libc/minimal/CMakeFiles/lib__libc__minimal.dir
 /home/gez/workspaces/eclipse/esp_doom/build/zephyr/lib/libc/minimal/CMakeFiles/edit_cache.dir
 /home/gez/workspaces/eclipse/esp_doom/build/zephyr/lib/libc/minimal/CMakeFiles/rebuild_cache.dir
+/home/gez/workspaces/eclipse/esp_doom/build/zephyr/lib/libc/common/CMakeFiles/lib__libc__common.dir
+/home/gez/workspaces/eclipse/esp_doom/build/zephyr/lib/libc/common/CMakeFiles/edit_cache.dir
+/home/gez/workspaces/eclipse/esp_doom/build/zephyr/lib/libc/common/CMakeFiles/rebuild_cache.dir
 /home/gez/workspaces/eclipse/esp_doom/build/zephyr/lib/posix/CMakeFiles/lib__posix.dir
 /home/gez/workspaces/eclipse/esp_doom/build/zephyr/lib/posix/CMakeFiles/edit_cache.dir
 /home/gez/workspaces/eclipse/esp_doom/build/zephyr/lib/posix/CMakeFiles/rebuild_cache.dir
+/home/gez/workspaces/eclipse/esp_doom/build/zephyr/lib/hash/CMakeFiles/edit_cache.dir
+/home/gez/workspaces/eclipse/esp_doom/build/zephyr/lib/hash/CMakeFiles/rebuild_cache.dir
 /home/gez/workspaces/eclipse/esp_doom/build/zephyr/lib/os/CMakeFiles/edit_cache.dir
 /home/gez/workspaces/eclipse/esp_doom/build/zephyr/lib/os/CMakeFiles/rebuild_cache.dir
-/home/gez/workspaces/eclipse/esp_doom/build/zephyr/lib/util/CMakeFiles/edit_cache.dir
-/home/gez/workspaces/eclipse/esp_doom/build/zephyr/lib/util/CMakeFiles/rebuild_cache.dir
 /home/gez/workspaces/eclipse/esp_doom/build/zephyr/soc/xtensa/CMakeFiles/edit_cache.dir
 /home/gez/workspaces/eclipse/esp_doom/build/zephyr/soc/xtensa/CMakeFiles/rebuild_cache.dir
 /home/gez/workspaces/eclipse/esp_doom/build/zephyr/soc/xtensa/esp32/CMakeFiles/EspIdfBootloader.dir
@@ -130,6 +134,9 @@
 /home/gez/workspaces/eclipse/esp_doom/build/zephyr/drivers/usb/CMakeFiles/rebuild_cache.dir
 /home/gez/workspaces/eclipse/esp_doom/build/zephyr/drivers/usb_c/CMakeFiles/edit_cache.dir
 /home/gez/workspaces/eclipse/esp_doom/build/zephyr/drivers/usb_c/CMakeFiles/rebuild_cache.dir
+/home/gez/workspaces/eclipse/esp_doom/build/zephyr/drivers/cache/CMakeFiles/drivers__cache.dir
+/home/gez/workspaces/eclipse/esp_doom/build/zephyr/drivers/cache/CMakeFiles/edit_cache.dir
+/home/gez/workspaces/eclipse/esp_doom/build/zephyr/drivers/cache/CMakeFiles/rebuild_cache.dir
 /home/gez/workspaces/eclipse/esp_doom/build/zephyr/drivers/clock_control/CMakeFiles/drivers__clock_control.dir
 /home/gez/workspaces/eclipse/esp_doom/build/zephyr/drivers/clock_control/CMakeFiles/edit_cache.dir
 /home/gez/workspaces/eclipse/esp_doom/build/zephyr/drivers/clock_control/CMakeFiles/rebuild_cache.dir

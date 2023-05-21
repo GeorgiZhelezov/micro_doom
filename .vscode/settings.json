@@ -7,6 +7,13 @@
 		"ssd16xx.h": "c",
 		"mb_display.h": "c",
 		"display_st7789v.h": "c",
-		"compare": "c"
+		"compare": "c",
+		"main.h": "c",
+		"stdbool.h": "c",
+		"time.h": "c",
+		"user_time.h": "c",
+		"user_main.h": "c",
+		"user_display.h": "c",
+		"esp_attr.h": "c"
 	}
 }

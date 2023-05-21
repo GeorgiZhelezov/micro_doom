@@ -44,6 +44,9 @@ CACHED_CONF_FILE:STRING=/home/gez/workspaces/eclipse/esp_doom/prj.conf
 //Selected shield
 CACHED_SHIELD:STRING=
 
+//Selected snippet
+CACHED_SNIPPET:STRING=
+
 //Path to a program.
 CCACHE_FOUND:FILEPATH=/usr/bin/ccache
 
@@ -305,6 +308,9 @@ DTC:FILEPATH=/home/gez/sdks/zephyr/toolchains/sysroots/x86_64-pokysdk-linux/usr/
 // dts2.overlay"
 DTC_OVERLAY_FILE:STRING=/home/gez/workspaces/eclipse/esp_doom/boards/esp32.overlay
 
+//Linker BFD compatibility (compiler reported)
+GNULD_LINKER_IS_BFD:BOOL=ON
+
 //Path to a program.
 GPERF:FILEPATH=/usr/bin/gperf
 
@@ -334,6 +340,9 @@ Picolibc_SOURCE_DIR:STATIC=/home/gez/sdks/zephyr/modules/lib/picolibc
 
 //True if toolchain supports newlib
 TOOLCHAIN_HAS_NEWLIB:BOOL=ON
+
+//True if toolchain supports picolibc
+TOOLCHAIN_HAS_PICOLIBC:BOOL=ON
 
 //Zephyr toolchain root
 TOOLCHAIN_ROOT:STRING=/home/gez/sdks/zephyr/zephyr
@@ -412,9 +421,9 @@ CMAKE_CACHEFILE_DIR:INTERNAL=/home/gez/workspaces/eclipse/esp_doom/build
 //Major version of cmake used to create the current loaded cache
 CMAKE_CACHE_MAJOR_VERSION:INTERNAL=3
 //Minor version of cmake used to create the current loaded cache
-CMAKE_CACHE_MINOR_VERSION:INTERNAL=25
+CMAKE_CACHE_MINOR_VERSION:INTERNAL=26
 //Patch version of cmake used to create the current loaded cache
-CMAKE_CACHE_PATCH_VERSION:INTERNAL=2
+CMAKE_CACHE_PATCH_VERSION:INTERNAL=3
 //Path to CMake executable.
 CMAKE_COMMAND:INTERNAL=/usr/bin/cmake
 //Path to cpack program executable.
@@ -497,7 +506,7 @@ CMAKE_MODULE_LINKER_FLAGS_RELWITHDEBINFO-ADVANCED:INTERNAL=1
 //ADVANCED property for variable: CMAKE_NM
 CMAKE_NM-ADVANCED:INTERNAL=1
 //number of local generators
-CMAKE_NUMBER_OF_MAKEFILES:INTERNAL=116
+CMAKE_NUMBER_OF_MAKEFILES:INTERNAL=118
 //ADVANCED property for variable: CMAKE_OBJCOPY
 CMAKE_OBJCOPY-ADVANCED:INTERNAL=1
 //ADVANCED property for variable: CMAKE_OBJDUMP
@@ -542,8 +551,10 @@ CMAKE_UNAME:INTERNAL=/usr/bin/uname
 CMAKE_VERBOSE_MAKEFILE-ADVANCED:INTERNAL=1
 //Details about finding Dtc
 FIND_PACKAGE_MESSAGE_DETAILS_Dtc:INTERNAL=[/home/gez/sdks/zephyr/toolchains/sysroots/x86_64-pokysdk-linux/usr/bin/dtc][v1.6.0(1.4.6)]
+//Details about finding GnuLd
+FIND_PACKAGE_MESSAGE_DETAILS_GnuLd:INTERNAL=[/home/gez/sdks/zephyr/toolchains/xtensa-espressif_esp32_zephyr-elf/bin/../lib/gcc/xtensa-espressif_esp32_zephyr-elf/12.2.0/../../../../xtensa-espressif_esp32_zephyr-elf/bin/ld.bfd][v2.38()]
 //Details about finding Python3
-FIND_PACKAGE_MESSAGE_DETAILS_Python3:INTERNAL=[/usr/bin/python3.10][cfound components: Interpreter ][v3.10.9(3.10)]
+FIND_PACKAGE_MESSAGE_DETAILS_Python3:INTERNAL=[/usr/bin/python3.10][cfound components: Interpreter ][v3.10.10(3.10)]
 //West
 WEST:INTERNAL=/usr/bin/python3.10;-m;west
 //a configuration file for the runners Python package
@@ -557,10 +568,8 @@ _Python3_Development_REASON_FAILURE:INTERNAL=
 //Path to a program.
 _Python3_EXECUTABLE:INTERNAL=/usr/bin/python3.10
 //Python3 Properties
-_Python3_INTERPRETER_PROPERTIES:INTERNAL=Python;3;10;9;64;;cpython-310-x86_64-linux-gnu;/usr/lib/python3.10;/usr/lib/python3.10;/usr/lib/python3.10/site-packages;/usr/lib/python3.10/site-packages
+_Python3_INTERPRETER_PROPERTIES:INTERNAL=Python;3;10;10;64;;cpython-310-x86_64-linux-gnu.so;abi3;/usr/lib/python3.10;/usr/lib/python3.10;/usr/lib/python3.10/site-packages;/usr/lib/python3.10/site-packages
 _Python3_INTERPRETER_SIGNATURE:INTERNAL=2ca8ef73ef1c49832b87ad30d9a986d6
-//Interpreter reason failure
-_Python3_Interpreter_REASON_FAILURE:INTERNAL=
 //NumPy reason failure
 _Python3_NumPy_REASON_FAILURE:INTERNAL=
 

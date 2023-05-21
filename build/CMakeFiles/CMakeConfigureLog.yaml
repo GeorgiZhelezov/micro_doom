@@ -1,0 +1,1424 @@
+
+---
+events:
+  -
+    kind: "message-v1"
+    backtrace:
+      - "/usr/share/cmake/Modules/CMakeDetermineSystem.cmake:199 (message)"
+      - "/home/gez/sdks/zephyr/zephyr/cmake/modules/kernel.cmake:128 (project)"
+      - "/home/gez/sdks/zephyr/zephyr/cmake/modules/zephyr_default.cmake:124 (include)"
+      - "/home/gez/sdks/zephyr/zephyr/share/zephyr-package/cmake/ZephyrConfig.cmake:66 (include)"
+      - "/home/gez/sdks/zephyr/zephyr/share/zephyr-package/cmake/ZephyrConfig.cmake:97 (include_boilerplate)"
+      - "CMakeLists.txt:7 (find_package)"
+    message: |
+      The target system is: Generic - 3.3.99 - xtensa
+      The host system is: Linux - 6.2.12-1-MANJARO - x86_64
+  -
+    kind: "message-v1"
+    backtrace:
+      - "/usr/share/cmake/Modules/CMakeDetermineCompilerId.cmake:17 (message)"
+      - "/usr/share/cmake/Modules/CMakeDetermineCompilerId.cmake:64 (__determine_compiler_id_test)"
+      - "/usr/share/cmake/Modules/CMakeDetermineCCompiler.cmake:123 (CMAKE_DETERMINE_COMPILER_ID)"
+      - "/home/gez/sdks/zephyr/zephyr/cmake/modules/kernel.cmake:128 (project)"
+      - "/home/gez/sdks/zephyr/zephyr/cmake/modules/zephyr_default.cmake:124 (include)"
+      - "/home/gez/sdks/zephyr/zephyr/share/zephyr-package/cmake/ZephyrConfig.cmake:66 (include)"
+      - "/home/gez/sdks/zephyr/zephyr/share/zephyr-package/cmake/ZephyrConfig.cmake:97 (include_boilerplate)"
+      - "CMakeLists.txt:7 (find_package)"
+    message: |
+      Compiling the C compiler identification source file "CMakeCCompilerId.c" failed.
+      Compiler: /home/gez/sdks/zephyr/toolchains/xtensa-espressif_esp32_zephyr-elf/bin/xtensa-espressif_esp32_zephyr-elf-gcc 
+      Build flags: 
+      Id flags:  
+      
+      The output was:
+      1
+      /home/gez/sdks/zephyr/toolchains/xtensa-espressif_esp32_zephyr-elf/bin/../lib/gcc/xtensa-espressif_esp32_zephyr-elf/12.2.0/../../../../xtensa-espressif_esp32_zephyr-elf/bin/ld: cannot find _vectors.o: No such file or directory
+      /home/gez/sdks/zephyr/toolchains/xtensa-espressif_esp32_zephyr-elf/bin/../lib/gcc/xtensa-espressif_esp32_zephyr-elf/12.2.0/../../../../xtensa-espressif_esp32_zephyr-elf/bin/ld: cannot find -lhandlers-sim: No such file or directory
+      /home/gez/sdks/zephyr/toolchains/xtensa-espressif_esp32_zephyr-elf/bin/../lib/gcc/xtensa-espressif_esp32_zephyr-elf/12.2.0/../../../../xtensa-espressif_esp32_zephyr-elf/bin/ld: cannot find -lhal: No such file or directory
+      collect2: error: ld returned 1 exit status
+      
+      
+  -
+    kind: "message-v1"
+    backtrace:
+      - "/usr/share/cmake/Modules/CMakeDetermineCompilerId.cmake:17 (message)"
+      - "/usr/share/cmake/Modules/CMakeDetermineCompilerId.cmake:64 (__determine_compiler_id_test)"
+      - "/usr/share/cmake/Modules/CMakeDetermineCCompiler.cmake:123 (CMAKE_DETERMINE_COMPILER_ID)"
+      - "/home/gez/sdks/zephyr/zephyr/cmake/modules/kernel.cmake:128 (project)"
+      - "/home/gez/sdks/zephyr/zephyr/cmake/modules/zephyr_default.cmake:124 (include)"
+      - "/home/gez/sdks/zephyr/zephyr/share/zephyr-package/cmake/ZephyrConfig.cmake:66 (include)"
+      - "/home/gez/sdks/zephyr/zephyr/share/zephyr-package/cmake/ZephyrConfig.cmake:97 (include_boilerplate)"
+      - "CMakeLists.txt:7 (find_package)"
+    message: |
+      Compiling the C compiler identification source file "CMakeCCompilerId.c" succeeded.
+      Compiler: /home/gez/sdks/zephyr/toolchains/xtensa-espressif_esp32_zephyr-elf/bin/xtensa-espressif_esp32_zephyr-elf-gcc 
+      Build flags: 
+      Id flags: -c 
+      
+      The output was:
+      0
+      
+      
+      Compilation of the C compiler identification source "CMakeCCompilerId.c" produced "CMakeCCompilerId.o"
+      
+      The C compiler identification is GNU, found in:
+        /home/gez/workspaces/eclipse/esp_doom/build/CMakeFiles/3.26.3/CompilerIdC/CMakeCCompilerId.o
+      
+  -
+    kind: "message-v1"
+    backtrace:
+      - "/usr/share/cmake/Modules/CMakeDetermineCompilerId.cmake:17 (message)"
+      - "/usr/share/cmake/Modules/CMakeDetermineCompilerId.cmake:64 (__determine_compiler_id_test)"
+      - "/usr/share/cmake/Modules/CMakeDetermineCXXCompiler.cmake:126 (CMAKE_DETERMINE_COMPILER_ID)"
+      - "/home/gez/sdks/zephyr/zephyr/cmake/modules/kernel.cmake:128 (project)"
+      - "/home/gez/sdks/zephyr/zephyr/cmake/modules/zephyr_default.cmake:124 (include)"
+      - "/home/gez/sdks/zephyr/zephyr/share/zephyr-package/cmake/ZephyrConfig.cmake:66 (include)"
+      - "/home/gez/sdks/zephyr/zephyr/share/zephyr-package/cmake/ZephyrConfig.cmake:97 (include_boilerplate)"
+      - "CMakeLists.txt:7 (find_package)"
+    message: |
+      Compiling the CXX compiler identification source file "CMakeCXXCompilerId.cpp" failed.
+      Compiler: /home/gez/sdks/zephyr/toolchains/xtensa-espressif_esp32_zephyr-elf/bin/xtensa-espressif_esp32_zephyr-elf-g++ 
+      Build flags: 
+      Id flags:  
+      
+      The output was:
+      1
+      /home/gez/sdks/zephyr/toolchains/xtensa-espressif_esp32_zephyr-elf/bin/../lib/gcc/xtensa-espressif_esp32_zephyr-elf/12.2.0/../../../../xtensa-espressif_esp32_zephyr-elf/bin/ld: cannot find _vectors.o: No such file or directory
+      /home/gez/sdks/zephyr/toolchains/xtensa-espressif_esp32_zephyr-elf/bin/../lib/gcc/xtensa-espressif_esp32_zephyr-elf/12.2.0/../../../../xtensa-espressif_esp32_zephyr-elf/bin/ld: cannot find -lhandlers-sim: No such file or directory
+      /home/gez/sdks/zephyr/toolchains/xtensa-espressif_esp32_zephyr-elf/bin/../lib/gcc/xtensa-espressif_esp32_zephyr-elf/12.2.0/../../../../xtensa-espressif_esp32_zephyr-elf/bin/ld: cannot find -lhal: No such file or directory
+      collect2: error: ld returned 1 exit status
+      
+      
+  -
+    kind: "message-v1"
+    backtrace:
+      - "/usr/share/cmake/Modules/CMakeDetermineCompilerId.cmake:17 (message)"
+      - "/usr/share/cmake/Modules/CMakeDetermineCompilerId.cmake:64 (__determine_compiler_id_test)"
+      - "/usr/share/cmake/Modules/CMakeDetermineCXXCompiler.cmake:126 (CMAKE_DETERMINE_COMPILER_ID)"
+      - "/home/gez/sdks/zephyr/zephyr/cmake/modules/kernel.cmake:128 (project)"
+      - "/home/gez/sdks/zephyr/zephyr/cmake/modules/zephyr_default.cmake:124 (include)"
+      - "/home/gez/sdks/zephyr/zephyr/share/zephyr-package/cmake/ZephyrConfig.cmake:66 (include)"
+      - "/home/gez/sdks/zephyr/zephyr/share/zephyr-package/cmake/ZephyrConfig.cmake:97 (include_boilerplate)"
+      - "CMakeLists.txt:7 (find_package)"
+    message: |
+      Compiling the CXX compiler identification source file "CMakeCXXCompilerId.cpp" succeeded.
+      Compiler: /home/gez/sdks/zephyr/toolchains/xtensa-espressif_esp32_zephyr-elf/bin/xtensa-espressif_esp32_zephyr-elf-g++ 
+      Build flags: 
+      Id flags: -c 
+      
+      The output was:
+      0
+      
+      
+      Compilation of the CXX compiler identification source "CMakeCXXCompilerId.cpp" produced "CMakeCXXCompilerId.o"
+      
+      The CXX compiler identification is GNU, found in:
+        /home/gez/workspaces/eclipse/esp_doom/build/CMakeFiles/3.26.3/CompilerIdCXX/CMakeCXXCompilerId.o
+      
+  -
+    kind: "message-v1"
+    backtrace:
+      - "/usr/share/cmake/Modules/CMakeDetermineCompilerId.cmake:1102 (message)"
+      - "/usr/share/cmake/Modules/CMakeDetermineASMCompiler.cmake:127 (CMAKE_DETERMINE_COMPILER_ID_VENDOR)"
+      - "/home/gez/sdks/zephyr/zephyr/cmake/modules/kernel.cmake:134 (enable_language)"
+      - "/home/gez/sdks/zephyr/zephyr/cmake/modules/zephyr_default.cmake:124 (include)"
+      - "/home/gez/sdks/zephyr/zephyr/share/zephyr-package/cmake/ZephyrConfig.cmake:66 (include)"
+      - "/home/gez/sdks/zephyr/zephyr/share/zephyr-package/cmake/ZephyrConfig.cmake:97 (include_boilerplate)"
+      - "CMakeLists.txt:7 (find_package)"
+    message: |
+      Checking whether the ASM compiler is GNU using "--version" matched "(GNU assembler)|(GCC)|(Free Software Foundation)":
+      xtensa-espressif_esp32_zephyr-elf-gcc (Zephyr SDK 0.16.0) 12.2.0
+      Copyright (C) 2022 Free Software Foundation, Inc.
+      This is free software; see the source for copying conditions.  There is NO
+      warranty; not even for MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+      
+  -
+    kind: "try_compile-v1"
+    backtrace:
+      - "/usr/share/cmake/Modules/Internal/CheckSourceCompiles.cmake:101 (try_compile)"
+      - "/usr/share/cmake/Modules/Internal/CheckCompilerFlag.cmake:18 (cmake_check_source_compiles)"
+      - "/usr/share/cmake/Modules/CheckCCompilerFlag.cmake:40 (cmake_check_compiler_flag)"
+      - "/home/gez/sdks/zephyr/zephyr/cmake/modules/extensions.cmake:1912 (check_c_compiler_flag)"
+      - "/home/gez/sdks/zephyr/zephyr/cmake/modules/extensions.cmake:1084 (check_compiler_flag)"
+      - "/home/gez/sdks/zephyr/zephyr/cmake/modules/kernel.cmake:144 (zephyr_check_compiler_flag)"
+      - "/home/gez/sdks/zephyr/zephyr/cmake/modules/zephyr_default.cmake:124 (include)"
+      - "/home/gez/sdks/zephyr/zephyr/share/zephyr-package/cmake/ZephyrConfig.cmake:66 (include)"
+      - "/home/gez/sdks/zephyr/zephyr/share/zephyr-package/cmake/ZephyrConfig.cmake:97 (include_boilerplate)"
+      - "CMakeLists.txt:7 (find_package)"
+    directories:
+      source: "/home/gez/workspaces/eclipse/esp_doom/build/CMakeFiles/CMakeScratch/TryCompile-Bo7uSI"
+      binary: "/home/gez/workspaces/eclipse/esp_doom/build/CMakeFiles/CMakeScratch/TryCompile-Bo7uSI"
+    cmakeVariables:
+      CMAKE_C_FLAGS: ""
+      CMAKE_C_FLAGS_DEBUG: "-g"
+      CMAKE_EXE_LINKER_FLAGS: ""
+      CMAKE_MODULE_PATH: "/home/gez/sdks/zephyr/zephyr/cmake/modules"
+    buildResult:
+      variable: "check_C__nostartfiles__nostdlib__isystem___home_gez_sdks_zephyr_toolchains_xtensa_espressif_esp32_zephyr_elf_bin____lib_gcc_xtensa_espressif_esp32_zephyr_elf_12_2_0_include___isystem___home_gez_sdks_zephyr_toolchains_xtensa_espressif_esp32_zephyr_elf_bin____lib_gcc_xtensa_espressif_esp32_zephyr_elf_12_2_0_include_fixed___Wl___unresolved_symbols_ignore_in_object_files__Wl___entry_0"
+      cached: true
+      stdout: |
+        Change Dir: /home/gez/workspaces/eclipse/esp_doom/build/CMakeFiles/CMakeScratch/TryCompile-Bo7uSI
+        
+        Run Build Command(s):/usr/bin/ninja -v cmTC_818cf && [1/2] /home/gez/sdks/zephyr/toolchains/xtensa-espressif_esp32_zephyr-elf/bin/xtensa-espressif_esp32_zephyr-elf-gcc -Dcheck_C__nostartfiles__nostdlib__isystem___home_gez_sdks_zephyr_toolchains_xtensa_espressif_esp32_zephyr_elf_bin____lib_gcc_xtensa_espressif_esp32_zephyr_elf_12_2_0_include___isystem___home_gez_sdks_zephyr_toolchains_xtensa_espressif_esp32_zephyr_elf_bin____lib_gcc_xtensa_espressif_esp32_zephyr_elf_12_2_0_include_fixed___Wl___unresolved_symbols_ignore_in_object_files__Wl___entry_0  -nostartfiles -nostdlib -isystem "/home/gez/sdks/zephyr/toolchains/xtensa-espressif_esp32_zephyr-elf/bin/../lib/gcc/xtensa-espressif_esp32_zephyr-elf/12.2.0/include" -isystem "/home/gez/sdks/zephyr/toolchains/xtensa-espressif_esp32_zephyr-elf/bin/../lib/gcc/xtensa-espressif_esp32_zephyr-elf/12.2.0/include-fixed" -Wl,--unresolved-symbols=ignore-in-object-files -Wl,--entry=0 -o CMakeFiles/cmTC_818cf.dir/src.c.obj -c /home/gez/workspaces/eclipse/esp_doom/build/CMakeFiles/CMakeScratch/TryCompile-Bo7uSI/src.c
+        [2/2] : && /home/gez/sdks/zephyr/toolchains/xtensa-espressif_esp32_zephyr-elf/bin/xtensa-espressif_esp32_zephyr-elf-gcc -nostartfiles -nostdlib -isystem "/home/gez/sdks/zephyr/toolchains/xtensa-espressif_esp32_zephyr-elf/bin/../lib/gcc/xtensa-espressif_esp32_zephyr-elf/12.2.0/include" -isystem "/home/gez/sdks/zephyr/toolchains/xtensa-espressif_esp32_zephyr-elf/bin/../lib/gcc/xtensa-espressif_esp32_zephyr-elf/12.2.0/include-fixed" -Wl,--unresolved-symbols=ignore-in-object-files -Wl,--entry=0  CMakeFiles/cmTC_818cf.dir/src.c.obj -o cmTC_818cf   && :
+        
+      exitCode: 0
+  -
+    kind: "try_compile-v1"
+    backtrace:
+      - "/usr/share/cmake/Modules/Internal/CheckSourceCompiles.cmake:101 (try_compile)"
+      - "/usr/share/cmake/Modules/Internal/CheckCompilerFlag.cmake:18 (cmake_check_source_compiles)"
+      - "/usr/share/cmake/Modules/CheckCCompilerFlag.cmake:40 (cmake_check_compiler_flag)"
+      - "/home/gez/sdks/zephyr/zephyr/cmake/modules/extensions.cmake:1912 (check_c_compiler_flag)"
+      - "/home/gez/sdks/zephyr/zephyr/cmake/modules/extensions.cmake:1084 (check_compiler_flag)"
+      - "/home/gez/sdks/zephyr/zephyr/cmake/modules/extensions.cmake:2058 (zephyr_check_compiler_flag)"
+      - "/home/gez/sdks/zephyr/zephyr/cmake/linker/linker_flags_template.cmake:11 (check_set_linker_property)"
+      - "/home/gez/sdks/zephyr/zephyr/cmake/target_toolchain_flags.cmake:37 (include)"
+      - "/home/gez/sdks/zephyr/zephyr/cmake/modules/kernel.cmake:147 (include)"
+      - "/home/gez/sdks/zephyr/zephyr/cmake/modules/zephyr_default.cmake:124 (include)"
+      - "/home/gez/sdks/zephyr/zephyr/share/zephyr-package/cmake/ZephyrConfig.cmake:66 (include)"
+      - "/home/gez/sdks/zephyr/zephyr/share/zephyr-package/cmake/ZephyrConfig.cmake:97 (include_boilerplate)"
+      - "CMakeLists.txt:7 (find_package)"
+    directories:
+      source: "/home/gez/workspaces/eclipse/esp_doom/build/CMakeFiles/CMakeScratch/TryCompile-ZxzXx6"
+      binary: "/home/gez/workspaces/eclipse/esp_doom/build/CMakeFiles/CMakeScratch/TryCompile-ZxzXx6"
+    cmakeVariables:
+      CMAKE_C_FLAGS: ""
+      CMAKE_C_FLAGS_DEBUG: "-g"
+      CMAKE_EXE_LINKER_FLAGS: ""
+      CMAKE_MODULE_PATH: "/home/gez/sdks/zephyr/zephyr/cmake/modules"
+    buildResult:
+      variable: "check_C__nostartfiles__nostdlib__isystem___home_gez_sdks_zephyr_toolchains_xtensa_espressif_esp32_zephyr_elf_bin____lib_gcc_xtensa_espressif_esp32_zephyr_elf_12_2_0_include___isystem___home_gez_sdks_zephyr_toolchains_xtensa_espressif_esp32_zephyr_elf_bin____lib_gcc_xtensa_espressif_esp32_zephyr_elf_12_2_0_include_fixed___Wl___unresolved_symbols_ignore_in_object_files__Wl___entry_0_"
+      cached: true
+      stdout: |
+        Change Dir: /home/gez/workspaces/eclipse/esp_doom/build/CMakeFiles/CMakeScratch/TryCompile-ZxzXx6
+        
+        Run Build Command(s):/usr/bin/ninja -v cmTC_66f9f && [1/2] /home/gez/sdks/zephyr/toolchains/xtensa-espressif_esp32_zephyr-elf/bin/xtensa-espressif_esp32_zephyr-elf-gcc -Dcheck_C__nostartfiles__nostdlib__isystem___home_gez_sdks_zephyr_toolchains_xtensa_espressif_esp32_zephyr_elf_bin____lib_gcc_xtensa_espressif_esp32_zephyr_elf_12_2_0_include___isystem___home_gez_sdks_zephyr_toolchains_xtensa_espressif_esp32_zephyr_elf_bin____lib_gcc_xtensa_espressif_esp32_zephyr_elf_12_2_0_include_fixed___Wl___unresolved_symbols_ignore_in_object_files__Wl___entry_0_  -nostartfiles -nostdlib -isystem "/home/gez/sdks/zephyr/toolchains/xtensa-espressif_esp32_zephyr-elf/bin/../lib/gcc/xtensa-espressif_esp32_zephyr-elf/12.2.0/include" -isystem "/home/gez/sdks/zephyr/toolchains/xtensa-espressif_esp32_zephyr-elf/bin/../lib/gcc/xtensa-espressif_esp32_zephyr-elf/12.2.0/include-fixed" -Wl,--unresolved-symbols=ignore-in-object-files -Wl,--entry=0 -o CMakeFiles/cmTC_66f9f.dir/src.c.obj -c /home/gez/workspaces/eclipse/esp_doom/build/CMakeFiles/CMakeScratch/TryCompile-ZxzXx6/src.c
+        [2/2] : && /home/gez/sdks/zephyr/toolchains/xtensa-espressif_esp32_zephyr-elf/bin/xtensa-espressif_esp32_zephyr-elf-gcc -nostartfiles -nostdlib -isystem "/home/gez/sdks/zephyr/toolchains/xtensa-espressif_esp32_zephyr-elf/bin/../lib/gcc/xtensa-espressif_esp32_zephyr-elf/12.2.0/include" -isystem "/home/gez/sdks/zephyr/toolchains/xtensa-espressif_esp32_zephyr-elf/bin/../lib/gcc/xtensa-espressif_esp32_zephyr-elf/12.2.0/include-fixed" -Wl,--unresolved-symbols=ignore-in-object-files -Wl,--entry=0  CMakeFiles/cmTC_66f9f.dir/src.c.obj -o cmTC_66f9f   && :
+        
+      exitCode: 0
+  -
+    kind: "try_compile-v1"
+    backtrace:
+      - "/usr/share/cmake/Modules/Internal/CheckSourceCompiles.cmake:101 (try_compile)"
+      - "/usr/share/cmake/Modules/Internal/CheckCompilerFlag.cmake:18 (cmake_check_source_compiles)"
+      - "/usr/share/cmake/Modules/CheckCCompilerFlag.cmake:40 (cmake_check_compiler_flag)"
+      - "/home/gez/sdks/zephyr/zephyr/cmake/modules/extensions.cmake:1912 (check_c_compiler_flag)"
+      - "/home/gez/sdks/zephyr/zephyr/cmake/modules/extensions.cmake:1084 (check_compiler_flag)"
+      - "/home/gez/sdks/zephyr/zephyr/cmake/modules/extensions.cmake:2134 (zephyr_check_compiler_flag)"
+      - "/home/gez/sdks/zephyr/zephyr/cmake/compiler/gcc/compiler_flags.cmake:29 (check_set_compiler_property)"
+      - "/home/gez/sdks/zephyr/zephyr/cmake/target_toolchain_flags.cmake:41 (include)"
+      - "/home/gez/sdks/zephyr/zephyr/cmake/modules/kernel.cmake:147 (include)"
+      - "/home/gez/sdks/zephyr/zephyr/cmake/modules/zephyr_default.cmake:124 (include)"
+      - "/home/gez/sdks/zephyr/zephyr/share/zephyr-package/cmake/ZephyrConfig.cmake:66 (include)"
+      - "/home/gez/sdks/zephyr/zephyr/share/zephyr-package/cmake/ZephyrConfig.cmake:97 (include_boilerplate)"
+      - "CMakeLists.txt:7 (find_package)"
+    directories:
+      source: "/home/gez/workspaces/eclipse/esp_doom/build/CMakeFiles/CMakeScratch/TryCompile-Wlt1Xx"
+      binary: "/home/gez/workspaces/eclipse/esp_doom/build/CMakeFiles/CMakeScratch/TryCompile-Wlt1Xx"
+    cmakeVariables:
+      CMAKE_C_FLAGS: ""
+      CMAKE_C_FLAGS_DEBUG: "-g"
+      CMAKE_EXE_LINKER_FLAGS: ""
+      CMAKE_MODULE_PATH: "/home/gez/sdks/zephyr/zephyr/cmake/modules"
+    buildResult:
+      variable: "check_Wall_C__nostartfiles__nostdlib__isystem___home_gez_sdks_zephyr_toolchains_xtensa_espressif_esp32_zephyr_elf_bin____lib_gcc_xtensa_espressif_esp32_zephyr_elf_12_2_0_include___isystem___home_gez_sdks_zephyr_toolchains_xtensa_espressif_esp32_zephyr_elf_bin____lib_gcc_xtensa_espressif_esp32_zephyr_elf_12_2_0_include_fixed___Wl___unresolved_symbols_ignore_in_object_files__Wl___entry_0"
+      cached: true
+      stdout: |
+        Change Dir: /home/gez/workspaces/eclipse/esp_doom/build/CMakeFiles/CMakeScratch/TryCompile-Wlt1Xx
+        
+        Run Build Command(s):/usr/bin/ninja -v cmTC_74eff && [1/2] /home/gez/sdks/zephyr/toolchains/xtensa-espressif_esp32_zephyr-elf/bin/xtensa-espressif_esp32_zephyr-elf-gcc -Dcheck_Wall_C__nostartfiles__nostdlib__isystem___home_gez_sdks_zephyr_toolchains_xtensa_espressif_esp32_zephyr_elf_bin____lib_gcc_xtensa_espressif_esp32_zephyr_elf_12_2_0_include___isystem___home_gez_sdks_zephyr_toolchains_xtensa_espressif_esp32_zephyr_elf_bin____lib_gcc_xtensa_espressif_esp32_zephyr_elf_12_2_0_include_fixed___Wl___unresolved_symbols_ignore_in_object_files__Wl___entry_0  -nostartfiles -nostdlib -isystem "/home/gez/sdks/zephyr/toolchains/xtensa-espressif_esp32_zephyr-elf/bin/../lib/gcc/xtensa-espressif_esp32_zephyr-elf/12.2.0/include" -isystem "/home/gez/sdks/zephyr/toolchains/xtensa-espressif_esp32_zephyr-elf/bin/../lib/gcc/xtensa-espressif_esp32_zephyr-elf/12.2.0/include-fixed" -Wl,--unresolved-symbols=ignore-in-object-files -Wl,--entry=0   -Wall -o CMakeFiles/cmTC_74eff.dir/src.c.obj -c /home/gez/workspaces/eclipse/esp_doom/build/CMakeFiles/CMakeScratch/TryCompile-Wlt1Xx/src.c
+        [2/2] : && /home/gez/sdks/zephyr/toolchains/xtensa-espressif_esp32_zephyr-elf/bin/xtensa-espressif_esp32_zephyr-elf-gcc -nostartfiles -nostdlib -isystem "/home/gez/sdks/zephyr/toolchains/xtensa-espressif_esp32_zephyr-elf/bin/../lib/gcc/xtensa-espressif_esp32_zephyr-elf/12.2.0/include" -isystem "/home/gez/sdks/zephyr/toolchains/xtensa-espressif_esp32_zephyr-elf/bin/../lib/gcc/xtensa-espressif_esp32_zephyr-elf/12.2.0/include-fixed" -Wl,--unresolved-symbols=ignore-in-object-files -Wl,--entry=0  CMakeFiles/cmTC_74eff.dir/src.c.obj -o cmTC_74eff   && :
+        
+      exitCode: 0
+  -
+    kind: "try_compile-v1"
+    backtrace:
+      - "/usr/share/cmake/Modules/Internal/CheckSourceCompiles.cmake:101 (try_compile)"
+      - "/usr/share/cmake/Modules/Internal/CheckCompilerFlag.cmake:18 (cmake_check_source_compiles)"
+      - "/usr/share/cmake/Modules/CheckCCompilerFlag.cmake:40 (cmake_check_compiler_flag)"
+      - "/home/gez/sdks/zephyr/zephyr/cmake/modules/extensions.cmake:1912 (check_c_compiler_flag)"
+      - "/home/gez/sdks/zephyr/zephyr/cmake/modules/extensions.cmake:1084 (check_compiler_flag)"
+      - "/home/gez/sdks/zephyr/zephyr/cmake/modules/extensions.cmake:2134 (zephyr_check_compiler_flag)"
+      - "/home/gez/sdks/zephyr/zephyr/cmake/compiler/gcc/compiler_flags.cmake:29 (check_set_compiler_property)"
+      - "/home/gez/sdks/zephyr/zephyr/cmake/target_toolchain_flags.cmake:41 (include)"
+      - "/home/gez/sdks/zephyr/zephyr/cmake/modules/kernel.cmake:147 (include)"
+      - "/home/gez/sdks/zephyr/zephyr/cmake/modules/zephyr_default.cmake:124 (include)"
+      - "/home/gez/sdks/zephyr/zephyr/share/zephyr-package/cmake/ZephyrConfig.cmake:66 (include)"
+      - "/home/gez/sdks/zephyr/zephyr/share/zephyr-package/cmake/ZephyrConfig.cmake:97 (include_boilerplate)"
+      - "CMakeLists.txt:7 (find_package)"
+    directories:
+      source: "/home/gez/workspaces/eclipse/esp_doom/build/CMakeFiles/CMakeScratch/TryCompile-29X3bv"
+      binary: "/home/gez/workspaces/eclipse/esp_doom/build/CMakeFiles/CMakeScratch/TryCompile-29X3bv"
+    cmakeVariables:
+      CMAKE_C_FLAGS: ""
+      CMAKE_C_FLAGS_DEBUG: "-g"
+      CMAKE_EXE_LINKER_FLAGS: ""
+      CMAKE_MODULE_PATH: "/home/gez/sdks/zephyr/zephyr/cmake/modules"
+    buildResult:
+      variable: "check_Wformat__Wformat_security_C__nostartfiles__nostdlib__isystem___home_gez_sdks_zephyr_toolchains_xtensa_espressif_esp32_zephyr_elf_bin____lib_gcc_xtensa_espressif_esp32_zephyr_elf_12_2_0_include___isystem___home_gez_sdks_zephyr_toolchains_xtensa_espressif_esp32_zephyr_elf_bin____lib_gcc_xtensa_espressif_esp32_zephyr_elf_12_2_0_include_fixed___Wl___unresolved_symbols_ignore_in_object_files__Wl___entry_0"
+      cached: true
+      stdout: |
+        Change Dir: /home/gez/workspaces/eclipse/esp_doom/build/CMakeFiles/CMakeScratch/TryCompile-29X3bv
+        
+        Run Build Command(s):/usr/bin/ninja -v cmTC_a10a5 && [1/2] /home/gez/sdks/zephyr/toolchains/xtensa-espressif_esp32_zephyr-elf/bin/xtensa-espressif_esp32_zephyr-elf-gcc -Dcheck_Wformat__Wformat_security_C__nostartfiles__nostdlib__isystem___home_gez_sdks_zephyr_toolchains_xtensa_espressif_esp32_zephyr_elf_bin____lib_gcc_xtensa_espressif_esp32_zephyr_elf_12_2_0_include___isystem___home_gez_sdks_zephyr_toolchains_xtensa_espressif_esp32_zephyr_elf_bin____lib_gcc_xtensa_espressif_esp32_zephyr_elf_12_2_0_include_fixed___Wl___unresolved_symbols_ignore_in_object_files__Wl___entry_0  -nostartfiles -nostdlib -isystem "/home/gez/sdks/zephyr/toolchains/xtensa-espressif_esp32_zephyr-elf/bin/../lib/gcc/xtensa-espressif_esp32_zephyr-elf/12.2.0/include" -isystem "/home/gez/sdks/zephyr/toolchains/xtensa-espressif_esp32_zephyr-elf/bin/../lib/gcc/xtensa-espressif_esp32_zephyr-elf/12.2.0/include-fixed" -Wl,--unresolved-symbols=ignore-in-object-files -Wl,--entry=0   -Wformat -Wformat-security -o CMakeFiles/cmTC_a10a5.dir/src.c.obj -c /home/gez/workspaces/eclipse/esp_doom/build/CMakeFiles/CMakeScratch/TryCompile-29X3bv/src.c
+        [2/2] : && /home/gez/sdks/zephyr/toolchains/xtensa-espressif_esp32_zephyr-elf/bin/xtensa-espressif_esp32_zephyr-elf-gcc -nostartfiles -nostdlib -isystem "/home/gez/sdks/zephyr/toolchains/xtensa-espressif_esp32_zephyr-elf/bin/../lib/gcc/xtensa-espressif_esp32_zephyr-elf/12.2.0/include" -isystem "/home/gez/sdks/zephyr/toolchains/xtensa-espressif_esp32_zephyr-elf/bin/../lib/gcc/xtensa-espressif_esp32_zephyr-elf/12.2.0/include-fixed" -Wl,--unresolved-symbols=ignore-in-object-files -Wl,--entry=0  CMakeFiles/cmTC_a10a5.dir/src.c.obj -o cmTC_a10a5   && :
+        
+      exitCode: 0
+  -
+    kind: "try_compile-v1"
+    backtrace:
+      - "/usr/share/cmake/Modules/Internal/CheckSourceCompiles.cmake:101 (try_compile)"
+      - "/usr/share/cmake/Modules/Internal/CheckCompilerFlag.cmake:18 (cmake_check_source_compiles)"
+      - "/usr/share/cmake/Modules/CheckCCompilerFlag.cmake:40 (cmake_check_compiler_flag)"
+      - "/home/gez/sdks/zephyr/zephyr/cmake/modules/extensions.cmake:1912 (check_c_compiler_flag)"
+      - "/home/gez/sdks/zephyr/zephyr/cmake/modules/extensions.cmake:1084 (check_compiler_flag)"
+      - "/home/gez/sdks/zephyr/zephyr/cmake/modules/extensions.cmake:2134 (zephyr_check_compiler_flag)"
+      - "/home/gez/sdks/zephyr/zephyr/cmake/compiler/gcc/compiler_flags.cmake:29 (check_set_compiler_property)"
+      - "/home/gez/sdks/zephyr/zephyr/cmake/target_toolchain_flags.cmake:41 (include)"
+      - "/home/gez/sdks/zephyr/zephyr/cmake/modules/kernel.cmake:147 (include)"
+      - "/home/gez/sdks/zephyr/zephyr/cmake/modules/zephyr_default.cmake:124 (include)"
+      - "/home/gez/sdks/zephyr/zephyr/share/zephyr-package/cmake/ZephyrConfig.cmake:66 (include)"
+      - "/home/gez/sdks/zephyr/zephyr/share/zephyr-package/cmake/ZephyrConfig.cmake:97 (include_boilerplate)"
+      - "CMakeLists.txt:7 (find_package)"
+    directories:
+      source: "/home/gez/workspaces/eclipse/esp_doom/build/CMakeFiles/CMakeScratch/TryCompile-L1v1jA"
+      binary: "/home/gez/workspaces/eclipse/esp_doom/build/CMakeFiles/CMakeScratch/TryCompile-L1v1jA"
+    cmakeVariables:
+      CMAKE_C_FLAGS: ""
+      CMAKE_C_FLAGS_DEBUG: "-g"
+      CMAKE_EXE_LINKER_FLAGS: ""
+      CMAKE_MODULE_PATH: "/home/gez/sdks/zephyr/zephyr/cmake/modules"
+    buildResult:
+      variable: "check_Wformat__Wformat_zero_length_C__nostartfiles__nostdlib__isystem___home_gez_sdks_zephyr_toolchains_xtensa_espressif_esp32_zephyr_elf_bin____lib_gcc_xtensa_espressif_esp32_zephyr_elf_12_2_0_include___isystem___home_gez_sdks_zephyr_toolchains_xtensa_espressif_esp32_zephyr_elf_bin____lib_gcc_xtensa_espressif_esp32_zephyr_elf_12_2_0_include_fixed___Wl___unresolved_symbols_ignore_in_object_files__Wl___entry_0"
+      cached: true
+      stdout: |
+        Change Dir: /home/gez/workspaces/eclipse/esp_doom/build/CMakeFiles/CMakeScratch/TryCompile-L1v1jA
+        
+        Run Build Command(s):/usr/bin/ninja -v cmTC_adb97 && [1/2] /home/gez/sdks/zephyr/toolchains/xtensa-espressif_esp32_zephyr-elf/bin/xtensa-espressif_esp32_zephyr-elf-gcc -Dcheck_Wformat__Wformat_zero_length_C__nostartfiles__nostdlib__isystem___home_gez_sdks_zephyr_toolchains_xtensa_espressif_esp32_zephyr_elf_bin____lib_gcc_xtensa_espressif_esp32_zephyr_elf_12_2_0_include___isystem___home_gez_sdks_zephyr_toolchains_xtensa_espressif_esp32_zephyr_elf_bin____lib_gcc_xtensa_espressif_esp32_zephyr_elf_12_2_0_include_fixed___Wl___unresolved_symbols_ignore_in_object_files__Wl___entry_0  -nostartfiles -nostdlib -isystem "/home/gez/sdks/zephyr/toolchains/xtensa-espressif_esp32_zephyr-elf/bin/../lib/gcc/xtensa-espressif_esp32_zephyr-elf/12.2.0/include" -isystem "/home/gez/sdks/zephyr/toolchains/xtensa-espressif_esp32_zephyr-elf/bin/../lib/gcc/xtensa-espressif_esp32_zephyr-elf/12.2.0/include-fixed" -Wl,--unresolved-symbols=ignore-in-object-files -Wl,--entry=0   -Wformat -Wformat-zero-length -o CMakeFiles/cmTC_adb97.dir/src.c.obj -c /home/gez/workspaces/eclipse/esp_doom/build/CMakeFiles/CMakeScratch/TryCompile-L1v1jA/src.c
+        [2/2] : && /home/gez/sdks/zephyr/toolchains/xtensa-espressif_esp32_zephyr-elf/bin/xtensa-espressif_esp32_zephyr-elf-gcc -nostartfiles -nostdlib -isystem "/home/gez/sdks/zephyr/toolchains/xtensa-espressif_esp32_zephyr-elf/bin/../lib/gcc/xtensa-espressif_esp32_zephyr-elf/12.2.0/include" -isystem "/home/gez/sdks/zephyr/toolchains/xtensa-espressif_esp32_zephyr-elf/bin/../lib/gcc/xtensa-espressif_esp32_zephyr-elf/12.2.0/include-fixed" -Wl,--unresolved-symbols=ignore-in-object-files -Wl,--entry=0  CMakeFiles/cmTC_adb97.dir/src.c.obj -o cmTC_adb97   && :
+        
+      exitCode: 0
+  -
+    kind: "try_compile-v1"
+    backtrace:
+      - "/usr/share/cmake/Modules/Internal/CheckSourceCompiles.cmake:101 (try_compile)"
+      - "/usr/share/cmake/Modules/Internal/CheckCompilerFlag.cmake:18 (cmake_check_source_compiles)"
+      - "/usr/share/cmake/Modules/CheckCCompilerFlag.cmake:40 (cmake_check_compiler_flag)"
+      - "/home/gez/sdks/zephyr/zephyr/cmake/modules/extensions.cmake:1912 (check_c_compiler_flag)"
+      - "/home/gez/sdks/zephyr/zephyr/cmake/modules/extensions.cmake:1084 (check_compiler_flag)"
+      - "/home/gez/sdks/zephyr/zephyr/cmake/modules/extensions.cmake:2134 (zephyr_check_compiler_flag)"
+      - "/home/gez/sdks/zephyr/zephyr/cmake/compiler/gcc/compiler_flags.cmake:35 (check_set_compiler_property)"
+      - "/home/gez/sdks/zephyr/zephyr/cmake/target_toolchain_flags.cmake:41 (include)"
+      - "/home/gez/sdks/zephyr/zephyr/cmake/modules/kernel.cmake:147 (include)"
+      - "/home/gez/sdks/zephyr/zephyr/cmake/modules/zephyr_default.cmake:124 (include)"
+      - "/home/gez/sdks/zephyr/zephyr/share/zephyr-package/cmake/ZephyrConfig.cmake:66 (include)"
+      - "/home/gez/sdks/zephyr/zephyr/share/zephyr-package/cmake/ZephyrConfig.cmake:97 (include_boilerplate)"
+      - "CMakeLists.txt:7 (find_package)"
+    directories:
+      source: "/home/gez/workspaces/eclipse/esp_doom/build/CMakeFiles/CMakeScratch/TryCompile-sxkwe6"
+      binary: "/home/gez/workspaces/eclipse/esp_doom/build/CMakeFiles/CMakeScratch/TryCompile-sxkwe6"
+    cmakeVariables:
+      CMAKE_C_FLAGS: ""
+      CMAKE_C_FLAGS_DEBUG: "-g"
+      CMAKE_EXE_LINKER_FLAGS: ""
+      CMAKE_MODULE_PATH: "/home/gez/sdks/zephyr/zephyr/cmake/modules"
+    buildResult:
+      variable: "check_Wpointer_sign_C__nostartfiles__nostdlib__isystem___home_gez_sdks_zephyr_toolchains_xtensa_espressif_esp32_zephyr_elf_bin____lib_gcc_xtensa_espressif_esp32_zephyr_elf_12_2_0_include___isystem___home_gez_sdks_zephyr_toolchains_xtensa_espressif_esp32_zephyr_elf_bin____lib_gcc_xtensa_espressif_esp32_zephyr_elf_12_2_0_include_fixed___Wl___unresolved_symbols_ignore_in_object_files__Wl___entry_0"
+      cached: true
+      stdout: |
+        Change Dir: /home/gez/workspaces/eclipse/esp_doom/build/CMakeFiles/CMakeScratch/TryCompile-sxkwe6
+        
+        Run Build Command(s):/usr/bin/ninja -v cmTC_96556 && [1/2] /home/gez/sdks/zephyr/toolchains/xtensa-espressif_esp32_zephyr-elf/bin/xtensa-espressif_esp32_zephyr-elf-gcc -Dcheck_Wpointer_sign_C__nostartfiles__nostdlib__isystem___home_gez_sdks_zephyr_toolchains_xtensa_espressif_esp32_zephyr_elf_bin____lib_gcc_xtensa_espressif_esp32_zephyr_elf_12_2_0_include___isystem___home_gez_sdks_zephyr_toolchains_xtensa_espressif_esp32_zephyr_elf_bin____lib_gcc_xtensa_espressif_esp32_zephyr_elf_12_2_0_include_fixed___Wl___unresolved_symbols_ignore_in_object_files__Wl___entry_0  -nostartfiles -nostdlib -isystem "/home/gez/sdks/zephyr/toolchains/xtensa-espressif_esp32_zephyr-elf/bin/../lib/gcc/xtensa-espressif_esp32_zephyr-elf/12.2.0/include" -isystem "/home/gez/sdks/zephyr/toolchains/xtensa-espressif_esp32_zephyr-elf/bin/../lib/gcc/xtensa-espressif_esp32_zephyr-elf/12.2.0/include-fixed" -Wl,--unresolved-symbols=ignore-in-object-files -Wl,--entry=0   -Wpointer-sign -o CMakeFiles/cmTC_96556.dir/src.c.obj -c /home/gez/workspaces/eclipse/esp_doom/build/CMakeFiles/CMakeScratch/TryCompile-sxkwe6/src.c
+        [2/2] : && /home/gez/sdks/zephyr/toolchains/xtensa-espressif_esp32_zephyr-elf/bin/xtensa-espressif_esp32_zephyr-elf-gcc -nostartfiles -nostdlib -isystem "/home/gez/sdks/zephyr/toolchains/xtensa-espressif_esp32_zephyr-elf/bin/../lib/gcc/xtensa-espressif_esp32_zephyr-elf/12.2.0/include" -isystem "/home/gez/sdks/zephyr/toolchains/xtensa-espressif_esp32_zephyr-elf/bin/../lib/gcc/xtensa-espressif_esp32_zephyr-elf/12.2.0/include-fixed" -Wl,--unresolved-symbols=ignore-in-object-files -Wl,--entry=0  CMakeFiles/cmTC_96556.dir/src.c.obj -o cmTC_96556   && :
+        
+      exitCode: 0
+  -
+    kind: "try_compile-v1"
+    backtrace:
+      - "/usr/share/cmake/Modules/Internal/CheckSourceCompiles.cmake:101 (try_compile)"
+      - "/usr/share/cmake/Modules/Internal/CheckCompilerFlag.cmake:18 (cmake_check_source_compiles)"
+      - "/usr/share/cmake/Modules/CheckCCompilerFlag.cmake:40 (cmake_check_compiler_flag)"
+      - "/home/gez/sdks/zephyr/zephyr/cmake/modules/extensions.cmake:1912 (check_c_compiler_flag)"
+      - "/home/gez/sdks/zephyr/zephyr/cmake/modules/extensions.cmake:1084 (check_compiler_flag)"
+      - "/home/gez/sdks/zephyr/zephyr/cmake/modules/extensions.cmake:2134 (zephyr_check_compiler_flag)"
+      - "/home/gez/sdks/zephyr/zephyr/cmake/compiler/gcc/compiler_flags.cmake:38 (check_set_compiler_property)"
+      - "/home/gez/sdks/zephyr/zephyr/cmake/target_toolchain_flags.cmake:41 (include)"
+      - "/home/gez/sdks/zephyr/zephyr/cmake/modules/kernel.cmake:147 (include)"
+      - "/home/gez/sdks/zephyr/zephyr/cmake/modules/zephyr_default.cmake:124 (include)"
+      - "/home/gez/sdks/zephyr/zephyr/share/zephyr-package/cmake/ZephyrConfig.cmake:66 (include)"
+      - "/home/gez/sdks/zephyr/zephyr/share/zephyr-package/cmake/ZephyrConfig.cmake:97 (include_boilerplate)"
+      - "CMakeLists.txt:7 (find_package)"
+    directories:
+      source: "/home/gez/workspaces/eclipse/esp_doom/build/CMakeFiles/CMakeScratch/TryCompile-ExFqUE"
+      binary: "/home/gez/workspaces/eclipse/esp_doom/build/CMakeFiles/CMakeScratch/TryCompile-ExFqUE"
+    cmakeVariables:
+      CMAKE_C_FLAGS: ""
+      CMAKE_C_FLAGS_DEBUG: "-g"
+      CMAKE_EXE_LINKER_FLAGS: ""
+      CMAKE_MODULE_PATH: "/home/gez/sdks/zephyr/zephyr/cmake/modules"
+    buildResult:
+      variable: "check_Wpointer_arith_C__nostartfiles__nostdlib__isystem___home_gez_sdks_zephyr_toolchains_xtensa_espressif_esp32_zephyr_elf_bin____lib_gcc_xtensa_espressif_esp32_zephyr_elf_12_2_0_include___isystem___home_gez_sdks_zephyr_toolchains_xtensa_espressif_esp32_zephyr_elf_bin____lib_gcc_xtensa_espressif_esp32_zephyr_elf_12_2_0_include_fixed___Wl___unresolved_symbols_ignore_in_object_files__Wl___entry_0"
+      cached: true
+      stdout: |
+        Change Dir: /home/gez/workspaces/eclipse/esp_doom/build/CMakeFiles/CMakeScratch/TryCompile-ExFqUE
+        
+        Run Build Command(s):/usr/bin/ninja -v cmTC_347aa && [1/2] /home/gez/sdks/zephyr/toolchains/xtensa-espressif_esp32_zephyr-elf/bin/xtensa-espressif_esp32_zephyr-elf-gcc -Dcheck_Wpointer_arith_C__nostartfiles__nostdlib__isystem___home_gez_sdks_zephyr_toolchains_xtensa_espressif_esp32_zephyr_elf_bin____lib_gcc_xtensa_espressif_esp32_zephyr_elf_12_2_0_include___isystem___home_gez_sdks_zephyr_toolchains_xtensa_espressif_esp32_zephyr_elf_bin____lib_gcc_xtensa_espressif_esp32_zephyr_elf_12_2_0_include_fixed___Wl___unresolved_symbols_ignore_in_object_files__Wl___entry_0  -nostartfiles -nostdlib -isystem "/home/gez/sdks/zephyr/toolchains/xtensa-espressif_esp32_zephyr-elf/bin/../lib/gcc/xtensa-espressif_esp32_zephyr-elf/12.2.0/include" -isystem "/home/gez/sdks/zephyr/toolchains/xtensa-espressif_esp32_zephyr-elf/bin/../lib/gcc/xtensa-espressif_esp32_zephyr-elf/12.2.0/include-fixed" -Wl,--unresolved-symbols=ignore-in-object-files -Wl,--entry=0   -Wpointer-arith -o CMakeFiles/cmTC_347aa.dir/src.c.obj -c /home/gez/workspaces/eclipse/esp_doom/build/CMakeFiles/CMakeScratch/TryCompile-ExFqUE/src.c
+        [2/2] : && /home/gez/sdks/zephyr/toolchains/xtensa-espressif_esp32_zephyr-elf/bin/xtensa-espressif_esp32_zephyr-elf-gcc -nostartfiles -nostdlib -isystem "/home/gez/sdks/zephyr/toolchains/xtensa-espressif_esp32_zephyr-elf/bin/../lib/gcc/xtensa-espressif_esp32_zephyr-elf/12.2.0/include" -isystem "/home/gez/sdks/zephyr/toolchains/xtensa-espressif_esp32_zephyr-elf/bin/../lib/gcc/xtensa-espressif_esp32_zephyr-elf/12.2.0/include-fixed" -Wl,--unresolved-symbols=ignore-in-object-files -Wl,--entry=0  CMakeFiles/cmTC_347aa.dir/src.c.obj -o cmTC_347aa   && :
+        
+      exitCode: 0
+  -
+    kind: "try_compile-v1"
+    backtrace:
+      - "/usr/share/cmake/Modules/Internal/CheckSourceCompiles.cmake:101 (try_compile)"
+      - "/usr/share/cmake/Modules/Internal/CheckCompilerFlag.cmake:18 (cmake_check_source_compiles)"
+      - "/usr/share/cmake/Modules/CheckCCompilerFlag.cmake:40 (cmake_check_compiler_flag)"
+      - "/home/gez/sdks/zephyr/zephyr/cmake/modules/extensions.cmake:1912 (check_c_compiler_flag)"
+      - "/home/gez/sdks/zephyr/zephyr/cmake/modules/extensions.cmake:1084 (check_compiler_flag)"
+      - "/home/gez/sdks/zephyr/zephyr/cmake/modules/extensions.cmake:2134 (zephyr_check_compiler_flag)"
+      - "/home/gez/sdks/zephyr/zephyr/cmake/compiler/gcc/compiler_flags.cmake:41 (check_set_compiler_property)"
+      - "/home/gez/sdks/zephyr/zephyr/cmake/target_toolchain_flags.cmake:41 (include)"
+      - "/home/gez/sdks/zephyr/zephyr/cmake/modules/kernel.cmake:147 (include)"
+      - "/home/gez/sdks/zephyr/zephyr/cmake/modules/zephyr_default.cmake:124 (include)"
+      - "/home/gez/sdks/zephyr/zephyr/share/zephyr-package/cmake/ZephyrConfig.cmake:66 (include)"
+      - "/home/gez/sdks/zephyr/zephyr/share/zephyr-package/cmake/ZephyrConfig.cmake:97 (include_boilerplate)"
+      - "CMakeLists.txt:7 (find_package)"
+    directories:
+      source: "/home/gez/workspaces/eclipse/esp_doom/build/CMakeFiles/CMakeScratch/TryCompile-dl7uDd"
+      binary: "/home/gez/workspaces/eclipse/esp_doom/build/CMakeFiles/CMakeScratch/TryCompile-dl7uDd"
+    cmakeVariables:
+      CMAKE_C_FLAGS: ""
+      CMAKE_C_FLAGS_DEBUG: "-g"
+      CMAKE_EXE_LINKER_FLAGS: ""
+      CMAKE_MODULE_PATH: "/home/gez/sdks/zephyr/zephyr/cmake/modules"
+    buildResult:
+      variable: "check_Wexpansion_to_defined_C__nostartfiles__nostdlib__isystem___home_gez_sdks_zephyr_toolchains_xtensa_espressif_esp32_zephyr_elf_bin____lib_gcc_xtensa_espressif_esp32_zephyr_elf_12_2_0_include___isystem___home_gez_sdks_zephyr_toolchains_xtensa_espressif_esp32_zephyr_elf_bin____lib_gcc_xtensa_espressif_esp32_zephyr_elf_12_2_0_include_fixed___Wl___unresolved_symbols_ignore_in_object_files__Wl___entry_0"
+      cached: true
+      stdout: |
+        Change Dir: /home/gez/workspaces/eclipse/esp_doom/build/CMakeFiles/CMakeScratch/TryCompile-dl7uDd
+        
+        Run Build Command(s):/usr/bin/ninja -v cmTC_e9ac9 && [1/2] /home/gez/sdks/zephyr/toolchains/xtensa-espressif_esp32_zephyr-elf/bin/xtensa-espressif_esp32_zephyr-elf-gcc -Dcheck_Wexpansion_to_defined_C__nostartfiles__nostdlib__isystem___home_gez_sdks_zephyr_toolchains_xtensa_espressif_esp32_zephyr_elf_bin____lib_gcc_xtensa_espressif_esp32_zephyr_elf_12_2_0_include___isystem___home_gez_sdks_zephyr_toolchains_xtensa_espressif_esp32_zephyr_elf_bin____lib_gcc_xtensa_espressif_esp32_zephyr_elf_12_2_0_include_fixed___Wl___unresolved_symbols_ignore_in_object_files__Wl___entry_0  -nostartfiles -nostdlib -isystem "/home/gez/sdks/zephyr/toolchains/xtensa-espressif_esp32_zephyr-elf/bin/../lib/gcc/xtensa-espressif_esp32_zephyr-elf/12.2.0/include" -isystem "/home/gez/sdks/zephyr/toolchains/xtensa-espressif_esp32_zephyr-elf/bin/../lib/gcc/xtensa-espressif_esp32_zephyr-elf/12.2.0/include-fixed" -Wl,--unresolved-symbols=ignore-in-object-files -Wl,--entry=0   -Wexpansion-to-defined -o CMakeFiles/cmTC_e9ac9.dir/src.c.obj -c /home/gez/workspaces/eclipse/esp_doom/build/CMakeFiles/CMakeScratch/TryCompile-dl7uDd/src.c
+        [2/2] : && /home/gez/sdks/zephyr/toolchains/xtensa-espressif_esp32_zephyr-elf/bin/xtensa-espressif_esp32_zephyr-elf-gcc -nostartfiles -nostdlib -isystem "/home/gez/sdks/zephyr/toolchains/xtensa-espressif_esp32_zephyr-elf/bin/../lib/gcc/xtensa-espressif_esp32_zephyr-elf/12.2.0/include" -isystem "/home/gez/sdks/zephyr/toolchains/xtensa-espressif_esp32_zephyr-elf/bin/../lib/gcc/xtensa-espressif_esp32_zephyr-elf/12.2.0/include-fixed" -Wl,--unresolved-symbols=ignore-in-object-files -Wl,--entry=0  CMakeFiles/cmTC_e9ac9.dir/src.c.obj -o cmTC_e9ac9   && :
+        
+      exitCode: 0
+  -
+    kind: "try_compile-v1"
+    backtrace:
+      - "/usr/share/cmake/Modules/Internal/CheckSourceCompiles.cmake:101 (try_compile)"
+      - "/usr/share/cmake/Modules/Internal/CheckCompilerFlag.cmake:18 (cmake_check_source_compiles)"
+      - "/usr/share/cmake/Modules/CheckCCompilerFlag.cmake:40 (cmake_check_compiler_flag)"
+      - "/home/gez/sdks/zephyr/zephyr/cmake/modules/extensions.cmake:1912 (check_c_compiler_flag)"
+      - "/home/gez/sdks/zephyr/zephyr/cmake/modules/extensions.cmake:1084 (check_compiler_flag)"
+      - "/home/gez/sdks/zephyr/zephyr/cmake/modules/extensions.cmake:2134 (zephyr_check_compiler_flag)"
+      - "/home/gez/sdks/zephyr/zephyr/cmake/compiler/gcc/compiler_flags.cmake:51 (check_set_compiler_property)"
+      - "/home/gez/sdks/zephyr/zephyr/cmake/target_toolchain_flags.cmake:41 (include)"
+      - "/home/gez/sdks/zephyr/zephyr/cmake/modules/kernel.cmake:147 (include)"
+      - "/home/gez/sdks/zephyr/zephyr/cmake/modules/zephyr_default.cmake:124 (include)"
+      - "/home/gez/sdks/zephyr/zephyr/share/zephyr-package/cmake/ZephyrConfig.cmake:66 (include)"
+      - "/home/gez/sdks/zephyr/zephyr/share/zephyr-package/cmake/ZephyrConfig.cmake:97 (include_boilerplate)"
+      - "CMakeLists.txt:7 (find_package)"
+    directories:
+      source: "/home/gez/workspaces/eclipse/esp_doom/build/CMakeFiles/CMakeScratch/TryCompile-AfhTzN"
+      binary: "/home/gez/workspaces/eclipse/esp_doom/build/CMakeFiles/CMakeScratch/TryCompile-AfhTzN"
+    cmakeVariables:
+      CMAKE_C_FLAGS: ""
+      CMAKE_C_FLAGS_DEBUG: "-g"
+      CMAKE_EXE_LINKER_FLAGS: ""
+      CMAKE_MODULE_PATH: "/home/gez/sdks/zephyr/zephyr/cmake/modules"
+    buildResult:
+      variable: "check_Wlogical_op_C__nostartfiles__nostdlib__isystem___home_gez_sdks_zephyr_toolchains_xtensa_espressif_esp32_zephyr_elf_bin____lib_gcc_xtensa_espressif_esp32_zephyr_elf_12_2_0_include___isystem___home_gez_sdks_zephyr_toolchains_xtensa_espressif_esp32_zephyr_elf_bin____lib_gcc_xtensa_espressif_esp32_zephyr_elf_12_2_0_include_fixed___Wl___unresolved_symbols_ignore_in_object_files__Wl___entry_0"
+      cached: true
+      stdout: |
+        Change Dir: /home/gez/workspaces/eclipse/esp_doom/build/CMakeFiles/CMakeScratch/TryCompile-AfhTzN
+        
+        Run Build Command(s):/usr/bin/ninja -v cmTC_4f2bc && [1/2] /home/gez/sdks/zephyr/toolchains/xtensa-espressif_esp32_zephyr-elf/bin/xtensa-espressif_esp32_zephyr-elf-gcc -Dcheck_Wlogical_op_C__nostartfiles__nostdlib__isystem___home_gez_sdks_zephyr_toolchains_xtensa_espressif_esp32_zephyr_elf_bin____lib_gcc_xtensa_espressif_esp32_zephyr_elf_12_2_0_include___isystem___home_gez_sdks_zephyr_toolchains_xtensa_espressif_esp32_zephyr_elf_bin____lib_gcc_xtensa_espressif_esp32_zephyr_elf_12_2_0_include_fixed___Wl___unresolved_symbols_ignore_in_object_files__Wl___entry_0  -nostartfiles -nostdlib -isystem "/home/gez/sdks/zephyr/toolchains/xtensa-espressif_esp32_zephyr-elf/bin/../lib/gcc/xtensa-espressif_esp32_zephyr-elf/12.2.0/include" -isystem "/home/gez/sdks/zephyr/toolchains/xtensa-espressif_esp32_zephyr-elf/bin/../lib/gcc/xtensa-espressif_esp32_zephyr-elf/12.2.0/include-fixed" -Wl,--unresolved-symbols=ignore-in-object-files -Wl,--entry=0   -Wlogical-op -o CMakeFiles/cmTC_4f2bc.dir/src.c.obj -c /home/gez/workspaces/eclipse/esp_doom/build/CMakeFiles/CMakeScratch/TryCompile-AfhTzN/src.c
+        [2/2] : && /home/gez/sdks/zephyr/toolchains/xtensa-espressif_esp32_zephyr-elf/bin/xtensa-espressif_esp32_zephyr-elf-gcc -nostartfiles -nostdlib -isystem "/home/gez/sdks/zephyr/toolchains/xtensa-espressif_esp32_zephyr-elf/bin/../lib/gcc/xtensa-espressif_esp32_zephyr-elf/12.2.0/include" -isystem "/home/gez/sdks/zephyr/toolchains/xtensa-espressif_esp32_zephyr-elf/bin/../lib/gcc/xtensa-espressif_esp32_zephyr-elf/12.2.0/include-fixed" -Wl,--unresolved-symbols=ignore-in-object-files -Wl,--entry=0  CMakeFiles/cmTC_4f2bc.dir/src.c.obj -o cmTC_4f2bc   && :
+        
+      exitCode: 0
+  -
+    kind: "try_compile-v1"
+    backtrace:
+      - "/usr/share/cmake/Modules/Internal/CheckSourceCompiles.cmake:101 (try_compile)"
+      - "/usr/share/cmake/Modules/Internal/CheckCompilerFlag.cmake:18 (cmake_check_source_compiles)"
+      - "/usr/share/cmake/Modules/CheckCCompilerFlag.cmake:40 (cmake_check_compiler_flag)"
+      - "/home/gez/sdks/zephyr/zephyr/cmake/modules/extensions.cmake:1912 (check_c_compiler_flag)"
+      - "/home/gez/sdks/zephyr/zephyr/cmake/modules/extensions.cmake:1084 (check_compiler_flag)"
+      - "/home/gez/sdks/zephyr/zephyr/cmake/modules/extensions.cmake:2134 (zephyr_check_compiler_flag)"
+      - "/home/gez/sdks/zephyr/zephyr/cmake/compiler/gcc/compiler_flags.cmake:51 (check_set_compiler_property)"
+      - "/home/gez/sdks/zephyr/zephyr/cmake/target_toolchain_flags.cmake:41 (include)"
+      - "/home/gez/sdks/zephyr/zephyr/cmake/modules/kernel.cmake:147 (include)"
+      - "/home/gez/sdks/zephyr/zephyr/cmake/modules/zephyr_default.cmake:124 (include)"
+      - "/home/gez/sdks/zephyr/zephyr/share/zephyr-package/cmake/ZephyrConfig.cmake:66 (include)"
+      - "/home/gez/sdks/zephyr/zephyr/share/zephyr-package/cmake/ZephyrConfig.cmake:97 (include_boilerplate)"
+      - "CMakeLists.txt:7 (find_package)"
+    directories:
+      source: "/home/gez/workspaces/eclipse/esp_doom/build/CMakeFiles/CMakeScratch/TryCompile-PlYT12"
+      binary: "/home/gez/workspaces/eclipse/esp_doom/build/CMakeFiles/CMakeScratch/TryCompile-PlYT12"
+    cmakeVariables:
+      CMAKE_C_FLAGS: ""
+      CMAKE_C_FLAGS_DEBUG: "-g"
+      CMAKE_EXE_LINKER_FLAGS: ""
+      CMAKE_MODULE_PATH: "/home/gez/sdks/zephyr/zephyr/cmake/modules"
+    buildResult:
+      variable: "check_Wmissing_field_initializers_C__nostartfiles__nostdlib__isystem___home_gez_sdks_zephyr_toolchains_xtensa_espressif_esp32_zephyr_elf_bin____lib_gcc_xtensa_espressif_esp32_zephyr_elf_12_2_0_include___isystem___home_gez_sdks_zephyr_toolchains_xtensa_espressif_esp32_zephyr_elf_bin____lib_gcc_xtensa_espressif_esp32_zephyr_elf_12_2_0_include_fixed___Wl___unresolved_symbols_ignore_in_object_files__Wl___entry_0"
+      cached: true
+      stdout: |
+        Change Dir: /home/gez/workspaces/eclipse/esp_doom/build/CMakeFiles/CMakeScratch/TryCompile-PlYT12
+        
+        Run Build Command(s):/usr/bin/ninja -v cmTC_c2ba8 && [1/2] /home/gez/sdks/zephyr/toolchains/xtensa-espressif_esp32_zephyr-elf/bin/xtensa-espressif_esp32_zephyr-elf-gcc -Dcheck_Wmissing_field_initializers_C__nostartfiles__nostdlib__isystem___home_gez_sdks_zephyr_toolchains_xtensa_espressif_esp32_zephyr_elf_bin____lib_gcc_xtensa_espressif_esp32_zephyr_elf_12_2_0_include___isystem___home_gez_sdks_zephyr_toolchains_xtensa_espressif_esp32_zephyr_elf_bin____lib_gcc_xtensa_espressif_esp32_zephyr_elf_12_2_0_include_fixed___Wl___unresolved_symbols_ignore_in_object_files__Wl___entry_0  -nostartfiles -nostdlib -isystem "/home/gez/sdks/zephyr/toolchains/xtensa-espressif_esp32_zephyr-elf/bin/../lib/gcc/xtensa-espressif_esp32_zephyr-elf/12.2.0/include" -isystem "/home/gez/sdks/zephyr/toolchains/xtensa-espressif_esp32_zephyr-elf/bin/../lib/gcc/xtensa-espressif_esp32_zephyr-elf/12.2.0/include-fixed" -Wl,--unresolved-symbols=ignore-in-object-files -Wl,--entry=0   -Wmissing-field-initializers -o CMakeFiles/cmTC_c2ba8.dir/src.c.obj -c /home/gez/workspaces/eclipse/esp_doom/build/CMakeFiles/CMakeScratch/TryCompile-PlYT12/src.c
+        [2/2] : && /home/gez/sdks/zephyr/toolchains/xtensa-espressif_esp32_zephyr-elf/bin/xtensa-espressif_esp32_zephyr-elf-gcc -nostartfiles -nostdlib -isystem "/home/gez/sdks/zephyr/toolchains/xtensa-espressif_esp32_zephyr-elf/bin/../lib/gcc/xtensa-espressif_esp32_zephyr-elf/12.2.0/include" -isystem "/home/gez/sdks/zephyr/toolchains/xtensa-espressif_esp32_zephyr-elf/bin/../lib/gcc/xtensa-espressif_esp32_zephyr-elf/12.2.0/include-fixed" -Wl,--unresolved-symbols=ignore-in-object-files -Wl,--entry=0  CMakeFiles/cmTC_c2ba8.dir/src.c.obj -o cmTC_c2ba8   && :
+        
+      exitCode: 0
+  -
+    kind: "try_compile-v1"
+    backtrace:
+      - "/usr/share/cmake/Modules/Internal/CheckSourceCompiles.cmake:101 (try_compile)"
+      - "/usr/share/cmake/Modules/Internal/CheckCompilerFlag.cmake:18 (cmake_check_source_compiles)"
+      - "/usr/share/cmake/Modules/CheckCCompilerFlag.cmake:40 (cmake_check_compiler_flag)"
+      - "/home/gez/sdks/zephyr/zephyr/cmake/modules/extensions.cmake:1912 (check_c_compiler_flag)"
+      - "/home/gez/sdks/zephyr/zephyr/cmake/modules/extensions.cmake:1084 (check_compiler_flag)"
+      - "/home/gez/sdks/zephyr/zephyr/cmake/modules/extensions.cmake:2134 (zephyr_check_compiler_flag)"
+      - "/home/gez/sdks/zephyr/zephyr/cmake/compiler/gcc/compiler_flags.cmake:66 (check_set_compiler_property)"
+      - "/home/gez/sdks/zephyr/zephyr/cmake/target_toolchain_flags.cmake:41 (include)"
+      - "/home/gez/sdks/zephyr/zephyr/cmake/modules/kernel.cmake:147 (include)"
+      - "/home/gez/sdks/zephyr/zephyr/cmake/modules/zephyr_default.cmake:124 (include)"
+      - "/home/gez/sdks/zephyr/zephyr/share/zephyr-package/cmake/ZephyrConfig.cmake:66 (include)"
+      - "/home/gez/sdks/zephyr/zephyr/share/zephyr-package/cmake/ZephyrConfig.cmake:97 (include_boilerplate)"
+      - "CMakeLists.txt:7 (find_package)"
+    directories:
+      source: "/home/gez/workspaces/eclipse/esp_doom/build/CMakeFiles/CMakeScratch/TryCompile-FLRvKx"
+      binary: "/home/gez/workspaces/eclipse/esp_doom/build/CMakeFiles/CMakeScratch/TryCompile-FLRvKx"
+    cmakeVariables:
+      CMAKE_C_FLAGS: ""
+      CMAKE_C_FLAGS_DEBUG: "-g"
+      CMAKE_EXE_LINKER_FLAGS: ""
+      CMAKE_MODULE_PATH: "/home/gez/sdks/zephyr/zephyr/cmake/modules"
+    buildResult:
+      variable: "check_Wpacked_bitfield_compat_C__nostartfiles__nostdlib__isystem___home_gez_sdks_zephyr_toolchains_xtensa_espressif_esp32_zephyr_elf_bin____lib_gcc_xtensa_espressif_esp32_zephyr_elf_12_2_0_include___isystem___home_gez_sdks_zephyr_toolchains_xtensa_espressif_esp32_zephyr_elf_bin____lib_gcc_xtensa_espressif_esp32_zephyr_elf_12_2_0_include_fixed___Wl___unresolved_symbols_ignore_in_object_files__Wl___entry_0"
+      cached: true
+      stdout: |
+        Change Dir: /home/gez/workspaces/eclipse/esp_doom/build/CMakeFiles/CMakeScratch/TryCompile-FLRvKx
+        
+        Run Build Command(s):/usr/bin/ninja -v cmTC_8c07e && [1/2] /home/gez/sdks/zephyr/toolchains/xtensa-espressif_esp32_zephyr-elf/bin/xtensa-espressif_esp32_zephyr-elf-gcc -Dcheck_Wpacked_bitfield_compat_C__nostartfiles__nostdlib__isystem___home_gez_sdks_zephyr_toolchains_xtensa_espressif_esp32_zephyr_elf_bin____lib_gcc_xtensa_espressif_esp32_zephyr_elf_12_2_0_include___isystem___home_gez_sdks_zephyr_toolchains_xtensa_espressif_esp32_zephyr_elf_bin____lib_gcc_xtensa_espressif_esp32_zephyr_elf_12_2_0_include_fixed___Wl___unresolved_symbols_ignore_in_object_files__Wl___entry_0  -nostartfiles -nostdlib -isystem "/home/gez/sdks/zephyr/toolchains/xtensa-espressif_esp32_zephyr-elf/bin/../lib/gcc/xtensa-espressif_esp32_zephyr-elf/12.2.0/include" -isystem "/home/gez/sdks/zephyr/toolchains/xtensa-espressif_esp32_zephyr-elf/bin/../lib/gcc/xtensa-espressif_esp32_zephyr-elf/12.2.0/include-fixed" -Wl,--unresolved-symbols=ignore-in-object-files -Wl,--entry=0   -Wpacked-bitfield-compat -o CMakeFiles/cmTC_8c07e.dir/src.c.obj -c /home/gez/workspaces/eclipse/esp_doom/build/CMakeFiles/CMakeScratch/TryCompile-FLRvKx/src.c
+        [2/2] : && /home/gez/sdks/zephyr/toolchains/xtensa-espressif_esp32_zephyr-elf/bin/xtensa-espressif_esp32_zephyr-elf-gcc -nostartfiles -nostdlib -isystem "/home/gez/sdks/zephyr/toolchains/xtensa-espressif_esp32_zephyr-elf/bin/../lib/gcc/xtensa-espressif_esp32_zephyr-elf/12.2.0/include" -isystem "/home/gez/sdks/zephyr/toolchains/xtensa-espressif_esp32_zephyr-elf/bin/../lib/gcc/xtensa-espressif_esp32_zephyr-elf/12.2.0/include-fixed" -Wl,--unresolved-symbols=ignore-in-object-files -Wl,--entry=0  CMakeFiles/cmTC_8c07e.dir/src.c.obj -o cmTC_8c07e   && :
+        
+      exitCode: 0
+  -
+    kind: "try_compile-v1"
+    backtrace:
+      - "/usr/share/cmake/Modules/Internal/CheckSourceCompiles.cmake:101 (try_compile)"
+      - "/usr/share/cmake/Modules/Internal/CheckCompilerFlag.cmake:18 (cmake_check_source_compiles)"
+      - "/usr/share/cmake/Modules/CheckCCompilerFlag.cmake:40 (cmake_check_compiler_flag)"
+      - "/home/gez/sdks/zephyr/zephyr/cmake/modules/extensions.cmake:1912 (check_c_compiler_flag)"
+      - "/home/gez/sdks/zephyr/zephyr/cmake/modules/extensions.cmake:1084 (check_compiler_flag)"
+      - "/home/gez/sdks/zephyr/zephyr/cmake/modules/extensions.cmake:2134 (zephyr_check_compiler_flag)"
+      - "/home/gez/sdks/zephyr/zephyr/cmake/compiler/gcc/compiler_flags.cmake:66 (check_set_compiler_property)"
+      - "/home/gez/sdks/zephyr/zephyr/cmake/target_toolchain_flags.cmake:41 (include)"
+      - "/home/gez/sdks/zephyr/zephyr/cmake/modules/kernel.cmake:147 (include)"
+      - "/home/gez/sdks/zephyr/zephyr/cmake/modules/zephyr_default.cmake:124 (include)"
+      - "/home/gez/sdks/zephyr/zephyr/share/zephyr-package/cmake/ZephyrConfig.cmake:66 (include)"
+      - "/home/gez/sdks/zephyr/zephyr/share/zephyr-package/cmake/ZephyrConfig.cmake:97 (include_boilerplate)"
+      - "CMakeLists.txt:7 (find_package)"
+    directories:
+      source: "/home/gez/workspaces/eclipse/esp_doom/build/CMakeFiles/CMakeScratch/TryCompile-Fx9wG2"
+      binary: "/home/gez/workspaces/eclipse/esp_doom/build/CMakeFiles/CMakeScratch/TryCompile-Fx9wG2"
+    cmakeVariables:
+      CMAKE_C_FLAGS: ""
+      CMAKE_C_FLAGS_DEBUG: "-g"
+      CMAKE_EXE_LINKER_FLAGS: ""
+      CMAKE_MODULE_PATH: "/home/gez/sdks/zephyr/zephyr/cmake/modules"
+    buildResult:
+      variable: "check_Wvla_C__nostartfiles__nostdlib__isystem___home_gez_sdks_zephyr_toolchains_xtensa_espressif_esp32_zephyr_elf_bin____lib_gcc_xtensa_espressif_esp32_zephyr_elf_12_2_0_include___isystem___home_gez_sdks_zephyr_toolchains_xtensa_espressif_esp32_zephyr_elf_bin____lib_gcc_xtensa_espressif_esp32_zephyr_elf_12_2_0_include_fixed___Wl___unresolved_symbols_ignore_in_object_files__Wl___entry_0"
+      cached: true
+      stdout: |
+        Change Dir: /home/gez/workspaces/eclipse/esp_doom/build/CMakeFiles/CMakeScratch/TryCompile-Fx9wG2
+        
+        Run Build Command(s):/usr/bin/ninja -v cmTC_0a5b4 && [1/2] /home/gez/sdks/zephyr/toolchains/xtensa-espressif_esp32_zephyr-elf/bin/xtensa-espressif_esp32_zephyr-elf-gcc -Dcheck_Wvla_C__nostartfiles__nostdlib__isystem___home_gez_sdks_zephyr_toolchains_xtensa_espressif_esp32_zephyr_elf_bin____lib_gcc_xtensa_espressif_esp32_zephyr_elf_12_2_0_include___isystem___home_gez_sdks_zephyr_toolchains_xtensa_espressif_esp32_zephyr_elf_bin____lib_gcc_xtensa_espressif_esp32_zephyr_elf_12_2_0_include_fixed___Wl___unresolved_symbols_ignore_in_object_files__Wl___entry_0  -nostartfiles -nostdlib -isystem "/home/gez/sdks/zephyr/toolchains/xtensa-espressif_esp32_zephyr-elf/bin/../lib/gcc/xtensa-espressif_esp32_zephyr-elf/12.2.0/include" -isystem "/home/gez/sdks/zephyr/toolchains/xtensa-espressif_esp32_zephyr-elf/bin/../lib/gcc/xtensa-espressif_esp32_zephyr-elf/12.2.0/include-fixed" -Wl,--unresolved-symbols=ignore-in-object-files -Wl,--entry=0   -Wvla -o CMakeFiles/cmTC_0a5b4.dir/src.c.obj -c /home/gez/workspaces/eclipse/esp_doom/build/CMakeFiles/CMakeScratch/TryCompile-Fx9wG2/src.c
+        [2/2] : && /home/gez/sdks/zephyr/toolchains/xtensa-espressif_esp32_zephyr-elf/bin/xtensa-espressif_esp32_zephyr-elf-gcc -nostartfiles -nostdlib -isystem "/home/gez/sdks/zephyr/toolchains/xtensa-espressif_esp32_zephyr-elf/bin/../lib/gcc/xtensa-espressif_esp32_zephyr-elf/12.2.0/include" -isystem "/home/gez/sdks/zephyr/toolchains/xtensa-espressif_esp32_zephyr-elf/bin/../lib/gcc/xtensa-espressif_esp32_zephyr-elf/12.2.0/include-fixed" -Wl,--unresolved-symbols=ignore-in-object-files -Wl,--entry=0  CMakeFiles/cmTC_0a5b4.dir/src.c.obj -o cmTC_0a5b4   && :
+        
+      exitCode: 0
+  -
+    kind: "try_compile-v1"
+    backtrace:
+      - "/usr/share/cmake/Modules/Internal/CheckSourceCompiles.cmake:101 (try_compile)"
+      - "/usr/share/cmake/Modules/Internal/CheckCompilerFlag.cmake:18 (cmake_check_source_compiles)"
+      - "/usr/share/cmake/Modules/CheckCCompilerFlag.cmake:40 (cmake_check_compiler_flag)"
+      - "/home/gez/sdks/zephyr/zephyr/cmake/modules/extensions.cmake:1912 (check_c_compiler_flag)"
+      - "/home/gez/sdks/zephyr/zephyr/cmake/modules/extensions.cmake:1084 (check_compiler_flag)"
+      - "/home/gez/sdks/zephyr/zephyr/cmake/modules/extensions.cmake:2134 (zephyr_check_compiler_flag)"
+      - "/home/gez/sdks/zephyr/zephyr/cmake/compiler/gcc/compiler_flags.cmake:85 (check_set_compiler_property)"
+      - "/home/gez/sdks/zephyr/zephyr/cmake/target_toolchain_flags.cmake:41 (include)"
+      - "/home/gez/sdks/zephyr/zephyr/cmake/modules/kernel.cmake:147 (include)"
+      - "/home/gez/sdks/zephyr/zephyr/cmake/modules/zephyr_default.cmake:124 (include)"
+      - "/home/gez/sdks/zephyr/zephyr/share/zephyr-package/cmake/ZephyrConfig.cmake:66 (include)"
+      - "/home/gez/sdks/zephyr/zephyr/share/zephyr-package/cmake/ZephyrConfig.cmake:97 (include_boilerplate)"
+      - "CMakeLists.txt:7 (find_package)"
+    directories:
+      source: "/home/gez/workspaces/eclipse/esp_doom/build/CMakeFiles/CMakeScratch/TryCompile-QYVf8s"
+      binary: "/home/gez/workspaces/eclipse/esp_doom/build/CMakeFiles/CMakeScratch/TryCompile-QYVf8s"
+    cmakeVariables:
+      CMAKE_C_FLAGS: ""
+      CMAKE_C_FLAGS_DEBUG: "-g"
+      CMAKE_EXE_LINKER_FLAGS: ""
+      CMAKE_MODULE_PATH: "/home/gez/sdks/zephyr/zephyr/cmake/modules"
+    buildResult:
+      variable: "check_Wunused_but_set_variable_C__nostartfiles__nostdlib__isystem___home_gez_sdks_zephyr_toolchains_xtensa_espressif_esp32_zephyr_elf_bin____lib_gcc_xtensa_espressif_esp32_zephyr_elf_12_2_0_include___isystem___home_gez_sdks_zephyr_toolchains_xtensa_espressif_esp32_zephyr_elf_bin____lib_gcc_xtensa_espressif_esp32_zephyr_elf_12_2_0_include_fixed___Wl___unresolved_symbols_ignore_in_object_files__Wl___entry_0"
+      cached: true
+      stdout: |
+        Change Dir: /home/gez/workspaces/eclipse/esp_doom/build/CMakeFiles/CMakeScratch/TryCompile-QYVf8s
+        
+        Run Build Command(s):/usr/bin/ninja -v cmTC_c7bb1 && [1/2] /home/gez/sdks/zephyr/toolchains/xtensa-espressif_esp32_zephyr-elf/bin/xtensa-espressif_esp32_zephyr-elf-gcc -Dcheck_Wunused_but_set_variable_C__nostartfiles__nostdlib__isystem___home_gez_sdks_zephyr_toolchains_xtensa_espressif_esp32_zephyr_elf_bin____lib_gcc_xtensa_espressif_esp32_zephyr_elf_12_2_0_include___isystem___home_gez_sdks_zephyr_toolchains_xtensa_espressif_esp32_zephyr_elf_bin____lib_gcc_xtensa_espressif_esp32_zephyr_elf_12_2_0_include_fixed___Wl___unresolved_symbols_ignore_in_object_files__Wl___entry_0  -nostartfiles -nostdlib -isystem "/home/gez/sdks/zephyr/toolchains/xtensa-espressif_esp32_zephyr-elf/bin/../lib/gcc/xtensa-espressif_esp32_zephyr-elf/12.2.0/include" -isystem "/home/gez/sdks/zephyr/toolchains/xtensa-espressif_esp32_zephyr-elf/bin/../lib/gcc/xtensa-espressif_esp32_zephyr-elf/12.2.0/include-fixed" -Wl,--unresolved-symbols=ignore-in-object-files -Wl,--entry=0   -Wunused-but-set-variable -o CMakeFiles/cmTC_c7bb1.dir/src.c.obj -c /home/gez/workspaces/eclipse/esp_doom/build/CMakeFiles/CMakeScratch/TryCompile-QYVf8s/src.c
+        [2/2] : && /home/gez/sdks/zephyr/toolchains/xtensa-espressif_esp32_zephyr-elf/bin/xtensa-espressif_esp32_zephyr-elf-gcc -nostartfiles -nostdlib -isystem "/home/gez/sdks/zephyr/toolchains/xtensa-espressif_esp32_zephyr-elf/bin/../lib/gcc/xtensa-espressif_esp32_zephyr-elf/12.2.0/include" -isystem "/home/gez/sdks/zephyr/toolchains/xtensa-espressif_esp32_zephyr-elf/bin/../lib/gcc/xtensa-espressif_esp32_zephyr-elf/12.2.0/include-fixed" -Wl,--unresolved-symbols=ignore-in-object-files -Wl,--entry=0  CMakeFiles/cmTC_c7bb1.dir/src.c.obj -o cmTC_c7bb1   && :
+        
+      exitCode: 0
+  -
+    kind: "try_compile-v1"
+    backtrace:
+      - "/usr/share/cmake/Modules/Internal/CheckSourceCompiles.cmake:101 (try_compile)"
+      - "/usr/share/cmake/Modules/Internal/CheckCompilerFlag.cmake:18 (cmake_check_source_compiles)"
+      - "/usr/share/cmake/Modules/CheckCCompilerFlag.cmake:40 (cmake_check_compiler_flag)"
+      - "/home/gez/sdks/zephyr/zephyr/cmake/modules/extensions.cmake:1912 (check_c_compiler_flag)"
+      - "/home/gez/sdks/zephyr/zephyr/cmake/modules/extensions.cmake:1084 (check_compiler_flag)"
+      - "/home/gez/sdks/zephyr/zephyr/cmake/modules/extensions.cmake:2134 (zephyr_check_compiler_flag)"
+      - "/home/gez/sdks/zephyr/zephyr/cmake/compiler/gcc/compiler_flags.cmake:87 (check_set_compiler_property)"
+      - "/home/gez/sdks/zephyr/zephyr/cmake/target_toolchain_flags.cmake:41 (include)"
+      - "/home/gez/sdks/zephyr/zephyr/cmake/modules/kernel.cmake:147 (include)"
+      - "/home/gez/sdks/zephyr/zephyr/cmake/modules/zephyr_default.cmake:124 (include)"
+      - "/home/gez/sdks/zephyr/zephyr/share/zephyr-package/cmake/ZephyrConfig.cmake:66 (include)"
+      - "/home/gez/sdks/zephyr/zephyr/share/zephyr-package/cmake/ZephyrConfig.cmake:97 (include_boilerplate)"
+      - "CMakeLists.txt:7 (find_package)"
+    directories:
+      source: "/home/gez/workspaces/eclipse/esp_doom/build/CMakeFiles/CMakeScratch/TryCompile-B6Tuav"
+      binary: "/home/gez/workspaces/eclipse/esp_doom/build/CMakeFiles/CMakeScratch/TryCompile-B6Tuav"
+    cmakeVariables:
+      CMAKE_C_FLAGS: ""
+      CMAKE_C_FLAGS_DEBUG: "-g"
+      CMAKE_EXE_LINKER_FLAGS: ""
+      CMAKE_MODULE_PATH: "/home/gez/sdks/zephyr/zephyr/cmake/modules"
+    buildResult:
+      variable: "check_Werror_implicit_int_C__nostartfiles__nostdlib__isystem___home_gez_sdks_zephyr_toolchains_xtensa_espressif_esp32_zephyr_elf_bin____lib_gcc_xtensa_espressif_esp32_zephyr_elf_12_2_0_include___isystem___home_gez_sdks_zephyr_toolchains_xtensa_espressif_esp32_zephyr_elf_bin____lib_gcc_xtensa_espressif_esp32_zephyr_elf_12_2_0_include_fixed___Wl___unresolved_symbols_ignore_in_object_files__Wl___entry_0"
+      cached: true
+      stdout: |
+        Change Dir: /home/gez/workspaces/eclipse/esp_doom/build/CMakeFiles/CMakeScratch/TryCompile-B6Tuav
+        
+        Run Build Command(s):/usr/bin/ninja -v cmTC_fd86a && [1/2] /home/gez/sdks/zephyr/toolchains/xtensa-espressif_esp32_zephyr-elf/bin/xtensa-espressif_esp32_zephyr-elf-gcc -Dcheck_Werror_implicit_int_C__nostartfiles__nostdlib__isystem___home_gez_sdks_zephyr_toolchains_xtensa_espressif_esp32_zephyr_elf_bin____lib_gcc_xtensa_espressif_esp32_zephyr_elf_12_2_0_include___isystem___home_gez_sdks_zephyr_toolchains_xtensa_espressif_esp32_zephyr_elf_bin____lib_gcc_xtensa_espressif_esp32_zephyr_elf_12_2_0_include_fixed___Wl___unresolved_symbols_ignore_in_object_files__Wl___entry_0  -nostartfiles -nostdlib -isystem "/home/gez/sdks/zephyr/toolchains/xtensa-espressif_esp32_zephyr-elf/bin/../lib/gcc/xtensa-espressif_esp32_zephyr-elf/12.2.0/include" -isystem "/home/gez/sdks/zephyr/toolchains/xtensa-espressif_esp32_zephyr-elf/bin/../lib/gcc/xtensa-espressif_esp32_zephyr-elf/12.2.0/include-fixed" -Wl,--unresolved-symbols=ignore-in-object-files -Wl,--entry=0   -Werror=implicit-int -o CMakeFiles/cmTC_fd86a.dir/src.c.obj -c /home/gez/workspaces/eclipse/esp_doom/build/CMakeFiles/CMakeScratch/TryCompile-B6Tuav/src.c
+        [2/2] : && /home/gez/sdks/zephyr/toolchains/xtensa-espressif_esp32_zephyr-elf/bin/xtensa-espressif_esp32_zephyr-elf-gcc -nostartfiles -nostdlib -isystem "/home/gez/sdks/zephyr/toolchains/xtensa-espressif_esp32_zephyr-elf/bin/../lib/gcc/xtensa-espressif_esp32_zephyr-elf/12.2.0/include" -isystem "/home/gez/sdks/zephyr/toolchains/xtensa-espressif_esp32_zephyr-elf/bin/../lib/gcc/xtensa-espressif_esp32_zephyr-elf/12.2.0/include-fixed" -Wl,--unresolved-symbols=ignore-in-object-files -Wl,--entry=0  CMakeFiles/cmTC_fd86a.dir/src.c.obj -o cmTC_fd86a   && :
+        
+      exitCode: 0
+  -
+    kind: "try_compile-v1"
+    backtrace:
+      - "/usr/share/cmake/Modules/Internal/CheckSourceCompiles.cmake:101 (try_compile)"
+      - "/usr/share/cmake/Modules/Internal/CheckCompilerFlag.cmake:18 (cmake_check_source_compiles)"
+      - "/usr/share/cmake/Modules/CheckCCompilerFlag.cmake:40 (cmake_check_compiler_flag)"
+      - "/home/gez/sdks/zephyr/zephyr/cmake/modules/extensions.cmake:1912 (check_c_compiler_flag)"
+      - "/home/gez/sdks/zephyr/zephyr/cmake/modules/extensions.cmake:1084 (check_compiler_flag)"
+      - "/home/gez/sdks/zephyr/zephyr/cmake/modules/extensions.cmake:2134 (zephyr_check_compiler_flag)"
+      - "/home/gez/sdks/zephyr/zephyr/cmake/compiler/gcc/compiler_flags.cmake:163 (check_set_compiler_property)"
+      - "/home/gez/sdks/zephyr/zephyr/cmake/target_toolchain_flags.cmake:41 (include)"
+      - "/home/gez/sdks/zephyr/zephyr/cmake/modules/kernel.cmake:147 (include)"
+      - "/home/gez/sdks/zephyr/zephyr/cmake/modules/zephyr_default.cmake:124 (include)"
+      - "/home/gez/sdks/zephyr/zephyr/share/zephyr-package/cmake/ZephyrConfig.cmake:66 (include)"
+      - "/home/gez/sdks/zephyr/zephyr/share/zephyr-package/cmake/ZephyrConfig.cmake:97 (include_boilerplate)"
+      - "CMakeLists.txt:7 (find_package)"
+    directories:
+      source: "/home/gez/workspaces/eclipse/esp_doom/build/CMakeFiles/CMakeScratch/TryCompile-relKgB"
+      binary: "/home/gez/workspaces/eclipse/esp_doom/build/CMakeFiles/CMakeScratch/TryCompile-relKgB"
+    cmakeVariables:
+      CMAKE_C_FLAGS: ""
+      CMAKE_C_FLAGS_DEBUG: "-g"
+      CMAKE_EXE_LINKER_FLAGS: ""
+      CMAKE_MODULE_PATH: "/home/gez/sdks/zephyr/zephyr/cmake/modules"
+    buildResult:
+      variable: "check_mstack_protector_guard_global_C__nostartfiles__nostdlib__isystem___home_gez_sdks_zephyr_toolchains_xtensa_espressif_esp32_zephyr_elf_bin____lib_gcc_xtensa_espressif_esp32_zephyr_elf_12_2_0_include___isystem___home_gez_sdks_zephyr_toolchains_xtensa_espressif_esp32_zephyr_elf_bin____lib_gcc_xtensa_espressif_esp32_zephyr_elf_12_2_0_include_fixed___Wl___unresolved_symbols_ignore_in_object_files__Wl___entry_0"
+      cached: true
+      stdout: |
+        Change Dir: /home/gez/workspaces/eclipse/esp_doom/build/CMakeFiles/CMakeScratch/TryCompile-relKgB
+        
+        Run Build Command(s):/usr/bin/ninja -v cmTC_769b7 && [1/2] /home/gez/sdks/zephyr/toolchains/xtensa-espressif_esp32_zephyr-elf/bin/xtensa-espressif_esp32_zephyr-elf-gcc -Dcheck_mstack_protector_guard_global_C__nostartfiles__nostdlib__isystem___home_gez_sdks_zephyr_toolchains_xtensa_espressif_esp32_zephyr_elf_bin____lib_gcc_xtensa_espressif_esp32_zephyr_elf_12_2_0_include___isystem___home_gez_sdks_zephyr_toolchains_xtensa_espressif_esp32_zephyr_elf_bin____lib_gcc_xtensa_espressif_esp32_zephyr_elf_12_2_0_include_fixed___Wl___unresolved_symbols_ignore_in_object_files__Wl___entry_0  -nostartfiles -nostdlib -isystem "/home/gez/sdks/zephyr/toolchains/xtensa-espressif_esp32_zephyr-elf/bin/../lib/gcc/xtensa-espressif_esp32_zephyr-elf/12.2.0/include" -isystem "/home/gez/sdks/zephyr/toolchains/xtensa-espressif_esp32_zephyr-elf/bin/../lib/gcc/xtensa-espressif_esp32_zephyr-elf/12.2.0/include-fixed" -Wl,--unresolved-symbols=ignore-in-object-files -Wl,--entry=0   -mstack-protector-guard=global -o CMakeFiles/cmTC_769b7.dir/src.c.obj -c /home/gez/workspaces/eclipse/esp_doom/build/CMakeFiles/CMakeScratch/TryCompile-relKgB/src.c
+        FAILED: CMakeFiles/cmTC_769b7.dir/src.c.obj 
+        /home/gez/sdks/zephyr/toolchains/xtensa-espressif_esp32_zephyr-elf/bin/xtensa-espressif_esp32_zephyr-elf-gcc -Dcheck_mstack_protector_guard_global_C__nostartfiles__nostdlib__isystem___home_gez_sdks_zephyr_toolchains_xtensa_espressif_esp32_zephyr_elf_bin____lib_gcc_xtensa_espressif_esp32_zephyr_elf_12_2_0_include___isystem___home_gez_sdks_zephyr_toolchains_xtensa_espressif_esp32_zephyr_elf_bin____lib_gcc_xtensa_espressif_esp32_zephyr_elf_12_2_0_include_fixed___Wl___unresolved_symbols_ignore_in_object_files__Wl___entry_0  -nostartfiles -nostdlib -isystem "/home/gez/sdks/zephyr/toolchains/xtensa-espressif_esp32_zephyr-elf/bin/../lib/gcc/xtensa-espressif_esp32_zephyr-elf/12.2.0/include" -isystem "/home/gez/sdks/zephyr/toolchains/xtensa-espressif_esp32_zephyr-elf/bin/../lib/gcc/xtensa-espressif_esp32_zephyr-elf/12.2.0/include-fixed" -Wl,--unresolved-symbols=ignore-in-object-files -Wl,--entry=0   -mstack-protector-guard=global -o CMakeFiles/cmTC_769b7.dir/src.c.obj -c /home/gez/workspaces/eclipse/esp_doom/build/CMakeFiles/CMakeScratch/TryCompile-relKgB/src.c
+        xtensa-espressif_esp32_zephyr-elf-gcc: error: unrecognized command-line option '-mstack-protector-guard=global'; did you mean '-fstack-protector-all'?
+        ninja: build stopped: subcommand failed.
+        
+      exitCode: 1
+  -
+    kind: "try_compile-v1"
+    backtrace:
+      - "/usr/share/cmake/Modules/Internal/CheckSourceCompiles.cmake:101 (try_compile)"
+      - "/usr/share/cmake/Modules/Internal/CheckCompilerFlag.cmake:18 (cmake_check_source_compiles)"
+      - "/usr/share/cmake/Modules/CheckCCompilerFlag.cmake:40 (cmake_check_compiler_flag)"
+      - "/home/gez/sdks/zephyr/zephyr/cmake/modules/extensions.cmake:1912 (check_c_compiler_flag)"
+      - "/home/gez/sdks/zephyr/zephyr/cmake/modules/extensions.cmake:1084 (check_compiler_flag)"
+      - "/home/gez/sdks/zephyr/zephyr/cmake/modules/extensions.cmake:2134 (zephyr_check_compiler_flag)"
+      - "/home/gez/sdks/zephyr/zephyr/cmake/compiler/gcc/compiler_flags.cmake:174 (check_set_compiler_property)"
+      - "/home/gez/sdks/zephyr/zephyr/cmake/target_toolchain_flags.cmake:41 (include)"
+      - "/home/gez/sdks/zephyr/zephyr/cmake/modules/kernel.cmake:147 (include)"
+      - "/home/gez/sdks/zephyr/zephyr/cmake/modules/zephyr_default.cmake:124 (include)"
+      - "/home/gez/sdks/zephyr/zephyr/share/zephyr-package/cmake/ZephyrConfig.cmake:66 (include)"
+      - "/home/gez/sdks/zephyr/zephyr/share/zephyr-package/cmake/ZephyrConfig.cmake:97 (include_boilerplate)"
+      - "CMakeLists.txt:7 (find_package)"
+    directories:
+      source: "/home/gez/workspaces/eclipse/esp_doom/build/CMakeFiles/CMakeScratch/TryCompile-amPwa4"
+      binary: "/home/gez/workspaces/eclipse/esp_doom/build/CMakeFiles/CMakeScratch/TryCompile-amPwa4"
+    cmakeVariables:
+      CMAKE_C_FLAGS: ""
+      CMAKE_C_FLAGS_DEBUG: "-g"
+      CMAKE_EXE_LINKER_FLAGS: ""
+      CMAKE_MODULE_PATH: "/home/gez/sdks/zephyr/zephyr/cmake/modules"
+    buildResult:
+      variable: "check_fno_freestanding_C__nostartfiles__nostdlib__isystem___home_gez_sdks_zephyr_toolchains_xtensa_espressif_esp32_zephyr_elf_bin____lib_gcc_xtensa_espressif_esp32_zephyr_elf_12_2_0_include___isystem___home_gez_sdks_zephyr_toolchains_xtensa_espressif_esp32_zephyr_elf_bin____lib_gcc_xtensa_espressif_esp32_zephyr_elf_12_2_0_include_fixed___Wl___unresolved_symbols_ignore_in_object_files__Wl___entry_0"
+      cached: true
+      stdout: |
+        Change Dir: /home/gez/workspaces/eclipse/esp_doom/build/CMakeFiles/CMakeScratch/TryCompile-amPwa4
+        
+        Run Build Command(s):/usr/bin/ninja -v cmTC_c00e5 && [1/2] /home/gez/sdks/zephyr/toolchains/xtensa-espressif_esp32_zephyr-elf/bin/xtensa-espressif_esp32_zephyr-elf-gcc -Dcheck_fno_freestanding_C__nostartfiles__nostdlib__isystem___home_gez_sdks_zephyr_toolchains_xtensa_espressif_esp32_zephyr_elf_bin____lib_gcc_xtensa_espressif_esp32_zephyr_elf_12_2_0_include___isystem___home_gez_sdks_zephyr_toolchains_xtensa_espressif_esp32_zephyr_elf_bin____lib_gcc_xtensa_espressif_esp32_zephyr_elf_12_2_0_include_fixed___Wl___unresolved_symbols_ignore_in_object_files__Wl___entry_0  -nostartfiles -nostdlib -isystem "/home/gez/sdks/zephyr/toolchains/xtensa-espressif_esp32_zephyr-elf/bin/../lib/gcc/xtensa-espressif_esp32_zephyr-elf/12.2.0/include" -isystem "/home/gez/sdks/zephyr/toolchains/xtensa-espressif_esp32_zephyr-elf/bin/../lib/gcc/xtensa-espressif_esp32_zephyr-elf/12.2.0/include-fixed" -Wl,--unresolved-symbols=ignore-in-object-files -Wl,--entry=0   -fno-freestanding -o CMakeFiles/cmTC_c00e5.dir/src.c.obj -c /home/gez/workspaces/eclipse/esp_doom/build/CMakeFiles/CMakeScratch/TryCompile-amPwa4/src.c
+        [2/2] : && /home/gez/sdks/zephyr/toolchains/xtensa-espressif_esp32_zephyr-elf/bin/xtensa-espressif_esp32_zephyr-elf-gcc -nostartfiles -nostdlib -isystem "/home/gez/sdks/zephyr/toolchains/xtensa-espressif_esp32_zephyr-elf/bin/../lib/gcc/xtensa-espressif_esp32_zephyr-elf/12.2.0/include" -isystem "/home/gez/sdks/zephyr/toolchains/xtensa-espressif_esp32_zephyr-elf/bin/../lib/gcc/xtensa-espressif_esp32_zephyr-elf/12.2.0/include-fixed" -Wl,--unresolved-symbols=ignore-in-object-files -Wl,--entry=0  CMakeFiles/cmTC_c00e5.dir/src.c.obj -o cmTC_c00e5   && :
+        
+      exitCode: 0
+  -
+    kind: "try_compile-v1"
+    backtrace:
+      - "/usr/share/cmake/Modules/Internal/CheckSourceCompiles.cmake:101 (try_compile)"
+      - "/usr/share/cmake/Modules/Internal/CheckCompilerFlag.cmake:18 (cmake_check_source_compiles)"
+      - "/usr/share/cmake/Modules/CheckCCompilerFlag.cmake:40 (cmake_check_compiler_flag)"
+      - "/home/gez/sdks/zephyr/zephyr/cmake/modules/extensions.cmake:1912 (check_c_compiler_flag)"
+      - "/home/gez/sdks/zephyr/zephyr/cmake/modules/extensions.cmake:1084 (check_compiler_flag)"
+      - "/home/gez/sdks/zephyr/zephyr/cmake/modules/extensions.cmake:2134 (zephyr_check_compiler_flag)"
+      - "/home/gez/sdks/zephyr/zephyr/cmake/compiler/gcc/compiler_flags.cmake:177 (check_set_compiler_property)"
+      - "/home/gez/sdks/zephyr/zephyr/cmake/target_toolchain_flags.cmake:41 (include)"
+      - "/home/gez/sdks/zephyr/zephyr/cmake/modules/kernel.cmake:147 (include)"
+      - "/home/gez/sdks/zephyr/zephyr/cmake/modules/zephyr_default.cmake:124 (include)"
+      - "/home/gez/sdks/zephyr/zephyr/share/zephyr-package/cmake/ZephyrConfig.cmake:66 (include)"
+      - "/home/gez/sdks/zephyr/zephyr/share/zephyr-package/cmake/ZephyrConfig.cmake:97 (include_boilerplate)"
+      - "CMakeLists.txt:7 (find_package)"
+    directories:
+      source: "/home/gez/workspaces/eclipse/esp_doom/build/CMakeFiles/CMakeScratch/TryCompile-93HnjI"
+      binary: "/home/gez/workspaces/eclipse/esp_doom/build/CMakeFiles/CMakeScratch/TryCompile-93HnjI"
+    cmakeVariables:
+      CMAKE_C_FLAGS: ""
+      CMAKE_C_FLAGS_DEBUG: "-g"
+      CMAKE_EXE_LINKER_FLAGS: ""
+      CMAKE_MODULE_PATH: "/home/gez/sdks/zephyr/zephyr/cmake/modules"
+    buildResult:
+      variable: "check_ffreestanding_C__nostartfiles__nostdlib__isystem___home_gez_sdks_zephyr_toolchains_xtensa_espressif_esp32_zephyr_elf_bin____lib_gcc_xtensa_espressif_esp32_zephyr_elf_12_2_0_include___isystem___home_gez_sdks_zephyr_toolchains_xtensa_espressif_esp32_zephyr_elf_bin____lib_gcc_xtensa_espressif_esp32_zephyr_elf_12_2_0_include_fixed___Wl___unresolved_symbols_ignore_in_object_files__Wl___entry_0"
+      cached: true
+      stdout: |
+        Change Dir: /home/gez/workspaces/eclipse/esp_doom/build/CMakeFiles/CMakeScratch/TryCompile-93HnjI
+        
+        Run Build Command(s):/usr/bin/ninja -v cmTC_f49fa && [1/2] /home/gez/sdks/zephyr/toolchains/xtensa-espressif_esp32_zephyr-elf/bin/xtensa-espressif_esp32_zephyr-elf-gcc -Dcheck_ffreestanding_C__nostartfiles__nostdlib__isystem___home_gez_sdks_zephyr_toolchains_xtensa_espressif_esp32_zephyr_elf_bin____lib_gcc_xtensa_espressif_esp32_zephyr_elf_12_2_0_include___isystem___home_gez_sdks_zephyr_toolchains_xtensa_espressif_esp32_zephyr_elf_bin____lib_gcc_xtensa_espressif_esp32_zephyr_elf_12_2_0_include_fixed___Wl___unresolved_symbols_ignore_in_object_files__Wl___entry_0  -nostartfiles -nostdlib -isystem "/home/gez/sdks/zephyr/toolchains/xtensa-espressif_esp32_zephyr-elf/bin/../lib/gcc/xtensa-espressif_esp32_zephyr-elf/12.2.0/include" -isystem "/home/gez/sdks/zephyr/toolchains/xtensa-espressif_esp32_zephyr-elf/bin/../lib/gcc/xtensa-espressif_esp32_zephyr-elf/12.2.0/include-fixed" -Wl,--unresolved-symbols=ignore-in-object-files -Wl,--entry=0   -ffreestanding -o CMakeFiles/cmTC_f49fa.dir/src.c.obj -c /home/gez/workspaces/eclipse/esp_doom/build/CMakeFiles/CMakeScratch/TryCompile-93HnjI/src.c
+        [2/2] : && /home/gez/sdks/zephyr/toolchains/xtensa-espressif_esp32_zephyr-elf/bin/xtensa-espressif_esp32_zephyr-elf-gcc -nostartfiles -nostdlib -isystem "/home/gez/sdks/zephyr/toolchains/xtensa-espressif_esp32_zephyr-elf/bin/../lib/gcc/xtensa-espressif_esp32_zephyr-elf/12.2.0/include" -isystem "/home/gez/sdks/zephyr/toolchains/xtensa-espressif_esp32_zephyr-elf/bin/../lib/gcc/xtensa-espressif_esp32_zephyr-elf/12.2.0/include-fixed" -Wl,--unresolved-symbols=ignore-in-object-files -Wl,--entry=0  CMakeFiles/cmTC_f49fa.dir/src.c.obj -o cmTC_f49fa   && :
+        
+      exitCode: 0
+  -
+    kind: "try_compile-v1"
+    backtrace:
+      - "/usr/share/cmake/Modules/Internal/CheckSourceCompiles.cmake:101 (try_compile)"
+      - "/usr/share/cmake/Modules/Internal/CheckCompilerFlag.cmake:18 (cmake_check_source_compiles)"
+      - "/usr/share/cmake/Modules/CheckCCompilerFlag.cmake:40 (cmake_check_compiler_flag)"
+      - "/home/gez/sdks/zephyr/zephyr/cmake/modules/extensions.cmake:1912 (check_c_compiler_flag)"
+      - "/home/gez/sdks/zephyr/zephyr/cmake/modules/extensions.cmake:1084 (check_compiler_flag)"
+      - "/home/gez/sdks/zephyr/zephyr/cmake/modules/extensions.cmake:2134 (zephyr_check_compiler_flag)"
+      - "/home/gez/sdks/zephyr/zephyr/cmake/compiler/gcc/compiler_flags.cmake:190 (check_set_compiler_property)"
+      - "/home/gez/sdks/zephyr/zephyr/cmake/target_toolchain_flags.cmake:41 (include)"
+      - "/home/gez/sdks/zephyr/zephyr/cmake/modules/kernel.cmake:147 (include)"
+      - "/home/gez/sdks/zephyr/zephyr/cmake/modules/zephyr_default.cmake:124 (include)"
+      - "/home/gez/sdks/zephyr/zephyr/share/zephyr-package/cmake/ZephyrConfig.cmake:66 (include)"
+      - "/home/gez/sdks/zephyr/zephyr/share/zephyr-package/cmake/ZephyrConfig.cmake:97 (include_boilerplate)"
+      - "CMakeLists.txt:7 (find_package)"
+    directories:
+      source: "/home/gez/workspaces/eclipse/esp_doom/build/CMakeFiles/CMakeScratch/TryCompile-MmJUf5"
+      binary: "/home/gez/workspaces/eclipse/esp_doom/build/CMakeFiles/CMakeScratch/TryCompile-MmJUf5"
+    cmakeVariables:
+      CMAKE_C_FLAGS: ""
+      CMAKE_C_FLAGS_DEBUG: "-g"
+      CMAKE_EXE_LINKER_FLAGS: ""
+      CMAKE_MODULE_PATH: "/home/gez/sdks/zephyr/zephyr/cmake/modules"
+    buildResult:
+      variable: "check_gdwarf_4_C__nostartfiles__nostdlib__isystem___home_gez_sdks_zephyr_toolchains_xtensa_espressif_esp32_zephyr_elf_bin____lib_gcc_xtensa_espressif_esp32_zephyr_elf_12_2_0_include___isystem___home_gez_sdks_zephyr_toolchains_xtensa_espressif_esp32_zephyr_elf_bin____lib_gcc_xtensa_espressif_esp32_zephyr_elf_12_2_0_include_fixed___Wl___unresolved_symbols_ignore_in_object_files__Wl___entry_0"
+      cached: true
+      stdout: |
+        Change Dir: /home/gez/workspaces/eclipse/esp_doom/build/CMakeFiles/CMakeScratch/TryCompile-MmJUf5
+        
+        Run Build Command(s):/usr/bin/ninja -v cmTC_3f9a7 && [1/2] /home/gez/sdks/zephyr/toolchains/xtensa-espressif_esp32_zephyr-elf/bin/xtensa-espressif_esp32_zephyr-elf-gcc -Dcheck_gdwarf_4_C__nostartfiles__nostdlib__isystem___home_gez_sdks_zephyr_toolchains_xtensa_espressif_esp32_zephyr_elf_bin____lib_gcc_xtensa_espressif_esp32_zephyr_elf_12_2_0_include___isystem___home_gez_sdks_zephyr_toolchains_xtensa_espressif_esp32_zephyr_elf_bin____lib_gcc_xtensa_espressif_esp32_zephyr_elf_12_2_0_include_fixed___Wl___unresolved_symbols_ignore_in_object_files__Wl___entry_0  -nostartfiles -nostdlib -isystem "/home/gez/sdks/zephyr/toolchains/xtensa-espressif_esp32_zephyr-elf/bin/../lib/gcc/xtensa-espressif_esp32_zephyr-elf/12.2.0/include" -isystem "/home/gez/sdks/zephyr/toolchains/xtensa-espressif_esp32_zephyr-elf/bin/../lib/gcc/xtensa-espressif_esp32_zephyr-elf/12.2.0/include-fixed" -Wl,--unresolved-symbols=ignore-in-object-files -Wl,--entry=0   -gdwarf-4 -o CMakeFiles/cmTC_3f9a7.dir/src.c.obj -c /home/gez/workspaces/eclipse/esp_doom/build/CMakeFiles/CMakeScratch/TryCompile-MmJUf5/src.c
+        [2/2] : && /home/gez/sdks/zephyr/toolchains/xtensa-espressif_esp32_zephyr-elf/bin/xtensa-espressif_esp32_zephyr-elf-gcc -nostartfiles -nostdlib -isystem "/home/gez/sdks/zephyr/toolchains/xtensa-espressif_esp32_zephyr-elf/bin/../lib/gcc/xtensa-espressif_esp32_zephyr-elf/12.2.0/include" -isystem "/home/gez/sdks/zephyr/toolchains/xtensa-espressif_esp32_zephyr-elf/bin/../lib/gcc/xtensa-espressif_esp32_zephyr-elf/12.2.0/include-fixed" -Wl,--unresolved-symbols=ignore-in-object-files -Wl,--entry=0  CMakeFiles/cmTC_3f9a7.dir/src.c.obj -o cmTC_3f9a7   && :
+        
+      exitCode: 0
+  -
+    kind: "try_compile-v1"
+    backtrace:
+      - "/usr/share/cmake/Modules/Internal/CheckSourceCompiles.cmake:101 (try_compile)"
+      - "/usr/share/cmake/Modules/Internal/CheckCompilerFlag.cmake:18 (cmake_check_source_compiles)"
+      - "/usr/share/cmake/Modules/CheckCCompilerFlag.cmake:40 (cmake_check_compiler_flag)"
+      - "/home/gez/sdks/zephyr/zephyr/cmake/modules/extensions.cmake:1912 (check_c_compiler_flag)"
+      - "/home/gez/sdks/zephyr/zephyr/cmake/modules/extensions.cmake:1084 (check_compiler_flag)"
+      - "/home/gez/sdks/zephyr/zephyr/cmake/modules/extensions.cmake:2058 (zephyr_check_compiler_flag)"
+      - "/home/gez/sdks/zephyr/zephyr/cmake/linker/ld/linker_flags.cmake:1 (check_set_linker_property)"
+      - "/home/gez/sdks/zephyr/zephyr/cmake/target_toolchain_flags.cmake:42 (include)"
+      - "/home/gez/sdks/zephyr/zephyr/cmake/modules/kernel.cmake:147 (include)"
+      - "/home/gez/sdks/zephyr/zephyr/cmake/modules/zephyr_default.cmake:124 (include)"
+      - "/home/gez/sdks/zephyr/zephyr/share/zephyr-package/cmake/ZephyrConfig.cmake:66 (include)"
+      - "/home/gez/sdks/zephyr/zephyr/share/zephyr-package/cmake/ZephyrConfig.cmake:97 (include_boilerplate)"
+      - "CMakeLists.txt:7 (find_package)"
+    directories:
+      source: "/home/gez/workspaces/eclipse/esp_doom/build/CMakeFiles/CMakeScratch/TryCompile-Y7qtMN"
+      binary: "/home/gez/workspaces/eclipse/esp_doom/build/CMakeFiles/CMakeScratch/TryCompile-Y7qtMN"
+    cmakeVariables:
+      CMAKE_C_FLAGS: ""
+      CMAKE_C_FLAGS_DEBUG: "-g"
+      CMAKE_EXE_LINKER_FLAGS: ""
+      CMAKE_MODULE_PATH: "/home/gez/sdks/zephyr/zephyr/cmake/modules"
+    buildResult:
+      variable: "check_C__nostartfiles__nostdlib__isystem___home_gez_sdks_zephyr_toolchains_xtensa_espressif_esp32_zephyr_elf_bin____lib_gcc_xtensa_espressif_esp32_zephyr_elf_12_2_0_include___isystem___home_gez_sdks_zephyr_toolchains_xtensa_espressif_esp32_zephyr_elf_bin____lib_gcc_xtensa_espressif_esp32_zephyr_elf_12_2_0_include_fixed___Wl___unresolved_symbols_ignore_in_object_files__Wl___entry_0__Wl___print_memory_usage"
+      cached: true
+      stdout: |
+        Change Dir: /home/gez/workspaces/eclipse/esp_doom/build/CMakeFiles/CMakeScratch/TryCompile-Y7qtMN
+        
+        Run Build Command(s):/usr/bin/ninja -v cmTC_569ae && [1/2] /home/gez/sdks/zephyr/toolchains/xtensa-espressif_esp32_zephyr-elf/bin/xtensa-espressif_esp32_zephyr-elf-gcc -Dcheck_C__nostartfiles__nostdlib__isystem___home_gez_sdks_zephyr_toolchains_xtensa_espressif_esp32_zephyr_elf_bin____lib_gcc_xtensa_espressif_esp32_zephyr_elf_12_2_0_include___isystem___home_gez_sdks_zephyr_toolchains_xtensa_espressif_esp32_zephyr_elf_bin____lib_gcc_xtensa_espressif_esp32_zephyr_elf_12_2_0_include_fixed___Wl___unresolved_symbols_ignore_in_object_files__Wl___entry_0__Wl___print_memory_usage  -nostartfiles -nostdlib -isystem "/home/gez/sdks/zephyr/toolchains/xtensa-espressif_esp32_zephyr-elf/bin/../lib/gcc/xtensa-espressif_esp32_zephyr-elf/12.2.0/include" -isystem "/home/gez/sdks/zephyr/toolchains/xtensa-espressif_esp32_zephyr-elf/bin/../lib/gcc/xtensa-espressif_esp32_zephyr-elf/12.2.0/include-fixed" -Wl,--unresolved-symbols=ignore-in-object-files -Wl,--entry=0 -Wl,--print-memory-usage -o CMakeFiles/cmTC_569ae.dir/src.c.obj -c /home/gez/workspaces/eclipse/esp_doom/build/CMakeFiles/CMakeScratch/TryCompile-Y7qtMN/src.c
+        [2/2] : && /home/gez/sdks/zephyr/toolchains/xtensa-espressif_esp32_zephyr-elf/bin/xtensa-espressif_esp32_zephyr-elf-gcc -nostartfiles -nostdlib -isystem "/home/gez/sdks/zephyr/toolchains/xtensa-espressif_esp32_zephyr-elf/bin/../lib/gcc/xtensa-espressif_esp32_zephyr-elf/12.2.0/include" -isystem "/home/gez/sdks/zephyr/toolchains/xtensa-espressif_esp32_zephyr-elf/bin/../lib/gcc/xtensa-espressif_esp32_zephyr-elf/12.2.0/include-fixed" -Wl,--unresolved-symbols=ignore-in-object-files -Wl,--entry=0 -Wl,--print-memory-usage  CMakeFiles/cmTC_569ae.dir/src.c.obj -o cmTC_569ae   && :
+        Memory region         Used Size  Region Size  %age Used
+        
+      exitCode: 0
+  -
+    kind: "try_compile-v1"
+    backtrace:
+      - "/usr/share/cmake/Modules/Internal/CheckSourceCompiles.cmake:101 (try_compile)"
+      - "/usr/share/cmake/Modules/Internal/CheckCompilerFlag.cmake:18 (cmake_check_source_compiles)"
+      - "/usr/share/cmake/Modules/CheckCCompilerFlag.cmake:40 (cmake_check_compiler_flag)"
+      - "/home/gez/sdks/zephyr/zephyr/cmake/modules/extensions.cmake:1912 (check_c_compiler_flag)"
+      - "/home/gez/sdks/zephyr/zephyr/cmake/modules/extensions.cmake:1084 (check_compiler_flag)"
+      - "/home/gez/sdks/zephyr/zephyr/cmake/modules/extensions.cmake:2058 (zephyr_check_compiler_flag)"
+      - "/home/gez/sdks/zephyr/zephyr/cmake/linker/ld/gcc/linker_flags.cmake:10 (check_set_linker_property)"
+      - "/home/gez/sdks/zephyr/zephyr/cmake/linker/ld/linker_flags.cmake:18 (include)"
+      - "/home/gez/sdks/zephyr/zephyr/cmake/target_toolchain_flags.cmake:42 (include)"
+      - "/home/gez/sdks/zephyr/zephyr/cmake/modules/kernel.cmake:147 (include)"
+      - "/home/gez/sdks/zephyr/zephyr/cmake/modules/zephyr_default.cmake:124 (include)"
+      - "/home/gez/sdks/zephyr/zephyr/share/zephyr-package/cmake/ZephyrConfig.cmake:66 (include)"
+      - "/home/gez/sdks/zephyr/zephyr/share/zephyr-package/cmake/ZephyrConfig.cmake:97 (include_boilerplate)"
+      - "CMakeLists.txt:7 (find_package)"
+    directories:
+      source: "/home/gez/workspaces/eclipse/esp_doom/build/CMakeFiles/CMakeScratch/TryCompile-RRNQ77"
+      binary: "/home/gez/workspaces/eclipse/esp_doom/build/CMakeFiles/CMakeScratch/TryCompile-RRNQ77"
+    cmakeVariables:
+      CMAKE_C_FLAGS: ""
+      CMAKE_C_FLAGS_DEBUG: "-g"
+      CMAKE_EXE_LINKER_FLAGS: ""
+      CMAKE_MODULE_PATH: "/home/gez/sdks/zephyr/zephyr/cmake/modules"
+    buildResult:
+      variable: "check_C__nostartfiles__nostdlib__isystem___home_gez_sdks_zephyr_toolchains_xtensa_espressif_esp32_zephyr_elf_bin____lib_gcc_xtensa_espressif_esp32_zephyr_elf_12_2_0_include___isystem___home_gez_sdks_zephyr_toolchains_xtensa_espressif_esp32_zephyr_elf_bin____lib_gcc_xtensa_espressif_esp32_zephyr_elf_12_2_0_include_fixed___Wl___unresolved_symbols_ignore_in_object_files__Wl___entry_0__pg"
+      cached: true
+      stdout: |
+        Change Dir: /home/gez/workspaces/eclipse/esp_doom/build/CMakeFiles/CMakeScratch/TryCompile-RRNQ77
+        
+        Run Build Command(s):/usr/bin/ninja -v cmTC_c87db && [1/2] /home/gez/sdks/zephyr/toolchains/xtensa-espressif_esp32_zephyr-elf/bin/xtensa-espressif_esp32_zephyr-elf-gcc -Dcheck_C__nostartfiles__nostdlib__isystem___home_gez_sdks_zephyr_toolchains_xtensa_espressif_esp32_zephyr_elf_bin____lib_gcc_xtensa_espressif_esp32_zephyr_elf_12_2_0_include___isystem___home_gez_sdks_zephyr_toolchains_xtensa_espressif_esp32_zephyr_elf_bin____lib_gcc_xtensa_espressif_esp32_zephyr_elf_12_2_0_include_fixed___Wl___unresolved_symbols_ignore_in_object_files__Wl___entry_0__pg  -nostartfiles -nostdlib -isystem "/home/gez/sdks/zephyr/toolchains/xtensa-espressif_esp32_zephyr-elf/bin/../lib/gcc/xtensa-espressif_esp32_zephyr-elf/12.2.0/include" -isystem "/home/gez/sdks/zephyr/toolchains/xtensa-espressif_esp32_zephyr-elf/bin/../lib/gcc/xtensa-espressif_esp32_zephyr-elf/12.2.0/include-fixed" -Wl,--unresolved-symbols=ignore-in-object-files -Wl,--entry=0 -pg -o CMakeFiles/cmTC_c87db.dir/src.c.obj -c /home/gez/workspaces/eclipse/esp_doom/build/CMakeFiles/CMakeScratch/TryCompile-RRNQ77/src.c
+        [2/2] : && /home/gez/sdks/zephyr/toolchains/xtensa-espressif_esp32_zephyr-elf/bin/xtensa-espressif_esp32_zephyr-elf-gcc -nostartfiles -nostdlib -isystem "/home/gez/sdks/zephyr/toolchains/xtensa-espressif_esp32_zephyr-elf/bin/../lib/gcc/xtensa-espressif_esp32_zephyr-elf/12.2.0/include" -isystem "/home/gez/sdks/zephyr/toolchains/xtensa-espressif_esp32_zephyr-elf/bin/../lib/gcc/xtensa-espressif_esp32_zephyr-elf/12.2.0/include-fixed" -Wl,--unresolved-symbols=ignore-in-object-files -Wl,--entry=0 -pg  CMakeFiles/cmTC_c87db.dir/src.c.obj -o cmTC_c87db   && :
+        FAILED: cmTC_c87db 
+        : && /home/gez/sdks/zephyr/toolchains/xtensa-espressif_esp32_zephyr-elf/bin/xtensa-espressif_esp32_zephyr-elf-gcc -nostartfiles -nostdlib -isystem "/home/gez/sdks/zephyr/toolchains/xtensa-espressif_esp32_zephyr-elf/bin/../lib/gcc/xtensa-espressif_esp32_zephyr-elf/12.2.0/include" -isystem "/home/gez/sdks/zephyr/toolchains/xtensa-espressif_esp32_zephyr-elf/bin/../lib/gcc/xtensa-espressif_esp32_zephyr-elf/12.2.0/include-fixed" -Wl,--unresolved-symbols=ignore-in-object-files -Wl,--entry=0 -pg  CMakeFiles/cmTC_c87db.dir/src.c.obj -o cmTC_c87db   && :
+        CMakeFiles/cmTC_c87db.dir/src.c.obj: in function `main':
+        src.c:(.text+0x7): dangerous relocation: call8: call target out of range: _mcount
+        collect2: error: ld returned 1 exit status
+        ninja: build stopped: subcommand failed.
+        
+      exitCode: 1
+  -
+    kind: "try_compile-v1"
+    backtrace:
+      - "/usr/share/cmake/Modules/Internal/CheckSourceCompiles.cmake:101 (try_compile)"
+      - "/usr/share/cmake/Modules/Internal/CheckCompilerFlag.cmake:18 (cmake_check_source_compiles)"
+      - "/usr/share/cmake/Modules/CheckCCompilerFlag.cmake:40 (cmake_check_compiler_flag)"
+      - "/home/gez/sdks/zephyr/zephyr/cmake/modules/extensions.cmake:1912 (check_c_compiler_flag)"
+      - "/home/gez/sdks/zephyr/zephyr/cmake/modules/extensions.cmake:1084 (check_compiler_flag)"
+      - "/home/gez/sdks/zephyr/zephyr/cmake/modules/extensions.cmake:1973 (zephyr_check_compiler_flag)"
+      - "/home/gez/sdks/zephyr/zephyr/cmake/modules/extensions.cmake:131 (target_ld_options)"
+      - "/home/gez/sdks/zephyr/zephyr/cmake/linker/ld/target_base.cmake:17 (zephyr_ld_options)"
+      - "/home/gez/sdks/zephyr/zephyr/CMakeLists.txt:337 (toolchain_ld_base)"
+    directories:
+      source: "/home/gez/workspaces/eclipse/esp_doom/build/CMakeFiles/CMakeScratch/TryCompile-cJHp6m"
+      binary: "/home/gez/workspaces/eclipse/esp_doom/build/CMakeFiles/CMakeScratch/TryCompile-cJHp6m"
+    cmakeVariables:
+      CMAKE_C_FLAGS: ""
+      CMAKE_C_FLAGS_DEBUG: "-g"
+      CMAKE_EXE_LINKER_FLAGS: ""
+      CMAKE_MODULE_PATH: "/home/gez/sdks/zephyr/zephyr/cmake/modules"
+    buildResult:
+      variable: "check_C__nostartfiles__nostdlib__isystem___home_gez_sdks_zephyr_toolchains_xtensa_espressif_esp32_zephyr_elf_bin____lib_gcc_xtensa_espressif_esp32_zephyr_elf_12_2_0_include___isystem___home_gez_sdks_zephyr_toolchains_xtensa_espressif_esp32_zephyr_elf_bin____lib_gcc_xtensa_espressif_esp32_zephyr_elf_12_2_0_include_fixed___Wl___unresolved_symbols_ignore_in_object_files__Wl___entry_0__Wl___gc_sections"
+      cached: true
+      stdout: |
+        Change Dir: /home/gez/workspaces/eclipse/esp_doom/build/CMakeFiles/CMakeScratch/TryCompile-cJHp6m
+        
+        Run Build Command(s):/usr/bin/ninja -v cmTC_e2995 && [1/2] /home/gez/sdks/zephyr/toolchains/xtensa-espressif_esp32_zephyr-elf/bin/xtensa-espressif_esp32_zephyr-elf-gcc -Dcheck_C__nostartfiles__nostdlib__isystem___home_gez_sdks_zephyr_toolchains_xtensa_espressif_esp32_zephyr_elf_bin____lib_gcc_xtensa_espressif_esp32_zephyr_elf_12_2_0_include___isystem___home_gez_sdks_zephyr_toolchains_xtensa_espressif_esp32_zephyr_elf_bin____lib_gcc_xtensa_espressif_esp32_zephyr_elf_12_2_0_include_fixed___Wl___unresolved_symbols_ignore_in_object_files__Wl___entry_0__Wl___gc_sections  -nostartfiles -nostdlib -isystem "/home/gez/sdks/zephyr/toolchains/xtensa-espressif_esp32_zephyr-elf/bin/../lib/gcc/xtensa-espressif_esp32_zephyr-elf/12.2.0/include" -isystem "/home/gez/sdks/zephyr/toolchains/xtensa-espressif_esp32_zephyr-elf/bin/../lib/gcc/xtensa-espressif_esp32_zephyr-elf/12.2.0/include-fixed" -Wl,--unresolved-symbols=ignore-in-object-files -Wl,--entry=0 -Wl,--gc-sections -o CMakeFiles/cmTC_e2995.dir/src.c.obj -c /home/gez/workspaces/eclipse/esp_doom/build/CMakeFiles/CMakeScratch/TryCompile-cJHp6m/src.c
+        [2/2] : && /home/gez/sdks/zephyr/toolchains/xtensa-espressif_esp32_zephyr-elf/bin/xtensa-espressif_esp32_zephyr-elf-gcc -nostartfiles -nostdlib -isystem "/home/gez/sdks/zephyr/toolchains/xtensa-espressif_esp32_zephyr-elf/bin/../lib/gcc/xtensa-espressif_esp32_zephyr-elf/12.2.0/include" -isystem "/home/gez/sdks/zephyr/toolchains/xtensa-espressif_esp32_zephyr-elf/bin/../lib/gcc/xtensa-espressif_esp32_zephyr-elf/12.2.0/include-fixed" -Wl,--unresolved-symbols=ignore-in-object-files -Wl,--entry=0 -Wl,--gc-sections  CMakeFiles/cmTC_e2995.dir/src.c.obj -o cmTC_e2995   && :
+        
+      exitCode: 0
+  -
+    kind: "try_compile-v1"
+    backtrace:
+      - "/usr/share/cmake/Modules/Internal/CheckSourceCompiles.cmake:101 (try_compile)"
+      - "/usr/share/cmake/Modules/Internal/CheckCompilerFlag.cmake:18 (cmake_check_source_compiles)"
+      - "/usr/share/cmake/Modules/CheckCCompilerFlag.cmake:40 (cmake_check_compiler_flag)"
+      - "/home/gez/sdks/zephyr/zephyr/cmake/modules/extensions.cmake:1912 (check_c_compiler_flag)"
+      - "/home/gez/sdks/zephyr/zephyr/cmake/modules/extensions.cmake:1084 (check_compiler_flag)"
+      - "/home/gez/sdks/zephyr/zephyr/cmake/modules/extensions.cmake:1973 (zephyr_check_compiler_flag)"
+      - "/home/gez/sdks/zephyr/zephyr/cmake/modules/extensions.cmake:131 (target_ld_options)"
+      - "/home/gez/sdks/zephyr/zephyr/cmake/linker/ld/target_base.cmake:17 (zephyr_ld_options)"
+      - "/home/gez/sdks/zephyr/zephyr/CMakeLists.txt:337 (toolchain_ld_base)"
+    directories:
+      source: "/home/gez/workspaces/eclipse/esp_doom/build/CMakeFiles/CMakeScratch/TryCompile-cqgIQf"
+      binary: "/home/gez/workspaces/eclipse/esp_doom/build/CMakeFiles/CMakeScratch/TryCompile-cqgIQf"
+    cmakeVariables:
+      CMAKE_C_FLAGS: ""
+      CMAKE_C_FLAGS_DEBUG: "-g"
+      CMAKE_EXE_LINKER_FLAGS: ""
+      CMAKE_MODULE_PATH: "/home/gez/sdks/zephyr/zephyr/cmake/modules"
+    buildResult:
+      variable: "check_C__nostartfiles__nostdlib__isystem___home_gez_sdks_zephyr_toolchains_xtensa_espressif_esp32_zephyr_elf_bin____lib_gcc_xtensa_espressif_esp32_zephyr_elf_12_2_0_include___isystem___home_gez_sdks_zephyr_toolchains_xtensa_espressif_esp32_zephyr_elf_bin____lib_gcc_xtensa_espressif_esp32_zephyr_elf_12_2_0_include_fixed___Wl___unresolved_symbols_ignore_in_object_files__Wl___entry_0__Wl___build_id_none"
+      cached: true
+      stdout: |
+        Change Dir: /home/gez/workspaces/eclipse/esp_doom/build/CMakeFiles/CMakeScratch/TryCompile-cqgIQf
+        
+        Run Build Command(s):/usr/bin/ninja -v cmTC_ae998 && [1/2] /home/gez/sdks/zephyr/toolchains/xtensa-espressif_esp32_zephyr-elf/bin/xtensa-espressif_esp32_zephyr-elf-gcc -Dcheck_C__nostartfiles__nostdlib__isystem___home_gez_sdks_zephyr_toolchains_xtensa_espressif_esp32_zephyr_elf_bin____lib_gcc_xtensa_espressif_esp32_zephyr_elf_12_2_0_include___isystem___home_gez_sdks_zephyr_toolchains_xtensa_espressif_esp32_zephyr_elf_bin____lib_gcc_xtensa_espressif_esp32_zephyr_elf_12_2_0_include_fixed___Wl___unresolved_symbols_ignore_in_object_files__Wl___entry_0__Wl___build_id_none  -nostartfiles -nostdlib -isystem "/home/gez/sdks/zephyr/toolchains/xtensa-espressif_esp32_zephyr-elf/bin/../lib/gcc/xtensa-espressif_esp32_zephyr-elf/12.2.0/include" -isystem "/home/gez/sdks/zephyr/toolchains/xtensa-espressif_esp32_zephyr-elf/bin/../lib/gcc/xtensa-espressif_esp32_zephyr-elf/12.2.0/include-fixed" -Wl,--unresolved-symbols=ignore-in-object-files -Wl,--entry=0 -Wl,--build-id=none -o CMakeFiles/cmTC_ae998.dir/src.c.obj -c /home/gez/workspaces/eclipse/esp_doom/build/CMakeFiles/CMakeScratch/TryCompile-cqgIQf/src.c
+        [2/2] : && /home/gez/sdks/zephyr/toolchains/xtensa-espressif_esp32_zephyr-elf/bin/xtensa-espressif_esp32_zephyr-elf-gcc -nostartfiles -nostdlib -isystem "/home/gez/sdks/zephyr/toolchains/xtensa-espressif_esp32_zephyr-elf/bin/../lib/gcc/xtensa-espressif_esp32_zephyr-elf/12.2.0/include" -isystem "/home/gez/sdks/zephyr/toolchains/xtensa-espressif_esp32_zephyr-elf/bin/../lib/gcc/xtensa-espressif_esp32_zephyr-elf/12.2.0/include-fixed" -Wl,--unresolved-symbols=ignore-in-object-files -Wl,--entry=0 -Wl,--build-id=none  CMakeFiles/cmTC_ae998.dir/src.c.obj -o cmTC_ae998   && :
+        
+      exitCode: 0
+  -
+    kind: "try_compile-v1"
+    backtrace:
+      - "/usr/share/cmake/Modules/Internal/CheckSourceCompiles.cmake:101 (try_compile)"
+      - "/usr/share/cmake/Modules/Internal/CheckCompilerFlag.cmake:18 (cmake_check_source_compiles)"
+      - "/usr/share/cmake/Modules/CheckCCompilerFlag.cmake:40 (cmake_check_compiler_flag)"
+      - "/home/gez/sdks/zephyr/zephyr/cmake/modules/extensions.cmake:1912 (check_c_compiler_flag)"
+      - "/home/gez/sdks/zephyr/zephyr/cmake/modules/extensions.cmake:1084 (check_compiler_flag)"
+      - "/home/gez/sdks/zephyr/zephyr/cmake/modules/extensions.cmake:1973 (zephyr_check_compiler_flag)"
+      - "/home/gez/sdks/zephyr/zephyr/cmake/modules/extensions.cmake:131 (target_ld_options)"
+      - "/home/gez/sdks/zephyr/zephyr/cmake/modules/extensions.cmake:1667 (zephyr_ld_options)"
+      - "/home/gez/sdks/zephyr/zephyr/cmake/linker/ld/target_base.cmake:24 (zephyr_ld_option_ifdef)"
+      - "/home/gez/sdks/zephyr/zephyr/CMakeLists.txt:337 (toolchain_ld_base)"
+    directories:
+      source: "/home/gez/workspaces/eclipse/esp_doom/build/CMakeFiles/CMakeScratch/TryCompile-J4Eqmf"
+      binary: "/home/gez/workspaces/eclipse/esp_doom/build/CMakeFiles/CMakeScratch/TryCompile-J4Eqmf"
+    cmakeVariables:
+      CMAKE_C_FLAGS: ""
+      CMAKE_C_FLAGS_DEBUG: "-g"
+      CMAKE_EXE_LINKER_FLAGS: ""
+      CMAKE_MODULE_PATH: "/home/gez/sdks/zephyr/zephyr/cmake/modules"
+    buildResult:
+      variable: "check_C__nostartfiles__nostdlib__isystem___home_gez_sdks_zephyr_toolchains_xtensa_espressif_esp32_zephyr_elf_bin____lib_gcc_xtensa_espressif_esp32_zephyr_elf_12_2_0_include___isystem___home_gez_sdks_zephyr_toolchains_xtensa_espressif_esp32_zephyr_elf_bin____lib_gcc_xtensa_espressif_esp32_zephyr_elf_12_2_0_include_fixed___Wl___unresolved_symbols_ignore_in_object_files__Wl___entry_0__Wl___sort_common_descending"
+      cached: true
+      stdout: |
+        Change Dir: /home/gez/workspaces/eclipse/esp_doom/build/CMakeFiles/CMakeScratch/TryCompile-J4Eqmf
+        
+        Run Build Command(s):/usr/bin/ninja -v cmTC_3ce86 && [1/2] /home/gez/sdks/zephyr/toolchains/xtensa-espressif_esp32_zephyr-elf/bin/xtensa-espressif_esp32_zephyr-elf-gcc -Dcheck_C__nostartfiles__nostdlib__isystem___home_gez_sdks_zephyr_toolchains_xtensa_espressif_esp32_zephyr_elf_bin____lib_gcc_xtensa_espressif_esp32_zephyr_elf_12_2_0_include___isystem___home_gez_sdks_zephyr_toolchains_xtensa_espressif_esp32_zephyr_elf_bin____lib_gcc_xtensa_espressif_esp32_zephyr_elf_12_2_0_include_fixed___Wl___unresolved_symbols_ignore_in_object_files__Wl___entry_0__Wl___sort_common_descending  -nostartfiles -nostdlib -isystem "/home/gez/sdks/zephyr/toolchains/xtensa-espressif_esp32_zephyr-elf/bin/../lib/gcc/xtensa-espressif_esp32_zephyr-elf/12.2.0/include" -isystem "/home/gez/sdks/zephyr/toolchains/xtensa-espressif_esp32_zephyr-elf/bin/../lib/gcc/xtensa-espressif_esp32_zephyr-elf/12.2.0/include-fixed" -Wl,--unresolved-symbols=ignore-in-object-files -Wl,--entry=0 -Wl,--sort-common=descending -o CMakeFiles/cmTC_3ce86.dir/src.c.obj -c /home/gez/workspaces/eclipse/esp_doom/build/CMakeFiles/CMakeScratch/TryCompile-J4Eqmf/src.c
+        [2/2] : && /home/gez/sdks/zephyr/toolchains/xtensa-espressif_esp32_zephyr-elf/bin/xtensa-espressif_esp32_zephyr-elf-gcc -nostartfiles -nostdlib -isystem "/home/gez/sdks/zephyr/toolchains/xtensa-espressif_esp32_zephyr-elf/bin/../lib/gcc/xtensa-espressif_esp32_zephyr-elf/12.2.0/include" -isystem "/home/gez/sdks/zephyr/toolchains/xtensa-espressif_esp32_zephyr-elf/bin/../lib/gcc/xtensa-espressif_esp32_zephyr-elf/12.2.0/include-fixed" -Wl,--unresolved-symbols=ignore-in-object-files -Wl,--entry=0 -Wl,--sort-common=descending  CMakeFiles/cmTC_3ce86.dir/src.c.obj -o cmTC_3ce86   && :
+        
+      exitCode: 0
+  -
+    kind: "try_compile-v1"
+    backtrace:
+      - "/usr/share/cmake/Modules/Internal/CheckSourceCompiles.cmake:101 (try_compile)"
+      - "/usr/share/cmake/Modules/Internal/CheckCompilerFlag.cmake:18 (cmake_check_source_compiles)"
+      - "/usr/share/cmake/Modules/CheckCCompilerFlag.cmake:40 (cmake_check_compiler_flag)"
+      - "/home/gez/sdks/zephyr/zephyr/cmake/modules/extensions.cmake:1912 (check_c_compiler_flag)"
+      - "/home/gez/sdks/zephyr/zephyr/cmake/modules/extensions.cmake:1084 (check_compiler_flag)"
+      - "/home/gez/sdks/zephyr/zephyr/cmake/modules/extensions.cmake:1973 (zephyr_check_compiler_flag)"
+      - "/home/gez/sdks/zephyr/zephyr/cmake/modules/extensions.cmake:131 (target_ld_options)"
+      - "/home/gez/sdks/zephyr/zephyr/cmake/modules/extensions.cmake:1667 (zephyr_ld_options)"
+      - "/home/gez/sdks/zephyr/zephyr/cmake/linker/ld/target_base.cmake:24 (zephyr_ld_option_ifdef)"
+      - "/home/gez/sdks/zephyr/zephyr/CMakeLists.txt:337 (toolchain_ld_base)"
+    directories:
+      source: "/home/gez/workspaces/eclipse/esp_doom/build/CMakeFiles/CMakeScratch/TryCompile-sV6gyi"
+      binary: "/home/gez/workspaces/eclipse/esp_doom/build/CMakeFiles/CMakeScratch/TryCompile-sV6gyi"
+    cmakeVariables:
+      CMAKE_C_FLAGS: ""
+      CMAKE_C_FLAGS_DEBUG: "-g"
+      CMAKE_EXE_LINKER_FLAGS: ""
+      CMAKE_MODULE_PATH: "/home/gez/sdks/zephyr/zephyr/cmake/modules"
+    buildResult:
+      variable: "check_C__nostartfiles__nostdlib__isystem___home_gez_sdks_zephyr_toolchains_xtensa_espressif_esp32_zephyr_elf_bin____lib_gcc_xtensa_espressif_esp32_zephyr_elf_12_2_0_include___isystem___home_gez_sdks_zephyr_toolchains_xtensa_espressif_esp32_zephyr_elf_bin____lib_gcc_xtensa_espressif_esp32_zephyr_elf_12_2_0_include_fixed___Wl___unresolved_symbols_ignore_in_object_files__Wl___entry_0__Wl___sort_section_alignment"
+      cached: true
+      stdout: |
+        Change Dir: /home/gez/workspaces/eclipse/esp_doom/build/CMakeFiles/CMakeScratch/TryCompile-sV6gyi
+        
+        Run Build Command(s):/usr/bin/ninja -v cmTC_447ec && [1/2] /home/gez/sdks/zephyr/toolchains/xtensa-espressif_esp32_zephyr-elf/bin/xtensa-espressif_esp32_zephyr-elf-gcc -Dcheck_C__nostartfiles__nostdlib__isystem___home_gez_sdks_zephyr_toolchains_xtensa_espressif_esp32_zephyr_elf_bin____lib_gcc_xtensa_espressif_esp32_zephyr_elf_12_2_0_include___isystem___home_gez_sdks_zephyr_toolchains_xtensa_espressif_esp32_zephyr_elf_bin____lib_gcc_xtensa_espressif_esp32_zephyr_elf_12_2_0_include_fixed___Wl___unresolved_symbols_ignore_in_object_files__Wl___entry_0__Wl___sort_section_alignment  -nostartfiles -nostdlib -isystem "/home/gez/sdks/zephyr/toolchains/xtensa-espressif_esp32_zephyr-elf/bin/../lib/gcc/xtensa-espressif_esp32_zephyr-elf/12.2.0/include" -isystem "/home/gez/sdks/zephyr/toolchains/xtensa-espressif_esp32_zephyr-elf/bin/../lib/gcc/xtensa-espressif_esp32_zephyr-elf/12.2.0/include-fixed" -Wl,--unresolved-symbols=ignore-in-object-files -Wl,--entry=0 -Wl,--sort-section=alignment -o CMakeFiles/cmTC_447ec.dir/src.c.obj -c /home/gez/workspaces/eclipse/esp_doom/build/CMakeFiles/CMakeScratch/TryCompile-sV6gyi/src.c
+        [2/2] : && /home/gez/sdks/zephyr/toolchains/xtensa-espressif_esp32_zephyr-elf/bin/xtensa-espressif_esp32_zephyr-elf-gcc -nostartfiles -nostdlib -isystem "/home/gez/sdks/zephyr/toolchains/xtensa-espressif_esp32_zephyr-elf/bin/../lib/gcc/xtensa-espressif_esp32_zephyr-elf/12.2.0/include" -isystem "/home/gez/sdks/zephyr/toolchains/xtensa-espressif_esp32_zephyr-elf/bin/../lib/gcc/xtensa-espressif_esp32_zephyr-elf/12.2.0/include-fixed" -Wl,--unresolved-symbols=ignore-in-object-files -Wl,--entry=0 -Wl,--sort-section=alignment  CMakeFiles/cmTC_447ec.dir/src.c.obj -o cmTC_447ec   && :
+        
+      exitCode: 0
+  -
+    kind: "try_compile-v1"
+    backtrace:
+      - "/usr/share/cmake/Modules/Internal/CheckSourceCompiles.cmake:101 (try_compile)"
+      - "/usr/share/cmake/Modules/Internal/CheckCompilerFlag.cmake:18 (cmake_check_source_compiles)"
+      - "/usr/share/cmake/Modules/CheckCCompilerFlag.cmake:40 (cmake_check_compiler_flag)"
+      - "/home/gez/sdks/zephyr/zephyr/cmake/modules/extensions.cmake:1912 (check_c_compiler_flag)"
+      - "/home/gez/sdks/zephyr/zephyr/cmake/modules/extensions.cmake:1084 (check_compiler_flag)"
+      - "/home/gez/sdks/zephyr/zephyr/cmake/modules/extensions.cmake:1973 (zephyr_check_compiler_flag)"
+      - "/home/gez/sdks/zephyr/zephyr/cmake/modules/extensions.cmake:131 (target_ld_options)"
+      - "/home/gez/sdks/zephyr/zephyr/cmake/linker/ld/target_baremetal.cmake:8 (zephyr_ld_options)"
+      - "/home/gez/sdks/zephyr/zephyr/CMakeLists.txt:346 (toolchain_ld_baremetal)"
+    directories:
+      source: "/home/gez/workspaces/eclipse/esp_doom/build/CMakeFiles/CMakeScratch/TryCompile-wAhdnH"
+      binary: "/home/gez/workspaces/eclipse/esp_doom/build/CMakeFiles/CMakeScratch/TryCompile-wAhdnH"
+    cmakeVariables:
+      CMAKE_C_FLAGS: ""
+      CMAKE_C_FLAGS_DEBUG: "-g"
+      CMAKE_EXE_LINKER_FLAGS: ""
+      CMAKE_MODULE_PATH: "/home/gez/sdks/zephyr/zephyr/cmake/modules"
+    buildResult:
+      variable: "check_C__nostartfiles__nostdlib__isystem___home_gez_sdks_zephyr_toolchains_xtensa_espressif_esp32_zephyr_elf_bin____lib_gcc_xtensa_espressif_esp32_zephyr_elf_12_2_0_include___isystem___home_gez_sdks_zephyr_toolchains_xtensa_espressif_esp32_zephyr_elf_bin____lib_gcc_xtensa_espressif_esp32_zephyr_elf_12_2_0_include_fixed___Wl___unresolved_symbols_ignore_in_object_files__Wl___entry_0__nostdlib"
+      cached: true
+      stdout: |
+        Change Dir: /home/gez/workspaces/eclipse/esp_doom/build/CMakeFiles/CMakeScratch/TryCompile-wAhdnH
+        
+        Run Build Command(s):/usr/bin/ninja -v cmTC_fb303 && [1/2] /home/gez/sdks/zephyr/toolchains/xtensa-espressif_esp32_zephyr-elf/bin/xtensa-espressif_esp32_zephyr-elf-gcc -Dcheck_C__nostartfiles__nostdlib__isystem___home_gez_sdks_zephyr_toolchains_xtensa_espressif_esp32_zephyr_elf_bin____lib_gcc_xtensa_espressif_esp32_zephyr_elf_12_2_0_include___isystem___home_gez_sdks_zephyr_toolchains_xtensa_espressif_esp32_zephyr_elf_bin____lib_gcc_xtensa_espressif_esp32_zephyr_elf_12_2_0_include_fixed___Wl___unresolved_symbols_ignore_in_object_files__Wl___entry_0__nostdlib  -nostartfiles -nostdlib -isystem "/home/gez/sdks/zephyr/toolchains/xtensa-espressif_esp32_zephyr-elf/bin/../lib/gcc/xtensa-espressif_esp32_zephyr-elf/12.2.0/include" -isystem "/home/gez/sdks/zephyr/toolchains/xtensa-espressif_esp32_zephyr-elf/bin/../lib/gcc/xtensa-espressif_esp32_zephyr-elf/12.2.0/include-fixed" -Wl,--unresolved-symbols=ignore-in-object-files -Wl,--entry=0 -nostdlib -o CMakeFiles/cmTC_fb303.dir/src.c.obj -c /home/gez/workspaces/eclipse/esp_doom/build/CMakeFiles/CMakeScratch/TryCompile-wAhdnH/src.c
+        [2/2] : && /home/gez/sdks/zephyr/toolchains/xtensa-espressif_esp32_zephyr-elf/bin/xtensa-espressif_esp32_zephyr-elf-gcc -nostartfiles -nostdlib -isystem "/home/gez/sdks/zephyr/toolchains/xtensa-espressif_esp32_zephyr-elf/bin/../lib/gcc/xtensa-espressif_esp32_zephyr-elf/12.2.0/include" -isystem "/home/gez/sdks/zephyr/toolchains/xtensa-espressif_esp32_zephyr-elf/bin/../lib/gcc/xtensa-espressif_esp32_zephyr-elf/12.2.0/include-fixed" -Wl,--unresolved-symbols=ignore-in-object-files -Wl,--entry=0 -nostdlib  CMakeFiles/cmTC_fb303.dir/src.c.obj -o cmTC_fb303   && :
+        
+      exitCode: 0
+  -
+    kind: "try_compile-v1"
+    backtrace:
+      - "/usr/share/cmake/Modules/Internal/CheckSourceCompiles.cmake:101 (try_compile)"
+      - "/usr/share/cmake/Modules/Internal/CheckCompilerFlag.cmake:18 (cmake_check_source_compiles)"
+      - "/usr/share/cmake/Modules/CheckCCompilerFlag.cmake:40 (cmake_check_compiler_flag)"
+      - "/home/gez/sdks/zephyr/zephyr/cmake/modules/extensions.cmake:1912 (check_c_compiler_flag)"
+      - "/home/gez/sdks/zephyr/zephyr/cmake/modules/extensions.cmake:1084 (check_compiler_flag)"
+      - "/home/gez/sdks/zephyr/zephyr/cmake/modules/extensions.cmake:1973 (zephyr_check_compiler_flag)"
+      - "/home/gez/sdks/zephyr/zephyr/cmake/modules/extensions.cmake:131 (target_ld_options)"
+      - "/home/gez/sdks/zephyr/zephyr/cmake/linker/ld/target_baremetal.cmake:8 (zephyr_ld_options)"
+      - "/home/gez/sdks/zephyr/zephyr/CMakeLists.txt:346 (toolchain_ld_baremetal)"
+    directories:
+      source: "/home/gez/workspaces/eclipse/esp_doom/build/CMakeFiles/CMakeScratch/TryCompile-77VaAj"
+      binary: "/home/gez/workspaces/eclipse/esp_doom/build/CMakeFiles/CMakeScratch/TryCompile-77VaAj"
+    cmakeVariables:
+      CMAKE_C_FLAGS: ""
+      CMAKE_C_FLAGS_DEBUG: "-g"
+      CMAKE_EXE_LINKER_FLAGS: ""
+      CMAKE_MODULE_PATH: "/home/gez/sdks/zephyr/zephyr/cmake/modules"
+    buildResult:
+      variable: "check_C__nostartfiles__nostdlib__isystem___home_gez_sdks_zephyr_toolchains_xtensa_espressif_esp32_zephyr_elf_bin____lib_gcc_xtensa_espressif_esp32_zephyr_elf_12_2_0_include___isystem___home_gez_sdks_zephyr_toolchains_xtensa_espressif_esp32_zephyr_elf_bin____lib_gcc_xtensa_espressif_esp32_zephyr_elf_12_2_0_include_fixed___Wl___unresolved_symbols_ignore_in_object_files__Wl___entry_0__static"
+      cached: true
+      stdout: |
+        Change Dir: /home/gez/workspaces/eclipse/esp_doom/build/CMakeFiles/CMakeScratch/TryCompile-77VaAj
+        
+        Run Build Command(s):/usr/bin/ninja -v cmTC_03c8d && [1/2] /home/gez/sdks/zephyr/toolchains/xtensa-espressif_esp32_zephyr-elf/bin/xtensa-espressif_esp32_zephyr-elf-gcc -Dcheck_C__nostartfiles__nostdlib__isystem___home_gez_sdks_zephyr_toolchains_xtensa_espressif_esp32_zephyr_elf_bin____lib_gcc_xtensa_espressif_esp32_zephyr_elf_12_2_0_include___isystem___home_gez_sdks_zephyr_toolchains_xtensa_espressif_esp32_zephyr_elf_bin____lib_gcc_xtensa_espressif_esp32_zephyr_elf_12_2_0_include_fixed___Wl___unresolved_symbols_ignore_in_object_files__Wl___entry_0__static  -nostartfiles -nostdlib -isystem "/home/gez/sdks/zephyr/toolchains/xtensa-espressif_esp32_zephyr-elf/bin/../lib/gcc/xtensa-espressif_esp32_zephyr-elf/12.2.0/include" -isystem "/home/gez/sdks/zephyr/toolchains/xtensa-espressif_esp32_zephyr-elf/bin/../lib/gcc/xtensa-espressif_esp32_zephyr-elf/12.2.0/include-fixed" -Wl,--unresolved-symbols=ignore-in-object-files -Wl,--entry=0 -static -o CMakeFiles/cmTC_03c8d.dir/src.c.obj -c /home/gez/workspaces/eclipse/esp_doom/build/CMakeFiles/CMakeScratch/TryCompile-77VaAj/src.c
+        [2/2] : && /home/gez/sdks/zephyr/toolchains/xtensa-espressif_esp32_zephyr-elf/bin/xtensa-espressif_esp32_zephyr-elf-gcc -nostartfiles -nostdlib -isystem "/home/gez/sdks/zephyr/toolchains/xtensa-espressif_esp32_zephyr-elf/bin/../lib/gcc/xtensa-espressif_esp32_zephyr-elf/12.2.0/include" -isystem "/home/gez/sdks/zephyr/toolchains/xtensa-espressif_esp32_zephyr-elf/bin/../lib/gcc/xtensa-espressif_esp32_zephyr-elf/12.2.0/include-fixed" -Wl,--unresolved-symbols=ignore-in-object-files -Wl,--entry=0 -static  CMakeFiles/cmTC_03c8d.dir/src.c.obj -o cmTC_03c8d   && :
+        
+      exitCode: 0
+  -
+    kind: "try_compile-v1"
+    backtrace:
+      - "/usr/share/cmake/Modules/Internal/CheckSourceCompiles.cmake:101 (try_compile)"
+      - "/usr/share/cmake/Modules/Internal/CheckCompilerFlag.cmake:18 (cmake_check_source_compiles)"
+      - "/usr/share/cmake/Modules/CheckCCompilerFlag.cmake:40 (cmake_check_compiler_flag)"
+      - "/home/gez/sdks/zephyr/zephyr/cmake/modules/extensions.cmake:1912 (check_c_compiler_flag)"
+      - "/home/gez/sdks/zephyr/zephyr/cmake/modules/extensions.cmake:1084 (check_compiler_flag)"
+      - "/home/gez/sdks/zephyr/zephyr/cmake/modules/extensions.cmake:1973 (zephyr_check_compiler_flag)"
+      - "/home/gez/sdks/zephyr/zephyr/cmake/modules/extensions.cmake:131 (target_ld_options)"
+      - "/home/gez/sdks/zephyr/zephyr/cmake/linker/ld/target_baremetal.cmake:8 (zephyr_ld_options)"
+      - "/home/gez/sdks/zephyr/zephyr/CMakeLists.txt:346 (toolchain_ld_baremetal)"
+    directories:
+      source: "/home/gez/workspaces/eclipse/esp_doom/build/CMakeFiles/CMakeScratch/TryCompile-dxuAWs"
+      binary: "/home/gez/workspaces/eclipse/esp_doom/build/CMakeFiles/CMakeScratch/TryCompile-dxuAWs"
+    cmakeVariables:
+      CMAKE_C_FLAGS: ""
+      CMAKE_C_FLAGS_DEBUG: "-g"
+      CMAKE_EXE_LINKER_FLAGS: ""
+      CMAKE_MODULE_PATH: "/home/gez/sdks/zephyr/zephyr/cmake/modules"
+    buildResult:
+      variable: "check_C__nostartfiles__nostdlib__isystem___home_gez_sdks_zephyr_toolchains_xtensa_espressif_esp32_zephyr_elf_bin____lib_gcc_xtensa_espressif_esp32_zephyr_elf_12_2_0_include___isystem___home_gez_sdks_zephyr_toolchains_xtensa_espressif_esp32_zephyr_elf_bin____lib_gcc_xtensa_espressif_esp32_zephyr_elf_12_2_0_include_fixed___Wl___unresolved_symbols_ignore_in_object_files__Wl___entry_0__Wl__X"
+      cached: true
+      stdout: |
+        Change Dir: /home/gez/workspaces/eclipse/esp_doom/build/CMakeFiles/CMakeScratch/TryCompile-dxuAWs
+        
+        Run Build Command(s):/usr/bin/ninja -v cmTC_42108 && [1/2] /home/gez/sdks/zephyr/toolchains/xtensa-espressif_esp32_zephyr-elf/bin/xtensa-espressif_esp32_zephyr-elf-gcc -Dcheck_C__nostartfiles__nostdlib__isystem___home_gez_sdks_zephyr_toolchains_xtensa_espressif_esp32_zephyr_elf_bin____lib_gcc_xtensa_espressif_esp32_zephyr_elf_12_2_0_include___isystem___home_gez_sdks_zephyr_toolchains_xtensa_espressif_esp32_zephyr_elf_bin____lib_gcc_xtensa_espressif_esp32_zephyr_elf_12_2_0_include_fixed___Wl___unresolved_symbols_ignore_in_object_files__Wl___entry_0__Wl__X  -nostartfiles -nostdlib -isystem "/home/gez/sdks/zephyr/toolchains/xtensa-espressif_esp32_zephyr-elf/bin/../lib/gcc/xtensa-espressif_esp32_zephyr-elf/12.2.0/include" -isystem "/home/gez/sdks/zephyr/toolchains/xtensa-espressif_esp32_zephyr-elf/bin/../lib/gcc/xtensa-espressif_esp32_zephyr-elf/12.2.0/include-fixed" -Wl,--unresolved-symbols=ignore-in-object-files -Wl,--entry=0 -Wl,-X -o CMakeFiles/cmTC_42108.dir/src.c.obj -c /home/gez/workspaces/eclipse/esp_doom/build/CMakeFiles/CMakeScratch/TryCompile-dxuAWs/src.c
+        [2/2] : && /home/gez/sdks/zephyr/toolchains/xtensa-espressif_esp32_zephyr-elf/bin/xtensa-espressif_esp32_zephyr-elf-gcc -nostartfiles -nostdlib -isystem "/home/gez/sdks/zephyr/toolchains/xtensa-espressif_esp32_zephyr-elf/bin/../lib/gcc/xtensa-espressif_esp32_zephyr-elf/12.2.0/include" -isystem "/home/gez/sdks/zephyr/toolchains/xtensa-espressif_esp32_zephyr-elf/bin/../lib/gcc/xtensa-espressif_esp32_zephyr-elf/12.2.0/include-fixed" -Wl,--unresolved-symbols=ignore-in-object-files -Wl,--entry=0 -Wl,-X  CMakeFiles/cmTC_42108.dir/src.c.obj -o cmTC_42108   && :
+        
+      exitCode: 0
+  -
+    kind: "try_compile-v1"
+    backtrace:
+      - "/usr/share/cmake/Modules/Internal/CheckSourceCompiles.cmake:101 (try_compile)"
+      - "/usr/share/cmake/Modules/Internal/CheckCompilerFlag.cmake:18 (cmake_check_source_compiles)"
+      - "/usr/share/cmake/Modules/CheckCCompilerFlag.cmake:40 (cmake_check_compiler_flag)"
+      - "/home/gez/sdks/zephyr/zephyr/cmake/modules/extensions.cmake:1912 (check_c_compiler_flag)"
+      - "/home/gez/sdks/zephyr/zephyr/cmake/modules/extensions.cmake:1084 (check_compiler_flag)"
+      - "/home/gez/sdks/zephyr/zephyr/cmake/modules/extensions.cmake:1973 (zephyr_check_compiler_flag)"
+      - "/home/gez/sdks/zephyr/zephyr/cmake/modules/extensions.cmake:131 (target_ld_options)"
+      - "/home/gez/sdks/zephyr/zephyr/cmake/linker/ld/target_baremetal.cmake:8 (zephyr_ld_options)"
+      - "/home/gez/sdks/zephyr/zephyr/CMakeLists.txt:346 (toolchain_ld_baremetal)"
+    directories:
+      source: "/home/gez/workspaces/eclipse/esp_doom/build/CMakeFiles/CMakeScratch/TryCompile-qTvjhD"
+      binary: "/home/gez/workspaces/eclipse/esp_doom/build/CMakeFiles/CMakeScratch/TryCompile-qTvjhD"
+    cmakeVariables:
+      CMAKE_C_FLAGS: ""
+      CMAKE_C_FLAGS_DEBUG: "-g"
+      CMAKE_EXE_LINKER_FLAGS: ""
+      CMAKE_MODULE_PATH: "/home/gez/sdks/zephyr/zephyr/cmake/modules"
+    buildResult:
+      variable: "check_C__nostartfiles__nostdlib__isystem___home_gez_sdks_zephyr_toolchains_xtensa_espressif_esp32_zephyr_elf_bin____lib_gcc_xtensa_espressif_esp32_zephyr_elf_12_2_0_include___isystem___home_gez_sdks_zephyr_toolchains_xtensa_espressif_esp32_zephyr_elf_bin____lib_gcc_xtensa_espressif_esp32_zephyr_elf_12_2_0_include_fixed___Wl___unresolved_symbols_ignore_in_object_files__Wl___entry_0__Wl__N"
+      cached: true
+      stdout: |
+        Change Dir: /home/gez/workspaces/eclipse/esp_doom/build/CMakeFiles/CMakeScratch/TryCompile-qTvjhD
+        
+        Run Build Command(s):/usr/bin/ninja -v cmTC_12d16 && [1/2] /home/gez/sdks/zephyr/toolchains/xtensa-espressif_esp32_zephyr-elf/bin/xtensa-espressif_esp32_zephyr-elf-gcc -Dcheck_C__nostartfiles__nostdlib__isystem___home_gez_sdks_zephyr_toolchains_xtensa_espressif_esp32_zephyr_elf_bin____lib_gcc_xtensa_espressif_esp32_zephyr_elf_12_2_0_include___isystem___home_gez_sdks_zephyr_toolchains_xtensa_espressif_esp32_zephyr_elf_bin____lib_gcc_xtensa_espressif_esp32_zephyr_elf_12_2_0_include_fixed___Wl___unresolved_symbols_ignore_in_object_files__Wl___entry_0__Wl__N  -nostartfiles -nostdlib -isystem "/home/gez/sdks/zephyr/toolchains/xtensa-espressif_esp32_zephyr-elf/bin/../lib/gcc/xtensa-espressif_esp32_zephyr-elf/12.2.0/include" -isystem "/home/gez/sdks/zephyr/toolchains/xtensa-espressif_esp32_zephyr-elf/bin/../lib/gcc/xtensa-espressif_esp32_zephyr-elf/12.2.0/include-fixed" -Wl,--unresolved-symbols=ignore-in-object-files -Wl,--entry=0 -Wl,-N -o CMakeFiles/cmTC_12d16.dir/src.c.obj -c /home/gez/workspaces/eclipse/esp_doom/build/CMakeFiles/CMakeScratch/TryCompile-qTvjhD/src.c
+        [2/2] : && /home/gez/sdks/zephyr/toolchains/xtensa-espressif_esp32_zephyr-elf/bin/xtensa-espressif_esp32_zephyr-elf-gcc -nostartfiles -nostdlib -isystem "/home/gez/sdks/zephyr/toolchains/xtensa-espressif_esp32_zephyr-elf/bin/../lib/gcc/xtensa-espressif_esp32_zephyr-elf/12.2.0/include" -isystem "/home/gez/sdks/zephyr/toolchains/xtensa-espressif_esp32_zephyr-elf/bin/../lib/gcc/xtensa-espressif_esp32_zephyr-elf/12.2.0/include-fixed" -Wl,--unresolved-symbols=ignore-in-object-files -Wl,--entry=0 -Wl,-N  CMakeFiles/cmTC_12d16.dir/src.c.obj -o cmTC_12d16   && :
+        
+      exitCode: 0
+  -
+    kind: "try_compile-v1"
+    backtrace:
+      - "/usr/share/cmake/Modules/Internal/CheckSourceCompiles.cmake:101 (try_compile)"
+      - "/usr/share/cmake/Modules/Internal/CheckCompilerFlag.cmake:18 (cmake_check_source_compiles)"
+      - "/usr/share/cmake/Modules/CheckCCompilerFlag.cmake:40 (cmake_check_compiler_flag)"
+      - "/home/gez/sdks/zephyr/zephyr/cmake/modules/extensions.cmake:1912 (check_c_compiler_flag)"
+      - "/home/gez/sdks/zephyr/zephyr/cmake/modules/extensions.cmake:1084 (check_compiler_flag)"
+      - "/home/gez/sdks/zephyr/zephyr/cmake/modules/extensions.cmake:1973 (zephyr_check_compiler_flag)"
+      - "/home/gez/sdks/zephyr/zephyr/cmake/modules/extensions.cmake:131 (target_ld_options)"
+      - "/home/gez/sdks/zephyr/zephyr/cmake/linker/ld/target_baremetal.cmake:30 (zephyr_ld_options)"
+      - "/home/gez/sdks/zephyr/zephyr/CMakeLists.txt:346 (toolchain_ld_baremetal)"
+    directories:
+      source: "/home/gez/workspaces/eclipse/esp_doom/build/CMakeFiles/CMakeScratch/TryCompile-8yqOAY"
+      binary: "/home/gez/workspaces/eclipse/esp_doom/build/CMakeFiles/CMakeScratch/TryCompile-8yqOAY"
+    cmakeVariables:
+      CMAKE_C_FLAGS: ""
+      CMAKE_C_FLAGS_DEBUG: "-g"
+      CMAKE_EXE_LINKER_FLAGS: ""
+      CMAKE_MODULE_PATH: "/home/gez/sdks/zephyr/zephyr/cmake/modules"
+    buildResult:
+      variable: "check_C__nostartfiles__nostdlib__isystem___home_gez_sdks_zephyr_toolchains_xtensa_espressif_esp32_zephyr_elf_bin____lib_gcc_xtensa_espressif_esp32_zephyr_elf_12_2_0_include___isystem___home_gez_sdks_zephyr_toolchains_xtensa_espressif_esp32_zephyr_elf_bin____lib_gcc_xtensa_espressif_esp32_zephyr_elf_12_2_0_include_fixed___Wl___unresolved_symbols_ignore_in_object_files__Wl___entry_0__Wl___orphan_handling_warn"
+      cached: true
+      stdout: |
+        Change Dir: /home/gez/workspaces/eclipse/esp_doom/build/CMakeFiles/CMakeScratch/TryCompile-8yqOAY
+        
+        Run Build Command(s):/usr/bin/ninja -v cmTC_8ed9b && [1/2] /home/gez/sdks/zephyr/toolchains/xtensa-espressif_esp32_zephyr-elf/bin/xtensa-espressif_esp32_zephyr-elf-gcc -Dcheck_C__nostartfiles__nostdlib__isystem___home_gez_sdks_zephyr_toolchains_xtensa_espressif_esp32_zephyr_elf_bin____lib_gcc_xtensa_espressif_esp32_zephyr_elf_12_2_0_include___isystem___home_gez_sdks_zephyr_toolchains_xtensa_espressif_esp32_zephyr_elf_bin____lib_gcc_xtensa_espressif_esp32_zephyr_elf_12_2_0_include_fixed___Wl___unresolved_symbols_ignore_in_object_files__Wl___entry_0__Wl___orphan_handling_warn  -nostartfiles -nostdlib -isystem "/home/gez/sdks/zephyr/toolchains/xtensa-espressif_esp32_zephyr-elf/bin/../lib/gcc/xtensa-espressif_esp32_zephyr-elf/12.2.0/include" -isystem "/home/gez/sdks/zephyr/toolchains/xtensa-espressif_esp32_zephyr-elf/bin/../lib/gcc/xtensa-espressif_esp32_zephyr-elf/12.2.0/include-fixed" -Wl,--unresolved-symbols=ignore-in-object-files -Wl,--entry=0 -Wl,--orphan-handling=warn -o CMakeFiles/cmTC_8ed9b.dir/src.c.obj -c /home/gez/workspaces/eclipse/esp_doom/build/CMakeFiles/CMakeScratch/TryCompile-8yqOAY/src.c
+        [2/2] : && /home/gez/sdks/zephyr/toolchains/xtensa-espressif_esp32_zephyr-elf/bin/xtensa-espressif_esp32_zephyr-elf-gcc -nostartfiles -nostdlib -isystem "/home/gez/sdks/zephyr/toolchains/xtensa-espressif_esp32_zephyr-elf/bin/../lib/gcc/xtensa-espressif_esp32_zephyr-elf/12.2.0/include" -isystem "/home/gez/sdks/zephyr/toolchains/xtensa-espressif_esp32_zephyr-elf/bin/../lib/gcc/xtensa-espressif_esp32_zephyr-elf/12.2.0/include-fixed" -Wl,--unresolved-symbols=ignore-in-object-files -Wl,--entry=0 -Wl,--orphan-handling=warn  CMakeFiles/cmTC_8ed9b.dir/src.c.obj -o cmTC_8ed9b   && :
+        /home/gez/sdks/zephyr/toolchains/xtensa-espressif_esp32_zephyr-elf/bin/../lib/gcc/xtensa-espressif_esp32_zephyr-elf/12.2.0/../../../../xtensa-espressif_esp32_zephyr-elf/bin/ld: warning: orphan section `.xtensa.info' from `CMakeFiles/cmTC_8ed9b.dir/src.c.obj' being placed in section `.xtensa.info'
+        
+      exitCode: 0
+  -
+    kind: "try_compile-v1"
+    backtrace:
+      - "/usr/share/cmake/Modules/Internal/CheckSourceCompiles.cmake:101 (try_compile)"
+      - "/usr/share/cmake/Modules/Internal/CheckCompilerFlag.cmake:18 (cmake_check_source_compiles)"
+      - "/usr/share/cmake/Modules/CheckCCompilerFlag.cmake:40 (cmake_check_compiler_flag)"
+      - "/home/gez/sdks/zephyr/zephyr/cmake/modules/extensions.cmake:1912 (check_c_compiler_flag)"
+      - "/home/gez/sdks/zephyr/zephyr/cmake/modules/extensions.cmake:1084 (check_compiler_flag)"
+      - "/home/gez/sdks/zephyr/zephyr/cmake/modules/extensions.cmake:1951 (zephyr_check_compiler_flag)"
+      - "/home/gez/sdks/zephyr/zephyr/cmake/modules/extensions.cmake:1927 (target_cc_option_fallback)"
+      - "/home/gez/sdks/zephyr/zephyr/cmake/modules/extensions.cmake:122 (target_cc_option)"
+      - "/home/gez/sdks/zephyr/zephyr/CMakeLists.txt:398 (zephyr_cc_option)"
+    directories:
+      source: "/home/gez/workspaces/eclipse/esp_doom/build/CMakeFiles/CMakeScratch/TryCompile-R7YFEU"
+      binary: "/home/gez/workspaces/eclipse/esp_doom/build/CMakeFiles/CMakeScratch/TryCompile-R7YFEU"
+    cmakeVariables:
+      CMAKE_C_FLAGS: ""
+      CMAKE_C_FLAGS_DEBUG: "-g"
+      CMAKE_EXE_LINKER_FLAGS: ""
+      CMAKE_MODULE_PATH: "/home/gez/sdks/zephyr/zephyr/cmake/modules"
+    buildResult:
+      variable: "check_fno_asynchronous_unwind_tables_C__nostartfiles__nostdlib__isystem___home_gez_sdks_zephyr_toolchains_xtensa_espressif_esp32_zephyr_elf_bin____lib_gcc_xtensa_espressif_esp32_zephyr_elf_12_2_0_include___isystem___home_gez_sdks_zephyr_toolchains_xtensa_espressif_esp32_zephyr_elf_bin____lib_gcc_xtensa_espressif_esp32_zephyr_elf_12_2_0_include_fixed___Wl___unresolved_symbols_ignore_in_object_files__Wl___entry_0"
+      cached: true
+      stdout: |
+        Change Dir: /home/gez/workspaces/eclipse/esp_doom/build/CMakeFiles/CMakeScratch/TryCompile-R7YFEU
+        
+        Run Build Command(s):/usr/bin/ninja -v cmTC_1fbac && [1/2] /home/gez/sdks/zephyr/toolchains/xtensa-espressif_esp32_zephyr-elf/bin/xtensa-espressif_esp32_zephyr-elf-gcc -Dcheck_fno_asynchronous_unwind_tables_C__nostartfiles__nostdlib__isystem___home_gez_sdks_zephyr_toolchains_xtensa_espressif_esp32_zephyr_elf_bin____lib_gcc_xtensa_espressif_esp32_zephyr_elf_12_2_0_include___isystem___home_gez_sdks_zephyr_toolchains_xtensa_espressif_esp32_zephyr_elf_bin____lib_gcc_xtensa_espressif_esp32_zephyr_elf_12_2_0_include_fixed___Wl___unresolved_symbols_ignore_in_object_files__Wl___entry_0  -nostartfiles -nostdlib -isystem "/home/gez/sdks/zephyr/toolchains/xtensa-espressif_esp32_zephyr-elf/bin/../lib/gcc/xtensa-espressif_esp32_zephyr-elf/12.2.0/include" -isystem "/home/gez/sdks/zephyr/toolchains/xtensa-espressif_esp32_zephyr-elf/bin/../lib/gcc/xtensa-espressif_esp32_zephyr-elf/12.2.0/include-fixed" -Wl,--unresolved-symbols=ignore-in-object-files -Wl,--entry=0   -fno-asynchronous-unwind-tables -o CMakeFiles/cmTC_1fbac.dir/src.c.obj -c /home/gez/workspaces/eclipse/esp_doom/build/CMakeFiles/CMakeScratch/TryCompile-R7YFEU/src.c
+        [2/2] : && /home/gez/sdks/zephyr/toolchains/xtensa-espressif_esp32_zephyr-elf/bin/xtensa-espressif_esp32_zephyr-elf-gcc -nostartfiles -nostdlib -isystem "/home/gez/sdks/zephyr/toolchains/xtensa-espressif_esp32_zephyr-elf/bin/../lib/gcc/xtensa-espressif_esp32_zephyr-elf/12.2.0/include" -isystem "/home/gez/sdks/zephyr/toolchains/xtensa-espressif_esp32_zephyr-elf/bin/../lib/gcc/xtensa-espressif_esp32_zephyr-elf/12.2.0/include-fixed" -Wl,--unresolved-symbols=ignore-in-object-files -Wl,--entry=0  CMakeFiles/cmTC_1fbac.dir/src.c.obj -o cmTC_1fbac   && :
+        
+      exitCode: 0
+  -
+    kind: "try_compile-v1"
+    backtrace:
+      - "/usr/share/cmake/Modules/Internal/CheckSourceCompiles.cmake:101 (try_compile)"
+      - "/usr/share/cmake/Modules/Internal/CheckCompilerFlag.cmake:18 (cmake_check_source_compiles)"
+      - "/usr/share/cmake/Modules/CheckCCompilerFlag.cmake:40 (cmake_check_compiler_flag)"
+      - "/home/gez/sdks/zephyr/zephyr/cmake/modules/extensions.cmake:1912 (check_c_compiler_flag)"
+      - "/home/gez/sdks/zephyr/zephyr/cmake/modules/extensions.cmake:1084 (check_compiler_flag)"
+      - "/home/gez/sdks/zephyr/zephyr/cmake/modules/extensions.cmake:1951 (zephyr_check_compiler_flag)"
+      - "/home/gez/sdks/zephyr/zephyr/cmake/modules/extensions.cmake:1927 (target_cc_option_fallback)"
+      - "/home/gez/sdks/zephyr/zephyr/cmake/modules/extensions.cmake:122 (target_cc_option)"
+      - "/home/gez/sdks/zephyr/zephyr/CMakeLists.txt:426 (zephyr_cc_option)"
+    directories:
+      source: "/home/gez/workspaces/eclipse/esp_doom/build/CMakeFiles/CMakeScratch/TryCompile-wBaktU"
+      binary: "/home/gez/workspaces/eclipse/esp_doom/build/CMakeFiles/CMakeScratch/TryCompile-wBaktU"
+    cmakeVariables:
+      CMAKE_C_FLAGS: ""
+      CMAKE_C_FLAGS_DEBUG: "-g"
+      CMAKE_EXE_LINKER_FLAGS: ""
+      CMAKE_MODULE_PATH: "/home/gez/sdks/zephyr/zephyr/cmake/modules"
+    buildResult:
+      variable: "check_fno_reorder_functions_C__nostartfiles__nostdlib__isystem___home_gez_sdks_zephyr_toolchains_xtensa_espressif_esp32_zephyr_elf_bin____lib_gcc_xtensa_espressif_esp32_zephyr_elf_12_2_0_include___isystem___home_gez_sdks_zephyr_toolchains_xtensa_espressif_esp32_zephyr_elf_bin____lib_gcc_xtensa_espressif_esp32_zephyr_elf_12_2_0_include_fixed___Wl___unresolved_symbols_ignore_in_object_files__Wl___entry_0"
+      cached: true
+      stdout: |
+        Change Dir: /home/gez/workspaces/eclipse/esp_doom/build/CMakeFiles/CMakeScratch/TryCompile-wBaktU
+        
+        Run Build Command(s):/usr/bin/ninja -v cmTC_f48cf && [1/2] /home/gez/sdks/zephyr/toolchains/xtensa-espressif_esp32_zephyr-elf/bin/xtensa-espressif_esp32_zephyr-elf-gcc -Dcheck_fno_reorder_functions_C__nostartfiles__nostdlib__isystem___home_gez_sdks_zephyr_toolchains_xtensa_espressif_esp32_zephyr_elf_bin____lib_gcc_xtensa_espressif_esp32_zephyr_elf_12_2_0_include___isystem___home_gez_sdks_zephyr_toolchains_xtensa_espressif_esp32_zephyr_elf_bin____lib_gcc_xtensa_espressif_esp32_zephyr_elf_12_2_0_include_fixed___Wl___unresolved_symbols_ignore_in_object_files__Wl___entry_0  -nostartfiles -nostdlib -isystem "/home/gez/sdks/zephyr/toolchains/xtensa-espressif_esp32_zephyr-elf/bin/../lib/gcc/xtensa-espressif_esp32_zephyr-elf/12.2.0/include" -isystem "/home/gez/sdks/zephyr/toolchains/xtensa-espressif_esp32_zephyr-elf/bin/../lib/gcc/xtensa-espressif_esp32_zephyr-elf/12.2.0/include-fixed" -Wl,--unresolved-symbols=ignore-in-object-files -Wl,--entry=0   -fno-reorder-functions -o CMakeFiles/cmTC_f48cf.dir/src.c.obj -c /home/gez/workspaces/eclipse/esp_doom/build/CMakeFiles/CMakeScratch/TryCompile-wBaktU/src.c
+        [2/2] : && /home/gez/sdks/zephyr/toolchains/xtensa-espressif_esp32_zephyr-elf/bin/xtensa-espressif_esp32_zephyr-elf-gcc -nostartfiles -nostdlib -isystem "/home/gez/sdks/zephyr/toolchains/xtensa-espressif_esp32_zephyr-elf/bin/../lib/gcc/xtensa-espressif_esp32_zephyr-elf/12.2.0/include" -isystem "/home/gez/sdks/zephyr/toolchains/xtensa-espressif_esp32_zephyr-elf/bin/../lib/gcc/xtensa-espressif_esp32_zephyr-elf/12.2.0/include-fixed" -Wl,--unresolved-symbols=ignore-in-object-files -Wl,--entry=0  CMakeFiles/cmTC_f48cf.dir/src.c.obj -o cmTC_f48cf   && :
+        
+      exitCode: 0
+  -
+    kind: "try_compile-v1"
+    backtrace:
+      - "/usr/share/cmake/Modules/Internal/CheckSourceCompiles.cmake:101 (try_compile)"
+      - "/usr/share/cmake/Modules/Internal/CheckCompilerFlag.cmake:18 (cmake_check_source_compiles)"
+      - "/usr/share/cmake/Modules/CheckCCompilerFlag.cmake:40 (cmake_check_compiler_flag)"
+      - "/home/gez/sdks/zephyr/zephyr/cmake/modules/extensions.cmake:1912 (check_c_compiler_flag)"
+      - "/home/gez/sdks/zephyr/zephyr/cmake/modules/extensions.cmake:1084 (check_compiler_flag)"
+      - "/home/gez/sdks/zephyr/zephyr/cmake/modules/extensions.cmake:1951 (zephyr_check_compiler_flag)"
+      - "/home/gez/sdks/zephyr/zephyr/cmake/modules/extensions.cmake:1927 (target_cc_option_fallback)"
+      - "/home/gez/sdks/zephyr/zephyr/cmake/modules/extensions.cmake:122 (target_cc_option)"
+      - "/home/gez/sdks/zephyr/zephyr/CMakeLists.txt:433 (zephyr_cc_option)"
+    directories:
+      source: "/home/gez/workspaces/eclipse/esp_doom/build/CMakeFiles/CMakeScratch/TryCompile-v18Ru4"
+      binary: "/home/gez/workspaces/eclipse/esp_doom/build/CMakeFiles/CMakeScratch/TryCompile-v18Ru4"
+    cmakeVariables:
+      CMAKE_C_FLAGS: ""
+      CMAKE_C_FLAGS_DEBUG: "-g"
+      CMAKE_EXE_LINKER_FLAGS: ""
+      CMAKE_MODULE_PATH: "/home/gez/sdks/zephyr/zephyr/cmake/modules"
+    buildResult:
+      variable: "check__param_min_pagesize_0_C__nostartfiles__nostdlib__isystem___home_gez_sdks_zephyr_toolchains_xtensa_espressif_esp32_zephyr_elf_bin____lib_gcc_xtensa_espressif_esp32_zephyr_elf_12_2_0_include___isystem___home_gez_sdks_zephyr_toolchains_xtensa_espressif_esp32_zephyr_elf_bin____lib_gcc_xtensa_espressif_esp32_zephyr_elf_12_2_0_include_fixed___Wl___unresolved_symbols_ignore_in_object_files__Wl___entry_0"
+      cached: true
+      stdout: |
+        Change Dir: /home/gez/workspaces/eclipse/esp_doom/build/CMakeFiles/CMakeScratch/TryCompile-v18Ru4
+        
+        Run Build Command(s):/usr/bin/ninja -v cmTC_6ec47 && [1/2] /home/gez/sdks/zephyr/toolchains/xtensa-espressif_esp32_zephyr-elf/bin/xtensa-espressif_esp32_zephyr-elf-gcc -Dcheck__param_min_pagesize_0_C__nostartfiles__nostdlib__isystem___home_gez_sdks_zephyr_toolchains_xtensa_espressif_esp32_zephyr_elf_bin____lib_gcc_xtensa_espressif_esp32_zephyr_elf_12_2_0_include___isystem___home_gez_sdks_zephyr_toolchains_xtensa_espressif_esp32_zephyr_elf_bin____lib_gcc_xtensa_espressif_esp32_zephyr_elf_12_2_0_include_fixed___Wl___unresolved_symbols_ignore_in_object_files__Wl___entry_0  -nostartfiles -nostdlib -isystem "/home/gez/sdks/zephyr/toolchains/xtensa-espressif_esp32_zephyr-elf/bin/../lib/gcc/xtensa-espressif_esp32_zephyr-elf/12.2.0/include" -isystem "/home/gez/sdks/zephyr/toolchains/xtensa-espressif_esp32_zephyr-elf/bin/../lib/gcc/xtensa-espressif_esp32_zephyr-elf/12.2.0/include-fixed" -Wl,--unresolved-symbols=ignore-in-object-files -Wl,--entry=0   --param=min-pagesize=0 -o CMakeFiles/cmTC_6ec47.dir/src.c.obj -c /home/gez/workspaces/eclipse/esp_doom/build/CMakeFiles/CMakeScratch/TryCompile-v18Ru4/src.c
+        [2/2] : && /home/gez/sdks/zephyr/toolchains/xtensa-espressif_esp32_zephyr-elf/bin/xtensa-espressif_esp32_zephyr-elf-gcc -nostartfiles -nostdlib -isystem "/home/gez/sdks/zephyr/toolchains/xtensa-espressif_esp32_zephyr-elf/bin/../lib/gcc/xtensa-espressif_esp32_zephyr-elf/12.2.0/include" -isystem "/home/gez/sdks/zephyr/toolchains/xtensa-espressif_esp32_zephyr-elf/bin/../lib/gcc/xtensa-espressif_esp32_zephyr-elf/12.2.0/include-fixed" -Wl,--unresolved-symbols=ignore-in-object-files -Wl,--entry=0  CMakeFiles/cmTC_6ec47.dir/src.c.obj -o cmTC_6ec47   && :
+        
+      exitCode: 0
+  -
+    kind: "try_compile-v1"
+    backtrace:
+      - "/usr/share/cmake/Modules/Internal/CheckSourceCompiles.cmake:101 (try_compile)"
+      - "/usr/share/cmake/Modules/Internal/CheckCompilerFlag.cmake:18 (cmake_check_source_compiles)"
+      - "/usr/share/cmake/Modules/CheckCCompilerFlag.cmake:40 (cmake_check_compiler_flag)"
+      - "/home/gez/sdks/zephyr/zephyr/cmake/modules/extensions.cmake:1912 (check_c_compiler_flag)"
+      - "/home/gez/sdks/zephyr/zephyr/cmake/modules/extensions.cmake:1084 (check_compiler_flag)"
+      - "/home/gez/sdks/zephyr/zephyr/cmake/modules/extensions.cmake:1951 (zephyr_check_compiler_flag)"
+      - "/home/gez/sdks/zephyr/zephyr/cmake/modules/extensions.cmake:1927 (target_cc_option_fallback)"
+      - "/home/gez/sdks/zephyr/zephyr/cmake/modules/extensions.cmake:122 (target_cc_option)"
+      - "/home/gez/sdks/zephyr/zephyr/CMakeLists.txt:436 (zephyr_cc_option)"
+    directories:
+      source: "/home/gez/workspaces/eclipse/esp_doom/build/CMakeFiles/CMakeScratch/TryCompile-BbySb7"
+      binary: "/home/gez/workspaces/eclipse/esp_doom/build/CMakeFiles/CMakeScratch/TryCompile-BbySb7"
+    cmakeVariables:
+      CMAKE_C_FLAGS: ""
+      CMAKE_C_FLAGS_DEBUG: "-g"
+      CMAKE_EXE_LINKER_FLAGS: ""
+      CMAKE_MODULE_PATH: "/home/gez/sdks/zephyr/zephyr/cmake/modules"
+    buildResult:
+      variable: "check_fno_defer_pop_C__nostartfiles__nostdlib__isystem___home_gez_sdks_zephyr_toolchains_xtensa_espressif_esp32_zephyr_elf_bin____lib_gcc_xtensa_espressif_esp32_zephyr_elf_12_2_0_include___isystem___home_gez_sdks_zephyr_toolchains_xtensa_espressif_esp32_zephyr_elf_bin____lib_gcc_xtensa_espressif_esp32_zephyr_elf_12_2_0_include_fixed___Wl___unresolved_symbols_ignore_in_object_files__Wl___entry_0"
+      cached: true
+      stdout: |
+        Change Dir: /home/gez/workspaces/eclipse/esp_doom/build/CMakeFiles/CMakeScratch/TryCompile-BbySb7
+        
+        Run Build Command(s):/usr/bin/ninja -v cmTC_74012 && [1/2] /home/gez/sdks/zephyr/toolchains/xtensa-espressif_esp32_zephyr-elf/bin/xtensa-espressif_esp32_zephyr-elf-gcc -Dcheck_fno_defer_pop_C__nostartfiles__nostdlib__isystem___home_gez_sdks_zephyr_toolchains_xtensa_espressif_esp32_zephyr_elf_bin____lib_gcc_xtensa_espressif_esp32_zephyr_elf_12_2_0_include___isystem___home_gez_sdks_zephyr_toolchains_xtensa_espressif_esp32_zephyr_elf_bin____lib_gcc_xtensa_espressif_esp32_zephyr_elf_12_2_0_include_fixed___Wl___unresolved_symbols_ignore_in_object_files__Wl___entry_0  -nostartfiles -nostdlib -isystem "/home/gez/sdks/zephyr/toolchains/xtensa-espressif_esp32_zephyr-elf/bin/../lib/gcc/xtensa-espressif_esp32_zephyr-elf/12.2.0/include" -isystem "/home/gez/sdks/zephyr/toolchains/xtensa-espressif_esp32_zephyr-elf/bin/../lib/gcc/xtensa-espressif_esp32_zephyr-elf/12.2.0/include-fixed" -Wl,--unresolved-symbols=ignore-in-object-files -Wl,--entry=0   -fno-defer-pop -o CMakeFiles/cmTC_74012.dir/src.c.obj -c /home/gez/workspaces/eclipse/esp_doom/build/CMakeFiles/CMakeScratch/TryCompile-BbySb7/src.c
+        [2/2] : && /home/gez/sdks/zephyr/toolchains/xtensa-espressif_esp32_zephyr-elf/bin/xtensa-espressif_esp32_zephyr-elf-gcc -nostartfiles -nostdlib -isystem "/home/gez/sdks/zephyr/toolchains/xtensa-espressif_esp32_zephyr-elf/bin/../lib/gcc/xtensa-espressif_esp32_zephyr-elf/12.2.0/include" -isystem "/home/gez/sdks/zephyr/toolchains/xtensa-espressif_esp32_zephyr-elf/bin/../lib/gcc/xtensa-espressif_esp32_zephyr-elf/12.2.0/include-fixed" -Wl,--unresolved-symbols=ignore-in-object-files -Wl,--entry=0  CMakeFiles/cmTC_74012.dir/src.c.obj -o cmTC_74012   && :
+        
+      exitCode: 0
+  -
+    kind: "try_compile-v1"
+    backtrace:
+      - "/usr/share/cmake/Modules/Internal/CheckSourceCompiles.cmake:101 (try_compile)"
+      - "/usr/share/cmake/Modules/Internal/CheckCompilerFlag.cmake:18 (cmake_check_source_compiles)"
+      - "/usr/share/cmake/Modules/CheckCCompilerFlag.cmake:40 (cmake_check_compiler_flag)"
+      - "/home/gez/sdks/zephyr/zephyr/cmake/modules/extensions.cmake:1912 (check_c_compiler_flag)"
+      - "/home/gez/sdks/zephyr/zephyr/cmake/modules/extensions.cmake:1084 (check_compiler_flag)"
+      - "/home/gez/sdks/zephyr/zephyr/cmake/modules/extensions.cmake:1951 (zephyr_check_compiler_flag)"
+      - "/home/gez/sdks/zephyr/zephyr/cmake/modules/extensions.cmake:1927 (target_cc_option_fallback)"
+      - "/home/gez/sdks/zephyr/zephyr/cmake/modules/extensions.cmake:122 (target_cc_option)"
+      - "/home/gez/sdks/zephyr/zephyr/CMakeLists.txt:455 (zephyr_cc_option)"
+    directories:
+      source: "/home/gez/workspaces/eclipse/esp_doom/build/CMakeFiles/CMakeScratch/TryCompile-Sr9yG0"
+      binary: "/home/gez/workspaces/eclipse/esp_doom/build/CMakeFiles/CMakeScratch/TryCompile-Sr9yG0"
+    cmakeVariables:
+      CMAKE_C_FLAGS: ""
+      CMAKE_C_FLAGS_DEBUG: "-g"
+      CMAKE_EXE_LINKER_FLAGS: ""
+      CMAKE_MODULE_PATH: "/home/gez/sdks/zephyr/zephyr/cmake/modules"
+    buildResult:
+      variable: "check_fmacro_prefix_map__home_gez_workspaces_eclipse_esp_doom_CMAKE_SOURCE_DIR_C__nostartfiles__nostdlib__isystem___home_gez_sdks_zephyr_toolchains_xtensa_espressif_esp32_zephyr_elf_bin____lib_gcc_xtensa_espressif_esp32_zephyr_elf_12_2_0_include___isystem___home_gez_sdks_zephyr_toolchains_xtensa_espressif_esp32_zephyr_elf_bin____lib_gcc_xtensa_espressif_esp32_zephyr_elf_12_2_0_include_fixed___Wl___unresolved_symbols_ignore_in_object_files__Wl___entry_0"
+      cached: true
+      stdout: |
+        Change Dir: /home/gez/workspaces/eclipse/esp_doom/build/CMakeFiles/CMakeScratch/TryCompile-Sr9yG0
+        
+        Run Build Command(s):/usr/bin/ninja -v cmTC_51adc && [1/2] /home/gez/sdks/zephyr/toolchains/xtensa-espressif_esp32_zephyr-elf/bin/xtensa-espressif_esp32_zephyr-elf-gcc -Dcheck_fmacro_prefix_map__home_gez_workspaces_eclipse_esp_doom_CMAKE_SOURCE_DIR_C__nostartfiles__nostdlib__isystem___home_gez_sdks_zephyr_toolchains_xtensa_espressif_esp32_zephyr_elf_bin____lib_gcc_xtensa_espressif_esp32_zephyr_elf_12_2_0_include___isystem___home_gez_sdks_zephyr_toolchains_xtensa_espressif_esp32_zephyr_elf_bin____lib_gcc_xtensa_espressif_esp32_zephyr_elf_12_2_0_include_fixed___Wl___unresolved_symbols_ignore_in_object_files__Wl___entry_0  -nostartfiles -nostdlib -isystem "/home/gez/sdks/zephyr/toolchains/xtensa-espressif_esp32_zephyr-elf/bin/../lib/gcc/xtensa-espressif_esp32_zephyr-elf/12.2.0/include" -isystem "/home/gez/sdks/zephyr/toolchains/xtensa-espressif_esp32_zephyr-elf/bin/../lib/gcc/xtensa-espressif_esp32_zephyr-elf/12.2.0/include-fixed" -Wl,--unresolved-symbols=ignore-in-object-files -Wl,--entry=0   -fmacro-prefix-map=/home/gez/workspaces/eclipse/esp_doom=CMAKE_SOURCE_DIR -o CMakeFiles/cmTC_51adc.dir/src.c.obj -c /home/gez/workspaces/eclipse/esp_doom/build/CMakeFiles/CMakeScratch/TryCompile-Sr9yG0/src.c
+        [2/2] : && /home/gez/sdks/zephyr/toolchains/xtensa-espressif_esp32_zephyr-elf/bin/xtensa-espressif_esp32_zephyr-elf-gcc -nostartfiles -nostdlib -isystem "/home/gez/sdks/zephyr/toolchains/xtensa-espressif_esp32_zephyr-elf/bin/../lib/gcc/xtensa-espressif_esp32_zephyr-elf/12.2.0/include" -isystem "/home/gez/sdks/zephyr/toolchains/xtensa-espressif_esp32_zephyr-elf/bin/../lib/gcc/xtensa-espressif_esp32_zephyr-elf/12.2.0/include-fixed" -Wl,--unresolved-symbols=ignore-in-object-files -Wl,--entry=0  CMakeFiles/cmTC_51adc.dir/src.c.obj -o cmTC_51adc   && :
+        
+      exitCode: 0
+  -
+    kind: "try_compile-v1"
+    backtrace:
+      - "/usr/share/cmake/Modules/Internal/CheckSourceCompiles.cmake:101 (try_compile)"
+      - "/usr/share/cmake/Modules/Internal/CheckCompilerFlag.cmake:18 (cmake_check_source_compiles)"
+      - "/usr/share/cmake/Modules/CheckCCompilerFlag.cmake:40 (cmake_check_compiler_flag)"
+      - "/home/gez/sdks/zephyr/zephyr/cmake/modules/extensions.cmake:1912 (check_c_compiler_flag)"
+      - "/home/gez/sdks/zephyr/zephyr/cmake/modules/extensions.cmake:1084 (check_compiler_flag)"
+      - "/home/gez/sdks/zephyr/zephyr/cmake/modules/extensions.cmake:1951 (zephyr_check_compiler_flag)"
+      - "/home/gez/sdks/zephyr/zephyr/cmake/modules/extensions.cmake:1927 (target_cc_option_fallback)"
+      - "/home/gez/sdks/zephyr/zephyr/cmake/modules/extensions.cmake:122 (target_cc_option)"
+      - "/home/gez/sdks/zephyr/zephyr/CMakeLists.txt:456 (zephyr_cc_option)"
+    directories:
+      source: "/home/gez/workspaces/eclipse/esp_doom/build/CMakeFiles/CMakeScratch/TryCompile-wGe1Hc"
+      binary: "/home/gez/workspaces/eclipse/esp_doom/build/CMakeFiles/CMakeScratch/TryCompile-wGe1Hc"
+    cmakeVariables:
+      CMAKE_C_FLAGS: ""
+      CMAKE_C_FLAGS_DEBUG: "-g"
+      CMAKE_EXE_LINKER_FLAGS: ""
+      CMAKE_MODULE_PATH: "/home/gez/sdks/zephyr/zephyr/cmake/modules"
+    buildResult:
+      variable: "check_fmacro_prefix_map__home_gez_sdks_zephyr_zephyr_ZEPHYR_BASE_C__nostartfiles__nostdlib__isystem___home_gez_sdks_zephyr_toolchains_xtensa_espressif_esp32_zephyr_elf_bin____lib_gcc_xtensa_espressif_esp32_zephyr_elf_12_2_0_include___isystem___home_gez_sdks_zephyr_toolchains_xtensa_espressif_esp32_zephyr_elf_bin____lib_gcc_xtensa_espressif_esp32_zephyr_elf_12_2_0_include_fixed___Wl___unresolved_symbols_ignore_in_object_files__Wl___entry_0"
+      cached: true
+      stdout: |
+        Change Dir: /home/gez/workspaces/eclipse/esp_doom/build/CMakeFiles/CMakeScratch/TryCompile-wGe1Hc
+        
+        Run Build Command(s):/usr/bin/ninja -v cmTC_9b551 && [1/2] /home/gez/sdks/zephyr/toolchains/xtensa-espressif_esp32_zephyr-elf/bin/xtensa-espressif_esp32_zephyr-elf-gcc -Dcheck_fmacro_prefix_map__home_gez_sdks_zephyr_zephyr_ZEPHYR_BASE_C__nostartfiles__nostdlib__isystem___home_gez_sdks_zephyr_toolchains_xtensa_espressif_esp32_zephyr_elf_bin____lib_gcc_xtensa_espressif_esp32_zephyr_elf_12_2_0_include___isystem___home_gez_sdks_zephyr_toolchains_xtensa_espressif_esp32_zephyr_elf_bin____lib_gcc_xtensa_espressif_esp32_zephyr_elf_12_2_0_include_fixed___Wl___unresolved_symbols_ignore_in_object_files__Wl___entry_0  -nostartfiles -nostdlib -isystem "/home/gez/sdks/zephyr/toolchains/xtensa-espressif_esp32_zephyr-elf/bin/../lib/gcc/xtensa-espressif_esp32_zephyr-elf/12.2.0/include" -isystem "/home/gez/sdks/zephyr/toolchains/xtensa-espressif_esp32_zephyr-elf/bin/../lib/gcc/xtensa-espressif_esp32_zephyr-elf/12.2.0/include-fixed" -Wl,--unresolved-symbols=ignore-in-object-files -Wl,--entry=0   -fmacro-prefix-map=/home/gez/sdks/zephyr/zephyr=ZEPHYR_BASE -o CMakeFiles/cmTC_9b551.dir/src.c.obj -c /home/gez/workspaces/eclipse/esp_doom/build/CMakeFiles/CMakeScratch/TryCompile-wGe1Hc/src.c
+        [2/2] : && /home/gez/sdks/zephyr/toolchains/xtensa-espressif_esp32_zephyr-elf/bin/xtensa-espressif_esp32_zephyr-elf-gcc -nostartfiles -nostdlib -isystem "/home/gez/sdks/zephyr/toolchains/xtensa-espressif_esp32_zephyr-elf/bin/../lib/gcc/xtensa-espressif_esp32_zephyr-elf/12.2.0/include" -isystem "/home/gez/sdks/zephyr/toolchains/xtensa-espressif_esp32_zephyr-elf/bin/../lib/gcc/xtensa-espressif_esp32_zephyr-elf/12.2.0/include-fixed" -Wl,--unresolved-symbols=ignore-in-object-files -Wl,--entry=0  CMakeFiles/cmTC_9b551.dir/src.c.obj -o cmTC_9b551   && :
+        
+      exitCode: 0
+  -
+    kind: "try_compile-v1"
+    backtrace:
+      - "/usr/share/cmake/Modules/Internal/CheckSourceCompiles.cmake:101 (try_compile)"
+      - "/usr/share/cmake/Modules/Internal/CheckCompilerFlag.cmake:18 (cmake_check_source_compiles)"
+      - "/usr/share/cmake/Modules/CheckCCompilerFlag.cmake:40 (cmake_check_compiler_flag)"
+      - "/home/gez/sdks/zephyr/zephyr/cmake/modules/extensions.cmake:1912 (check_c_compiler_flag)"
+      - "/home/gez/sdks/zephyr/zephyr/cmake/modules/extensions.cmake:1084 (check_compiler_flag)"
+      - "/home/gez/sdks/zephyr/zephyr/cmake/modules/extensions.cmake:1951 (zephyr_check_compiler_flag)"
+      - "/home/gez/sdks/zephyr/zephyr/cmake/modules/extensions.cmake:1927 (target_cc_option_fallback)"
+      - "/home/gez/sdks/zephyr/zephyr/cmake/modules/extensions.cmake:122 (target_cc_option)"
+      - "/home/gez/sdks/zephyr/zephyr/CMakeLists.txt:458 (zephyr_cc_option)"
+    directories:
+      source: "/home/gez/workspaces/eclipse/esp_doom/build/CMakeFiles/CMakeScratch/TryCompile-mRRkqE"
+      binary: "/home/gez/workspaces/eclipse/esp_doom/build/CMakeFiles/CMakeScratch/TryCompile-mRRkqE"
+    cmakeVariables:
+      CMAKE_C_FLAGS: ""
+      CMAKE_C_FLAGS_DEBUG: "-g"
+      CMAKE_EXE_LINKER_FLAGS: ""
+      CMAKE_MODULE_PATH: "/home/gez/sdks/zephyr/zephyr/cmake/modules"
+    buildResult:
+      variable: "check_fmacro_prefix_map__home_gez_sdks_zephyr_WEST_TOPDIR_C__nostartfiles__nostdlib__isystem___home_gez_sdks_zephyr_toolchains_xtensa_espressif_esp32_zephyr_elf_bin____lib_gcc_xtensa_espressif_esp32_zephyr_elf_12_2_0_include___isystem___home_gez_sdks_zephyr_toolchains_xtensa_espressif_esp32_zephyr_elf_bin____lib_gcc_xtensa_espressif_esp32_zephyr_elf_12_2_0_include_fixed___Wl___unresolved_symbols_ignore_in_object_files__Wl___entry_0"
+      cached: true
+      stdout: |
+        Change Dir: /home/gez/workspaces/eclipse/esp_doom/build/CMakeFiles/CMakeScratch/TryCompile-mRRkqE
+        
+        Run Build Command(s):/usr/bin/ninja -v cmTC_0feb7 && [1/2] /home/gez/sdks/zephyr/toolchains/xtensa-espressif_esp32_zephyr-elf/bin/xtensa-espressif_esp32_zephyr-elf-gcc -Dcheck_fmacro_prefix_map__home_gez_sdks_zephyr_WEST_TOPDIR_C__nostartfiles__nostdlib__isystem___home_gez_sdks_zephyr_toolchains_xtensa_espressif_esp32_zephyr_elf_bin____lib_gcc_xtensa_espressif_esp32_zephyr_elf_12_2_0_include___isystem___home_gez_sdks_zephyr_toolchains_xtensa_espressif_esp32_zephyr_elf_bin____lib_gcc_xtensa_espressif_esp32_zephyr_elf_12_2_0_include_fixed___Wl___unresolved_symbols_ignore_in_object_files__Wl___entry_0  -nostartfiles -nostdlib -isystem "/home/gez/sdks/zephyr/toolchains/xtensa-espressif_esp32_zephyr-elf/bin/../lib/gcc/xtensa-espressif_esp32_zephyr-elf/12.2.0/include" -isystem "/home/gez/sdks/zephyr/toolchains/xtensa-espressif_esp32_zephyr-elf/bin/../lib/gcc/xtensa-espressif_esp32_zephyr-elf/12.2.0/include-fixed" -Wl,--unresolved-symbols=ignore-in-object-files -Wl,--entry=0   -fmacro-prefix-map=/home/gez/sdks/zephyr=WEST_TOPDIR -o CMakeFiles/cmTC_0feb7.dir/src.c.obj -c /home/gez/workspaces/eclipse/esp_doom/build/CMakeFiles/CMakeScratch/TryCompile-mRRkqE/src.c
+        [2/2] : && /home/gez/sdks/zephyr/toolchains/xtensa-espressif_esp32_zephyr-elf/bin/xtensa-espressif_esp32_zephyr-elf-gcc -nostartfiles -nostdlib -isystem "/home/gez/sdks/zephyr/toolchains/xtensa-espressif_esp32_zephyr-elf/bin/../lib/gcc/xtensa-espressif_esp32_zephyr-elf/12.2.0/include" -isystem "/home/gez/sdks/zephyr/toolchains/xtensa-espressif_esp32_zephyr-elf/bin/../lib/gcc/xtensa-espressif_esp32_zephyr-elf/12.2.0/include-fixed" -Wl,--unresolved-symbols=ignore-in-object-files -Wl,--entry=0  CMakeFiles/cmTC_0feb7.dir/src.c.obj -o cmTC_0feb7   && :
+        
+      exitCode: 0
+  -
+    kind: "try_compile-v1"
+    backtrace:
+      - "/usr/share/cmake/Modules/Internal/CheckSourceCompiles.cmake:101 (try_compile)"
+      - "/usr/share/cmake/Modules/Internal/CheckCompilerFlag.cmake:18 (cmake_check_source_compiles)"
+      - "/usr/share/cmake/Modules/CheckCCompilerFlag.cmake:40 (cmake_check_compiler_flag)"
+      - "/home/gez/sdks/zephyr/zephyr/cmake/modules/extensions.cmake:1912 (check_c_compiler_flag)"
+      - "/home/gez/sdks/zephyr/zephyr/cmake/modules/extensions.cmake:1084 (check_compiler_flag)"
+      - "/home/gez/sdks/zephyr/zephyr/cmake/modules/extensions.cmake:1951 (zephyr_check_compiler_flag)"
+      - "/home/gez/sdks/zephyr/zephyr/cmake/modules/extensions.cmake:1927 (target_cc_option_fallback)"
+      - "/home/gez/sdks/zephyr/zephyr/cmake/modules/extensions.cmake:122 (target_cc_option)"
+      - "/home/gez/sdks/zephyr/zephyr/arch/common/CMakeLists.txt:20 (zephyr_cc_option)"
+    directories:
+      source: "/home/gez/workspaces/eclipse/esp_doom/build/CMakeFiles/CMakeScratch/TryCompile-4L0xv1"
+      binary: "/home/gez/workspaces/eclipse/esp_doom/build/CMakeFiles/CMakeScratch/TryCompile-4L0xv1"
+    cmakeVariables:
+      CMAKE_C_FLAGS: ""
+      CMAKE_C_FLAGS_DEBUG: "-g"
+      CMAKE_EXE_LINKER_FLAGS: ""
+      CMAKE_MODULE_PATH: "/home/gez/sdks/zephyr/zephyr/cmake/modules"
+    buildResult:
+      variable: "check_ffunction_sections_C__nostartfiles__nostdlib__isystem___home_gez_sdks_zephyr_toolchains_xtensa_espressif_esp32_zephyr_elf_bin____lib_gcc_xtensa_espressif_esp32_zephyr_elf_12_2_0_include___isystem___home_gez_sdks_zephyr_toolchains_xtensa_espressif_esp32_zephyr_elf_bin____lib_gcc_xtensa_espressif_esp32_zephyr_elf_12_2_0_include_fixed___Wl___unresolved_symbols_ignore_in_object_files__Wl___entry_0"
+      cached: true
+      stdout: |
+        Change Dir: /home/gez/workspaces/eclipse/esp_doom/build/CMakeFiles/CMakeScratch/TryCompile-4L0xv1
+        
+        Run Build Command(s):/usr/bin/ninja -v cmTC_a6354 && [1/2] /home/gez/sdks/zephyr/toolchains/xtensa-espressif_esp32_zephyr-elf/bin/xtensa-espressif_esp32_zephyr-elf-gcc -Dcheck_ffunction_sections_C__nostartfiles__nostdlib__isystem___home_gez_sdks_zephyr_toolchains_xtensa_espressif_esp32_zephyr_elf_bin____lib_gcc_xtensa_espressif_esp32_zephyr_elf_12_2_0_include___isystem___home_gez_sdks_zephyr_toolchains_xtensa_espressif_esp32_zephyr_elf_bin____lib_gcc_xtensa_espressif_esp32_zephyr_elf_12_2_0_include_fixed___Wl___unresolved_symbols_ignore_in_object_files__Wl___entry_0  -nostartfiles -nostdlib -isystem "/home/gez/sdks/zephyr/toolchains/xtensa-espressif_esp32_zephyr-elf/bin/../lib/gcc/xtensa-espressif_esp32_zephyr-elf/12.2.0/include" -isystem "/home/gez/sdks/zephyr/toolchains/xtensa-espressif_esp32_zephyr-elf/bin/../lib/gcc/xtensa-espressif_esp32_zephyr-elf/12.2.0/include-fixed" -Wl,--unresolved-symbols=ignore-in-object-files -Wl,--entry=0   -ffunction-sections -o CMakeFiles/cmTC_a6354.dir/src.c.obj -c /home/gez/workspaces/eclipse/esp_doom/build/CMakeFiles/CMakeScratch/TryCompile-4L0xv1/src.c
+        [2/2] : && /home/gez/sdks/zephyr/toolchains/xtensa-espressif_esp32_zephyr-elf/bin/xtensa-espressif_esp32_zephyr-elf-gcc -nostartfiles -nostdlib -isystem "/home/gez/sdks/zephyr/toolchains/xtensa-espressif_esp32_zephyr-elf/bin/../lib/gcc/xtensa-espressif_esp32_zephyr-elf/12.2.0/include" -isystem "/home/gez/sdks/zephyr/toolchains/xtensa-espressif_esp32_zephyr-elf/bin/../lib/gcc/xtensa-espressif_esp32_zephyr-elf/12.2.0/include-fixed" -Wl,--unresolved-symbols=ignore-in-object-files -Wl,--entry=0  CMakeFiles/cmTC_a6354.dir/src.c.obj -o cmTC_a6354   && :
+        
+      exitCode: 0
+  -
+    kind: "try_compile-v1"
+    backtrace:
+      - "/usr/share/cmake/Modules/Internal/CheckSourceCompiles.cmake:101 (try_compile)"
+      - "/usr/share/cmake/Modules/Internal/CheckCompilerFlag.cmake:18 (cmake_check_source_compiles)"
+      - "/usr/share/cmake/Modules/CheckCCompilerFlag.cmake:40 (cmake_check_compiler_flag)"
+      - "/home/gez/sdks/zephyr/zephyr/cmake/modules/extensions.cmake:1912 (check_c_compiler_flag)"
+      - "/home/gez/sdks/zephyr/zephyr/cmake/modules/extensions.cmake:1084 (check_compiler_flag)"
+      - "/home/gez/sdks/zephyr/zephyr/cmake/modules/extensions.cmake:1951 (zephyr_check_compiler_flag)"
+      - "/home/gez/sdks/zephyr/zephyr/cmake/modules/extensions.cmake:1927 (target_cc_option_fallback)"
+      - "/home/gez/sdks/zephyr/zephyr/cmake/modules/extensions.cmake:122 (target_cc_option)"
+      - "/home/gez/sdks/zephyr/zephyr/arch/common/CMakeLists.txt:20 (zephyr_cc_option)"
+    directories:
+      source: "/home/gez/workspaces/eclipse/esp_doom/build/CMakeFiles/CMakeScratch/TryCompile-ME18R2"
+      binary: "/home/gez/workspaces/eclipse/esp_doom/build/CMakeFiles/CMakeScratch/TryCompile-ME18R2"
+    cmakeVariables:
+      CMAKE_C_FLAGS: ""
+      CMAKE_C_FLAGS_DEBUG: "-g"
+      CMAKE_EXE_LINKER_FLAGS: ""
+      CMAKE_MODULE_PATH: "/home/gez/sdks/zephyr/zephyr/cmake/modules"
+    buildResult:
+      variable: "check_fdata_sections_C__nostartfiles__nostdlib__isystem___home_gez_sdks_zephyr_toolchains_xtensa_espressif_esp32_zephyr_elf_bin____lib_gcc_xtensa_espressif_esp32_zephyr_elf_12_2_0_include___isystem___home_gez_sdks_zephyr_toolchains_xtensa_espressif_esp32_zephyr_elf_bin____lib_gcc_xtensa_espressif_esp32_zephyr_elf_12_2_0_include_fixed___Wl___unresolved_symbols_ignore_in_object_files__Wl___entry_0"
+      cached: true
+      stdout: |
+        Change Dir: /home/gez/workspaces/eclipse/esp_doom/build/CMakeFiles/CMakeScratch/TryCompile-ME18R2
+        
+        Run Build Command(s):/usr/bin/ninja -v cmTC_39673 && [1/2] /home/gez/sdks/zephyr/toolchains/xtensa-espressif_esp32_zephyr-elf/bin/xtensa-espressif_esp32_zephyr-elf-gcc -Dcheck_fdata_sections_C__nostartfiles__nostdlib__isystem___home_gez_sdks_zephyr_toolchains_xtensa_espressif_esp32_zephyr_elf_bin____lib_gcc_xtensa_espressif_esp32_zephyr_elf_12_2_0_include___isystem___home_gez_sdks_zephyr_toolchains_xtensa_espressif_esp32_zephyr_elf_bin____lib_gcc_xtensa_espressif_esp32_zephyr_elf_12_2_0_include_fixed___Wl___unresolved_symbols_ignore_in_object_files__Wl___entry_0  -nostartfiles -nostdlib -isystem "/home/gez/sdks/zephyr/toolchains/xtensa-espressif_esp32_zephyr-elf/bin/../lib/gcc/xtensa-espressif_esp32_zephyr-elf/12.2.0/include" -isystem "/home/gez/sdks/zephyr/toolchains/xtensa-espressif_esp32_zephyr-elf/bin/../lib/gcc/xtensa-espressif_esp32_zephyr-elf/12.2.0/include-fixed" -Wl,--unresolved-symbols=ignore-in-object-files -Wl,--entry=0   -fdata-sections -o CMakeFiles/cmTC_39673.dir/src.c.obj -c /home/gez/workspaces/eclipse/esp_doom/build/CMakeFiles/CMakeScratch/TryCompile-ME18R2/src.c
+        [2/2] : && /home/gez/sdks/zephyr/toolchains/xtensa-espressif_esp32_zephyr-elf/bin/xtensa-espressif_esp32_zephyr-elf-gcc -nostartfiles -nostdlib -isystem "/home/gez/sdks/zephyr/toolchains/xtensa-espressif_esp32_zephyr-elf/bin/../lib/gcc/xtensa-espressif_esp32_zephyr-elf/12.2.0/include" -isystem "/home/gez/sdks/zephyr/toolchains/xtensa-espressif_esp32_zephyr-elf/bin/../lib/gcc/xtensa-espressif_esp32_zephyr-elf/12.2.0/include-fixed" -Wl,--unresolved-symbols=ignore-in-object-files -Wl,--entry=0  CMakeFiles/cmTC_39673.dir/src.c.obj -o cmTC_39673   && :
+        
+      exitCode: 0
+  -
+    kind: "try_compile-v1"
+    backtrace:
+      - "/usr/share/cmake/Modules/Internal/CheckSourceCompiles.cmake:101 (try_compile)"
+      - "/usr/share/cmake/Modules/Internal/CheckCompilerFlag.cmake:18 (cmake_check_source_compiles)"
+      - "/usr/share/cmake/Modules/CheckCCompilerFlag.cmake:40 (cmake_check_compiler_flag)"
+      - "/home/gez/sdks/zephyr/zephyr/cmake/modules/extensions.cmake:1912 (check_c_compiler_flag)"
+      - "/home/gez/sdks/zephyr/zephyr/cmake/modules/extensions.cmake:1084 (check_compiler_flag)"
+      - "/home/gez/sdks/zephyr/zephyr/cmake/modules/extensions.cmake:1951 (zephyr_check_compiler_flag)"
+      - "/home/gez/sdks/zephyr/zephyr/cmake/modules/extensions.cmake:1927 (target_cc_option_fallback)"
+      - "/home/gez/sdks/zephyr/zephyr/cmake/modules/extensions.cmake:122 (target_cc_option)"
+      - "/home/gez/sdks/zephyr/zephyr/arch/xtensa/core/CMakeLists.txt:3 (zephyr_cc_option)"
+    directories:
+      source: "/home/gez/workspaces/eclipse/esp_doom/build/CMakeFiles/CMakeScratch/TryCompile-vuHSWr"
+      binary: "/home/gez/workspaces/eclipse/esp_doom/build/CMakeFiles/CMakeScratch/TryCompile-vuHSWr"
+    cmakeVariables:
+      CMAKE_C_FLAGS: ""
+      CMAKE_C_FLAGS_DEBUG: "-g"
+      CMAKE_EXE_LINKER_FLAGS: ""
+      CMAKE_MODULE_PATH: "/home/gez/sdks/zephyr/zephyr/cmake/modules"
+    buildResult:
+      variable: "check_mlongcalls_C__nostartfiles__nostdlib__isystem___home_gez_sdks_zephyr_toolchains_xtensa_espressif_esp32_zephyr_elf_bin____lib_gcc_xtensa_espressif_esp32_zephyr_elf_12_2_0_include___isystem___home_gez_sdks_zephyr_toolchains_xtensa_espressif_esp32_zephyr_elf_bin____lib_gcc_xtensa_espressif_esp32_zephyr_elf_12_2_0_include_fixed___Wl___unresolved_symbols_ignore_in_object_files__Wl___entry_0"
+      cached: true
+      stdout: |
+        Change Dir: /home/gez/workspaces/eclipse/esp_doom/build/CMakeFiles/CMakeScratch/TryCompile-vuHSWr
+        
+        Run Build Command(s):/usr/bin/ninja -v cmTC_92d15 && [1/2] /home/gez/sdks/zephyr/toolchains/xtensa-espressif_esp32_zephyr-elf/bin/xtensa-espressif_esp32_zephyr-elf-gcc -Dcheck_mlongcalls_C__nostartfiles__nostdlib__isystem___home_gez_sdks_zephyr_toolchains_xtensa_espressif_esp32_zephyr_elf_bin____lib_gcc_xtensa_espressif_esp32_zephyr_elf_12_2_0_include___isystem___home_gez_sdks_zephyr_toolchains_xtensa_espressif_esp32_zephyr_elf_bin____lib_gcc_xtensa_espressif_esp32_zephyr_elf_12_2_0_include_fixed___Wl___unresolved_symbols_ignore_in_object_files__Wl___entry_0  -nostartfiles -nostdlib -isystem "/home/gez/sdks/zephyr/toolchains/xtensa-espressif_esp32_zephyr-elf/bin/../lib/gcc/xtensa-espressif_esp32_zephyr-elf/12.2.0/include" -isystem "/home/gez/sdks/zephyr/toolchains/xtensa-espressif_esp32_zephyr-elf/bin/../lib/gcc/xtensa-espressif_esp32_zephyr-elf/12.2.0/include-fixed" -Wl,--unresolved-symbols=ignore-in-object-files -Wl,--entry=0   -mlongcalls -o CMakeFiles/cmTC_92d15.dir/src.c.obj -c /home/gez/workspaces/eclipse/esp_doom/build/CMakeFiles/CMakeScratch/TryCompile-vuHSWr/src.c
+        [2/2] : && /home/gez/sdks/zephyr/toolchains/xtensa-espressif_esp32_zephyr-elf/bin/xtensa-espressif_esp32_zephyr-elf-gcc -nostartfiles -nostdlib -isystem "/home/gez/sdks/zephyr/toolchains/xtensa-espressif_esp32_zephyr-elf/bin/../lib/gcc/xtensa-espressif_esp32_zephyr-elf/12.2.0/include" -isystem "/home/gez/sdks/zephyr/toolchains/xtensa-espressif_esp32_zephyr-elf/bin/../lib/gcc/xtensa-espressif_esp32_zephyr-elf/12.2.0/include-fixed" -Wl,--unresolved-symbols=ignore-in-object-files -Wl,--entry=0  CMakeFiles/cmTC_92d15.dir/src.c.obj -o cmTC_92d15   && :
+        
+      exitCode: 0
+  -
+    kind: "try_compile-v1"
+    backtrace:
+      - "/usr/share/cmake/Modules/Internal/CheckSourceCompiles.cmake:101 (try_compile)"
+      - "/usr/share/cmake/Modules/Internal/CheckCompilerFlag.cmake:18 (cmake_check_source_compiles)"
+      - "/usr/share/cmake/Modules/CheckCCompilerFlag.cmake:40 (cmake_check_compiler_flag)"
+      - "/home/gez/sdks/zephyr/zephyr/cmake/modules/extensions.cmake:1912 (check_c_compiler_flag)"
+      - "/home/gez/sdks/zephyr/zephyr/cmake/modules/extensions.cmake:1084 (check_compiler_flag)"
+      - "/home/gez/sdks/zephyr/zephyr/cmake/modules/extensions.cmake:523 (zephyr_check_compiler_flag)"
+      - "/home/gez/sdks/zephyr/zephyr/lib/libc/minimal/CMakeLists.txt:10 (zephyr_library_cc_option)"
+    directories:
+      source: "/home/gez/workspaces/eclipse/esp_doom/build/CMakeFiles/CMakeScratch/TryCompile-yP7AAx"
+      binary: "/home/gez/workspaces/eclipse/esp_doom/build/CMakeFiles/CMakeScratch/TryCompile-yP7AAx"
+    cmakeVariables:
+      CMAKE_C_FLAGS: ""
+      CMAKE_C_FLAGS_DEBUG: "-g"
+      CMAKE_EXE_LINKER_FLAGS: ""
+      CMAKE_MODULE_PATH: "/home/gez/sdks/zephyr/zephyr/cmake/modules"
+    buildResult:
+      variable: "check_fno_builtin_C__nostartfiles__nostdlib__isystem___home_gez_sdks_zephyr_toolchains_xtensa_espressif_esp32_zephyr_elf_bin____lib_gcc_xtensa_espressif_esp32_zephyr_elf_12_2_0_include___isystem___home_gez_sdks_zephyr_toolchains_xtensa_espressif_esp32_zephyr_elf_bin____lib_gcc_xtensa_espressif_esp32_zephyr_elf_12_2_0_include_fixed___Wl___unresolved_symbols_ignore_in_object_files__Wl___entry_0"
+      cached: true
+      stdout: |
+        Change Dir: /home/gez/workspaces/eclipse/esp_doom/build/CMakeFiles/CMakeScratch/TryCompile-yP7AAx
+        
+        Run Build Command(s):/usr/bin/ninja -v cmTC_2570a && [1/2] /home/gez/sdks/zephyr/toolchains/xtensa-espressif_esp32_zephyr-elf/bin/xtensa-espressif_esp32_zephyr-elf-gcc -Dcheck_fno_builtin_C__nostartfiles__nostdlib__isystem___home_gez_sdks_zephyr_toolchains_xtensa_espressif_esp32_zephyr_elf_bin____lib_gcc_xtensa_espressif_esp32_zephyr_elf_12_2_0_include___isystem___home_gez_sdks_zephyr_toolchains_xtensa_espressif_esp32_zephyr_elf_bin____lib_gcc_xtensa_espressif_esp32_zephyr_elf_12_2_0_include_fixed___Wl___unresolved_symbols_ignore_in_object_files__Wl___entry_0  -nostartfiles -nostdlib -isystem "/home/gez/sdks/zephyr/toolchains/xtensa-espressif_esp32_zephyr-elf/bin/../lib/gcc/xtensa-espressif_esp32_zephyr-elf/12.2.0/include" -isystem "/home/gez/sdks/zephyr/toolchains/xtensa-espressif_esp32_zephyr-elf/bin/../lib/gcc/xtensa-espressif_esp32_zephyr-elf/12.2.0/include-fixed" -Wl,--unresolved-symbols=ignore-in-object-files -Wl,--entry=0   -fno-builtin -o CMakeFiles/cmTC_2570a.dir/src.c.obj -c /home/gez/workspaces/eclipse/esp_doom/build/CMakeFiles/CMakeScratch/TryCompile-yP7AAx/src.c
+        [2/2] : && /home/gez/sdks/zephyr/toolchains/xtensa-espressif_esp32_zephyr-elf/bin/xtensa-espressif_esp32_zephyr-elf-gcc -nostartfiles -nostdlib -isystem "/home/gez/sdks/zephyr/toolchains/xtensa-espressif_esp32_zephyr-elf/bin/../lib/gcc/xtensa-espressif_esp32_zephyr-elf/12.2.0/include" -isystem "/home/gez/sdks/zephyr/toolchains/xtensa-espressif_esp32_zephyr-elf/bin/../lib/gcc/xtensa-espressif_esp32_zephyr-elf/12.2.0/include-fixed" -Wl,--unresolved-symbols=ignore-in-object-files -Wl,--entry=0  CMakeFiles/cmTC_2570a.dir/src.c.obj -o cmTC_2570a   && :
+        
+      exitCode: 0
+...

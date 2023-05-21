@@ -43,7 +43,7 @@
 #include "graphics.h"
 #include "i_system.h"
 #include "i_video.h"
-#include "nrf.h"
+// #include "nrf.h"
 #include "printf.h"
 #include "qspi.h"
 #include "usb.h"
@@ -55,25 +55,29 @@
 #include <stdint.h>
 #include <string.h>
 
+#include "user_main.h"
+#include "user_time.h"
+
 #pragma GCC optimize("Ofast")
 //
 void uartConfig()
 {
     // Configure the UART with no flow control, one parity bit and 115200 baud rate
-    NRF_UART0->CONFIG = (UART_CONFIG_HWFC_Disabled << UART_CONFIG_HWFC_Pos) | (UART_CONFIG_PARITY_Excluded << UART_CONFIG_PARITY_Pos);
+    // NRF_UART0->CONFIG = (UART_CONFIG_HWFC_Disabled << UART_CONFIG_HWFC_Pos) | (UART_CONFIG_PARITY_Excluded << UART_CONFIG_PARITY_Pos);
 
-    NRF_UART0->BAUDRATE = UART_BAUDRATE_BAUDRATE_Baud115200 << UART_BAUDRATE_BAUDRATE_Pos;
+    // NRF_UART0->BAUDRATE = UART_BAUDRATE_BAUDRATE_Baud115200 << UART_BAUDRATE_BAUDRATE_Pos;
 
     // Select TX and RX pins
-    NRF_UART0->PSELTXD = PIN_TXD;
-    NRF_UART0->PSELRXD = PIN_RXD;
+    // NRF_UART0->PSELTXD = PIN_TXD;
+    // NRF_UART0->PSELRXD = PIN_RXD;
 
     // Enable the UART (starts using the TX/RX pins)
-    NRF_UART0->ENABLE = UART_ENABLE_ENABLE_Enabled << UART_ENABLE_ENABLE_Pos;
+    // NRF_UART0->ENABLE = UART_ENABLE_ENABLE_Enabled << UART_ENABLE_ENABLE_Pos;
     // start tx
-    NRF_UART0->TASKS_STARTTX = 1;
+    // NRF_UART0->TASKS_STARTTX = 1;
     // transmit a return y
-    NRF_UART0->TXD = '\r';
+    // NRF_UART0->TXD = '\r';
+	user_print_char('\r');
 }
 #define DEBUG_MINEGW 0
 void _putchar(char character)
@@ -81,36 +85,38 @@ void _putchar(char character)
 #if MINEWDONGLE && DEBUG_MINEGW
     usbCdcPutChar(character);
 #else
-    while (NRF_UART0->EVENTS_TXDRDY == 0)
-    {
-    }
-    NRF_UART0->EVENTS_TXDRDY = 0;
-    NRF_UART0->TXD = character;
+	user_print_char(character);
+    // while (NRF_UART0->EVENTS_TXDRDY == 0)
+    // {
+    // }
+    // NRF_UART0->EVENTS_TXDRDY = 0;
+    // NRF_UART0->TXD = character;
 #endif
 }
 
 
 void timerInit(void)
 {
+	//NOTE this should all be useless 
     // use Timer 3 to get microsecond timer
-    NRF_TIMER3->MODE = TIMER_MODE_MODE_Timer << TIMER_MODE_MODE_Pos;
-    NRF_TIMER3->BITMODE = TIMER_BITMODE_BITMODE_32Bit << TIMER_BITMODE_BITMODE_Pos;
-    NRF_TIMER3->PRESCALER = 4 << TIMER_PRESCALER_PRESCALER_Pos; // 1 MHz
-    NRF_TIMER3->TASKS_START = 1;
+    // NRF_TIMER3->MODE = TIMER_MODE_MODE_Timer << TIMER_MODE_MODE_Pos;
+    // NRF_TIMER3->BITMODE = TIMER_BITMODE_BITMODE_32Bit << TIMER_BITMODE_BITMODE_Pos;
+    // NRF_TIMER3->PRESCALER = 4 << TIMER_PRESCALER_PRESCALER_Pos; // 1 MHz
+    // NRF_TIMER3->TASKS_START = 1;
     // use timer 2 to always make Timer 3 capture time
-    NRF_TIMER2->SHORTS = TIMER_SHORTS_COMPARE1_CLEAR_Enabled << TIMER_SHORTS_COMPARE1_CLEAR_Pos;
-    NRF_TIMER2->CC[0] = 1;
-    NRF_TIMER2->CC[1] = 1;
-    NRF_TIMER2->MODE = TIMER_MODE_MODE_Timer << TIMER_MODE_MODE_Pos;                // mode: timer
-    NRF_TIMER2->BITMODE = TIMER_BITMODE_BITMODE_08Bit << TIMER_BITMODE_BITMODE_Pos; // 8 bits are enough.
-    NRF_TIMER2->PRESCALER = 0 << TIMER_PRESCALER_PRESCALER_Pos;                     // frequency = 16 MHZ/2^PRESCALER, 16 MHz
+    // NRF_TIMER2->SHORTS = TIMER_SHORTS_COMPARE1_CLEAR_Enabled << TIMER_SHORTS_COMPARE1_CLEAR_Pos;
+    // NRF_TIMER2->CC[0] = 1;
+    // NRF_TIMER2->CC[1] = 1;
+    // NRF_TIMER2->MODE = TIMER_MODE_MODE_Timer << TIMER_MODE_MODE_Pos;                // mode: timer
+    // NRF_TIMER2->BITMODE = TIMER_BITMODE_BITMODE_08Bit << TIMER_BITMODE_BITMODE_Pos; // 8 bits are enough.
+    // NRF_TIMER2->PRESCALER = 0 << TIMER_PRESCALER_PRESCALER_Pos;                     // frequency = 16 MHZ/2^PRESCALER, 16 MHz
     // Start timer, free running
-    NRF_TIMER2->TASKS_START = 1;
+    // NRF_TIMER2->TASKS_START = 1;
     // Channel 0: trigger TIMER3 capture on TIMER 2 ch0 compare.
-    NRF_PPI->CH[0].TEP = (uint32_t)&NRF_TIMER3->TASKS_CAPTURE[0];
-    NRF_PPI->CH[0].EEP = (uint32_t)&NRF_TIMER2->EVENTS_COMPARE[0];
+    // NRF_PPI->CH[0].TEP = (uint32_t)&NRF_TIMER3->TASKS_CAPTURE[0];
+    // NRF_PPI->CH[0].EEP = (uint32_t)&NRF_TIMER2->EVENTS_COMPARE[0];
     // Enable PPI Channels
-    NRF_PPI->CHENSET = (PPI_CHENSET_CH0_Enabled << PPI_CHENSET_CH0_Pos);
+    // NRF_PPI->CHENSET = (PPI_CHENSET_CH0_Enabled << PPI_CHENSET_CH0_Pos);
 }
 #define ENABLE_TESTS 0
 // random tests.
@@ -263,28 +269,28 @@ void tests(void)
 }
 #endif
 
-void main(void)
+void main_port(void)
 {
     // check if voltage is not set to 3.3V
-     if (NRF_UICR->REGOUT0 != UICR_REGOUT0_VOUT_3V3)
-    {
-        NRF_NVMC->CONFIG = NVMC_CONFIG_WEN_Wen << NVMC_CONFIG_WEN_Pos;
-        while (NRF_NVMC->READY == NVMC_READY_READY_Busy)
-        {
-        }
-        NRF_UICR->REGOUT0 = UICR_REGOUT0_VOUT_3V3;
+    //  if (NRF_UICR->REGOUT0 != UICR_REGOUT0_VOUT_3V3)
+    // {
+    //     NRF_NVMC->CONFIG = NVMC_CONFIG_WEN_Wen << NVMC_CONFIG_WEN_Pos;
+    //     while (NRF_NVMC->READY == NVMC_READY_READY_Busy)
+    //     {
+    //     }
+    //     NRF_UICR->REGOUT0 = UICR_REGOUT0_VOUT_3V3;
 
-        NRF_NVMC->CONFIG = NVMC_CONFIG_WEN_Ren << NVMC_CONFIG_WEN_Pos;
-        while (NRF_NVMC->READY == NVMC_READY_READY_Busy)
-        {
-        }
-        NVIC_SystemReset();
-    }
+    //     NRF_NVMC->CONFIG = NVMC_CONFIG_WEN_Ren << NVMC_CONFIG_WEN_Pos;
+    //     while (NRF_NVMC->READY == NVMC_READY_READY_Busy)
+    //     {
+    //     }
+    //     NVIC_SystemReset();
+    // }
     // Start HFCLK from crystal oscillator.
-    NRF_CLOCK->TASKS_HFCLKSTART = 1;
-    while (NRF_CLOCK->EVENTS_HFCLKSTARTED == 0)
-        ;
-    NRF_NVMC->ICACHECNF = NVMC_ICACHECNF_CACHEEN_Enabled << NVMC_ICACHECNF_CACHEEN_Pos;
+    // NRF_CLOCK->TASKS_HFCLKSTART = 1;
+    // while (NRF_CLOCK->EVENTS_HFCLKSTARTED == 0)
+    //     ;
+    // NRF_NVMC->ICACHECNF = NVMC_ICACHECNF_CACHEEN_Enabled << NVMC_ICACHECNF_CACHEEN_Pos;
     //
     timerInit();
     //
@@ -298,9 +304,9 @@ void main(void)
     displayPrintln(1, "by Nicola Wrachien (next-hack)");
     displayPrintln(1, "");
     // measure refresh time!
-    uint32_t oldTime = NRF_TIMER3->CC[0];
+    uint32_t oldTime = user_get_time();
     startDisplayRefresh(0);
-    oldTime = NRF_TIMER3->CC[0] - oldTime;
+    oldTime = user_get_time() - oldTime;
     displayPrintln(1, "Frame refresh time %d us!", oldTime);
     displayPrintln(1, "");
 #if MINEWDONGLE && DEBUG_MINEGW
@@ -352,34 +358,36 @@ void main(void)
         ;
 #endif
     //
-    uint32_t info = NRF_FICR->INFO.VARIANT;
-    uint8_t * p = (uint8_t *)&info;
-    printf("Doom port to nRF52840. Detecting MCU data\r\n");
-    printf("Nordic Semiconductor nRF%x Variant: %c%c%c%c ", NRF_FICR->INFO.PART, p[3], p[2], p[1], p[0]);
-    printf("RAM: %dKB Flash: %dKB\r\n", NRF_FICR->INFO.RAM, NRF_FICR->INFO.FLASH);
-    printf("Device ID: %x%x\r\n", NRF_FICR->DEVICEID[0], NRF_FICR->DEVICEID[1]);
+    // uint32_t info = NRF_FICR->INFO.VARIANT;
+    // uint8_t * p = (uint8_t *)&info;
+    // printf("Doom port to nRF52840. Detecting MCU data\r\n");
+    // printf("Nordic Semiconductor nRF%x Variant: %c%c%c%c ", NRF_FICR->INFO.PART, p[3], p[2], p[1], p[0]);
+    // printf("RAM: %dKB Flash: %dKB\r\n", NRF_FICR->INFO.RAM, NRF_FICR->INFO.FLASH);
+    // printf("Device ID: %x%x\r\n", NRF_FICR->DEVICEID[0], NRF_FICR->DEVICEID[1]);
+	user_print_device_info();
     //
     //
-    uint8_t c = 0;
-    getKeys(&c);
-
-    displayPrintln(1, "Key Pressed: %x", c);
-    if ((c & (KEY_ALT | KEY_CHGW | KEY_USE)) == (KEY_ALT | KEY_CHGW | KEY_USE))
-    {
-        enableUsb();
-        displayPrintln(1, "Begin YMODEM Wad Upload");
-        if (0 == ymodemReceive(4))
-        {
-            displayPrintln(1, "Wad Upload successful.");
-        }
-        else
-        {
-            displayPrintln(1, "YMODEM Error.");
-        }
-        displayPrintln(1, "Reset in 1 second!");
-        delay(1000);
-        NVIC_SystemReset();
-    }
+	//NOTE this is for uploading the .wad info flash, don't think i'll reuse it ; 
+	//not because it doesn't have usb support, i'll just try some other way
+    // uint8_t c = 0;
+    // getKeys(&c);
+    // displayPrintln(1, "Key Pressed: %x", c);
+    // if ((c & (KEY_ALT | KEY_CHGW | KEY_USE)) == (KEY_ALT | KEY_CHGW | KEY_USE))
+    // {
+    //     enableUsb();
+    //     displayPrintln(1, "Begin YMODEM Wad Upload");
+    //     if (0 == ymodemReceive(4))
+    //     {
+    //         displayPrintln(1, "Wad Upload successful.");
+    //     }
+    //     else
+    //     {
+    //         displayPrintln(1, "YMODEM Error.");
+    //     }
+    //     displayPrintln(1, "Reset in 1 second!");
+    //     delay(1000);
+    //     NVIC_SystemReset();
+    // }
     //
     disableWirelessAudio();
     //

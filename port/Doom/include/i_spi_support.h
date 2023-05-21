@@ -1,4 +1,4 @@
-/**
+ /**
  *  Doom Port to the nRF52840 by Nicola Wrachien (next-hack in the comments)
  *
  *  This port is based on the excellent doomhack's GBA Doom Port,
@@ -76,5 +76,7 @@ static inline void* spiFlashGetData(void *dest, unsigned int length)
 static inline uint32_t spiFlashSetAddress(uint32_t address)
 {
     currentSpiAddress = (uint8_t*) address;
+	
+	return address;
 }
 #endif /* SOURCE_I_SPI_SUPPORT_H_ */

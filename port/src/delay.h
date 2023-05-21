@@ -36,12 +36,15 @@
 #ifndef SRC_DELAY_H_
 #define SRC_DELAY_H_
 #include <stdint.h>
-#include "nrf.h"
+// #include "nrf.h"
+#include "user_main.h"
+
 static inline void delay(uint32_t milliseconds)
 {
-    milliseconds *= 1000;
-    uint32_t timeNow = NRF_TIMER3->CC[0];
-    while ((uint32_t)NRF_TIMER3->CC[0] - timeNow < milliseconds)
-        ;
+    // milliseconds *= 1000;
+    // uint32_t timeNow = NRF_TIMER3->CC[0];
+    // while ((uint32_t)NRF_TIMER3->CC[0] - timeNow < milliseconds)
+    //     ;
+	user_delay(milliseconds);
 }
 #endif /* SRC_DELAY_H_ */

@@ -16,10 +16,10 @@ modules:
   revision: 0d225ddd314379b32355a00fb669eacf911e750d
 - name: atmel
   path: /home/gez/sdks/zephyr/modules/hal/atmel
-  revision: d45adfb6897aba323cac29cdda8070ce4f23f014
+  revision: 5ab43007eda3f380c125f957f03638d2e8d1144d
 - name: hal_espressif
   path: /home/gez/sdks/zephyr/modules/hal/espressif
-  revision: d2564ca5c14439888f7c4351884a2cf4db517a33
+  revision: 075894ed22caa5c2d1686a1e33953edd6aa41333
 - name: hal_ethos_u
   path: /home/gez/sdks/zephyr/modules/hal/ethos_u
   revision: 90ada2ea5681b2a2722a10d2898eac34c2510791
@@ -28,52 +28,52 @@ modules:
   revision: 2994b7dde8b0b0fa9b9c0ccb13474b6a486cddc3
 - name: hal_infineon
   path: /home/gez/sdks/zephyr/modules/hal/infineon
-  revision: 8485083ad91d3e2cc5d706da3464716718a6a42e
+  revision: 0bebc14d8bd1a249ee7fbc70b37db6f01f72544f
 - name: microchip
   path: /home/gez/sdks/zephyr/modules/hal/microchip
   revision: 5d079f1683a00b801373bbbbf5d181d4e33b30d5
 - name: hal_nordic
   path: /home/gez/sdks/zephyr/modules/hal/nordic
-  revision: 6c9f23498ee6a225fee049c8c5b2e1ac760bd4a8
+  revision: a1c3e0fbaafda091139b8744becd4853ada2f747
 - name: nuvoton
   path: /home/gez/sdks/zephyr/modules/hal/nuvoton
   revision: 0a1f153c433f5f637a4490651bdda6d966de3b99
 - name: hal_nxp
   path: /home/gez/sdks/zephyr/modules/hal/nxp
-  revision: d957472002a3758154f402e982d95ce90cf58e12
+  revision: 904830e8f684a9fd573751a1cdecde877ec49242
 - name: openisa
   path: /home/gez/sdks/zephyr/modules/hal/openisa
-  revision: 40d049f69c50b58ea20473bee14cf93f518bf262
+  revision: d1e61c0c654d8ca9e73d27fca3a7eb3b7881cb6a
 - name: quicklogic
   path: /home/gez/sdks/zephyr/modules/hal/quicklogic
   revision: b3a66fe6d04d87fd1533a5c8de51d0599fcd08d0
 - name: hal_renesas
   path: /home/gez/sdks/zephyr/modules/hal/renesas
-  revision: 468d3f2146d18c7f86a4640fc641cc1d20a4a100
+  revision: f2d791d28cd8fdbc5861652b863822632c91f690
 - name: hal_rpi_pico
   path: /home/gez/sdks/zephyr/modules/hal/rpi_pico
-  revision: a094c060e0c2d43c7f9d8f5c06cc0665117e0c18
+  revision: b7801e4db6a62ea2d37bbef7880c3d056530c9bf
 - name: silabs
   path: /home/gez/sdks/zephyr/modules/hal/silabs
-  revision: 9dcaa761258cfdfecaacc5a9f0af92f6535d74a3
+  revision: cee0e7704ece414924734cb422a6f346e13e71e5
 - name: st
   path: /home/gez/sdks/zephyr/modules/hal/st
-  revision: cccbc24c14decfd3f93959f7b14514536af973c7
+  revision: 5948f7b3304f1628a45ee928cd607619a7f53bbb
 - name: stm32
   path: /home/gez/sdks/zephyr/modules/hal/stm32
-  revision: c36136b253a46ed8dd63525eeee659393047ce83
+  revision: c865374fc83d93416c0f380e6310368ff55d6ce2
 - name: hal_telink
   path: /home/gez/sdks/zephyr/modules/hal/telink
   revision: 38573af589173259801ae6c2b34b7d4c9e626746
 - name: ti
   path: /home/gez/sdks/zephyr/modules/hal/ti
-  revision: 5e7d5cd584047699c9fd279923120cb25ba3dda7
+  revision: ae1db23f32dde779cdfc4afaa9a60ea219310a64
 - name: hal_wurthelektronik
   path: /home/gez/sdks/zephyr/modules/hal/wurthelektronik
   revision: 24ca9873c3d608fad1fea0431836bc8f144c132e
 - name: xtensa
   path: /home/gez/sdks/zephyr/modules/hal/xtensa
-  revision: 63f655362423aa49507da7977a2d37142e8debeb
+  revision: 41a631d4aeeeaedc0daece21eecc338807296ad7
 - name: libmetal
   path: /home/gez/sdks/zephyr/modules/hal/libmetal
   revision: efa2ace6028290ddee494a78ade772a0b112ab83
@@ -88,40 +88,40 @@ modules:
   revision: ce57712f3e426bbbb13acaec97b45369f716f43a
 - name: lvgl
   path: /home/gez/sdks/zephyr/modules/lib/gui/lvgl
-  revision: 5ab83099854719ed326b6ecb9b09b07b1eee4818
+  revision: 1557cb3e4d5c8dc7bb2e8610b686b5acb157903c
 - name: lz4
   path: /home/gez/sdks/zephyr/modules/lib/lz4
   revision: 8e303c264fc21c2116dc612658003a22e933124d
 - name: mbedtls
   path: /home/gez/sdks/zephyr/modules/crypto/mbedtls
-  revision: 6e166050075688fd3cf3d0cb3fc34a1c52df2496
+  revision: 4e1f66df894dc622da7bcd3884016a6ace08e9ea
 - name: mcuboot
   path: /home/gez/sdks/zephyr/bootloader/mcuboot
-  revision: 750678e33819b95756203e5db1ba827baee35708
+  revision: 2878eb4e32fabc14bc391c3221cbf285064d9db4
 - name: mipi-sys-t
   path: /home/gez/sdks/zephyr/modules/debug/mipi-sys-t
   revision: 0d521d8055f3b2b4842f728b0365d3f0ece9c37f
 - name: nanopb
   path: /home/gez/sdks/zephyr/modules/lib/nanopb
-  revision: dc4deed54fd4c7e1935e3b6387eedf21bb45dc38
+  revision: 42fa8b211e946b90b9d968523fce7b1cfe27617e
 - name: nrf_hw_models
   path: /home/gez/sdks/zephyr/modules/bsim_hw_models/nrf_hw_models
-  revision: ad21dabc84c6574944d978cce2079dbe1ede38c6
+  revision: c8d2ecd25d6976d2d77eccf66878420fdb8ef5a1
 - name: open-amp
   path: /home/gez/sdks/zephyr/modules/lib/open-amp
-  revision: aedcc262f93bbb1b0c2f58026911575729b7465c
+  revision: 233fb29c52ffa7733ba132a2b5987a8201ba8ec6
 - name: openthread
   path: /home/gez/sdks/zephyr/modules/lib/openthread
-  revision: 242c7cc7c3a80c985476689b64cdb6d8fbcf5b6d
+  revision: d9abe3071c0131a4adb5d7e7451319b735e6d855
 - name: picolibc
   path: /home/gez/sdks/zephyr/modules/lib/picolibc
-  revision: 2097f26ce7dee36922b22ce048c09cd073ebae3d
+  revision: 93b5d5f2ad44867b60267417cd6d6250dbf68983
 - name: segger
   path: /home/gez/sdks/zephyr/modules/debug/segger
-  revision: e2ff2200556e8a8f962921444275c04971a2bb3d
+  revision: 4bfaf28a11c3e5ec29badac744fab6d2f342749e
 - name: sof
   path: /home/gez/sdks/zephyr/modules/audio/sof
-  revision: 6f5f7258ad2738df78e600568d38fc261e2a118d
+  revision: ffbf9c2a6ea2930b0ac7e3a37c7cd7f5c417d090
 - name: tflite-micro
   path: /home/gez/sdks/zephyr/modules/lib/tflite-micro
   revision: 9156d050927012da87079064db59d07f03b8baf6
@@ -130,10 +130,10 @@ modules:
   revision: 3e9a49d2672ec01435ffbf0d788db6d95ef28de0
 - name: TraceRecorder
   path: /home/gez/sdks/zephyr/modules/debug/TraceRecorder
-  revision: d92607521335eaaaedb01b241cdd26fda48a5ca6
+  revision: bc839bf94904bcdb91b33760e918afbef82e3ab4
 - name: trusted-firmware-m
   path: /home/gez/sdks/zephyr/modules/tee/tf-m/trusted-firmware-m
-  revision: f2a639c8d1842acb2964a27461f5c9cfdfaa4d16
+  revision: 8209cb2ed2bc9a768cc1d715c2059616192cc720
 - name: trusted-firmware-a
   path: /home/gez/sdks/zephyr/modules/tee/tf-a/trusted-firmware-a
   revision: 28f5e137837f1c1a7a7b2af2dd8bb778c0a27532
@@ -142,13 +142,13 @@ modules:
   revision: 0f80a65193ddbbe3f0ac38b33b07b26138c11fa7
 - name: psa-arch-tests
   path: /home/gez/sdks/zephyr/modules/tee/tf-m/psa-arch-tests
-  revision: 24ed42e34e03ebbc945a7204819c1471cce2bda8
+  revision: 6a17330e0dfb5f319730f974d5b05f7b7f04757b
 - name: uoscore-uedhoc
   path: /home/gez/sdks/zephyr/modules/lib/uoscore-uedhoc
   revision: e8920192b66db4f909eb9cd3f155d5245c1ae825
 - name: zcbor
   path: /home/gez/sdks/zephyr/modules/lib/zcbor
-  revision: 0556edac504d1f34699aa8a22fcd507c14756c9e
+  revision: 67fd8bb88d3136738661fa8bb5f9989103f4599e
 - name: zscilib
   path: /home/gez/sdks/zephyr/modules/lib/zscilib
   revision: 0035be5e6a45e4ab89755b176d305d7a877fc79c
@@ -159,7 +159,9 @@ west:
   manifest: /home/gez/sdks/zephyr/zephyr/west.yml
   projects:
   - path: /home/gez/sdks/zephyr/zephyr
-    revision: 5c83a4f13d7bc753ff3e4fd6662e68ccc4b7661b-dirty
+    revision: d01780fc9403166d250ded3d02372a7e1a9db4fd-dirty
+  - path: /home/gez/sdks/zephyr/tools/bsim
+    revision: 908ffde6298a937c6549dbfa843a62caab26bfc5
   - path: /home/gez/sdks/zephyr/modules/lib/canopennode
     revision: dec12fa3f0d790cafa8414a4c2930ea71ab72ffd
   - path: /home/gez/sdks/zephyr/modules/lib/chre
@@ -167,51 +169,51 @@ west:
   - path: /home/gez/sdks/zephyr/modules/hal/cmsis
     revision: 74981bf893e8b10931464b9945e2143d99a3f0a3
   - path: /home/gez/sdks/zephyr/tools/edtt
-    revision: fc998bcaed44796c3800a3e62cf026bd9403d299
+    revision: 64e5105ad82390164fb73fc654be3f73a608209a
   - path: /home/gez/sdks/zephyr/modules/fs/fatfs
     revision: 427159bf95ea49b7680facffaa29ad506b42709b
   - path: /home/gez/sdks/zephyr/modules/hal/altera
     revision: 0d225ddd314379b32355a00fb669eacf911e750d
   - path: /home/gez/sdks/zephyr/modules/hal/atmel
-    revision: d45adfb6897aba323cac29cdda8070ce4f23f014
+    revision: 5ab43007eda3f380c125f957f03638d2e8d1144d
   - path: /home/gez/sdks/zephyr/modules/hal/espressif
-    revision: d2564ca5c14439888f7c4351884a2cf4db517a33
+    revision: 075894ed22caa5c2d1686a1e33953edd6aa41333
   - path: /home/gez/sdks/zephyr/modules/hal/ethos_u
     revision: 90ada2ea5681b2a2722a10d2898eac34c2510791
   - path: /home/gez/sdks/zephyr/modules/hal/gigadevice
     revision: 2994b7dde8b0b0fa9b9c0ccb13474b6a486cddc3
   - path: /home/gez/sdks/zephyr/modules/hal/infineon
-    revision: 8485083ad91d3e2cc5d706da3464716718a6a42e
+    revision: 0bebc14d8bd1a249ee7fbc70b37db6f01f72544f
   - path: /home/gez/sdks/zephyr/modules/hal/microchip
     revision: 5d079f1683a00b801373bbbbf5d181d4e33b30d5
   - path: /home/gez/sdks/zephyr/modules/hal/nordic
-    revision: 6c9f23498ee6a225fee049c8c5b2e1ac760bd4a8
+    revision: a1c3e0fbaafda091139b8744becd4853ada2f747
   - path: /home/gez/sdks/zephyr/modules/hal/nuvoton
     revision: 0a1f153c433f5f637a4490651bdda6d966de3b99
   - path: /home/gez/sdks/zephyr/modules/hal/nxp
-    revision: d957472002a3758154f402e982d95ce90cf58e12
+    revision: 904830e8f684a9fd573751a1cdecde877ec49242
   - path: /home/gez/sdks/zephyr/modules/hal/openisa
-    revision: 40d049f69c50b58ea20473bee14cf93f518bf262
+    revision: d1e61c0c654d8ca9e73d27fca3a7eb3b7881cb6a
   - path: /home/gez/sdks/zephyr/modules/hal/quicklogic
     revision: b3a66fe6d04d87fd1533a5c8de51d0599fcd08d0
   - path: /home/gez/sdks/zephyr/modules/hal/renesas
-    revision: 468d3f2146d18c7f86a4640fc641cc1d20a4a100
+    revision: f2d791d28cd8fdbc5861652b863822632c91f690
   - path: /home/gez/sdks/zephyr/modules/hal/rpi_pico
-    revision: a094c060e0c2d43c7f9d8f5c06cc0665117e0c18
+    revision: b7801e4db6a62ea2d37bbef7880c3d056530c9bf
   - path: /home/gez/sdks/zephyr/modules/hal/silabs
-    revision: 9dcaa761258cfdfecaacc5a9f0af92f6535d74a3
+    revision: cee0e7704ece414924734cb422a6f346e13e71e5
   - path: /home/gez/sdks/zephyr/modules/hal/st
-    revision: cccbc24c14decfd3f93959f7b14514536af973c7
+    revision: 5948f7b3304f1628a45ee928cd607619a7f53bbb
   - path: /home/gez/sdks/zephyr/modules/hal/stm32
-    revision: c36136b253a46ed8dd63525eeee659393047ce83
+    revision: c865374fc83d93416c0f380e6310368ff55d6ce2
   - path: /home/gez/sdks/zephyr/modules/hal/telink
     revision: 38573af589173259801ae6c2b34b7d4c9e626746
   - path: /home/gez/sdks/zephyr/modules/hal/ti
-    revision: 5e7d5cd584047699c9fd279923120cb25ba3dda7
+    revision: ae1db23f32dde779cdfc4afaa9a60ea219310a64
   - path: /home/gez/sdks/zephyr/modules/hal/wurthelektronik
     revision: 24ca9873c3d608fad1fea0431836bc8f144c132e
   - path: /home/gez/sdks/zephyr/modules/hal/xtensa
-    revision: 63f655362423aa49507da7977a2d37142e8debeb
+    revision: 41a631d4aeeeaedc0daece21eecc338807296ad7
   - path: /home/gez/sdks/zephyr/modules/hal/libmetal
     revision: efa2ace6028290ddee494a78ade772a0b112ab83
   - path: /home/gez/sdks/zephyr/modules/lib/liblc3
@@ -221,49 +223,49 @@ west:
   - path: /home/gez/sdks/zephyr/modules/lib/loramac-node
     revision: ce57712f3e426bbbb13acaec97b45369f716f43a
   - path: /home/gez/sdks/zephyr/modules/lib/gui/lvgl
-    revision: 5ab83099854719ed326b6ecb9b09b07b1eee4818
+    revision: 1557cb3e4d5c8dc7bb2e8610b686b5acb157903c
   - path: /home/gez/sdks/zephyr/modules/lib/lz4
     revision: 8e303c264fc21c2116dc612658003a22e933124d
   - path: /home/gez/sdks/zephyr/modules/crypto/mbedtls
-    revision: 6e166050075688fd3cf3d0cb3fc34a1c52df2496
+    revision: 4e1f66df894dc622da7bcd3884016a6ace08e9ea
   - path: /home/gez/sdks/zephyr/bootloader/mcuboot
-    revision: 750678e33819b95756203e5db1ba827baee35708
+    revision: 2878eb4e32fabc14bc391c3221cbf285064d9db4
   - path: /home/gez/sdks/zephyr/modules/debug/mipi-sys-t
     revision: 0d521d8055f3b2b4842f728b0365d3f0ece9c37f
   - path: /home/gez/sdks/zephyr/modules/lib/nanopb
-    revision: dc4deed54fd4c7e1935e3b6387eedf21bb45dc38
+    revision: 42fa8b211e946b90b9d968523fce7b1cfe27617e
   - path: /home/gez/sdks/zephyr/tools/net-tools
     revision: e0828aa9629b533644dc96ff6d1295c939bd713c
   - path: /home/gez/sdks/zephyr/modules/bsim_hw_models/nrf_hw_models
-    revision: ad21dabc84c6574944d978cce2079dbe1ede38c6
+    revision: c8d2ecd25d6976d2d77eccf66878420fdb8ef5a1
   - path: /home/gez/sdks/zephyr/modules/lib/open-amp
-    revision: aedcc262f93bbb1b0c2f58026911575729b7465c
+    revision: 233fb29c52ffa7733ba132a2b5987a8201ba8ec6
   - path: /home/gez/sdks/zephyr/modules/lib/openthread
-    revision: 242c7cc7c3a80c985476689b64cdb6d8fbcf5b6d
+    revision: d9abe3071c0131a4adb5d7e7451319b735e6d855
   - path: /home/gez/sdks/zephyr/modules/lib/picolibc
-    revision: 2097f26ce7dee36922b22ce048c09cd073ebae3d
+    revision: 93b5d5f2ad44867b60267417cd6d6250dbf68983
   - path: /home/gez/sdks/zephyr/modules/debug/segger
-    revision: e2ff2200556e8a8f962921444275c04971a2bb3d
+    revision: 4bfaf28a11c3e5ec29badac744fab6d2f342749e
   - path: /home/gez/sdks/zephyr/modules/audio/sof
-    revision: 6f5f7258ad2738df78e600568d38fc261e2a118d
+    revision: ffbf9c2a6ea2930b0ac7e3a37c7cd7f5c417d090
   - path: /home/gez/sdks/zephyr/modules/lib/tflite-micro
     revision: 9156d050927012da87079064db59d07f03b8baf6
   - path: /home/gez/sdks/zephyr/modules/crypto/tinycrypt
     revision: 3e9a49d2672ec01435ffbf0d788db6d95ef28de0
   - path: /home/gez/sdks/zephyr/modules/debug/TraceRecorder
-    revision: d92607521335eaaaedb01b241cdd26fda48a5ca6
+    revision: bc839bf94904bcdb91b33760e918afbef82e3ab4
   - path: /home/gez/sdks/zephyr/modules/tee/tf-m/trusted-firmware-m
-    revision: f2a639c8d1842acb2964a27461f5c9cfdfaa4d16
+    revision: 8209cb2ed2bc9a768cc1d715c2059616192cc720
   - path: /home/gez/sdks/zephyr/modules/tee/tf-a/trusted-firmware-a
     revision: 28f5e137837f1c1a7a7b2af2dd8bb778c0a27532
   - path: /home/gez/sdks/zephyr/modules/tee/tf-m/tf-m-tests
     revision: 0f80a65193ddbbe3f0ac38b33b07b26138c11fa7
   - path: /home/gez/sdks/zephyr/modules/tee/tf-m/psa-arch-tests
-    revision: 24ed42e34e03ebbc945a7204819c1471cce2bda8
+    revision: 6a17330e0dfb5f319730f974d5b05f7b7f04757b
   - path: /home/gez/sdks/zephyr/modules/lib/uoscore-uedhoc
     revision: e8920192b66db4f909eb9cd3f155d5245c1ae825
   - path: /home/gez/sdks/zephyr/modules/lib/zcbor
-    revision: 0556edac504d1f34699aa8a22fcd507c14756c9e
+    revision: 67fd8bb88d3136738661fa8bb5f9989103f4599e
   - path: /home/gez/sdks/zephyr/modules/lib/zscilib
     revision: 0035be5e6a45e4ab89755b176d305d7a877fc79c
   - path: /home/gez/sdks/zephyr/modules/lib/thrift
@@ -273,5 +275,5 @@ workspace:
   extra: false
   'off': false
 zephyr:
-  path: /home/gez/sdks/zephyr/zephyr
-  revision: 5c83a4f13d7bc753ff3e4fd6662e68ccc4b7661b-dirty
+  path: null
+  revision: 768897c03631c967029ec1b1271993fe37a74d4d-dirty

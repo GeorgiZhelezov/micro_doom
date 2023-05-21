@@ -132,24 +132,25 @@ void TryRunTics2(void)
 }
 void TryRunTics(void)
 {
+	//FIXME: no idea how this exactly works and does but seems it's important
     // "displayData.displayFrameBuffer[displayData.workingBuffer]" is a very large buffer, which will be modified
     // by the game rendering AFTER the game logic has been called, and for sure is not the one used by the DMA. 
     // Why not using it as stack ?
     // Note, why "-SCREEN_WIDTH * ST_HEIGHT - 4"? Because in this way, when the status bar does not need an update (i.e. no change in ammo, health, etc.)
     // we can avoid redrawing it, saving a lot of time. 
-    __asm volatile
-    (
-            "STR SP, [%[newStack]], #-4\n\t"
-            "MOV SP, %[newStack]\n\t"
-            : : [newStack] "r" ((uint8_t*) displayData.displayFrameBuffer[displayData.workingBuffer] + sizeof(displayData.displayFrameBuffer[0]) - SCREENWIDTH * ST_HEIGHT - 4)
-    );
-    // actually run doom game
-    TryRunTics2();
-    // restore stack
-    __asm volatile
-    (
-            "LDR SP, [%[newStack]]\n\t"
-            : : [newStack] "r" ((uint8_t*) displayData.displayFrameBuffer[displayData.workingBuffer] + sizeof(displayData.displayFrameBuffer[0]) - SCREENWIDTH * ST_HEIGHT - 4)
-    );
+    // __asm volatile
+    // (
+    //         "STR SP, [%[newStack]], #-4\n\t"
+    //         "MOV SP, %[newStack]\n\t"
+    //         : : [newStack] "r" ((uint8_t*) displayData.displayFrameBuffer[displayData.workingBuffer] + sizeof(displayData.displayFrameBuffer[0]) - SCREENWIDTH * ST_HEIGHT - 4)
+    // );
+    // // actually run doom game
+    // TryRunTics2();
+    // // restore stack
+    // __asm volatile
+    // (
+    //         "LDR SP, [%[newStack]]\n\t"
+    //         : : [newStack] "r" ((uint8_t*) displayData.displayFrameBuffer[displayData.workingBuffer] + sizeof(displayData.displayFrameBuffer[0]) - SCREENWIDTH * ST_HEIGHT - 4)
+    // );
 
 }

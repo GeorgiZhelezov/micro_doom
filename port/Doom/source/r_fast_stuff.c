@@ -624,8 +624,8 @@ FASTFUN /*__attribute__((used, section(".data")))*/ static void R_DrawColumn(con
     // This is as fast as it gets.
 
     unsigned int l = (count >> 4);
-#define BETTER_ASM_CODE 1
- #if BETTER_ASM_CODE
+// #define BETTER_ASM_CODE 1 //NOTE: use the pure C instead of assembly
+ #ifdef BETTER_ASM_CODE
  while (l--)
  {
    uint32_t fracShift;
@@ -1014,30 +1014,32 @@ static inline uint32_t getColumnOffsetData(patch_t *patch, int colindex)
 }
 static inline void getColumnDataNonBlocking(const patch_t *patch, int colindex, uint8_t *columnData)
 {
+	//FIXME: add flash column read non-blocking
+	
     uint32_t co = getColumnOffsetData((patch_t*) patch, colindex);
     uint32_t cnt = co >> 24;
     co = co & 0xFFFFFF;
-    NRF_QSPI->READ.CNT = cnt;
-    NRF_QSPI->READ.SRC = (uint32_t) patch + co;
-    NRF_QSPI->READ.DST = (uint32_t) columnData;
-    NRF_QSPI->EVENTS_READY = 0;
-    NRF_QSPI->TASKS_READSTART = 1;
+    // NRF_QSPI->READ.CNT = cnt;
+    // NRF_QSPI->READ.SRC = (uint32_t) patch + co;
+    // NRF_QSPI->READ.DST = (uint32_t) columnData;
+    // NRF_QSPI->EVENTS_READY = 0;
+    // NRF_QSPI->TASKS_READSTART = 1;
 }
 FASTFUN static inline column_t* getColumnData(const patch_t *patch, int colindex, uint8_t *columnData)
 {
-
+	//FIXME: add flash column read blocking
 
 #if 1
     uint32_t co = getColumnOffsetData((patch_t *) patch, colindex);
     uint32_t cnt = co >> 24;
     co = co & 0xFFFFFF;
-    NRF_QSPI->READ.CNT = cnt;
-    NRF_QSPI->READ.SRC = ((uint32_t) patch + co);
-    NRF_QSPI->READ.DST = (uint32_t) columnData;
-    NRF_QSPI->EVENTS_READY = 0;
-    NRF_QSPI->TASKS_READSTART = 1;
-    while (NRF_QSPI->EVENTS_READY == 0);
-    NRF_QSPI->EVENTS_READY = 0;    
+    // NRF_QSPI->READ.CNT = cnt;
+    // NRF_QSPI->READ.SRC = ((uint32_t) patch + co);
+    // NRF_QSPI->READ.DST = (uint32_t) columnData;
+    // NRF_QSPI->EVENTS_READY = 0;
+    // NRF_QSPI->TASKS_READSTART = 1;
+    // while (NRF_QSPI->EVENTS_READY == 0);
+    // NRF_QSPI->EVENTS_READY = 0;    
     return (column_t*) columnData;
 #elif 1
     uint32_t co = getColumnOffsetData((patch_t *) patch, colindex);;
@@ -1210,8 +1212,9 @@ FASTFUN static void R_DrawVisSprite(const vissprite_t *vis)
                 colindex = frac >> FRACBITS;
 
                 // wait till DMA has finished loading the column
-                while(!NRF_QSPI->EVENTS_READY) {};
-                NRF_QSPI->EVENTS_READY = 0;
+				//FIXME: might need something blocking here to wait
+                // while(!NRF_QSPI->EVENTS_READY) {};
+                // NRF_QSPI->EVENTS_READY = 0;
 
                 getColumnDataNonBlocking(patch, colindex, columnBuffer[1 -bufferNumber]);
                 R_DrawMaskedColumn(colfunc, &dcvars, (column_t*) columnBuffer[bufferNumber]);
@@ -1219,8 +1222,9 @@ FASTFUN static void R_DrawVisSprite(const vissprite_t *vis)
                 bufferNumber = 1 - bufferNumber;
             }
             // draw last column! We need to wait last DMA first
-            while(!NRF_QSPI->EVENTS_READY) {};
-            NRF_QSPI->EVENTS_READY = 0;
+			//FIXME: might need something blocking to wait drawing
+            // while(!NRF_QSPI->EVENTS_READY) {};
+            // NRF_QSPI->EVENTS_READY = 0;
             R_DrawMaskedColumn(colfunc, &dcvars, (column_t*) columnBuffer[bufferNumber]);
         }
         else
@@ -1249,8 +1253,9 @@ FASTFUN static void R_DrawVisSprite(const vissprite_t *vis)
                 if (x <= vis->x2)
                 {
                     // wait till DMA has finished loading the column
-                    while(!NRF_QSPI->EVENTS_READY) {};
-                    NRF_QSPI->EVENTS_READY = 0;
+					//FIXME: might need something blocking here to wait
+                    // while(!NRF_QSPI->EVENTS_READY) {};
+                    // NRF_QSPI->EVENTS_READY = 0;
                     getColumnDataNonBlocking(patch, colindex, columnBuffer[1 -bufferNumber]);
                     // draw all the columns with the same data
                     for (; dcvars.x < x; dcvars.x++)
@@ -1265,8 +1270,9 @@ FASTFUN static void R_DrawVisSprite(const vissprite_t *vis)
             // draw last column or group of column, if needed. We need to wait last DMA first
             if (dcvars.x <= vis->x2)
             {
-                while(!NRF_QSPI->EVENTS_READY) {};
-                NRF_QSPI->EVENTS_READY = 0;
+				//FIXME: might need something blocking to wait drawing
+                // while(!NRF_QSPI->EVENTS_READY) {};
+                // NRF_QSPI->EVENTS_READY = 0;
                 for (; dcvars.x <= vis->x2; dcvars.x++)
                 {
                     R_DrawMaskedColumn(colfunc, &dcvars, (column_t*) columnBuffer[bufferNumber]);
@@ -1625,11 +1631,12 @@ FASTFUN static void R_RenderMaskedSegRange(const drawseg_t *ds, int x1, int x2)
               //
               dcvars.iscale = FixedReciprocal((unsigned) spryscale);
               // draw the texture
-              if (wasOnExternalFlash)
-              {
-                while (!NRF_QSPI->EVENTS_READY) {};
-                NRF_QSPI->EVENTS_READY = 0;
-              }
+			  //FIXME: probably won't need to block here
+            //   if (wasOnExternalFlash)
+            //   {
+            //     while (!NRF_QSPI->EVENTS_READY) {};
+            //     NRF_QSPI->EVENTS_READY = 0;
+            //   }
               nextColumn = R_GetColumnNonBlocking(texture, xc, columnBuffer[1 - bufferNumber], &wasOnExternalFlash);
               R_DrawMaskedColumn(R_DrawColumn, &dcvars, column);
               column = nextColumn;
@@ -1654,11 +1661,12 @@ FASTFUN static void R_RenderMaskedSegRange(const drawseg_t *ds, int x1, int x2)
           //
           dcvars.iscale = FixedReciprocal((unsigned) spryscale);
           // draw the texture. However, wait till the buffer is ready, if we read if from external flash.
-          if (wasOnExternalFlash)
-          {
-            while (!NRF_QSPI->EVENTS_READY) {};
-            NRF_QSPI->EVENTS_READY = 0;
-          }
+			//FIXME: probably won't need to block here
+        //   if (wasOnExternalFlash)
+        //   {
+        //     while (!NRF_QSPI->EVENTS_READY) {};
+        //     NRF_QSPI->EVENTS_READY = 0;
+        //   }
           R_DrawMaskedColumn(R_DrawColumn, &dcvars, column);
           maskedtexturecol[dcvars.x] = D_SHRT_MAX; // dropoff overflow
       }
@@ -3251,13 +3259,14 @@ FASTFUN inline static void* R_GetSinglePatchTextureColumnNonBlocking(const textu
     else
     {   
         // was there any pending DMA operation ? 
+		//FIXME: might need something blocking but probably not
         if (dmaOperation->pendingDmaOperation)
         {
-            while(!NRF_QSPI->EVENTS_READY);
-            NRF_QSPI->EVENTS_READY = 0;
+        //     while(!NRF_QSPI->EVENTS_READY);
+        //     NRF_QSPI->EVENTS_READY = 0;
         }
-#define GET_SIZE_FROM_TEXTURE_DATA 1
-#if GET_SIZE_FROM_TEXTURE_DATA
+// #define GET_SIZE_FROM_TEXTURE_DATA 1
+#ifdef GET_SIZE_FROM_TEXTURE_DATA
 
         NRF_QSPI->READ.CNT = texture->height;
         NRF_QSPI->READ.SRC = (uint32_t) patch 
@@ -3272,11 +3281,12 @@ FASTFUN inline static void* R_GetSinglePatchTextureColumnNonBlocking(const textu
         uint32_t co = getColumnOffsetData((patch_t*) patch, xc);
         uint32_t cnt = co >> 24;
         co = co & 0xFFFFFF;
-        NRF_QSPI->READ.CNT = cnt - 4;
-        NRF_QSPI->READ.SRC = (uint32_t) patch + co + 3;
-        NRF_QSPI->READ.DST = (uint32_t) columnData;
-        NRF_QSPI->EVENTS_READY = 0;
-        NRF_QSPI->TASKS_READSTART = 1;
+		//FIXME: add texture data size read
+        // NRF_QSPI->READ.CNT = cnt - 4;
+        // NRF_QSPI->READ.SRC = (uint32_t) patch + co + 3;
+        // NRF_QSPI->READ.DST = (uint32_t) columnData;
+        // NRF_QSPI->EVENTS_READY = 0;
+        // NRF_QSPI->TASKS_READSTART = 1;
 #endif
         if (isTop)
         {
@@ -3923,8 +3933,9 @@ static inline void R_RenderSegLoop(int rw_x)
                             // we must make sure the column has been loaded
                             if (dmaOperation.topTextureLoadByDma)
                             {
-                                while(!NRF_QSPI->EVENTS_READY);
-                                NRF_QSPI->EVENTS_READY = 0;
+								//FIXME: might need blocking
+                                // while(!NRF_QSPI->EVENTS_READY);
+                                // NRF_QSPI->EVENTS_READY = 0;
                             }
                             dmaOperation.pendingDmaOperation = 0; // after this, for sure it has been loaded
                             R_DrawColumn(&topDcvars);
@@ -3975,8 +3986,9 @@ static inline void R_RenderSegLoop(int rw_x)
                             // we must make sure the column has been loaded
                             if (dmaOperation.bottomTextureLoadByDma)
                             {
-                                while(!NRF_QSPI->EVENTS_READY);
-                                NRF_QSPI->EVENTS_READY = 0;
+								//FIXME: might need blocking
+                                // while(!NRF_QSPI->EVENTS_READY);
+                                // NRF_QSPI->EVENTS_READY = 0;
                             }
                             dmaOperation.pendingDmaOperation = 0; // after this, for sure it has been loaded
 
@@ -4021,8 +4033,9 @@ static inline void R_RenderSegLoop(int rw_x)
             // we must make sure the column has been loaded
             if (dmaOperation.topTextureLoadByDma)
             {
-                while(!NRF_QSPI->EVENTS_READY);
-                NRF_QSPI->EVENTS_READY = 0;
+				//FIXME: might need blocking
+                // while(!NRF_QSPI->EVENTS_READY);
+                // NRF_QSPI->EVENTS_READY = 0;
             }
             dmaOperation.pendingDmaOperation = 0; // after this, for sure it has been loaded
             R_DrawColumn(&topDcvars);
@@ -4033,8 +4046,9 @@ static inline void R_RenderSegLoop(int rw_x)
             // we must make sure the column has been loaded
             if (dmaOperation.bottomTextureLoadByDma)
             {
-                while(!NRF_QSPI->EVENTS_READY);
-                NRF_QSPI->EVENTS_READY = 0;
+				//FIXME: might need blocking
+                // while(!NRF_QSPI->EVENTS_READY);
+                // NRF_QSPI->EVENTS_READY = 0;
             }
             dmaOperation.pendingDmaOperation = 0; // after this, for sure it has been loaded
 

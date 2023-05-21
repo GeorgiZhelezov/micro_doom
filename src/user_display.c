@@ -10,6 +10,8 @@
 #include <zephyr/logging/log.h>
 LOG_MODULE_REGISTER(user_display, LOG_LEVEL_INF);
 
+K_SEM_DEFINE(sem_display, 1, 1);
+
 static const struct device *display_dev = DEVICE_DT_GET(DT_ALIAS(display_ctrl));
 static const struct gpio_dt_spec display_pin_bl   = GPIO_DT_SPEC_GET(DT_NODELABEL(display_bl), gpios);
 

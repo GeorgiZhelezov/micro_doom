@@ -5,7 +5,7 @@
  *   /home/gez/workspaces/eclipse/esp_doom/build/zephyr/zephyr.dts.pre
  *
  * Directories with bindings:
- *   $ZEPHYR_BASE/dts/bindings
+ *   /home/gez/sdks/zephyr/zephyr/dts/bindings
  *
  * Node dependency ordering (ordinal and path):
  *   0   /
@@ -60,7 +60,7 @@
  *   49  /soc/ipi@3f4c0058
  *   50  /soc/ipi@3f4c005c
  *   51  /soc/memory@3ffe5230
- *   52  /soc/ipm@3ffe5a30
+ *   52  /soc/ipm@3ffed238
  *   53  /soc/ledc@3ff59000
  *   54  /soc/mcpwm@3ff5e000
  *   55  /soc/mcpwm@3ff6c000
@@ -294,10 +294,10 @@
 #define DT_N_S_soc_CHILD_IDX 2
 
 /* Helper macros for child nodes of this node. */
-#define DT_N_S_soc_FOREACH_CHILD(fn) fn(DT_N_S_soc_S_memory_3ffb0000) fn(DT_N_S_soc_S_memory_3ffe5230) fn(DT_N_S_soc_S_memory_3ffe5630) fn(DT_N_S_soc_S_interrupt_controller_3ff00104) fn(DT_N_S_soc_S_rtc_3ff48000) fn(DT_N_S_soc_S_flash_controller_3ff42000) fn(DT_N_S_soc_S_ipm_3ffe5a30) fn(DT_N_S_soc_S_ipi_3f4c0058) fn(DT_N_S_soc_S_ipi_3f4c005c) fn(DT_N_S_soc_S_uart_3ff40000) fn(DT_N_S_soc_S_uart_3ff50000) fn(DT_N_S_soc_S_uart_3ff6e000) fn(DT_N_S_soc_S_pcnt_3ff57000) fn(DT_N_S_soc_S_ledc_3ff59000) fn(DT_N_S_soc_S_mcpwm_3ff5e000) fn(DT_N_S_soc_S_mcpwm_3ff6c000) fn(DT_N_S_soc_S_gpio) fn(DT_N_S_soc_S_i2c_3ff53000) fn(DT_N_S_soc_S_i2c_3ff67000) fn(DT_N_S_soc_S_trng_3ff75144) fn(DT_N_S_soc_S_watchdog_3ff5f048) fn(DT_N_S_soc_S_watchdog_3ff60048) fn(DT_N_S_soc_S_spi_3ff64000) fn(DT_N_S_soc_S_spi_3ff65000) fn(DT_N_S_soc_S_can_3ff6b000) fn(DT_N_S_soc_S_counter_3ff5f000) fn(DT_N_S_soc_S_counter_3ff5f024) fn(DT_N_S_soc_S_counter_3ff60000) fn(DT_N_S_soc_S_counter_3ff60024) fn(DT_N_S_soc_S_dac_3ff48800) fn(DT_N_S_soc_S_adc_3ff48800) fn(DT_N_S_soc_S_adc_3ff48890)
-#define DT_N_S_soc_FOREACH_CHILD_SEP(fn, sep) fn(DT_N_S_soc_S_memory_3ffb0000) DT_DEBRACKET_INTERNAL sep fn(DT_N_S_soc_S_memory_3ffe5230) DT_DEBRACKET_INTERNAL sep fn(DT_N_S_soc_S_memory_3ffe5630) DT_DEBRACKET_INTERNAL sep fn(DT_N_S_soc_S_interrupt_controller_3ff00104) DT_DEBRACKET_INTERNAL sep fn(DT_N_S_soc_S_rtc_3ff48000) DT_DEBRACKET_INTERNAL sep fn(DT_N_S_soc_S_flash_controller_3ff42000) DT_DEBRACKET_INTERNAL sep fn(DT_N_S_soc_S_ipm_3ffe5a30) DT_DEBRACKET_INTERNAL sep fn(DT_N_S_soc_S_ipi_3f4c0058) DT_DEBRACKET_INTERNAL sep fn(DT_N_S_soc_S_ipi_3f4c005c) DT_DEBRACKET_INTERNAL sep fn(DT_N_S_soc_S_uart_3ff40000) DT_DEBRACKET_INTERNAL sep fn(DT_N_S_soc_S_uart_3ff50000) DT_DEBRACKET_INTERNAL sep fn(DT_N_S_soc_S_uart_3ff6e000) DT_DEBRACKET_INTERNAL sep fn(DT_N_S_soc_S_pcnt_3ff57000) DT_DEBRACKET_INTERNAL sep fn(DT_N_S_soc_S_ledc_3ff59000) DT_DEBRACKET_INTERNAL sep fn(DT_N_S_soc_S_mcpwm_3ff5e000) DT_DEBRACKET_INTERNAL sep fn(DT_N_S_soc_S_mcpwm_3ff6c000) DT_DEBRACKET_INTERNAL sep fn(DT_N_S_soc_S_gpio) DT_DEBRACKET_INTERNAL sep fn(DT_N_S_soc_S_i2c_3ff53000) DT_DEBRACKET_INTERNAL sep fn(DT_N_S_soc_S_i2c_3ff67000) DT_DEBRACKET_INTERNAL sep fn(DT_N_S_soc_S_trng_3ff75144) DT_DEBRACKET_INTERNAL sep fn(DT_N_S_soc_S_watchdog_3ff5f048) DT_DEBRACKET_INTERNAL sep fn(DT_N_S_soc_S_watchdog_3ff60048) DT_DEBRACKET_INTERNAL sep fn(DT_N_S_soc_S_spi_3ff64000) DT_DEBRACKET_INTERNAL sep fn(DT_N_S_soc_S_spi_3ff65000) DT_DEBRACKET_INTERNAL sep fn(DT_N_S_soc_S_can_3ff6b000) DT_DEBRACKET_INTERNAL sep fn(DT_N_S_soc_S_counter_3ff5f000) DT_DEBRACKET_INTERNAL sep fn(DT_N_S_soc_S_counter_3ff5f024) DT_DEBRACKET_INTERNAL sep fn(DT_N_S_soc_S_counter_3ff60000) DT_DEBRACKET_INTERNAL sep fn(DT_N_S_soc_S_counter_3ff60024) DT_DEBRACKET_INTERNAL sep fn(DT_N_S_soc_S_dac_3ff48800) DT_DEBRACKET_INTERNAL sep fn(DT_N_S_soc_S_adc_3ff48800) DT_DEBRACKET_INTERNAL sep fn(DT_N_S_soc_S_adc_3ff48890)
-#define DT_N_S_soc_FOREACH_CHILD_VARGS(fn, ...) fn(DT_N_S_soc_S_memory_3ffb0000, __VA_ARGS__) fn(DT_N_S_soc_S_memory_3ffe5230, __VA_ARGS__) fn(DT_N_S_soc_S_memory_3ffe5630, __VA_ARGS__) fn(DT_N_S_soc_S_interrupt_controller_3ff00104, __VA_ARGS__) fn(DT_N_S_soc_S_rtc_3ff48000, __VA_ARGS__) fn(DT_N_S_soc_S_flash_controller_3ff42000, __VA_ARGS__) fn(DT_N_S_soc_S_ipm_3ffe5a30, __VA_ARGS__) fn(DT_N_S_soc_S_ipi_3f4c0058, __VA_ARGS__) fn(DT_N_S_soc_S_ipi_3f4c005c, __VA_ARGS__) fn(DT_N_S_soc_S_uart_3ff40000, __VA_ARGS__) fn(DT_N_S_soc_S_uart_3ff50000, __VA_ARGS__) fn(DT_N_S_soc_S_uart_3ff6e000, __VA_ARGS__) fn(DT_N_S_soc_S_pcnt_3ff57000, __VA_ARGS__) fn(DT_N_S_soc_S_ledc_3ff59000, __VA_ARGS__) fn(DT_N_S_soc_S_mcpwm_3ff5e000, __VA_ARGS__) fn(DT_N_S_soc_S_mcpwm_3ff6c000, __VA_ARGS__) fn(DT_N_S_soc_S_gpio, __VA_ARGS__) fn(DT_N_S_soc_S_i2c_3ff53000, __VA_ARGS__) fn(DT_N_S_soc_S_i2c_3ff67000, __VA_ARGS__) fn(DT_N_S_soc_S_trng_3ff75144, __VA_ARGS__) fn(DT_N_S_soc_S_watchdog_3ff5f048, __VA_ARGS__) fn(DT_N_S_soc_S_watchdog_3ff60048, __VA_ARGS__) fn(DT_N_S_soc_S_spi_3ff64000, __VA_ARGS__) fn(DT_N_S_soc_S_spi_3ff65000, __VA_ARGS__) fn(DT_N_S_soc_S_can_3ff6b000, __VA_ARGS__) fn(DT_N_S_soc_S_counter_3ff5f000, __VA_ARGS__) fn(DT_N_S_soc_S_counter_3ff5f024, __VA_ARGS__) fn(DT_N_S_soc_S_counter_3ff60000, __VA_ARGS__) fn(DT_N_S_soc_S_counter_3ff60024, __VA_ARGS__) fn(DT_N_S_soc_S_dac_3ff48800, __VA_ARGS__) fn(DT_N_S_soc_S_adc_3ff48800, __VA_ARGS__) fn(DT_N_S_soc_S_adc_3ff48890, __VA_ARGS__)
-#define DT_N_S_soc_FOREACH_CHILD_SEP_VARGS(fn, sep, ...) fn(DT_N_S_soc_S_memory_3ffb0000, __VA_ARGS__) DT_DEBRACKET_INTERNAL sep fn(DT_N_S_soc_S_memory_3ffe5230, __VA_ARGS__) DT_DEBRACKET_INTERNAL sep fn(DT_N_S_soc_S_memory_3ffe5630, __VA_ARGS__) DT_DEBRACKET_INTERNAL sep fn(DT_N_S_soc_S_interrupt_controller_3ff00104, __VA_ARGS__) DT_DEBRACKET_INTERNAL sep fn(DT_N_S_soc_S_rtc_3ff48000, __VA_ARGS__) DT_DEBRACKET_INTERNAL sep fn(DT_N_S_soc_S_flash_controller_3ff42000, __VA_ARGS__) DT_DEBRACKET_INTERNAL sep fn(DT_N_S_soc_S_ipm_3ffe5a30, __VA_ARGS__) DT_DEBRACKET_INTERNAL sep fn(DT_N_S_soc_S_ipi_3f4c0058, __VA_ARGS__) DT_DEBRACKET_INTERNAL sep fn(DT_N_S_soc_S_ipi_3f4c005c, __VA_ARGS__) DT_DEBRACKET_INTERNAL sep fn(DT_N_S_soc_S_uart_3ff40000, __VA_ARGS__) DT_DEBRACKET_INTERNAL sep fn(DT_N_S_soc_S_uart_3ff50000, __VA_ARGS__) DT_DEBRACKET_INTERNAL sep fn(DT_N_S_soc_S_uart_3ff6e000, __VA_ARGS__) DT_DEBRACKET_INTERNAL sep fn(DT_N_S_soc_S_pcnt_3ff57000, __VA_ARGS__) DT_DEBRACKET_INTERNAL sep fn(DT_N_S_soc_S_ledc_3ff59000, __VA_ARGS__) DT_DEBRACKET_INTERNAL sep fn(DT_N_S_soc_S_mcpwm_3ff5e000, __VA_ARGS__) DT_DEBRACKET_INTERNAL sep fn(DT_N_S_soc_S_mcpwm_3ff6c000, __VA_ARGS__) DT_DEBRACKET_INTERNAL sep fn(DT_N_S_soc_S_gpio, __VA_ARGS__) DT_DEBRACKET_INTERNAL sep fn(DT_N_S_soc_S_i2c_3ff53000, __VA_ARGS__) DT_DEBRACKET_INTERNAL sep fn(DT_N_S_soc_S_i2c_3ff67000, __VA_ARGS__) DT_DEBRACKET_INTERNAL sep fn(DT_N_S_soc_S_trng_3ff75144, __VA_ARGS__) DT_DEBRACKET_INTERNAL sep fn(DT_N_S_soc_S_watchdog_3ff5f048, __VA_ARGS__) DT_DEBRACKET_INTERNAL sep fn(DT_N_S_soc_S_watchdog_3ff60048, __VA_ARGS__) DT_DEBRACKET_INTERNAL sep fn(DT_N_S_soc_S_spi_3ff64000, __VA_ARGS__) DT_DEBRACKET_INTERNAL sep fn(DT_N_S_soc_S_spi_3ff65000, __VA_ARGS__) DT_DEBRACKET_INTERNAL sep fn(DT_N_S_soc_S_can_3ff6b000, __VA_ARGS__) DT_DEBRACKET_INTERNAL sep fn(DT_N_S_soc_S_counter_3ff5f000, __VA_ARGS__) DT_DEBRACKET_INTERNAL sep fn(DT_N_S_soc_S_counter_3ff5f024, __VA_ARGS__) DT_DEBRACKET_INTERNAL sep fn(DT_N_S_soc_S_counter_3ff60000, __VA_ARGS__) DT_DEBRACKET_INTERNAL sep fn(DT_N_S_soc_S_counter_3ff60024, __VA_ARGS__) DT_DEBRACKET_INTERNAL sep fn(DT_N_S_soc_S_dac_3ff48800, __VA_ARGS__) DT_DEBRACKET_INTERNAL sep fn(DT_N_S_soc_S_adc_3ff48800, __VA_ARGS__) DT_DEBRACKET_INTERNAL sep fn(DT_N_S_soc_S_adc_3ff48890, __VA_ARGS__)
+#define DT_N_S_soc_FOREACH_CHILD(fn) fn(DT_N_S_soc_S_memory_3ffb0000) fn(DT_N_S_soc_S_memory_3ffe5230) fn(DT_N_S_soc_S_memory_3ffe5630) fn(DT_N_S_soc_S_interrupt_controller_3ff00104) fn(DT_N_S_soc_S_rtc_3ff48000) fn(DT_N_S_soc_S_flash_controller_3ff42000) fn(DT_N_S_soc_S_ipm_3ffed238) fn(DT_N_S_soc_S_ipi_3f4c0058) fn(DT_N_S_soc_S_ipi_3f4c005c) fn(DT_N_S_soc_S_uart_3ff40000) fn(DT_N_S_soc_S_uart_3ff50000) fn(DT_N_S_soc_S_uart_3ff6e000) fn(DT_N_S_soc_S_pcnt_3ff57000) fn(DT_N_S_soc_S_ledc_3ff59000) fn(DT_N_S_soc_S_mcpwm_3ff5e000) fn(DT_N_S_soc_S_mcpwm_3ff6c000) fn(DT_N_S_soc_S_gpio) fn(DT_N_S_soc_S_i2c_3ff53000) fn(DT_N_S_soc_S_i2c_3ff67000) fn(DT_N_S_soc_S_trng_3ff75144) fn(DT_N_S_soc_S_watchdog_3ff5f048) fn(DT_N_S_soc_S_watchdog_3ff60048) fn(DT_N_S_soc_S_spi_3ff64000) fn(DT_N_S_soc_S_spi_3ff65000) fn(DT_N_S_soc_S_can_3ff6b000) fn(DT_N_S_soc_S_counter_3ff5f000) fn(DT_N_S_soc_S_counter_3ff5f024) fn(DT_N_S_soc_S_counter_3ff60000) fn(DT_N_S_soc_S_counter_3ff60024) fn(DT_N_S_soc_S_dac_3ff48800) fn(DT_N_S_soc_S_adc_3ff48800) fn(DT_N_S_soc_S_adc_3ff48890)
+#define DT_N_S_soc_FOREACH_CHILD_SEP(fn, sep) fn(DT_N_S_soc_S_memory_3ffb0000) DT_DEBRACKET_INTERNAL sep fn(DT_N_S_soc_S_memory_3ffe5230) DT_DEBRACKET_INTERNAL sep fn(DT_N_S_soc_S_memory_3ffe5630) DT_DEBRACKET_INTERNAL sep fn(DT_N_S_soc_S_interrupt_controller_3ff00104) DT_DEBRACKET_INTERNAL sep fn(DT_N_S_soc_S_rtc_3ff48000) DT_DEBRACKET_INTERNAL sep fn(DT_N_S_soc_S_flash_controller_3ff42000) DT_DEBRACKET_INTERNAL sep fn(DT_N_S_soc_S_ipm_3ffed238) DT_DEBRACKET_INTERNAL sep fn(DT_N_S_soc_S_ipi_3f4c0058) DT_DEBRACKET_INTERNAL sep fn(DT_N_S_soc_S_ipi_3f4c005c) DT_DEBRACKET_INTERNAL sep fn(DT_N_S_soc_S_uart_3ff40000) DT_DEBRACKET_INTERNAL sep fn(DT_N_S_soc_S_uart_3ff50000) DT_DEBRACKET_INTERNAL sep fn(DT_N_S_soc_S_uart_3ff6e000) DT_DEBRACKET_INTERNAL sep fn(DT_N_S_soc_S_pcnt_3ff57000) DT_DEBRACKET_INTERNAL sep fn(DT_N_S_soc_S_ledc_3ff59000) DT_DEBRACKET_INTERNAL sep fn(DT_N_S_soc_S_mcpwm_3ff5e000) DT_DEBRACKET_INTERNAL sep fn(DT_N_S_soc_S_mcpwm_3ff6c000) DT_DEBRACKET_INTERNAL sep fn(DT_N_S_soc_S_gpio) DT_DEBRACKET_INTERNAL sep fn(DT_N_S_soc_S_i2c_3ff53000) DT_DEBRACKET_INTERNAL sep fn(DT_N_S_soc_S_i2c_3ff67000) DT_DEBRACKET_INTERNAL sep fn(DT_N_S_soc_S_trng_3ff75144) DT_DEBRACKET_INTERNAL sep fn(DT_N_S_soc_S_watchdog_3ff5f048) DT_DEBRACKET_INTERNAL sep fn(DT_N_S_soc_S_watchdog_3ff60048) DT_DEBRACKET_INTERNAL sep fn(DT_N_S_soc_S_spi_3ff64000) DT_DEBRACKET_INTERNAL sep fn(DT_N_S_soc_S_spi_3ff65000) DT_DEBRACKET_INTERNAL sep fn(DT_N_S_soc_S_can_3ff6b000) DT_DEBRACKET_INTERNAL sep fn(DT_N_S_soc_S_counter_3ff5f000) DT_DEBRACKET_INTERNAL sep fn(DT_N_S_soc_S_counter_3ff5f024) DT_DEBRACKET_INTERNAL sep fn(DT_N_S_soc_S_counter_3ff60000) DT_DEBRACKET_INTERNAL sep fn(DT_N_S_soc_S_counter_3ff60024) DT_DEBRACKET_INTERNAL sep fn(DT_N_S_soc_S_dac_3ff48800) DT_DEBRACKET_INTERNAL sep fn(DT_N_S_soc_S_adc_3ff48800) DT_DEBRACKET_INTERNAL sep fn(DT_N_S_soc_S_adc_3ff48890)
+#define DT_N_S_soc_FOREACH_CHILD_VARGS(fn, ...) fn(DT_N_S_soc_S_memory_3ffb0000, __VA_ARGS__) fn(DT_N_S_soc_S_memory_3ffe5230, __VA_ARGS__) fn(DT_N_S_soc_S_memory_3ffe5630, __VA_ARGS__) fn(DT_N_S_soc_S_interrupt_controller_3ff00104, __VA_ARGS__) fn(DT_N_S_soc_S_rtc_3ff48000, __VA_ARGS__) fn(DT_N_S_soc_S_flash_controller_3ff42000, __VA_ARGS__) fn(DT_N_S_soc_S_ipm_3ffed238, __VA_ARGS__) fn(DT_N_S_soc_S_ipi_3f4c0058, __VA_ARGS__) fn(DT_N_S_soc_S_ipi_3f4c005c, __VA_ARGS__) fn(DT_N_S_soc_S_uart_3ff40000, __VA_ARGS__) fn(DT_N_S_soc_S_uart_3ff50000, __VA_ARGS__) fn(DT_N_S_soc_S_uart_3ff6e000, __VA_ARGS__) fn(DT_N_S_soc_S_pcnt_3ff57000, __VA_ARGS__) fn(DT_N_S_soc_S_ledc_3ff59000, __VA_ARGS__) fn(DT_N_S_soc_S_mcpwm_3ff5e000, __VA_ARGS__) fn(DT_N_S_soc_S_mcpwm_3ff6c000, __VA_ARGS__) fn(DT_N_S_soc_S_gpio, __VA_ARGS__) fn(DT_N_S_soc_S_i2c_3ff53000, __VA_ARGS__) fn(DT_N_S_soc_S_i2c_3ff67000, __VA_ARGS__) fn(DT_N_S_soc_S_trng_3ff75144, __VA_ARGS__) fn(DT_N_S_soc_S_watchdog_3ff5f048, __VA_ARGS__) fn(DT_N_S_soc_S_watchdog_3ff60048, __VA_ARGS__) fn(DT_N_S_soc_S_spi_3ff64000, __VA_ARGS__) fn(DT_N_S_soc_S_spi_3ff65000, __VA_ARGS__) fn(DT_N_S_soc_S_can_3ff6b000, __VA_ARGS__) fn(DT_N_S_soc_S_counter_3ff5f000, __VA_ARGS__) fn(DT_N_S_soc_S_counter_3ff5f024, __VA_ARGS__) fn(DT_N_S_soc_S_counter_3ff60000, __VA_ARGS__) fn(DT_N_S_soc_S_counter_3ff60024, __VA_ARGS__) fn(DT_N_S_soc_S_dac_3ff48800, __VA_ARGS__) fn(DT_N_S_soc_S_adc_3ff48800, __VA_ARGS__) fn(DT_N_S_soc_S_adc_3ff48890, __VA_ARGS__)
+#define DT_N_S_soc_FOREACH_CHILD_SEP_VARGS(fn, sep, ...) fn(DT_N_S_soc_S_memory_3ffb0000, __VA_ARGS__) DT_DEBRACKET_INTERNAL sep fn(DT_N_S_soc_S_memory_3ffe5230, __VA_ARGS__) DT_DEBRACKET_INTERNAL sep fn(DT_N_S_soc_S_memory_3ffe5630, __VA_ARGS__) DT_DEBRACKET_INTERNAL sep fn(DT_N_S_soc_S_interrupt_controller_3ff00104, __VA_ARGS__) DT_DEBRACKET_INTERNAL sep fn(DT_N_S_soc_S_rtc_3ff48000, __VA_ARGS__) DT_DEBRACKET_INTERNAL sep fn(DT_N_S_soc_S_flash_controller_3ff42000, __VA_ARGS__) DT_DEBRACKET_INTERNAL sep fn(DT_N_S_soc_S_ipm_3ffed238, __VA_ARGS__) DT_DEBRACKET_INTERNAL sep fn(DT_N_S_soc_S_ipi_3f4c0058, __VA_ARGS__) DT_DEBRACKET_INTERNAL sep fn(DT_N_S_soc_S_ipi_3f4c005c, __VA_ARGS__) DT_DEBRACKET_INTERNAL sep fn(DT_N_S_soc_S_uart_3ff40000, __VA_ARGS__) DT_DEBRACKET_INTERNAL sep fn(DT_N_S_soc_S_uart_3ff50000, __VA_ARGS__) DT_DEBRACKET_INTERNAL sep fn(DT_N_S_soc_S_uart_3ff6e000, __VA_ARGS__) DT_DEBRACKET_INTERNAL sep fn(DT_N_S_soc_S_pcnt_3ff57000, __VA_ARGS__) DT_DEBRACKET_INTERNAL sep fn(DT_N_S_soc_S_ledc_3ff59000, __VA_ARGS__) DT_DEBRACKET_INTERNAL sep fn(DT_N_S_soc_S_mcpwm_3ff5e000, __VA_ARGS__) DT_DEBRACKET_INTERNAL sep fn(DT_N_S_soc_S_mcpwm_3ff6c000, __VA_ARGS__) DT_DEBRACKET_INTERNAL sep fn(DT_N_S_soc_S_gpio, __VA_ARGS__) DT_DEBRACKET_INTERNAL sep fn(DT_N_S_soc_S_i2c_3ff53000, __VA_ARGS__) DT_DEBRACKET_INTERNAL sep fn(DT_N_S_soc_S_i2c_3ff67000, __VA_ARGS__) DT_DEBRACKET_INTERNAL sep fn(DT_N_S_soc_S_trng_3ff75144, __VA_ARGS__) DT_DEBRACKET_INTERNAL sep fn(DT_N_S_soc_S_watchdog_3ff5f048, __VA_ARGS__) DT_DEBRACKET_INTERNAL sep fn(DT_N_S_soc_S_watchdog_3ff60048, __VA_ARGS__) DT_DEBRACKET_INTERNAL sep fn(DT_N_S_soc_S_spi_3ff64000, __VA_ARGS__) DT_DEBRACKET_INTERNAL sep fn(DT_N_S_soc_S_spi_3ff65000, __VA_ARGS__) DT_DEBRACKET_INTERNAL sep fn(DT_N_S_soc_S_can_3ff6b000, __VA_ARGS__) DT_DEBRACKET_INTERNAL sep fn(DT_N_S_soc_S_counter_3ff5f000, __VA_ARGS__) DT_DEBRACKET_INTERNAL sep fn(DT_N_S_soc_S_counter_3ff5f024, __VA_ARGS__) DT_DEBRACKET_INTERNAL sep fn(DT_N_S_soc_S_counter_3ff60000, __VA_ARGS__) DT_DEBRACKET_INTERNAL sep fn(DT_N_S_soc_S_counter_3ff60024, __VA_ARGS__) DT_DEBRACKET_INTERNAL sep fn(DT_N_S_soc_S_dac_3ff48800, __VA_ARGS__) DT_DEBRACKET_INTERNAL sep fn(DT_N_S_soc_S_adc_3ff48800, __VA_ARGS__) DT_DEBRACKET_INTERNAL sep fn(DT_N_S_soc_S_adc_3ff48890, __VA_ARGS__)
 #define DT_N_S_soc_FOREACH_CHILD_STATUS_OKAY(fn) fn(DT_N_S_soc_S_memory_3ffb0000) fn(DT_N_S_soc_S_memory_3ffe5230) fn(DT_N_S_soc_S_memory_3ffe5630) fn(DT_N_S_soc_S_interrupt_controller_3ff00104) fn(DT_N_S_soc_S_rtc_3ff48000) fn(DT_N_S_soc_S_flash_controller_3ff42000) fn(DT_N_S_soc_S_ipi_3f4c0058) fn(DT_N_S_soc_S_ipi_3f4c005c) fn(DT_N_S_soc_S_uart_3ff40000) fn(DT_N_S_soc_S_gpio) fn(DT_N_S_soc_S_i2c_3ff53000) fn(DT_N_S_soc_S_trng_3ff75144) fn(DT_N_S_soc_S_watchdog_3ff5f048) fn(DT_N_S_soc_S_spi_3ff64000) fn(DT_N_S_soc_S_spi_3ff65000)
 #define DT_N_S_soc_FOREACH_CHILD_STATUS_OKAY_SEP(fn, sep) fn(DT_N_S_soc_S_memory_3ffb0000) DT_DEBRACKET_INTERNAL sep fn(DT_N_S_soc_S_memory_3ffe5230) DT_DEBRACKET_INTERNAL sep fn(DT_N_S_soc_S_memory_3ffe5630) DT_DEBRACKET_INTERNAL sep fn(DT_N_S_soc_S_interrupt_controller_3ff00104) DT_DEBRACKET_INTERNAL sep fn(DT_N_S_soc_S_rtc_3ff48000) DT_DEBRACKET_INTERNAL sep fn(DT_N_S_soc_S_flash_controller_3ff42000) DT_DEBRACKET_INTERNAL sep fn(DT_N_S_soc_S_ipi_3f4c0058) DT_DEBRACKET_INTERNAL sep fn(DT_N_S_soc_S_ipi_3f4c005c) DT_DEBRACKET_INTERNAL sep fn(DT_N_S_soc_S_uart_3ff40000) DT_DEBRACKET_INTERNAL sep fn(DT_N_S_soc_S_gpio) DT_DEBRACKET_INTERNAL sep fn(DT_N_S_soc_S_i2c_3ff53000) DT_DEBRACKET_INTERNAL sep fn(DT_N_S_soc_S_trng_3ff75144) DT_DEBRACKET_INTERNAL sep fn(DT_N_S_soc_S_watchdog_3ff5f048) DT_DEBRACKET_INTERNAL sep fn(DT_N_S_soc_S_spi_3ff64000) DT_DEBRACKET_INTERNAL sep fn(DT_N_S_soc_S_spi_3ff65000)
 #define DT_N_S_soc_FOREACH_CHILD_STATUS_OKAY_VARGS(fn, ...) fn(DT_N_S_soc_S_memory_3ffb0000, __VA_ARGS__) fn(DT_N_S_soc_S_memory_3ffe5230, __VA_ARGS__) fn(DT_N_S_soc_S_memory_3ffe5630, __VA_ARGS__) fn(DT_N_S_soc_S_interrupt_controller_3ff00104, __VA_ARGS__) fn(DT_N_S_soc_S_rtc_3ff48000, __VA_ARGS__) fn(DT_N_S_soc_S_flash_controller_3ff42000, __VA_ARGS__) fn(DT_N_S_soc_S_ipi_3f4c0058, __VA_ARGS__) fn(DT_N_S_soc_S_ipi_3f4c005c, __VA_ARGS__) fn(DT_N_S_soc_S_uart_3ff40000, __VA_ARGS__) fn(DT_N_S_soc_S_gpio, __VA_ARGS__) fn(DT_N_S_soc_S_i2c_3ff53000, __VA_ARGS__) fn(DT_N_S_soc_S_trng_3ff75144, __VA_ARGS__) fn(DT_N_S_soc_S_watchdog_3ff5f048, __VA_ARGS__) fn(DT_N_S_soc_S_spi_3ff64000, __VA_ARGS__) fn(DT_N_S_soc_S_spi_3ff65000, __VA_ARGS__)
@@ -328,7 +328,7 @@
 	49, /* /soc/ipi@3f4c0058 */ \
 	50, /* /soc/ipi@3f4c005c */ \
 	51, /* /soc/memory@3ffe5230 */ \
-	52, /* /soc/ipm@3ffe5a30 */ \
+	52, /* /soc/ipm@3ffed238 */ \
 	53, /* /soc/ledc@3ff59000 */ \
 	54, /* /soc/mcpwm@3ff5e000 */ \
 	55, /* /soc/mcpwm@3ff6c000 */ \
@@ -380,7 +380,7 @@
  * Node identifier: DT_N_S_soc_S_interrupt_controller_3ff00104
  *
  * Binding (compatible = espressif,esp32-intc):
- *   $ZEPHYR_BASE/dts/bindings/interrupt-controller/espressif,esp32-intc.yaml
+ *   /home/gez/sdks/zephyr/zephyr/dts/bindings/interrupt-controller/espressif,esp32-intc.yaml
  *
  * (Descriptions have moved to the Devicetree Bindings Index
  * in the documentation.)
@@ -429,7 +429,7 @@
 	48, /* /soc/i2c@3ff67000 */ \
 	49, /* /soc/ipi@3f4c0058 */ \
 	50, /* /soc/ipi@3f4c005c */ \
-	52, /* /soc/ipm@3ffe5a30 */ \
+	52, /* /soc/ipm@3ffed238 */ \
 	54, /* /soc/mcpwm@3ff5e000 */ \
 	55, /* /soc/mcpwm@3ff6c000 */ \
 	58, /* /soc/pcnt@3ff57000 */ \
@@ -472,14 +472,6 @@
 #define DT_N_S_soc_S_interrupt_controller_3ff00104_P_reg_IDX_0_EXISTS 1
 #define DT_N_S_soc_S_interrupt_controller_3ff00104_P_reg_IDX_1 276
 #define DT_N_S_soc_S_interrupt_controller_3ff00104_P_reg_IDX_1_EXISTS 1
-#define DT_N_S_soc_S_interrupt_controller_3ff00104_P_reg_FOREACH_PROP_ELEM(fn) fn(DT_N_S_soc_S_interrupt_controller_3ff00104, reg, 0) \
-	fn(DT_N_S_soc_S_interrupt_controller_3ff00104, reg, 1)
-#define DT_N_S_soc_S_interrupt_controller_3ff00104_P_reg_FOREACH_PROP_ELEM_SEP(fn, sep) fn(DT_N_S_soc_S_interrupt_controller_3ff00104, reg, 0) DT_DEBRACKET_INTERNAL sep \
-	fn(DT_N_S_soc_S_interrupt_controller_3ff00104, reg, 1)
-#define DT_N_S_soc_S_interrupt_controller_3ff00104_P_reg_FOREACH_PROP_ELEM_VARGS(fn, ...) fn(DT_N_S_soc_S_interrupt_controller_3ff00104, reg, 0, __VA_ARGS__) \
-	fn(DT_N_S_soc_S_interrupt_controller_3ff00104, reg, 1, __VA_ARGS__)
-#define DT_N_S_soc_S_interrupt_controller_3ff00104_P_reg_FOREACH_PROP_ELEM_SEP_VARGS(fn, sep, ...) fn(DT_N_S_soc_S_interrupt_controller_3ff00104, reg, 0, __VA_ARGS__) DT_DEBRACKET_INTERNAL sep \
-	fn(DT_N_S_soc_S_interrupt_controller_3ff00104, reg, 1, __VA_ARGS__)
 #define DT_N_S_soc_S_interrupt_controller_3ff00104_P_reg_EXISTS 1
 #define DT_N_S_soc_S_interrupt_controller_3ff00104_P_interrupt_controller 1
 #define DT_N_S_soc_S_interrupt_controller_3ff00104_P_interrupt_controller_EXISTS 1
@@ -487,25 +479,17 @@
 #define DT_N_S_soc_S_interrupt_controller_3ff00104_P_status_STRING_UNQUOTED okay
 #define DT_N_S_soc_S_interrupt_controller_3ff00104_P_status_STRING_TOKEN okay
 #define DT_N_S_soc_S_interrupt_controller_3ff00104_P_status_STRING_UPPER_TOKEN OKAY
+#define DT_N_S_soc_S_interrupt_controller_3ff00104_P_status_IDX_0 "okay"
+#define DT_N_S_soc_S_interrupt_controller_3ff00104_P_status_IDX_0_EXISTS 1
 #define DT_N_S_soc_S_interrupt_controller_3ff00104_P_status_ENUM_IDX 1
+#define DT_N_S_soc_S_interrupt_controller_3ff00104_P_status_ENUM_VAL_okay_EXISTS 1
 #define DT_N_S_soc_S_interrupt_controller_3ff00104_P_status_ENUM_TOKEN okay
 #define DT_N_S_soc_S_interrupt_controller_3ff00104_P_status_ENUM_UPPER_TOKEN OKAY
-#define DT_N_S_soc_S_interrupt_controller_3ff00104_P_status_FOREACH_PROP_ELEM(fn) fn(DT_N_S_soc_S_interrupt_controller_3ff00104, status, 0) \
-	fn(DT_N_S_soc_S_interrupt_controller_3ff00104, status, 1) \
-	fn(DT_N_S_soc_S_interrupt_controller_3ff00104, status, 2) \
-	fn(DT_N_S_soc_S_interrupt_controller_3ff00104, status, 3)
-#define DT_N_S_soc_S_interrupt_controller_3ff00104_P_status_FOREACH_PROP_ELEM_SEP(fn, sep) fn(DT_N_S_soc_S_interrupt_controller_3ff00104, status, 0) DT_DEBRACKET_INTERNAL sep \
-	fn(DT_N_S_soc_S_interrupt_controller_3ff00104, status, 1) DT_DEBRACKET_INTERNAL sep \
-	fn(DT_N_S_soc_S_interrupt_controller_3ff00104, status, 2) DT_DEBRACKET_INTERNAL sep \
-	fn(DT_N_S_soc_S_interrupt_controller_3ff00104, status, 3)
-#define DT_N_S_soc_S_interrupt_controller_3ff00104_P_status_FOREACH_PROP_ELEM_VARGS(fn, ...) fn(DT_N_S_soc_S_interrupt_controller_3ff00104, status, 0, __VA_ARGS__) \
-	fn(DT_N_S_soc_S_interrupt_controller_3ff00104, status, 1, __VA_ARGS__) \
-	fn(DT_N_S_soc_S_interrupt_controller_3ff00104, status, 2, __VA_ARGS__) \
-	fn(DT_N_S_soc_S_interrupt_controller_3ff00104, status, 3, __VA_ARGS__)
-#define DT_N_S_soc_S_interrupt_controller_3ff00104_P_status_FOREACH_PROP_ELEM_SEP_VARGS(fn, sep, ...) fn(DT_N_S_soc_S_interrupt_controller_3ff00104, status, 0, __VA_ARGS__) DT_DEBRACKET_INTERNAL sep \
-	fn(DT_N_S_soc_S_interrupt_controller_3ff00104, status, 1, __VA_ARGS__) DT_DEBRACKET_INTERNAL sep \
-	fn(DT_N_S_soc_S_interrupt_controller_3ff00104, status, 2, __VA_ARGS__) DT_DEBRACKET_INTERNAL sep \
-	fn(DT_N_S_soc_S_interrupt_controller_3ff00104, status, 3, __VA_ARGS__)
+#define DT_N_S_soc_S_interrupt_controller_3ff00104_P_status_FOREACH_PROP_ELEM(fn) fn(DT_N_S_soc_S_interrupt_controller_3ff00104, status, 0)
+#define DT_N_S_soc_S_interrupt_controller_3ff00104_P_status_FOREACH_PROP_ELEM_SEP(fn, sep) fn(DT_N_S_soc_S_interrupt_controller_3ff00104, status, 0)
+#define DT_N_S_soc_S_interrupt_controller_3ff00104_P_status_FOREACH_PROP_ELEM_VARGS(fn, ...) fn(DT_N_S_soc_S_interrupt_controller_3ff00104, status, 0, __VA_ARGS__)
+#define DT_N_S_soc_S_interrupt_controller_3ff00104_P_status_FOREACH_PROP_ELEM_SEP_VARGS(fn, sep, ...) fn(DT_N_S_soc_S_interrupt_controller_3ff00104, status, 0, __VA_ARGS__)
+#define DT_N_S_soc_S_interrupt_controller_3ff00104_P_status_LEN 1
 #define DT_N_S_soc_S_interrupt_controller_3ff00104_P_status_EXISTS 1
 #define DT_N_S_soc_S_interrupt_controller_3ff00104_P_compatible {"espressif,esp32-intc"}
 #define DT_N_S_soc_S_interrupt_controller_3ff00104_P_compatible_IDX_0 "espressif,esp32-intc"
@@ -521,6 +505,8 @@
 #define DT_N_S_soc_S_interrupt_controller_3ff00104_P_compatible_EXISTS 1
 #define DT_N_S_soc_S_interrupt_controller_3ff00104_P_wakeup_source 0
 #define DT_N_S_soc_S_interrupt_controller_3ff00104_P_wakeup_source_EXISTS 1
+#define DT_N_S_soc_S_interrupt_controller_3ff00104_P_zephyr_pm_device_runtime_auto 0
+#define DT_N_S_soc_S_interrupt_controller_3ff00104_P_zephyr_pm_device_runtime_auto_EXISTS 1
 
 /*
  * Devicetree node: /soc/rtc@3ff48000
@@ -528,7 +514,7 @@
  * Node identifier: DT_N_S_soc_S_rtc_3ff48000
  *
  * Binding (compatible = espressif,esp32-rtc):
- *   $ZEPHYR_BASE/dts/bindings/clock/espressif,esp32-rtc.yaml
+ *   /home/gez/sdks/zephyr/zephyr/dts/bindings/clock/espressif,esp32-rtc.yaml
  *
  * (Descriptions have moved to the Devicetree Bindings Index
  * in the documentation.)
@@ -613,14 +599,6 @@
 #define DT_N_S_soc_S_rtc_3ff48000_P_reg_IDX_0_EXISTS 1
 #define DT_N_S_soc_S_rtc_3ff48000_P_reg_IDX_1 216
 #define DT_N_S_soc_S_rtc_3ff48000_P_reg_IDX_1_EXISTS 1
-#define DT_N_S_soc_S_rtc_3ff48000_P_reg_FOREACH_PROP_ELEM(fn) fn(DT_N_S_soc_S_rtc_3ff48000, reg, 0) \
-	fn(DT_N_S_soc_S_rtc_3ff48000, reg, 1)
-#define DT_N_S_soc_S_rtc_3ff48000_P_reg_FOREACH_PROP_ELEM_SEP(fn, sep) fn(DT_N_S_soc_S_rtc_3ff48000, reg, 0) DT_DEBRACKET_INTERNAL sep \
-	fn(DT_N_S_soc_S_rtc_3ff48000, reg, 1)
-#define DT_N_S_soc_S_rtc_3ff48000_P_reg_FOREACH_PROP_ELEM_VARGS(fn, ...) fn(DT_N_S_soc_S_rtc_3ff48000, reg, 0, __VA_ARGS__) \
-	fn(DT_N_S_soc_S_rtc_3ff48000, reg, 1, __VA_ARGS__)
-#define DT_N_S_soc_S_rtc_3ff48000_P_reg_FOREACH_PROP_ELEM_SEP_VARGS(fn, sep, ...) fn(DT_N_S_soc_S_rtc_3ff48000, reg, 0, __VA_ARGS__) DT_DEBRACKET_INTERNAL sep \
-	fn(DT_N_S_soc_S_rtc_3ff48000, reg, 1, __VA_ARGS__)
 #define DT_N_S_soc_S_rtc_3ff48000_P_reg_EXISTS 1
 #define DT_N_S_soc_S_rtc_3ff48000_P_xtal_freq 2
 #define DT_N_S_soc_S_rtc_3ff48000_P_xtal_freq_EXISTS 1
@@ -628,25 +606,17 @@
 #define DT_N_S_soc_S_rtc_3ff48000_P_status_STRING_UNQUOTED okay
 #define DT_N_S_soc_S_rtc_3ff48000_P_status_STRING_TOKEN okay
 #define DT_N_S_soc_S_rtc_3ff48000_P_status_STRING_UPPER_TOKEN OKAY
+#define DT_N_S_soc_S_rtc_3ff48000_P_status_IDX_0 "okay"
+#define DT_N_S_soc_S_rtc_3ff48000_P_status_IDX_0_EXISTS 1
 #define DT_N_S_soc_S_rtc_3ff48000_P_status_ENUM_IDX 1
+#define DT_N_S_soc_S_rtc_3ff48000_P_status_ENUM_VAL_okay_EXISTS 1
 #define DT_N_S_soc_S_rtc_3ff48000_P_status_ENUM_TOKEN okay
 #define DT_N_S_soc_S_rtc_3ff48000_P_status_ENUM_UPPER_TOKEN OKAY
-#define DT_N_S_soc_S_rtc_3ff48000_P_status_FOREACH_PROP_ELEM(fn) fn(DT_N_S_soc_S_rtc_3ff48000, status, 0) \
-	fn(DT_N_S_soc_S_rtc_3ff48000, status, 1) \
-	fn(DT_N_S_soc_S_rtc_3ff48000, status, 2) \
-	fn(DT_N_S_soc_S_rtc_3ff48000, status, 3)
-#define DT_N_S_soc_S_rtc_3ff48000_P_status_FOREACH_PROP_ELEM_SEP(fn, sep) fn(DT_N_S_soc_S_rtc_3ff48000, status, 0) DT_DEBRACKET_INTERNAL sep \
-	fn(DT_N_S_soc_S_rtc_3ff48000, status, 1) DT_DEBRACKET_INTERNAL sep \
-	fn(DT_N_S_soc_S_rtc_3ff48000, status, 2) DT_DEBRACKET_INTERNAL sep \
-	fn(DT_N_S_soc_S_rtc_3ff48000, status, 3)
-#define DT_N_S_soc_S_rtc_3ff48000_P_status_FOREACH_PROP_ELEM_VARGS(fn, ...) fn(DT_N_S_soc_S_rtc_3ff48000, status, 0, __VA_ARGS__) \
-	fn(DT_N_S_soc_S_rtc_3ff48000, status, 1, __VA_ARGS__) \
-	fn(DT_N_S_soc_S_rtc_3ff48000, status, 2, __VA_ARGS__) \
-	fn(DT_N_S_soc_S_rtc_3ff48000, status, 3, __VA_ARGS__)
-#define DT_N_S_soc_S_rtc_3ff48000_P_status_FOREACH_PROP_ELEM_SEP_VARGS(fn, sep, ...) fn(DT_N_S_soc_S_rtc_3ff48000, status, 0, __VA_ARGS__) DT_DEBRACKET_INTERNAL sep \
-	fn(DT_N_S_soc_S_rtc_3ff48000, status, 1, __VA_ARGS__) DT_DEBRACKET_INTERNAL sep \
-	fn(DT_N_S_soc_S_rtc_3ff48000, status, 2, __VA_ARGS__) DT_DEBRACKET_INTERNAL sep \
-	fn(DT_N_S_soc_S_rtc_3ff48000, status, 3, __VA_ARGS__)
+#define DT_N_S_soc_S_rtc_3ff48000_P_status_FOREACH_PROP_ELEM(fn) fn(DT_N_S_soc_S_rtc_3ff48000, status, 0)
+#define DT_N_S_soc_S_rtc_3ff48000_P_status_FOREACH_PROP_ELEM_SEP(fn, sep) fn(DT_N_S_soc_S_rtc_3ff48000, status, 0)
+#define DT_N_S_soc_S_rtc_3ff48000_P_status_FOREACH_PROP_ELEM_VARGS(fn, ...) fn(DT_N_S_soc_S_rtc_3ff48000, status, 0, __VA_ARGS__)
+#define DT_N_S_soc_S_rtc_3ff48000_P_status_FOREACH_PROP_ELEM_SEP_VARGS(fn, sep, ...) fn(DT_N_S_soc_S_rtc_3ff48000, status, 0, __VA_ARGS__)
+#define DT_N_S_soc_S_rtc_3ff48000_P_status_LEN 1
 #define DT_N_S_soc_S_rtc_3ff48000_P_status_EXISTS 1
 #define DT_N_S_soc_S_rtc_3ff48000_P_compatible {"espressif,esp32-rtc"}
 #define DT_N_S_soc_S_rtc_3ff48000_P_compatible_IDX_0 "espressif,esp32-rtc"
@@ -662,6 +632,8 @@
 #define DT_N_S_soc_S_rtc_3ff48000_P_compatible_EXISTS 1
 #define DT_N_S_soc_S_rtc_3ff48000_P_wakeup_source 0
 #define DT_N_S_soc_S_rtc_3ff48000_P_wakeup_source_EXISTS 1
+#define DT_N_S_soc_S_rtc_3ff48000_P_zephyr_pm_device_runtime_auto 0
+#define DT_N_S_soc_S_rtc_3ff48000_P_zephyr_pm_device_runtime_auto_EXISTS 1
 
 /*
  * Devicetree node: /eth
@@ -669,7 +641,7 @@
  * Node identifier: DT_N_S_eth
  *
  * Binding (compatible = espressif,esp32-eth):
- *   $ZEPHYR_BASE/dts/bindings/ethernet/espressif,esp32-eth.yaml
+ *   /home/gez/sdks/zephyr/zephyr/dts/bindings/ethernet/espressif,esp32-eth.yaml
  *
  * (Descriptions have moved to the Devicetree Bindings Index
  * in the documentation.)
@@ -737,25 +709,17 @@
 #define DT_N_S_eth_P_phy_connection_type_STRING_UNQUOTED rmii
 #define DT_N_S_eth_P_phy_connection_type_STRING_TOKEN rmii
 #define DT_N_S_eth_P_phy_connection_type_STRING_UPPER_TOKEN RMII
+#define DT_N_S_eth_P_phy_connection_type_IDX_0 "rmii"
+#define DT_N_S_eth_P_phy_connection_type_IDX_0_EXISTS 1
 #define DT_N_S_eth_P_phy_connection_type_ENUM_IDX 0
+#define DT_N_S_eth_P_phy_connection_type_ENUM_VAL_rmii_EXISTS 1
 #define DT_N_S_eth_P_phy_connection_type_ENUM_TOKEN rmii
 #define DT_N_S_eth_P_phy_connection_type_ENUM_UPPER_TOKEN RMII
-#define DT_N_S_eth_P_phy_connection_type_FOREACH_PROP_ELEM(fn) fn(DT_N_S_eth, phy_connection_type, 0) \
-	fn(DT_N_S_eth, phy_connection_type, 1) \
-	fn(DT_N_S_eth, phy_connection_type, 2) \
-	fn(DT_N_S_eth, phy_connection_type, 3)
-#define DT_N_S_eth_P_phy_connection_type_FOREACH_PROP_ELEM_SEP(fn, sep) fn(DT_N_S_eth, phy_connection_type, 0) DT_DEBRACKET_INTERNAL sep \
-	fn(DT_N_S_eth, phy_connection_type, 1) DT_DEBRACKET_INTERNAL sep \
-	fn(DT_N_S_eth, phy_connection_type, 2) DT_DEBRACKET_INTERNAL sep \
-	fn(DT_N_S_eth, phy_connection_type, 3)
-#define DT_N_S_eth_P_phy_connection_type_FOREACH_PROP_ELEM_VARGS(fn, ...) fn(DT_N_S_eth, phy_connection_type, 0, __VA_ARGS__) \
-	fn(DT_N_S_eth, phy_connection_type, 1, __VA_ARGS__) \
-	fn(DT_N_S_eth, phy_connection_type, 2, __VA_ARGS__) \
-	fn(DT_N_S_eth, phy_connection_type, 3, __VA_ARGS__)
-#define DT_N_S_eth_P_phy_connection_type_FOREACH_PROP_ELEM_SEP_VARGS(fn, sep, ...) fn(DT_N_S_eth, phy_connection_type, 0, __VA_ARGS__) DT_DEBRACKET_INTERNAL sep \
-	fn(DT_N_S_eth, phy_connection_type, 1, __VA_ARGS__) DT_DEBRACKET_INTERNAL sep \
-	fn(DT_N_S_eth, phy_connection_type, 2, __VA_ARGS__) DT_DEBRACKET_INTERNAL sep \
-	fn(DT_N_S_eth, phy_connection_type, 3, __VA_ARGS__)
+#define DT_N_S_eth_P_phy_connection_type_FOREACH_PROP_ELEM(fn) fn(DT_N_S_eth, phy_connection_type, 0)
+#define DT_N_S_eth_P_phy_connection_type_FOREACH_PROP_ELEM_SEP(fn, sep) fn(DT_N_S_eth, phy_connection_type, 0)
+#define DT_N_S_eth_P_phy_connection_type_FOREACH_PROP_ELEM_VARGS(fn, ...) fn(DT_N_S_eth, phy_connection_type, 0, __VA_ARGS__)
+#define DT_N_S_eth_P_phy_connection_type_FOREACH_PROP_ELEM_SEP_VARGS(fn, sep, ...) fn(DT_N_S_eth, phy_connection_type, 0, __VA_ARGS__)
+#define DT_N_S_eth_P_phy_connection_type_LEN 1
 #define DT_N_S_eth_P_phy_connection_type_EXISTS 1
 #define DT_N_S_eth_P_zephyr_random_mac_address 0
 #define DT_N_S_eth_P_zephyr_random_mac_address_EXISTS 1
@@ -763,41 +727,17 @@
 #define DT_N_S_eth_P_status_STRING_UNQUOTED disabled
 #define DT_N_S_eth_P_status_STRING_TOKEN disabled
 #define DT_N_S_eth_P_status_STRING_UPPER_TOKEN DISABLED
+#define DT_N_S_eth_P_status_IDX_0 "disabled"
+#define DT_N_S_eth_P_status_IDX_0_EXISTS 1
 #define DT_N_S_eth_P_status_ENUM_IDX 2
+#define DT_N_S_eth_P_status_ENUM_VAL_disabled_EXISTS 1
 #define DT_N_S_eth_P_status_ENUM_TOKEN disabled
 #define DT_N_S_eth_P_status_ENUM_UPPER_TOKEN DISABLED
-#define DT_N_S_eth_P_status_FOREACH_PROP_ELEM(fn) fn(DT_N_S_eth, status, 0) \
-	fn(DT_N_S_eth, status, 1) \
-	fn(DT_N_S_eth, status, 2) \
-	fn(DT_N_S_eth, status, 3) \
-	fn(DT_N_S_eth, status, 4) \
-	fn(DT_N_S_eth, status, 5) \
-	fn(DT_N_S_eth, status, 6) \
-	fn(DT_N_S_eth, status, 7)
-#define DT_N_S_eth_P_status_FOREACH_PROP_ELEM_SEP(fn, sep) fn(DT_N_S_eth, status, 0) DT_DEBRACKET_INTERNAL sep \
-	fn(DT_N_S_eth, status, 1) DT_DEBRACKET_INTERNAL sep \
-	fn(DT_N_S_eth, status, 2) DT_DEBRACKET_INTERNAL sep \
-	fn(DT_N_S_eth, status, 3) DT_DEBRACKET_INTERNAL sep \
-	fn(DT_N_S_eth, status, 4) DT_DEBRACKET_INTERNAL sep \
-	fn(DT_N_S_eth, status, 5) DT_DEBRACKET_INTERNAL sep \
-	fn(DT_N_S_eth, status, 6) DT_DEBRACKET_INTERNAL sep \
-	fn(DT_N_S_eth, status, 7)
-#define DT_N_S_eth_P_status_FOREACH_PROP_ELEM_VARGS(fn, ...) fn(DT_N_S_eth, status, 0, __VA_ARGS__) \
-	fn(DT_N_S_eth, status, 1, __VA_ARGS__) \
-	fn(DT_N_S_eth, status, 2, __VA_ARGS__) \
-	fn(DT_N_S_eth, status, 3, __VA_ARGS__) \
-	fn(DT_N_S_eth, status, 4, __VA_ARGS__) \
-	fn(DT_N_S_eth, status, 5, __VA_ARGS__) \
-	fn(DT_N_S_eth, status, 6, __VA_ARGS__) \
-	fn(DT_N_S_eth, status, 7, __VA_ARGS__)
-#define DT_N_S_eth_P_status_FOREACH_PROP_ELEM_SEP_VARGS(fn, sep, ...) fn(DT_N_S_eth, status, 0, __VA_ARGS__) DT_DEBRACKET_INTERNAL sep \
-	fn(DT_N_S_eth, status, 1, __VA_ARGS__) DT_DEBRACKET_INTERNAL sep \
-	fn(DT_N_S_eth, status, 2, __VA_ARGS__) DT_DEBRACKET_INTERNAL sep \
-	fn(DT_N_S_eth, status, 3, __VA_ARGS__) DT_DEBRACKET_INTERNAL sep \
-	fn(DT_N_S_eth, status, 4, __VA_ARGS__) DT_DEBRACKET_INTERNAL sep \
-	fn(DT_N_S_eth, status, 5, __VA_ARGS__) DT_DEBRACKET_INTERNAL sep \
-	fn(DT_N_S_eth, status, 6, __VA_ARGS__) DT_DEBRACKET_INTERNAL sep \
-	fn(DT_N_S_eth, status, 7, __VA_ARGS__)
+#define DT_N_S_eth_P_status_FOREACH_PROP_ELEM(fn) fn(DT_N_S_eth, status, 0)
+#define DT_N_S_eth_P_status_FOREACH_PROP_ELEM_SEP(fn, sep) fn(DT_N_S_eth, status, 0)
+#define DT_N_S_eth_P_status_FOREACH_PROP_ELEM_VARGS(fn, ...) fn(DT_N_S_eth, status, 0, __VA_ARGS__)
+#define DT_N_S_eth_P_status_FOREACH_PROP_ELEM_SEP_VARGS(fn, sep, ...) fn(DT_N_S_eth, status, 0, __VA_ARGS__)
+#define DT_N_S_eth_P_status_LEN 1
 #define DT_N_S_eth_P_status_EXISTS 1
 #define DT_N_S_eth_P_compatible {"espressif,esp32-eth"}
 #define DT_N_S_eth_P_compatible_IDX_0 "espressif,esp32-eth"
@@ -814,15 +754,15 @@
 #define DT_N_S_eth_P_interrupts {38 /* 0x26 */}
 #define DT_N_S_eth_P_interrupts_IDX_0 38
 #define DT_N_S_eth_P_interrupts_IDX_0_EXISTS 1
-#define DT_N_S_eth_P_interrupts_FOREACH_PROP_ELEM(fn) fn(DT_N_S_eth, interrupts, 0)
-#define DT_N_S_eth_P_interrupts_FOREACH_PROP_ELEM_SEP(fn, sep) fn(DT_N_S_eth, interrupts, 0)
-#define DT_N_S_eth_P_interrupts_FOREACH_PROP_ELEM_VARGS(fn, ...) fn(DT_N_S_eth, interrupts, 0, __VA_ARGS__)
-#define DT_N_S_eth_P_interrupts_FOREACH_PROP_ELEM_SEP_VARGS(fn, sep, ...) fn(DT_N_S_eth, interrupts, 0, __VA_ARGS__)
 #define DT_N_S_eth_P_interrupts_EXISTS 1
 #define DT_N_S_eth_P_interrupt_parent DT_N_S_soc_S_interrupt_controller_3ff00104
 #define DT_N_S_eth_P_interrupt_parent_IDX_0 DT_N_S_soc_S_interrupt_controller_3ff00104
 #define DT_N_S_eth_P_interrupt_parent_IDX_0_PH DT_N_S_soc_S_interrupt_controller_3ff00104
 #define DT_N_S_eth_P_interrupt_parent_IDX_0_EXISTS 1
+#define DT_N_S_eth_P_interrupt_parent_FOREACH_PROP_ELEM(fn) fn(DT_N_S_eth, interrupt_parent, 0)
+#define DT_N_S_eth_P_interrupt_parent_FOREACH_PROP_ELEM_SEP(fn, sep) fn(DT_N_S_eth, interrupt_parent, 0)
+#define DT_N_S_eth_P_interrupt_parent_FOREACH_PROP_ELEM_VARGS(fn, ...) fn(DT_N_S_eth, interrupt_parent, 0, __VA_ARGS__)
+#define DT_N_S_eth_P_interrupt_parent_FOREACH_PROP_ELEM_SEP_VARGS(fn, sep, ...) fn(DT_N_S_eth, interrupt_parent, 0, __VA_ARGS__)
 #define DT_N_S_eth_P_interrupt_parent_LEN 1
 #define DT_N_S_eth_P_interrupt_parent_EXISTS 1
 #define DT_N_S_eth_P_clocks_IDX_0_EXISTS 1
@@ -837,6 +777,8 @@
 #define DT_N_S_eth_P_clocks_EXISTS 1
 #define DT_N_S_eth_P_wakeup_source 0
 #define DT_N_S_eth_P_wakeup_source_EXISTS 1
+#define DT_N_S_eth_P_zephyr_pm_device_runtime_auto 0
+#define DT_N_S_eth_P_zephyr_pm_device_runtime_auto_EXISTS 1
 
 /*
  * Devicetree node: /mdio
@@ -844,7 +786,7 @@
  * Node identifier: DT_N_S_mdio
  *
  * Binding (compatible = espressif,esp32-mdio):
- *   $ZEPHYR_BASE/dts/bindings/mdio/espressif,esp32-mdio.yaml
+ *   /home/gez/sdks/zephyr/zephyr/dts/bindings/mdio/espressif,esp32-mdio.yaml
  *
  * (Descriptions have moved to the Devicetree Bindings Index
  * in the documentation.)
@@ -908,85 +850,33 @@
 #define DT_N_S_mdio_P_protocol_STRING_UNQUOTED clause 22
 #define DT_N_S_mdio_P_protocol_STRING_TOKEN clause_22
 #define DT_N_S_mdio_P_protocol_STRING_UPPER_TOKEN CLAUSE_22
+#define DT_N_S_mdio_P_protocol_IDX_0 "clause 22"
+#define DT_N_S_mdio_P_protocol_IDX_0_EXISTS 1
 #define DT_N_S_mdio_P_protocol_ENUM_IDX 0
+#define DT_N_S_mdio_P_protocol_ENUM_VAL_clause_22_EXISTS 1
 #define DT_N_S_mdio_P_protocol_ENUM_TOKEN clause_22
 #define DT_N_S_mdio_P_protocol_ENUM_UPPER_TOKEN CLAUSE_22
-#define DT_N_S_mdio_P_protocol_FOREACH_PROP_ELEM(fn) fn(DT_N_S_mdio, protocol, 0) \
-	fn(DT_N_S_mdio, protocol, 1) \
-	fn(DT_N_S_mdio, protocol, 2) \
-	fn(DT_N_S_mdio, protocol, 3) \
-	fn(DT_N_S_mdio, protocol, 4) \
-	fn(DT_N_S_mdio, protocol, 5) \
-	fn(DT_N_S_mdio, protocol, 6) \
-	fn(DT_N_S_mdio, protocol, 7) \
-	fn(DT_N_S_mdio, protocol, 8)
-#define DT_N_S_mdio_P_protocol_FOREACH_PROP_ELEM_SEP(fn, sep) fn(DT_N_S_mdio, protocol, 0) DT_DEBRACKET_INTERNAL sep \
-	fn(DT_N_S_mdio, protocol, 1) DT_DEBRACKET_INTERNAL sep \
-	fn(DT_N_S_mdio, protocol, 2) DT_DEBRACKET_INTERNAL sep \
-	fn(DT_N_S_mdio, protocol, 3) DT_DEBRACKET_INTERNAL sep \
-	fn(DT_N_S_mdio, protocol, 4) DT_DEBRACKET_INTERNAL sep \
-	fn(DT_N_S_mdio, protocol, 5) DT_DEBRACKET_INTERNAL sep \
-	fn(DT_N_S_mdio, protocol, 6) DT_DEBRACKET_INTERNAL sep \
-	fn(DT_N_S_mdio, protocol, 7) DT_DEBRACKET_INTERNAL sep \
-	fn(DT_N_S_mdio, protocol, 8)
-#define DT_N_S_mdio_P_protocol_FOREACH_PROP_ELEM_VARGS(fn, ...) fn(DT_N_S_mdio, protocol, 0, __VA_ARGS__) \
-	fn(DT_N_S_mdio, protocol, 1, __VA_ARGS__) \
-	fn(DT_N_S_mdio, protocol, 2, __VA_ARGS__) \
-	fn(DT_N_S_mdio, protocol, 3, __VA_ARGS__) \
-	fn(DT_N_S_mdio, protocol, 4, __VA_ARGS__) \
-	fn(DT_N_S_mdio, protocol, 5, __VA_ARGS__) \
-	fn(DT_N_S_mdio, protocol, 6, __VA_ARGS__) \
-	fn(DT_N_S_mdio, protocol, 7, __VA_ARGS__) \
-	fn(DT_N_S_mdio, protocol, 8, __VA_ARGS__)
-#define DT_N_S_mdio_P_protocol_FOREACH_PROP_ELEM_SEP_VARGS(fn, sep, ...) fn(DT_N_S_mdio, protocol, 0, __VA_ARGS__) DT_DEBRACKET_INTERNAL sep \
-	fn(DT_N_S_mdio, protocol, 1, __VA_ARGS__) DT_DEBRACKET_INTERNAL sep \
-	fn(DT_N_S_mdio, protocol, 2, __VA_ARGS__) DT_DEBRACKET_INTERNAL sep \
-	fn(DT_N_S_mdio, protocol, 3, __VA_ARGS__) DT_DEBRACKET_INTERNAL sep \
-	fn(DT_N_S_mdio, protocol, 4, __VA_ARGS__) DT_DEBRACKET_INTERNAL sep \
-	fn(DT_N_S_mdio, protocol, 5, __VA_ARGS__) DT_DEBRACKET_INTERNAL sep \
-	fn(DT_N_S_mdio, protocol, 6, __VA_ARGS__) DT_DEBRACKET_INTERNAL sep \
-	fn(DT_N_S_mdio, protocol, 7, __VA_ARGS__) DT_DEBRACKET_INTERNAL sep \
-	fn(DT_N_S_mdio, protocol, 8, __VA_ARGS__)
+#define DT_N_S_mdio_P_protocol_FOREACH_PROP_ELEM(fn) fn(DT_N_S_mdio, protocol, 0)
+#define DT_N_S_mdio_P_protocol_FOREACH_PROP_ELEM_SEP(fn, sep) fn(DT_N_S_mdio, protocol, 0)
+#define DT_N_S_mdio_P_protocol_FOREACH_PROP_ELEM_VARGS(fn, ...) fn(DT_N_S_mdio, protocol, 0, __VA_ARGS__)
+#define DT_N_S_mdio_P_protocol_FOREACH_PROP_ELEM_SEP_VARGS(fn, sep, ...) fn(DT_N_S_mdio, protocol, 0, __VA_ARGS__)
+#define DT_N_S_mdio_P_protocol_LEN 1
 #define DT_N_S_mdio_P_protocol_EXISTS 1
 #define DT_N_S_mdio_P_status "disabled"
 #define DT_N_S_mdio_P_status_STRING_UNQUOTED disabled
 #define DT_N_S_mdio_P_status_STRING_TOKEN disabled
 #define DT_N_S_mdio_P_status_STRING_UPPER_TOKEN DISABLED
+#define DT_N_S_mdio_P_status_IDX_0 "disabled"
+#define DT_N_S_mdio_P_status_IDX_0_EXISTS 1
 #define DT_N_S_mdio_P_status_ENUM_IDX 2
+#define DT_N_S_mdio_P_status_ENUM_VAL_disabled_EXISTS 1
 #define DT_N_S_mdio_P_status_ENUM_TOKEN disabled
 #define DT_N_S_mdio_P_status_ENUM_UPPER_TOKEN DISABLED
-#define DT_N_S_mdio_P_status_FOREACH_PROP_ELEM(fn) fn(DT_N_S_mdio, status, 0) \
-	fn(DT_N_S_mdio, status, 1) \
-	fn(DT_N_S_mdio, status, 2) \
-	fn(DT_N_S_mdio, status, 3) \
-	fn(DT_N_S_mdio, status, 4) \
-	fn(DT_N_S_mdio, status, 5) \
-	fn(DT_N_S_mdio, status, 6) \
-	fn(DT_N_S_mdio, status, 7)
-#define DT_N_S_mdio_P_status_FOREACH_PROP_ELEM_SEP(fn, sep) fn(DT_N_S_mdio, status, 0) DT_DEBRACKET_INTERNAL sep \
-	fn(DT_N_S_mdio, status, 1) DT_DEBRACKET_INTERNAL sep \
-	fn(DT_N_S_mdio, status, 2) DT_DEBRACKET_INTERNAL sep \
-	fn(DT_N_S_mdio, status, 3) DT_DEBRACKET_INTERNAL sep \
-	fn(DT_N_S_mdio, status, 4) DT_DEBRACKET_INTERNAL sep \
-	fn(DT_N_S_mdio, status, 5) DT_DEBRACKET_INTERNAL sep \
-	fn(DT_N_S_mdio, status, 6) DT_DEBRACKET_INTERNAL sep \
-	fn(DT_N_S_mdio, status, 7)
-#define DT_N_S_mdio_P_status_FOREACH_PROP_ELEM_VARGS(fn, ...) fn(DT_N_S_mdio, status, 0, __VA_ARGS__) \
-	fn(DT_N_S_mdio, status, 1, __VA_ARGS__) \
-	fn(DT_N_S_mdio, status, 2, __VA_ARGS__) \
-	fn(DT_N_S_mdio, status, 3, __VA_ARGS__) \
-	fn(DT_N_S_mdio, status, 4, __VA_ARGS__) \
-	fn(DT_N_S_mdio, status, 5, __VA_ARGS__) \
-	fn(DT_N_S_mdio, status, 6, __VA_ARGS__) \
-	fn(DT_N_S_mdio, status, 7, __VA_ARGS__)
-#define DT_N_S_mdio_P_status_FOREACH_PROP_ELEM_SEP_VARGS(fn, sep, ...) fn(DT_N_S_mdio, status, 0, __VA_ARGS__) DT_DEBRACKET_INTERNAL sep \
-	fn(DT_N_S_mdio, status, 1, __VA_ARGS__) DT_DEBRACKET_INTERNAL sep \
-	fn(DT_N_S_mdio, status, 2, __VA_ARGS__) DT_DEBRACKET_INTERNAL sep \
-	fn(DT_N_S_mdio, status, 3, __VA_ARGS__) DT_DEBRACKET_INTERNAL sep \
-	fn(DT_N_S_mdio, status, 4, __VA_ARGS__) DT_DEBRACKET_INTERNAL sep \
-	fn(DT_N_S_mdio, status, 5, __VA_ARGS__) DT_DEBRACKET_INTERNAL sep \
-	fn(DT_N_S_mdio, status, 6, __VA_ARGS__) DT_DEBRACKET_INTERNAL sep \
-	fn(DT_N_S_mdio, status, 7, __VA_ARGS__)
+#define DT_N_S_mdio_P_status_FOREACH_PROP_ELEM(fn) fn(DT_N_S_mdio, status, 0)
+#define DT_N_S_mdio_P_status_FOREACH_PROP_ELEM_SEP(fn, sep) fn(DT_N_S_mdio, status, 0)
+#define DT_N_S_mdio_P_status_FOREACH_PROP_ELEM_VARGS(fn, ...) fn(DT_N_S_mdio, status, 0, __VA_ARGS__)
+#define DT_N_S_mdio_P_status_FOREACH_PROP_ELEM_SEP_VARGS(fn, sep, ...) fn(DT_N_S_mdio, status, 0, __VA_ARGS__)
+#define DT_N_S_mdio_P_status_LEN 1
 #define DT_N_S_mdio_P_status_EXISTS 1
 #define DT_N_S_mdio_P_compatible {"espressif,esp32-mdio"}
 #define DT_N_S_mdio_P_compatible_IDX_0 "espressif,esp32-mdio"
@@ -1012,6 +902,8 @@
 #define DT_N_S_mdio_P_clocks_EXISTS 1
 #define DT_N_S_mdio_P_wakeup_source 0
 #define DT_N_S_mdio_P_wakeup_source_EXISTS 1
+#define DT_N_S_mdio_P_zephyr_pm_device_runtime_auto 0
+#define DT_N_S_mdio_P_zephyr_pm_device_runtime_auto_EXISTS 1
 
 /*
  * Devicetree node: /wifi
@@ -1019,7 +911,7 @@
  * Node identifier: DT_N_S_wifi
  *
  * Binding (compatible = espressif,esp32-wifi):
- *   $ZEPHYR_BASE/dts/bindings/wifi/espressif,esp32-wifi.yaml
+ *   /home/gez/sdks/zephyr/zephyr/dts/bindings/wifi/espressif,esp32-wifi.yaml
  *
  * (Descriptions have moved to the Devicetree Bindings Index
  * in the documentation.)
@@ -1094,41 +986,17 @@
 #define DT_N_S_wifi_P_status_STRING_UNQUOTED disabled
 #define DT_N_S_wifi_P_status_STRING_TOKEN disabled
 #define DT_N_S_wifi_P_status_STRING_UPPER_TOKEN DISABLED
+#define DT_N_S_wifi_P_status_IDX_0 "disabled"
+#define DT_N_S_wifi_P_status_IDX_0_EXISTS 1
 #define DT_N_S_wifi_P_status_ENUM_IDX 2
+#define DT_N_S_wifi_P_status_ENUM_VAL_disabled_EXISTS 1
 #define DT_N_S_wifi_P_status_ENUM_TOKEN disabled
 #define DT_N_S_wifi_P_status_ENUM_UPPER_TOKEN DISABLED
-#define DT_N_S_wifi_P_status_FOREACH_PROP_ELEM(fn) fn(DT_N_S_wifi, status, 0) \
-	fn(DT_N_S_wifi, status, 1) \
-	fn(DT_N_S_wifi, status, 2) \
-	fn(DT_N_S_wifi, status, 3) \
-	fn(DT_N_S_wifi, status, 4) \
-	fn(DT_N_S_wifi, status, 5) \
-	fn(DT_N_S_wifi, status, 6) \
-	fn(DT_N_S_wifi, status, 7)
-#define DT_N_S_wifi_P_status_FOREACH_PROP_ELEM_SEP(fn, sep) fn(DT_N_S_wifi, status, 0) DT_DEBRACKET_INTERNAL sep \
-	fn(DT_N_S_wifi, status, 1) DT_DEBRACKET_INTERNAL sep \
-	fn(DT_N_S_wifi, status, 2) DT_DEBRACKET_INTERNAL sep \
-	fn(DT_N_S_wifi, status, 3) DT_DEBRACKET_INTERNAL sep \
-	fn(DT_N_S_wifi, status, 4) DT_DEBRACKET_INTERNAL sep \
-	fn(DT_N_S_wifi, status, 5) DT_DEBRACKET_INTERNAL sep \
-	fn(DT_N_S_wifi, status, 6) DT_DEBRACKET_INTERNAL sep \
-	fn(DT_N_S_wifi, status, 7)
-#define DT_N_S_wifi_P_status_FOREACH_PROP_ELEM_VARGS(fn, ...) fn(DT_N_S_wifi, status, 0, __VA_ARGS__) \
-	fn(DT_N_S_wifi, status, 1, __VA_ARGS__) \
-	fn(DT_N_S_wifi, status, 2, __VA_ARGS__) \
-	fn(DT_N_S_wifi, status, 3, __VA_ARGS__) \
-	fn(DT_N_S_wifi, status, 4, __VA_ARGS__) \
-	fn(DT_N_S_wifi, status, 5, __VA_ARGS__) \
-	fn(DT_N_S_wifi, status, 6, __VA_ARGS__) \
-	fn(DT_N_S_wifi, status, 7, __VA_ARGS__)
-#define DT_N_S_wifi_P_status_FOREACH_PROP_ELEM_SEP_VARGS(fn, sep, ...) fn(DT_N_S_wifi, status, 0, __VA_ARGS__) DT_DEBRACKET_INTERNAL sep \
-	fn(DT_N_S_wifi, status, 1, __VA_ARGS__) DT_DEBRACKET_INTERNAL sep \
-	fn(DT_N_S_wifi, status, 2, __VA_ARGS__) DT_DEBRACKET_INTERNAL sep \
-	fn(DT_N_S_wifi, status, 3, __VA_ARGS__) DT_DEBRACKET_INTERNAL sep \
-	fn(DT_N_S_wifi, status, 4, __VA_ARGS__) DT_DEBRACKET_INTERNAL sep \
-	fn(DT_N_S_wifi, status, 5, __VA_ARGS__) DT_DEBRACKET_INTERNAL sep \
-	fn(DT_N_S_wifi, status, 6, __VA_ARGS__) DT_DEBRACKET_INTERNAL sep \
-	fn(DT_N_S_wifi, status, 7, __VA_ARGS__)
+#define DT_N_S_wifi_P_status_FOREACH_PROP_ELEM(fn) fn(DT_N_S_wifi, status, 0)
+#define DT_N_S_wifi_P_status_FOREACH_PROP_ELEM_SEP(fn, sep) fn(DT_N_S_wifi, status, 0)
+#define DT_N_S_wifi_P_status_FOREACH_PROP_ELEM_VARGS(fn, ...) fn(DT_N_S_wifi, status, 0, __VA_ARGS__)
+#define DT_N_S_wifi_P_status_FOREACH_PROP_ELEM_SEP_VARGS(fn, sep, ...) fn(DT_N_S_wifi, status, 0, __VA_ARGS__)
+#define DT_N_S_wifi_P_status_LEN 1
 #define DT_N_S_wifi_P_status_EXISTS 1
 
 /*
@@ -1137,7 +1005,7 @@
  * Node identifier: DT_N_S_buttons
  *
  * Binding (compatible = gpio-keys):
- *   $ZEPHYR_BASE/dts/bindings/input/gpio-keys.yaml
+ *   /home/gez/sdks/zephyr/zephyr/dts/bindings/input/gpio-keys.yaml
  *
  * (Descriptions have moved to the Devicetree Bindings Index
  * in the documentation.)
@@ -1208,6 +1076,8 @@
 #define DT_N_S_buttons_P_compatible_EXISTS 1
 #define DT_N_S_buttons_P_wakeup_source 0
 #define DT_N_S_buttons_P_wakeup_source_EXISTS 1
+#define DT_N_S_buttons_P_zephyr_pm_device_runtime_auto 0
+#define DT_N_S_buttons_P_zephyr_pm_device_runtime_auto_EXISTS 1
 
 /*
  * Devicetree node: /soc/gpio
@@ -1285,7 +1155,7 @@
  * Node identifier: DT_N_S_soc_S_gpio_S_gpio_3ff44000
  *
  * Binding (compatible = espressif,esp32-gpio):
- *   $ZEPHYR_BASE/dts/bindings/gpio/espressif,esp32-gpio.yaml
+ *   /home/gez/sdks/zephyr/zephyr/dts/bindings/gpio/espressif,esp32-gpio.yaml
  *
  * (Descriptions have moved to the Devicetree Bindings Index
  * in the documentation.)
@@ -1360,14 +1230,6 @@
 #define DT_N_S_soc_S_gpio_S_gpio_3ff44000_P_reg_IDX_0_EXISTS 1
 #define DT_N_S_soc_S_gpio_S_gpio_3ff44000_P_reg_IDX_1 2048
 #define DT_N_S_soc_S_gpio_S_gpio_3ff44000_P_reg_IDX_1_EXISTS 1
-#define DT_N_S_soc_S_gpio_S_gpio_3ff44000_P_reg_FOREACH_PROP_ELEM(fn) fn(DT_N_S_soc_S_gpio_S_gpio_3ff44000, reg, 0) \
-	fn(DT_N_S_soc_S_gpio_S_gpio_3ff44000, reg, 1)
-#define DT_N_S_soc_S_gpio_S_gpio_3ff44000_P_reg_FOREACH_PROP_ELEM_SEP(fn, sep) fn(DT_N_S_soc_S_gpio_S_gpio_3ff44000, reg, 0) DT_DEBRACKET_INTERNAL sep \
-	fn(DT_N_S_soc_S_gpio_S_gpio_3ff44000, reg, 1)
-#define DT_N_S_soc_S_gpio_S_gpio_3ff44000_P_reg_FOREACH_PROP_ELEM_VARGS(fn, ...) fn(DT_N_S_soc_S_gpio_S_gpio_3ff44000, reg, 0, __VA_ARGS__) \
-	fn(DT_N_S_soc_S_gpio_S_gpio_3ff44000, reg, 1, __VA_ARGS__)
-#define DT_N_S_soc_S_gpio_S_gpio_3ff44000_P_reg_FOREACH_PROP_ELEM_SEP_VARGS(fn, sep, ...) fn(DT_N_S_soc_S_gpio_S_gpio_3ff44000, reg, 0, __VA_ARGS__) DT_DEBRACKET_INTERNAL sep \
-	fn(DT_N_S_soc_S_gpio_S_gpio_3ff44000, reg, 1, __VA_ARGS__)
 #define DT_N_S_soc_S_gpio_S_gpio_3ff44000_P_reg_EXISTS 1
 #define DT_N_S_soc_S_gpio_S_gpio_3ff44000_P_gpio_controller 1
 #define DT_N_S_soc_S_gpio_S_gpio_3ff44000_P_gpio_controller_EXISTS 1
@@ -1377,25 +1239,17 @@
 #define DT_N_S_soc_S_gpio_S_gpio_3ff44000_P_status_STRING_UNQUOTED okay
 #define DT_N_S_soc_S_gpio_S_gpio_3ff44000_P_status_STRING_TOKEN okay
 #define DT_N_S_soc_S_gpio_S_gpio_3ff44000_P_status_STRING_UPPER_TOKEN OKAY
+#define DT_N_S_soc_S_gpio_S_gpio_3ff44000_P_status_IDX_0 "okay"
+#define DT_N_S_soc_S_gpio_S_gpio_3ff44000_P_status_IDX_0_EXISTS 1
 #define DT_N_S_soc_S_gpio_S_gpio_3ff44000_P_status_ENUM_IDX 1
+#define DT_N_S_soc_S_gpio_S_gpio_3ff44000_P_status_ENUM_VAL_okay_EXISTS 1
 #define DT_N_S_soc_S_gpio_S_gpio_3ff44000_P_status_ENUM_TOKEN okay
 #define DT_N_S_soc_S_gpio_S_gpio_3ff44000_P_status_ENUM_UPPER_TOKEN OKAY
-#define DT_N_S_soc_S_gpio_S_gpio_3ff44000_P_status_FOREACH_PROP_ELEM(fn) fn(DT_N_S_soc_S_gpio_S_gpio_3ff44000, status, 0) \
-	fn(DT_N_S_soc_S_gpio_S_gpio_3ff44000, status, 1) \
-	fn(DT_N_S_soc_S_gpio_S_gpio_3ff44000, status, 2) \
-	fn(DT_N_S_soc_S_gpio_S_gpio_3ff44000, status, 3)
-#define DT_N_S_soc_S_gpio_S_gpio_3ff44000_P_status_FOREACH_PROP_ELEM_SEP(fn, sep) fn(DT_N_S_soc_S_gpio_S_gpio_3ff44000, status, 0) DT_DEBRACKET_INTERNAL sep \
-	fn(DT_N_S_soc_S_gpio_S_gpio_3ff44000, status, 1) DT_DEBRACKET_INTERNAL sep \
-	fn(DT_N_S_soc_S_gpio_S_gpio_3ff44000, status, 2) DT_DEBRACKET_INTERNAL sep \
-	fn(DT_N_S_soc_S_gpio_S_gpio_3ff44000, status, 3)
-#define DT_N_S_soc_S_gpio_S_gpio_3ff44000_P_status_FOREACH_PROP_ELEM_VARGS(fn, ...) fn(DT_N_S_soc_S_gpio_S_gpio_3ff44000, status, 0, __VA_ARGS__) \
-	fn(DT_N_S_soc_S_gpio_S_gpio_3ff44000, status, 1, __VA_ARGS__) \
-	fn(DT_N_S_soc_S_gpio_S_gpio_3ff44000, status, 2, __VA_ARGS__) \
-	fn(DT_N_S_soc_S_gpio_S_gpio_3ff44000, status, 3, __VA_ARGS__)
-#define DT_N_S_soc_S_gpio_S_gpio_3ff44000_P_status_FOREACH_PROP_ELEM_SEP_VARGS(fn, sep, ...) fn(DT_N_S_soc_S_gpio_S_gpio_3ff44000, status, 0, __VA_ARGS__) DT_DEBRACKET_INTERNAL sep \
-	fn(DT_N_S_soc_S_gpio_S_gpio_3ff44000, status, 1, __VA_ARGS__) DT_DEBRACKET_INTERNAL sep \
-	fn(DT_N_S_soc_S_gpio_S_gpio_3ff44000, status, 2, __VA_ARGS__) DT_DEBRACKET_INTERNAL sep \
-	fn(DT_N_S_soc_S_gpio_S_gpio_3ff44000, status, 3, __VA_ARGS__)
+#define DT_N_S_soc_S_gpio_S_gpio_3ff44000_P_status_FOREACH_PROP_ELEM(fn) fn(DT_N_S_soc_S_gpio_S_gpio_3ff44000, status, 0)
+#define DT_N_S_soc_S_gpio_S_gpio_3ff44000_P_status_FOREACH_PROP_ELEM_SEP(fn, sep) fn(DT_N_S_soc_S_gpio_S_gpio_3ff44000, status, 0)
+#define DT_N_S_soc_S_gpio_S_gpio_3ff44000_P_status_FOREACH_PROP_ELEM_VARGS(fn, ...) fn(DT_N_S_soc_S_gpio_S_gpio_3ff44000, status, 0, __VA_ARGS__)
+#define DT_N_S_soc_S_gpio_S_gpio_3ff44000_P_status_FOREACH_PROP_ELEM_SEP_VARGS(fn, sep, ...) fn(DT_N_S_soc_S_gpio_S_gpio_3ff44000, status, 0, __VA_ARGS__)
+#define DT_N_S_soc_S_gpio_S_gpio_3ff44000_P_status_LEN 1
 #define DT_N_S_soc_S_gpio_S_gpio_3ff44000_P_status_EXISTS 1
 #define DT_N_S_soc_S_gpio_S_gpio_3ff44000_P_compatible {"espressif,esp32-gpio"}
 #define DT_N_S_soc_S_gpio_S_gpio_3ff44000_P_compatible_IDX_0 "espressif,esp32-gpio"
@@ -1412,19 +1266,21 @@
 #define DT_N_S_soc_S_gpio_S_gpio_3ff44000_P_interrupts {22 /* 0x16 */}
 #define DT_N_S_soc_S_gpio_S_gpio_3ff44000_P_interrupts_IDX_0 22
 #define DT_N_S_soc_S_gpio_S_gpio_3ff44000_P_interrupts_IDX_0_EXISTS 1
-#define DT_N_S_soc_S_gpio_S_gpio_3ff44000_P_interrupts_FOREACH_PROP_ELEM(fn) fn(DT_N_S_soc_S_gpio_S_gpio_3ff44000, interrupts, 0)
-#define DT_N_S_soc_S_gpio_S_gpio_3ff44000_P_interrupts_FOREACH_PROP_ELEM_SEP(fn, sep) fn(DT_N_S_soc_S_gpio_S_gpio_3ff44000, interrupts, 0)
-#define DT_N_S_soc_S_gpio_S_gpio_3ff44000_P_interrupts_FOREACH_PROP_ELEM_VARGS(fn, ...) fn(DT_N_S_soc_S_gpio_S_gpio_3ff44000, interrupts, 0, __VA_ARGS__)
-#define DT_N_S_soc_S_gpio_S_gpio_3ff44000_P_interrupts_FOREACH_PROP_ELEM_SEP_VARGS(fn, sep, ...) fn(DT_N_S_soc_S_gpio_S_gpio_3ff44000, interrupts, 0, __VA_ARGS__)
 #define DT_N_S_soc_S_gpio_S_gpio_3ff44000_P_interrupts_EXISTS 1
 #define DT_N_S_soc_S_gpio_S_gpio_3ff44000_P_interrupt_parent DT_N_S_soc_S_interrupt_controller_3ff00104
 #define DT_N_S_soc_S_gpio_S_gpio_3ff44000_P_interrupt_parent_IDX_0 DT_N_S_soc_S_interrupt_controller_3ff00104
 #define DT_N_S_soc_S_gpio_S_gpio_3ff44000_P_interrupt_parent_IDX_0_PH DT_N_S_soc_S_interrupt_controller_3ff00104
 #define DT_N_S_soc_S_gpio_S_gpio_3ff44000_P_interrupt_parent_IDX_0_EXISTS 1
+#define DT_N_S_soc_S_gpio_S_gpio_3ff44000_P_interrupt_parent_FOREACH_PROP_ELEM(fn) fn(DT_N_S_soc_S_gpio_S_gpio_3ff44000, interrupt_parent, 0)
+#define DT_N_S_soc_S_gpio_S_gpio_3ff44000_P_interrupt_parent_FOREACH_PROP_ELEM_SEP(fn, sep) fn(DT_N_S_soc_S_gpio_S_gpio_3ff44000, interrupt_parent, 0)
+#define DT_N_S_soc_S_gpio_S_gpio_3ff44000_P_interrupt_parent_FOREACH_PROP_ELEM_VARGS(fn, ...) fn(DT_N_S_soc_S_gpio_S_gpio_3ff44000, interrupt_parent, 0, __VA_ARGS__)
+#define DT_N_S_soc_S_gpio_S_gpio_3ff44000_P_interrupt_parent_FOREACH_PROP_ELEM_SEP_VARGS(fn, sep, ...) fn(DT_N_S_soc_S_gpio_S_gpio_3ff44000, interrupt_parent, 0, __VA_ARGS__)
 #define DT_N_S_soc_S_gpio_S_gpio_3ff44000_P_interrupt_parent_LEN 1
 #define DT_N_S_soc_S_gpio_S_gpio_3ff44000_P_interrupt_parent_EXISTS 1
 #define DT_N_S_soc_S_gpio_S_gpio_3ff44000_P_wakeup_source 0
 #define DT_N_S_soc_S_gpio_S_gpio_3ff44000_P_wakeup_source_EXISTS 1
+#define DT_N_S_soc_S_gpio_S_gpio_3ff44000_P_zephyr_pm_device_runtime_auto 0
+#define DT_N_S_soc_S_gpio_S_gpio_3ff44000_P_zephyr_pm_device_runtime_auto_EXISTS 1
 
 /*
  * Devicetree node: /buttons/button_0
@@ -1500,50 +1356,13 @@
 #define DT_N_S_buttons_S_button_0_P_label_STRING_UNQUOTED BOOT Button
 #define DT_N_S_buttons_S_button_0_P_label_STRING_TOKEN BOOT_Button
 #define DT_N_S_buttons_S_button_0_P_label_STRING_UPPER_TOKEN BOOT_BUTTON
-#define DT_N_S_buttons_S_button_0_P_label_FOREACH_PROP_ELEM(fn) fn(DT_N_S_buttons_S_button_0, label, 0) \
-	fn(DT_N_S_buttons_S_button_0, label, 1) \
-	fn(DT_N_S_buttons_S_button_0, label, 2) \
-	fn(DT_N_S_buttons_S_button_0, label, 3) \
-	fn(DT_N_S_buttons_S_button_0, label, 4) \
-	fn(DT_N_S_buttons_S_button_0, label, 5) \
-	fn(DT_N_S_buttons_S_button_0, label, 6) \
-	fn(DT_N_S_buttons_S_button_0, label, 7) \
-	fn(DT_N_S_buttons_S_button_0, label, 8) \
-	fn(DT_N_S_buttons_S_button_0, label, 9) \
-	fn(DT_N_S_buttons_S_button_0, label, 10)
-#define DT_N_S_buttons_S_button_0_P_label_FOREACH_PROP_ELEM_SEP(fn, sep) fn(DT_N_S_buttons_S_button_0, label, 0) DT_DEBRACKET_INTERNAL sep \
-	fn(DT_N_S_buttons_S_button_0, label, 1) DT_DEBRACKET_INTERNAL sep \
-	fn(DT_N_S_buttons_S_button_0, label, 2) DT_DEBRACKET_INTERNAL sep \
-	fn(DT_N_S_buttons_S_button_0, label, 3) DT_DEBRACKET_INTERNAL sep \
-	fn(DT_N_S_buttons_S_button_0, label, 4) DT_DEBRACKET_INTERNAL sep \
-	fn(DT_N_S_buttons_S_button_0, label, 5) DT_DEBRACKET_INTERNAL sep \
-	fn(DT_N_S_buttons_S_button_0, label, 6) DT_DEBRACKET_INTERNAL sep \
-	fn(DT_N_S_buttons_S_button_0, label, 7) DT_DEBRACKET_INTERNAL sep \
-	fn(DT_N_S_buttons_S_button_0, label, 8) DT_DEBRACKET_INTERNAL sep \
-	fn(DT_N_S_buttons_S_button_0, label, 9) DT_DEBRACKET_INTERNAL sep \
-	fn(DT_N_S_buttons_S_button_0, label, 10)
-#define DT_N_S_buttons_S_button_0_P_label_FOREACH_PROP_ELEM_VARGS(fn, ...) fn(DT_N_S_buttons_S_button_0, label, 0, __VA_ARGS__) \
-	fn(DT_N_S_buttons_S_button_0, label, 1, __VA_ARGS__) \
-	fn(DT_N_S_buttons_S_button_0, label, 2, __VA_ARGS__) \
-	fn(DT_N_S_buttons_S_button_0, label, 3, __VA_ARGS__) \
-	fn(DT_N_S_buttons_S_button_0, label, 4, __VA_ARGS__) \
-	fn(DT_N_S_buttons_S_button_0, label, 5, __VA_ARGS__) \
-	fn(DT_N_S_buttons_S_button_0, label, 6, __VA_ARGS__) \
-	fn(DT_N_S_buttons_S_button_0, label, 7, __VA_ARGS__) \
-	fn(DT_N_S_buttons_S_button_0, label, 8, __VA_ARGS__) \
-	fn(DT_N_S_buttons_S_button_0, label, 9, __VA_ARGS__) \
-	fn(DT_N_S_buttons_S_button_0, label, 10, __VA_ARGS__)
-#define DT_N_S_buttons_S_button_0_P_label_FOREACH_PROP_ELEM_SEP_VARGS(fn, sep, ...) fn(DT_N_S_buttons_S_button_0, label, 0, __VA_ARGS__) DT_DEBRACKET_INTERNAL sep \
-	fn(DT_N_S_buttons_S_button_0, label, 1, __VA_ARGS__) DT_DEBRACKET_INTERNAL sep \
-	fn(DT_N_S_buttons_S_button_0, label, 2, __VA_ARGS__) DT_DEBRACKET_INTERNAL sep \
-	fn(DT_N_S_buttons_S_button_0, label, 3, __VA_ARGS__) DT_DEBRACKET_INTERNAL sep \
-	fn(DT_N_S_buttons_S_button_0, label, 4, __VA_ARGS__) DT_DEBRACKET_INTERNAL sep \
-	fn(DT_N_S_buttons_S_button_0, label, 5, __VA_ARGS__) DT_DEBRACKET_INTERNAL sep \
-	fn(DT_N_S_buttons_S_button_0, label, 6, __VA_ARGS__) DT_DEBRACKET_INTERNAL sep \
-	fn(DT_N_S_buttons_S_button_0, label, 7, __VA_ARGS__) DT_DEBRACKET_INTERNAL sep \
-	fn(DT_N_S_buttons_S_button_0, label, 8, __VA_ARGS__) DT_DEBRACKET_INTERNAL sep \
-	fn(DT_N_S_buttons_S_button_0, label, 9, __VA_ARGS__) DT_DEBRACKET_INTERNAL sep \
-	fn(DT_N_S_buttons_S_button_0, label, 10, __VA_ARGS__)
+#define DT_N_S_buttons_S_button_0_P_label_IDX_0 "BOOT Button"
+#define DT_N_S_buttons_S_button_0_P_label_IDX_0_EXISTS 1
+#define DT_N_S_buttons_S_button_0_P_label_FOREACH_PROP_ELEM(fn) fn(DT_N_S_buttons_S_button_0, label, 0)
+#define DT_N_S_buttons_S_button_0_P_label_FOREACH_PROP_ELEM_SEP(fn, sep) fn(DT_N_S_buttons_S_button_0, label, 0)
+#define DT_N_S_buttons_S_button_0_P_label_FOREACH_PROP_ELEM_VARGS(fn, ...) fn(DT_N_S_buttons_S_button_0, label, 0, __VA_ARGS__)
+#define DT_N_S_buttons_S_button_0_P_label_FOREACH_PROP_ELEM_SEP_VARGS(fn, sep, ...) fn(DT_N_S_buttons_S_button_0, label, 0, __VA_ARGS__)
+#define DT_N_S_buttons_S_button_0_P_label_LEN 1
 #define DT_N_S_buttons_S_button_0_P_label_EXISTS 1
 #define DT_N_S_buttons_S_button_0_P_zephyr_code 0
 #define DT_N_S_buttons_S_button_0_P_zephyr_code_EXISTS 1
@@ -1664,7 +1483,7 @@
  * Node identifier: DT_N_S_power_states_S_deep_sleep
  *
  * Binding (compatible = zephyr,power-state):
- *   $ZEPHYR_BASE/dts/bindings/power/zephyr,power-state.yaml
+ *   /home/gez/sdks/zephyr/zephyr/dts/bindings/power/zephyr,power-state.yaml
  *
  * (Descriptions have moved to the Devicetree Bindings Index
  * in the documentation.)
@@ -1728,41 +1547,17 @@
 #define DT_N_S_power_states_S_deep_sleep_P_power_state_name_STRING_UNQUOTED soft-off
 #define DT_N_S_power_states_S_deep_sleep_P_power_state_name_STRING_TOKEN soft_off
 #define DT_N_S_power_states_S_deep_sleep_P_power_state_name_STRING_UPPER_TOKEN SOFT_OFF
+#define DT_N_S_power_states_S_deep_sleep_P_power_state_name_IDX_0 "soft-off"
+#define DT_N_S_power_states_S_deep_sleep_P_power_state_name_IDX_0_EXISTS 1
 #define DT_N_S_power_states_S_deep_sleep_P_power_state_name_ENUM_IDX 6
+#define DT_N_S_power_states_S_deep_sleep_P_power_state_name_ENUM_VAL_soft_off_EXISTS 1
 #define DT_N_S_power_states_S_deep_sleep_P_power_state_name_ENUM_TOKEN soft_off
 #define DT_N_S_power_states_S_deep_sleep_P_power_state_name_ENUM_UPPER_TOKEN SOFT_OFF
-#define DT_N_S_power_states_S_deep_sleep_P_power_state_name_FOREACH_PROP_ELEM(fn) fn(DT_N_S_power_states_S_deep_sleep, power_state_name, 0) \
-	fn(DT_N_S_power_states_S_deep_sleep, power_state_name, 1) \
-	fn(DT_N_S_power_states_S_deep_sleep, power_state_name, 2) \
-	fn(DT_N_S_power_states_S_deep_sleep, power_state_name, 3) \
-	fn(DT_N_S_power_states_S_deep_sleep, power_state_name, 4) \
-	fn(DT_N_S_power_states_S_deep_sleep, power_state_name, 5) \
-	fn(DT_N_S_power_states_S_deep_sleep, power_state_name, 6) \
-	fn(DT_N_S_power_states_S_deep_sleep, power_state_name, 7)
-#define DT_N_S_power_states_S_deep_sleep_P_power_state_name_FOREACH_PROP_ELEM_SEP(fn, sep) fn(DT_N_S_power_states_S_deep_sleep, power_state_name, 0) DT_DEBRACKET_INTERNAL sep \
-	fn(DT_N_S_power_states_S_deep_sleep, power_state_name, 1) DT_DEBRACKET_INTERNAL sep \
-	fn(DT_N_S_power_states_S_deep_sleep, power_state_name, 2) DT_DEBRACKET_INTERNAL sep \
-	fn(DT_N_S_power_states_S_deep_sleep, power_state_name, 3) DT_DEBRACKET_INTERNAL sep \
-	fn(DT_N_S_power_states_S_deep_sleep, power_state_name, 4) DT_DEBRACKET_INTERNAL sep \
-	fn(DT_N_S_power_states_S_deep_sleep, power_state_name, 5) DT_DEBRACKET_INTERNAL sep \
-	fn(DT_N_S_power_states_S_deep_sleep, power_state_name, 6) DT_DEBRACKET_INTERNAL sep \
-	fn(DT_N_S_power_states_S_deep_sleep, power_state_name, 7)
-#define DT_N_S_power_states_S_deep_sleep_P_power_state_name_FOREACH_PROP_ELEM_VARGS(fn, ...) fn(DT_N_S_power_states_S_deep_sleep, power_state_name, 0, __VA_ARGS__) \
-	fn(DT_N_S_power_states_S_deep_sleep, power_state_name, 1, __VA_ARGS__) \
-	fn(DT_N_S_power_states_S_deep_sleep, power_state_name, 2, __VA_ARGS__) \
-	fn(DT_N_S_power_states_S_deep_sleep, power_state_name, 3, __VA_ARGS__) \
-	fn(DT_N_S_power_states_S_deep_sleep, power_state_name, 4, __VA_ARGS__) \
-	fn(DT_N_S_power_states_S_deep_sleep, power_state_name, 5, __VA_ARGS__) \
-	fn(DT_N_S_power_states_S_deep_sleep, power_state_name, 6, __VA_ARGS__) \
-	fn(DT_N_S_power_states_S_deep_sleep, power_state_name, 7, __VA_ARGS__)
-#define DT_N_S_power_states_S_deep_sleep_P_power_state_name_FOREACH_PROP_ELEM_SEP_VARGS(fn, sep, ...) fn(DT_N_S_power_states_S_deep_sleep, power_state_name, 0, __VA_ARGS__) DT_DEBRACKET_INTERNAL sep \
-	fn(DT_N_S_power_states_S_deep_sleep, power_state_name, 1, __VA_ARGS__) DT_DEBRACKET_INTERNAL sep \
-	fn(DT_N_S_power_states_S_deep_sleep, power_state_name, 2, __VA_ARGS__) DT_DEBRACKET_INTERNAL sep \
-	fn(DT_N_S_power_states_S_deep_sleep, power_state_name, 3, __VA_ARGS__) DT_DEBRACKET_INTERNAL sep \
-	fn(DT_N_S_power_states_S_deep_sleep, power_state_name, 4, __VA_ARGS__) DT_DEBRACKET_INTERNAL sep \
-	fn(DT_N_S_power_states_S_deep_sleep, power_state_name, 5, __VA_ARGS__) DT_DEBRACKET_INTERNAL sep \
-	fn(DT_N_S_power_states_S_deep_sleep, power_state_name, 6, __VA_ARGS__) DT_DEBRACKET_INTERNAL sep \
-	fn(DT_N_S_power_states_S_deep_sleep, power_state_name, 7, __VA_ARGS__)
+#define DT_N_S_power_states_S_deep_sleep_P_power_state_name_FOREACH_PROP_ELEM(fn) fn(DT_N_S_power_states_S_deep_sleep, power_state_name, 0)
+#define DT_N_S_power_states_S_deep_sleep_P_power_state_name_FOREACH_PROP_ELEM_SEP(fn, sep) fn(DT_N_S_power_states_S_deep_sleep, power_state_name, 0)
+#define DT_N_S_power_states_S_deep_sleep_P_power_state_name_FOREACH_PROP_ELEM_VARGS(fn, ...) fn(DT_N_S_power_states_S_deep_sleep, power_state_name, 0, __VA_ARGS__)
+#define DT_N_S_power_states_S_deep_sleep_P_power_state_name_FOREACH_PROP_ELEM_SEP_VARGS(fn, sep, ...) fn(DT_N_S_power_states_S_deep_sleep, power_state_name, 0, __VA_ARGS__)
+#define DT_N_S_power_states_S_deep_sleep_P_power_state_name_LEN 1
 #define DT_N_S_power_states_S_deep_sleep_P_power_state_name_EXISTS 1
 #define DT_N_S_power_states_S_deep_sleep_P_min_residency_us 2000
 #define DT_N_S_power_states_S_deep_sleep_P_min_residency_us_EXISTS 1
@@ -1775,7 +1570,7 @@
  * Node identifier: DT_N_S_power_states_S_light_sleep
  *
  * Binding (compatible = zephyr,power-state):
- *   $ZEPHYR_BASE/dts/bindings/power/zephyr,power-state.yaml
+ *   /home/gez/sdks/zephyr/zephyr/dts/bindings/power/zephyr,power-state.yaml
  *
  * (Descriptions have moved to the Devicetree Bindings Index
  * in the documentation.)
@@ -1839,37 +1634,17 @@
 #define DT_N_S_power_states_S_light_sleep_P_power_state_name_STRING_UNQUOTED standby
 #define DT_N_S_power_states_S_light_sleep_P_power_state_name_STRING_TOKEN standby
 #define DT_N_S_power_states_S_light_sleep_P_power_state_name_STRING_UPPER_TOKEN STANDBY
+#define DT_N_S_power_states_S_light_sleep_P_power_state_name_IDX_0 "standby"
+#define DT_N_S_power_states_S_light_sleep_P_power_state_name_IDX_0_EXISTS 1
 #define DT_N_S_power_states_S_light_sleep_P_power_state_name_ENUM_IDX 3
+#define DT_N_S_power_states_S_light_sleep_P_power_state_name_ENUM_VAL_standby_EXISTS 1
 #define DT_N_S_power_states_S_light_sleep_P_power_state_name_ENUM_TOKEN standby
 #define DT_N_S_power_states_S_light_sleep_P_power_state_name_ENUM_UPPER_TOKEN STANDBY
-#define DT_N_S_power_states_S_light_sleep_P_power_state_name_FOREACH_PROP_ELEM(fn) fn(DT_N_S_power_states_S_light_sleep, power_state_name, 0) \
-	fn(DT_N_S_power_states_S_light_sleep, power_state_name, 1) \
-	fn(DT_N_S_power_states_S_light_sleep, power_state_name, 2) \
-	fn(DT_N_S_power_states_S_light_sleep, power_state_name, 3) \
-	fn(DT_N_S_power_states_S_light_sleep, power_state_name, 4) \
-	fn(DT_N_S_power_states_S_light_sleep, power_state_name, 5) \
-	fn(DT_N_S_power_states_S_light_sleep, power_state_name, 6)
-#define DT_N_S_power_states_S_light_sleep_P_power_state_name_FOREACH_PROP_ELEM_SEP(fn, sep) fn(DT_N_S_power_states_S_light_sleep, power_state_name, 0) DT_DEBRACKET_INTERNAL sep \
-	fn(DT_N_S_power_states_S_light_sleep, power_state_name, 1) DT_DEBRACKET_INTERNAL sep \
-	fn(DT_N_S_power_states_S_light_sleep, power_state_name, 2) DT_DEBRACKET_INTERNAL sep \
-	fn(DT_N_S_power_states_S_light_sleep, power_state_name, 3) DT_DEBRACKET_INTERNAL sep \
-	fn(DT_N_S_power_states_S_light_sleep, power_state_name, 4) DT_DEBRACKET_INTERNAL sep \
-	fn(DT_N_S_power_states_S_light_sleep, power_state_name, 5) DT_DEBRACKET_INTERNAL sep \
-	fn(DT_N_S_power_states_S_light_sleep, power_state_name, 6)
-#define DT_N_S_power_states_S_light_sleep_P_power_state_name_FOREACH_PROP_ELEM_VARGS(fn, ...) fn(DT_N_S_power_states_S_light_sleep, power_state_name, 0, __VA_ARGS__) \
-	fn(DT_N_S_power_states_S_light_sleep, power_state_name, 1, __VA_ARGS__) \
-	fn(DT_N_S_power_states_S_light_sleep, power_state_name, 2, __VA_ARGS__) \
-	fn(DT_N_S_power_states_S_light_sleep, power_state_name, 3, __VA_ARGS__) \
-	fn(DT_N_S_power_states_S_light_sleep, power_state_name, 4, __VA_ARGS__) \
-	fn(DT_N_S_power_states_S_light_sleep, power_state_name, 5, __VA_ARGS__) \
-	fn(DT_N_S_power_states_S_light_sleep, power_state_name, 6, __VA_ARGS__)
-#define DT_N_S_power_states_S_light_sleep_P_power_state_name_FOREACH_PROP_ELEM_SEP_VARGS(fn, sep, ...) fn(DT_N_S_power_states_S_light_sleep, power_state_name, 0, __VA_ARGS__) DT_DEBRACKET_INTERNAL sep \
-	fn(DT_N_S_power_states_S_light_sleep, power_state_name, 1, __VA_ARGS__) DT_DEBRACKET_INTERNAL sep \
-	fn(DT_N_S_power_states_S_light_sleep, power_state_name, 2, __VA_ARGS__) DT_DEBRACKET_INTERNAL sep \
-	fn(DT_N_S_power_states_S_light_sleep, power_state_name, 3, __VA_ARGS__) DT_DEBRACKET_INTERNAL sep \
-	fn(DT_N_S_power_states_S_light_sleep, power_state_name, 4, __VA_ARGS__) DT_DEBRACKET_INTERNAL sep \
-	fn(DT_N_S_power_states_S_light_sleep, power_state_name, 5, __VA_ARGS__) DT_DEBRACKET_INTERNAL sep \
-	fn(DT_N_S_power_states_S_light_sleep, power_state_name, 6, __VA_ARGS__)
+#define DT_N_S_power_states_S_light_sleep_P_power_state_name_FOREACH_PROP_ELEM(fn) fn(DT_N_S_power_states_S_light_sleep, power_state_name, 0)
+#define DT_N_S_power_states_S_light_sleep_P_power_state_name_FOREACH_PROP_ELEM_SEP(fn, sep) fn(DT_N_S_power_states_S_light_sleep, power_state_name, 0)
+#define DT_N_S_power_states_S_light_sleep_P_power_state_name_FOREACH_PROP_ELEM_VARGS(fn, ...) fn(DT_N_S_power_states_S_light_sleep, power_state_name, 0, __VA_ARGS__)
+#define DT_N_S_power_states_S_light_sleep_P_power_state_name_FOREACH_PROP_ELEM_SEP_VARGS(fn, sep, ...) fn(DT_N_S_power_states_S_light_sleep, power_state_name, 0, __VA_ARGS__)
+#define DT_N_S_power_states_S_light_sleep_P_power_state_name_LEN 1
 #define DT_N_S_power_states_S_light_sleep_P_power_state_name_EXISTS 1
 #define DT_N_S_power_states_S_light_sleep_P_min_residency_us 200
 #define DT_N_S_power_states_S_light_sleep_P_min_residency_us_EXISTS 1
@@ -1882,7 +1657,7 @@
  * Node identifier: DT_N_S_cpus_S_cpu_0
  *
  * Binding (compatible = cdns,tensilica-xtensa-lx6):
- *   $ZEPHYR_BASE/dts/bindings/cpu/cdns,tensilica-xtensa-lx6.yaml
+ *   /home/gez/sdks/zephyr/zephyr/dts/bindings/cpu/cdns,tensilica-xtensa-lx6.yaml
  *
  * (Descriptions have moved to the Devicetree Bindings Index
  * in the documentation.)
@@ -1978,13 +1753,11 @@
 #define DT_N_S_cpus_S_cpu_0_P_reg {0 /* 0x0 */}
 #define DT_N_S_cpus_S_cpu_0_P_reg_IDX_0 0
 #define DT_N_S_cpus_S_cpu_0_P_reg_IDX_0_EXISTS 1
-#define DT_N_S_cpus_S_cpu_0_P_reg_FOREACH_PROP_ELEM(fn) fn(DT_N_S_cpus_S_cpu_0, reg, 0)
-#define DT_N_S_cpus_S_cpu_0_P_reg_FOREACH_PROP_ELEM_SEP(fn, sep) fn(DT_N_S_cpus_S_cpu_0, reg, 0)
-#define DT_N_S_cpus_S_cpu_0_P_reg_FOREACH_PROP_ELEM_VARGS(fn, ...) fn(DT_N_S_cpus_S_cpu_0, reg, 0, __VA_ARGS__)
-#define DT_N_S_cpus_S_cpu_0_P_reg_FOREACH_PROP_ELEM_SEP_VARGS(fn, sep, ...) fn(DT_N_S_cpus_S_cpu_0, reg, 0, __VA_ARGS__)
 #define DT_N_S_cpus_S_cpu_0_P_reg_EXISTS 1
 #define DT_N_S_cpus_S_cpu_0_P_wakeup_source 0
 #define DT_N_S_cpus_S_cpu_0_P_wakeup_source_EXISTS 1
+#define DT_N_S_cpus_S_cpu_0_P_zephyr_pm_device_runtime_auto 0
+#define DT_N_S_cpus_S_cpu_0_P_zephyr_pm_device_runtime_auto_EXISTS 1
 
 /*
  * Devicetree node: /cpus/cpu@1
@@ -1992,7 +1765,7 @@
  * Node identifier: DT_N_S_cpus_S_cpu_1
  *
  * Binding (compatible = cdns,tensilica-xtensa-lx6):
- *   $ZEPHYR_BASE/dts/bindings/cpu/cdns,tensilica-xtensa-lx6.yaml
+ *   /home/gez/sdks/zephyr/zephyr/dts/bindings/cpu/cdns,tensilica-xtensa-lx6.yaml
  *
  * (Descriptions have moved to the Devicetree Bindings Index
  * in the documentation.)
@@ -2070,13 +1843,11 @@
 #define DT_N_S_cpus_S_cpu_1_P_reg {1 /* 0x1 */}
 #define DT_N_S_cpus_S_cpu_1_P_reg_IDX_0 1
 #define DT_N_S_cpus_S_cpu_1_P_reg_IDX_0_EXISTS 1
-#define DT_N_S_cpus_S_cpu_1_P_reg_FOREACH_PROP_ELEM(fn) fn(DT_N_S_cpus_S_cpu_1, reg, 0)
-#define DT_N_S_cpus_S_cpu_1_P_reg_FOREACH_PROP_ELEM_SEP(fn, sep) fn(DT_N_S_cpus_S_cpu_1, reg, 0)
-#define DT_N_S_cpus_S_cpu_1_P_reg_FOREACH_PROP_ELEM_VARGS(fn, ...) fn(DT_N_S_cpus_S_cpu_1, reg, 0, __VA_ARGS__)
-#define DT_N_S_cpus_S_cpu_1_P_reg_FOREACH_PROP_ELEM_SEP_VARGS(fn, sep, ...) fn(DT_N_S_cpus_S_cpu_1, reg, 0, __VA_ARGS__)
 #define DT_N_S_cpus_S_cpu_1_P_reg_EXISTS 1
 #define DT_N_S_cpus_S_cpu_1_P_wakeup_source 0
 #define DT_N_S_cpus_S_cpu_1_P_wakeup_source_EXISTS 1
+#define DT_N_S_cpus_S_cpu_1_P_zephyr_pm_device_runtime_auto 0
+#define DT_N_S_cpus_S_cpu_1_P_zephyr_pm_device_runtime_auto_EXISTS 1
 
 /*
  * Devicetree node: /leds
@@ -2084,7 +1855,7 @@
  * Node identifier: DT_N_S_leds
  *
  * Binding (compatible = gpio-leds):
- *   $ZEPHYR_BASE/dts/bindings/led/gpio-leds.yaml
+ *   /home/gez/sdks/zephyr/zephyr/dts/bindings/led/gpio-leds.yaml
  *
  * (Descriptions have moved to the Devicetree Bindings Index
  * in the documentation.)
@@ -2228,7 +1999,7 @@
  * Node identifier: DT_N_S_pin_controller
  *
  * Binding (compatible = espressif,esp32-pinctrl):
- *   $ZEPHYR_BASE/dts/bindings/pinctrl/espressif,esp32-pinctrl.yaml
+ *   /home/gez/sdks/zephyr/zephyr/dts/bindings/pinctrl/espressif,esp32-pinctrl.yaml
  *
  * (Descriptions have moved to the Devicetree Bindings Index
  * in the documentation.)
@@ -2297,25 +2068,17 @@
 #define DT_N_S_pin_controller_P_status_STRING_UNQUOTED okay
 #define DT_N_S_pin_controller_P_status_STRING_TOKEN okay
 #define DT_N_S_pin_controller_P_status_STRING_UPPER_TOKEN OKAY
+#define DT_N_S_pin_controller_P_status_IDX_0 "okay"
+#define DT_N_S_pin_controller_P_status_IDX_0_EXISTS 1
 #define DT_N_S_pin_controller_P_status_ENUM_IDX 1
+#define DT_N_S_pin_controller_P_status_ENUM_VAL_okay_EXISTS 1
 #define DT_N_S_pin_controller_P_status_ENUM_TOKEN okay
 #define DT_N_S_pin_controller_P_status_ENUM_UPPER_TOKEN OKAY
-#define DT_N_S_pin_controller_P_status_FOREACH_PROP_ELEM(fn) fn(DT_N_S_pin_controller, status, 0) \
-	fn(DT_N_S_pin_controller, status, 1) \
-	fn(DT_N_S_pin_controller, status, 2) \
-	fn(DT_N_S_pin_controller, status, 3)
-#define DT_N_S_pin_controller_P_status_FOREACH_PROP_ELEM_SEP(fn, sep) fn(DT_N_S_pin_controller, status, 0) DT_DEBRACKET_INTERNAL sep \
-	fn(DT_N_S_pin_controller, status, 1) DT_DEBRACKET_INTERNAL sep \
-	fn(DT_N_S_pin_controller, status, 2) DT_DEBRACKET_INTERNAL sep \
-	fn(DT_N_S_pin_controller, status, 3)
-#define DT_N_S_pin_controller_P_status_FOREACH_PROP_ELEM_VARGS(fn, ...) fn(DT_N_S_pin_controller, status, 0, __VA_ARGS__) \
-	fn(DT_N_S_pin_controller, status, 1, __VA_ARGS__) \
-	fn(DT_N_S_pin_controller, status, 2, __VA_ARGS__) \
-	fn(DT_N_S_pin_controller, status, 3, __VA_ARGS__)
-#define DT_N_S_pin_controller_P_status_FOREACH_PROP_ELEM_SEP_VARGS(fn, sep, ...) fn(DT_N_S_pin_controller, status, 0, __VA_ARGS__) DT_DEBRACKET_INTERNAL sep \
-	fn(DT_N_S_pin_controller, status, 1, __VA_ARGS__) DT_DEBRACKET_INTERNAL sep \
-	fn(DT_N_S_pin_controller, status, 2, __VA_ARGS__) DT_DEBRACKET_INTERNAL sep \
-	fn(DT_N_S_pin_controller, status, 3, __VA_ARGS__)
+#define DT_N_S_pin_controller_P_status_FOREACH_PROP_ELEM(fn) fn(DT_N_S_pin_controller, status, 0)
+#define DT_N_S_pin_controller_P_status_FOREACH_PROP_ELEM_SEP(fn, sep) fn(DT_N_S_pin_controller, status, 0)
+#define DT_N_S_pin_controller_P_status_FOREACH_PROP_ELEM_VARGS(fn, ...) fn(DT_N_S_pin_controller, status, 0, __VA_ARGS__)
+#define DT_N_S_pin_controller_P_status_FOREACH_PROP_ELEM_SEP_VARGS(fn, sep, ...) fn(DT_N_S_pin_controller, status, 0, __VA_ARGS__)
+#define DT_N_S_pin_controller_P_status_LEN 1
 #define DT_N_S_pin_controller_P_status_EXISTS 1
 #define DT_N_S_pin_controller_P_compatible {"espressif,esp32-pinctrl"}
 #define DT_N_S_pin_controller_P_compatible_IDX_0 "espressif,esp32-pinctrl"
@@ -2331,6 +2094,8 @@
 #define DT_N_S_pin_controller_P_compatible_EXISTS 1
 #define DT_N_S_pin_controller_P_wakeup_source 0
 #define DT_N_S_pin_controller_P_wakeup_source_EXISTS 1
+#define DT_N_S_pin_controller_P_zephyr_pm_device_runtime_auto 0
+#define DT_N_S_pin_controller_P_zephyr_pm_device_runtime_auto_EXISTS 1
 
 /*
  * Devicetree node: /pin-controller/i2c0_default
@@ -3096,7 +2861,7 @@
 #define DT_N_S_pin_controller_S_uart0_default_S_group1_P_output_enable_EXISTS 1
 #define DT_N_S_pin_controller_S_uart0_default_S_group1_P_output_low 0
 #define DT_N_S_pin_controller_S_uart0_default_S_group1_P_output_low_EXISTS 1
-#define DT_N_S_pin_controller_S_uart0_default_S_group1_P_output_high 0
+#define DT_N_S_pin_controller_S_uart0_default_S_group1_P_output_high 1
 #define DT_N_S_pin_controller_S_uart0_default_S_group1_P_output_high_EXISTS 1
 
 /*
@@ -3640,7 +3405,7 @@
  * Node identifier: DT_N_S_soc_S_adc_3ff48800
  *
  * Binding (compatible = espressif,esp32-adc):
- *   $ZEPHYR_BASE/dts/bindings/adc/espressif,esp32-adc.yaml
+ *   /home/gez/sdks/zephyr/zephyr/dts/bindings/adc/espressif,esp32-adc.yaml
  *
  * (Descriptions have moved to the Devicetree Bindings Index
  * in the documentation.)
@@ -3710,41 +3475,17 @@
 #define DT_N_S_soc_S_adc_3ff48800_P_status_STRING_UNQUOTED disabled
 #define DT_N_S_soc_S_adc_3ff48800_P_status_STRING_TOKEN disabled
 #define DT_N_S_soc_S_adc_3ff48800_P_status_STRING_UPPER_TOKEN DISABLED
+#define DT_N_S_soc_S_adc_3ff48800_P_status_IDX_0 "disabled"
+#define DT_N_S_soc_S_adc_3ff48800_P_status_IDX_0_EXISTS 1
 #define DT_N_S_soc_S_adc_3ff48800_P_status_ENUM_IDX 2
+#define DT_N_S_soc_S_adc_3ff48800_P_status_ENUM_VAL_disabled_EXISTS 1
 #define DT_N_S_soc_S_adc_3ff48800_P_status_ENUM_TOKEN disabled
 #define DT_N_S_soc_S_adc_3ff48800_P_status_ENUM_UPPER_TOKEN DISABLED
-#define DT_N_S_soc_S_adc_3ff48800_P_status_FOREACH_PROP_ELEM(fn) fn(DT_N_S_soc_S_adc_3ff48800, status, 0) \
-	fn(DT_N_S_soc_S_adc_3ff48800, status, 1) \
-	fn(DT_N_S_soc_S_adc_3ff48800, status, 2) \
-	fn(DT_N_S_soc_S_adc_3ff48800, status, 3) \
-	fn(DT_N_S_soc_S_adc_3ff48800, status, 4) \
-	fn(DT_N_S_soc_S_adc_3ff48800, status, 5) \
-	fn(DT_N_S_soc_S_adc_3ff48800, status, 6) \
-	fn(DT_N_S_soc_S_adc_3ff48800, status, 7)
-#define DT_N_S_soc_S_adc_3ff48800_P_status_FOREACH_PROP_ELEM_SEP(fn, sep) fn(DT_N_S_soc_S_adc_3ff48800, status, 0) DT_DEBRACKET_INTERNAL sep \
-	fn(DT_N_S_soc_S_adc_3ff48800, status, 1) DT_DEBRACKET_INTERNAL sep \
-	fn(DT_N_S_soc_S_adc_3ff48800, status, 2) DT_DEBRACKET_INTERNAL sep \
-	fn(DT_N_S_soc_S_adc_3ff48800, status, 3) DT_DEBRACKET_INTERNAL sep \
-	fn(DT_N_S_soc_S_adc_3ff48800, status, 4) DT_DEBRACKET_INTERNAL sep \
-	fn(DT_N_S_soc_S_adc_3ff48800, status, 5) DT_DEBRACKET_INTERNAL sep \
-	fn(DT_N_S_soc_S_adc_3ff48800, status, 6) DT_DEBRACKET_INTERNAL sep \
-	fn(DT_N_S_soc_S_adc_3ff48800, status, 7)
-#define DT_N_S_soc_S_adc_3ff48800_P_status_FOREACH_PROP_ELEM_VARGS(fn, ...) fn(DT_N_S_soc_S_adc_3ff48800, status, 0, __VA_ARGS__) \
-	fn(DT_N_S_soc_S_adc_3ff48800, status, 1, __VA_ARGS__) \
-	fn(DT_N_S_soc_S_adc_3ff48800, status, 2, __VA_ARGS__) \
-	fn(DT_N_S_soc_S_adc_3ff48800, status, 3, __VA_ARGS__) \
-	fn(DT_N_S_soc_S_adc_3ff48800, status, 4, __VA_ARGS__) \
-	fn(DT_N_S_soc_S_adc_3ff48800, status, 5, __VA_ARGS__) \
-	fn(DT_N_S_soc_S_adc_3ff48800, status, 6, __VA_ARGS__) \
-	fn(DT_N_S_soc_S_adc_3ff48800, status, 7, __VA_ARGS__)
-#define DT_N_S_soc_S_adc_3ff48800_P_status_FOREACH_PROP_ELEM_SEP_VARGS(fn, sep, ...) fn(DT_N_S_soc_S_adc_3ff48800, status, 0, __VA_ARGS__) DT_DEBRACKET_INTERNAL sep \
-	fn(DT_N_S_soc_S_adc_3ff48800, status, 1, __VA_ARGS__) DT_DEBRACKET_INTERNAL sep \
-	fn(DT_N_S_soc_S_adc_3ff48800, status, 2, __VA_ARGS__) DT_DEBRACKET_INTERNAL sep \
-	fn(DT_N_S_soc_S_adc_3ff48800, status, 3, __VA_ARGS__) DT_DEBRACKET_INTERNAL sep \
-	fn(DT_N_S_soc_S_adc_3ff48800, status, 4, __VA_ARGS__) DT_DEBRACKET_INTERNAL sep \
-	fn(DT_N_S_soc_S_adc_3ff48800, status, 5, __VA_ARGS__) DT_DEBRACKET_INTERNAL sep \
-	fn(DT_N_S_soc_S_adc_3ff48800, status, 6, __VA_ARGS__) DT_DEBRACKET_INTERNAL sep \
-	fn(DT_N_S_soc_S_adc_3ff48800, status, 7, __VA_ARGS__)
+#define DT_N_S_soc_S_adc_3ff48800_P_status_FOREACH_PROP_ELEM(fn) fn(DT_N_S_soc_S_adc_3ff48800, status, 0)
+#define DT_N_S_soc_S_adc_3ff48800_P_status_FOREACH_PROP_ELEM_SEP(fn, sep) fn(DT_N_S_soc_S_adc_3ff48800, status, 0)
+#define DT_N_S_soc_S_adc_3ff48800_P_status_FOREACH_PROP_ELEM_VARGS(fn, ...) fn(DT_N_S_soc_S_adc_3ff48800, status, 0, __VA_ARGS__)
+#define DT_N_S_soc_S_adc_3ff48800_P_status_FOREACH_PROP_ELEM_SEP_VARGS(fn, sep, ...) fn(DT_N_S_soc_S_adc_3ff48800, status, 0, __VA_ARGS__)
+#define DT_N_S_soc_S_adc_3ff48800_P_status_LEN 1
 #define DT_N_S_soc_S_adc_3ff48800_P_status_EXISTS 1
 #define DT_N_S_soc_S_adc_3ff48800_P_compatible {"espressif,esp32-adc"}
 #define DT_N_S_soc_S_adc_3ff48800_P_compatible_IDX_0 "espressif,esp32-adc"
@@ -3763,17 +3504,11 @@
 #define DT_N_S_soc_S_adc_3ff48800_P_reg_IDX_0_EXISTS 1
 #define DT_N_S_soc_S_adc_3ff48800_P_reg_IDX_1 10
 #define DT_N_S_soc_S_adc_3ff48800_P_reg_IDX_1_EXISTS 1
-#define DT_N_S_soc_S_adc_3ff48800_P_reg_FOREACH_PROP_ELEM(fn) fn(DT_N_S_soc_S_adc_3ff48800, reg, 0) \
-	fn(DT_N_S_soc_S_adc_3ff48800, reg, 1)
-#define DT_N_S_soc_S_adc_3ff48800_P_reg_FOREACH_PROP_ELEM_SEP(fn, sep) fn(DT_N_S_soc_S_adc_3ff48800, reg, 0) DT_DEBRACKET_INTERNAL sep \
-	fn(DT_N_S_soc_S_adc_3ff48800, reg, 1)
-#define DT_N_S_soc_S_adc_3ff48800_P_reg_FOREACH_PROP_ELEM_VARGS(fn, ...) fn(DT_N_S_soc_S_adc_3ff48800, reg, 0, __VA_ARGS__) \
-	fn(DT_N_S_soc_S_adc_3ff48800, reg, 1, __VA_ARGS__)
-#define DT_N_S_soc_S_adc_3ff48800_P_reg_FOREACH_PROP_ELEM_SEP_VARGS(fn, sep, ...) fn(DT_N_S_soc_S_adc_3ff48800, reg, 0, __VA_ARGS__) DT_DEBRACKET_INTERNAL sep \
-	fn(DT_N_S_soc_S_adc_3ff48800, reg, 1, __VA_ARGS__)
 #define DT_N_S_soc_S_adc_3ff48800_P_reg_EXISTS 1
 #define DT_N_S_soc_S_adc_3ff48800_P_wakeup_source 0
 #define DT_N_S_soc_S_adc_3ff48800_P_wakeup_source_EXISTS 1
+#define DT_N_S_soc_S_adc_3ff48800_P_zephyr_pm_device_runtime_auto 0
+#define DT_N_S_soc_S_adc_3ff48800_P_zephyr_pm_device_runtime_auto_EXISTS 1
 
 /*
  * Devicetree node: /soc/adc@3ff48890
@@ -3781,7 +3516,7 @@
  * Node identifier: DT_N_S_soc_S_adc_3ff48890
  *
  * Binding (compatible = espressif,esp32-adc):
- *   $ZEPHYR_BASE/dts/bindings/adc/espressif,esp32-adc.yaml
+ *   /home/gez/sdks/zephyr/zephyr/dts/bindings/adc/espressif,esp32-adc.yaml
  *
  * (Descriptions have moved to the Devicetree Bindings Index
  * in the documentation.)
@@ -3851,41 +3586,17 @@
 #define DT_N_S_soc_S_adc_3ff48890_P_status_STRING_UNQUOTED disabled
 #define DT_N_S_soc_S_adc_3ff48890_P_status_STRING_TOKEN disabled
 #define DT_N_S_soc_S_adc_3ff48890_P_status_STRING_UPPER_TOKEN DISABLED
+#define DT_N_S_soc_S_adc_3ff48890_P_status_IDX_0 "disabled"
+#define DT_N_S_soc_S_adc_3ff48890_P_status_IDX_0_EXISTS 1
 #define DT_N_S_soc_S_adc_3ff48890_P_status_ENUM_IDX 2
+#define DT_N_S_soc_S_adc_3ff48890_P_status_ENUM_VAL_disabled_EXISTS 1
 #define DT_N_S_soc_S_adc_3ff48890_P_status_ENUM_TOKEN disabled
 #define DT_N_S_soc_S_adc_3ff48890_P_status_ENUM_UPPER_TOKEN DISABLED
-#define DT_N_S_soc_S_adc_3ff48890_P_status_FOREACH_PROP_ELEM(fn) fn(DT_N_S_soc_S_adc_3ff48890, status, 0) \
-	fn(DT_N_S_soc_S_adc_3ff48890, status, 1) \
-	fn(DT_N_S_soc_S_adc_3ff48890, status, 2) \
-	fn(DT_N_S_soc_S_adc_3ff48890, status, 3) \
-	fn(DT_N_S_soc_S_adc_3ff48890, status, 4) \
-	fn(DT_N_S_soc_S_adc_3ff48890, status, 5) \
-	fn(DT_N_S_soc_S_adc_3ff48890, status, 6) \
-	fn(DT_N_S_soc_S_adc_3ff48890, status, 7)
-#define DT_N_S_soc_S_adc_3ff48890_P_status_FOREACH_PROP_ELEM_SEP(fn, sep) fn(DT_N_S_soc_S_adc_3ff48890, status, 0) DT_DEBRACKET_INTERNAL sep \
-	fn(DT_N_S_soc_S_adc_3ff48890, status, 1) DT_DEBRACKET_INTERNAL sep \
-	fn(DT_N_S_soc_S_adc_3ff48890, status, 2) DT_DEBRACKET_INTERNAL sep \
-	fn(DT_N_S_soc_S_adc_3ff48890, status, 3) DT_DEBRACKET_INTERNAL sep \
-	fn(DT_N_S_soc_S_adc_3ff48890, status, 4) DT_DEBRACKET_INTERNAL sep \
-	fn(DT_N_S_soc_S_adc_3ff48890, status, 5) DT_DEBRACKET_INTERNAL sep \
-	fn(DT_N_S_soc_S_adc_3ff48890, status, 6) DT_DEBRACKET_INTERNAL sep \
-	fn(DT_N_S_soc_S_adc_3ff48890, status, 7)
-#define DT_N_S_soc_S_adc_3ff48890_P_status_FOREACH_PROP_ELEM_VARGS(fn, ...) fn(DT_N_S_soc_S_adc_3ff48890, status, 0, __VA_ARGS__) \
-	fn(DT_N_S_soc_S_adc_3ff48890, status, 1, __VA_ARGS__) \
-	fn(DT_N_S_soc_S_adc_3ff48890, status, 2, __VA_ARGS__) \
-	fn(DT_N_S_soc_S_adc_3ff48890, status, 3, __VA_ARGS__) \
-	fn(DT_N_S_soc_S_adc_3ff48890, status, 4, __VA_ARGS__) \
-	fn(DT_N_S_soc_S_adc_3ff48890, status, 5, __VA_ARGS__) \
-	fn(DT_N_S_soc_S_adc_3ff48890, status, 6, __VA_ARGS__) \
-	fn(DT_N_S_soc_S_adc_3ff48890, status, 7, __VA_ARGS__)
-#define DT_N_S_soc_S_adc_3ff48890_P_status_FOREACH_PROP_ELEM_SEP_VARGS(fn, sep, ...) fn(DT_N_S_soc_S_adc_3ff48890, status, 0, __VA_ARGS__) DT_DEBRACKET_INTERNAL sep \
-	fn(DT_N_S_soc_S_adc_3ff48890, status, 1, __VA_ARGS__) DT_DEBRACKET_INTERNAL sep \
-	fn(DT_N_S_soc_S_adc_3ff48890, status, 2, __VA_ARGS__) DT_DEBRACKET_INTERNAL sep \
-	fn(DT_N_S_soc_S_adc_3ff48890, status, 3, __VA_ARGS__) DT_DEBRACKET_INTERNAL sep \
-	fn(DT_N_S_soc_S_adc_3ff48890, status, 4, __VA_ARGS__) DT_DEBRACKET_INTERNAL sep \
-	fn(DT_N_S_soc_S_adc_3ff48890, status, 5, __VA_ARGS__) DT_DEBRACKET_INTERNAL sep \
-	fn(DT_N_S_soc_S_adc_3ff48890, status, 6, __VA_ARGS__) DT_DEBRACKET_INTERNAL sep \
-	fn(DT_N_S_soc_S_adc_3ff48890, status, 7, __VA_ARGS__)
+#define DT_N_S_soc_S_adc_3ff48890_P_status_FOREACH_PROP_ELEM(fn) fn(DT_N_S_soc_S_adc_3ff48890, status, 0)
+#define DT_N_S_soc_S_adc_3ff48890_P_status_FOREACH_PROP_ELEM_SEP(fn, sep) fn(DT_N_S_soc_S_adc_3ff48890, status, 0)
+#define DT_N_S_soc_S_adc_3ff48890_P_status_FOREACH_PROP_ELEM_VARGS(fn, ...) fn(DT_N_S_soc_S_adc_3ff48890, status, 0, __VA_ARGS__)
+#define DT_N_S_soc_S_adc_3ff48890_P_status_FOREACH_PROP_ELEM_SEP_VARGS(fn, sep, ...) fn(DT_N_S_soc_S_adc_3ff48890, status, 0, __VA_ARGS__)
+#define DT_N_S_soc_S_adc_3ff48890_P_status_LEN 1
 #define DT_N_S_soc_S_adc_3ff48890_P_status_EXISTS 1
 #define DT_N_S_soc_S_adc_3ff48890_P_compatible {"espressif,esp32-adc"}
 #define DT_N_S_soc_S_adc_3ff48890_P_compatible_IDX_0 "espressif,esp32-adc"
@@ -3904,17 +3615,11 @@
 #define DT_N_S_soc_S_adc_3ff48890_P_reg_IDX_0_EXISTS 1
 #define DT_N_S_soc_S_adc_3ff48890_P_reg_IDX_1 10
 #define DT_N_S_soc_S_adc_3ff48890_P_reg_IDX_1_EXISTS 1
-#define DT_N_S_soc_S_adc_3ff48890_P_reg_FOREACH_PROP_ELEM(fn) fn(DT_N_S_soc_S_adc_3ff48890, reg, 0) \
-	fn(DT_N_S_soc_S_adc_3ff48890, reg, 1)
-#define DT_N_S_soc_S_adc_3ff48890_P_reg_FOREACH_PROP_ELEM_SEP(fn, sep) fn(DT_N_S_soc_S_adc_3ff48890, reg, 0) DT_DEBRACKET_INTERNAL sep \
-	fn(DT_N_S_soc_S_adc_3ff48890, reg, 1)
-#define DT_N_S_soc_S_adc_3ff48890_P_reg_FOREACH_PROP_ELEM_VARGS(fn, ...) fn(DT_N_S_soc_S_adc_3ff48890, reg, 0, __VA_ARGS__) \
-	fn(DT_N_S_soc_S_adc_3ff48890, reg, 1, __VA_ARGS__)
-#define DT_N_S_soc_S_adc_3ff48890_P_reg_FOREACH_PROP_ELEM_SEP_VARGS(fn, sep, ...) fn(DT_N_S_soc_S_adc_3ff48890, reg, 0, __VA_ARGS__) DT_DEBRACKET_INTERNAL sep \
-	fn(DT_N_S_soc_S_adc_3ff48890, reg, 1, __VA_ARGS__)
 #define DT_N_S_soc_S_adc_3ff48890_P_reg_EXISTS 1
 #define DT_N_S_soc_S_adc_3ff48890_P_wakeup_source 0
 #define DT_N_S_soc_S_adc_3ff48890_P_wakeup_source_EXISTS 1
+#define DT_N_S_soc_S_adc_3ff48890_P_zephyr_pm_device_runtime_auto 0
+#define DT_N_S_soc_S_adc_3ff48890_P_zephyr_pm_device_runtime_auto_EXISTS 1
 
 /*
  * Devicetree node: /soc/can@3ff6b000
@@ -3922,7 +3627,7 @@
  * Node identifier: DT_N_S_soc_S_can_3ff6b000
  *
  * Binding (compatible = espressif,esp32-twai):
- *   $ZEPHYR_BASE/dts/bindings/can/espressif,esp32-twai.yaml
+ *   /home/gez/sdks/zephyr/zephyr/dts/bindings/can/espressif,esp32-twai.yaml
  *
  * (Descriptions have moved to the Devicetree Bindings Index
  * in the documentation.)
@@ -3994,22 +3699,10 @@
 #define DT_N_S_soc_S_can_3ff6b000_P_reg_IDX_0_EXISTS 1
 #define DT_N_S_soc_S_can_3ff6b000_P_reg_IDX_1 4096
 #define DT_N_S_soc_S_can_3ff6b000_P_reg_IDX_1_EXISTS 1
-#define DT_N_S_soc_S_can_3ff6b000_P_reg_FOREACH_PROP_ELEM(fn) fn(DT_N_S_soc_S_can_3ff6b000, reg, 0) \
-	fn(DT_N_S_soc_S_can_3ff6b000, reg, 1)
-#define DT_N_S_soc_S_can_3ff6b000_P_reg_FOREACH_PROP_ELEM_SEP(fn, sep) fn(DT_N_S_soc_S_can_3ff6b000, reg, 0) DT_DEBRACKET_INTERNAL sep \
-	fn(DT_N_S_soc_S_can_3ff6b000, reg, 1)
-#define DT_N_S_soc_S_can_3ff6b000_P_reg_FOREACH_PROP_ELEM_VARGS(fn, ...) fn(DT_N_S_soc_S_can_3ff6b000, reg, 0, __VA_ARGS__) \
-	fn(DT_N_S_soc_S_can_3ff6b000, reg, 1, __VA_ARGS__)
-#define DT_N_S_soc_S_can_3ff6b000_P_reg_FOREACH_PROP_ELEM_SEP_VARGS(fn, sep, ...) fn(DT_N_S_soc_S_can_3ff6b000, reg, 0, __VA_ARGS__) DT_DEBRACKET_INTERNAL sep \
-	fn(DT_N_S_soc_S_can_3ff6b000, reg, 1, __VA_ARGS__)
 #define DT_N_S_soc_S_can_3ff6b000_P_reg_EXISTS 1
 #define DT_N_S_soc_S_can_3ff6b000_P_interrupts {45 /* 0x2d */}
 #define DT_N_S_soc_S_can_3ff6b000_P_interrupts_IDX_0 45
 #define DT_N_S_soc_S_can_3ff6b000_P_interrupts_IDX_0_EXISTS 1
-#define DT_N_S_soc_S_can_3ff6b000_P_interrupts_FOREACH_PROP_ELEM(fn) fn(DT_N_S_soc_S_can_3ff6b000, interrupts, 0)
-#define DT_N_S_soc_S_can_3ff6b000_P_interrupts_FOREACH_PROP_ELEM_SEP(fn, sep) fn(DT_N_S_soc_S_can_3ff6b000, interrupts, 0)
-#define DT_N_S_soc_S_can_3ff6b000_P_interrupts_FOREACH_PROP_ELEM_VARGS(fn, ...) fn(DT_N_S_soc_S_can_3ff6b000, interrupts, 0, __VA_ARGS__)
-#define DT_N_S_soc_S_can_3ff6b000_P_interrupts_FOREACH_PROP_ELEM_SEP_VARGS(fn, sep, ...) fn(DT_N_S_soc_S_can_3ff6b000, interrupts, 0, __VA_ARGS__)
 #define DT_N_S_soc_S_can_3ff6b000_P_interrupts_EXISTS 1
 #define DT_N_S_soc_S_can_3ff6b000_P_clocks_IDX_0_EXISTS 1
 #define DT_N_S_soc_S_can_3ff6b000_P_clocks_IDX_0_PH DT_N_S_soc_S_rtc_3ff48000
@@ -4029,41 +3722,17 @@
 #define DT_N_S_soc_S_can_3ff6b000_P_status_STRING_UNQUOTED disabled
 #define DT_N_S_soc_S_can_3ff6b000_P_status_STRING_TOKEN disabled
 #define DT_N_S_soc_S_can_3ff6b000_P_status_STRING_UPPER_TOKEN DISABLED
+#define DT_N_S_soc_S_can_3ff6b000_P_status_IDX_0 "disabled"
+#define DT_N_S_soc_S_can_3ff6b000_P_status_IDX_0_EXISTS 1
 #define DT_N_S_soc_S_can_3ff6b000_P_status_ENUM_IDX 2
+#define DT_N_S_soc_S_can_3ff6b000_P_status_ENUM_VAL_disabled_EXISTS 1
 #define DT_N_S_soc_S_can_3ff6b000_P_status_ENUM_TOKEN disabled
 #define DT_N_S_soc_S_can_3ff6b000_P_status_ENUM_UPPER_TOKEN DISABLED
-#define DT_N_S_soc_S_can_3ff6b000_P_status_FOREACH_PROP_ELEM(fn) fn(DT_N_S_soc_S_can_3ff6b000, status, 0) \
-	fn(DT_N_S_soc_S_can_3ff6b000, status, 1) \
-	fn(DT_N_S_soc_S_can_3ff6b000, status, 2) \
-	fn(DT_N_S_soc_S_can_3ff6b000, status, 3) \
-	fn(DT_N_S_soc_S_can_3ff6b000, status, 4) \
-	fn(DT_N_S_soc_S_can_3ff6b000, status, 5) \
-	fn(DT_N_S_soc_S_can_3ff6b000, status, 6) \
-	fn(DT_N_S_soc_S_can_3ff6b000, status, 7)
-#define DT_N_S_soc_S_can_3ff6b000_P_status_FOREACH_PROP_ELEM_SEP(fn, sep) fn(DT_N_S_soc_S_can_3ff6b000, status, 0) DT_DEBRACKET_INTERNAL sep \
-	fn(DT_N_S_soc_S_can_3ff6b000, status, 1) DT_DEBRACKET_INTERNAL sep \
-	fn(DT_N_S_soc_S_can_3ff6b000, status, 2) DT_DEBRACKET_INTERNAL sep \
-	fn(DT_N_S_soc_S_can_3ff6b000, status, 3) DT_DEBRACKET_INTERNAL sep \
-	fn(DT_N_S_soc_S_can_3ff6b000, status, 4) DT_DEBRACKET_INTERNAL sep \
-	fn(DT_N_S_soc_S_can_3ff6b000, status, 5) DT_DEBRACKET_INTERNAL sep \
-	fn(DT_N_S_soc_S_can_3ff6b000, status, 6) DT_DEBRACKET_INTERNAL sep \
-	fn(DT_N_S_soc_S_can_3ff6b000, status, 7)
-#define DT_N_S_soc_S_can_3ff6b000_P_status_FOREACH_PROP_ELEM_VARGS(fn, ...) fn(DT_N_S_soc_S_can_3ff6b000, status, 0, __VA_ARGS__) \
-	fn(DT_N_S_soc_S_can_3ff6b000, status, 1, __VA_ARGS__) \
-	fn(DT_N_S_soc_S_can_3ff6b000, status, 2, __VA_ARGS__) \
-	fn(DT_N_S_soc_S_can_3ff6b000, status, 3, __VA_ARGS__) \
-	fn(DT_N_S_soc_S_can_3ff6b000, status, 4, __VA_ARGS__) \
-	fn(DT_N_S_soc_S_can_3ff6b000, status, 5, __VA_ARGS__) \
-	fn(DT_N_S_soc_S_can_3ff6b000, status, 6, __VA_ARGS__) \
-	fn(DT_N_S_soc_S_can_3ff6b000, status, 7, __VA_ARGS__)
-#define DT_N_S_soc_S_can_3ff6b000_P_status_FOREACH_PROP_ELEM_SEP_VARGS(fn, sep, ...) fn(DT_N_S_soc_S_can_3ff6b000, status, 0, __VA_ARGS__) DT_DEBRACKET_INTERNAL sep \
-	fn(DT_N_S_soc_S_can_3ff6b000, status, 1, __VA_ARGS__) DT_DEBRACKET_INTERNAL sep \
-	fn(DT_N_S_soc_S_can_3ff6b000, status, 2, __VA_ARGS__) DT_DEBRACKET_INTERNAL sep \
-	fn(DT_N_S_soc_S_can_3ff6b000, status, 3, __VA_ARGS__) DT_DEBRACKET_INTERNAL sep \
-	fn(DT_N_S_soc_S_can_3ff6b000, status, 4, __VA_ARGS__) DT_DEBRACKET_INTERNAL sep \
-	fn(DT_N_S_soc_S_can_3ff6b000, status, 5, __VA_ARGS__) DT_DEBRACKET_INTERNAL sep \
-	fn(DT_N_S_soc_S_can_3ff6b000, status, 6, __VA_ARGS__) DT_DEBRACKET_INTERNAL sep \
-	fn(DT_N_S_soc_S_can_3ff6b000, status, 7, __VA_ARGS__)
+#define DT_N_S_soc_S_can_3ff6b000_P_status_FOREACH_PROP_ELEM(fn) fn(DT_N_S_soc_S_can_3ff6b000, status, 0)
+#define DT_N_S_soc_S_can_3ff6b000_P_status_FOREACH_PROP_ELEM_SEP(fn, sep) fn(DT_N_S_soc_S_can_3ff6b000, status, 0)
+#define DT_N_S_soc_S_can_3ff6b000_P_status_FOREACH_PROP_ELEM_VARGS(fn, ...) fn(DT_N_S_soc_S_can_3ff6b000, status, 0, __VA_ARGS__)
+#define DT_N_S_soc_S_can_3ff6b000_P_status_FOREACH_PROP_ELEM_SEP_VARGS(fn, sep, ...) fn(DT_N_S_soc_S_can_3ff6b000, status, 0, __VA_ARGS__)
+#define DT_N_S_soc_S_can_3ff6b000_P_status_LEN 1
 #define DT_N_S_soc_S_can_3ff6b000_P_status_EXISTS 1
 #define DT_N_S_soc_S_can_3ff6b000_P_compatible {"espressif,esp32-twai"}
 #define DT_N_S_soc_S_can_3ff6b000_P_compatible_IDX_0 "espressif,esp32-twai"
@@ -4081,10 +3750,16 @@
 #define DT_N_S_soc_S_can_3ff6b000_P_interrupt_parent_IDX_0 DT_N_S_soc_S_interrupt_controller_3ff00104
 #define DT_N_S_soc_S_can_3ff6b000_P_interrupt_parent_IDX_0_PH DT_N_S_soc_S_interrupt_controller_3ff00104
 #define DT_N_S_soc_S_can_3ff6b000_P_interrupt_parent_IDX_0_EXISTS 1
+#define DT_N_S_soc_S_can_3ff6b000_P_interrupt_parent_FOREACH_PROP_ELEM(fn) fn(DT_N_S_soc_S_can_3ff6b000, interrupt_parent, 0)
+#define DT_N_S_soc_S_can_3ff6b000_P_interrupt_parent_FOREACH_PROP_ELEM_SEP(fn, sep) fn(DT_N_S_soc_S_can_3ff6b000, interrupt_parent, 0)
+#define DT_N_S_soc_S_can_3ff6b000_P_interrupt_parent_FOREACH_PROP_ELEM_VARGS(fn, ...) fn(DT_N_S_soc_S_can_3ff6b000, interrupt_parent, 0, __VA_ARGS__)
+#define DT_N_S_soc_S_can_3ff6b000_P_interrupt_parent_FOREACH_PROP_ELEM_SEP_VARGS(fn, sep, ...) fn(DT_N_S_soc_S_can_3ff6b000, interrupt_parent, 0, __VA_ARGS__)
 #define DT_N_S_soc_S_can_3ff6b000_P_interrupt_parent_LEN 1
 #define DT_N_S_soc_S_can_3ff6b000_P_interrupt_parent_EXISTS 1
 #define DT_N_S_soc_S_can_3ff6b000_P_wakeup_source 0
 #define DT_N_S_soc_S_can_3ff6b000_P_wakeup_source_EXISTS 1
+#define DT_N_S_soc_S_can_3ff6b000_P_zephyr_pm_device_runtime_auto 0
+#define DT_N_S_soc_S_can_3ff6b000_P_zephyr_pm_device_runtime_auto_EXISTS 1
 
 /*
  * Devicetree node: /soc/counter@3ff5f000
@@ -4092,7 +3767,7 @@
  * Node identifier: DT_N_S_soc_S_counter_3ff5f000
  *
  * Binding (compatible = espressif,esp32-timer):
- *   $ZEPHYR_BASE/dts/bindings/counter/espressif,esp32-timer.yaml
+ *   /home/gez/sdks/zephyr/zephyr/dts/bindings/counter/espressif,esp32-timer.yaml
  *
  * (Descriptions have moved to the Devicetree Bindings Index
  * in the documentation.)
@@ -4160,9 +3835,11 @@
 /* Generic property macros: */
 #define DT_N_S_soc_S_counter_3ff5f000_P_group 0
 #define DT_N_S_soc_S_counter_3ff5f000_P_group_ENUM_IDX 0
+#define DT_N_S_soc_S_counter_3ff5f000_P_group_ENUM_VAL_0_EXISTS 1
 #define DT_N_S_soc_S_counter_3ff5f000_P_group_EXISTS 1
 #define DT_N_S_soc_S_counter_3ff5f000_P_index 0
 #define DT_N_S_soc_S_counter_3ff5f000_P_index_ENUM_IDX 0
+#define DT_N_S_soc_S_counter_3ff5f000_P_index_ENUM_VAL_0_EXISTS 1
 #define DT_N_S_soc_S_counter_3ff5f000_P_index_EXISTS 1
 #define DT_N_S_soc_S_counter_3ff5f000_P_prescaler 2
 #define DT_N_S_soc_S_counter_3ff5f000_P_prescaler_EXISTS 1
@@ -4170,41 +3847,17 @@
 #define DT_N_S_soc_S_counter_3ff5f000_P_status_STRING_UNQUOTED disabled
 #define DT_N_S_soc_S_counter_3ff5f000_P_status_STRING_TOKEN disabled
 #define DT_N_S_soc_S_counter_3ff5f000_P_status_STRING_UPPER_TOKEN DISABLED
+#define DT_N_S_soc_S_counter_3ff5f000_P_status_IDX_0 "disabled"
+#define DT_N_S_soc_S_counter_3ff5f000_P_status_IDX_0_EXISTS 1
 #define DT_N_S_soc_S_counter_3ff5f000_P_status_ENUM_IDX 2
+#define DT_N_S_soc_S_counter_3ff5f000_P_status_ENUM_VAL_disabled_EXISTS 1
 #define DT_N_S_soc_S_counter_3ff5f000_P_status_ENUM_TOKEN disabled
 #define DT_N_S_soc_S_counter_3ff5f000_P_status_ENUM_UPPER_TOKEN DISABLED
-#define DT_N_S_soc_S_counter_3ff5f000_P_status_FOREACH_PROP_ELEM(fn) fn(DT_N_S_soc_S_counter_3ff5f000, status, 0) \
-	fn(DT_N_S_soc_S_counter_3ff5f000, status, 1) \
-	fn(DT_N_S_soc_S_counter_3ff5f000, status, 2) \
-	fn(DT_N_S_soc_S_counter_3ff5f000, status, 3) \
-	fn(DT_N_S_soc_S_counter_3ff5f000, status, 4) \
-	fn(DT_N_S_soc_S_counter_3ff5f000, status, 5) \
-	fn(DT_N_S_soc_S_counter_3ff5f000, status, 6) \
-	fn(DT_N_S_soc_S_counter_3ff5f000, status, 7)
-#define DT_N_S_soc_S_counter_3ff5f000_P_status_FOREACH_PROP_ELEM_SEP(fn, sep) fn(DT_N_S_soc_S_counter_3ff5f000, status, 0) DT_DEBRACKET_INTERNAL sep \
-	fn(DT_N_S_soc_S_counter_3ff5f000, status, 1) DT_DEBRACKET_INTERNAL sep \
-	fn(DT_N_S_soc_S_counter_3ff5f000, status, 2) DT_DEBRACKET_INTERNAL sep \
-	fn(DT_N_S_soc_S_counter_3ff5f000, status, 3) DT_DEBRACKET_INTERNAL sep \
-	fn(DT_N_S_soc_S_counter_3ff5f000, status, 4) DT_DEBRACKET_INTERNAL sep \
-	fn(DT_N_S_soc_S_counter_3ff5f000, status, 5) DT_DEBRACKET_INTERNAL sep \
-	fn(DT_N_S_soc_S_counter_3ff5f000, status, 6) DT_DEBRACKET_INTERNAL sep \
-	fn(DT_N_S_soc_S_counter_3ff5f000, status, 7)
-#define DT_N_S_soc_S_counter_3ff5f000_P_status_FOREACH_PROP_ELEM_VARGS(fn, ...) fn(DT_N_S_soc_S_counter_3ff5f000, status, 0, __VA_ARGS__) \
-	fn(DT_N_S_soc_S_counter_3ff5f000, status, 1, __VA_ARGS__) \
-	fn(DT_N_S_soc_S_counter_3ff5f000, status, 2, __VA_ARGS__) \
-	fn(DT_N_S_soc_S_counter_3ff5f000, status, 3, __VA_ARGS__) \
-	fn(DT_N_S_soc_S_counter_3ff5f000, status, 4, __VA_ARGS__) \
-	fn(DT_N_S_soc_S_counter_3ff5f000, status, 5, __VA_ARGS__) \
-	fn(DT_N_S_soc_S_counter_3ff5f000, status, 6, __VA_ARGS__) \
-	fn(DT_N_S_soc_S_counter_3ff5f000, status, 7, __VA_ARGS__)
-#define DT_N_S_soc_S_counter_3ff5f000_P_status_FOREACH_PROP_ELEM_SEP_VARGS(fn, sep, ...) fn(DT_N_S_soc_S_counter_3ff5f000, status, 0, __VA_ARGS__) DT_DEBRACKET_INTERNAL sep \
-	fn(DT_N_S_soc_S_counter_3ff5f000, status, 1, __VA_ARGS__) DT_DEBRACKET_INTERNAL sep \
-	fn(DT_N_S_soc_S_counter_3ff5f000, status, 2, __VA_ARGS__) DT_DEBRACKET_INTERNAL sep \
-	fn(DT_N_S_soc_S_counter_3ff5f000, status, 3, __VA_ARGS__) DT_DEBRACKET_INTERNAL sep \
-	fn(DT_N_S_soc_S_counter_3ff5f000, status, 4, __VA_ARGS__) DT_DEBRACKET_INTERNAL sep \
-	fn(DT_N_S_soc_S_counter_3ff5f000, status, 5, __VA_ARGS__) DT_DEBRACKET_INTERNAL sep \
-	fn(DT_N_S_soc_S_counter_3ff5f000, status, 6, __VA_ARGS__) DT_DEBRACKET_INTERNAL sep \
-	fn(DT_N_S_soc_S_counter_3ff5f000, status, 7, __VA_ARGS__)
+#define DT_N_S_soc_S_counter_3ff5f000_P_status_FOREACH_PROP_ELEM(fn) fn(DT_N_S_soc_S_counter_3ff5f000, status, 0)
+#define DT_N_S_soc_S_counter_3ff5f000_P_status_FOREACH_PROP_ELEM_SEP(fn, sep) fn(DT_N_S_soc_S_counter_3ff5f000, status, 0)
+#define DT_N_S_soc_S_counter_3ff5f000_P_status_FOREACH_PROP_ELEM_VARGS(fn, ...) fn(DT_N_S_soc_S_counter_3ff5f000, status, 0, __VA_ARGS__)
+#define DT_N_S_soc_S_counter_3ff5f000_P_status_FOREACH_PROP_ELEM_SEP_VARGS(fn, sep, ...) fn(DT_N_S_soc_S_counter_3ff5f000, status, 0, __VA_ARGS__)
+#define DT_N_S_soc_S_counter_3ff5f000_P_status_LEN 1
 #define DT_N_S_soc_S_counter_3ff5f000_P_status_EXISTS 1
 #define DT_N_S_soc_S_counter_3ff5f000_P_compatible {"espressif,esp32-timer"}
 #define DT_N_S_soc_S_counter_3ff5f000_P_compatible_IDX_0 "espressif,esp32-timer"
@@ -4223,31 +3876,25 @@
 #define DT_N_S_soc_S_counter_3ff5f000_P_reg_IDX_0_EXISTS 1
 #define DT_N_S_soc_S_counter_3ff5f000_P_reg_IDX_1 4096
 #define DT_N_S_soc_S_counter_3ff5f000_P_reg_IDX_1_EXISTS 1
-#define DT_N_S_soc_S_counter_3ff5f000_P_reg_FOREACH_PROP_ELEM(fn) fn(DT_N_S_soc_S_counter_3ff5f000, reg, 0) \
-	fn(DT_N_S_soc_S_counter_3ff5f000, reg, 1)
-#define DT_N_S_soc_S_counter_3ff5f000_P_reg_FOREACH_PROP_ELEM_SEP(fn, sep) fn(DT_N_S_soc_S_counter_3ff5f000, reg, 0) DT_DEBRACKET_INTERNAL sep \
-	fn(DT_N_S_soc_S_counter_3ff5f000, reg, 1)
-#define DT_N_S_soc_S_counter_3ff5f000_P_reg_FOREACH_PROP_ELEM_VARGS(fn, ...) fn(DT_N_S_soc_S_counter_3ff5f000, reg, 0, __VA_ARGS__) \
-	fn(DT_N_S_soc_S_counter_3ff5f000, reg, 1, __VA_ARGS__)
-#define DT_N_S_soc_S_counter_3ff5f000_P_reg_FOREACH_PROP_ELEM_SEP_VARGS(fn, sep, ...) fn(DT_N_S_soc_S_counter_3ff5f000, reg, 0, __VA_ARGS__) DT_DEBRACKET_INTERNAL sep \
-	fn(DT_N_S_soc_S_counter_3ff5f000, reg, 1, __VA_ARGS__)
 #define DT_N_S_soc_S_counter_3ff5f000_P_reg_EXISTS 1
 #define DT_N_S_soc_S_counter_3ff5f000_P_interrupts {14 /* 0xe */}
 #define DT_N_S_soc_S_counter_3ff5f000_P_interrupts_IDX_0 14
 #define DT_N_S_soc_S_counter_3ff5f000_P_interrupts_IDX_0_EXISTS 1
-#define DT_N_S_soc_S_counter_3ff5f000_P_interrupts_FOREACH_PROP_ELEM(fn) fn(DT_N_S_soc_S_counter_3ff5f000, interrupts, 0)
-#define DT_N_S_soc_S_counter_3ff5f000_P_interrupts_FOREACH_PROP_ELEM_SEP(fn, sep) fn(DT_N_S_soc_S_counter_3ff5f000, interrupts, 0)
-#define DT_N_S_soc_S_counter_3ff5f000_P_interrupts_FOREACH_PROP_ELEM_VARGS(fn, ...) fn(DT_N_S_soc_S_counter_3ff5f000, interrupts, 0, __VA_ARGS__)
-#define DT_N_S_soc_S_counter_3ff5f000_P_interrupts_FOREACH_PROP_ELEM_SEP_VARGS(fn, sep, ...) fn(DT_N_S_soc_S_counter_3ff5f000, interrupts, 0, __VA_ARGS__)
 #define DT_N_S_soc_S_counter_3ff5f000_P_interrupts_EXISTS 1
 #define DT_N_S_soc_S_counter_3ff5f000_P_interrupt_parent DT_N_S_soc_S_interrupt_controller_3ff00104
 #define DT_N_S_soc_S_counter_3ff5f000_P_interrupt_parent_IDX_0 DT_N_S_soc_S_interrupt_controller_3ff00104
 #define DT_N_S_soc_S_counter_3ff5f000_P_interrupt_parent_IDX_0_PH DT_N_S_soc_S_interrupt_controller_3ff00104
 #define DT_N_S_soc_S_counter_3ff5f000_P_interrupt_parent_IDX_0_EXISTS 1
+#define DT_N_S_soc_S_counter_3ff5f000_P_interrupt_parent_FOREACH_PROP_ELEM(fn) fn(DT_N_S_soc_S_counter_3ff5f000, interrupt_parent, 0)
+#define DT_N_S_soc_S_counter_3ff5f000_P_interrupt_parent_FOREACH_PROP_ELEM_SEP(fn, sep) fn(DT_N_S_soc_S_counter_3ff5f000, interrupt_parent, 0)
+#define DT_N_S_soc_S_counter_3ff5f000_P_interrupt_parent_FOREACH_PROP_ELEM_VARGS(fn, ...) fn(DT_N_S_soc_S_counter_3ff5f000, interrupt_parent, 0, __VA_ARGS__)
+#define DT_N_S_soc_S_counter_3ff5f000_P_interrupt_parent_FOREACH_PROP_ELEM_SEP_VARGS(fn, sep, ...) fn(DT_N_S_soc_S_counter_3ff5f000, interrupt_parent, 0, __VA_ARGS__)
 #define DT_N_S_soc_S_counter_3ff5f000_P_interrupt_parent_LEN 1
 #define DT_N_S_soc_S_counter_3ff5f000_P_interrupt_parent_EXISTS 1
 #define DT_N_S_soc_S_counter_3ff5f000_P_wakeup_source 0
 #define DT_N_S_soc_S_counter_3ff5f000_P_wakeup_source_EXISTS 1
+#define DT_N_S_soc_S_counter_3ff5f000_P_zephyr_pm_device_runtime_auto 0
+#define DT_N_S_soc_S_counter_3ff5f000_P_zephyr_pm_device_runtime_auto_EXISTS 1
 
 /*
  * Devicetree node: /soc/counter@3ff5f024
@@ -4255,7 +3902,7 @@
  * Node identifier: DT_N_S_soc_S_counter_3ff5f024
  *
  * Binding (compatible = espressif,esp32-timer):
- *   $ZEPHYR_BASE/dts/bindings/counter/espressif,esp32-timer.yaml
+ *   /home/gez/sdks/zephyr/zephyr/dts/bindings/counter/espressif,esp32-timer.yaml
  *
  * (Descriptions have moved to the Devicetree Bindings Index
  * in the documentation.)
@@ -4323,9 +3970,11 @@
 /* Generic property macros: */
 #define DT_N_S_soc_S_counter_3ff5f024_P_group 0
 #define DT_N_S_soc_S_counter_3ff5f024_P_group_ENUM_IDX 0
+#define DT_N_S_soc_S_counter_3ff5f024_P_group_ENUM_VAL_0_EXISTS 1
 #define DT_N_S_soc_S_counter_3ff5f024_P_group_EXISTS 1
 #define DT_N_S_soc_S_counter_3ff5f024_P_index 1
 #define DT_N_S_soc_S_counter_3ff5f024_P_index_ENUM_IDX 1
+#define DT_N_S_soc_S_counter_3ff5f024_P_index_ENUM_VAL_1_EXISTS 1
 #define DT_N_S_soc_S_counter_3ff5f024_P_index_EXISTS 1
 #define DT_N_S_soc_S_counter_3ff5f024_P_prescaler 2
 #define DT_N_S_soc_S_counter_3ff5f024_P_prescaler_EXISTS 1
@@ -4333,41 +3982,17 @@
 #define DT_N_S_soc_S_counter_3ff5f024_P_status_STRING_UNQUOTED disabled
 #define DT_N_S_soc_S_counter_3ff5f024_P_status_STRING_TOKEN disabled
 #define DT_N_S_soc_S_counter_3ff5f024_P_status_STRING_UPPER_TOKEN DISABLED
+#define DT_N_S_soc_S_counter_3ff5f024_P_status_IDX_0 "disabled"
+#define DT_N_S_soc_S_counter_3ff5f024_P_status_IDX_0_EXISTS 1
 #define DT_N_S_soc_S_counter_3ff5f024_P_status_ENUM_IDX 2
+#define DT_N_S_soc_S_counter_3ff5f024_P_status_ENUM_VAL_disabled_EXISTS 1
 #define DT_N_S_soc_S_counter_3ff5f024_P_status_ENUM_TOKEN disabled
 #define DT_N_S_soc_S_counter_3ff5f024_P_status_ENUM_UPPER_TOKEN DISABLED
-#define DT_N_S_soc_S_counter_3ff5f024_P_status_FOREACH_PROP_ELEM(fn) fn(DT_N_S_soc_S_counter_3ff5f024, status, 0) \
-	fn(DT_N_S_soc_S_counter_3ff5f024, status, 1) \
-	fn(DT_N_S_soc_S_counter_3ff5f024, status, 2) \
-	fn(DT_N_S_soc_S_counter_3ff5f024, status, 3) \
-	fn(DT_N_S_soc_S_counter_3ff5f024, status, 4) \
-	fn(DT_N_S_soc_S_counter_3ff5f024, status, 5) \
-	fn(DT_N_S_soc_S_counter_3ff5f024, status, 6) \
-	fn(DT_N_S_soc_S_counter_3ff5f024, status, 7)
-#define DT_N_S_soc_S_counter_3ff5f024_P_status_FOREACH_PROP_ELEM_SEP(fn, sep) fn(DT_N_S_soc_S_counter_3ff5f024, status, 0) DT_DEBRACKET_INTERNAL sep \
-	fn(DT_N_S_soc_S_counter_3ff5f024, status, 1) DT_DEBRACKET_INTERNAL sep \
-	fn(DT_N_S_soc_S_counter_3ff5f024, status, 2) DT_DEBRACKET_INTERNAL sep \
-	fn(DT_N_S_soc_S_counter_3ff5f024, status, 3) DT_DEBRACKET_INTERNAL sep \
-	fn(DT_N_S_soc_S_counter_3ff5f024, status, 4) DT_DEBRACKET_INTERNAL sep \
-	fn(DT_N_S_soc_S_counter_3ff5f024, status, 5) DT_DEBRACKET_INTERNAL sep \
-	fn(DT_N_S_soc_S_counter_3ff5f024, status, 6) DT_DEBRACKET_INTERNAL sep \
-	fn(DT_N_S_soc_S_counter_3ff5f024, status, 7)
-#define DT_N_S_soc_S_counter_3ff5f024_P_status_FOREACH_PROP_ELEM_VARGS(fn, ...) fn(DT_N_S_soc_S_counter_3ff5f024, status, 0, __VA_ARGS__) \
-	fn(DT_N_S_soc_S_counter_3ff5f024, status, 1, __VA_ARGS__) \
-	fn(DT_N_S_soc_S_counter_3ff5f024, status, 2, __VA_ARGS__) \
-	fn(DT_N_S_soc_S_counter_3ff5f024, status, 3, __VA_ARGS__) \
-	fn(DT_N_S_soc_S_counter_3ff5f024, status, 4, __VA_ARGS__) \
-	fn(DT_N_S_soc_S_counter_3ff5f024, status, 5, __VA_ARGS__) \
-	fn(DT_N_S_soc_S_counter_3ff5f024, status, 6, __VA_ARGS__) \
-	fn(DT_N_S_soc_S_counter_3ff5f024, status, 7, __VA_ARGS__)
-#define DT_N_S_soc_S_counter_3ff5f024_P_status_FOREACH_PROP_ELEM_SEP_VARGS(fn, sep, ...) fn(DT_N_S_soc_S_counter_3ff5f024, status, 0, __VA_ARGS__) DT_DEBRACKET_INTERNAL sep \
-	fn(DT_N_S_soc_S_counter_3ff5f024, status, 1, __VA_ARGS__) DT_DEBRACKET_INTERNAL sep \
-	fn(DT_N_S_soc_S_counter_3ff5f024, status, 2, __VA_ARGS__) DT_DEBRACKET_INTERNAL sep \
-	fn(DT_N_S_soc_S_counter_3ff5f024, status, 3, __VA_ARGS__) DT_DEBRACKET_INTERNAL sep \
-	fn(DT_N_S_soc_S_counter_3ff5f024, status, 4, __VA_ARGS__) DT_DEBRACKET_INTERNAL sep \
-	fn(DT_N_S_soc_S_counter_3ff5f024, status, 5, __VA_ARGS__) DT_DEBRACKET_INTERNAL sep \
-	fn(DT_N_S_soc_S_counter_3ff5f024, status, 6, __VA_ARGS__) DT_DEBRACKET_INTERNAL sep \
-	fn(DT_N_S_soc_S_counter_3ff5f024, status, 7, __VA_ARGS__)
+#define DT_N_S_soc_S_counter_3ff5f024_P_status_FOREACH_PROP_ELEM(fn) fn(DT_N_S_soc_S_counter_3ff5f024, status, 0)
+#define DT_N_S_soc_S_counter_3ff5f024_P_status_FOREACH_PROP_ELEM_SEP(fn, sep) fn(DT_N_S_soc_S_counter_3ff5f024, status, 0)
+#define DT_N_S_soc_S_counter_3ff5f024_P_status_FOREACH_PROP_ELEM_VARGS(fn, ...) fn(DT_N_S_soc_S_counter_3ff5f024, status, 0, __VA_ARGS__)
+#define DT_N_S_soc_S_counter_3ff5f024_P_status_FOREACH_PROP_ELEM_SEP_VARGS(fn, sep, ...) fn(DT_N_S_soc_S_counter_3ff5f024, status, 0, __VA_ARGS__)
+#define DT_N_S_soc_S_counter_3ff5f024_P_status_LEN 1
 #define DT_N_S_soc_S_counter_3ff5f024_P_status_EXISTS 1
 #define DT_N_S_soc_S_counter_3ff5f024_P_compatible {"espressif,esp32-timer"}
 #define DT_N_S_soc_S_counter_3ff5f024_P_compatible_IDX_0 "espressif,esp32-timer"
@@ -4386,31 +4011,25 @@
 #define DT_N_S_soc_S_counter_3ff5f024_P_reg_IDX_0_EXISTS 1
 #define DT_N_S_soc_S_counter_3ff5f024_P_reg_IDX_1 4096
 #define DT_N_S_soc_S_counter_3ff5f024_P_reg_IDX_1_EXISTS 1
-#define DT_N_S_soc_S_counter_3ff5f024_P_reg_FOREACH_PROP_ELEM(fn) fn(DT_N_S_soc_S_counter_3ff5f024, reg, 0) \
-	fn(DT_N_S_soc_S_counter_3ff5f024, reg, 1)
-#define DT_N_S_soc_S_counter_3ff5f024_P_reg_FOREACH_PROP_ELEM_SEP(fn, sep) fn(DT_N_S_soc_S_counter_3ff5f024, reg, 0) DT_DEBRACKET_INTERNAL sep \
-	fn(DT_N_S_soc_S_counter_3ff5f024, reg, 1)
-#define DT_N_S_soc_S_counter_3ff5f024_P_reg_FOREACH_PROP_ELEM_VARGS(fn, ...) fn(DT_N_S_soc_S_counter_3ff5f024, reg, 0, __VA_ARGS__) \
-	fn(DT_N_S_soc_S_counter_3ff5f024, reg, 1, __VA_ARGS__)
-#define DT_N_S_soc_S_counter_3ff5f024_P_reg_FOREACH_PROP_ELEM_SEP_VARGS(fn, sep, ...) fn(DT_N_S_soc_S_counter_3ff5f024, reg, 0, __VA_ARGS__) DT_DEBRACKET_INTERNAL sep \
-	fn(DT_N_S_soc_S_counter_3ff5f024, reg, 1, __VA_ARGS__)
 #define DT_N_S_soc_S_counter_3ff5f024_P_reg_EXISTS 1
 #define DT_N_S_soc_S_counter_3ff5f024_P_interrupts {15 /* 0xf */}
 #define DT_N_S_soc_S_counter_3ff5f024_P_interrupts_IDX_0 15
 #define DT_N_S_soc_S_counter_3ff5f024_P_interrupts_IDX_0_EXISTS 1
-#define DT_N_S_soc_S_counter_3ff5f024_P_interrupts_FOREACH_PROP_ELEM(fn) fn(DT_N_S_soc_S_counter_3ff5f024, interrupts, 0)
-#define DT_N_S_soc_S_counter_3ff5f024_P_interrupts_FOREACH_PROP_ELEM_SEP(fn, sep) fn(DT_N_S_soc_S_counter_3ff5f024, interrupts, 0)
-#define DT_N_S_soc_S_counter_3ff5f024_P_interrupts_FOREACH_PROP_ELEM_VARGS(fn, ...) fn(DT_N_S_soc_S_counter_3ff5f024, interrupts, 0, __VA_ARGS__)
-#define DT_N_S_soc_S_counter_3ff5f024_P_interrupts_FOREACH_PROP_ELEM_SEP_VARGS(fn, sep, ...) fn(DT_N_S_soc_S_counter_3ff5f024, interrupts, 0, __VA_ARGS__)
 #define DT_N_S_soc_S_counter_3ff5f024_P_interrupts_EXISTS 1
 #define DT_N_S_soc_S_counter_3ff5f024_P_interrupt_parent DT_N_S_soc_S_interrupt_controller_3ff00104
 #define DT_N_S_soc_S_counter_3ff5f024_P_interrupt_parent_IDX_0 DT_N_S_soc_S_interrupt_controller_3ff00104
 #define DT_N_S_soc_S_counter_3ff5f024_P_interrupt_parent_IDX_0_PH DT_N_S_soc_S_interrupt_controller_3ff00104
 #define DT_N_S_soc_S_counter_3ff5f024_P_interrupt_parent_IDX_0_EXISTS 1
+#define DT_N_S_soc_S_counter_3ff5f024_P_interrupt_parent_FOREACH_PROP_ELEM(fn) fn(DT_N_S_soc_S_counter_3ff5f024, interrupt_parent, 0)
+#define DT_N_S_soc_S_counter_3ff5f024_P_interrupt_parent_FOREACH_PROP_ELEM_SEP(fn, sep) fn(DT_N_S_soc_S_counter_3ff5f024, interrupt_parent, 0)
+#define DT_N_S_soc_S_counter_3ff5f024_P_interrupt_parent_FOREACH_PROP_ELEM_VARGS(fn, ...) fn(DT_N_S_soc_S_counter_3ff5f024, interrupt_parent, 0, __VA_ARGS__)
+#define DT_N_S_soc_S_counter_3ff5f024_P_interrupt_parent_FOREACH_PROP_ELEM_SEP_VARGS(fn, sep, ...) fn(DT_N_S_soc_S_counter_3ff5f024, interrupt_parent, 0, __VA_ARGS__)
 #define DT_N_S_soc_S_counter_3ff5f024_P_interrupt_parent_LEN 1
 #define DT_N_S_soc_S_counter_3ff5f024_P_interrupt_parent_EXISTS 1
 #define DT_N_S_soc_S_counter_3ff5f024_P_wakeup_source 0
 #define DT_N_S_soc_S_counter_3ff5f024_P_wakeup_source_EXISTS 1
+#define DT_N_S_soc_S_counter_3ff5f024_P_zephyr_pm_device_runtime_auto 0
+#define DT_N_S_soc_S_counter_3ff5f024_P_zephyr_pm_device_runtime_auto_EXISTS 1
 
 /*
  * Devicetree node: /soc/counter@3ff60000
@@ -4418,7 +4037,7 @@
  * Node identifier: DT_N_S_soc_S_counter_3ff60000
  *
  * Binding (compatible = espressif,esp32-timer):
- *   $ZEPHYR_BASE/dts/bindings/counter/espressif,esp32-timer.yaml
+ *   /home/gez/sdks/zephyr/zephyr/dts/bindings/counter/espressif,esp32-timer.yaml
  *
  * (Descriptions have moved to the Devicetree Bindings Index
  * in the documentation.)
@@ -4486,9 +4105,11 @@
 /* Generic property macros: */
 #define DT_N_S_soc_S_counter_3ff60000_P_group 1
 #define DT_N_S_soc_S_counter_3ff60000_P_group_ENUM_IDX 1
+#define DT_N_S_soc_S_counter_3ff60000_P_group_ENUM_VAL_1_EXISTS 1
 #define DT_N_S_soc_S_counter_3ff60000_P_group_EXISTS 1
 #define DT_N_S_soc_S_counter_3ff60000_P_index 0
 #define DT_N_S_soc_S_counter_3ff60000_P_index_ENUM_IDX 0
+#define DT_N_S_soc_S_counter_3ff60000_P_index_ENUM_VAL_0_EXISTS 1
 #define DT_N_S_soc_S_counter_3ff60000_P_index_EXISTS 1
 #define DT_N_S_soc_S_counter_3ff60000_P_prescaler 2
 #define DT_N_S_soc_S_counter_3ff60000_P_prescaler_EXISTS 1
@@ -4496,41 +4117,17 @@
 #define DT_N_S_soc_S_counter_3ff60000_P_status_STRING_UNQUOTED disabled
 #define DT_N_S_soc_S_counter_3ff60000_P_status_STRING_TOKEN disabled
 #define DT_N_S_soc_S_counter_3ff60000_P_status_STRING_UPPER_TOKEN DISABLED
+#define DT_N_S_soc_S_counter_3ff60000_P_status_IDX_0 "disabled"
+#define DT_N_S_soc_S_counter_3ff60000_P_status_IDX_0_EXISTS 1
 #define DT_N_S_soc_S_counter_3ff60000_P_status_ENUM_IDX 2
+#define DT_N_S_soc_S_counter_3ff60000_P_status_ENUM_VAL_disabled_EXISTS 1
 #define DT_N_S_soc_S_counter_3ff60000_P_status_ENUM_TOKEN disabled
 #define DT_N_S_soc_S_counter_3ff60000_P_status_ENUM_UPPER_TOKEN DISABLED
-#define DT_N_S_soc_S_counter_3ff60000_P_status_FOREACH_PROP_ELEM(fn) fn(DT_N_S_soc_S_counter_3ff60000, status, 0) \
-	fn(DT_N_S_soc_S_counter_3ff60000, status, 1) \
-	fn(DT_N_S_soc_S_counter_3ff60000, status, 2) \
-	fn(DT_N_S_soc_S_counter_3ff60000, status, 3) \
-	fn(DT_N_S_soc_S_counter_3ff60000, status, 4) \
-	fn(DT_N_S_soc_S_counter_3ff60000, status, 5) \
-	fn(DT_N_S_soc_S_counter_3ff60000, status, 6) \
-	fn(DT_N_S_soc_S_counter_3ff60000, status, 7)
-#define DT_N_S_soc_S_counter_3ff60000_P_status_FOREACH_PROP_ELEM_SEP(fn, sep) fn(DT_N_S_soc_S_counter_3ff60000, status, 0) DT_DEBRACKET_INTERNAL sep \
-	fn(DT_N_S_soc_S_counter_3ff60000, status, 1) DT_DEBRACKET_INTERNAL sep \
-	fn(DT_N_S_soc_S_counter_3ff60000, status, 2) DT_DEBRACKET_INTERNAL sep \
-	fn(DT_N_S_soc_S_counter_3ff60000, status, 3) DT_DEBRACKET_INTERNAL sep \
-	fn(DT_N_S_soc_S_counter_3ff60000, status, 4) DT_DEBRACKET_INTERNAL sep \
-	fn(DT_N_S_soc_S_counter_3ff60000, status, 5) DT_DEBRACKET_INTERNAL sep \
-	fn(DT_N_S_soc_S_counter_3ff60000, status, 6) DT_DEBRACKET_INTERNAL sep \
-	fn(DT_N_S_soc_S_counter_3ff60000, status, 7)
-#define DT_N_S_soc_S_counter_3ff60000_P_status_FOREACH_PROP_ELEM_VARGS(fn, ...) fn(DT_N_S_soc_S_counter_3ff60000, status, 0, __VA_ARGS__) \
-	fn(DT_N_S_soc_S_counter_3ff60000, status, 1, __VA_ARGS__) \
-	fn(DT_N_S_soc_S_counter_3ff60000, status, 2, __VA_ARGS__) \
-	fn(DT_N_S_soc_S_counter_3ff60000, status, 3, __VA_ARGS__) \
-	fn(DT_N_S_soc_S_counter_3ff60000, status, 4, __VA_ARGS__) \
-	fn(DT_N_S_soc_S_counter_3ff60000, status, 5, __VA_ARGS__) \
-	fn(DT_N_S_soc_S_counter_3ff60000, status, 6, __VA_ARGS__) \
-	fn(DT_N_S_soc_S_counter_3ff60000, status, 7, __VA_ARGS__)
-#define DT_N_S_soc_S_counter_3ff60000_P_status_FOREACH_PROP_ELEM_SEP_VARGS(fn, sep, ...) fn(DT_N_S_soc_S_counter_3ff60000, status, 0, __VA_ARGS__) DT_DEBRACKET_INTERNAL sep \
-	fn(DT_N_S_soc_S_counter_3ff60000, status, 1, __VA_ARGS__) DT_DEBRACKET_INTERNAL sep \
-	fn(DT_N_S_soc_S_counter_3ff60000, status, 2, __VA_ARGS__) DT_DEBRACKET_INTERNAL sep \
-	fn(DT_N_S_soc_S_counter_3ff60000, status, 3, __VA_ARGS__) DT_DEBRACKET_INTERNAL sep \
-	fn(DT_N_S_soc_S_counter_3ff60000, status, 4, __VA_ARGS__) DT_DEBRACKET_INTERNAL sep \
-	fn(DT_N_S_soc_S_counter_3ff60000, status, 5, __VA_ARGS__) DT_DEBRACKET_INTERNAL sep \
-	fn(DT_N_S_soc_S_counter_3ff60000, status, 6, __VA_ARGS__) DT_DEBRACKET_INTERNAL sep \
-	fn(DT_N_S_soc_S_counter_3ff60000, status, 7, __VA_ARGS__)
+#define DT_N_S_soc_S_counter_3ff60000_P_status_FOREACH_PROP_ELEM(fn) fn(DT_N_S_soc_S_counter_3ff60000, status, 0)
+#define DT_N_S_soc_S_counter_3ff60000_P_status_FOREACH_PROP_ELEM_SEP(fn, sep) fn(DT_N_S_soc_S_counter_3ff60000, status, 0)
+#define DT_N_S_soc_S_counter_3ff60000_P_status_FOREACH_PROP_ELEM_VARGS(fn, ...) fn(DT_N_S_soc_S_counter_3ff60000, status, 0, __VA_ARGS__)
+#define DT_N_S_soc_S_counter_3ff60000_P_status_FOREACH_PROP_ELEM_SEP_VARGS(fn, sep, ...) fn(DT_N_S_soc_S_counter_3ff60000, status, 0, __VA_ARGS__)
+#define DT_N_S_soc_S_counter_3ff60000_P_status_LEN 1
 #define DT_N_S_soc_S_counter_3ff60000_P_status_EXISTS 1
 #define DT_N_S_soc_S_counter_3ff60000_P_compatible {"espressif,esp32-timer"}
 #define DT_N_S_soc_S_counter_3ff60000_P_compatible_IDX_0 "espressif,esp32-timer"
@@ -4549,31 +4146,25 @@
 #define DT_N_S_soc_S_counter_3ff60000_P_reg_IDX_0_EXISTS 1
 #define DT_N_S_soc_S_counter_3ff60000_P_reg_IDX_1 4096
 #define DT_N_S_soc_S_counter_3ff60000_P_reg_IDX_1_EXISTS 1
-#define DT_N_S_soc_S_counter_3ff60000_P_reg_FOREACH_PROP_ELEM(fn) fn(DT_N_S_soc_S_counter_3ff60000, reg, 0) \
-	fn(DT_N_S_soc_S_counter_3ff60000, reg, 1)
-#define DT_N_S_soc_S_counter_3ff60000_P_reg_FOREACH_PROP_ELEM_SEP(fn, sep) fn(DT_N_S_soc_S_counter_3ff60000, reg, 0) DT_DEBRACKET_INTERNAL sep \
-	fn(DT_N_S_soc_S_counter_3ff60000, reg, 1)
-#define DT_N_S_soc_S_counter_3ff60000_P_reg_FOREACH_PROP_ELEM_VARGS(fn, ...) fn(DT_N_S_soc_S_counter_3ff60000, reg, 0, __VA_ARGS__) \
-	fn(DT_N_S_soc_S_counter_3ff60000, reg, 1, __VA_ARGS__)
-#define DT_N_S_soc_S_counter_3ff60000_P_reg_FOREACH_PROP_ELEM_SEP_VARGS(fn, sep, ...) fn(DT_N_S_soc_S_counter_3ff60000, reg, 0, __VA_ARGS__) DT_DEBRACKET_INTERNAL sep \
-	fn(DT_N_S_soc_S_counter_3ff60000, reg, 1, __VA_ARGS__)
 #define DT_N_S_soc_S_counter_3ff60000_P_reg_EXISTS 1
 #define DT_N_S_soc_S_counter_3ff60000_P_interrupts {18 /* 0x12 */}
 #define DT_N_S_soc_S_counter_3ff60000_P_interrupts_IDX_0 18
 #define DT_N_S_soc_S_counter_3ff60000_P_interrupts_IDX_0_EXISTS 1
-#define DT_N_S_soc_S_counter_3ff60000_P_interrupts_FOREACH_PROP_ELEM(fn) fn(DT_N_S_soc_S_counter_3ff60000, interrupts, 0)
-#define DT_N_S_soc_S_counter_3ff60000_P_interrupts_FOREACH_PROP_ELEM_SEP(fn, sep) fn(DT_N_S_soc_S_counter_3ff60000, interrupts, 0)
-#define DT_N_S_soc_S_counter_3ff60000_P_interrupts_FOREACH_PROP_ELEM_VARGS(fn, ...) fn(DT_N_S_soc_S_counter_3ff60000, interrupts, 0, __VA_ARGS__)
-#define DT_N_S_soc_S_counter_3ff60000_P_interrupts_FOREACH_PROP_ELEM_SEP_VARGS(fn, sep, ...) fn(DT_N_S_soc_S_counter_3ff60000, interrupts, 0, __VA_ARGS__)
 #define DT_N_S_soc_S_counter_3ff60000_P_interrupts_EXISTS 1
 #define DT_N_S_soc_S_counter_3ff60000_P_interrupt_parent DT_N_S_soc_S_interrupt_controller_3ff00104
 #define DT_N_S_soc_S_counter_3ff60000_P_interrupt_parent_IDX_0 DT_N_S_soc_S_interrupt_controller_3ff00104
 #define DT_N_S_soc_S_counter_3ff60000_P_interrupt_parent_IDX_0_PH DT_N_S_soc_S_interrupt_controller_3ff00104
 #define DT_N_S_soc_S_counter_3ff60000_P_interrupt_parent_IDX_0_EXISTS 1
+#define DT_N_S_soc_S_counter_3ff60000_P_interrupt_parent_FOREACH_PROP_ELEM(fn) fn(DT_N_S_soc_S_counter_3ff60000, interrupt_parent, 0)
+#define DT_N_S_soc_S_counter_3ff60000_P_interrupt_parent_FOREACH_PROP_ELEM_SEP(fn, sep) fn(DT_N_S_soc_S_counter_3ff60000, interrupt_parent, 0)
+#define DT_N_S_soc_S_counter_3ff60000_P_interrupt_parent_FOREACH_PROP_ELEM_VARGS(fn, ...) fn(DT_N_S_soc_S_counter_3ff60000, interrupt_parent, 0, __VA_ARGS__)
+#define DT_N_S_soc_S_counter_3ff60000_P_interrupt_parent_FOREACH_PROP_ELEM_SEP_VARGS(fn, sep, ...) fn(DT_N_S_soc_S_counter_3ff60000, interrupt_parent, 0, __VA_ARGS__)
 #define DT_N_S_soc_S_counter_3ff60000_P_interrupt_parent_LEN 1
 #define DT_N_S_soc_S_counter_3ff60000_P_interrupt_parent_EXISTS 1
 #define DT_N_S_soc_S_counter_3ff60000_P_wakeup_source 0
 #define DT_N_S_soc_S_counter_3ff60000_P_wakeup_source_EXISTS 1
+#define DT_N_S_soc_S_counter_3ff60000_P_zephyr_pm_device_runtime_auto 0
+#define DT_N_S_soc_S_counter_3ff60000_P_zephyr_pm_device_runtime_auto_EXISTS 1
 
 /*
  * Devicetree node: /soc/counter@3ff60024
@@ -4581,7 +4172,7 @@
  * Node identifier: DT_N_S_soc_S_counter_3ff60024
  *
  * Binding (compatible = espressif,esp32-timer):
- *   $ZEPHYR_BASE/dts/bindings/counter/espressif,esp32-timer.yaml
+ *   /home/gez/sdks/zephyr/zephyr/dts/bindings/counter/espressif,esp32-timer.yaml
  *
  * (Descriptions have moved to the Devicetree Bindings Index
  * in the documentation.)
@@ -4649,9 +4240,11 @@
 /* Generic property macros: */
 #define DT_N_S_soc_S_counter_3ff60024_P_group 1
 #define DT_N_S_soc_S_counter_3ff60024_P_group_ENUM_IDX 1
+#define DT_N_S_soc_S_counter_3ff60024_P_group_ENUM_VAL_1_EXISTS 1
 #define DT_N_S_soc_S_counter_3ff60024_P_group_EXISTS 1
 #define DT_N_S_soc_S_counter_3ff60024_P_index 1
 #define DT_N_S_soc_S_counter_3ff60024_P_index_ENUM_IDX 1
+#define DT_N_S_soc_S_counter_3ff60024_P_index_ENUM_VAL_1_EXISTS 1
 #define DT_N_S_soc_S_counter_3ff60024_P_index_EXISTS 1
 #define DT_N_S_soc_S_counter_3ff60024_P_prescaler 2
 #define DT_N_S_soc_S_counter_3ff60024_P_prescaler_EXISTS 1
@@ -4659,41 +4252,17 @@
 #define DT_N_S_soc_S_counter_3ff60024_P_status_STRING_UNQUOTED disabled
 #define DT_N_S_soc_S_counter_3ff60024_P_status_STRING_TOKEN disabled
 #define DT_N_S_soc_S_counter_3ff60024_P_status_STRING_UPPER_TOKEN DISABLED
+#define DT_N_S_soc_S_counter_3ff60024_P_status_IDX_0 "disabled"
+#define DT_N_S_soc_S_counter_3ff60024_P_status_IDX_0_EXISTS 1
 #define DT_N_S_soc_S_counter_3ff60024_P_status_ENUM_IDX 2
+#define DT_N_S_soc_S_counter_3ff60024_P_status_ENUM_VAL_disabled_EXISTS 1
 #define DT_N_S_soc_S_counter_3ff60024_P_status_ENUM_TOKEN disabled
 #define DT_N_S_soc_S_counter_3ff60024_P_status_ENUM_UPPER_TOKEN DISABLED
-#define DT_N_S_soc_S_counter_3ff60024_P_status_FOREACH_PROP_ELEM(fn) fn(DT_N_S_soc_S_counter_3ff60024, status, 0) \
-	fn(DT_N_S_soc_S_counter_3ff60024, status, 1) \
-	fn(DT_N_S_soc_S_counter_3ff60024, status, 2) \
-	fn(DT_N_S_soc_S_counter_3ff60024, status, 3) \
-	fn(DT_N_S_soc_S_counter_3ff60024, status, 4) \
-	fn(DT_N_S_soc_S_counter_3ff60024, status, 5) \
-	fn(DT_N_S_soc_S_counter_3ff60024, status, 6) \
-	fn(DT_N_S_soc_S_counter_3ff60024, status, 7)
-#define DT_N_S_soc_S_counter_3ff60024_P_status_FOREACH_PROP_ELEM_SEP(fn, sep) fn(DT_N_S_soc_S_counter_3ff60024, status, 0) DT_DEBRACKET_INTERNAL sep \
-	fn(DT_N_S_soc_S_counter_3ff60024, status, 1) DT_DEBRACKET_INTERNAL sep \
-	fn(DT_N_S_soc_S_counter_3ff60024, status, 2) DT_DEBRACKET_INTERNAL sep \
-	fn(DT_N_S_soc_S_counter_3ff60024, status, 3) DT_DEBRACKET_INTERNAL sep \
-	fn(DT_N_S_soc_S_counter_3ff60024, status, 4) DT_DEBRACKET_INTERNAL sep \
-	fn(DT_N_S_soc_S_counter_3ff60024, status, 5) DT_DEBRACKET_INTERNAL sep \
-	fn(DT_N_S_soc_S_counter_3ff60024, status, 6) DT_DEBRACKET_INTERNAL sep \
-	fn(DT_N_S_soc_S_counter_3ff60024, status, 7)
-#define DT_N_S_soc_S_counter_3ff60024_P_status_FOREACH_PROP_ELEM_VARGS(fn, ...) fn(DT_N_S_soc_S_counter_3ff60024, status, 0, __VA_ARGS__) \
-	fn(DT_N_S_soc_S_counter_3ff60024, status, 1, __VA_ARGS__) \
-	fn(DT_N_S_soc_S_counter_3ff60024, status, 2, __VA_ARGS__) \
-	fn(DT_N_S_soc_S_counter_3ff60024, status, 3, __VA_ARGS__) \
-	fn(DT_N_S_soc_S_counter_3ff60024, status, 4, __VA_ARGS__) \
-	fn(DT_N_S_soc_S_counter_3ff60024, status, 5, __VA_ARGS__) \
-	fn(DT_N_S_soc_S_counter_3ff60024, status, 6, __VA_ARGS__) \
-	fn(DT_N_S_soc_S_counter_3ff60024, status, 7, __VA_ARGS__)
-#define DT_N_S_soc_S_counter_3ff60024_P_status_FOREACH_PROP_ELEM_SEP_VARGS(fn, sep, ...) fn(DT_N_S_soc_S_counter_3ff60024, status, 0, __VA_ARGS__) DT_DEBRACKET_INTERNAL sep \
-	fn(DT_N_S_soc_S_counter_3ff60024, status, 1, __VA_ARGS__) DT_DEBRACKET_INTERNAL sep \
-	fn(DT_N_S_soc_S_counter_3ff60024, status, 2, __VA_ARGS__) DT_DEBRACKET_INTERNAL sep \
-	fn(DT_N_S_soc_S_counter_3ff60024, status, 3, __VA_ARGS__) DT_DEBRACKET_INTERNAL sep \
-	fn(DT_N_S_soc_S_counter_3ff60024, status, 4, __VA_ARGS__) DT_DEBRACKET_INTERNAL sep \
-	fn(DT_N_S_soc_S_counter_3ff60024, status, 5, __VA_ARGS__) DT_DEBRACKET_INTERNAL sep \
-	fn(DT_N_S_soc_S_counter_3ff60024, status, 6, __VA_ARGS__) DT_DEBRACKET_INTERNAL sep \
-	fn(DT_N_S_soc_S_counter_3ff60024, status, 7, __VA_ARGS__)
+#define DT_N_S_soc_S_counter_3ff60024_P_status_FOREACH_PROP_ELEM(fn) fn(DT_N_S_soc_S_counter_3ff60024, status, 0)
+#define DT_N_S_soc_S_counter_3ff60024_P_status_FOREACH_PROP_ELEM_SEP(fn, sep) fn(DT_N_S_soc_S_counter_3ff60024, status, 0)
+#define DT_N_S_soc_S_counter_3ff60024_P_status_FOREACH_PROP_ELEM_VARGS(fn, ...) fn(DT_N_S_soc_S_counter_3ff60024, status, 0, __VA_ARGS__)
+#define DT_N_S_soc_S_counter_3ff60024_P_status_FOREACH_PROP_ELEM_SEP_VARGS(fn, sep, ...) fn(DT_N_S_soc_S_counter_3ff60024, status, 0, __VA_ARGS__)
+#define DT_N_S_soc_S_counter_3ff60024_P_status_LEN 1
 #define DT_N_S_soc_S_counter_3ff60024_P_status_EXISTS 1
 #define DT_N_S_soc_S_counter_3ff60024_P_compatible {"espressif,esp32-timer"}
 #define DT_N_S_soc_S_counter_3ff60024_P_compatible_IDX_0 "espressif,esp32-timer"
@@ -4712,31 +4281,25 @@
 #define DT_N_S_soc_S_counter_3ff60024_P_reg_IDX_0_EXISTS 1
 #define DT_N_S_soc_S_counter_3ff60024_P_reg_IDX_1 4096
 #define DT_N_S_soc_S_counter_3ff60024_P_reg_IDX_1_EXISTS 1
-#define DT_N_S_soc_S_counter_3ff60024_P_reg_FOREACH_PROP_ELEM(fn) fn(DT_N_S_soc_S_counter_3ff60024, reg, 0) \
-	fn(DT_N_S_soc_S_counter_3ff60024, reg, 1)
-#define DT_N_S_soc_S_counter_3ff60024_P_reg_FOREACH_PROP_ELEM_SEP(fn, sep) fn(DT_N_S_soc_S_counter_3ff60024, reg, 0) DT_DEBRACKET_INTERNAL sep \
-	fn(DT_N_S_soc_S_counter_3ff60024, reg, 1)
-#define DT_N_S_soc_S_counter_3ff60024_P_reg_FOREACH_PROP_ELEM_VARGS(fn, ...) fn(DT_N_S_soc_S_counter_3ff60024, reg, 0, __VA_ARGS__) \
-	fn(DT_N_S_soc_S_counter_3ff60024, reg, 1, __VA_ARGS__)
-#define DT_N_S_soc_S_counter_3ff60024_P_reg_FOREACH_PROP_ELEM_SEP_VARGS(fn, sep, ...) fn(DT_N_S_soc_S_counter_3ff60024, reg, 0, __VA_ARGS__) DT_DEBRACKET_INTERNAL sep \
-	fn(DT_N_S_soc_S_counter_3ff60024, reg, 1, __VA_ARGS__)
 #define DT_N_S_soc_S_counter_3ff60024_P_reg_EXISTS 1
 #define DT_N_S_soc_S_counter_3ff60024_P_interrupts {19 /* 0x13 */}
 #define DT_N_S_soc_S_counter_3ff60024_P_interrupts_IDX_0 19
 #define DT_N_S_soc_S_counter_3ff60024_P_interrupts_IDX_0_EXISTS 1
-#define DT_N_S_soc_S_counter_3ff60024_P_interrupts_FOREACH_PROP_ELEM(fn) fn(DT_N_S_soc_S_counter_3ff60024, interrupts, 0)
-#define DT_N_S_soc_S_counter_3ff60024_P_interrupts_FOREACH_PROP_ELEM_SEP(fn, sep) fn(DT_N_S_soc_S_counter_3ff60024, interrupts, 0)
-#define DT_N_S_soc_S_counter_3ff60024_P_interrupts_FOREACH_PROP_ELEM_VARGS(fn, ...) fn(DT_N_S_soc_S_counter_3ff60024, interrupts, 0, __VA_ARGS__)
-#define DT_N_S_soc_S_counter_3ff60024_P_interrupts_FOREACH_PROP_ELEM_SEP_VARGS(fn, sep, ...) fn(DT_N_S_soc_S_counter_3ff60024, interrupts, 0, __VA_ARGS__)
 #define DT_N_S_soc_S_counter_3ff60024_P_interrupts_EXISTS 1
 #define DT_N_S_soc_S_counter_3ff60024_P_interrupt_parent DT_N_S_soc_S_interrupt_controller_3ff00104
 #define DT_N_S_soc_S_counter_3ff60024_P_interrupt_parent_IDX_0 DT_N_S_soc_S_interrupt_controller_3ff00104
 #define DT_N_S_soc_S_counter_3ff60024_P_interrupt_parent_IDX_0_PH DT_N_S_soc_S_interrupt_controller_3ff00104
 #define DT_N_S_soc_S_counter_3ff60024_P_interrupt_parent_IDX_0_EXISTS 1
+#define DT_N_S_soc_S_counter_3ff60024_P_interrupt_parent_FOREACH_PROP_ELEM(fn) fn(DT_N_S_soc_S_counter_3ff60024, interrupt_parent, 0)
+#define DT_N_S_soc_S_counter_3ff60024_P_interrupt_parent_FOREACH_PROP_ELEM_SEP(fn, sep) fn(DT_N_S_soc_S_counter_3ff60024, interrupt_parent, 0)
+#define DT_N_S_soc_S_counter_3ff60024_P_interrupt_parent_FOREACH_PROP_ELEM_VARGS(fn, ...) fn(DT_N_S_soc_S_counter_3ff60024, interrupt_parent, 0, __VA_ARGS__)
+#define DT_N_S_soc_S_counter_3ff60024_P_interrupt_parent_FOREACH_PROP_ELEM_SEP_VARGS(fn, sep, ...) fn(DT_N_S_soc_S_counter_3ff60024, interrupt_parent, 0, __VA_ARGS__)
 #define DT_N_S_soc_S_counter_3ff60024_P_interrupt_parent_LEN 1
 #define DT_N_S_soc_S_counter_3ff60024_P_interrupt_parent_EXISTS 1
 #define DT_N_S_soc_S_counter_3ff60024_P_wakeup_source 0
 #define DT_N_S_soc_S_counter_3ff60024_P_wakeup_source_EXISTS 1
+#define DT_N_S_soc_S_counter_3ff60024_P_zephyr_pm_device_runtime_auto 0
+#define DT_N_S_soc_S_counter_3ff60024_P_zephyr_pm_device_runtime_auto_EXISTS 1
 
 /*
  * Devicetree node: /soc/dac@3ff48800
@@ -4744,7 +4307,7 @@
  * Node identifier: DT_N_S_soc_S_dac_3ff48800
  *
  * Binding (compatible = espressif,esp32-dac):
- *   $ZEPHYR_BASE/dts/bindings/dac/espressif,esp32-dac.yaml
+ *   /home/gez/sdks/zephyr/zephyr/dts/bindings/dac/espressif,esp32-dac.yaml
  *
  * (Descriptions have moved to the Devicetree Bindings Index
  * in the documentation.)
@@ -4815,41 +4378,17 @@
 #define DT_N_S_soc_S_dac_3ff48800_P_status_STRING_UNQUOTED disabled
 #define DT_N_S_soc_S_dac_3ff48800_P_status_STRING_TOKEN disabled
 #define DT_N_S_soc_S_dac_3ff48800_P_status_STRING_UPPER_TOKEN DISABLED
+#define DT_N_S_soc_S_dac_3ff48800_P_status_IDX_0 "disabled"
+#define DT_N_S_soc_S_dac_3ff48800_P_status_IDX_0_EXISTS 1
 #define DT_N_S_soc_S_dac_3ff48800_P_status_ENUM_IDX 2
+#define DT_N_S_soc_S_dac_3ff48800_P_status_ENUM_VAL_disabled_EXISTS 1
 #define DT_N_S_soc_S_dac_3ff48800_P_status_ENUM_TOKEN disabled
 #define DT_N_S_soc_S_dac_3ff48800_P_status_ENUM_UPPER_TOKEN DISABLED
-#define DT_N_S_soc_S_dac_3ff48800_P_status_FOREACH_PROP_ELEM(fn) fn(DT_N_S_soc_S_dac_3ff48800, status, 0) \
-	fn(DT_N_S_soc_S_dac_3ff48800, status, 1) \
-	fn(DT_N_S_soc_S_dac_3ff48800, status, 2) \
-	fn(DT_N_S_soc_S_dac_3ff48800, status, 3) \
-	fn(DT_N_S_soc_S_dac_3ff48800, status, 4) \
-	fn(DT_N_S_soc_S_dac_3ff48800, status, 5) \
-	fn(DT_N_S_soc_S_dac_3ff48800, status, 6) \
-	fn(DT_N_S_soc_S_dac_3ff48800, status, 7)
-#define DT_N_S_soc_S_dac_3ff48800_P_status_FOREACH_PROP_ELEM_SEP(fn, sep) fn(DT_N_S_soc_S_dac_3ff48800, status, 0) DT_DEBRACKET_INTERNAL sep \
-	fn(DT_N_S_soc_S_dac_3ff48800, status, 1) DT_DEBRACKET_INTERNAL sep \
-	fn(DT_N_S_soc_S_dac_3ff48800, status, 2) DT_DEBRACKET_INTERNAL sep \
-	fn(DT_N_S_soc_S_dac_3ff48800, status, 3) DT_DEBRACKET_INTERNAL sep \
-	fn(DT_N_S_soc_S_dac_3ff48800, status, 4) DT_DEBRACKET_INTERNAL sep \
-	fn(DT_N_S_soc_S_dac_3ff48800, status, 5) DT_DEBRACKET_INTERNAL sep \
-	fn(DT_N_S_soc_S_dac_3ff48800, status, 6) DT_DEBRACKET_INTERNAL sep \
-	fn(DT_N_S_soc_S_dac_3ff48800, status, 7)
-#define DT_N_S_soc_S_dac_3ff48800_P_status_FOREACH_PROP_ELEM_VARGS(fn, ...) fn(DT_N_S_soc_S_dac_3ff48800, status, 0, __VA_ARGS__) \
-	fn(DT_N_S_soc_S_dac_3ff48800, status, 1, __VA_ARGS__) \
-	fn(DT_N_S_soc_S_dac_3ff48800, status, 2, __VA_ARGS__) \
-	fn(DT_N_S_soc_S_dac_3ff48800, status, 3, __VA_ARGS__) \
-	fn(DT_N_S_soc_S_dac_3ff48800, status, 4, __VA_ARGS__) \
-	fn(DT_N_S_soc_S_dac_3ff48800, status, 5, __VA_ARGS__) \
-	fn(DT_N_S_soc_S_dac_3ff48800, status, 6, __VA_ARGS__) \
-	fn(DT_N_S_soc_S_dac_3ff48800, status, 7, __VA_ARGS__)
-#define DT_N_S_soc_S_dac_3ff48800_P_status_FOREACH_PROP_ELEM_SEP_VARGS(fn, sep, ...) fn(DT_N_S_soc_S_dac_3ff48800, status, 0, __VA_ARGS__) DT_DEBRACKET_INTERNAL sep \
-	fn(DT_N_S_soc_S_dac_3ff48800, status, 1, __VA_ARGS__) DT_DEBRACKET_INTERNAL sep \
-	fn(DT_N_S_soc_S_dac_3ff48800, status, 2, __VA_ARGS__) DT_DEBRACKET_INTERNAL sep \
-	fn(DT_N_S_soc_S_dac_3ff48800, status, 3, __VA_ARGS__) DT_DEBRACKET_INTERNAL sep \
-	fn(DT_N_S_soc_S_dac_3ff48800, status, 4, __VA_ARGS__) DT_DEBRACKET_INTERNAL sep \
-	fn(DT_N_S_soc_S_dac_3ff48800, status, 5, __VA_ARGS__) DT_DEBRACKET_INTERNAL sep \
-	fn(DT_N_S_soc_S_dac_3ff48800, status, 6, __VA_ARGS__) DT_DEBRACKET_INTERNAL sep \
-	fn(DT_N_S_soc_S_dac_3ff48800, status, 7, __VA_ARGS__)
+#define DT_N_S_soc_S_dac_3ff48800_P_status_FOREACH_PROP_ELEM(fn) fn(DT_N_S_soc_S_dac_3ff48800, status, 0)
+#define DT_N_S_soc_S_dac_3ff48800_P_status_FOREACH_PROP_ELEM_SEP(fn, sep) fn(DT_N_S_soc_S_dac_3ff48800, status, 0)
+#define DT_N_S_soc_S_dac_3ff48800_P_status_FOREACH_PROP_ELEM_VARGS(fn, ...) fn(DT_N_S_soc_S_dac_3ff48800, status, 0, __VA_ARGS__)
+#define DT_N_S_soc_S_dac_3ff48800_P_status_FOREACH_PROP_ELEM_SEP_VARGS(fn, sep, ...) fn(DT_N_S_soc_S_dac_3ff48800, status, 0, __VA_ARGS__)
+#define DT_N_S_soc_S_dac_3ff48800_P_status_LEN 1
 #define DT_N_S_soc_S_dac_3ff48800_P_status_EXISTS 1
 #define DT_N_S_soc_S_dac_3ff48800_P_compatible {"espressif,esp32-dac"}
 #define DT_N_S_soc_S_dac_3ff48800_P_compatible_IDX_0 "espressif,esp32-dac"
@@ -4868,27 +4407,19 @@
 #define DT_N_S_soc_S_dac_3ff48800_P_reg_IDX_0_EXISTS 1
 #define DT_N_S_soc_S_dac_3ff48800_P_reg_IDX_1 256
 #define DT_N_S_soc_S_dac_3ff48800_P_reg_IDX_1_EXISTS 1
-#define DT_N_S_soc_S_dac_3ff48800_P_reg_FOREACH_PROP_ELEM(fn) fn(DT_N_S_soc_S_dac_3ff48800, reg, 0) \
-	fn(DT_N_S_soc_S_dac_3ff48800, reg, 1)
-#define DT_N_S_soc_S_dac_3ff48800_P_reg_FOREACH_PROP_ELEM_SEP(fn, sep) fn(DT_N_S_soc_S_dac_3ff48800, reg, 0) DT_DEBRACKET_INTERNAL sep \
-	fn(DT_N_S_soc_S_dac_3ff48800, reg, 1)
-#define DT_N_S_soc_S_dac_3ff48800_P_reg_FOREACH_PROP_ELEM_VARGS(fn, ...) fn(DT_N_S_soc_S_dac_3ff48800, reg, 0, __VA_ARGS__) \
-	fn(DT_N_S_soc_S_dac_3ff48800, reg, 1, __VA_ARGS__)
-#define DT_N_S_soc_S_dac_3ff48800_P_reg_FOREACH_PROP_ELEM_SEP_VARGS(fn, sep, ...) fn(DT_N_S_soc_S_dac_3ff48800, reg, 0, __VA_ARGS__) DT_DEBRACKET_INTERNAL sep \
-	fn(DT_N_S_soc_S_dac_3ff48800, reg, 1, __VA_ARGS__)
 #define DT_N_S_soc_S_dac_3ff48800_P_reg_EXISTS 1
 #define DT_N_S_soc_S_dac_3ff48800_P_interrupts {46 /* 0x2e */}
 #define DT_N_S_soc_S_dac_3ff48800_P_interrupts_IDX_0 46
 #define DT_N_S_soc_S_dac_3ff48800_P_interrupts_IDX_0_EXISTS 1
-#define DT_N_S_soc_S_dac_3ff48800_P_interrupts_FOREACH_PROP_ELEM(fn) fn(DT_N_S_soc_S_dac_3ff48800, interrupts, 0)
-#define DT_N_S_soc_S_dac_3ff48800_P_interrupts_FOREACH_PROP_ELEM_SEP(fn, sep) fn(DT_N_S_soc_S_dac_3ff48800, interrupts, 0)
-#define DT_N_S_soc_S_dac_3ff48800_P_interrupts_FOREACH_PROP_ELEM_VARGS(fn, ...) fn(DT_N_S_soc_S_dac_3ff48800, interrupts, 0, __VA_ARGS__)
-#define DT_N_S_soc_S_dac_3ff48800_P_interrupts_FOREACH_PROP_ELEM_SEP_VARGS(fn, sep, ...) fn(DT_N_S_soc_S_dac_3ff48800, interrupts, 0, __VA_ARGS__)
 #define DT_N_S_soc_S_dac_3ff48800_P_interrupts_EXISTS 1
 #define DT_N_S_soc_S_dac_3ff48800_P_interrupt_parent DT_N_S_soc_S_interrupt_controller_3ff00104
 #define DT_N_S_soc_S_dac_3ff48800_P_interrupt_parent_IDX_0 DT_N_S_soc_S_interrupt_controller_3ff00104
 #define DT_N_S_soc_S_dac_3ff48800_P_interrupt_parent_IDX_0_PH DT_N_S_soc_S_interrupt_controller_3ff00104
 #define DT_N_S_soc_S_dac_3ff48800_P_interrupt_parent_IDX_0_EXISTS 1
+#define DT_N_S_soc_S_dac_3ff48800_P_interrupt_parent_FOREACH_PROP_ELEM(fn) fn(DT_N_S_soc_S_dac_3ff48800, interrupt_parent, 0)
+#define DT_N_S_soc_S_dac_3ff48800_P_interrupt_parent_FOREACH_PROP_ELEM_SEP(fn, sep) fn(DT_N_S_soc_S_dac_3ff48800, interrupt_parent, 0)
+#define DT_N_S_soc_S_dac_3ff48800_P_interrupt_parent_FOREACH_PROP_ELEM_VARGS(fn, ...) fn(DT_N_S_soc_S_dac_3ff48800, interrupt_parent, 0, __VA_ARGS__)
+#define DT_N_S_soc_S_dac_3ff48800_P_interrupt_parent_FOREACH_PROP_ELEM_SEP_VARGS(fn, sep, ...) fn(DT_N_S_soc_S_dac_3ff48800, interrupt_parent, 0, __VA_ARGS__)
 #define DT_N_S_soc_S_dac_3ff48800_P_interrupt_parent_LEN 1
 #define DT_N_S_soc_S_dac_3ff48800_P_interrupt_parent_EXISTS 1
 #define DT_N_S_soc_S_dac_3ff48800_P_clocks_IDX_0_EXISTS 1
@@ -4903,6 +4434,8 @@
 #define DT_N_S_soc_S_dac_3ff48800_P_clocks_EXISTS 1
 #define DT_N_S_soc_S_dac_3ff48800_P_wakeup_source 0
 #define DT_N_S_soc_S_dac_3ff48800_P_wakeup_source_EXISTS 1
+#define DT_N_S_soc_S_dac_3ff48800_P_zephyr_pm_device_runtime_auto 0
+#define DT_N_S_soc_S_dac_3ff48800_P_zephyr_pm_device_runtime_auto_EXISTS 1
 
 /*
  * Devicetree node: /soc/i2c@3ff53000
@@ -4910,7 +4443,7 @@
  * Node identifier: DT_N_S_soc_S_i2c_3ff53000
  *
  * Binding (compatible = espressif,esp32-i2c):
- *   $ZEPHYR_BASE/dts/bindings/i2c/espressif,esp32-i2c.yaml
+ *   /home/gez/sdks/zephyr/zephyr/dts/bindings/i2c/espressif,esp32-i2c.yaml
  *
  * (Descriptions have moved to the Devicetree Bindings Index
  * in the documentation.)
@@ -4991,14 +4524,6 @@
 #define DT_N_S_soc_S_i2c_3ff53000_P_reg_IDX_0_EXISTS 1
 #define DT_N_S_soc_S_i2c_3ff53000_P_reg_IDX_1 4096
 #define DT_N_S_soc_S_i2c_3ff53000_P_reg_IDX_1_EXISTS 1
-#define DT_N_S_soc_S_i2c_3ff53000_P_reg_FOREACH_PROP_ELEM(fn) fn(DT_N_S_soc_S_i2c_3ff53000, reg, 0) \
-	fn(DT_N_S_soc_S_i2c_3ff53000, reg, 1)
-#define DT_N_S_soc_S_i2c_3ff53000_P_reg_FOREACH_PROP_ELEM_SEP(fn, sep) fn(DT_N_S_soc_S_i2c_3ff53000, reg, 0) DT_DEBRACKET_INTERNAL sep \
-	fn(DT_N_S_soc_S_i2c_3ff53000, reg, 1)
-#define DT_N_S_soc_S_i2c_3ff53000_P_reg_FOREACH_PROP_ELEM_VARGS(fn, ...) fn(DT_N_S_soc_S_i2c_3ff53000, reg, 0, __VA_ARGS__) \
-	fn(DT_N_S_soc_S_i2c_3ff53000, reg, 1, __VA_ARGS__)
-#define DT_N_S_soc_S_i2c_3ff53000_P_reg_FOREACH_PROP_ELEM_SEP_VARGS(fn, sep, ...) fn(DT_N_S_soc_S_i2c_3ff53000, reg, 0, __VA_ARGS__) DT_DEBRACKET_INTERNAL sep \
-	fn(DT_N_S_soc_S_i2c_3ff53000, reg, 1, __VA_ARGS__)
 #define DT_N_S_soc_S_i2c_3ff53000_P_reg_EXISTS 1
 #define DT_N_S_soc_S_i2c_3ff53000_P_pinctrl_0_IDX_0 DT_N_S_pin_controller_S_i2c0_default
 #define DT_N_S_soc_S_i2c_3ff53000_P_pinctrl_0_IDX_0_PH DT_N_S_pin_controller_S_i2c0_default
@@ -5055,25 +4580,17 @@
 #define DT_N_S_soc_S_i2c_3ff53000_P_status_STRING_UNQUOTED okay
 #define DT_N_S_soc_S_i2c_3ff53000_P_status_STRING_TOKEN okay
 #define DT_N_S_soc_S_i2c_3ff53000_P_status_STRING_UPPER_TOKEN OKAY
+#define DT_N_S_soc_S_i2c_3ff53000_P_status_IDX_0 "okay"
+#define DT_N_S_soc_S_i2c_3ff53000_P_status_IDX_0_EXISTS 1
 #define DT_N_S_soc_S_i2c_3ff53000_P_status_ENUM_IDX 1
+#define DT_N_S_soc_S_i2c_3ff53000_P_status_ENUM_VAL_okay_EXISTS 1
 #define DT_N_S_soc_S_i2c_3ff53000_P_status_ENUM_TOKEN okay
 #define DT_N_S_soc_S_i2c_3ff53000_P_status_ENUM_UPPER_TOKEN OKAY
-#define DT_N_S_soc_S_i2c_3ff53000_P_status_FOREACH_PROP_ELEM(fn) fn(DT_N_S_soc_S_i2c_3ff53000, status, 0) \
-	fn(DT_N_S_soc_S_i2c_3ff53000, status, 1) \
-	fn(DT_N_S_soc_S_i2c_3ff53000, status, 2) \
-	fn(DT_N_S_soc_S_i2c_3ff53000, status, 3)
-#define DT_N_S_soc_S_i2c_3ff53000_P_status_FOREACH_PROP_ELEM_SEP(fn, sep) fn(DT_N_S_soc_S_i2c_3ff53000, status, 0) DT_DEBRACKET_INTERNAL sep \
-	fn(DT_N_S_soc_S_i2c_3ff53000, status, 1) DT_DEBRACKET_INTERNAL sep \
-	fn(DT_N_S_soc_S_i2c_3ff53000, status, 2) DT_DEBRACKET_INTERNAL sep \
-	fn(DT_N_S_soc_S_i2c_3ff53000, status, 3)
-#define DT_N_S_soc_S_i2c_3ff53000_P_status_FOREACH_PROP_ELEM_VARGS(fn, ...) fn(DT_N_S_soc_S_i2c_3ff53000, status, 0, __VA_ARGS__) \
-	fn(DT_N_S_soc_S_i2c_3ff53000, status, 1, __VA_ARGS__) \
-	fn(DT_N_S_soc_S_i2c_3ff53000, status, 2, __VA_ARGS__) \
-	fn(DT_N_S_soc_S_i2c_3ff53000, status, 3, __VA_ARGS__)
-#define DT_N_S_soc_S_i2c_3ff53000_P_status_FOREACH_PROP_ELEM_SEP_VARGS(fn, sep, ...) fn(DT_N_S_soc_S_i2c_3ff53000, status, 0, __VA_ARGS__) DT_DEBRACKET_INTERNAL sep \
-	fn(DT_N_S_soc_S_i2c_3ff53000, status, 1, __VA_ARGS__) DT_DEBRACKET_INTERNAL sep \
-	fn(DT_N_S_soc_S_i2c_3ff53000, status, 2, __VA_ARGS__) DT_DEBRACKET_INTERNAL sep \
-	fn(DT_N_S_soc_S_i2c_3ff53000, status, 3, __VA_ARGS__)
+#define DT_N_S_soc_S_i2c_3ff53000_P_status_FOREACH_PROP_ELEM(fn) fn(DT_N_S_soc_S_i2c_3ff53000, status, 0)
+#define DT_N_S_soc_S_i2c_3ff53000_P_status_FOREACH_PROP_ELEM_SEP(fn, sep) fn(DT_N_S_soc_S_i2c_3ff53000, status, 0)
+#define DT_N_S_soc_S_i2c_3ff53000_P_status_FOREACH_PROP_ELEM_VARGS(fn, ...) fn(DT_N_S_soc_S_i2c_3ff53000, status, 0, __VA_ARGS__)
+#define DT_N_S_soc_S_i2c_3ff53000_P_status_FOREACH_PROP_ELEM_SEP_VARGS(fn, sep, ...) fn(DT_N_S_soc_S_i2c_3ff53000, status, 0, __VA_ARGS__)
+#define DT_N_S_soc_S_i2c_3ff53000_P_status_LEN 1
 #define DT_N_S_soc_S_i2c_3ff53000_P_status_EXISTS 1
 #define DT_N_S_soc_S_i2c_3ff53000_P_compatible {"espressif,esp32-i2c"}
 #define DT_N_S_soc_S_i2c_3ff53000_P_compatible_IDX_0 "espressif,esp32-i2c"
@@ -5090,15 +4607,15 @@
 #define DT_N_S_soc_S_i2c_3ff53000_P_interrupts {49 /* 0x31 */}
 #define DT_N_S_soc_S_i2c_3ff53000_P_interrupts_IDX_0 49
 #define DT_N_S_soc_S_i2c_3ff53000_P_interrupts_IDX_0_EXISTS 1
-#define DT_N_S_soc_S_i2c_3ff53000_P_interrupts_FOREACH_PROP_ELEM(fn) fn(DT_N_S_soc_S_i2c_3ff53000, interrupts, 0)
-#define DT_N_S_soc_S_i2c_3ff53000_P_interrupts_FOREACH_PROP_ELEM_SEP(fn, sep) fn(DT_N_S_soc_S_i2c_3ff53000, interrupts, 0)
-#define DT_N_S_soc_S_i2c_3ff53000_P_interrupts_FOREACH_PROP_ELEM_VARGS(fn, ...) fn(DT_N_S_soc_S_i2c_3ff53000, interrupts, 0, __VA_ARGS__)
-#define DT_N_S_soc_S_i2c_3ff53000_P_interrupts_FOREACH_PROP_ELEM_SEP_VARGS(fn, sep, ...) fn(DT_N_S_soc_S_i2c_3ff53000, interrupts, 0, __VA_ARGS__)
 #define DT_N_S_soc_S_i2c_3ff53000_P_interrupts_EXISTS 1
 #define DT_N_S_soc_S_i2c_3ff53000_P_interrupt_parent DT_N_S_soc_S_interrupt_controller_3ff00104
 #define DT_N_S_soc_S_i2c_3ff53000_P_interrupt_parent_IDX_0 DT_N_S_soc_S_interrupt_controller_3ff00104
 #define DT_N_S_soc_S_i2c_3ff53000_P_interrupt_parent_IDX_0_PH DT_N_S_soc_S_interrupt_controller_3ff00104
 #define DT_N_S_soc_S_i2c_3ff53000_P_interrupt_parent_IDX_0_EXISTS 1
+#define DT_N_S_soc_S_i2c_3ff53000_P_interrupt_parent_FOREACH_PROP_ELEM(fn) fn(DT_N_S_soc_S_i2c_3ff53000, interrupt_parent, 0)
+#define DT_N_S_soc_S_i2c_3ff53000_P_interrupt_parent_FOREACH_PROP_ELEM_SEP(fn, sep) fn(DT_N_S_soc_S_i2c_3ff53000, interrupt_parent, 0)
+#define DT_N_S_soc_S_i2c_3ff53000_P_interrupt_parent_FOREACH_PROP_ELEM_VARGS(fn, ...) fn(DT_N_S_soc_S_i2c_3ff53000, interrupt_parent, 0, __VA_ARGS__)
+#define DT_N_S_soc_S_i2c_3ff53000_P_interrupt_parent_FOREACH_PROP_ELEM_SEP_VARGS(fn, sep, ...) fn(DT_N_S_soc_S_i2c_3ff53000, interrupt_parent, 0, __VA_ARGS__)
 #define DT_N_S_soc_S_i2c_3ff53000_P_interrupt_parent_LEN 1
 #define DT_N_S_soc_S_i2c_3ff53000_P_interrupt_parent_EXISTS 1
 #define DT_N_S_soc_S_i2c_3ff53000_P_clocks_IDX_0_EXISTS 1
@@ -5113,6 +4630,8 @@
 #define DT_N_S_soc_S_i2c_3ff53000_P_clocks_EXISTS 1
 #define DT_N_S_soc_S_i2c_3ff53000_P_wakeup_source 0
 #define DT_N_S_soc_S_i2c_3ff53000_P_wakeup_source_EXISTS 1
+#define DT_N_S_soc_S_i2c_3ff53000_P_zephyr_pm_device_runtime_auto 0
+#define DT_N_S_soc_S_i2c_3ff53000_P_zephyr_pm_device_runtime_auto_EXISTS 1
 
 /*
  * Devicetree node: /soc/i2c@3ff67000
@@ -5120,7 +4639,7 @@
  * Node identifier: DT_N_S_soc_S_i2c_3ff67000
  *
  * Binding (compatible = espressif,esp32-i2c):
- *   $ZEPHYR_BASE/dts/bindings/i2c/espressif,esp32-i2c.yaml
+ *   /home/gez/sdks/zephyr/zephyr/dts/bindings/i2c/espressif,esp32-i2c.yaml
  *
  * (Descriptions have moved to the Devicetree Bindings Index
  * in the documentation.)
@@ -5192,14 +4711,6 @@
 #define DT_N_S_soc_S_i2c_3ff67000_P_reg_IDX_0_EXISTS 1
 #define DT_N_S_soc_S_i2c_3ff67000_P_reg_IDX_1 4096
 #define DT_N_S_soc_S_i2c_3ff67000_P_reg_IDX_1_EXISTS 1
-#define DT_N_S_soc_S_i2c_3ff67000_P_reg_FOREACH_PROP_ELEM(fn) fn(DT_N_S_soc_S_i2c_3ff67000, reg, 0) \
-	fn(DT_N_S_soc_S_i2c_3ff67000, reg, 1)
-#define DT_N_S_soc_S_i2c_3ff67000_P_reg_FOREACH_PROP_ELEM_SEP(fn, sep) fn(DT_N_S_soc_S_i2c_3ff67000, reg, 0) DT_DEBRACKET_INTERNAL sep \
-	fn(DT_N_S_soc_S_i2c_3ff67000, reg, 1)
-#define DT_N_S_soc_S_i2c_3ff67000_P_reg_FOREACH_PROP_ELEM_VARGS(fn, ...) fn(DT_N_S_soc_S_i2c_3ff67000, reg, 0, __VA_ARGS__) \
-	fn(DT_N_S_soc_S_i2c_3ff67000, reg, 1, __VA_ARGS__)
-#define DT_N_S_soc_S_i2c_3ff67000_P_reg_FOREACH_PROP_ELEM_SEP_VARGS(fn, sep, ...) fn(DT_N_S_soc_S_i2c_3ff67000, reg, 0, __VA_ARGS__) DT_DEBRACKET_INTERNAL sep \
-	fn(DT_N_S_soc_S_i2c_3ff67000, reg, 1, __VA_ARGS__)
 #define DT_N_S_soc_S_i2c_3ff67000_P_reg_EXISTS 1
 #define DT_N_S_soc_S_i2c_3ff67000_P_tx_lsb 0
 #define DT_N_S_soc_S_i2c_3ff67000_P_tx_lsb_EXISTS 1
@@ -5209,41 +4720,17 @@
 #define DT_N_S_soc_S_i2c_3ff67000_P_status_STRING_UNQUOTED disabled
 #define DT_N_S_soc_S_i2c_3ff67000_P_status_STRING_TOKEN disabled
 #define DT_N_S_soc_S_i2c_3ff67000_P_status_STRING_UPPER_TOKEN DISABLED
+#define DT_N_S_soc_S_i2c_3ff67000_P_status_IDX_0 "disabled"
+#define DT_N_S_soc_S_i2c_3ff67000_P_status_IDX_0_EXISTS 1
 #define DT_N_S_soc_S_i2c_3ff67000_P_status_ENUM_IDX 2
+#define DT_N_S_soc_S_i2c_3ff67000_P_status_ENUM_VAL_disabled_EXISTS 1
 #define DT_N_S_soc_S_i2c_3ff67000_P_status_ENUM_TOKEN disabled
 #define DT_N_S_soc_S_i2c_3ff67000_P_status_ENUM_UPPER_TOKEN DISABLED
-#define DT_N_S_soc_S_i2c_3ff67000_P_status_FOREACH_PROP_ELEM(fn) fn(DT_N_S_soc_S_i2c_3ff67000, status, 0) \
-	fn(DT_N_S_soc_S_i2c_3ff67000, status, 1) \
-	fn(DT_N_S_soc_S_i2c_3ff67000, status, 2) \
-	fn(DT_N_S_soc_S_i2c_3ff67000, status, 3) \
-	fn(DT_N_S_soc_S_i2c_3ff67000, status, 4) \
-	fn(DT_N_S_soc_S_i2c_3ff67000, status, 5) \
-	fn(DT_N_S_soc_S_i2c_3ff67000, status, 6) \
-	fn(DT_N_S_soc_S_i2c_3ff67000, status, 7)
-#define DT_N_S_soc_S_i2c_3ff67000_P_status_FOREACH_PROP_ELEM_SEP(fn, sep) fn(DT_N_S_soc_S_i2c_3ff67000, status, 0) DT_DEBRACKET_INTERNAL sep \
-	fn(DT_N_S_soc_S_i2c_3ff67000, status, 1) DT_DEBRACKET_INTERNAL sep \
-	fn(DT_N_S_soc_S_i2c_3ff67000, status, 2) DT_DEBRACKET_INTERNAL sep \
-	fn(DT_N_S_soc_S_i2c_3ff67000, status, 3) DT_DEBRACKET_INTERNAL sep \
-	fn(DT_N_S_soc_S_i2c_3ff67000, status, 4) DT_DEBRACKET_INTERNAL sep \
-	fn(DT_N_S_soc_S_i2c_3ff67000, status, 5) DT_DEBRACKET_INTERNAL sep \
-	fn(DT_N_S_soc_S_i2c_3ff67000, status, 6) DT_DEBRACKET_INTERNAL sep \
-	fn(DT_N_S_soc_S_i2c_3ff67000, status, 7)
-#define DT_N_S_soc_S_i2c_3ff67000_P_status_FOREACH_PROP_ELEM_VARGS(fn, ...) fn(DT_N_S_soc_S_i2c_3ff67000, status, 0, __VA_ARGS__) \
-	fn(DT_N_S_soc_S_i2c_3ff67000, status, 1, __VA_ARGS__) \
-	fn(DT_N_S_soc_S_i2c_3ff67000, status, 2, __VA_ARGS__) \
-	fn(DT_N_S_soc_S_i2c_3ff67000, status, 3, __VA_ARGS__) \
-	fn(DT_N_S_soc_S_i2c_3ff67000, status, 4, __VA_ARGS__) \
-	fn(DT_N_S_soc_S_i2c_3ff67000, status, 5, __VA_ARGS__) \
-	fn(DT_N_S_soc_S_i2c_3ff67000, status, 6, __VA_ARGS__) \
-	fn(DT_N_S_soc_S_i2c_3ff67000, status, 7, __VA_ARGS__)
-#define DT_N_S_soc_S_i2c_3ff67000_P_status_FOREACH_PROP_ELEM_SEP_VARGS(fn, sep, ...) fn(DT_N_S_soc_S_i2c_3ff67000, status, 0, __VA_ARGS__) DT_DEBRACKET_INTERNAL sep \
-	fn(DT_N_S_soc_S_i2c_3ff67000, status, 1, __VA_ARGS__) DT_DEBRACKET_INTERNAL sep \
-	fn(DT_N_S_soc_S_i2c_3ff67000, status, 2, __VA_ARGS__) DT_DEBRACKET_INTERNAL sep \
-	fn(DT_N_S_soc_S_i2c_3ff67000, status, 3, __VA_ARGS__) DT_DEBRACKET_INTERNAL sep \
-	fn(DT_N_S_soc_S_i2c_3ff67000, status, 4, __VA_ARGS__) DT_DEBRACKET_INTERNAL sep \
-	fn(DT_N_S_soc_S_i2c_3ff67000, status, 5, __VA_ARGS__) DT_DEBRACKET_INTERNAL sep \
-	fn(DT_N_S_soc_S_i2c_3ff67000, status, 6, __VA_ARGS__) DT_DEBRACKET_INTERNAL sep \
-	fn(DT_N_S_soc_S_i2c_3ff67000, status, 7, __VA_ARGS__)
+#define DT_N_S_soc_S_i2c_3ff67000_P_status_FOREACH_PROP_ELEM(fn) fn(DT_N_S_soc_S_i2c_3ff67000, status, 0)
+#define DT_N_S_soc_S_i2c_3ff67000_P_status_FOREACH_PROP_ELEM_SEP(fn, sep) fn(DT_N_S_soc_S_i2c_3ff67000, status, 0)
+#define DT_N_S_soc_S_i2c_3ff67000_P_status_FOREACH_PROP_ELEM_VARGS(fn, ...) fn(DT_N_S_soc_S_i2c_3ff67000, status, 0, __VA_ARGS__)
+#define DT_N_S_soc_S_i2c_3ff67000_P_status_FOREACH_PROP_ELEM_SEP_VARGS(fn, sep, ...) fn(DT_N_S_soc_S_i2c_3ff67000, status, 0, __VA_ARGS__)
+#define DT_N_S_soc_S_i2c_3ff67000_P_status_LEN 1
 #define DT_N_S_soc_S_i2c_3ff67000_P_status_EXISTS 1
 #define DT_N_S_soc_S_i2c_3ff67000_P_compatible {"espressif,esp32-i2c"}
 #define DT_N_S_soc_S_i2c_3ff67000_P_compatible_IDX_0 "espressif,esp32-i2c"
@@ -5260,15 +4747,15 @@
 #define DT_N_S_soc_S_i2c_3ff67000_P_interrupts {50 /* 0x32 */}
 #define DT_N_S_soc_S_i2c_3ff67000_P_interrupts_IDX_0 50
 #define DT_N_S_soc_S_i2c_3ff67000_P_interrupts_IDX_0_EXISTS 1
-#define DT_N_S_soc_S_i2c_3ff67000_P_interrupts_FOREACH_PROP_ELEM(fn) fn(DT_N_S_soc_S_i2c_3ff67000, interrupts, 0)
-#define DT_N_S_soc_S_i2c_3ff67000_P_interrupts_FOREACH_PROP_ELEM_SEP(fn, sep) fn(DT_N_S_soc_S_i2c_3ff67000, interrupts, 0)
-#define DT_N_S_soc_S_i2c_3ff67000_P_interrupts_FOREACH_PROP_ELEM_VARGS(fn, ...) fn(DT_N_S_soc_S_i2c_3ff67000, interrupts, 0, __VA_ARGS__)
-#define DT_N_S_soc_S_i2c_3ff67000_P_interrupts_FOREACH_PROP_ELEM_SEP_VARGS(fn, sep, ...) fn(DT_N_S_soc_S_i2c_3ff67000, interrupts, 0, __VA_ARGS__)
 #define DT_N_S_soc_S_i2c_3ff67000_P_interrupts_EXISTS 1
 #define DT_N_S_soc_S_i2c_3ff67000_P_interrupt_parent DT_N_S_soc_S_interrupt_controller_3ff00104
 #define DT_N_S_soc_S_i2c_3ff67000_P_interrupt_parent_IDX_0 DT_N_S_soc_S_interrupt_controller_3ff00104
 #define DT_N_S_soc_S_i2c_3ff67000_P_interrupt_parent_IDX_0_PH DT_N_S_soc_S_interrupt_controller_3ff00104
 #define DT_N_S_soc_S_i2c_3ff67000_P_interrupt_parent_IDX_0_EXISTS 1
+#define DT_N_S_soc_S_i2c_3ff67000_P_interrupt_parent_FOREACH_PROP_ELEM(fn) fn(DT_N_S_soc_S_i2c_3ff67000, interrupt_parent, 0)
+#define DT_N_S_soc_S_i2c_3ff67000_P_interrupt_parent_FOREACH_PROP_ELEM_SEP(fn, sep) fn(DT_N_S_soc_S_i2c_3ff67000, interrupt_parent, 0)
+#define DT_N_S_soc_S_i2c_3ff67000_P_interrupt_parent_FOREACH_PROP_ELEM_VARGS(fn, ...) fn(DT_N_S_soc_S_i2c_3ff67000, interrupt_parent, 0, __VA_ARGS__)
+#define DT_N_S_soc_S_i2c_3ff67000_P_interrupt_parent_FOREACH_PROP_ELEM_SEP_VARGS(fn, sep, ...) fn(DT_N_S_soc_S_i2c_3ff67000, interrupt_parent, 0, __VA_ARGS__)
 #define DT_N_S_soc_S_i2c_3ff67000_P_interrupt_parent_LEN 1
 #define DT_N_S_soc_S_i2c_3ff67000_P_interrupt_parent_EXISTS 1
 #define DT_N_S_soc_S_i2c_3ff67000_P_clocks_IDX_0_EXISTS 1
@@ -5283,6 +4770,8 @@
 #define DT_N_S_soc_S_i2c_3ff67000_P_clocks_EXISTS 1
 #define DT_N_S_soc_S_i2c_3ff67000_P_wakeup_source 0
 #define DT_N_S_soc_S_i2c_3ff67000_P_wakeup_source_EXISTS 1
+#define DT_N_S_soc_S_i2c_3ff67000_P_zephyr_pm_device_runtime_auto 0
+#define DT_N_S_soc_S_i2c_3ff67000_P_zephyr_pm_device_runtime_auto_EXISTS 1
 
 /*
  * Devicetree node: /soc/ipi@3f4c0058
@@ -5367,22 +4856,10 @@
 #define DT_N_S_soc_S_ipi_3f4c0058_P_reg_IDX_0_EXISTS 1
 #define DT_N_S_soc_S_ipi_3f4c0058_P_reg_IDX_1 4
 #define DT_N_S_soc_S_ipi_3f4c0058_P_reg_IDX_1_EXISTS 1
-#define DT_N_S_soc_S_ipi_3f4c0058_P_reg_FOREACH_PROP_ELEM(fn) fn(DT_N_S_soc_S_ipi_3f4c0058, reg, 0) \
-	fn(DT_N_S_soc_S_ipi_3f4c0058, reg, 1)
-#define DT_N_S_soc_S_ipi_3f4c0058_P_reg_FOREACH_PROP_ELEM_SEP(fn, sep) fn(DT_N_S_soc_S_ipi_3f4c0058, reg, 0) DT_DEBRACKET_INTERNAL sep \
-	fn(DT_N_S_soc_S_ipi_3f4c0058, reg, 1)
-#define DT_N_S_soc_S_ipi_3f4c0058_P_reg_FOREACH_PROP_ELEM_VARGS(fn, ...) fn(DT_N_S_soc_S_ipi_3f4c0058, reg, 0, __VA_ARGS__) \
-	fn(DT_N_S_soc_S_ipi_3f4c0058, reg, 1, __VA_ARGS__)
-#define DT_N_S_soc_S_ipi_3f4c0058_P_reg_FOREACH_PROP_ELEM_SEP_VARGS(fn, sep, ...) fn(DT_N_S_soc_S_ipi_3f4c0058, reg, 0, __VA_ARGS__) DT_DEBRACKET_INTERNAL sep \
-	fn(DT_N_S_soc_S_ipi_3f4c0058, reg, 1, __VA_ARGS__)
 #define DT_N_S_soc_S_ipi_3f4c0058_P_reg_EXISTS 1
 #define DT_N_S_soc_S_ipi_3f4c0058_P_interrupts {24 /* 0x18 */}
 #define DT_N_S_soc_S_ipi_3f4c0058_P_interrupts_IDX_0 24
 #define DT_N_S_soc_S_ipi_3f4c0058_P_interrupts_IDX_0_EXISTS 1
-#define DT_N_S_soc_S_ipi_3f4c0058_P_interrupts_FOREACH_PROP_ELEM(fn) fn(DT_N_S_soc_S_ipi_3f4c0058, interrupts, 0)
-#define DT_N_S_soc_S_ipi_3f4c0058_P_interrupts_FOREACH_PROP_ELEM_SEP(fn, sep) fn(DT_N_S_soc_S_ipi_3f4c0058, interrupts, 0)
-#define DT_N_S_soc_S_ipi_3f4c0058_P_interrupts_FOREACH_PROP_ELEM_VARGS(fn, ...) fn(DT_N_S_soc_S_ipi_3f4c0058, interrupts, 0, __VA_ARGS__)
-#define DT_N_S_soc_S_ipi_3f4c0058_P_interrupts_FOREACH_PROP_ELEM_SEP_VARGS(fn, sep, ...) fn(DT_N_S_soc_S_ipi_3f4c0058, interrupts, 0, __VA_ARGS__)
 #define DT_N_S_soc_S_ipi_3f4c0058_P_interrupts_EXISTS 1
 
 /*
@@ -5468,22 +4945,10 @@
 #define DT_N_S_soc_S_ipi_3f4c005c_P_reg_IDX_0_EXISTS 1
 #define DT_N_S_soc_S_ipi_3f4c005c_P_reg_IDX_1 4
 #define DT_N_S_soc_S_ipi_3f4c005c_P_reg_IDX_1_EXISTS 1
-#define DT_N_S_soc_S_ipi_3f4c005c_P_reg_FOREACH_PROP_ELEM(fn) fn(DT_N_S_soc_S_ipi_3f4c005c, reg, 0) \
-	fn(DT_N_S_soc_S_ipi_3f4c005c, reg, 1)
-#define DT_N_S_soc_S_ipi_3f4c005c_P_reg_FOREACH_PROP_ELEM_SEP(fn, sep) fn(DT_N_S_soc_S_ipi_3f4c005c, reg, 0) DT_DEBRACKET_INTERNAL sep \
-	fn(DT_N_S_soc_S_ipi_3f4c005c, reg, 1)
-#define DT_N_S_soc_S_ipi_3f4c005c_P_reg_FOREACH_PROP_ELEM_VARGS(fn, ...) fn(DT_N_S_soc_S_ipi_3f4c005c, reg, 0, __VA_ARGS__) \
-	fn(DT_N_S_soc_S_ipi_3f4c005c, reg, 1, __VA_ARGS__)
-#define DT_N_S_soc_S_ipi_3f4c005c_P_reg_FOREACH_PROP_ELEM_SEP_VARGS(fn, sep, ...) fn(DT_N_S_soc_S_ipi_3f4c005c, reg, 0, __VA_ARGS__) DT_DEBRACKET_INTERNAL sep \
-	fn(DT_N_S_soc_S_ipi_3f4c005c, reg, 1, __VA_ARGS__)
 #define DT_N_S_soc_S_ipi_3f4c005c_P_reg_EXISTS 1
 #define DT_N_S_soc_S_ipi_3f4c005c_P_interrupts {25 /* 0x19 */}
 #define DT_N_S_soc_S_ipi_3f4c005c_P_interrupts_IDX_0 25
 #define DT_N_S_soc_S_ipi_3f4c005c_P_interrupts_IDX_0_EXISTS 1
-#define DT_N_S_soc_S_ipi_3f4c005c_P_interrupts_FOREACH_PROP_ELEM(fn) fn(DT_N_S_soc_S_ipi_3f4c005c, interrupts, 0)
-#define DT_N_S_soc_S_ipi_3f4c005c_P_interrupts_FOREACH_PROP_ELEM_SEP(fn, sep) fn(DT_N_S_soc_S_ipi_3f4c005c, interrupts, 0)
-#define DT_N_S_soc_S_ipi_3f4c005c_P_interrupts_FOREACH_PROP_ELEM_VARGS(fn, ...) fn(DT_N_S_soc_S_ipi_3f4c005c, interrupts, 0, __VA_ARGS__)
-#define DT_N_S_soc_S_ipi_3f4c005c_P_interrupts_FOREACH_PROP_ELEM_SEP_VARGS(fn, sep, ...) fn(DT_N_S_soc_S_ipi_3f4c005c, interrupts, 0, __VA_ARGS__)
 #define DT_N_S_soc_S_ipi_3f4c005c_P_interrupts_EXISTS 1
 
 /*
@@ -5492,7 +4957,7 @@
  * Node identifier: DT_N_S_soc_S_memory_3ffe5230
  *
  * Binding (compatible = mmio-sram):
- *   $ZEPHYR_BASE/dts/bindings/sram/mmio-sram.yaml
+ *   /home/gez/sdks/zephyr/zephyr/dts/bindings/sram/mmio-sram.yaml
  *
  * (Descriptions have moved to the Devicetree Bindings Index
  * in the documentation.)
@@ -5529,7 +4994,7 @@
 
 /* Ordinals for what depends directly on this node: */
 #define DT_N_S_soc_S_memory_3ffe5230_SUPPORTS_ORDS \
-	52, /* /soc/ipm@3ffe5a30 */
+	52, /* /soc/ipm@3ffed238 */
 
 /* Existence and alternate IDs: */
 #define DT_N_S_soc_S_memory_3ffe5230_EXISTS 1
@@ -5556,14 +5021,6 @@
 #define DT_N_S_soc_S_memory_3ffe5230_P_reg_IDX_0_EXISTS 1
 #define DT_N_S_soc_S_memory_3ffe5230_P_reg_IDX_1 1024
 #define DT_N_S_soc_S_memory_3ffe5230_P_reg_IDX_1_EXISTS 1
-#define DT_N_S_soc_S_memory_3ffe5230_P_reg_FOREACH_PROP_ELEM(fn) fn(DT_N_S_soc_S_memory_3ffe5230, reg, 0) \
-	fn(DT_N_S_soc_S_memory_3ffe5230, reg, 1)
-#define DT_N_S_soc_S_memory_3ffe5230_P_reg_FOREACH_PROP_ELEM_SEP(fn, sep) fn(DT_N_S_soc_S_memory_3ffe5230, reg, 0) DT_DEBRACKET_INTERNAL sep \
-	fn(DT_N_S_soc_S_memory_3ffe5230, reg, 1)
-#define DT_N_S_soc_S_memory_3ffe5230_P_reg_FOREACH_PROP_ELEM_VARGS(fn, ...) fn(DT_N_S_soc_S_memory_3ffe5230, reg, 0, __VA_ARGS__) \
-	fn(DT_N_S_soc_S_memory_3ffe5230, reg, 1, __VA_ARGS__)
-#define DT_N_S_soc_S_memory_3ffe5230_P_reg_FOREACH_PROP_ELEM_SEP_VARGS(fn, sep, ...) fn(DT_N_S_soc_S_memory_3ffe5230, reg, 0, __VA_ARGS__) DT_DEBRACKET_INTERNAL sep \
-	fn(DT_N_S_soc_S_memory_3ffe5230, reg, 1, __VA_ARGS__)
 #define DT_N_S_soc_S_memory_3ffe5230_P_reg_EXISTS 1
 #define DT_N_S_soc_S_memory_3ffe5230_P_compatible {"mmio-sram"}
 #define DT_N_S_soc_S_memory_3ffe5230_P_compatible_IDX_0 "mmio-sram"
@@ -5579,179 +5036,151 @@
 #define DT_N_S_soc_S_memory_3ffe5230_P_compatible_EXISTS 1
 #define DT_N_S_soc_S_memory_3ffe5230_P_wakeup_source 0
 #define DT_N_S_soc_S_memory_3ffe5230_P_wakeup_source_EXISTS 1
+#define DT_N_S_soc_S_memory_3ffe5230_P_zephyr_pm_device_runtime_auto 0
+#define DT_N_S_soc_S_memory_3ffe5230_P_zephyr_pm_device_runtime_auto_EXISTS 1
 
 /*
- * Devicetree node: /soc/ipm@3ffe5a30
+ * Devicetree node: /soc/ipm@3ffed238
  *
- * Node identifier: DT_N_S_soc_S_ipm_3ffe5a30
+ * Node identifier: DT_N_S_soc_S_ipm_3ffed238
  *
  * Binding (compatible = espressif,esp32-ipm):
- *   $ZEPHYR_BASE/dts/bindings/ipm/espressif,esp32-ipm.yaml
+ *   /home/gez/sdks/zephyr/zephyr/dts/bindings/ipm/espressif,esp32-ipm.yaml
  *
  * (Descriptions have moved to the Devicetree Bindings Index
  * in the documentation.)
  */
 
 /* Node's full path: */
-#define DT_N_S_soc_S_ipm_3ffe5a30_PATH "/soc/ipm@3ffe5a30"
+#define DT_N_S_soc_S_ipm_3ffed238_PATH "/soc/ipm@3ffed238"
 
 /* Node's name with unit-address: */
-#define DT_N_S_soc_S_ipm_3ffe5a30_FULL_NAME "ipm@3ffe5a30"
+#define DT_N_S_soc_S_ipm_3ffed238_FULL_NAME "ipm@3ffed238"
 
 /* Node parent (/soc) identifier: */
-#define DT_N_S_soc_S_ipm_3ffe5a30_PARENT DT_N_S_soc
+#define DT_N_S_soc_S_ipm_3ffed238_PARENT DT_N_S_soc
 
 /* Node's index in its parent's list of children: */
-#define DT_N_S_soc_S_ipm_3ffe5a30_CHILD_IDX 6
+#define DT_N_S_soc_S_ipm_3ffed238_CHILD_IDX 6
 
 /* Helper macros for child nodes of this node. */
-#define DT_N_S_soc_S_ipm_3ffe5a30_FOREACH_CHILD(fn) 
-#define DT_N_S_soc_S_ipm_3ffe5a30_FOREACH_CHILD_SEP(fn, sep) 
-#define DT_N_S_soc_S_ipm_3ffe5a30_FOREACH_CHILD_VARGS(fn, ...) 
-#define DT_N_S_soc_S_ipm_3ffe5a30_FOREACH_CHILD_SEP_VARGS(fn, sep, ...) 
-#define DT_N_S_soc_S_ipm_3ffe5a30_FOREACH_CHILD_STATUS_OKAY(fn) 
-#define DT_N_S_soc_S_ipm_3ffe5a30_FOREACH_CHILD_STATUS_OKAY_SEP(fn, sep) 
-#define DT_N_S_soc_S_ipm_3ffe5a30_FOREACH_CHILD_STATUS_OKAY_VARGS(fn, ...) 
-#define DT_N_S_soc_S_ipm_3ffe5a30_FOREACH_CHILD_STATUS_OKAY_SEP_VARGS(fn, sep, ...) 
+#define DT_N_S_soc_S_ipm_3ffed238_FOREACH_CHILD(fn) 
+#define DT_N_S_soc_S_ipm_3ffed238_FOREACH_CHILD_SEP(fn, sep) 
+#define DT_N_S_soc_S_ipm_3ffed238_FOREACH_CHILD_VARGS(fn, ...) 
+#define DT_N_S_soc_S_ipm_3ffed238_FOREACH_CHILD_SEP_VARGS(fn, sep, ...) 
+#define DT_N_S_soc_S_ipm_3ffed238_FOREACH_CHILD_STATUS_OKAY(fn) 
+#define DT_N_S_soc_S_ipm_3ffed238_FOREACH_CHILD_STATUS_OKAY_SEP(fn, sep) 
+#define DT_N_S_soc_S_ipm_3ffed238_FOREACH_CHILD_STATUS_OKAY_VARGS(fn, ...) 
+#define DT_N_S_soc_S_ipm_3ffed238_FOREACH_CHILD_STATUS_OKAY_SEP_VARGS(fn, sep, ...) 
 
 /* Node's dependency ordinal: */
-#define DT_N_S_soc_S_ipm_3ffe5a30_ORD 52
+#define DT_N_S_soc_S_ipm_3ffed238_ORD 52
 
 /* Ordinals for what this node depends on directly: */
-#define DT_N_S_soc_S_ipm_3ffe5a30_REQUIRES_ORDS \
+#define DT_N_S_soc_S_ipm_3ffed238_REQUIRES_ORDS \
 	3, /* /soc */ \
 	4, /* /soc/interrupt-controller@3ff00104 */ \
 	51, /* /soc/memory@3ffe5230 */
 
 /* Ordinals for what depends directly on this node: */
-#define DT_N_S_soc_S_ipm_3ffe5a30_SUPPORTS_ORDS /* nothing */
+#define DT_N_S_soc_S_ipm_3ffed238_SUPPORTS_ORDS /* nothing */
 
 /* Existence and alternate IDs: */
-#define DT_N_S_soc_S_ipm_3ffe5a30_EXISTS 1
-#define DT_N_INST_0_espressif_esp32_ipm DT_N_S_soc_S_ipm_3ffe5a30
-#define DT_N_NODELABEL_ipm0             DT_N_S_soc_S_ipm_3ffe5a30
+#define DT_N_S_soc_S_ipm_3ffed238_EXISTS 1
+#define DT_N_INST_0_espressif_esp32_ipm DT_N_S_soc_S_ipm_3ffed238
+#define DT_N_NODELABEL_ipm0             DT_N_S_soc_S_ipm_3ffed238
 
 /* Macros for properties that are special in the specification: */
-#define DT_N_S_soc_S_ipm_3ffe5a30_REG_NUM 1
-#define DT_N_S_soc_S_ipm_3ffe5a30_REG_IDX_0_EXISTS 1
-#define DT_N_S_soc_S_ipm_3ffe5a30_REG_IDX_0_VAL_ADDRESS 1073633840 /* 0x3ffe5a30 */
-#define DT_N_S_soc_S_ipm_3ffe5a30_REG_IDX_0_VAL_SIZE 8 /* 0x8 */
-#define DT_N_S_soc_S_ipm_3ffe5a30_RANGES_NUM 0
-#define DT_N_S_soc_S_ipm_3ffe5a30_FOREACH_RANGE(fn) 
-#define DT_N_S_soc_S_ipm_3ffe5a30_IRQ_NUM 2
-#define DT_N_S_soc_S_ipm_3ffe5a30_IRQ_IDX_0_EXISTS 1
-#define DT_N_S_soc_S_ipm_3ffe5a30_IRQ_IDX_0_VAL_irq 24
-#define DT_N_S_soc_S_ipm_3ffe5a30_IRQ_IDX_0_VAL_irq_EXISTS 1
-#define DT_N_S_soc_S_ipm_3ffe5a30_IRQ_IDX_1_EXISTS 1
-#define DT_N_S_soc_S_ipm_3ffe5a30_IRQ_IDX_1_VAL_irq 25
-#define DT_N_S_soc_S_ipm_3ffe5a30_IRQ_IDX_1_VAL_irq_EXISTS 1
-#define DT_N_S_soc_S_ipm_3ffe5a30_COMPAT_MATCHES_espressif_esp32_ipm 1
-#define DT_N_S_soc_S_ipm_3ffe5a30_COMPAT_VENDOR_IDX_0_EXISTS 1
-#define DT_N_S_soc_S_ipm_3ffe5a30_COMPAT_VENDOR_IDX_0 "Espressif Systems"
-#define DT_N_S_soc_S_ipm_3ffe5a30_COMPAT_MODEL_IDX_0_EXISTS 1
-#define DT_N_S_soc_S_ipm_3ffe5a30_COMPAT_MODEL_IDX_0 "esp32-ipm"
-#define DT_N_S_soc_S_ipm_3ffe5a30_STATUS_disabled 1
+#define DT_N_S_soc_S_ipm_3ffed238_REG_NUM 1
+#define DT_N_S_soc_S_ipm_3ffed238_REG_IDX_0_EXISTS 1
+#define DT_N_S_soc_S_ipm_3ffed238_REG_IDX_0_VAL_ADDRESS 1073664568 /* 0x3ffed238 */
+#define DT_N_S_soc_S_ipm_3ffed238_REG_IDX_0_VAL_SIZE 8 /* 0x8 */
+#define DT_N_S_soc_S_ipm_3ffed238_RANGES_NUM 0
+#define DT_N_S_soc_S_ipm_3ffed238_FOREACH_RANGE(fn) 
+#define DT_N_S_soc_S_ipm_3ffed238_IRQ_NUM 2
+#define DT_N_S_soc_S_ipm_3ffed238_IRQ_IDX_0_EXISTS 1
+#define DT_N_S_soc_S_ipm_3ffed238_IRQ_IDX_0_VAL_irq 24
+#define DT_N_S_soc_S_ipm_3ffed238_IRQ_IDX_0_VAL_irq_EXISTS 1
+#define DT_N_S_soc_S_ipm_3ffed238_IRQ_IDX_1_EXISTS 1
+#define DT_N_S_soc_S_ipm_3ffed238_IRQ_IDX_1_VAL_irq 25
+#define DT_N_S_soc_S_ipm_3ffed238_IRQ_IDX_1_VAL_irq_EXISTS 1
+#define DT_N_S_soc_S_ipm_3ffed238_COMPAT_MATCHES_espressif_esp32_ipm 1
+#define DT_N_S_soc_S_ipm_3ffed238_COMPAT_VENDOR_IDX_0_EXISTS 1
+#define DT_N_S_soc_S_ipm_3ffed238_COMPAT_VENDOR_IDX_0 "Espressif Systems"
+#define DT_N_S_soc_S_ipm_3ffed238_COMPAT_MODEL_IDX_0_EXISTS 1
+#define DT_N_S_soc_S_ipm_3ffed238_COMPAT_MODEL_IDX_0 "esp32-ipm"
+#define DT_N_S_soc_S_ipm_3ffed238_STATUS_disabled 1
 
 /* Pin control (pinctrl-<i>, pinctrl-names) properties: */
-#define DT_N_S_soc_S_ipm_3ffe5a30_PINCTRL_NUM 0
+#define DT_N_S_soc_S_ipm_3ffed238_PINCTRL_NUM 0
 
 /* Generic property macros: */
-#define DT_N_S_soc_S_ipm_3ffe5a30_P_reg {1073633840 /* 0x3ffe5a30 */, 8 /* 0x8 */}
-#define DT_N_S_soc_S_ipm_3ffe5a30_P_reg_IDX_0 1073633840
-#define DT_N_S_soc_S_ipm_3ffe5a30_P_reg_IDX_0_EXISTS 1
-#define DT_N_S_soc_S_ipm_3ffe5a30_P_reg_IDX_1 8
-#define DT_N_S_soc_S_ipm_3ffe5a30_P_reg_IDX_1_EXISTS 1
-#define DT_N_S_soc_S_ipm_3ffe5a30_P_reg_FOREACH_PROP_ELEM(fn) fn(DT_N_S_soc_S_ipm_3ffe5a30, reg, 0) \
-	fn(DT_N_S_soc_S_ipm_3ffe5a30, reg, 1)
-#define DT_N_S_soc_S_ipm_3ffe5a30_P_reg_FOREACH_PROP_ELEM_SEP(fn, sep) fn(DT_N_S_soc_S_ipm_3ffe5a30, reg, 0) DT_DEBRACKET_INTERNAL sep \
-	fn(DT_N_S_soc_S_ipm_3ffe5a30, reg, 1)
-#define DT_N_S_soc_S_ipm_3ffe5a30_P_reg_FOREACH_PROP_ELEM_VARGS(fn, ...) fn(DT_N_S_soc_S_ipm_3ffe5a30, reg, 0, __VA_ARGS__) \
-	fn(DT_N_S_soc_S_ipm_3ffe5a30, reg, 1, __VA_ARGS__)
-#define DT_N_S_soc_S_ipm_3ffe5a30_P_reg_FOREACH_PROP_ELEM_SEP_VARGS(fn, sep, ...) fn(DT_N_S_soc_S_ipm_3ffe5a30, reg, 0, __VA_ARGS__) DT_DEBRACKET_INTERNAL sep \
-	fn(DT_N_S_soc_S_ipm_3ffe5a30, reg, 1, __VA_ARGS__)
-#define DT_N_S_soc_S_ipm_3ffe5a30_P_reg_EXISTS 1
-#define DT_N_S_soc_S_ipm_3ffe5a30_P_shared_memory DT_N_S_soc_S_memory_3ffe5230
-#define DT_N_S_soc_S_ipm_3ffe5a30_P_shared_memory_IDX_0 DT_N_S_soc_S_memory_3ffe5230
-#define DT_N_S_soc_S_ipm_3ffe5a30_P_shared_memory_IDX_0_PH DT_N_S_soc_S_memory_3ffe5230
-#define DT_N_S_soc_S_ipm_3ffe5a30_P_shared_memory_IDX_0_EXISTS 1
-#define DT_N_S_soc_S_ipm_3ffe5a30_P_shared_memory_LEN 1
-#define DT_N_S_soc_S_ipm_3ffe5a30_P_shared_memory_EXISTS 1
-#define DT_N_S_soc_S_ipm_3ffe5a30_P_shared_memory_size 1024
-#define DT_N_S_soc_S_ipm_3ffe5a30_P_shared_memory_size_EXISTS 1
-#define DT_N_S_soc_S_ipm_3ffe5a30_P_interrupts {24 /* 0x18 */, 25 /* 0x19 */}
-#define DT_N_S_soc_S_ipm_3ffe5a30_P_interrupts_IDX_0 24
-#define DT_N_S_soc_S_ipm_3ffe5a30_P_interrupts_IDX_0_EXISTS 1
-#define DT_N_S_soc_S_ipm_3ffe5a30_P_interrupts_IDX_1 25
-#define DT_N_S_soc_S_ipm_3ffe5a30_P_interrupts_IDX_1_EXISTS 1
-#define DT_N_S_soc_S_ipm_3ffe5a30_P_interrupts_FOREACH_PROP_ELEM(fn) fn(DT_N_S_soc_S_ipm_3ffe5a30, interrupts, 0) \
-	fn(DT_N_S_soc_S_ipm_3ffe5a30, interrupts, 1)
-#define DT_N_S_soc_S_ipm_3ffe5a30_P_interrupts_FOREACH_PROP_ELEM_SEP(fn, sep) fn(DT_N_S_soc_S_ipm_3ffe5a30, interrupts, 0) DT_DEBRACKET_INTERNAL sep \
-	fn(DT_N_S_soc_S_ipm_3ffe5a30, interrupts, 1)
-#define DT_N_S_soc_S_ipm_3ffe5a30_P_interrupts_FOREACH_PROP_ELEM_VARGS(fn, ...) fn(DT_N_S_soc_S_ipm_3ffe5a30, interrupts, 0, __VA_ARGS__) \
-	fn(DT_N_S_soc_S_ipm_3ffe5a30, interrupts, 1, __VA_ARGS__)
-#define DT_N_S_soc_S_ipm_3ffe5a30_P_interrupts_FOREACH_PROP_ELEM_SEP_VARGS(fn, sep, ...) fn(DT_N_S_soc_S_ipm_3ffe5a30, interrupts, 0, __VA_ARGS__) DT_DEBRACKET_INTERNAL sep \
-	fn(DT_N_S_soc_S_ipm_3ffe5a30, interrupts, 1, __VA_ARGS__)
-#define DT_N_S_soc_S_ipm_3ffe5a30_P_interrupts_EXISTS 1
-#define DT_N_S_soc_S_ipm_3ffe5a30_P_status "disabled"
-#define DT_N_S_soc_S_ipm_3ffe5a30_P_status_STRING_UNQUOTED disabled
-#define DT_N_S_soc_S_ipm_3ffe5a30_P_status_STRING_TOKEN disabled
-#define DT_N_S_soc_S_ipm_3ffe5a30_P_status_STRING_UPPER_TOKEN DISABLED
-#define DT_N_S_soc_S_ipm_3ffe5a30_P_status_ENUM_IDX 2
-#define DT_N_S_soc_S_ipm_3ffe5a30_P_status_ENUM_TOKEN disabled
-#define DT_N_S_soc_S_ipm_3ffe5a30_P_status_ENUM_UPPER_TOKEN DISABLED
-#define DT_N_S_soc_S_ipm_3ffe5a30_P_status_FOREACH_PROP_ELEM(fn) fn(DT_N_S_soc_S_ipm_3ffe5a30, status, 0) \
-	fn(DT_N_S_soc_S_ipm_3ffe5a30, status, 1) \
-	fn(DT_N_S_soc_S_ipm_3ffe5a30, status, 2) \
-	fn(DT_N_S_soc_S_ipm_3ffe5a30, status, 3) \
-	fn(DT_N_S_soc_S_ipm_3ffe5a30, status, 4) \
-	fn(DT_N_S_soc_S_ipm_3ffe5a30, status, 5) \
-	fn(DT_N_S_soc_S_ipm_3ffe5a30, status, 6) \
-	fn(DT_N_S_soc_S_ipm_3ffe5a30, status, 7)
-#define DT_N_S_soc_S_ipm_3ffe5a30_P_status_FOREACH_PROP_ELEM_SEP(fn, sep) fn(DT_N_S_soc_S_ipm_3ffe5a30, status, 0) DT_DEBRACKET_INTERNAL sep \
-	fn(DT_N_S_soc_S_ipm_3ffe5a30, status, 1) DT_DEBRACKET_INTERNAL sep \
-	fn(DT_N_S_soc_S_ipm_3ffe5a30, status, 2) DT_DEBRACKET_INTERNAL sep \
-	fn(DT_N_S_soc_S_ipm_3ffe5a30, status, 3) DT_DEBRACKET_INTERNAL sep \
-	fn(DT_N_S_soc_S_ipm_3ffe5a30, status, 4) DT_DEBRACKET_INTERNAL sep \
-	fn(DT_N_S_soc_S_ipm_3ffe5a30, status, 5) DT_DEBRACKET_INTERNAL sep \
-	fn(DT_N_S_soc_S_ipm_3ffe5a30, status, 6) DT_DEBRACKET_INTERNAL sep \
-	fn(DT_N_S_soc_S_ipm_3ffe5a30, status, 7)
-#define DT_N_S_soc_S_ipm_3ffe5a30_P_status_FOREACH_PROP_ELEM_VARGS(fn, ...) fn(DT_N_S_soc_S_ipm_3ffe5a30, status, 0, __VA_ARGS__) \
-	fn(DT_N_S_soc_S_ipm_3ffe5a30, status, 1, __VA_ARGS__) \
-	fn(DT_N_S_soc_S_ipm_3ffe5a30, status, 2, __VA_ARGS__) \
-	fn(DT_N_S_soc_S_ipm_3ffe5a30, status, 3, __VA_ARGS__) \
-	fn(DT_N_S_soc_S_ipm_3ffe5a30, status, 4, __VA_ARGS__) \
-	fn(DT_N_S_soc_S_ipm_3ffe5a30, status, 5, __VA_ARGS__) \
-	fn(DT_N_S_soc_S_ipm_3ffe5a30, status, 6, __VA_ARGS__) \
-	fn(DT_N_S_soc_S_ipm_3ffe5a30, status, 7, __VA_ARGS__)
-#define DT_N_S_soc_S_ipm_3ffe5a30_P_status_FOREACH_PROP_ELEM_SEP_VARGS(fn, sep, ...) fn(DT_N_S_soc_S_ipm_3ffe5a30, status, 0, __VA_ARGS__) DT_DEBRACKET_INTERNAL sep \
-	fn(DT_N_S_soc_S_ipm_3ffe5a30, status, 1, __VA_ARGS__) DT_DEBRACKET_INTERNAL sep \
-	fn(DT_N_S_soc_S_ipm_3ffe5a30, status, 2, __VA_ARGS__) DT_DEBRACKET_INTERNAL sep \
-	fn(DT_N_S_soc_S_ipm_3ffe5a30, status, 3, __VA_ARGS__) DT_DEBRACKET_INTERNAL sep \
-	fn(DT_N_S_soc_S_ipm_3ffe5a30, status, 4, __VA_ARGS__) DT_DEBRACKET_INTERNAL sep \
-	fn(DT_N_S_soc_S_ipm_3ffe5a30, status, 5, __VA_ARGS__) DT_DEBRACKET_INTERNAL sep \
-	fn(DT_N_S_soc_S_ipm_3ffe5a30, status, 6, __VA_ARGS__) DT_DEBRACKET_INTERNAL sep \
-	fn(DT_N_S_soc_S_ipm_3ffe5a30, status, 7, __VA_ARGS__)
-#define DT_N_S_soc_S_ipm_3ffe5a30_P_status_EXISTS 1
-#define DT_N_S_soc_S_ipm_3ffe5a30_P_compatible {"espressif,esp32-ipm"}
-#define DT_N_S_soc_S_ipm_3ffe5a30_P_compatible_IDX_0 "espressif,esp32-ipm"
-#define DT_N_S_soc_S_ipm_3ffe5a30_P_compatible_IDX_0_STRING_UNQUOTED espressif,esp32-ipm
-#define DT_N_S_soc_S_ipm_3ffe5a30_P_compatible_IDX_0_STRING_TOKEN espressif_esp32_ipm
-#define DT_N_S_soc_S_ipm_3ffe5a30_P_compatible_IDX_0_STRING_UPPER_TOKEN ESPRESSIF_ESP32_IPM
-#define DT_N_S_soc_S_ipm_3ffe5a30_P_compatible_IDX_0_EXISTS 1
-#define DT_N_S_soc_S_ipm_3ffe5a30_P_compatible_FOREACH_PROP_ELEM(fn) fn(DT_N_S_soc_S_ipm_3ffe5a30, compatible, 0)
-#define DT_N_S_soc_S_ipm_3ffe5a30_P_compatible_FOREACH_PROP_ELEM_SEP(fn, sep) fn(DT_N_S_soc_S_ipm_3ffe5a30, compatible, 0)
-#define DT_N_S_soc_S_ipm_3ffe5a30_P_compatible_FOREACH_PROP_ELEM_VARGS(fn, ...) fn(DT_N_S_soc_S_ipm_3ffe5a30, compatible, 0, __VA_ARGS__)
-#define DT_N_S_soc_S_ipm_3ffe5a30_P_compatible_FOREACH_PROP_ELEM_SEP_VARGS(fn, sep, ...) fn(DT_N_S_soc_S_ipm_3ffe5a30, compatible, 0, __VA_ARGS__)
-#define DT_N_S_soc_S_ipm_3ffe5a30_P_compatible_LEN 1
-#define DT_N_S_soc_S_ipm_3ffe5a30_P_compatible_EXISTS 1
-#define DT_N_S_soc_S_ipm_3ffe5a30_P_interrupt_parent DT_N_S_soc_S_interrupt_controller_3ff00104
-#define DT_N_S_soc_S_ipm_3ffe5a30_P_interrupt_parent_IDX_0 DT_N_S_soc_S_interrupt_controller_3ff00104
-#define DT_N_S_soc_S_ipm_3ffe5a30_P_interrupt_parent_IDX_0_PH DT_N_S_soc_S_interrupt_controller_3ff00104
-#define DT_N_S_soc_S_ipm_3ffe5a30_P_interrupt_parent_IDX_0_EXISTS 1
-#define DT_N_S_soc_S_ipm_3ffe5a30_P_interrupt_parent_LEN 1
-#define DT_N_S_soc_S_ipm_3ffe5a30_P_interrupt_parent_EXISTS 1
-#define DT_N_S_soc_S_ipm_3ffe5a30_P_wakeup_source 0
-#define DT_N_S_soc_S_ipm_3ffe5a30_P_wakeup_source_EXISTS 1
+#define DT_N_S_soc_S_ipm_3ffed238_P_reg {1073664568 /* 0x3ffed238 */, 8 /* 0x8 */}
+#define DT_N_S_soc_S_ipm_3ffed238_P_reg_IDX_0 1073664568
+#define DT_N_S_soc_S_ipm_3ffed238_P_reg_IDX_0_EXISTS 1
+#define DT_N_S_soc_S_ipm_3ffed238_P_reg_IDX_1 8
+#define DT_N_S_soc_S_ipm_3ffed238_P_reg_IDX_1_EXISTS 1
+#define DT_N_S_soc_S_ipm_3ffed238_P_reg_EXISTS 1
+#define DT_N_S_soc_S_ipm_3ffed238_P_shared_memory DT_N_S_soc_S_memory_3ffe5230
+#define DT_N_S_soc_S_ipm_3ffed238_P_shared_memory_IDX_0 DT_N_S_soc_S_memory_3ffe5230
+#define DT_N_S_soc_S_ipm_3ffed238_P_shared_memory_IDX_0_PH DT_N_S_soc_S_memory_3ffe5230
+#define DT_N_S_soc_S_ipm_3ffed238_P_shared_memory_IDX_0_EXISTS 1
+#define DT_N_S_soc_S_ipm_3ffed238_P_shared_memory_FOREACH_PROP_ELEM(fn) fn(DT_N_S_soc_S_ipm_3ffed238, shared_memory, 0)
+#define DT_N_S_soc_S_ipm_3ffed238_P_shared_memory_FOREACH_PROP_ELEM_SEP(fn, sep) fn(DT_N_S_soc_S_ipm_3ffed238, shared_memory, 0)
+#define DT_N_S_soc_S_ipm_3ffed238_P_shared_memory_FOREACH_PROP_ELEM_VARGS(fn, ...) fn(DT_N_S_soc_S_ipm_3ffed238, shared_memory, 0, __VA_ARGS__)
+#define DT_N_S_soc_S_ipm_3ffed238_P_shared_memory_FOREACH_PROP_ELEM_SEP_VARGS(fn, sep, ...) fn(DT_N_S_soc_S_ipm_3ffed238, shared_memory, 0, __VA_ARGS__)
+#define DT_N_S_soc_S_ipm_3ffed238_P_shared_memory_LEN 1
+#define DT_N_S_soc_S_ipm_3ffed238_P_shared_memory_EXISTS 1
+#define DT_N_S_soc_S_ipm_3ffed238_P_shared_memory_size 1024
+#define DT_N_S_soc_S_ipm_3ffed238_P_shared_memory_size_EXISTS 1
+#define DT_N_S_soc_S_ipm_3ffed238_P_interrupts {24 /* 0x18 */, 25 /* 0x19 */}
+#define DT_N_S_soc_S_ipm_3ffed238_P_interrupts_IDX_0 24
+#define DT_N_S_soc_S_ipm_3ffed238_P_interrupts_IDX_0_EXISTS 1
+#define DT_N_S_soc_S_ipm_3ffed238_P_interrupts_IDX_1 25
+#define DT_N_S_soc_S_ipm_3ffed238_P_interrupts_IDX_1_EXISTS 1
+#define DT_N_S_soc_S_ipm_3ffed238_P_interrupts_EXISTS 1
+#define DT_N_S_soc_S_ipm_3ffed238_P_status "disabled"
+#define DT_N_S_soc_S_ipm_3ffed238_P_status_STRING_UNQUOTED disabled
+#define DT_N_S_soc_S_ipm_3ffed238_P_status_STRING_TOKEN disabled
+#define DT_N_S_soc_S_ipm_3ffed238_P_status_STRING_UPPER_TOKEN DISABLED
+#define DT_N_S_soc_S_ipm_3ffed238_P_status_IDX_0 "disabled"
+#define DT_N_S_soc_S_ipm_3ffed238_P_status_IDX_0_EXISTS 1
+#define DT_N_S_soc_S_ipm_3ffed238_P_status_ENUM_IDX 2
+#define DT_N_S_soc_S_ipm_3ffed238_P_status_ENUM_VAL_disabled_EXISTS 1
+#define DT_N_S_soc_S_ipm_3ffed238_P_status_ENUM_TOKEN disabled
+#define DT_N_S_soc_S_ipm_3ffed238_P_status_ENUM_UPPER_TOKEN DISABLED
+#define DT_N_S_soc_S_ipm_3ffed238_P_status_FOREACH_PROP_ELEM(fn) fn(DT_N_S_soc_S_ipm_3ffed238, status, 0)
+#define DT_N_S_soc_S_ipm_3ffed238_P_status_FOREACH_PROP_ELEM_SEP(fn, sep) fn(DT_N_S_soc_S_ipm_3ffed238, status, 0)
+#define DT_N_S_soc_S_ipm_3ffed238_P_status_FOREACH_PROP_ELEM_VARGS(fn, ...) fn(DT_N_S_soc_S_ipm_3ffed238, status, 0, __VA_ARGS__)
+#define DT_N_S_soc_S_ipm_3ffed238_P_status_FOREACH_PROP_ELEM_SEP_VARGS(fn, sep, ...) fn(DT_N_S_soc_S_ipm_3ffed238, status, 0, __VA_ARGS__)
+#define DT_N_S_soc_S_ipm_3ffed238_P_status_LEN 1
+#define DT_N_S_soc_S_ipm_3ffed238_P_status_EXISTS 1
+#define DT_N_S_soc_S_ipm_3ffed238_P_compatible {"espressif,esp32-ipm"}
+#define DT_N_S_soc_S_ipm_3ffed238_P_compatible_IDX_0 "espressif,esp32-ipm"
+#define DT_N_S_soc_S_ipm_3ffed238_P_compatible_IDX_0_STRING_UNQUOTED espressif,esp32-ipm
+#define DT_N_S_soc_S_ipm_3ffed238_P_compatible_IDX_0_STRING_TOKEN espressif_esp32_ipm
+#define DT_N_S_soc_S_ipm_3ffed238_P_compatible_IDX_0_STRING_UPPER_TOKEN ESPRESSIF_ESP32_IPM
+#define DT_N_S_soc_S_ipm_3ffed238_P_compatible_IDX_0_EXISTS 1
+#define DT_N_S_soc_S_ipm_3ffed238_P_compatible_FOREACH_PROP_ELEM(fn) fn(DT_N_S_soc_S_ipm_3ffed238, compatible, 0)
+#define DT_N_S_soc_S_ipm_3ffed238_P_compatible_FOREACH_PROP_ELEM_SEP(fn, sep) fn(DT_N_S_soc_S_ipm_3ffed238, compatible, 0)
+#define DT_N_S_soc_S_ipm_3ffed238_P_compatible_FOREACH_PROP_ELEM_VARGS(fn, ...) fn(DT_N_S_soc_S_ipm_3ffed238, compatible, 0, __VA_ARGS__)
+#define DT_N_S_soc_S_ipm_3ffed238_P_compatible_FOREACH_PROP_ELEM_SEP_VARGS(fn, sep, ...) fn(DT_N_S_soc_S_ipm_3ffed238, compatible, 0, __VA_ARGS__)
+#define DT_N_S_soc_S_ipm_3ffed238_P_compatible_LEN 1
+#define DT_N_S_soc_S_ipm_3ffed238_P_compatible_EXISTS 1
+#define DT_N_S_soc_S_ipm_3ffed238_P_interrupt_parent DT_N_S_soc_S_interrupt_controller_3ff00104
+#define DT_N_S_soc_S_ipm_3ffed238_P_interrupt_parent_IDX_0 DT_N_S_soc_S_interrupt_controller_3ff00104
+#define DT_N_S_soc_S_ipm_3ffed238_P_interrupt_parent_IDX_0_PH DT_N_S_soc_S_interrupt_controller_3ff00104
+#define DT_N_S_soc_S_ipm_3ffed238_P_interrupt_parent_IDX_0_EXISTS 1
+#define DT_N_S_soc_S_ipm_3ffed238_P_interrupt_parent_FOREACH_PROP_ELEM(fn) fn(DT_N_S_soc_S_ipm_3ffed238, interrupt_parent, 0)
+#define DT_N_S_soc_S_ipm_3ffed238_P_interrupt_parent_FOREACH_PROP_ELEM_SEP(fn, sep) fn(DT_N_S_soc_S_ipm_3ffed238, interrupt_parent, 0)
+#define DT_N_S_soc_S_ipm_3ffed238_P_interrupt_parent_FOREACH_PROP_ELEM_VARGS(fn, ...) fn(DT_N_S_soc_S_ipm_3ffed238, interrupt_parent, 0, __VA_ARGS__)
+#define DT_N_S_soc_S_ipm_3ffed238_P_interrupt_parent_FOREACH_PROP_ELEM_SEP_VARGS(fn, sep, ...) fn(DT_N_S_soc_S_ipm_3ffed238, interrupt_parent, 0, __VA_ARGS__)
+#define DT_N_S_soc_S_ipm_3ffed238_P_interrupt_parent_LEN 1
+#define DT_N_S_soc_S_ipm_3ffed238_P_interrupt_parent_EXISTS 1
+#define DT_N_S_soc_S_ipm_3ffed238_P_wakeup_source 0
+#define DT_N_S_soc_S_ipm_3ffed238_P_wakeup_source_EXISTS 1
+#define DT_N_S_soc_S_ipm_3ffed238_P_zephyr_pm_device_runtime_auto 0
+#define DT_N_S_soc_S_ipm_3ffed238_P_zephyr_pm_device_runtime_auto_EXISTS 1
 
 /*
  * Devicetree node: /soc/ledc@3ff59000
@@ -5759,7 +5188,7 @@
  * Node identifier: DT_N_S_soc_S_ledc_3ff59000
  *
  * Binding (compatible = espressif,esp32-ledc):
- *   $ZEPHYR_BASE/dts/bindings/pwm/espressif,esp32-ledc.yaml
+ *   /home/gez/sdks/zephyr/zephyr/dts/bindings/pwm/espressif,esp32-ledc.yaml
  *
  * (Descriptions have moved to the Devicetree Bindings Index
  * in the documentation.)
@@ -5826,41 +5255,17 @@
 #define DT_N_S_soc_S_ledc_3ff59000_P_status_STRING_UNQUOTED disabled
 #define DT_N_S_soc_S_ledc_3ff59000_P_status_STRING_TOKEN disabled
 #define DT_N_S_soc_S_ledc_3ff59000_P_status_STRING_UPPER_TOKEN DISABLED
+#define DT_N_S_soc_S_ledc_3ff59000_P_status_IDX_0 "disabled"
+#define DT_N_S_soc_S_ledc_3ff59000_P_status_IDX_0_EXISTS 1
 #define DT_N_S_soc_S_ledc_3ff59000_P_status_ENUM_IDX 2
+#define DT_N_S_soc_S_ledc_3ff59000_P_status_ENUM_VAL_disabled_EXISTS 1
 #define DT_N_S_soc_S_ledc_3ff59000_P_status_ENUM_TOKEN disabled
 #define DT_N_S_soc_S_ledc_3ff59000_P_status_ENUM_UPPER_TOKEN DISABLED
-#define DT_N_S_soc_S_ledc_3ff59000_P_status_FOREACH_PROP_ELEM(fn) fn(DT_N_S_soc_S_ledc_3ff59000, status, 0) \
-	fn(DT_N_S_soc_S_ledc_3ff59000, status, 1) \
-	fn(DT_N_S_soc_S_ledc_3ff59000, status, 2) \
-	fn(DT_N_S_soc_S_ledc_3ff59000, status, 3) \
-	fn(DT_N_S_soc_S_ledc_3ff59000, status, 4) \
-	fn(DT_N_S_soc_S_ledc_3ff59000, status, 5) \
-	fn(DT_N_S_soc_S_ledc_3ff59000, status, 6) \
-	fn(DT_N_S_soc_S_ledc_3ff59000, status, 7)
-#define DT_N_S_soc_S_ledc_3ff59000_P_status_FOREACH_PROP_ELEM_SEP(fn, sep) fn(DT_N_S_soc_S_ledc_3ff59000, status, 0) DT_DEBRACKET_INTERNAL sep \
-	fn(DT_N_S_soc_S_ledc_3ff59000, status, 1) DT_DEBRACKET_INTERNAL sep \
-	fn(DT_N_S_soc_S_ledc_3ff59000, status, 2) DT_DEBRACKET_INTERNAL sep \
-	fn(DT_N_S_soc_S_ledc_3ff59000, status, 3) DT_DEBRACKET_INTERNAL sep \
-	fn(DT_N_S_soc_S_ledc_3ff59000, status, 4) DT_DEBRACKET_INTERNAL sep \
-	fn(DT_N_S_soc_S_ledc_3ff59000, status, 5) DT_DEBRACKET_INTERNAL sep \
-	fn(DT_N_S_soc_S_ledc_3ff59000, status, 6) DT_DEBRACKET_INTERNAL sep \
-	fn(DT_N_S_soc_S_ledc_3ff59000, status, 7)
-#define DT_N_S_soc_S_ledc_3ff59000_P_status_FOREACH_PROP_ELEM_VARGS(fn, ...) fn(DT_N_S_soc_S_ledc_3ff59000, status, 0, __VA_ARGS__) \
-	fn(DT_N_S_soc_S_ledc_3ff59000, status, 1, __VA_ARGS__) \
-	fn(DT_N_S_soc_S_ledc_3ff59000, status, 2, __VA_ARGS__) \
-	fn(DT_N_S_soc_S_ledc_3ff59000, status, 3, __VA_ARGS__) \
-	fn(DT_N_S_soc_S_ledc_3ff59000, status, 4, __VA_ARGS__) \
-	fn(DT_N_S_soc_S_ledc_3ff59000, status, 5, __VA_ARGS__) \
-	fn(DT_N_S_soc_S_ledc_3ff59000, status, 6, __VA_ARGS__) \
-	fn(DT_N_S_soc_S_ledc_3ff59000, status, 7, __VA_ARGS__)
-#define DT_N_S_soc_S_ledc_3ff59000_P_status_FOREACH_PROP_ELEM_SEP_VARGS(fn, sep, ...) fn(DT_N_S_soc_S_ledc_3ff59000, status, 0, __VA_ARGS__) DT_DEBRACKET_INTERNAL sep \
-	fn(DT_N_S_soc_S_ledc_3ff59000, status, 1, __VA_ARGS__) DT_DEBRACKET_INTERNAL sep \
-	fn(DT_N_S_soc_S_ledc_3ff59000, status, 2, __VA_ARGS__) DT_DEBRACKET_INTERNAL sep \
-	fn(DT_N_S_soc_S_ledc_3ff59000, status, 3, __VA_ARGS__) DT_DEBRACKET_INTERNAL sep \
-	fn(DT_N_S_soc_S_ledc_3ff59000, status, 4, __VA_ARGS__) DT_DEBRACKET_INTERNAL sep \
-	fn(DT_N_S_soc_S_ledc_3ff59000, status, 5, __VA_ARGS__) DT_DEBRACKET_INTERNAL sep \
-	fn(DT_N_S_soc_S_ledc_3ff59000, status, 6, __VA_ARGS__) DT_DEBRACKET_INTERNAL sep \
-	fn(DT_N_S_soc_S_ledc_3ff59000, status, 7, __VA_ARGS__)
+#define DT_N_S_soc_S_ledc_3ff59000_P_status_FOREACH_PROP_ELEM(fn) fn(DT_N_S_soc_S_ledc_3ff59000, status, 0)
+#define DT_N_S_soc_S_ledc_3ff59000_P_status_FOREACH_PROP_ELEM_SEP(fn, sep) fn(DT_N_S_soc_S_ledc_3ff59000, status, 0)
+#define DT_N_S_soc_S_ledc_3ff59000_P_status_FOREACH_PROP_ELEM_VARGS(fn, ...) fn(DT_N_S_soc_S_ledc_3ff59000, status, 0, __VA_ARGS__)
+#define DT_N_S_soc_S_ledc_3ff59000_P_status_FOREACH_PROP_ELEM_SEP_VARGS(fn, sep, ...) fn(DT_N_S_soc_S_ledc_3ff59000, status, 0, __VA_ARGS__)
+#define DT_N_S_soc_S_ledc_3ff59000_P_status_LEN 1
 #define DT_N_S_soc_S_ledc_3ff59000_P_status_EXISTS 1
 #define DT_N_S_soc_S_ledc_3ff59000_P_compatible {"espressif,esp32-ledc"}
 #define DT_N_S_soc_S_ledc_3ff59000_P_compatible_IDX_0 "espressif,esp32-ledc"
@@ -5879,14 +5284,6 @@
 #define DT_N_S_soc_S_ledc_3ff59000_P_reg_IDX_0_EXISTS 1
 #define DT_N_S_soc_S_ledc_3ff59000_P_reg_IDX_1 2048
 #define DT_N_S_soc_S_ledc_3ff59000_P_reg_IDX_1_EXISTS 1
-#define DT_N_S_soc_S_ledc_3ff59000_P_reg_FOREACH_PROP_ELEM(fn) fn(DT_N_S_soc_S_ledc_3ff59000, reg, 0) \
-	fn(DT_N_S_soc_S_ledc_3ff59000, reg, 1)
-#define DT_N_S_soc_S_ledc_3ff59000_P_reg_FOREACH_PROP_ELEM_SEP(fn, sep) fn(DT_N_S_soc_S_ledc_3ff59000, reg, 0) DT_DEBRACKET_INTERNAL sep \
-	fn(DT_N_S_soc_S_ledc_3ff59000, reg, 1)
-#define DT_N_S_soc_S_ledc_3ff59000_P_reg_FOREACH_PROP_ELEM_VARGS(fn, ...) fn(DT_N_S_soc_S_ledc_3ff59000, reg, 0, __VA_ARGS__) \
-	fn(DT_N_S_soc_S_ledc_3ff59000, reg, 1, __VA_ARGS__)
-#define DT_N_S_soc_S_ledc_3ff59000_P_reg_FOREACH_PROP_ELEM_SEP_VARGS(fn, sep, ...) fn(DT_N_S_soc_S_ledc_3ff59000, reg, 0, __VA_ARGS__) DT_DEBRACKET_INTERNAL sep \
-	fn(DT_N_S_soc_S_ledc_3ff59000, reg, 1, __VA_ARGS__)
 #define DT_N_S_soc_S_ledc_3ff59000_P_reg_EXISTS 1
 #define DT_N_S_soc_S_ledc_3ff59000_P_clocks_IDX_0_EXISTS 1
 #define DT_N_S_soc_S_ledc_3ff59000_P_clocks_IDX_0_PH DT_N_S_soc_S_rtc_3ff48000
@@ -5900,6 +5297,8 @@
 #define DT_N_S_soc_S_ledc_3ff59000_P_clocks_EXISTS 1
 #define DT_N_S_soc_S_ledc_3ff59000_P_wakeup_source 0
 #define DT_N_S_soc_S_ledc_3ff59000_P_wakeup_source_EXISTS 1
+#define DT_N_S_soc_S_ledc_3ff59000_P_zephyr_pm_device_runtime_auto 0
+#define DT_N_S_soc_S_ledc_3ff59000_P_zephyr_pm_device_runtime_auto_EXISTS 1
 
 /*
  * Devicetree node: /soc/mcpwm@3ff5e000
@@ -5907,7 +5306,7 @@
  * Node identifier: DT_N_S_soc_S_mcpwm_3ff5e000
  *
  * Binding (compatible = espressif,esp32-mcpwm):
- *   $ZEPHYR_BASE/dts/bindings/pwm/espressif,esp32-mcpwm.yaml
+ *   /home/gez/sdks/zephyr/zephyr/dts/bindings/pwm/espressif,esp32-mcpwm.yaml
  *
  * (Descriptions have moved to the Devicetree Bindings Index
  * in the documentation.)
@@ -5978,41 +5377,17 @@
 #define DT_N_S_soc_S_mcpwm_3ff5e000_P_status_STRING_UNQUOTED disabled
 #define DT_N_S_soc_S_mcpwm_3ff5e000_P_status_STRING_TOKEN disabled
 #define DT_N_S_soc_S_mcpwm_3ff5e000_P_status_STRING_UPPER_TOKEN DISABLED
+#define DT_N_S_soc_S_mcpwm_3ff5e000_P_status_IDX_0 "disabled"
+#define DT_N_S_soc_S_mcpwm_3ff5e000_P_status_IDX_0_EXISTS 1
 #define DT_N_S_soc_S_mcpwm_3ff5e000_P_status_ENUM_IDX 2
+#define DT_N_S_soc_S_mcpwm_3ff5e000_P_status_ENUM_VAL_disabled_EXISTS 1
 #define DT_N_S_soc_S_mcpwm_3ff5e000_P_status_ENUM_TOKEN disabled
 #define DT_N_S_soc_S_mcpwm_3ff5e000_P_status_ENUM_UPPER_TOKEN DISABLED
-#define DT_N_S_soc_S_mcpwm_3ff5e000_P_status_FOREACH_PROP_ELEM(fn) fn(DT_N_S_soc_S_mcpwm_3ff5e000, status, 0) \
-	fn(DT_N_S_soc_S_mcpwm_3ff5e000, status, 1) \
-	fn(DT_N_S_soc_S_mcpwm_3ff5e000, status, 2) \
-	fn(DT_N_S_soc_S_mcpwm_3ff5e000, status, 3) \
-	fn(DT_N_S_soc_S_mcpwm_3ff5e000, status, 4) \
-	fn(DT_N_S_soc_S_mcpwm_3ff5e000, status, 5) \
-	fn(DT_N_S_soc_S_mcpwm_3ff5e000, status, 6) \
-	fn(DT_N_S_soc_S_mcpwm_3ff5e000, status, 7)
-#define DT_N_S_soc_S_mcpwm_3ff5e000_P_status_FOREACH_PROP_ELEM_SEP(fn, sep) fn(DT_N_S_soc_S_mcpwm_3ff5e000, status, 0) DT_DEBRACKET_INTERNAL sep \
-	fn(DT_N_S_soc_S_mcpwm_3ff5e000, status, 1) DT_DEBRACKET_INTERNAL sep \
-	fn(DT_N_S_soc_S_mcpwm_3ff5e000, status, 2) DT_DEBRACKET_INTERNAL sep \
-	fn(DT_N_S_soc_S_mcpwm_3ff5e000, status, 3) DT_DEBRACKET_INTERNAL sep \
-	fn(DT_N_S_soc_S_mcpwm_3ff5e000, status, 4) DT_DEBRACKET_INTERNAL sep \
-	fn(DT_N_S_soc_S_mcpwm_3ff5e000, status, 5) DT_DEBRACKET_INTERNAL sep \
-	fn(DT_N_S_soc_S_mcpwm_3ff5e000, status, 6) DT_DEBRACKET_INTERNAL sep \
-	fn(DT_N_S_soc_S_mcpwm_3ff5e000, status, 7)
-#define DT_N_S_soc_S_mcpwm_3ff5e000_P_status_FOREACH_PROP_ELEM_VARGS(fn, ...) fn(DT_N_S_soc_S_mcpwm_3ff5e000, status, 0, __VA_ARGS__) \
-	fn(DT_N_S_soc_S_mcpwm_3ff5e000, status, 1, __VA_ARGS__) \
-	fn(DT_N_S_soc_S_mcpwm_3ff5e000, status, 2, __VA_ARGS__) \
-	fn(DT_N_S_soc_S_mcpwm_3ff5e000, status, 3, __VA_ARGS__) \
-	fn(DT_N_S_soc_S_mcpwm_3ff5e000, status, 4, __VA_ARGS__) \
-	fn(DT_N_S_soc_S_mcpwm_3ff5e000, status, 5, __VA_ARGS__) \
-	fn(DT_N_S_soc_S_mcpwm_3ff5e000, status, 6, __VA_ARGS__) \
-	fn(DT_N_S_soc_S_mcpwm_3ff5e000, status, 7, __VA_ARGS__)
-#define DT_N_S_soc_S_mcpwm_3ff5e000_P_status_FOREACH_PROP_ELEM_SEP_VARGS(fn, sep, ...) fn(DT_N_S_soc_S_mcpwm_3ff5e000, status, 0, __VA_ARGS__) DT_DEBRACKET_INTERNAL sep \
-	fn(DT_N_S_soc_S_mcpwm_3ff5e000, status, 1, __VA_ARGS__) DT_DEBRACKET_INTERNAL sep \
-	fn(DT_N_S_soc_S_mcpwm_3ff5e000, status, 2, __VA_ARGS__) DT_DEBRACKET_INTERNAL sep \
-	fn(DT_N_S_soc_S_mcpwm_3ff5e000, status, 3, __VA_ARGS__) DT_DEBRACKET_INTERNAL sep \
-	fn(DT_N_S_soc_S_mcpwm_3ff5e000, status, 4, __VA_ARGS__) DT_DEBRACKET_INTERNAL sep \
-	fn(DT_N_S_soc_S_mcpwm_3ff5e000, status, 5, __VA_ARGS__) DT_DEBRACKET_INTERNAL sep \
-	fn(DT_N_S_soc_S_mcpwm_3ff5e000, status, 6, __VA_ARGS__) DT_DEBRACKET_INTERNAL sep \
-	fn(DT_N_S_soc_S_mcpwm_3ff5e000, status, 7, __VA_ARGS__)
+#define DT_N_S_soc_S_mcpwm_3ff5e000_P_status_FOREACH_PROP_ELEM(fn) fn(DT_N_S_soc_S_mcpwm_3ff5e000, status, 0)
+#define DT_N_S_soc_S_mcpwm_3ff5e000_P_status_FOREACH_PROP_ELEM_SEP(fn, sep) fn(DT_N_S_soc_S_mcpwm_3ff5e000, status, 0)
+#define DT_N_S_soc_S_mcpwm_3ff5e000_P_status_FOREACH_PROP_ELEM_VARGS(fn, ...) fn(DT_N_S_soc_S_mcpwm_3ff5e000, status, 0, __VA_ARGS__)
+#define DT_N_S_soc_S_mcpwm_3ff5e000_P_status_FOREACH_PROP_ELEM_SEP_VARGS(fn, sep, ...) fn(DT_N_S_soc_S_mcpwm_3ff5e000, status, 0, __VA_ARGS__)
+#define DT_N_S_soc_S_mcpwm_3ff5e000_P_status_LEN 1
 #define DT_N_S_soc_S_mcpwm_3ff5e000_P_status_EXISTS 1
 #define DT_N_S_soc_S_mcpwm_3ff5e000_P_compatible {"espressif,esp32-mcpwm"}
 #define DT_N_S_soc_S_mcpwm_3ff5e000_P_compatible_IDX_0 "espressif,esp32-mcpwm"
@@ -6031,27 +5406,19 @@
 #define DT_N_S_soc_S_mcpwm_3ff5e000_P_reg_IDX_0_EXISTS 1
 #define DT_N_S_soc_S_mcpwm_3ff5e000_P_reg_IDX_1 4096
 #define DT_N_S_soc_S_mcpwm_3ff5e000_P_reg_IDX_1_EXISTS 1
-#define DT_N_S_soc_S_mcpwm_3ff5e000_P_reg_FOREACH_PROP_ELEM(fn) fn(DT_N_S_soc_S_mcpwm_3ff5e000, reg, 0) \
-	fn(DT_N_S_soc_S_mcpwm_3ff5e000, reg, 1)
-#define DT_N_S_soc_S_mcpwm_3ff5e000_P_reg_FOREACH_PROP_ELEM_SEP(fn, sep) fn(DT_N_S_soc_S_mcpwm_3ff5e000, reg, 0) DT_DEBRACKET_INTERNAL sep \
-	fn(DT_N_S_soc_S_mcpwm_3ff5e000, reg, 1)
-#define DT_N_S_soc_S_mcpwm_3ff5e000_P_reg_FOREACH_PROP_ELEM_VARGS(fn, ...) fn(DT_N_S_soc_S_mcpwm_3ff5e000, reg, 0, __VA_ARGS__) \
-	fn(DT_N_S_soc_S_mcpwm_3ff5e000, reg, 1, __VA_ARGS__)
-#define DT_N_S_soc_S_mcpwm_3ff5e000_P_reg_FOREACH_PROP_ELEM_SEP_VARGS(fn, sep, ...) fn(DT_N_S_soc_S_mcpwm_3ff5e000, reg, 0, __VA_ARGS__) DT_DEBRACKET_INTERNAL sep \
-	fn(DT_N_S_soc_S_mcpwm_3ff5e000, reg, 1, __VA_ARGS__)
 #define DT_N_S_soc_S_mcpwm_3ff5e000_P_reg_EXISTS 1
 #define DT_N_S_soc_S_mcpwm_3ff5e000_P_interrupts {39 /* 0x27 */}
 #define DT_N_S_soc_S_mcpwm_3ff5e000_P_interrupts_IDX_0 39
 #define DT_N_S_soc_S_mcpwm_3ff5e000_P_interrupts_IDX_0_EXISTS 1
-#define DT_N_S_soc_S_mcpwm_3ff5e000_P_interrupts_FOREACH_PROP_ELEM(fn) fn(DT_N_S_soc_S_mcpwm_3ff5e000, interrupts, 0)
-#define DT_N_S_soc_S_mcpwm_3ff5e000_P_interrupts_FOREACH_PROP_ELEM_SEP(fn, sep) fn(DT_N_S_soc_S_mcpwm_3ff5e000, interrupts, 0)
-#define DT_N_S_soc_S_mcpwm_3ff5e000_P_interrupts_FOREACH_PROP_ELEM_VARGS(fn, ...) fn(DT_N_S_soc_S_mcpwm_3ff5e000, interrupts, 0, __VA_ARGS__)
-#define DT_N_S_soc_S_mcpwm_3ff5e000_P_interrupts_FOREACH_PROP_ELEM_SEP_VARGS(fn, sep, ...) fn(DT_N_S_soc_S_mcpwm_3ff5e000, interrupts, 0, __VA_ARGS__)
 #define DT_N_S_soc_S_mcpwm_3ff5e000_P_interrupts_EXISTS 1
 #define DT_N_S_soc_S_mcpwm_3ff5e000_P_interrupt_parent DT_N_S_soc_S_interrupt_controller_3ff00104
 #define DT_N_S_soc_S_mcpwm_3ff5e000_P_interrupt_parent_IDX_0 DT_N_S_soc_S_interrupt_controller_3ff00104
 #define DT_N_S_soc_S_mcpwm_3ff5e000_P_interrupt_parent_IDX_0_PH DT_N_S_soc_S_interrupt_controller_3ff00104
 #define DT_N_S_soc_S_mcpwm_3ff5e000_P_interrupt_parent_IDX_0_EXISTS 1
+#define DT_N_S_soc_S_mcpwm_3ff5e000_P_interrupt_parent_FOREACH_PROP_ELEM(fn) fn(DT_N_S_soc_S_mcpwm_3ff5e000, interrupt_parent, 0)
+#define DT_N_S_soc_S_mcpwm_3ff5e000_P_interrupt_parent_FOREACH_PROP_ELEM_SEP(fn, sep) fn(DT_N_S_soc_S_mcpwm_3ff5e000, interrupt_parent, 0)
+#define DT_N_S_soc_S_mcpwm_3ff5e000_P_interrupt_parent_FOREACH_PROP_ELEM_VARGS(fn, ...) fn(DT_N_S_soc_S_mcpwm_3ff5e000, interrupt_parent, 0, __VA_ARGS__)
+#define DT_N_S_soc_S_mcpwm_3ff5e000_P_interrupt_parent_FOREACH_PROP_ELEM_SEP_VARGS(fn, sep, ...) fn(DT_N_S_soc_S_mcpwm_3ff5e000, interrupt_parent, 0, __VA_ARGS__)
 #define DT_N_S_soc_S_mcpwm_3ff5e000_P_interrupt_parent_LEN 1
 #define DT_N_S_soc_S_mcpwm_3ff5e000_P_interrupt_parent_EXISTS 1
 #define DT_N_S_soc_S_mcpwm_3ff5e000_P_clocks_IDX_0_EXISTS 1
@@ -6066,6 +5433,8 @@
 #define DT_N_S_soc_S_mcpwm_3ff5e000_P_clocks_EXISTS 1
 #define DT_N_S_soc_S_mcpwm_3ff5e000_P_wakeup_source 0
 #define DT_N_S_soc_S_mcpwm_3ff5e000_P_wakeup_source_EXISTS 1
+#define DT_N_S_soc_S_mcpwm_3ff5e000_P_zephyr_pm_device_runtime_auto 0
+#define DT_N_S_soc_S_mcpwm_3ff5e000_P_zephyr_pm_device_runtime_auto_EXISTS 1
 
 /*
  * Devicetree node: /soc/mcpwm@3ff6c000
@@ -6073,7 +5442,7 @@
  * Node identifier: DT_N_S_soc_S_mcpwm_3ff6c000
  *
  * Binding (compatible = espressif,esp32-mcpwm):
- *   $ZEPHYR_BASE/dts/bindings/pwm/espressif,esp32-mcpwm.yaml
+ *   /home/gez/sdks/zephyr/zephyr/dts/bindings/pwm/espressif,esp32-mcpwm.yaml
  *
  * (Descriptions have moved to the Devicetree Bindings Index
  * in the documentation.)
@@ -6144,41 +5513,17 @@
 #define DT_N_S_soc_S_mcpwm_3ff6c000_P_status_STRING_UNQUOTED disabled
 #define DT_N_S_soc_S_mcpwm_3ff6c000_P_status_STRING_TOKEN disabled
 #define DT_N_S_soc_S_mcpwm_3ff6c000_P_status_STRING_UPPER_TOKEN DISABLED
+#define DT_N_S_soc_S_mcpwm_3ff6c000_P_status_IDX_0 "disabled"
+#define DT_N_S_soc_S_mcpwm_3ff6c000_P_status_IDX_0_EXISTS 1
 #define DT_N_S_soc_S_mcpwm_3ff6c000_P_status_ENUM_IDX 2
+#define DT_N_S_soc_S_mcpwm_3ff6c000_P_status_ENUM_VAL_disabled_EXISTS 1
 #define DT_N_S_soc_S_mcpwm_3ff6c000_P_status_ENUM_TOKEN disabled
 #define DT_N_S_soc_S_mcpwm_3ff6c000_P_status_ENUM_UPPER_TOKEN DISABLED
-#define DT_N_S_soc_S_mcpwm_3ff6c000_P_status_FOREACH_PROP_ELEM(fn) fn(DT_N_S_soc_S_mcpwm_3ff6c000, status, 0) \
-	fn(DT_N_S_soc_S_mcpwm_3ff6c000, status, 1) \
-	fn(DT_N_S_soc_S_mcpwm_3ff6c000, status, 2) \
-	fn(DT_N_S_soc_S_mcpwm_3ff6c000, status, 3) \
-	fn(DT_N_S_soc_S_mcpwm_3ff6c000, status, 4) \
-	fn(DT_N_S_soc_S_mcpwm_3ff6c000, status, 5) \
-	fn(DT_N_S_soc_S_mcpwm_3ff6c000, status, 6) \
-	fn(DT_N_S_soc_S_mcpwm_3ff6c000, status, 7)
-#define DT_N_S_soc_S_mcpwm_3ff6c000_P_status_FOREACH_PROP_ELEM_SEP(fn, sep) fn(DT_N_S_soc_S_mcpwm_3ff6c000, status, 0) DT_DEBRACKET_INTERNAL sep \
-	fn(DT_N_S_soc_S_mcpwm_3ff6c000, status, 1) DT_DEBRACKET_INTERNAL sep \
-	fn(DT_N_S_soc_S_mcpwm_3ff6c000, status, 2) DT_DEBRACKET_INTERNAL sep \
-	fn(DT_N_S_soc_S_mcpwm_3ff6c000, status, 3) DT_DEBRACKET_INTERNAL sep \
-	fn(DT_N_S_soc_S_mcpwm_3ff6c000, status, 4) DT_DEBRACKET_INTERNAL sep \
-	fn(DT_N_S_soc_S_mcpwm_3ff6c000, status, 5) DT_DEBRACKET_INTERNAL sep \
-	fn(DT_N_S_soc_S_mcpwm_3ff6c000, status, 6) DT_DEBRACKET_INTERNAL sep \
-	fn(DT_N_S_soc_S_mcpwm_3ff6c000, status, 7)
-#define DT_N_S_soc_S_mcpwm_3ff6c000_P_status_FOREACH_PROP_ELEM_VARGS(fn, ...) fn(DT_N_S_soc_S_mcpwm_3ff6c000, status, 0, __VA_ARGS__) \
-	fn(DT_N_S_soc_S_mcpwm_3ff6c000, status, 1, __VA_ARGS__) \
-	fn(DT_N_S_soc_S_mcpwm_3ff6c000, status, 2, __VA_ARGS__) \
-	fn(DT_N_S_soc_S_mcpwm_3ff6c000, status, 3, __VA_ARGS__) \
-	fn(DT_N_S_soc_S_mcpwm_3ff6c000, status, 4, __VA_ARGS__) \
-	fn(DT_N_S_soc_S_mcpwm_3ff6c000, status, 5, __VA_ARGS__) \
-	fn(DT_N_S_soc_S_mcpwm_3ff6c000, status, 6, __VA_ARGS__) \
-	fn(DT_N_S_soc_S_mcpwm_3ff6c000, status, 7, __VA_ARGS__)
-#define DT_N_S_soc_S_mcpwm_3ff6c000_P_status_FOREACH_PROP_ELEM_SEP_VARGS(fn, sep, ...) fn(DT_N_S_soc_S_mcpwm_3ff6c000, status, 0, __VA_ARGS__) DT_DEBRACKET_INTERNAL sep \
-	fn(DT_N_S_soc_S_mcpwm_3ff6c000, status, 1, __VA_ARGS__) DT_DEBRACKET_INTERNAL sep \
-	fn(DT_N_S_soc_S_mcpwm_3ff6c000, status, 2, __VA_ARGS__) DT_DEBRACKET_INTERNAL sep \
-	fn(DT_N_S_soc_S_mcpwm_3ff6c000, status, 3, __VA_ARGS__) DT_DEBRACKET_INTERNAL sep \
-	fn(DT_N_S_soc_S_mcpwm_3ff6c000, status, 4, __VA_ARGS__) DT_DEBRACKET_INTERNAL sep \
-	fn(DT_N_S_soc_S_mcpwm_3ff6c000, status, 5, __VA_ARGS__) DT_DEBRACKET_INTERNAL sep \
-	fn(DT_N_S_soc_S_mcpwm_3ff6c000, status, 6, __VA_ARGS__) DT_DEBRACKET_INTERNAL sep \
-	fn(DT_N_S_soc_S_mcpwm_3ff6c000, status, 7, __VA_ARGS__)
+#define DT_N_S_soc_S_mcpwm_3ff6c000_P_status_FOREACH_PROP_ELEM(fn) fn(DT_N_S_soc_S_mcpwm_3ff6c000, status, 0)
+#define DT_N_S_soc_S_mcpwm_3ff6c000_P_status_FOREACH_PROP_ELEM_SEP(fn, sep) fn(DT_N_S_soc_S_mcpwm_3ff6c000, status, 0)
+#define DT_N_S_soc_S_mcpwm_3ff6c000_P_status_FOREACH_PROP_ELEM_VARGS(fn, ...) fn(DT_N_S_soc_S_mcpwm_3ff6c000, status, 0, __VA_ARGS__)
+#define DT_N_S_soc_S_mcpwm_3ff6c000_P_status_FOREACH_PROP_ELEM_SEP_VARGS(fn, sep, ...) fn(DT_N_S_soc_S_mcpwm_3ff6c000, status, 0, __VA_ARGS__)
+#define DT_N_S_soc_S_mcpwm_3ff6c000_P_status_LEN 1
 #define DT_N_S_soc_S_mcpwm_3ff6c000_P_status_EXISTS 1
 #define DT_N_S_soc_S_mcpwm_3ff6c000_P_compatible {"espressif,esp32-mcpwm"}
 #define DT_N_S_soc_S_mcpwm_3ff6c000_P_compatible_IDX_0 "espressif,esp32-mcpwm"
@@ -6197,27 +5542,19 @@
 #define DT_N_S_soc_S_mcpwm_3ff6c000_P_reg_IDX_0_EXISTS 1
 #define DT_N_S_soc_S_mcpwm_3ff6c000_P_reg_IDX_1 4096
 #define DT_N_S_soc_S_mcpwm_3ff6c000_P_reg_IDX_1_EXISTS 1
-#define DT_N_S_soc_S_mcpwm_3ff6c000_P_reg_FOREACH_PROP_ELEM(fn) fn(DT_N_S_soc_S_mcpwm_3ff6c000, reg, 0) \
-	fn(DT_N_S_soc_S_mcpwm_3ff6c000, reg, 1)
-#define DT_N_S_soc_S_mcpwm_3ff6c000_P_reg_FOREACH_PROP_ELEM_SEP(fn, sep) fn(DT_N_S_soc_S_mcpwm_3ff6c000, reg, 0) DT_DEBRACKET_INTERNAL sep \
-	fn(DT_N_S_soc_S_mcpwm_3ff6c000, reg, 1)
-#define DT_N_S_soc_S_mcpwm_3ff6c000_P_reg_FOREACH_PROP_ELEM_VARGS(fn, ...) fn(DT_N_S_soc_S_mcpwm_3ff6c000, reg, 0, __VA_ARGS__) \
-	fn(DT_N_S_soc_S_mcpwm_3ff6c000, reg, 1, __VA_ARGS__)
-#define DT_N_S_soc_S_mcpwm_3ff6c000_P_reg_FOREACH_PROP_ELEM_SEP_VARGS(fn, sep, ...) fn(DT_N_S_soc_S_mcpwm_3ff6c000, reg, 0, __VA_ARGS__) DT_DEBRACKET_INTERNAL sep \
-	fn(DT_N_S_soc_S_mcpwm_3ff6c000, reg, 1, __VA_ARGS__)
 #define DT_N_S_soc_S_mcpwm_3ff6c000_P_reg_EXISTS 1
 #define DT_N_S_soc_S_mcpwm_3ff6c000_P_interrupts {40 /* 0x28 */}
 #define DT_N_S_soc_S_mcpwm_3ff6c000_P_interrupts_IDX_0 40
 #define DT_N_S_soc_S_mcpwm_3ff6c000_P_interrupts_IDX_0_EXISTS 1
-#define DT_N_S_soc_S_mcpwm_3ff6c000_P_interrupts_FOREACH_PROP_ELEM(fn) fn(DT_N_S_soc_S_mcpwm_3ff6c000, interrupts, 0)
-#define DT_N_S_soc_S_mcpwm_3ff6c000_P_interrupts_FOREACH_PROP_ELEM_SEP(fn, sep) fn(DT_N_S_soc_S_mcpwm_3ff6c000, interrupts, 0)
-#define DT_N_S_soc_S_mcpwm_3ff6c000_P_interrupts_FOREACH_PROP_ELEM_VARGS(fn, ...) fn(DT_N_S_soc_S_mcpwm_3ff6c000, interrupts, 0, __VA_ARGS__)
-#define DT_N_S_soc_S_mcpwm_3ff6c000_P_interrupts_FOREACH_PROP_ELEM_SEP_VARGS(fn, sep, ...) fn(DT_N_S_soc_S_mcpwm_3ff6c000, interrupts, 0, __VA_ARGS__)
 #define DT_N_S_soc_S_mcpwm_3ff6c000_P_interrupts_EXISTS 1
 #define DT_N_S_soc_S_mcpwm_3ff6c000_P_interrupt_parent DT_N_S_soc_S_interrupt_controller_3ff00104
 #define DT_N_S_soc_S_mcpwm_3ff6c000_P_interrupt_parent_IDX_0 DT_N_S_soc_S_interrupt_controller_3ff00104
 #define DT_N_S_soc_S_mcpwm_3ff6c000_P_interrupt_parent_IDX_0_PH DT_N_S_soc_S_interrupt_controller_3ff00104
 #define DT_N_S_soc_S_mcpwm_3ff6c000_P_interrupt_parent_IDX_0_EXISTS 1
+#define DT_N_S_soc_S_mcpwm_3ff6c000_P_interrupt_parent_FOREACH_PROP_ELEM(fn) fn(DT_N_S_soc_S_mcpwm_3ff6c000, interrupt_parent, 0)
+#define DT_N_S_soc_S_mcpwm_3ff6c000_P_interrupt_parent_FOREACH_PROP_ELEM_SEP(fn, sep) fn(DT_N_S_soc_S_mcpwm_3ff6c000, interrupt_parent, 0)
+#define DT_N_S_soc_S_mcpwm_3ff6c000_P_interrupt_parent_FOREACH_PROP_ELEM_VARGS(fn, ...) fn(DT_N_S_soc_S_mcpwm_3ff6c000, interrupt_parent, 0, __VA_ARGS__)
+#define DT_N_S_soc_S_mcpwm_3ff6c000_P_interrupt_parent_FOREACH_PROP_ELEM_SEP_VARGS(fn, sep, ...) fn(DT_N_S_soc_S_mcpwm_3ff6c000, interrupt_parent, 0, __VA_ARGS__)
 #define DT_N_S_soc_S_mcpwm_3ff6c000_P_interrupt_parent_LEN 1
 #define DT_N_S_soc_S_mcpwm_3ff6c000_P_interrupt_parent_EXISTS 1
 #define DT_N_S_soc_S_mcpwm_3ff6c000_P_clocks_IDX_0_EXISTS 1
@@ -6232,6 +5569,8 @@
 #define DT_N_S_soc_S_mcpwm_3ff6c000_P_clocks_EXISTS 1
 #define DT_N_S_soc_S_mcpwm_3ff6c000_P_wakeup_source 0
 #define DT_N_S_soc_S_mcpwm_3ff6c000_P_wakeup_source_EXISTS 1
+#define DT_N_S_soc_S_mcpwm_3ff6c000_P_zephyr_pm_device_runtime_auto 0
+#define DT_N_S_soc_S_mcpwm_3ff6c000_P_zephyr_pm_device_runtime_auto_EXISTS 1
 
 /*
  * Devicetree node: /soc/memory@3ffb0000
@@ -6239,7 +5578,7 @@
  * Node identifier: DT_N_S_soc_S_memory_3ffb0000
  *
  * Binding (compatible = mmio-sram):
- *   $ZEPHYR_BASE/dts/bindings/sram/mmio-sram.yaml
+ *   /home/gez/sdks/zephyr/zephyr/dts/bindings/sram/mmio-sram.yaml
  *
  * (Descriptions have moved to the Devicetree Bindings Index
  * in the documentation.)
@@ -6302,14 +5641,6 @@
 #define DT_N_S_soc_S_memory_3ffb0000_P_reg_IDX_0_EXISTS 1
 #define DT_N_S_soc_S_memory_3ffb0000_P_reg_IDX_1 180736
 #define DT_N_S_soc_S_memory_3ffb0000_P_reg_IDX_1_EXISTS 1
-#define DT_N_S_soc_S_memory_3ffb0000_P_reg_FOREACH_PROP_ELEM(fn) fn(DT_N_S_soc_S_memory_3ffb0000, reg, 0) \
-	fn(DT_N_S_soc_S_memory_3ffb0000, reg, 1)
-#define DT_N_S_soc_S_memory_3ffb0000_P_reg_FOREACH_PROP_ELEM_SEP(fn, sep) fn(DT_N_S_soc_S_memory_3ffb0000, reg, 0) DT_DEBRACKET_INTERNAL sep \
-	fn(DT_N_S_soc_S_memory_3ffb0000, reg, 1)
-#define DT_N_S_soc_S_memory_3ffb0000_P_reg_FOREACH_PROP_ELEM_VARGS(fn, ...) fn(DT_N_S_soc_S_memory_3ffb0000, reg, 0, __VA_ARGS__) \
-	fn(DT_N_S_soc_S_memory_3ffb0000, reg, 1, __VA_ARGS__)
-#define DT_N_S_soc_S_memory_3ffb0000_P_reg_FOREACH_PROP_ELEM_SEP_VARGS(fn, sep, ...) fn(DT_N_S_soc_S_memory_3ffb0000, reg, 0, __VA_ARGS__) DT_DEBRACKET_INTERNAL sep \
-	fn(DT_N_S_soc_S_memory_3ffb0000, reg, 1, __VA_ARGS__)
 #define DT_N_S_soc_S_memory_3ffb0000_P_reg_EXISTS 1
 #define DT_N_S_soc_S_memory_3ffb0000_P_compatible {"mmio-sram"}
 #define DT_N_S_soc_S_memory_3ffb0000_P_compatible_IDX_0 "mmio-sram"
@@ -6325,6 +5656,8 @@
 #define DT_N_S_soc_S_memory_3ffb0000_P_compatible_EXISTS 1
 #define DT_N_S_soc_S_memory_3ffb0000_P_wakeup_source 0
 #define DT_N_S_soc_S_memory_3ffb0000_P_wakeup_source_EXISTS 1
+#define DT_N_S_soc_S_memory_3ffb0000_P_zephyr_pm_device_runtime_auto 0
+#define DT_N_S_soc_S_memory_3ffb0000_P_zephyr_pm_device_runtime_auto_EXISTS 1
 
 /*
  * Devicetree node: /soc/memory@3ffe5630
@@ -6332,7 +5665,7 @@
  * Node identifier: DT_N_S_soc_S_memory_3ffe5630
  *
  * Binding (compatible = mmio-sram):
- *   $ZEPHYR_BASE/dts/bindings/sram/mmio-sram.yaml
+ *   /home/gez/sdks/zephyr/zephyr/dts/bindings/sram/mmio-sram.yaml
  *
  * (Descriptions have moved to the Devicetree Bindings Index
  * in the documentation.)
@@ -6379,7 +5712,7 @@
 #define DT_N_S_soc_S_memory_3ffe5630_REG_NUM 1
 #define DT_N_S_soc_S_memory_3ffe5630_REG_IDX_0_EXISTS 1
 #define DT_N_S_soc_S_memory_3ffe5630_REG_IDX_0_VAL_ADDRESS 1073632816 /* 0x3ffe5630 */
-#define DT_N_S_soc_S_memory_3ffe5630_REG_IDX_0_VAL_SIZE 1024 /* 0x400 */
+#define DT_N_S_soc_S_memory_3ffe5630_REG_IDX_0_VAL_SIZE 15360 /* 0x3c00 */
 #define DT_N_S_soc_S_memory_3ffe5630_RANGES_NUM 0
 #define DT_N_S_soc_S_memory_3ffe5630_FOREACH_RANGE(fn) 
 #define DT_N_S_soc_S_memory_3ffe5630_IRQ_NUM 0
@@ -6390,19 +5723,11 @@
 #define DT_N_S_soc_S_memory_3ffe5630_PINCTRL_NUM 0
 
 /* Generic property macros: */
-#define DT_N_S_soc_S_memory_3ffe5630_P_reg {1073632816 /* 0x3ffe5630 */, 1024 /* 0x400 */}
+#define DT_N_S_soc_S_memory_3ffe5630_P_reg {1073632816 /* 0x3ffe5630 */, 15360 /* 0x3c00 */}
 #define DT_N_S_soc_S_memory_3ffe5630_P_reg_IDX_0 1073632816
 #define DT_N_S_soc_S_memory_3ffe5630_P_reg_IDX_0_EXISTS 1
-#define DT_N_S_soc_S_memory_3ffe5630_P_reg_IDX_1 1024
+#define DT_N_S_soc_S_memory_3ffe5630_P_reg_IDX_1 15360
 #define DT_N_S_soc_S_memory_3ffe5630_P_reg_IDX_1_EXISTS 1
-#define DT_N_S_soc_S_memory_3ffe5630_P_reg_FOREACH_PROP_ELEM(fn) fn(DT_N_S_soc_S_memory_3ffe5630, reg, 0) \
-	fn(DT_N_S_soc_S_memory_3ffe5630, reg, 1)
-#define DT_N_S_soc_S_memory_3ffe5630_P_reg_FOREACH_PROP_ELEM_SEP(fn, sep) fn(DT_N_S_soc_S_memory_3ffe5630, reg, 0) DT_DEBRACKET_INTERNAL sep \
-	fn(DT_N_S_soc_S_memory_3ffe5630, reg, 1)
-#define DT_N_S_soc_S_memory_3ffe5630_P_reg_FOREACH_PROP_ELEM_VARGS(fn, ...) fn(DT_N_S_soc_S_memory_3ffe5630, reg, 0, __VA_ARGS__) \
-	fn(DT_N_S_soc_S_memory_3ffe5630, reg, 1, __VA_ARGS__)
-#define DT_N_S_soc_S_memory_3ffe5630_P_reg_FOREACH_PROP_ELEM_SEP_VARGS(fn, sep, ...) fn(DT_N_S_soc_S_memory_3ffe5630, reg, 0, __VA_ARGS__) DT_DEBRACKET_INTERNAL sep \
-	fn(DT_N_S_soc_S_memory_3ffe5630, reg, 1, __VA_ARGS__)
 #define DT_N_S_soc_S_memory_3ffe5630_P_reg_EXISTS 1
 #define DT_N_S_soc_S_memory_3ffe5630_P_compatible {"mmio-sram"}
 #define DT_N_S_soc_S_memory_3ffe5630_P_compatible_IDX_0 "mmio-sram"
@@ -6418,6 +5743,8 @@
 #define DT_N_S_soc_S_memory_3ffe5630_P_compatible_EXISTS 1
 #define DT_N_S_soc_S_memory_3ffe5630_P_wakeup_source 0
 #define DT_N_S_soc_S_memory_3ffe5630_P_wakeup_source_EXISTS 1
+#define DT_N_S_soc_S_memory_3ffe5630_P_zephyr_pm_device_runtime_auto 0
+#define DT_N_S_soc_S_memory_3ffe5630_P_zephyr_pm_device_runtime_auto_EXISTS 1
 
 /*
  * Devicetree node: /soc/pcnt@3ff57000
@@ -6425,7 +5752,7 @@
  * Node identifier: DT_N_S_soc_S_pcnt_3ff57000
  *
  * Binding (compatible = espressif,esp32-pcnt):
- *   $ZEPHYR_BASE/dts/bindings/sensor/espressif,esp32-pcnt.yaml
+ *   /home/gez/sdks/zephyr/zephyr/dts/bindings/sensor/espressif,esp32-pcnt.yaml
  *
  * (Descriptions have moved to the Devicetree Bindings Index
  * in the documentation.)
@@ -6496,41 +5823,17 @@
 #define DT_N_S_soc_S_pcnt_3ff57000_P_status_STRING_UNQUOTED disabled
 #define DT_N_S_soc_S_pcnt_3ff57000_P_status_STRING_TOKEN disabled
 #define DT_N_S_soc_S_pcnt_3ff57000_P_status_STRING_UPPER_TOKEN DISABLED
+#define DT_N_S_soc_S_pcnt_3ff57000_P_status_IDX_0 "disabled"
+#define DT_N_S_soc_S_pcnt_3ff57000_P_status_IDX_0_EXISTS 1
 #define DT_N_S_soc_S_pcnt_3ff57000_P_status_ENUM_IDX 2
+#define DT_N_S_soc_S_pcnt_3ff57000_P_status_ENUM_VAL_disabled_EXISTS 1
 #define DT_N_S_soc_S_pcnt_3ff57000_P_status_ENUM_TOKEN disabled
 #define DT_N_S_soc_S_pcnt_3ff57000_P_status_ENUM_UPPER_TOKEN DISABLED
-#define DT_N_S_soc_S_pcnt_3ff57000_P_status_FOREACH_PROP_ELEM(fn) fn(DT_N_S_soc_S_pcnt_3ff57000, status, 0) \
-	fn(DT_N_S_soc_S_pcnt_3ff57000, status, 1) \
-	fn(DT_N_S_soc_S_pcnt_3ff57000, status, 2) \
-	fn(DT_N_S_soc_S_pcnt_3ff57000, status, 3) \
-	fn(DT_N_S_soc_S_pcnt_3ff57000, status, 4) \
-	fn(DT_N_S_soc_S_pcnt_3ff57000, status, 5) \
-	fn(DT_N_S_soc_S_pcnt_3ff57000, status, 6) \
-	fn(DT_N_S_soc_S_pcnt_3ff57000, status, 7)
-#define DT_N_S_soc_S_pcnt_3ff57000_P_status_FOREACH_PROP_ELEM_SEP(fn, sep) fn(DT_N_S_soc_S_pcnt_3ff57000, status, 0) DT_DEBRACKET_INTERNAL sep \
-	fn(DT_N_S_soc_S_pcnt_3ff57000, status, 1) DT_DEBRACKET_INTERNAL sep \
-	fn(DT_N_S_soc_S_pcnt_3ff57000, status, 2) DT_DEBRACKET_INTERNAL sep \
-	fn(DT_N_S_soc_S_pcnt_3ff57000, status, 3) DT_DEBRACKET_INTERNAL sep \
-	fn(DT_N_S_soc_S_pcnt_3ff57000, status, 4) DT_DEBRACKET_INTERNAL sep \
-	fn(DT_N_S_soc_S_pcnt_3ff57000, status, 5) DT_DEBRACKET_INTERNAL sep \
-	fn(DT_N_S_soc_S_pcnt_3ff57000, status, 6) DT_DEBRACKET_INTERNAL sep \
-	fn(DT_N_S_soc_S_pcnt_3ff57000, status, 7)
-#define DT_N_S_soc_S_pcnt_3ff57000_P_status_FOREACH_PROP_ELEM_VARGS(fn, ...) fn(DT_N_S_soc_S_pcnt_3ff57000, status, 0, __VA_ARGS__) \
-	fn(DT_N_S_soc_S_pcnt_3ff57000, status, 1, __VA_ARGS__) \
-	fn(DT_N_S_soc_S_pcnt_3ff57000, status, 2, __VA_ARGS__) \
-	fn(DT_N_S_soc_S_pcnt_3ff57000, status, 3, __VA_ARGS__) \
-	fn(DT_N_S_soc_S_pcnt_3ff57000, status, 4, __VA_ARGS__) \
-	fn(DT_N_S_soc_S_pcnt_3ff57000, status, 5, __VA_ARGS__) \
-	fn(DT_N_S_soc_S_pcnt_3ff57000, status, 6, __VA_ARGS__) \
-	fn(DT_N_S_soc_S_pcnt_3ff57000, status, 7, __VA_ARGS__)
-#define DT_N_S_soc_S_pcnt_3ff57000_P_status_FOREACH_PROP_ELEM_SEP_VARGS(fn, sep, ...) fn(DT_N_S_soc_S_pcnt_3ff57000, status, 0, __VA_ARGS__) DT_DEBRACKET_INTERNAL sep \
-	fn(DT_N_S_soc_S_pcnt_3ff57000, status, 1, __VA_ARGS__) DT_DEBRACKET_INTERNAL sep \
-	fn(DT_N_S_soc_S_pcnt_3ff57000, status, 2, __VA_ARGS__) DT_DEBRACKET_INTERNAL sep \
-	fn(DT_N_S_soc_S_pcnt_3ff57000, status, 3, __VA_ARGS__) DT_DEBRACKET_INTERNAL sep \
-	fn(DT_N_S_soc_S_pcnt_3ff57000, status, 4, __VA_ARGS__) DT_DEBRACKET_INTERNAL sep \
-	fn(DT_N_S_soc_S_pcnt_3ff57000, status, 5, __VA_ARGS__) DT_DEBRACKET_INTERNAL sep \
-	fn(DT_N_S_soc_S_pcnt_3ff57000, status, 6, __VA_ARGS__) DT_DEBRACKET_INTERNAL sep \
-	fn(DT_N_S_soc_S_pcnt_3ff57000, status, 7, __VA_ARGS__)
+#define DT_N_S_soc_S_pcnt_3ff57000_P_status_FOREACH_PROP_ELEM(fn) fn(DT_N_S_soc_S_pcnt_3ff57000, status, 0)
+#define DT_N_S_soc_S_pcnt_3ff57000_P_status_FOREACH_PROP_ELEM_SEP(fn, sep) fn(DT_N_S_soc_S_pcnt_3ff57000, status, 0)
+#define DT_N_S_soc_S_pcnt_3ff57000_P_status_FOREACH_PROP_ELEM_VARGS(fn, ...) fn(DT_N_S_soc_S_pcnt_3ff57000, status, 0, __VA_ARGS__)
+#define DT_N_S_soc_S_pcnt_3ff57000_P_status_FOREACH_PROP_ELEM_SEP_VARGS(fn, sep, ...) fn(DT_N_S_soc_S_pcnt_3ff57000, status, 0, __VA_ARGS__)
+#define DT_N_S_soc_S_pcnt_3ff57000_P_status_LEN 1
 #define DT_N_S_soc_S_pcnt_3ff57000_P_status_EXISTS 1
 #define DT_N_S_soc_S_pcnt_3ff57000_P_compatible {"espressif,esp32-pcnt"}
 #define DT_N_S_soc_S_pcnt_3ff57000_P_compatible_IDX_0 "espressif,esp32-pcnt"
@@ -6549,27 +5852,19 @@
 #define DT_N_S_soc_S_pcnt_3ff57000_P_reg_IDX_0_EXISTS 1
 #define DT_N_S_soc_S_pcnt_3ff57000_P_reg_IDX_1 4096
 #define DT_N_S_soc_S_pcnt_3ff57000_P_reg_IDX_1_EXISTS 1
-#define DT_N_S_soc_S_pcnt_3ff57000_P_reg_FOREACH_PROP_ELEM(fn) fn(DT_N_S_soc_S_pcnt_3ff57000, reg, 0) \
-	fn(DT_N_S_soc_S_pcnt_3ff57000, reg, 1)
-#define DT_N_S_soc_S_pcnt_3ff57000_P_reg_FOREACH_PROP_ELEM_SEP(fn, sep) fn(DT_N_S_soc_S_pcnt_3ff57000, reg, 0) DT_DEBRACKET_INTERNAL sep \
-	fn(DT_N_S_soc_S_pcnt_3ff57000, reg, 1)
-#define DT_N_S_soc_S_pcnt_3ff57000_P_reg_FOREACH_PROP_ELEM_VARGS(fn, ...) fn(DT_N_S_soc_S_pcnt_3ff57000, reg, 0, __VA_ARGS__) \
-	fn(DT_N_S_soc_S_pcnt_3ff57000, reg, 1, __VA_ARGS__)
-#define DT_N_S_soc_S_pcnt_3ff57000_P_reg_FOREACH_PROP_ELEM_SEP_VARGS(fn, sep, ...) fn(DT_N_S_soc_S_pcnt_3ff57000, reg, 0, __VA_ARGS__) DT_DEBRACKET_INTERNAL sep \
-	fn(DT_N_S_soc_S_pcnt_3ff57000, reg, 1, __VA_ARGS__)
 #define DT_N_S_soc_S_pcnt_3ff57000_P_reg_EXISTS 1
 #define DT_N_S_soc_S_pcnt_3ff57000_P_interrupts {48 /* 0x30 */}
 #define DT_N_S_soc_S_pcnt_3ff57000_P_interrupts_IDX_0 48
 #define DT_N_S_soc_S_pcnt_3ff57000_P_interrupts_IDX_0_EXISTS 1
-#define DT_N_S_soc_S_pcnt_3ff57000_P_interrupts_FOREACH_PROP_ELEM(fn) fn(DT_N_S_soc_S_pcnt_3ff57000, interrupts, 0)
-#define DT_N_S_soc_S_pcnt_3ff57000_P_interrupts_FOREACH_PROP_ELEM_SEP(fn, sep) fn(DT_N_S_soc_S_pcnt_3ff57000, interrupts, 0)
-#define DT_N_S_soc_S_pcnt_3ff57000_P_interrupts_FOREACH_PROP_ELEM_VARGS(fn, ...) fn(DT_N_S_soc_S_pcnt_3ff57000, interrupts, 0, __VA_ARGS__)
-#define DT_N_S_soc_S_pcnt_3ff57000_P_interrupts_FOREACH_PROP_ELEM_SEP_VARGS(fn, sep, ...) fn(DT_N_S_soc_S_pcnt_3ff57000, interrupts, 0, __VA_ARGS__)
 #define DT_N_S_soc_S_pcnt_3ff57000_P_interrupts_EXISTS 1
 #define DT_N_S_soc_S_pcnt_3ff57000_P_interrupt_parent DT_N_S_soc_S_interrupt_controller_3ff00104
 #define DT_N_S_soc_S_pcnt_3ff57000_P_interrupt_parent_IDX_0 DT_N_S_soc_S_interrupt_controller_3ff00104
 #define DT_N_S_soc_S_pcnt_3ff57000_P_interrupt_parent_IDX_0_PH DT_N_S_soc_S_interrupt_controller_3ff00104
 #define DT_N_S_soc_S_pcnt_3ff57000_P_interrupt_parent_IDX_0_EXISTS 1
+#define DT_N_S_soc_S_pcnt_3ff57000_P_interrupt_parent_FOREACH_PROP_ELEM(fn) fn(DT_N_S_soc_S_pcnt_3ff57000, interrupt_parent, 0)
+#define DT_N_S_soc_S_pcnt_3ff57000_P_interrupt_parent_FOREACH_PROP_ELEM_SEP(fn, sep) fn(DT_N_S_soc_S_pcnt_3ff57000, interrupt_parent, 0)
+#define DT_N_S_soc_S_pcnt_3ff57000_P_interrupt_parent_FOREACH_PROP_ELEM_VARGS(fn, ...) fn(DT_N_S_soc_S_pcnt_3ff57000, interrupt_parent, 0, __VA_ARGS__)
+#define DT_N_S_soc_S_pcnt_3ff57000_P_interrupt_parent_FOREACH_PROP_ELEM_SEP_VARGS(fn, sep, ...) fn(DT_N_S_soc_S_pcnt_3ff57000, interrupt_parent, 0, __VA_ARGS__)
 #define DT_N_S_soc_S_pcnt_3ff57000_P_interrupt_parent_LEN 1
 #define DT_N_S_soc_S_pcnt_3ff57000_P_interrupt_parent_EXISTS 1
 #define DT_N_S_soc_S_pcnt_3ff57000_P_clocks_IDX_0_EXISTS 1
@@ -6584,6 +5879,8 @@
 #define DT_N_S_soc_S_pcnt_3ff57000_P_clocks_EXISTS 1
 #define DT_N_S_soc_S_pcnt_3ff57000_P_wakeup_source 0
 #define DT_N_S_soc_S_pcnt_3ff57000_P_wakeup_source_EXISTS 1
+#define DT_N_S_soc_S_pcnt_3ff57000_P_zephyr_pm_device_runtime_auto 0
+#define DT_N_S_soc_S_pcnt_3ff57000_P_zephyr_pm_device_runtime_auto_EXISTS 1
 
 /*
  * Devicetree node: /soc/spi@3ff65000
@@ -6591,7 +5888,7 @@
  * Node identifier: DT_N_S_soc_S_spi_3ff65000
  *
  * Binding (compatible = espressif,esp32-spi):
- *   $ZEPHYR_BASE/dts/bindings/spi/espressif,esp32-spi.yaml
+ *   /home/gez/sdks/zephyr/zephyr/dts/bindings/spi/espressif,esp32-spi.yaml
  *
  * (Descriptions have moved to the Devicetree Bindings Index
  * in the documentation.)
@@ -6670,14 +5967,6 @@
 #define DT_N_S_soc_S_spi_3ff65000_P_reg_IDX_0_EXISTS 1
 #define DT_N_S_soc_S_spi_3ff65000_P_reg_IDX_1 4096
 #define DT_N_S_soc_S_spi_3ff65000_P_reg_IDX_1_EXISTS 1
-#define DT_N_S_soc_S_spi_3ff65000_P_reg_FOREACH_PROP_ELEM(fn) fn(DT_N_S_soc_S_spi_3ff65000, reg, 0) \
-	fn(DT_N_S_soc_S_spi_3ff65000, reg, 1)
-#define DT_N_S_soc_S_spi_3ff65000_P_reg_FOREACH_PROP_ELEM_SEP(fn, sep) fn(DT_N_S_soc_S_spi_3ff65000, reg, 0) DT_DEBRACKET_INTERNAL sep \
-	fn(DT_N_S_soc_S_spi_3ff65000, reg, 1)
-#define DT_N_S_soc_S_spi_3ff65000_P_reg_FOREACH_PROP_ELEM_VARGS(fn, ...) fn(DT_N_S_soc_S_spi_3ff65000, reg, 0, __VA_ARGS__) \
-	fn(DT_N_S_soc_S_spi_3ff65000, reg, 1, __VA_ARGS__)
-#define DT_N_S_soc_S_spi_3ff65000_P_reg_FOREACH_PROP_ELEM_SEP_VARGS(fn, sep, ...) fn(DT_N_S_soc_S_spi_3ff65000, reg, 0, __VA_ARGS__) DT_DEBRACKET_INTERNAL sep \
-	fn(DT_N_S_soc_S_spi_3ff65000, reg, 1, __VA_ARGS__)
 #define DT_N_S_soc_S_spi_3ff65000_P_reg_EXISTS 1
 #define DT_N_S_soc_S_spi_3ff65000_P_pinctrl_0_IDX_0 DT_N_S_pin_controller_S_spim3_default
 #define DT_N_S_soc_S_spi_3ff65000_P_pinctrl_0_IDX_0_PH DT_N_S_pin_controller_S_spim3_default
@@ -6722,25 +6011,17 @@
 #define DT_N_S_soc_S_spi_3ff65000_P_status_STRING_UNQUOTED okay
 #define DT_N_S_soc_S_spi_3ff65000_P_status_STRING_TOKEN okay
 #define DT_N_S_soc_S_spi_3ff65000_P_status_STRING_UPPER_TOKEN OKAY
+#define DT_N_S_soc_S_spi_3ff65000_P_status_IDX_0 "okay"
+#define DT_N_S_soc_S_spi_3ff65000_P_status_IDX_0_EXISTS 1
 #define DT_N_S_soc_S_spi_3ff65000_P_status_ENUM_IDX 1
+#define DT_N_S_soc_S_spi_3ff65000_P_status_ENUM_VAL_okay_EXISTS 1
 #define DT_N_S_soc_S_spi_3ff65000_P_status_ENUM_TOKEN okay
 #define DT_N_S_soc_S_spi_3ff65000_P_status_ENUM_UPPER_TOKEN OKAY
-#define DT_N_S_soc_S_spi_3ff65000_P_status_FOREACH_PROP_ELEM(fn) fn(DT_N_S_soc_S_spi_3ff65000, status, 0) \
-	fn(DT_N_S_soc_S_spi_3ff65000, status, 1) \
-	fn(DT_N_S_soc_S_spi_3ff65000, status, 2) \
-	fn(DT_N_S_soc_S_spi_3ff65000, status, 3)
-#define DT_N_S_soc_S_spi_3ff65000_P_status_FOREACH_PROP_ELEM_SEP(fn, sep) fn(DT_N_S_soc_S_spi_3ff65000, status, 0) DT_DEBRACKET_INTERNAL sep \
-	fn(DT_N_S_soc_S_spi_3ff65000, status, 1) DT_DEBRACKET_INTERNAL sep \
-	fn(DT_N_S_soc_S_spi_3ff65000, status, 2) DT_DEBRACKET_INTERNAL sep \
-	fn(DT_N_S_soc_S_spi_3ff65000, status, 3)
-#define DT_N_S_soc_S_spi_3ff65000_P_status_FOREACH_PROP_ELEM_VARGS(fn, ...) fn(DT_N_S_soc_S_spi_3ff65000, status, 0, __VA_ARGS__) \
-	fn(DT_N_S_soc_S_spi_3ff65000, status, 1, __VA_ARGS__) \
-	fn(DT_N_S_soc_S_spi_3ff65000, status, 2, __VA_ARGS__) \
-	fn(DT_N_S_soc_S_spi_3ff65000, status, 3, __VA_ARGS__)
-#define DT_N_S_soc_S_spi_3ff65000_P_status_FOREACH_PROP_ELEM_SEP_VARGS(fn, sep, ...) fn(DT_N_S_soc_S_spi_3ff65000, status, 0, __VA_ARGS__) DT_DEBRACKET_INTERNAL sep \
-	fn(DT_N_S_soc_S_spi_3ff65000, status, 1, __VA_ARGS__) DT_DEBRACKET_INTERNAL sep \
-	fn(DT_N_S_soc_S_spi_3ff65000, status, 2, __VA_ARGS__) DT_DEBRACKET_INTERNAL sep \
-	fn(DT_N_S_soc_S_spi_3ff65000, status, 3, __VA_ARGS__)
+#define DT_N_S_soc_S_spi_3ff65000_P_status_FOREACH_PROP_ELEM(fn) fn(DT_N_S_soc_S_spi_3ff65000, status, 0)
+#define DT_N_S_soc_S_spi_3ff65000_P_status_FOREACH_PROP_ELEM_SEP(fn, sep) fn(DT_N_S_soc_S_spi_3ff65000, status, 0)
+#define DT_N_S_soc_S_spi_3ff65000_P_status_FOREACH_PROP_ELEM_VARGS(fn, ...) fn(DT_N_S_soc_S_spi_3ff65000, status, 0, __VA_ARGS__)
+#define DT_N_S_soc_S_spi_3ff65000_P_status_FOREACH_PROP_ELEM_SEP_VARGS(fn, sep, ...) fn(DT_N_S_soc_S_spi_3ff65000, status, 0, __VA_ARGS__)
+#define DT_N_S_soc_S_spi_3ff65000_P_status_LEN 1
 #define DT_N_S_soc_S_spi_3ff65000_P_status_EXISTS 1
 #define DT_N_S_soc_S_spi_3ff65000_P_compatible {"espressif,esp32-spi"}
 #define DT_N_S_soc_S_spi_3ff65000_P_compatible_IDX_0 "espressif,esp32-spi"
@@ -6757,15 +6038,15 @@
 #define DT_N_S_soc_S_spi_3ff65000_P_interrupts {31 /* 0x1f */}
 #define DT_N_S_soc_S_spi_3ff65000_P_interrupts_IDX_0 31
 #define DT_N_S_soc_S_spi_3ff65000_P_interrupts_IDX_0_EXISTS 1
-#define DT_N_S_soc_S_spi_3ff65000_P_interrupts_FOREACH_PROP_ELEM(fn) fn(DT_N_S_soc_S_spi_3ff65000, interrupts, 0)
-#define DT_N_S_soc_S_spi_3ff65000_P_interrupts_FOREACH_PROP_ELEM_SEP(fn, sep) fn(DT_N_S_soc_S_spi_3ff65000, interrupts, 0)
-#define DT_N_S_soc_S_spi_3ff65000_P_interrupts_FOREACH_PROP_ELEM_VARGS(fn, ...) fn(DT_N_S_soc_S_spi_3ff65000, interrupts, 0, __VA_ARGS__)
-#define DT_N_S_soc_S_spi_3ff65000_P_interrupts_FOREACH_PROP_ELEM_SEP_VARGS(fn, sep, ...) fn(DT_N_S_soc_S_spi_3ff65000, interrupts, 0, __VA_ARGS__)
 #define DT_N_S_soc_S_spi_3ff65000_P_interrupts_EXISTS 1
 #define DT_N_S_soc_S_spi_3ff65000_P_interrupt_parent DT_N_S_soc_S_interrupt_controller_3ff00104
 #define DT_N_S_soc_S_spi_3ff65000_P_interrupt_parent_IDX_0 DT_N_S_soc_S_interrupt_controller_3ff00104
 #define DT_N_S_soc_S_spi_3ff65000_P_interrupt_parent_IDX_0_PH DT_N_S_soc_S_interrupt_controller_3ff00104
 #define DT_N_S_soc_S_spi_3ff65000_P_interrupt_parent_IDX_0_EXISTS 1
+#define DT_N_S_soc_S_spi_3ff65000_P_interrupt_parent_FOREACH_PROP_ELEM(fn) fn(DT_N_S_soc_S_spi_3ff65000, interrupt_parent, 0)
+#define DT_N_S_soc_S_spi_3ff65000_P_interrupt_parent_FOREACH_PROP_ELEM_SEP(fn, sep) fn(DT_N_S_soc_S_spi_3ff65000, interrupt_parent, 0)
+#define DT_N_S_soc_S_spi_3ff65000_P_interrupt_parent_FOREACH_PROP_ELEM_VARGS(fn, ...) fn(DT_N_S_soc_S_spi_3ff65000, interrupt_parent, 0, __VA_ARGS__)
+#define DT_N_S_soc_S_spi_3ff65000_P_interrupt_parent_FOREACH_PROP_ELEM_SEP_VARGS(fn, sep, ...) fn(DT_N_S_soc_S_spi_3ff65000, interrupt_parent, 0, __VA_ARGS__)
 #define DT_N_S_soc_S_spi_3ff65000_P_interrupt_parent_LEN 1
 #define DT_N_S_soc_S_spi_3ff65000_P_interrupt_parent_EXISTS 1
 #define DT_N_S_soc_S_spi_3ff65000_P_clocks_IDX_0_EXISTS 1
@@ -6780,6 +6061,8 @@
 #define DT_N_S_soc_S_spi_3ff65000_P_clocks_EXISTS 1
 #define DT_N_S_soc_S_spi_3ff65000_P_wakeup_source 0
 #define DT_N_S_soc_S_spi_3ff65000_P_wakeup_source_EXISTS 1
+#define DT_N_S_soc_S_spi_3ff65000_P_zephyr_pm_device_runtime_auto 0
+#define DT_N_S_soc_S_spi_3ff65000_P_zephyr_pm_device_runtime_auto_EXISTS 1
 
 /*
  * Devicetree node: /soc/trng@3ff75144
@@ -6787,7 +6070,7 @@
  * Node identifier: DT_N_S_soc_S_trng_3ff75144
  *
  * Binding (compatible = espressif,esp32-trng):
- *   $ZEPHYR_BASE/dts/bindings/rng/espressif,esp32-trng.yaml
+ *   /home/gez/sdks/zephyr/zephyr/dts/bindings/rng/espressif,esp32-trng.yaml
  *
  * (Descriptions have moved to the Devicetree Bindings Index
  * in the documentation.)
@@ -6854,38 +6137,22 @@
 #define DT_N_S_soc_S_trng_3ff75144_P_reg_IDX_0_EXISTS 1
 #define DT_N_S_soc_S_trng_3ff75144_P_reg_IDX_1 4
 #define DT_N_S_soc_S_trng_3ff75144_P_reg_IDX_1_EXISTS 1
-#define DT_N_S_soc_S_trng_3ff75144_P_reg_FOREACH_PROP_ELEM(fn) fn(DT_N_S_soc_S_trng_3ff75144, reg, 0) \
-	fn(DT_N_S_soc_S_trng_3ff75144, reg, 1)
-#define DT_N_S_soc_S_trng_3ff75144_P_reg_FOREACH_PROP_ELEM_SEP(fn, sep) fn(DT_N_S_soc_S_trng_3ff75144, reg, 0) DT_DEBRACKET_INTERNAL sep \
-	fn(DT_N_S_soc_S_trng_3ff75144, reg, 1)
-#define DT_N_S_soc_S_trng_3ff75144_P_reg_FOREACH_PROP_ELEM_VARGS(fn, ...) fn(DT_N_S_soc_S_trng_3ff75144, reg, 0, __VA_ARGS__) \
-	fn(DT_N_S_soc_S_trng_3ff75144, reg, 1, __VA_ARGS__)
-#define DT_N_S_soc_S_trng_3ff75144_P_reg_FOREACH_PROP_ELEM_SEP_VARGS(fn, sep, ...) fn(DT_N_S_soc_S_trng_3ff75144, reg, 0, __VA_ARGS__) DT_DEBRACKET_INTERNAL sep \
-	fn(DT_N_S_soc_S_trng_3ff75144, reg, 1, __VA_ARGS__)
 #define DT_N_S_soc_S_trng_3ff75144_P_reg_EXISTS 1
 #define DT_N_S_soc_S_trng_3ff75144_P_status "okay"
 #define DT_N_S_soc_S_trng_3ff75144_P_status_STRING_UNQUOTED okay
 #define DT_N_S_soc_S_trng_3ff75144_P_status_STRING_TOKEN okay
 #define DT_N_S_soc_S_trng_3ff75144_P_status_STRING_UPPER_TOKEN OKAY
+#define DT_N_S_soc_S_trng_3ff75144_P_status_IDX_0 "okay"
+#define DT_N_S_soc_S_trng_3ff75144_P_status_IDX_0_EXISTS 1
 #define DT_N_S_soc_S_trng_3ff75144_P_status_ENUM_IDX 1
+#define DT_N_S_soc_S_trng_3ff75144_P_status_ENUM_VAL_okay_EXISTS 1
 #define DT_N_S_soc_S_trng_3ff75144_P_status_ENUM_TOKEN okay
 #define DT_N_S_soc_S_trng_3ff75144_P_status_ENUM_UPPER_TOKEN OKAY
-#define DT_N_S_soc_S_trng_3ff75144_P_status_FOREACH_PROP_ELEM(fn) fn(DT_N_S_soc_S_trng_3ff75144, status, 0) \
-	fn(DT_N_S_soc_S_trng_3ff75144, status, 1) \
-	fn(DT_N_S_soc_S_trng_3ff75144, status, 2) \
-	fn(DT_N_S_soc_S_trng_3ff75144, status, 3)
-#define DT_N_S_soc_S_trng_3ff75144_P_status_FOREACH_PROP_ELEM_SEP(fn, sep) fn(DT_N_S_soc_S_trng_3ff75144, status, 0) DT_DEBRACKET_INTERNAL sep \
-	fn(DT_N_S_soc_S_trng_3ff75144, status, 1) DT_DEBRACKET_INTERNAL sep \
-	fn(DT_N_S_soc_S_trng_3ff75144, status, 2) DT_DEBRACKET_INTERNAL sep \
-	fn(DT_N_S_soc_S_trng_3ff75144, status, 3)
-#define DT_N_S_soc_S_trng_3ff75144_P_status_FOREACH_PROP_ELEM_VARGS(fn, ...) fn(DT_N_S_soc_S_trng_3ff75144, status, 0, __VA_ARGS__) \
-	fn(DT_N_S_soc_S_trng_3ff75144, status, 1, __VA_ARGS__) \
-	fn(DT_N_S_soc_S_trng_3ff75144, status, 2, __VA_ARGS__) \
-	fn(DT_N_S_soc_S_trng_3ff75144, status, 3, __VA_ARGS__)
-#define DT_N_S_soc_S_trng_3ff75144_P_status_FOREACH_PROP_ELEM_SEP_VARGS(fn, sep, ...) fn(DT_N_S_soc_S_trng_3ff75144, status, 0, __VA_ARGS__) DT_DEBRACKET_INTERNAL sep \
-	fn(DT_N_S_soc_S_trng_3ff75144, status, 1, __VA_ARGS__) DT_DEBRACKET_INTERNAL sep \
-	fn(DT_N_S_soc_S_trng_3ff75144, status, 2, __VA_ARGS__) DT_DEBRACKET_INTERNAL sep \
-	fn(DT_N_S_soc_S_trng_3ff75144, status, 3, __VA_ARGS__)
+#define DT_N_S_soc_S_trng_3ff75144_P_status_FOREACH_PROP_ELEM(fn) fn(DT_N_S_soc_S_trng_3ff75144, status, 0)
+#define DT_N_S_soc_S_trng_3ff75144_P_status_FOREACH_PROP_ELEM_SEP(fn, sep) fn(DT_N_S_soc_S_trng_3ff75144, status, 0)
+#define DT_N_S_soc_S_trng_3ff75144_P_status_FOREACH_PROP_ELEM_VARGS(fn, ...) fn(DT_N_S_soc_S_trng_3ff75144, status, 0, __VA_ARGS__)
+#define DT_N_S_soc_S_trng_3ff75144_P_status_FOREACH_PROP_ELEM_SEP_VARGS(fn, sep, ...) fn(DT_N_S_soc_S_trng_3ff75144, status, 0, __VA_ARGS__)
+#define DT_N_S_soc_S_trng_3ff75144_P_status_LEN 1
 #define DT_N_S_soc_S_trng_3ff75144_P_status_EXISTS 1
 #define DT_N_S_soc_S_trng_3ff75144_P_compatible {"espressif,esp32-trng"}
 #define DT_N_S_soc_S_trng_3ff75144_P_compatible_IDX_0 "espressif,esp32-trng"
@@ -6901,6 +6168,8 @@
 #define DT_N_S_soc_S_trng_3ff75144_P_compatible_EXISTS 1
 #define DT_N_S_soc_S_trng_3ff75144_P_wakeup_source 0
 #define DT_N_S_soc_S_trng_3ff75144_P_wakeup_source_EXISTS 1
+#define DT_N_S_soc_S_trng_3ff75144_P_zephyr_pm_device_runtime_auto 0
+#define DT_N_S_soc_S_trng_3ff75144_P_zephyr_pm_device_runtime_auto_EXISTS 1
 
 /*
  * Devicetree node: /soc/uart@3ff40000
@@ -6908,7 +6177,7 @@
  * Node identifier: DT_N_S_soc_S_uart_3ff40000
  *
  * Binding (compatible = espressif,esp32-uart):
- *   $ZEPHYR_BASE/dts/bindings/serial/espressif,esp32-uart.yaml
+ *   /home/gez/sdks/zephyr/zephyr/dts/bindings/serial/espressif,esp32-uart.yaml
  *
  * (Descriptions have moved to the Devicetree Bindings Index
  * in the documentation.)
@@ -6988,14 +6257,6 @@
 #define DT_N_S_soc_S_uart_3ff40000_P_reg_IDX_0_EXISTS 1
 #define DT_N_S_soc_S_uart_3ff40000_P_reg_IDX_1 1024
 #define DT_N_S_soc_S_uart_3ff40000_P_reg_IDX_1_EXISTS 1
-#define DT_N_S_soc_S_uart_3ff40000_P_reg_FOREACH_PROP_ELEM(fn) fn(DT_N_S_soc_S_uart_3ff40000, reg, 0) \
-	fn(DT_N_S_soc_S_uart_3ff40000, reg, 1)
-#define DT_N_S_soc_S_uart_3ff40000_P_reg_FOREACH_PROP_ELEM_SEP(fn, sep) fn(DT_N_S_soc_S_uart_3ff40000, reg, 0) DT_DEBRACKET_INTERNAL sep \
-	fn(DT_N_S_soc_S_uart_3ff40000, reg, 1)
-#define DT_N_S_soc_S_uart_3ff40000_P_reg_FOREACH_PROP_ELEM_VARGS(fn, ...) fn(DT_N_S_soc_S_uart_3ff40000, reg, 0, __VA_ARGS__) \
-	fn(DT_N_S_soc_S_uart_3ff40000, reg, 1, __VA_ARGS__)
-#define DT_N_S_soc_S_uart_3ff40000_P_reg_FOREACH_PROP_ELEM_SEP_VARGS(fn, sep, ...) fn(DT_N_S_soc_S_uart_3ff40000, reg, 0, __VA_ARGS__) DT_DEBRACKET_INTERNAL sep \
-	fn(DT_N_S_soc_S_uart_3ff40000, reg, 1, __VA_ARGS__)
 #define DT_N_S_soc_S_uart_3ff40000_P_reg_EXISTS 1
 #define DT_N_S_soc_S_uart_3ff40000_P_pinctrl_0_IDX_0 DT_N_S_pin_controller_S_uart0_default
 #define DT_N_S_soc_S_uart_3ff40000_P_pinctrl_0_IDX_0_PH DT_N_S_pin_controller_S_uart0_default
@@ -7018,6 +6279,8 @@
 #define DT_N_S_soc_S_uart_3ff40000_P_pinctrl_names_FOREACH_PROP_ELEM_SEP_VARGS(fn, sep, ...) fn(DT_N_S_soc_S_uart_3ff40000, pinctrl_names, 0, __VA_ARGS__)
 #define DT_N_S_soc_S_uart_3ff40000_P_pinctrl_names_LEN 1
 #define DT_N_S_soc_S_uart_3ff40000_P_pinctrl_names_EXISTS 1
+#define DT_N_S_soc_S_uart_3ff40000_P_hw_rs485_hd_mode 0
+#define DT_N_S_soc_S_uart_3ff40000_P_hw_rs485_hd_mode_EXISTS 1
 #define DT_N_S_soc_S_uart_3ff40000_P_current_speed 115200
 #define DT_N_S_soc_S_uart_3ff40000_P_current_speed_EXISTS 1
 #define DT_N_S_soc_S_uart_3ff40000_P_hw_flow_control 0
@@ -7026,25 +6289,17 @@
 #define DT_N_S_soc_S_uart_3ff40000_P_status_STRING_UNQUOTED okay
 #define DT_N_S_soc_S_uart_3ff40000_P_status_STRING_TOKEN okay
 #define DT_N_S_soc_S_uart_3ff40000_P_status_STRING_UPPER_TOKEN OKAY
+#define DT_N_S_soc_S_uart_3ff40000_P_status_IDX_0 "okay"
+#define DT_N_S_soc_S_uart_3ff40000_P_status_IDX_0_EXISTS 1
 #define DT_N_S_soc_S_uart_3ff40000_P_status_ENUM_IDX 1
+#define DT_N_S_soc_S_uart_3ff40000_P_status_ENUM_VAL_okay_EXISTS 1
 #define DT_N_S_soc_S_uart_3ff40000_P_status_ENUM_TOKEN okay
 #define DT_N_S_soc_S_uart_3ff40000_P_status_ENUM_UPPER_TOKEN OKAY
-#define DT_N_S_soc_S_uart_3ff40000_P_status_FOREACH_PROP_ELEM(fn) fn(DT_N_S_soc_S_uart_3ff40000, status, 0) \
-	fn(DT_N_S_soc_S_uart_3ff40000, status, 1) \
-	fn(DT_N_S_soc_S_uart_3ff40000, status, 2) \
-	fn(DT_N_S_soc_S_uart_3ff40000, status, 3)
-#define DT_N_S_soc_S_uart_3ff40000_P_status_FOREACH_PROP_ELEM_SEP(fn, sep) fn(DT_N_S_soc_S_uart_3ff40000, status, 0) DT_DEBRACKET_INTERNAL sep \
-	fn(DT_N_S_soc_S_uart_3ff40000, status, 1) DT_DEBRACKET_INTERNAL sep \
-	fn(DT_N_S_soc_S_uart_3ff40000, status, 2) DT_DEBRACKET_INTERNAL sep \
-	fn(DT_N_S_soc_S_uart_3ff40000, status, 3)
-#define DT_N_S_soc_S_uart_3ff40000_P_status_FOREACH_PROP_ELEM_VARGS(fn, ...) fn(DT_N_S_soc_S_uart_3ff40000, status, 0, __VA_ARGS__) \
-	fn(DT_N_S_soc_S_uart_3ff40000, status, 1, __VA_ARGS__) \
-	fn(DT_N_S_soc_S_uart_3ff40000, status, 2, __VA_ARGS__) \
-	fn(DT_N_S_soc_S_uart_3ff40000, status, 3, __VA_ARGS__)
-#define DT_N_S_soc_S_uart_3ff40000_P_status_FOREACH_PROP_ELEM_SEP_VARGS(fn, sep, ...) fn(DT_N_S_soc_S_uart_3ff40000, status, 0, __VA_ARGS__) DT_DEBRACKET_INTERNAL sep \
-	fn(DT_N_S_soc_S_uart_3ff40000, status, 1, __VA_ARGS__) DT_DEBRACKET_INTERNAL sep \
-	fn(DT_N_S_soc_S_uart_3ff40000, status, 2, __VA_ARGS__) DT_DEBRACKET_INTERNAL sep \
-	fn(DT_N_S_soc_S_uart_3ff40000, status, 3, __VA_ARGS__)
+#define DT_N_S_soc_S_uart_3ff40000_P_status_FOREACH_PROP_ELEM(fn) fn(DT_N_S_soc_S_uart_3ff40000, status, 0)
+#define DT_N_S_soc_S_uart_3ff40000_P_status_FOREACH_PROP_ELEM_SEP(fn, sep) fn(DT_N_S_soc_S_uart_3ff40000, status, 0)
+#define DT_N_S_soc_S_uart_3ff40000_P_status_FOREACH_PROP_ELEM_VARGS(fn, ...) fn(DT_N_S_soc_S_uart_3ff40000, status, 0, __VA_ARGS__)
+#define DT_N_S_soc_S_uart_3ff40000_P_status_FOREACH_PROP_ELEM_SEP_VARGS(fn, sep, ...) fn(DT_N_S_soc_S_uart_3ff40000, status, 0, __VA_ARGS__)
+#define DT_N_S_soc_S_uart_3ff40000_P_status_LEN 1
 #define DT_N_S_soc_S_uart_3ff40000_P_status_EXISTS 1
 #define DT_N_S_soc_S_uart_3ff40000_P_compatible {"espressif,esp32-uart"}
 #define DT_N_S_soc_S_uart_3ff40000_P_compatible_IDX_0 "espressif,esp32-uart"
@@ -7061,15 +6316,15 @@
 #define DT_N_S_soc_S_uart_3ff40000_P_interrupts {34 /* 0x22 */}
 #define DT_N_S_soc_S_uart_3ff40000_P_interrupts_IDX_0 34
 #define DT_N_S_soc_S_uart_3ff40000_P_interrupts_IDX_0_EXISTS 1
-#define DT_N_S_soc_S_uart_3ff40000_P_interrupts_FOREACH_PROP_ELEM(fn) fn(DT_N_S_soc_S_uart_3ff40000, interrupts, 0)
-#define DT_N_S_soc_S_uart_3ff40000_P_interrupts_FOREACH_PROP_ELEM_SEP(fn, sep) fn(DT_N_S_soc_S_uart_3ff40000, interrupts, 0)
-#define DT_N_S_soc_S_uart_3ff40000_P_interrupts_FOREACH_PROP_ELEM_VARGS(fn, ...) fn(DT_N_S_soc_S_uart_3ff40000, interrupts, 0, __VA_ARGS__)
-#define DT_N_S_soc_S_uart_3ff40000_P_interrupts_FOREACH_PROP_ELEM_SEP_VARGS(fn, sep, ...) fn(DT_N_S_soc_S_uart_3ff40000, interrupts, 0, __VA_ARGS__)
 #define DT_N_S_soc_S_uart_3ff40000_P_interrupts_EXISTS 1
 #define DT_N_S_soc_S_uart_3ff40000_P_interrupt_parent DT_N_S_soc_S_interrupt_controller_3ff00104
 #define DT_N_S_soc_S_uart_3ff40000_P_interrupt_parent_IDX_0 DT_N_S_soc_S_interrupt_controller_3ff00104
 #define DT_N_S_soc_S_uart_3ff40000_P_interrupt_parent_IDX_0_PH DT_N_S_soc_S_interrupt_controller_3ff00104
 #define DT_N_S_soc_S_uart_3ff40000_P_interrupt_parent_IDX_0_EXISTS 1
+#define DT_N_S_soc_S_uart_3ff40000_P_interrupt_parent_FOREACH_PROP_ELEM(fn) fn(DT_N_S_soc_S_uart_3ff40000, interrupt_parent, 0)
+#define DT_N_S_soc_S_uart_3ff40000_P_interrupt_parent_FOREACH_PROP_ELEM_SEP(fn, sep) fn(DT_N_S_soc_S_uart_3ff40000, interrupt_parent, 0)
+#define DT_N_S_soc_S_uart_3ff40000_P_interrupt_parent_FOREACH_PROP_ELEM_VARGS(fn, ...) fn(DT_N_S_soc_S_uart_3ff40000, interrupt_parent, 0, __VA_ARGS__)
+#define DT_N_S_soc_S_uart_3ff40000_P_interrupt_parent_FOREACH_PROP_ELEM_SEP_VARGS(fn, sep, ...) fn(DT_N_S_soc_S_uart_3ff40000, interrupt_parent, 0, __VA_ARGS__)
 #define DT_N_S_soc_S_uart_3ff40000_P_interrupt_parent_LEN 1
 #define DT_N_S_soc_S_uart_3ff40000_P_interrupt_parent_EXISTS 1
 #define DT_N_S_soc_S_uart_3ff40000_P_clocks_IDX_0_EXISTS 1
@@ -7084,6 +6339,8 @@
 #define DT_N_S_soc_S_uart_3ff40000_P_clocks_EXISTS 1
 #define DT_N_S_soc_S_uart_3ff40000_P_wakeup_source 0
 #define DT_N_S_soc_S_uart_3ff40000_P_wakeup_source_EXISTS 1
+#define DT_N_S_soc_S_uart_3ff40000_P_zephyr_pm_device_runtime_auto 0
+#define DT_N_S_soc_S_uart_3ff40000_P_zephyr_pm_device_runtime_auto_EXISTS 1
 
 /*
  * Devicetree node: /soc/uart@3ff50000
@@ -7091,7 +6348,7 @@
  * Node identifier: DT_N_S_soc_S_uart_3ff50000
  *
  * Binding (compatible = espressif,esp32-uart):
- *   $ZEPHYR_BASE/dts/bindings/serial/espressif,esp32-uart.yaml
+ *   /home/gez/sdks/zephyr/zephyr/dts/bindings/serial/espressif,esp32-uart.yaml
  *
  * (Descriptions have moved to the Devicetree Bindings Index
  * in the documentation.)
@@ -7170,14 +6427,6 @@
 #define DT_N_S_soc_S_uart_3ff50000_P_reg_IDX_0_EXISTS 1
 #define DT_N_S_soc_S_uart_3ff50000_P_reg_IDX_1 1024
 #define DT_N_S_soc_S_uart_3ff50000_P_reg_IDX_1_EXISTS 1
-#define DT_N_S_soc_S_uart_3ff50000_P_reg_FOREACH_PROP_ELEM(fn) fn(DT_N_S_soc_S_uart_3ff50000, reg, 0) \
-	fn(DT_N_S_soc_S_uart_3ff50000, reg, 1)
-#define DT_N_S_soc_S_uart_3ff50000_P_reg_FOREACH_PROP_ELEM_SEP(fn, sep) fn(DT_N_S_soc_S_uart_3ff50000, reg, 0) DT_DEBRACKET_INTERNAL sep \
-	fn(DT_N_S_soc_S_uart_3ff50000, reg, 1)
-#define DT_N_S_soc_S_uart_3ff50000_P_reg_FOREACH_PROP_ELEM_VARGS(fn, ...) fn(DT_N_S_soc_S_uart_3ff50000, reg, 0, __VA_ARGS__) \
-	fn(DT_N_S_soc_S_uart_3ff50000, reg, 1, __VA_ARGS__)
-#define DT_N_S_soc_S_uart_3ff50000_P_reg_FOREACH_PROP_ELEM_SEP_VARGS(fn, sep, ...) fn(DT_N_S_soc_S_uart_3ff50000, reg, 0, __VA_ARGS__) DT_DEBRACKET_INTERNAL sep \
-	fn(DT_N_S_soc_S_uart_3ff50000, reg, 1, __VA_ARGS__)
 #define DT_N_S_soc_S_uart_3ff50000_P_reg_EXISTS 1
 #define DT_N_S_soc_S_uart_3ff50000_P_pinctrl_0_IDX_0 DT_N_S_pin_controller_S_uart1_default
 #define DT_N_S_soc_S_uart_3ff50000_P_pinctrl_0_IDX_0_PH DT_N_S_pin_controller_S_uart1_default
@@ -7200,6 +6449,8 @@
 #define DT_N_S_soc_S_uart_3ff50000_P_pinctrl_names_FOREACH_PROP_ELEM_SEP_VARGS(fn, sep, ...) fn(DT_N_S_soc_S_uart_3ff50000, pinctrl_names, 0, __VA_ARGS__)
 #define DT_N_S_soc_S_uart_3ff50000_P_pinctrl_names_LEN 1
 #define DT_N_S_soc_S_uart_3ff50000_P_pinctrl_names_EXISTS 1
+#define DT_N_S_soc_S_uart_3ff50000_P_hw_rs485_hd_mode 0
+#define DT_N_S_soc_S_uart_3ff50000_P_hw_rs485_hd_mode_EXISTS 1
 #define DT_N_S_soc_S_uart_3ff50000_P_current_speed 115200
 #define DT_N_S_soc_S_uart_3ff50000_P_current_speed_EXISTS 1
 #define DT_N_S_soc_S_uart_3ff50000_P_hw_flow_control 0
@@ -7208,41 +6459,17 @@
 #define DT_N_S_soc_S_uart_3ff50000_P_status_STRING_UNQUOTED disabled
 #define DT_N_S_soc_S_uart_3ff50000_P_status_STRING_TOKEN disabled
 #define DT_N_S_soc_S_uart_3ff50000_P_status_STRING_UPPER_TOKEN DISABLED
+#define DT_N_S_soc_S_uart_3ff50000_P_status_IDX_0 "disabled"
+#define DT_N_S_soc_S_uart_3ff50000_P_status_IDX_0_EXISTS 1
 #define DT_N_S_soc_S_uart_3ff50000_P_status_ENUM_IDX 2
+#define DT_N_S_soc_S_uart_3ff50000_P_status_ENUM_VAL_disabled_EXISTS 1
 #define DT_N_S_soc_S_uart_3ff50000_P_status_ENUM_TOKEN disabled
 #define DT_N_S_soc_S_uart_3ff50000_P_status_ENUM_UPPER_TOKEN DISABLED
-#define DT_N_S_soc_S_uart_3ff50000_P_status_FOREACH_PROP_ELEM(fn) fn(DT_N_S_soc_S_uart_3ff50000, status, 0) \
-	fn(DT_N_S_soc_S_uart_3ff50000, status, 1) \
-	fn(DT_N_S_soc_S_uart_3ff50000, status, 2) \
-	fn(DT_N_S_soc_S_uart_3ff50000, status, 3) \
-	fn(DT_N_S_soc_S_uart_3ff50000, status, 4) \
-	fn(DT_N_S_soc_S_uart_3ff50000, status, 5) \
-	fn(DT_N_S_soc_S_uart_3ff50000, status, 6) \
-	fn(DT_N_S_soc_S_uart_3ff50000, status, 7)
-#define DT_N_S_soc_S_uart_3ff50000_P_status_FOREACH_PROP_ELEM_SEP(fn, sep) fn(DT_N_S_soc_S_uart_3ff50000, status, 0) DT_DEBRACKET_INTERNAL sep \
-	fn(DT_N_S_soc_S_uart_3ff50000, status, 1) DT_DEBRACKET_INTERNAL sep \
-	fn(DT_N_S_soc_S_uart_3ff50000, status, 2) DT_DEBRACKET_INTERNAL sep \
-	fn(DT_N_S_soc_S_uart_3ff50000, status, 3) DT_DEBRACKET_INTERNAL sep \
-	fn(DT_N_S_soc_S_uart_3ff50000, status, 4) DT_DEBRACKET_INTERNAL sep \
-	fn(DT_N_S_soc_S_uart_3ff50000, status, 5) DT_DEBRACKET_INTERNAL sep \
-	fn(DT_N_S_soc_S_uart_3ff50000, status, 6) DT_DEBRACKET_INTERNAL sep \
-	fn(DT_N_S_soc_S_uart_3ff50000, status, 7)
-#define DT_N_S_soc_S_uart_3ff50000_P_status_FOREACH_PROP_ELEM_VARGS(fn, ...) fn(DT_N_S_soc_S_uart_3ff50000, status, 0, __VA_ARGS__) \
-	fn(DT_N_S_soc_S_uart_3ff50000, status, 1, __VA_ARGS__) \
-	fn(DT_N_S_soc_S_uart_3ff50000, status, 2, __VA_ARGS__) \
-	fn(DT_N_S_soc_S_uart_3ff50000, status, 3, __VA_ARGS__) \
-	fn(DT_N_S_soc_S_uart_3ff50000, status, 4, __VA_ARGS__) \
-	fn(DT_N_S_soc_S_uart_3ff50000, status, 5, __VA_ARGS__) \
-	fn(DT_N_S_soc_S_uart_3ff50000, status, 6, __VA_ARGS__) \
-	fn(DT_N_S_soc_S_uart_3ff50000, status, 7, __VA_ARGS__)
-#define DT_N_S_soc_S_uart_3ff50000_P_status_FOREACH_PROP_ELEM_SEP_VARGS(fn, sep, ...) fn(DT_N_S_soc_S_uart_3ff50000, status, 0, __VA_ARGS__) DT_DEBRACKET_INTERNAL sep \
-	fn(DT_N_S_soc_S_uart_3ff50000, status, 1, __VA_ARGS__) DT_DEBRACKET_INTERNAL sep \
-	fn(DT_N_S_soc_S_uart_3ff50000, status, 2, __VA_ARGS__) DT_DEBRACKET_INTERNAL sep \
-	fn(DT_N_S_soc_S_uart_3ff50000, status, 3, __VA_ARGS__) DT_DEBRACKET_INTERNAL sep \
-	fn(DT_N_S_soc_S_uart_3ff50000, status, 4, __VA_ARGS__) DT_DEBRACKET_INTERNAL sep \
-	fn(DT_N_S_soc_S_uart_3ff50000, status, 5, __VA_ARGS__) DT_DEBRACKET_INTERNAL sep \
-	fn(DT_N_S_soc_S_uart_3ff50000, status, 6, __VA_ARGS__) DT_DEBRACKET_INTERNAL sep \
-	fn(DT_N_S_soc_S_uart_3ff50000, status, 7, __VA_ARGS__)
+#define DT_N_S_soc_S_uart_3ff50000_P_status_FOREACH_PROP_ELEM(fn) fn(DT_N_S_soc_S_uart_3ff50000, status, 0)
+#define DT_N_S_soc_S_uart_3ff50000_P_status_FOREACH_PROP_ELEM_SEP(fn, sep) fn(DT_N_S_soc_S_uart_3ff50000, status, 0)
+#define DT_N_S_soc_S_uart_3ff50000_P_status_FOREACH_PROP_ELEM_VARGS(fn, ...) fn(DT_N_S_soc_S_uart_3ff50000, status, 0, __VA_ARGS__)
+#define DT_N_S_soc_S_uart_3ff50000_P_status_FOREACH_PROP_ELEM_SEP_VARGS(fn, sep, ...) fn(DT_N_S_soc_S_uart_3ff50000, status, 0, __VA_ARGS__)
+#define DT_N_S_soc_S_uart_3ff50000_P_status_LEN 1
 #define DT_N_S_soc_S_uart_3ff50000_P_status_EXISTS 1
 #define DT_N_S_soc_S_uart_3ff50000_P_compatible {"espressif,esp32-uart"}
 #define DT_N_S_soc_S_uart_3ff50000_P_compatible_IDX_0 "espressif,esp32-uart"
@@ -7259,15 +6486,15 @@
 #define DT_N_S_soc_S_uart_3ff50000_P_interrupts {35 /* 0x23 */}
 #define DT_N_S_soc_S_uart_3ff50000_P_interrupts_IDX_0 35
 #define DT_N_S_soc_S_uart_3ff50000_P_interrupts_IDX_0_EXISTS 1
-#define DT_N_S_soc_S_uart_3ff50000_P_interrupts_FOREACH_PROP_ELEM(fn) fn(DT_N_S_soc_S_uart_3ff50000, interrupts, 0)
-#define DT_N_S_soc_S_uart_3ff50000_P_interrupts_FOREACH_PROP_ELEM_SEP(fn, sep) fn(DT_N_S_soc_S_uart_3ff50000, interrupts, 0)
-#define DT_N_S_soc_S_uart_3ff50000_P_interrupts_FOREACH_PROP_ELEM_VARGS(fn, ...) fn(DT_N_S_soc_S_uart_3ff50000, interrupts, 0, __VA_ARGS__)
-#define DT_N_S_soc_S_uart_3ff50000_P_interrupts_FOREACH_PROP_ELEM_SEP_VARGS(fn, sep, ...) fn(DT_N_S_soc_S_uart_3ff50000, interrupts, 0, __VA_ARGS__)
 #define DT_N_S_soc_S_uart_3ff50000_P_interrupts_EXISTS 1
 #define DT_N_S_soc_S_uart_3ff50000_P_interrupt_parent DT_N_S_soc_S_interrupt_controller_3ff00104
 #define DT_N_S_soc_S_uart_3ff50000_P_interrupt_parent_IDX_0 DT_N_S_soc_S_interrupt_controller_3ff00104
 #define DT_N_S_soc_S_uart_3ff50000_P_interrupt_parent_IDX_0_PH DT_N_S_soc_S_interrupt_controller_3ff00104
 #define DT_N_S_soc_S_uart_3ff50000_P_interrupt_parent_IDX_0_EXISTS 1
+#define DT_N_S_soc_S_uart_3ff50000_P_interrupt_parent_FOREACH_PROP_ELEM(fn) fn(DT_N_S_soc_S_uart_3ff50000, interrupt_parent, 0)
+#define DT_N_S_soc_S_uart_3ff50000_P_interrupt_parent_FOREACH_PROP_ELEM_SEP(fn, sep) fn(DT_N_S_soc_S_uart_3ff50000, interrupt_parent, 0)
+#define DT_N_S_soc_S_uart_3ff50000_P_interrupt_parent_FOREACH_PROP_ELEM_VARGS(fn, ...) fn(DT_N_S_soc_S_uart_3ff50000, interrupt_parent, 0, __VA_ARGS__)
+#define DT_N_S_soc_S_uart_3ff50000_P_interrupt_parent_FOREACH_PROP_ELEM_SEP_VARGS(fn, sep, ...) fn(DT_N_S_soc_S_uart_3ff50000, interrupt_parent, 0, __VA_ARGS__)
 #define DT_N_S_soc_S_uart_3ff50000_P_interrupt_parent_LEN 1
 #define DT_N_S_soc_S_uart_3ff50000_P_interrupt_parent_EXISTS 1
 #define DT_N_S_soc_S_uart_3ff50000_P_clocks_IDX_0_EXISTS 1
@@ -7282,6 +6509,8 @@
 #define DT_N_S_soc_S_uart_3ff50000_P_clocks_EXISTS 1
 #define DT_N_S_soc_S_uart_3ff50000_P_wakeup_source 0
 #define DT_N_S_soc_S_uart_3ff50000_P_wakeup_source_EXISTS 1
+#define DT_N_S_soc_S_uart_3ff50000_P_zephyr_pm_device_runtime_auto 0
+#define DT_N_S_soc_S_uart_3ff50000_P_zephyr_pm_device_runtime_auto_EXISTS 1
 
 /*
  * Devicetree node: /soc/uart@3ff6e000
@@ -7289,7 +6518,7 @@
  * Node identifier: DT_N_S_soc_S_uart_3ff6e000
  *
  * Binding (compatible = espressif,esp32-uart):
- *   $ZEPHYR_BASE/dts/bindings/serial/espressif,esp32-uart.yaml
+ *   /home/gez/sdks/zephyr/zephyr/dts/bindings/serial/espressif,esp32-uart.yaml
  *
  * (Descriptions have moved to the Devicetree Bindings Index
  * in the documentation.)
@@ -7368,14 +6597,6 @@
 #define DT_N_S_soc_S_uart_3ff6e000_P_reg_IDX_0_EXISTS 1
 #define DT_N_S_soc_S_uart_3ff6e000_P_reg_IDX_1 1024
 #define DT_N_S_soc_S_uart_3ff6e000_P_reg_IDX_1_EXISTS 1
-#define DT_N_S_soc_S_uart_3ff6e000_P_reg_FOREACH_PROP_ELEM(fn) fn(DT_N_S_soc_S_uart_3ff6e000, reg, 0) \
-	fn(DT_N_S_soc_S_uart_3ff6e000, reg, 1)
-#define DT_N_S_soc_S_uart_3ff6e000_P_reg_FOREACH_PROP_ELEM_SEP(fn, sep) fn(DT_N_S_soc_S_uart_3ff6e000, reg, 0) DT_DEBRACKET_INTERNAL sep \
-	fn(DT_N_S_soc_S_uart_3ff6e000, reg, 1)
-#define DT_N_S_soc_S_uart_3ff6e000_P_reg_FOREACH_PROP_ELEM_VARGS(fn, ...) fn(DT_N_S_soc_S_uart_3ff6e000, reg, 0, __VA_ARGS__) \
-	fn(DT_N_S_soc_S_uart_3ff6e000, reg, 1, __VA_ARGS__)
-#define DT_N_S_soc_S_uart_3ff6e000_P_reg_FOREACH_PROP_ELEM_SEP_VARGS(fn, sep, ...) fn(DT_N_S_soc_S_uart_3ff6e000, reg, 0, __VA_ARGS__) DT_DEBRACKET_INTERNAL sep \
-	fn(DT_N_S_soc_S_uart_3ff6e000, reg, 1, __VA_ARGS__)
 #define DT_N_S_soc_S_uart_3ff6e000_P_reg_EXISTS 1
 #define DT_N_S_soc_S_uart_3ff6e000_P_pinctrl_0_IDX_0 DT_N_S_pin_controller_S_uart2_default
 #define DT_N_S_soc_S_uart_3ff6e000_P_pinctrl_0_IDX_0_PH DT_N_S_pin_controller_S_uart2_default
@@ -7398,6 +6619,8 @@
 #define DT_N_S_soc_S_uart_3ff6e000_P_pinctrl_names_FOREACH_PROP_ELEM_SEP_VARGS(fn, sep, ...) fn(DT_N_S_soc_S_uart_3ff6e000, pinctrl_names, 0, __VA_ARGS__)
 #define DT_N_S_soc_S_uart_3ff6e000_P_pinctrl_names_LEN 1
 #define DT_N_S_soc_S_uart_3ff6e000_P_pinctrl_names_EXISTS 1
+#define DT_N_S_soc_S_uart_3ff6e000_P_hw_rs485_hd_mode 0
+#define DT_N_S_soc_S_uart_3ff6e000_P_hw_rs485_hd_mode_EXISTS 1
 #define DT_N_S_soc_S_uart_3ff6e000_P_current_speed 115200
 #define DT_N_S_soc_S_uart_3ff6e000_P_current_speed_EXISTS 1
 #define DT_N_S_soc_S_uart_3ff6e000_P_hw_flow_control 0
@@ -7406,41 +6629,17 @@
 #define DT_N_S_soc_S_uart_3ff6e000_P_status_STRING_UNQUOTED disabled
 #define DT_N_S_soc_S_uart_3ff6e000_P_status_STRING_TOKEN disabled
 #define DT_N_S_soc_S_uart_3ff6e000_P_status_STRING_UPPER_TOKEN DISABLED
+#define DT_N_S_soc_S_uart_3ff6e000_P_status_IDX_0 "disabled"
+#define DT_N_S_soc_S_uart_3ff6e000_P_status_IDX_0_EXISTS 1
 #define DT_N_S_soc_S_uart_3ff6e000_P_status_ENUM_IDX 2
+#define DT_N_S_soc_S_uart_3ff6e000_P_status_ENUM_VAL_disabled_EXISTS 1
 #define DT_N_S_soc_S_uart_3ff6e000_P_status_ENUM_TOKEN disabled
 #define DT_N_S_soc_S_uart_3ff6e000_P_status_ENUM_UPPER_TOKEN DISABLED
-#define DT_N_S_soc_S_uart_3ff6e000_P_status_FOREACH_PROP_ELEM(fn) fn(DT_N_S_soc_S_uart_3ff6e000, status, 0) \
-	fn(DT_N_S_soc_S_uart_3ff6e000, status, 1) \
-	fn(DT_N_S_soc_S_uart_3ff6e000, status, 2) \
-	fn(DT_N_S_soc_S_uart_3ff6e000, status, 3) \
-	fn(DT_N_S_soc_S_uart_3ff6e000, status, 4) \
-	fn(DT_N_S_soc_S_uart_3ff6e000, status, 5) \
-	fn(DT_N_S_soc_S_uart_3ff6e000, status, 6) \
-	fn(DT_N_S_soc_S_uart_3ff6e000, status, 7)
-#define DT_N_S_soc_S_uart_3ff6e000_P_status_FOREACH_PROP_ELEM_SEP(fn, sep) fn(DT_N_S_soc_S_uart_3ff6e000, status, 0) DT_DEBRACKET_INTERNAL sep \
-	fn(DT_N_S_soc_S_uart_3ff6e000, status, 1) DT_DEBRACKET_INTERNAL sep \
-	fn(DT_N_S_soc_S_uart_3ff6e000, status, 2) DT_DEBRACKET_INTERNAL sep \
-	fn(DT_N_S_soc_S_uart_3ff6e000, status, 3) DT_DEBRACKET_INTERNAL sep \
-	fn(DT_N_S_soc_S_uart_3ff6e000, status, 4) DT_DEBRACKET_INTERNAL sep \
-	fn(DT_N_S_soc_S_uart_3ff6e000, status, 5) DT_DEBRACKET_INTERNAL sep \
-	fn(DT_N_S_soc_S_uart_3ff6e000, status, 6) DT_DEBRACKET_INTERNAL sep \
-	fn(DT_N_S_soc_S_uart_3ff6e000, status, 7)
-#define DT_N_S_soc_S_uart_3ff6e000_P_status_FOREACH_PROP_ELEM_VARGS(fn, ...) fn(DT_N_S_soc_S_uart_3ff6e000, status, 0, __VA_ARGS__) \
-	fn(DT_N_S_soc_S_uart_3ff6e000, status, 1, __VA_ARGS__) \
-	fn(DT_N_S_soc_S_uart_3ff6e000, status, 2, __VA_ARGS__) \
-	fn(DT_N_S_soc_S_uart_3ff6e000, status, 3, __VA_ARGS__) \
-	fn(DT_N_S_soc_S_uart_3ff6e000, status, 4, __VA_ARGS__) \
-	fn(DT_N_S_soc_S_uart_3ff6e000, status, 5, __VA_ARGS__) \
-	fn(DT_N_S_soc_S_uart_3ff6e000, status, 6, __VA_ARGS__) \
-	fn(DT_N_S_soc_S_uart_3ff6e000, status, 7, __VA_ARGS__)
-#define DT_N_S_soc_S_uart_3ff6e000_P_status_FOREACH_PROP_ELEM_SEP_VARGS(fn, sep, ...) fn(DT_N_S_soc_S_uart_3ff6e000, status, 0, __VA_ARGS__) DT_DEBRACKET_INTERNAL sep \
-	fn(DT_N_S_soc_S_uart_3ff6e000, status, 1, __VA_ARGS__) DT_DEBRACKET_INTERNAL sep \
-	fn(DT_N_S_soc_S_uart_3ff6e000, status, 2, __VA_ARGS__) DT_DEBRACKET_INTERNAL sep \
-	fn(DT_N_S_soc_S_uart_3ff6e000, status, 3, __VA_ARGS__) DT_DEBRACKET_INTERNAL sep \
-	fn(DT_N_S_soc_S_uart_3ff6e000, status, 4, __VA_ARGS__) DT_DEBRACKET_INTERNAL sep \
-	fn(DT_N_S_soc_S_uart_3ff6e000, status, 5, __VA_ARGS__) DT_DEBRACKET_INTERNAL sep \
-	fn(DT_N_S_soc_S_uart_3ff6e000, status, 6, __VA_ARGS__) DT_DEBRACKET_INTERNAL sep \
-	fn(DT_N_S_soc_S_uart_3ff6e000, status, 7, __VA_ARGS__)
+#define DT_N_S_soc_S_uart_3ff6e000_P_status_FOREACH_PROP_ELEM(fn) fn(DT_N_S_soc_S_uart_3ff6e000, status, 0)
+#define DT_N_S_soc_S_uart_3ff6e000_P_status_FOREACH_PROP_ELEM_SEP(fn, sep) fn(DT_N_S_soc_S_uart_3ff6e000, status, 0)
+#define DT_N_S_soc_S_uart_3ff6e000_P_status_FOREACH_PROP_ELEM_VARGS(fn, ...) fn(DT_N_S_soc_S_uart_3ff6e000, status, 0, __VA_ARGS__)
+#define DT_N_S_soc_S_uart_3ff6e000_P_status_FOREACH_PROP_ELEM_SEP_VARGS(fn, sep, ...) fn(DT_N_S_soc_S_uart_3ff6e000, status, 0, __VA_ARGS__)
+#define DT_N_S_soc_S_uart_3ff6e000_P_status_LEN 1
 #define DT_N_S_soc_S_uart_3ff6e000_P_status_EXISTS 1
 #define DT_N_S_soc_S_uart_3ff6e000_P_compatible {"espressif,esp32-uart"}
 #define DT_N_S_soc_S_uart_3ff6e000_P_compatible_IDX_0 "espressif,esp32-uart"
@@ -7457,15 +6656,15 @@
 #define DT_N_S_soc_S_uart_3ff6e000_P_interrupts {36 /* 0x24 */}
 #define DT_N_S_soc_S_uart_3ff6e000_P_interrupts_IDX_0 36
 #define DT_N_S_soc_S_uart_3ff6e000_P_interrupts_IDX_0_EXISTS 1
-#define DT_N_S_soc_S_uart_3ff6e000_P_interrupts_FOREACH_PROP_ELEM(fn) fn(DT_N_S_soc_S_uart_3ff6e000, interrupts, 0)
-#define DT_N_S_soc_S_uart_3ff6e000_P_interrupts_FOREACH_PROP_ELEM_SEP(fn, sep) fn(DT_N_S_soc_S_uart_3ff6e000, interrupts, 0)
-#define DT_N_S_soc_S_uart_3ff6e000_P_interrupts_FOREACH_PROP_ELEM_VARGS(fn, ...) fn(DT_N_S_soc_S_uart_3ff6e000, interrupts, 0, __VA_ARGS__)
-#define DT_N_S_soc_S_uart_3ff6e000_P_interrupts_FOREACH_PROP_ELEM_SEP_VARGS(fn, sep, ...) fn(DT_N_S_soc_S_uart_3ff6e000, interrupts, 0, __VA_ARGS__)
 #define DT_N_S_soc_S_uart_3ff6e000_P_interrupts_EXISTS 1
 #define DT_N_S_soc_S_uart_3ff6e000_P_interrupt_parent DT_N_S_soc_S_interrupt_controller_3ff00104
 #define DT_N_S_soc_S_uart_3ff6e000_P_interrupt_parent_IDX_0 DT_N_S_soc_S_interrupt_controller_3ff00104
 #define DT_N_S_soc_S_uart_3ff6e000_P_interrupt_parent_IDX_0_PH DT_N_S_soc_S_interrupt_controller_3ff00104
 #define DT_N_S_soc_S_uart_3ff6e000_P_interrupt_parent_IDX_0_EXISTS 1
+#define DT_N_S_soc_S_uart_3ff6e000_P_interrupt_parent_FOREACH_PROP_ELEM(fn) fn(DT_N_S_soc_S_uart_3ff6e000, interrupt_parent, 0)
+#define DT_N_S_soc_S_uart_3ff6e000_P_interrupt_parent_FOREACH_PROP_ELEM_SEP(fn, sep) fn(DT_N_S_soc_S_uart_3ff6e000, interrupt_parent, 0)
+#define DT_N_S_soc_S_uart_3ff6e000_P_interrupt_parent_FOREACH_PROP_ELEM_VARGS(fn, ...) fn(DT_N_S_soc_S_uart_3ff6e000, interrupt_parent, 0, __VA_ARGS__)
+#define DT_N_S_soc_S_uart_3ff6e000_P_interrupt_parent_FOREACH_PROP_ELEM_SEP_VARGS(fn, sep, ...) fn(DT_N_S_soc_S_uart_3ff6e000, interrupt_parent, 0, __VA_ARGS__)
 #define DT_N_S_soc_S_uart_3ff6e000_P_interrupt_parent_LEN 1
 #define DT_N_S_soc_S_uart_3ff6e000_P_interrupt_parent_EXISTS 1
 #define DT_N_S_soc_S_uart_3ff6e000_P_clocks_IDX_0_EXISTS 1
@@ -7480,6 +6679,8 @@
 #define DT_N_S_soc_S_uart_3ff6e000_P_clocks_EXISTS 1
 #define DT_N_S_soc_S_uart_3ff6e000_P_wakeup_source 0
 #define DT_N_S_soc_S_uart_3ff6e000_P_wakeup_source_EXISTS 1
+#define DT_N_S_soc_S_uart_3ff6e000_P_zephyr_pm_device_runtime_auto 0
+#define DT_N_S_soc_S_uart_3ff6e000_P_zephyr_pm_device_runtime_auto_EXISTS 1
 
 /*
  * Devicetree node: /soc/watchdog@3ff5f048
@@ -7487,7 +6688,7 @@
  * Node identifier: DT_N_S_soc_S_watchdog_3ff5f048
  *
  * Binding (compatible = espressif,esp32-watchdog):
- *   $ZEPHYR_BASE/dts/bindings/watchdog/espressif,esp32-watchdog.yaml
+ *   /home/gez/sdks/zephyr/zephyr/dts/bindings/watchdog/espressif,esp32-watchdog.yaml
  *
  * (Descriptions have moved to the Devicetree Bindings Index
  * in the documentation.)
@@ -7560,38 +6761,22 @@
 #define DT_N_S_soc_S_watchdog_3ff5f048_P_reg_IDX_0_EXISTS 1
 #define DT_N_S_soc_S_watchdog_3ff5f048_P_reg_IDX_1 32
 #define DT_N_S_soc_S_watchdog_3ff5f048_P_reg_IDX_1_EXISTS 1
-#define DT_N_S_soc_S_watchdog_3ff5f048_P_reg_FOREACH_PROP_ELEM(fn) fn(DT_N_S_soc_S_watchdog_3ff5f048, reg, 0) \
-	fn(DT_N_S_soc_S_watchdog_3ff5f048, reg, 1)
-#define DT_N_S_soc_S_watchdog_3ff5f048_P_reg_FOREACH_PROP_ELEM_SEP(fn, sep) fn(DT_N_S_soc_S_watchdog_3ff5f048, reg, 0) DT_DEBRACKET_INTERNAL sep \
-	fn(DT_N_S_soc_S_watchdog_3ff5f048, reg, 1)
-#define DT_N_S_soc_S_watchdog_3ff5f048_P_reg_FOREACH_PROP_ELEM_VARGS(fn, ...) fn(DT_N_S_soc_S_watchdog_3ff5f048, reg, 0, __VA_ARGS__) \
-	fn(DT_N_S_soc_S_watchdog_3ff5f048, reg, 1, __VA_ARGS__)
-#define DT_N_S_soc_S_watchdog_3ff5f048_P_reg_FOREACH_PROP_ELEM_SEP_VARGS(fn, sep, ...) fn(DT_N_S_soc_S_watchdog_3ff5f048, reg, 0, __VA_ARGS__) DT_DEBRACKET_INTERNAL sep \
-	fn(DT_N_S_soc_S_watchdog_3ff5f048, reg, 1, __VA_ARGS__)
 #define DT_N_S_soc_S_watchdog_3ff5f048_P_reg_EXISTS 1
 #define DT_N_S_soc_S_watchdog_3ff5f048_P_status "okay"
 #define DT_N_S_soc_S_watchdog_3ff5f048_P_status_STRING_UNQUOTED okay
 #define DT_N_S_soc_S_watchdog_3ff5f048_P_status_STRING_TOKEN okay
 #define DT_N_S_soc_S_watchdog_3ff5f048_P_status_STRING_UPPER_TOKEN OKAY
+#define DT_N_S_soc_S_watchdog_3ff5f048_P_status_IDX_0 "okay"
+#define DT_N_S_soc_S_watchdog_3ff5f048_P_status_IDX_0_EXISTS 1
 #define DT_N_S_soc_S_watchdog_3ff5f048_P_status_ENUM_IDX 1
+#define DT_N_S_soc_S_watchdog_3ff5f048_P_status_ENUM_VAL_okay_EXISTS 1
 #define DT_N_S_soc_S_watchdog_3ff5f048_P_status_ENUM_TOKEN okay
 #define DT_N_S_soc_S_watchdog_3ff5f048_P_status_ENUM_UPPER_TOKEN OKAY
-#define DT_N_S_soc_S_watchdog_3ff5f048_P_status_FOREACH_PROP_ELEM(fn) fn(DT_N_S_soc_S_watchdog_3ff5f048, status, 0) \
-	fn(DT_N_S_soc_S_watchdog_3ff5f048, status, 1) \
-	fn(DT_N_S_soc_S_watchdog_3ff5f048, status, 2) \
-	fn(DT_N_S_soc_S_watchdog_3ff5f048, status, 3)
-#define DT_N_S_soc_S_watchdog_3ff5f048_P_status_FOREACH_PROP_ELEM_SEP(fn, sep) fn(DT_N_S_soc_S_watchdog_3ff5f048, status, 0) DT_DEBRACKET_INTERNAL sep \
-	fn(DT_N_S_soc_S_watchdog_3ff5f048, status, 1) DT_DEBRACKET_INTERNAL sep \
-	fn(DT_N_S_soc_S_watchdog_3ff5f048, status, 2) DT_DEBRACKET_INTERNAL sep \
-	fn(DT_N_S_soc_S_watchdog_3ff5f048, status, 3)
-#define DT_N_S_soc_S_watchdog_3ff5f048_P_status_FOREACH_PROP_ELEM_VARGS(fn, ...) fn(DT_N_S_soc_S_watchdog_3ff5f048, status, 0, __VA_ARGS__) \
-	fn(DT_N_S_soc_S_watchdog_3ff5f048, status, 1, __VA_ARGS__) \
-	fn(DT_N_S_soc_S_watchdog_3ff5f048, status, 2, __VA_ARGS__) \
-	fn(DT_N_S_soc_S_watchdog_3ff5f048, status, 3, __VA_ARGS__)
-#define DT_N_S_soc_S_watchdog_3ff5f048_P_status_FOREACH_PROP_ELEM_SEP_VARGS(fn, sep, ...) fn(DT_N_S_soc_S_watchdog_3ff5f048, status, 0, __VA_ARGS__) DT_DEBRACKET_INTERNAL sep \
-	fn(DT_N_S_soc_S_watchdog_3ff5f048, status, 1, __VA_ARGS__) DT_DEBRACKET_INTERNAL sep \
-	fn(DT_N_S_soc_S_watchdog_3ff5f048, status, 2, __VA_ARGS__) DT_DEBRACKET_INTERNAL sep \
-	fn(DT_N_S_soc_S_watchdog_3ff5f048, status, 3, __VA_ARGS__)
+#define DT_N_S_soc_S_watchdog_3ff5f048_P_status_FOREACH_PROP_ELEM(fn) fn(DT_N_S_soc_S_watchdog_3ff5f048, status, 0)
+#define DT_N_S_soc_S_watchdog_3ff5f048_P_status_FOREACH_PROP_ELEM_SEP(fn, sep) fn(DT_N_S_soc_S_watchdog_3ff5f048, status, 0)
+#define DT_N_S_soc_S_watchdog_3ff5f048_P_status_FOREACH_PROP_ELEM_VARGS(fn, ...) fn(DT_N_S_soc_S_watchdog_3ff5f048, status, 0, __VA_ARGS__)
+#define DT_N_S_soc_S_watchdog_3ff5f048_P_status_FOREACH_PROP_ELEM_SEP_VARGS(fn, sep, ...) fn(DT_N_S_soc_S_watchdog_3ff5f048, status, 0, __VA_ARGS__)
+#define DT_N_S_soc_S_watchdog_3ff5f048_P_status_LEN 1
 #define DT_N_S_soc_S_watchdog_3ff5f048_P_status_EXISTS 1
 #define DT_N_S_soc_S_watchdog_3ff5f048_P_compatible {"espressif,esp32-watchdog"}
 #define DT_N_S_soc_S_watchdog_3ff5f048_P_compatible_IDX_0 "espressif,esp32-watchdog"
@@ -7608,15 +6793,15 @@
 #define DT_N_S_soc_S_watchdog_3ff5f048_P_interrupts {16 /* 0x10 */}
 #define DT_N_S_soc_S_watchdog_3ff5f048_P_interrupts_IDX_0 16
 #define DT_N_S_soc_S_watchdog_3ff5f048_P_interrupts_IDX_0_EXISTS 1
-#define DT_N_S_soc_S_watchdog_3ff5f048_P_interrupts_FOREACH_PROP_ELEM(fn) fn(DT_N_S_soc_S_watchdog_3ff5f048, interrupts, 0)
-#define DT_N_S_soc_S_watchdog_3ff5f048_P_interrupts_FOREACH_PROP_ELEM_SEP(fn, sep) fn(DT_N_S_soc_S_watchdog_3ff5f048, interrupts, 0)
-#define DT_N_S_soc_S_watchdog_3ff5f048_P_interrupts_FOREACH_PROP_ELEM_VARGS(fn, ...) fn(DT_N_S_soc_S_watchdog_3ff5f048, interrupts, 0, __VA_ARGS__)
-#define DT_N_S_soc_S_watchdog_3ff5f048_P_interrupts_FOREACH_PROP_ELEM_SEP_VARGS(fn, sep, ...) fn(DT_N_S_soc_S_watchdog_3ff5f048, interrupts, 0, __VA_ARGS__)
 #define DT_N_S_soc_S_watchdog_3ff5f048_P_interrupts_EXISTS 1
 #define DT_N_S_soc_S_watchdog_3ff5f048_P_interrupt_parent DT_N_S_soc_S_interrupt_controller_3ff00104
 #define DT_N_S_soc_S_watchdog_3ff5f048_P_interrupt_parent_IDX_0 DT_N_S_soc_S_interrupt_controller_3ff00104
 #define DT_N_S_soc_S_watchdog_3ff5f048_P_interrupt_parent_IDX_0_PH DT_N_S_soc_S_interrupt_controller_3ff00104
 #define DT_N_S_soc_S_watchdog_3ff5f048_P_interrupt_parent_IDX_0_EXISTS 1
+#define DT_N_S_soc_S_watchdog_3ff5f048_P_interrupt_parent_FOREACH_PROP_ELEM(fn) fn(DT_N_S_soc_S_watchdog_3ff5f048, interrupt_parent, 0)
+#define DT_N_S_soc_S_watchdog_3ff5f048_P_interrupt_parent_FOREACH_PROP_ELEM_SEP(fn, sep) fn(DT_N_S_soc_S_watchdog_3ff5f048, interrupt_parent, 0)
+#define DT_N_S_soc_S_watchdog_3ff5f048_P_interrupt_parent_FOREACH_PROP_ELEM_VARGS(fn, ...) fn(DT_N_S_soc_S_watchdog_3ff5f048, interrupt_parent, 0, __VA_ARGS__)
+#define DT_N_S_soc_S_watchdog_3ff5f048_P_interrupt_parent_FOREACH_PROP_ELEM_SEP_VARGS(fn, sep, ...) fn(DT_N_S_soc_S_watchdog_3ff5f048, interrupt_parent, 0, __VA_ARGS__)
 #define DT_N_S_soc_S_watchdog_3ff5f048_P_interrupt_parent_LEN 1
 #define DT_N_S_soc_S_watchdog_3ff5f048_P_interrupt_parent_EXISTS 1
 #define DT_N_S_soc_S_watchdog_3ff5f048_P_clocks_IDX_0_EXISTS 1
@@ -7631,6 +6816,8 @@
 #define DT_N_S_soc_S_watchdog_3ff5f048_P_clocks_EXISTS 1
 #define DT_N_S_soc_S_watchdog_3ff5f048_P_wakeup_source 0
 #define DT_N_S_soc_S_watchdog_3ff5f048_P_wakeup_source_EXISTS 1
+#define DT_N_S_soc_S_watchdog_3ff5f048_P_zephyr_pm_device_runtime_auto 0
+#define DT_N_S_soc_S_watchdog_3ff5f048_P_zephyr_pm_device_runtime_auto_EXISTS 1
 
 /*
  * Devicetree node: /soc/watchdog@3ff60048
@@ -7638,7 +6825,7 @@
  * Node identifier: DT_N_S_soc_S_watchdog_3ff60048
  *
  * Binding (compatible = espressif,esp32-watchdog):
- *   $ZEPHYR_BASE/dts/bindings/watchdog/espressif,esp32-watchdog.yaml
+ *   /home/gez/sdks/zephyr/zephyr/dts/bindings/watchdog/espressif,esp32-watchdog.yaml
  *
  * (Descriptions have moved to the Devicetree Bindings Index
  * in the documentation.)
@@ -7710,54 +6897,22 @@
 #define DT_N_S_soc_S_watchdog_3ff60048_P_reg_IDX_0_EXISTS 1
 #define DT_N_S_soc_S_watchdog_3ff60048_P_reg_IDX_1 32
 #define DT_N_S_soc_S_watchdog_3ff60048_P_reg_IDX_1_EXISTS 1
-#define DT_N_S_soc_S_watchdog_3ff60048_P_reg_FOREACH_PROP_ELEM(fn) fn(DT_N_S_soc_S_watchdog_3ff60048, reg, 0) \
-	fn(DT_N_S_soc_S_watchdog_3ff60048, reg, 1)
-#define DT_N_S_soc_S_watchdog_3ff60048_P_reg_FOREACH_PROP_ELEM_SEP(fn, sep) fn(DT_N_S_soc_S_watchdog_3ff60048, reg, 0) DT_DEBRACKET_INTERNAL sep \
-	fn(DT_N_S_soc_S_watchdog_3ff60048, reg, 1)
-#define DT_N_S_soc_S_watchdog_3ff60048_P_reg_FOREACH_PROP_ELEM_VARGS(fn, ...) fn(DT_N_S_soc_S_watchdog_3ff60048, reg, 0, __VA_ARGS__) \
-	fn(DT_N_S_soc_S_watchdog_3ff60048, reg, 1, __VA_ARGS__)
-#define DT_N_S_soc_S_watchdog_3ff60048_P_reg_FOREACH_PROP_ELEM_SEP_VARGS(fn, sep, ...) fn(DT_N_S_soc_S_watchdog_3ff60048, reg, 0, __VA_ARGS__) DT_DEBRACKET_INTERNAL sep \
-	fn(DT_N_S_soc_S_watchdog_3ff60048, reg, 1, __VA_ARGS__)
 #define DT_N_S_soc_S_watchdog_3ff60048_P_reg_EXISTS 1
 #define DT_N_S_soc_S_watchdog_3ff60048_P_status "disabled"
 #define DT_N_S_soc_S_watchdog_3ff60048_P_status_STRING_UNQUOTED disabled
 #define DT_N_S_soc_S_watchdog_3ff60048_P_status_STRING_TOKEN disabled
 #define DT_N_S_soc_S_watchdog_3ff60048_P_status_STRING_UPPER_TOKEN DISABLED
+#define DT_N_S_soc_S_watchdog_3ff60048_P_status_IDX_0 "disabled"
+#define DT_N_S_soc_S_watchdog_3ff60048_P_status_IDX_0_EXISTS 1
 #define DT_N_S_soc_S_watchdog_3ff60048_P_status_ENUM_IDX 2
+#define DT_N_S_soc_S_watchdog_3ff60048_P_status_ENUM_VAL_disabled_EXISTS 1
 #define DT_N_S_soc_S_watchdog_3ff60048_P_status_ENUM_TOKEN disabled
 #define DT_N_S_soc_S_watchdog_3ff60048_P_status_ENUM_UPPER_TOKEN DISABLED
-#define DT_N_S_soc_S_watchdog_3ff60048_P_status_FOREACH_PROP_ELEM(fn) fn(DT_N_S_soc_S_watchdog_3ff60048, status, 0) \
-	fn(DT_N_S_soc_S_watchdog_3ff60048, status, 1) \
-	fn(DT_N_S_soc_S_watchdog_3ff60048, status, 2) \
-	fn(DT_N_S_soc_S_watchdog_3ff60048, status, 3) \
-	fn(DT_N_S_soc_S_watchdog_3ff60048, status, 4) \
-	fn(DT_N_S_soc_S_watchdog_3ff60048, status, 5) \
-	fn(DT_N_S_soc_S_watchdog_3ff60048, status, 6) \
-	fn(DT_N_S_soc_S_watchdog_3ff60048, status, 7)
-#define DT_N_S_soc_S_watchdog_3ff60048_P_status_FOREACH_PROP_ELEM_SEP(fn, sep) fn(DT_N_S_soc_S_watchdog_3ff60048, status, 0) DT_DEBRACKET_INTERNAL sep \
-	fn(DT_N_S_soc_S_watchdog_3ff60048, status, 1) DT_DEBRACKET_INTERNAL sep \
-	fn(DT_N_S_soc_S_watchdog_3ff60048, status, 2) DT_DEBRACKET_INTERNAL sep \
-	fn(DT_N_S_soc_S_watchdog_3ff60048, status, 3) DT_DEBRACKET_INTERNAL sep \
-	fn(DT_N_S_soc_S_watchdog_3ff60048, status, 4) DT_DEBRACKET_INTERNAL sep \
-	fn(DT_N_S_soc_S_watchdog_3ff60048, status, 5) DT_DEBRACKET_INTERNAL sep \
-	fn(DT_N_S_soc_S_watchdog_3ff60048, status, 6) DT_DEBRACKET_INTERNAL sep \
-	fn(DT_N_S_soc_S_watchdog_3ff60048, status, 7)
-#define DT_N_S_soc_S_watchdog_3ff60048_P_status_FOREACH_PROP_ELEM_VARGS(fn, ...) fn(DT_N_S_soc_S_watchdog_3ff60048, status, 0, __VA_ARGS__) \
-	fn(DT_N_S_soc_S_watchdog_3ff60048, status, 1, __VA_ARGS__) \
-	fn(DT_N_S_soc_S_watchdog_3ff60048, status, 2, __VA_ARGS__) \
-	fn(DT_N_S_soc_S_watchdog_3ff60048, status, 3, __VA_ARGS__) \
-	fn(DT_N_S_soc_S_watchdog_3ff60048, status, 4, __VA_ARGS__) \
-	fn(DT_N_S_soc_S_watchdog_3ff60048, status, 5, __VA_ARGS__) \
-	fn(DT_N_S_soc_S_watchdog_3ff60048, status, 6, __VA_ARGS__) \
-	fn(DT_N_S_soc_S_watchdog_3ff60048, status, 7, __VA_ARGS__)
-#define DT_N_S_soc_S_watchdog_3ff60048_P_status_FOREACH_PROP_ELEM_SEP_VARGS(fn, sep, ...) fn(DT_N_S_soc_S_watchdog_3ff60048, status, 0, __VA_ARGS__) DT_DEBRACKET_INTERNAL sep \
-	fn(DT_N_S_soc_S_watchdog_3ff60048, status, 1, __VA_ARGS__) DT_DEBRACKET_INTERNAL sep \
-	fn(DT_N_S_soc_S_watchdog_3ff60048, status, 2, __VA_ARGS__) DT_DEBRACKET_INTERNAL sep \
-	fn(DT_N_S_soc_S_watchdog_3ff60048, status, 3, __VA_ARGS__) DT_DEBRACKET_INTERNAL sep \
-	fn(DT_N_S_soc_S_watchdog_3ff60048, status, 4, __VA_ARGS__) DT_DEBRACKET_INTERNAL sep \
-	fn(DT_N_S_soc_S_watchdog_3ff60048, status, 5, __VA_ARGS__) DT_DEBRACKET_INTERNAL sep \
-	fn(DT_N_S_soc_S_watchdog_3ff60048, status, 6, __VA_ARGS__) DT_DEBRACKET_INTERNAL sep \
-	fn(DT_N_S_soc_S_watchdog_3ff60048, status, 7, __VA_ARGS__)
+#define DT_N_S_soc_S_watchdog_3ff60048_P_status_FOREACH_PROP_ELEM(fn) fn(DT_N_S_soc_S_watchdog_3ff60048, status, 0)
+#define DT_N_S_soc_S_watchdog_3ff60048_P_status_FOREACH_PROP_ELEM_SEP(fn, sep) fn(DT_N_S_soc_S_watchdog_3ff60048, status, 0)
+#define DT_N_S_soc_S_watchdog_3ff60048_P_status_FOREACH_PROP_ELEM_VARGS(fn, ...) fn(DT_N_S_soc_S_watchdog_3ff60048, status, 0, __VA_ARGS__)
+#define DT_N_S_soc_S_watchdog_3ff60048_P_status_FOREACH_PROP_ELEM_SEP_VARGS(fn, sep, ...) fn(DT_N_S_soc_S_watchdog_3ff60048, status, 0, __VA_ARGS__)
+#define DT_N_S_soc_S_watchdog_3ff60048_P_status_LEN 1
 #define DT_N_S_soc_S_watchdog_3ff60048_P_status_EXISTS 1
 #define DT_N_S_soc_S_watchdog_3ff60048_P_compatible {"espressif,esp32-watchdog"}
 #define DT_N_S_soc_S_watchdog_3ff60048_P_compatible_IDX_0 "espressif,esp32-watchdog"
@@ -7774,15 +6929,15 @@
 #define DT_N_S_soc_S_watchdog_3ff60048_P_interrupts {20 /* 0x14 */}
 #define DT_N_S_soc_S_watchdog_3ff60048_P_interrupts_IDX_0 20
 #define DT_N_S_soc_S_watchdog_3ff60048_P_interrupts_IDX_0_EXISTS 1
-#define DT_N_S_soc_S_watchdog_3ff60048_P_interrupts_FOREACH_PROP_ELEM(fn) fn(DT_N_S_soc_S_watchdog_3ff60048, interrupts, 0)
-#define DT_N_S_soc_S_watchdog_3ff60048_P_interrupts_FOREACH_PROP_ELEM_SEP(fn, sep) fn(DT_N_S_soc_S_watchdog_3ff60048, interrupts, 0)
-#define DT_N_S_soc_S_watchdog_3ff60048_P_interrupts_FOREACH_PROP_ELEM_VARGS(fn, ...) fn(DT_N_S_soc_S_watchdog_3ff60048, interrupts, 0, __VA_ARGS__)
-#define DT_N_S_soc_S_watchdog_3ff60048_P_interrupts_FOREACH_PROP_ELEM_SEP_VARGS(fn, sep, ...) fn(DT_N_S_soc_S_watchdog_3ff60048, interrupts, 0, __VA_ARGS__)
 #define DT_N_S_soc_S_watchdog_3ff60048_P_interrupts_EXISTS 1
 #define DT_N_S_soc_S_watchdog_3ff60048_P_interrupt_parent DT_N_S_soc_S_interrupt_controller_3ff00104
 #define DT_N_S_soc_S_watchdog_3ff60048_P_interrupt_parent_IDX_0 DT_N_S_soc_S_interrupt_controller_3ff00104
 #define DT_N_S_soc_S_watchdog_3ff60048_P_interrupt_parent_IDX_0_PH DT_N_S_soc_S_interrupt_controller_3ff00104
 #define DT_N_S_soc_S_watchdog_3ff60048_P_interrupt_parent_IDX_0_EXISTS 1
+#define DT_N_S_soc_S_watchdog_3ff60048_P_interrupt_parent_FOREACH_PROP_ELEM(fn) fn(DT_N_S_soc_S_watchdog_3ff60048, interrupt_parent, 0)
+#define DT_N_S_soc_S_watchdog_3ff60048_P_interrupt_parent_FOREACH_PROP_ELEM_SEP(fn, sep) fn(DT_N_S_soc_S_watchdog_3ff60048, interrupt_parent, 0)
+#define DT_N_S_soc_S_watchdog_3ff60048_P_interrupt_parent_FOREACH_PROP_ELEM_VARGS(fn, ...) fn(DT_N_S_soc_S_watchdog_3ff60048, interrupt_parent, 0, __VA_ARGS__)
+#define DT_N_S_soc_S_watchdog_3ff60048_P_interrupt_parent_FOREACH_PROP_ELEM_SEP_VARGS(fn, sep, ...) fn(DT_N_S_soc_S_watchdog_3ff60048, interrupt_parent, 0, __VA_ARGS__)
 #define DT_N_S_soc_S_watchdog_3ff60048_P_interrupt_parent_LEN 1
 #define DT_N_S_soc_S_watchdog_3ff60048_P_interrupt_parent_EXISTS 1
 #define DT_N_S_soc_S_watchdog_3ff60048_P_clocks_IDX_0_EXISTS 1
@@ -7797,6 +6952,8 @@
 #define DT_N_S_soc_S_watchdog_3ff60048_P_clocks_EXISTS 1
 #define DT_N_S_soc_S_watchdog_3ff60048_P_wakeup_source 0
 #define DT_N_S_soc_S_watchdog_3ff60048_P_wakeup_source_EXISTS 1
+#define DT_N_S_soc_S_watchdog_3ff60048_P_zephyr_pm_device_runtime_auto 0
+#define DT_N_S_soc_S_watchdog_3ff60048_P_zephyr_pm_device_runtime_auto_EXISTS 1
 
 /*
  * Devicetree node: /soc/flash-controller@3ff42000
@@ -7804,7 +6961,7 @@
  * Node identifier: DT_N_S_soc_S_flash_controller_3ff42000
  *
  * Binding (compatible = espressif,esp32-flash-controller):
- *   $ZEPHYR_BASE/dts/bindings/flash_controller/espressif,esp32-flash-controller.yaml
+ *   /home/gez/sdks/zephyr/zephyr/dts/bindings/flash_controller/espressif,esp32-flash-controller.yaml
  *
  * (Descriptions have moved to the Devicetree Bindings Index
  * in the documentation.)
@@ -7872,14 +7029,6 @@
 #define DT_N_S_soc_S_flash_controller_3ff42000_P_reg_IDX_0_EXISTS 1
 #define DT_N_S_soc_S_flash_controller_3ff42000_P_reg_IDX_1 4096
 #define DT_N_S_soc_S_flash_controller_3ff42000_P_reg_IDX_1_EXISTS 1
-#define DT_N_S_soc_S_flash_controller_3ff42000_P_reg_FOREACH_PROP_ELEM(fn) fn(DT_N_S_soc_S_flash_controller_3ff42000, reg, 0) \
-	fn(DT_N_S_soc_S_flash_controller_3ff42000, reg, 1)
-#define DT_N_S_soc_S_flash_controller_3ff42000_P_reg_FOREACH_PROP_ELEM_SEP(fn, sep) fn(DT_N_S_soc_S_flash_controller_3ff42000, reg, 0) DT_DEBRACKET_INTERNAL sep \
-	fn(DT_N_S_soc_S_flash_controller_3ff42000, reg, 1)
-#define DT_N_S_soc_S_flash_controller_3ff42000_P_reg_FOREACH_PROP_ELEM_VARGS(fn, ...) fn(DT_N_S_soc_S_flash_controller_3ff42000, reg, 0, __VA_ARGS__) \
-	fn(DT_N_S_soc_S_flash_controller_3ff42000, reg, 1, __VA_ARGS__)
-#define DT_N_S_soc_S_flash_controller_3ff42000_P_reg_FOREACH_PROP_ELEM_SEP_VARGS(fn, sep, ...) fn(DT_N_S_soc_S_flash_controller_3ff42000, reg, 0, __VA_ARGS__) DT_DEBRACKET_INTERNAL sep \
-	fn(DT_N_S_soc_S_flash_controller_3ff42000, reg, 1, __VA_ARGS__)
 #define DT_N_S_soc_S_flash_controller_3ff42000_P_reg_EXISTS 1
 #define DT_N_S_soc_S_flash_controller_3ff42000_P_compatible {"espressif,esp32-flash-controller"}
 #define DT_N_S_soc_S_flash_controller_3ff42000_P_compatible_IDX_0 "espressif,esp32-flash-controller"
@@ -7895,6 +7044,8 @@
 #define DT_N_S_soc_S_flash_controller_3ff42000_P_compatible_EXISTS 1
 #define DT_N_S_soc_S_flash_controller_3ff42000_P_wakeup_source 0
 #define DT_N_S_soc_S_flash_controller_3ff42000_P_wakeup_source_EXISTS 1
+#define DT_N_S_soc_S_flash_controller_3ff42000_P_zephyr_pm_device_runtime_auto 0
+#define DT_N_S_soc_S_flash_controller_3ff42000_P_zephyr_pm_device_runtime_auto_EXISTS 1
 
 /*
  * Devicetree node: /soc/flash-controller@3ff42000/flash@0
@@ -7902,7 +7053,7 @@
  * Node identifier: DT_N_S_soc_S_flash_controller_3ff42000_S_flash_0
  *
  * Binding (compatible = soc-nv-flash):
- *   $ZEPHYR_BASE/dts/bindings/mtd/soc-nv-flash.yaml
+ *   /home/gez/sdks/zephyr/zephyr/dts/bindings/mtd/soc-nv-flash.yaml
  *
  * (Descriptions have moved to the Devicetree Bindings Index
  * in the documentation.)
@@ -7950,7 +7101,7 @@
 #define DT_N_S_soc_S_flash_controller_3ff42000_S_flash_0_REG_NUM 1
 #define DT_N_S_soc_S_flash_controller_3ff42000_S_flash_0_REG_IDX_0_EXISTS 1
 #define DT_N_S_soc_S_flash_controller_3ff42000_S_flash_0_REG_IDX_0_VAL_ADDRESS 0 /* 0x0 */
-#define DT_N_S_soc_S_flash_controller_3ff42000_S_flash_0_REG_IDX_0_VAL_SIZE 4194304 /* 0x400000 */
+#define DT_N_S_soc_S_flash_controller_3ff42000_S_flash_0_REG_IDX_0_VAL_SIZE 16777216 /* 0x1000000 */
 #define DT_N_S_soc_S_flash_controller_3ff42000_S_flash_0_RANGES_NUM 0
 #define DT_N_S_soc_S_flash_controller_3ff42000_S_flash_0_FOREACH_RANGE(fn) 
 #define DT_N_S_soc_S_flash_controller_3ff42000_S_flash_0_IRQ_NUM 0
@@ -7969,25 +7120,17 @@
 #define DT_N_S_soc_S_flash_controller_3ff42000_S_flash_0_P_status_STRING_UNQUOTED okay
 #define DT_N_S_soc_S_flash_controller_3ff42000_S_flash_0_P_status_STRING_TOKEN okay
 #define DT_N_S_soc_S_flash_controller_3ff42000_S_flash_0_P_status_STRING_UPPER_TOKEN OKAY
+#define DT_N_S_soc_S_flash_controller_3ff42000_S_flash_0_P_status_IDX_0 "okay"
+#define DT_N_S_soc_S_flash_controller_3ff42000_S_flash_0_P_status_IDX_0_EXISTS 1
 #define DT_N_S_soc_S_flash_controller_3ff42000_S_flash_0_P_status_ENUM_IDX 1
+#define DT_N_S_soc_S_flash_controller_3ff42000_S_flash_0_P_status_ENUM_VAL_okay_EXISTS 1
 #define DT_N_S_soc_S_flash_controller_3ff42000_S_flash_0_P_status_ENUM_TOKEN okay
 #define DT_N_S_soc_S_flash_controller_3ff42000_S_flash_0_P_status_ENUM_UPPER_TOKEN OKAY
-#define DT_N_S_soc_S_flash_controller_3ff42000_S_flash_0_P_status_FOREACH_PROP_ELEM(fn) fn(DT_N_S_soc_S_flash_controller_3ff42000_S_flash_0, status, 0) \
-	fn(DT_N_S_soc_S_flash_controller_3ff42000_S_flash_0, status, 1) \
-	fn(DT_N_S_soc_S_flash_controller_3ff42000_S_flash_0, status, 2) \
-	fn(DT_N_S_soc_S_flash_controller_3ff42000_S_flash_0, status, 3)
-#define DT_N_S_soc_S_flash_controller_3ff42000_S_flash_0_P_status_FOREACH_PROP_ELEM_SEP(fn, sep) fn(DT_N_S_soc_S_flash_controller_3ff42000_S_flash_0, status, 0) DT_DEBRACKET_INTERNAL sep \
-	fn(DT_N_S_soc_S_flash_controller_3ff42000_S_flash_0, status, 1) DT_DEBRACKET_INTERNAL sep \
-	fn(DT_N_S_soc_S_flash_controller_3ff42000_S_flash_0, status, 2) DT_DEBRACKET_INTERNAL sep \
-	fn(DT_N_S_soc_S_flash_controller_3ff42000_S_flash_0, status, 3)
-#define DT_N_S_soc_S_flash_controller_3ff42000_S_flash_0_P_status_FOREACH_PROP_ELEM_VARGS(fn, ...) fn(DT_N_S_soc_S_flash_controller_3ff42000_S_flash_0, status, 0, __VA_ARGS__) \
-	fn(DT_N_S_soc_S_flash_controller_3ff42000_S_flash_0, status, 1, __VA_ARGS__) \
-	fn(DT_N_S_soc_S_flash_controller_3ff42000_S_flash_0, status, 2, __VA_ARGS__) \
-	fn(DT_N_S_soc_S_flash_controller_3ff42000_S_flash_0, status, 3, __VA_ARGS__)
-#define DT_N_S_soc_S_flash_controller_3ff42000_S_flash_0_P_status_FOREACH_PROP_ELEM_SEP_VARGS(fn, sep, ...) fn(DT_N_S_soc_S_flash_controller_3ff42000_S_flash_0, status, 0, __VA_ARGS__) DT_DEBRACKET_INTERNAL sep \
-	fn(DT_N_S_soc_S_flash_controller_3ff42000_S_flash_0, status, 1, __VA_ARGS__) DT_DEBRACKET_INTERNAL sep \
-	fn(DT_N_S_soc_S_flash_controller_3ff42000_S_flash_0, status, 2, __VA_ARGS__) DT_DEBRACKET_INTERNAL sep \
-	fn(DT_N_S_soc_S_flash_controller_3ff42000_S_flash_0, status, 3, __VA_ARGS__)
+#define DT_N_S_soc_S_flash_controller_3ff42000_S_flash_0_P_status_FOREACH_PROP_ELEM(fn) fn(DT_N_S_soc_S_flash_controller_3ff42000_S_flash_0, status, 0)
+#define DT_N_S_soc_S_flash_controller_3ff42000_S_flash_0_P_status_FOREACH_PROP_ELEM_SEP(fn, sep) fn(DT_N_S_soc_S_flash_controller_3ff42000_S_flash_0, status, 0)
+#define DT_N_S_soc_S_flash_controller_3ff42000_S_flash_0_P_status_FOREACH_PROP_ELEM_VARGS(fn, ...) fn(DT_N_S_soc_S_flash_controller_3ff42000_S_flash_0, status, 0, __VA_ARGS__)
+#define DT_N_S_soc_S_flash_controller_3ff42000_S_flash_0_P_status_FOREACH_PROP_ELEM_SEP_VARGS(fn, sep, ...) fn(DT_N_S_soc_S_flash_controller_3ff42000_S_flash_0, status, 0, __VA_ARGS__)
+#define DT_N_S_soc_S_flash_controller_3ff42000_S_flash_0_P_status_LEN 1
 #define DT_N_S_soc_S_flash_controller_3ff42000_S_flash_0_P_status_EXISTS 1
 #define DT_N_S_soc_S_flash_controller_3ff42000_S_flash_0_P_compatible {"soc-nv-flash"}
 #define DT_N_S_soc_S_flash_controller_3ff42000_S_flash_0_P_compatible_IDX_0 "soc-nv-flash"
@@ -8001,22 +7144,16 @@
 #define DT_N_S_soc_S_flash_controller_3ff42000_S_flash_0_P_compatible_FOREACH_PROP_ELEM_SEP_VARGS(fn, sep, ...) fn(DT_N_S_soc_S_flash_controller_3ff42000_S_flash_0, compatible, 0, __VA_ARGS__)
 #define DT_N_S_soc_S_flash_controller_3ff42000_S_flash_0_P_compatible_LEN 1
 #define DT_N_S_soc_S_flash_controller_3ff42000_S_flash_0_P_compatible_EXISTS 1
-#define DT_N_S_soc_S_flash_controller_3ff42000_S_flash_0_P_reg {0 /* 0x0 */, 4194304 /* 0x400000 */}
+#define DT_N_S_soc_S_flash_controller_3ff42000_S_flash_0_P_reg {0 /* 0x0 */, 16777216 /* 0x1000000 */}
 #define DT_N_S_soc_S_flash_controller_3ff42000_S_flash_0_P_reg_IDX_0 0
 #define DT_N_S_soc_S_flash_controller_3ff42000_S_flash_0_P_reg_IDX_0_EXISTS 1
-#define DT_N_S_soc_S_flash_controller_3ff42000_S_flash_0_P_reg_IDX_1 4194304
+#define DT_N_S_soc_S_flash_controller_3ff42000_S_flash_0_P_reg_IDX_1 16777216
 #define DT_N_S_soc_S_flash_controller_3ff42000_S_flash_0_P_reg_IDX_1_EXISTS 1
-#define DT_N_S_soc_S_flash_controller_3ff42000_S_flash_0_P_reg_FOREACH_PROP_ELEM(fn) fn(DT_N_S_soc_S_flash_controller_3ff42000_S_flash_0, reg, 0) \
-	fn(DT_N_S_soc_S_flash_controller_3ff42000_S_flash_0, reg, 1)
-#define DT_N_S_soc_S_flash_controller_3ff42000_S_flash_0_P_reg_FOREACH_PROP_ELEM_SEP(fn, sep) fn(DT_N_S_soc_S_flash_controller_3ff42000_S_flash_0, reg, 0) DT_DEBRACKET_INTERNAL sep \
-	fn(DT_N_S_soc_S_flash_controller_3ff42000_S_flash_0, reg, 1)
-#define DT_N_S_soc_S_flash_controller_3ff42000_S_flash_0_P_reg_FOREACH_PROP_ELEM_VARGS(fn, ...) fn(DT_N_S_soc_S_flash_controller_3ff42000_S_flash_0, reg, 0, __VA_ARGS__) \
-	fn(DT_N_S_soc_S_flash_controller_3ff42000_S_flash_0, reg, 1, __VA_ARGS__)
-#define DT_N_S_soc_S_flash_controller_3ff42000_S_flash_0_P_reg_FOREACH_PROP_ELEM_SEP_VARGS(fn, sep, ...) fn(DT_N_S_soc_S_flash_controller_3ff42000_S_flash_0, reg, 0, __VA_ARGS__) DT_DEBRACKET_INTERNAL sep \
-	fn(DT_N_S_soc_S_flash_controller_3ff42000_S_flash_0, reg, 1, __VA_ARGS__)
 #define DT_N_S_soc_S_flash_controller_3ff42000_S_flash_0_P_reg_EXISTS 1
 #define DT_N_S_soc_S_flash_controller_3ff42000_S_flash_0_P_wakeup_source 0
 #define DT_N_S_soc_S_flash_controller_3ff42000_S_flash_0_P_wakeup_source_EXISTS 1
+#define DT_N_S_soc_S_flash_controller_3ff42000_S_flash_0_P_zephyr_pm_device_runtime_auto 0
+#define DT_N_S_soc_S_flash_controller_3ff42000_S_flash_0_P_zephyr_pm_device_runtime_auto_EXISTS 1
 
 /*
  * Devicetree node: /soc/flash-controller@3ff42000/flash@0/partitions
@@ -8024,7 +7161,7 @@
  * Node identifier: DT_N_S_soc_S_flash_controller_3ff42000_S_flash_0_S_partitions
  *
  * Binding (compatible = fixed-partitions):
- *   $ZEPHYR_BASE/dts/bindings/mtd/fixed-partitions.yaml
+ *   /home/gez/sdks/zephyr/zephyr/dts/bindings/mtd/fixed-partitions.yaml
  *
  * (Descriptions have moved to the Devicetree Bindings Index
  * in the documentation.)
@@ -8150,34 +7287,13 @@
 #define DT_N_S_soc_S_flash_controller_3ff42000_S_flash_0_S_partitions_S_partition_1000_P_label_STRING_UNQUOTED mcuboot
 #define DT_N_S_soc_S_flash_controller_3ff42000_S_flash_0_S_partitions_S_partition_1000_P_label_STRING_TOKEN mcuboot
 #define DT_N_S_soc_S_flash_controller_3ff42000_S_flash_0_S_partitions_S_partition_1000_P_label_STRING_UPPER_TOKEN MCUBOOT
-#define DT_N_S_soc_S_flash_controller_3ff42000_S_flash_0_S_partitions_S_partition_1000_P_label_FOREACH_PROP_ELEM(fn) fn(DT_N_S_soc_S_flash_controller_3ff42000_S_flash_0_S_partitions_S_partition_1000, label, 0) \
-	fn(DT_N_S_soc_S_flash_controller_3ff42000_S_flash_0_S_partitions_S_partition_1000, label, 1) \
-	fn(DT_N_S_soc_S_flash_controller_3ff42000_S_flash_0_S_partitions_S_partition_1000, label, 2) \
-	fn(DT_N_S_soc_S_flash_controller_3ff42000_S_flash_0_S_partitions_S_partition_1000, label, 3) \
-	fn(DT_N_S_soc_S_flash_controller_3ff42000_S_flash_0_S_partitions_S_partition_1000, label, 4) \
-	fn(DT_N_S_soc_S_flash_controller_3ff42000_S_flash_0_S_partitions_S_partition_1000, label, 5) \
-	fn(DT_N_S_soc_S_flash_controller_3ff42000_S_flash_0_S_partitions_S_partition_1000, label, 6)
-#define DT_N_S_soc_S_flash_controller_3ff42000_S_flash_0_S_partitions_S_partition_1000_P_label_FOREACH_PROP_ELEM_SEP(fn, sep) fn(DT_N_S_soc_S_flash_controller_3ff42000_S_flash_0_S_partitions_S_partition_1000, label, 0) DT_DEBRACKET_INTERNAL sep \
-	fn(DT_N_S_soc_S_flash_controller_3ff42000_S_flash_0_S_partitions_S_partition_1000, label, 1) DT_DEBRACKET_INTERNAL sep \
-	fn(DT_N_S_soc_S_flash_controller_3ff42000_S_flash_0_S_partitions_S_partition_1000, label, 2) DT_DEBRACKET_INTERNAL sep \
-	fn(DT_N_S_soc_S_flash_controller_3ff42000_S_flash_0_S_partitions_S_partition_1000, label, 3) DT_DEBRACKET_INTERNAL sep \
-	fn(DT_N_S_soc_S_flash_controller_3ff42000_S_flash_0_S_partitions_S_partition_1000, label, 4) DT_DEBRACKET_INTERNAL sep \
-	fn(DT_N_S_soc_S_flash_controller_3ff42000_S_flash_0_S_partitions_S_partition_1000, label, 5) DT_DEBRACKET_INTERNAL sep \
-	fn(DT_N_S_soc_S_flash_controller_3ff42000_S_flash_0_S_partitions_S_partition_1000, label, 6)
-#define DT_N_S_soc_S_flash_controller_3ff42000_S_flash_0_S_partitions_S_partition_1000_P_label_FOREACH_PROP_ELEM_VARGS(fn, ...) fn(DT_N_S_soc_S_flash_controller_3ff42000_S_flash_0_S_partitions_S_partition_1000, label, 0, __VA_ARGS__) \
-	fn(DT_N_S_soc_S_flash_controller_3ff42000_S_flash_0_S_partitions_S_partition_1000, label, 1, __VA_ARGS__) \
-	fn(DT_N_S_soc_S_flash_controller_3ff42000_S_flash_0_S_partitions_S_partition_1000, label, 2, __VA_ARGS__) \
-	fn(DT_N_S_soc_S_flash_controller_3ff42000_S_flash_0_S_partitions_S_partition_1000, label, 3, __VA_ARGS__) \
-	fn(DT_N_S_soc_S_flash_controller_3ff42000_S_flash_0_S_partitions_S_partition_1000, label, 4, __VA_ARGS__) \
-	fn(DT_N_S_soc_S_flash_controller_3ff42000_S_flash_0_S_partitions_S_partition_1000, label, 5, __VA_ARGS__) \
-	fn(DT_N_S_soc_S_flash_controller_3ff42000_S_flash_0_S_partitions_S_partition_1000, label, 6, __VA_ARGS__)
-#define DT_N_S_soc_S_flash_controller_3ff42000_S_flash_0_S_partitions_S_partition_1000_P_label_FOREACH_PROP_ELEM_SEP_VARGS(fn, sep, ...) fn(DT_N_S_soc_S_flash_controller_3ff42000_S_flash_0_S_partitions_S_partition_1000, label, 0, __VA_ARGS__) DT_DEBRACKET_INTERNAL sep \
-	fn(DT_N_S_soc_S_flash_controller_3ff42000_S_flash_0_S_partitions_S_partition_1000, label, 1, __VA_ARGS__) DT_DEBRACKET_INTERNAL sep \
-	fn(DT_N_S_soc_S_flash_controller_3ff42000_S_flash_0_S_partitions_S_partition_1000, label, 2, __VA_ARGS__) DT_DEBRACKET_INTERNAL sep \
-	fn(DT_N_S_soc_S_flash_controller_3ff42000_S_flash_0_S_partitions_S_partition_1000, label, 3, __VA_ARGS__) DT_DEBRACKET_INTERNAL sep \
-	fn(DT_N_S_soc_S_flash_controller_3ff42000_S_flash_0_S_partitions_S_partition_1000, label, 4, __VA_ARGS__) DT_DEBRACKET_INTERNAL sep \
-	fn(DT_N_S_soc_S_flash_controller_3ff42000_S_flash_0_S_partitions_S_partition_1000, label, 5, __VA_ARGS__) DT_DEBRACKET_INTERNAL sep \
-	fn(DT_N_S_soc_S_flash_controller_3ff42000_S_flash_0_S_partitions_S_partition_1000, label, 6, __VA_ARGS__)
+#define DT_N_S_soc_S_flash_controller_3ff42000_S_flash_0_S_partitions_S_partition_1000_P_label_IDX_0 "mcuboot"
+#define DT_N_S_soc_S_flash_controller_3ff42000_S_flash_0_S_partitions_S_partition_1000_P_label_IDX_0_EXISTS 1
+#define DT_N_S_soc_S_flash_controller_3ff42000_S_flash_0_S_partitions_S_partition_1000_P_label_FOREACH_PROP_ELEM(fn) fn(DT_N_S_soc_S_flash_controller_3ff42000_S_flash_0_S_partitions_S_partition_1000, label, 0)
+#define DT_N_S_soc_S_flash_controller_3ff42000_S_flash_0_S_partitions_S_partition_1000_P_label_FOREACH_PROP_ELEM_SEP(fn, sep) fn(DT_N_S_soc_S_flash_controller_3ff42000_S_flash_0_S_partitions_S_partition_1000, label, 0)
+#define DT_N_S_soc_S_flash_controller_3ff42000_S_flash_0_S_partitions_S_partition_1000_P_label_FOREACH_PROP_ELEM_VARGS(fn, ...) fn(DT_N_S_soc_S_flash_controller_3ff42000_S_flash_0_S_partitions_S_partition_1000, label, 0, __VA_ARGS__)
+#define DT_N_S_soc_S_flash_controller_3ff42000_S_flash_0_S_partitions_S_partition_1000_P_label_FOREACH_PROP_ELEM_SEP_VARGS(fn, sep, ...) fn(DT_N_S_soc_S_flash_controller_3ff42000_S_flash_0_S_partitions_S_partition_1000, label, 0, __VA_ARGS__)
+#define DT_N_S_soc_S_flash_controller_3ff42000_S_flash_0_S_partitions_S_partition_1000_P_label_LEN 1
 #define DT_N_S_soc_S_flash_controller_3ff42000_S_flash_0_S_partitions_S_partition_1000_P_label_EXISTS 1
 #define DT_N_S_soc_S_flash_controller_3ff42000_S_flash_0_S_partitions_S_partition_1000_P_read_only 1
 #define DT_N_S_soc_S_flash_controller_3ff42000_S_flash_0_S_partitions_S_partition_1000_P_read_only_EXISTS 1
@@ -8186,14 +7302,6 @@
 #define DT_N_S_soc_S_flash_controller_3ff42000_S_flash_0_S_partitions_S_partition_1000_P_reg_IDX_0_EXISTS 1
 #define DT_N_S_soc_S_flash_controller_3ff42000_S_flash_0_S_partitions_S_partition_1000_P_reg_IDX_1 61440
 #define DT_N_S_soc_S_flash_controller_3ff42000_S_flash_0_S_partitions_S_partition_1000_P_reg_IDX_1_EXISTS 1
-#define DT_N_S_soc_S_flash_controller_3ff42000_S_flash_0_S_partitions_S_partition_1000_P_reg_FOREACH_PROP_ELEM(fn) fn(DT_N_S_soc_S_flash_controller_3ff42000_S_flash_0_S_partitions_S_partition_1000, reg, 0) \
-	fn(DT_N_S_soc_S_flash_controller_3ff42000_S_flash_0_S_partitions_S_partition_1000, reg, 1)
-#define DT_N_S_soc_S_flash_controller_3ff42000_S_flash_0_S_partitions_S_partition_1000_P_reg_FOREACH_PROP_ELEM_SEP(fn, sep) fn(DT_N_S_soc_S_flash_controller_3ff42000_S_flash_0_S_partitions_S_partition_1000, reg, 0) DT_DEBRACKET_INTERNAL sep \
-	fn(DT_N_S_soc_S_flash_controller_3ff42000_S_flash_0_S_partitions_S_partition_1000, reg, 1)
-#define DT_N_S_soc_S_flash_controller_3ff42000_S_flash_0_S_partitions_S_partition_1000_P_reg_FOREACH_PROP_ELEM_VARGS(fn, ...) fn(DT_N_S_soc_S_flash_controller_3ff42000_S_flash_0_S_partitions_S_partition_1000, reg, 0, __VA_ARGS__) \
-	fn(DT_N_S_soc_S_flash_controller_3ff42000_S_flash_0_S_partitions_S_partition_1000, reg, 1, __VA_ARGS__)
-#define DT_N_S_soc_S_flash_controller_3ff42000_S_flash_0_S_partitions_S_partition_1000_P_reg_FOREACH_PROP_ELEM_SEP_VARGS(fn, sep, ...) fn(DT_N_S_soc_S_flash_controller_3ff42000_S_flash_0_S_partitions_S_partition_1000, reg, 0, __VA_ARGS__) DT_DEBRACKET_INTERNAL sep \
-	fn(DT_N_S_soc_S_flash_controller_3ff42000_S_flash_0_S_partitions_S_partition_1000, reg, 1, __VA_ARGS__)
 #define DT_N_S_soc_S_flash_controller_3ff42000_S_flash_0_S_partitions_S_partition_1000_P_reg_EXISTS 1
 
 /*
@@ -8262,34 +7370,13 @@
 #define DT_N_S_soc_S_flash_controller_3ff42000_S_flash_0_S_partitions_S_partition_10000_P_label_STRING_UNQUOTED image-0
 #define DT_N_S_soc_S_flash_controller_3ff42000_S_flash_0_S_partitions_S_partition_10000_P_label_STRING_TOKEN image_0
 #define DT_N_S_soc_S_flash_controller_3ff42000_S_flash_0_S_partitions_S_partition_10000_P_label_STRING_UPPER_TOKEN IMAGE_0
-#define DT_N_S_soc_S_flash_controller_3ff42000_S_flash_0_S_partitions_S_partition_10000_P_label_FOREACH_PROP_ELEM(fn) fn(DT_N_S_soc_S_flash_controller_3ff42000_S_flash_0_S_partitions_S_partition_10000, label, 0) \
-	fn(DT_N_S_soc_S_flash_controller_3ff42000_S_flash_0_S_partitions_S_partition_10000, label, 1) \
-	fn(DT_N_S_soc_S_flash_controller_3ff42000_S_flash_0_S_partitions_S_partition_10000, label, 2) \
-	fn(DT_N_S_soc_S_flash_controller_3ff42000_S_flash_0_S_partitions_S_partition_10000, label, 3) \
-	fn(DT_N_S_soc_S_flash_controller_3ff42000_S_flash_0_S_partitions_S_partition_10000, label, 4) \
-	fn(DT_N_S_soc_S_flash_controller_3ff42000_S_flash_0_S_partitions_S_partition_10000, label, 5) \
-	fn(DT_N_S_soc_S_flash_controller_3ff42000_S_flash_0_S_partitions_S_partition_10000, label, 6)
-#define DT_N_S_soc_S_flash_controller_3ff42000_S_flash_0_S_partitions_S_partition_10000_P_label_FOREACH_PROP_ELEM_SEP(fn, sep) fn(DT_N_S_soc_S_flash_controller_3ff42000_S_flash_0_S_partitions_S_partition_10000, label, 0) DT_DEBRACKET_INTERNAL sep \
-	fn(DT_N_S_soc_S_flash_controller_3ff42000_S_flash_0_S_partitions_S_partition_10000, label, 1) DT_DEBRACKET_INTERNAL sep \
-	fn(DT_N_S_soc_S_flash_controller_3ff42000_S_flash_0_S_partitions_S_partition_10000, label, 2) DT_DEBRACKET_INTERNAL sep \
-	fn(DT_N_S_soc_S_flash_controller_3ff42000_S_flash_0_S_partitions_S_partition_10000, label, 3) DT_DEBRACKET_INTERNAL sep \
-	fn(DT_N_S_soc_S_flash_controller_3ff42000_S_flash_0_S_partitions_S_partition_10000, label, 4) DT_DEBRACKET_INTERNAL sep \
-	fn(DT_N_S_soc_S_flash_controller_3ff42000_S_flash_0_S_partitions_S_partition_10000, label, 5) DT_DEBRACKET_INTERNAL sep \
-	fn(DT_N_S_soc_S_flash_controller_3ff42000_S_flash_0_S_partitions_S_partition_10000, label, 6)
-#define DT_N_S_soc_S_flash_controller_3ff42000_S_flash_0_S_partitions_S_partition_10000_P_label_FOREACH_PROP_ELEM_VARGS(fn, ...) fn(DT_N_S_soc_S_flash_controller_3ff42000_S_flash_0_S_partitions_S_partition_10000, label, 0, __VA_ARGS__) \
-	fn(DT_N_S_soc_S_flash_controller_3ff42000_S_flash_0_S_partitions_S_partition_10000, label, 1, __VA_ARGS__) \
-	fn(DT_N_S_soc_S_flash_controller_3ff42000_S_flash_0_S_partitions_S_partition_10000, label, 2, __VA_ARGS__) \
-	fn(DT_N_S_soc_S_flash_controller_3ff42000_S_flash_0_S_partitions_S_partition_10000, label, 3, __VA_ARGS__) \
-	fn(DT_N_S_soc_S_flash_controller_3ff42000_S_flash_0_S_partitions_S_partition_10000, label, 4, __VA_ARGS__) \
-	fn(DT_N_S_soc_S_flash_controller_3ff42000_S_flash_0_S_partitions_S_partition_10000, label, 5, __VA_ARGS__) \
-	fn(DT_N_S_soc_S_flash_controller_3ff42000_S_flash_0_S_partitions_S_partition_10000, label, 6, __VA_ARGS__)
-#define DT_N_S_soc_S_flash_controller_3ff42000_S_flash_0_S_partitions_S_partition_10000_P_label_FOREACH_PROP_ELEM_SEP_VARGS(fn, sep, ...) fn(DT_N_S_soc_S_flash_controller_3ff42000_S_flash_0_S_partitions_S_partition_10000, label, 0, __VA_ARGS__) DT_DEBRACKET_INTERNAL sep \
-	fn(DT_N_S_soc_S_flash_controller_3ff42000_S_flash_0_S_partitions_S_partition_10000, label, 1, __VA_ARGS__) DT_DEBRACKET_INTERNAL sep \
-	fn(DT_N_S_soc_S_flash_controller_3ff42000_S_flash_0_S_partitions_S_partition_10000, label, 2, __VA_ARGS__) DT_DEBRACKET_INTERNAL sep \
-	fn(DT_N_S_soc_S_flash_controller_3ff42000_S_flash_0_S_partitions_S_partition_10000, label, 3, __VA_ARGS__) DT_DEBRACKET_INTERNAL sep \
-	fn(DT_N_S_soc_S_flash_controller_3ff42000_S_flash_0_S_partitions_S_partition_10000, label, 4, __VA_ARGS__) DT_DEBRACKET_INTERNAL sep \
-	fn(DT_N_S_soc_S_flash_controller_3ff42000_S_flash_0_S_partitions_S_partition_10000, label, 5, __VA_ARGS__) DT_DEBRACKET_INTERNAL sep \
-	fn(DT_N_S_soc_S_flash_controller_3ff42000_S_flash_0_S_partitions_S_partition_10000, label, 6, __VA_ARGS__)
+#define DT_N_S_soc_S_flash_controller_3ff42000_S_flash_0_S_partitions_S_partition_10000_P_label_IDX_0 "image-0"
+#define DT_N_S_soc_S_flash_controller_3ff42000_S_flash_0_S_partitions_S_partition_10000_P_label_IDX_0_EXISTS 1
+#define DT_N_S_soc_S_flash_controller_3ff42000_S_flash_0_S_partitions_S_partition_10000_P_label_FOREACH_PROP_ELEM(fn) fn(DT_N_S_soc_S_flash_controller_3ff42000_S_flash_0_S_partitions_S_partition_10000, label, 0)
+#define DT_N_S_soc_S_flash_controller_3ff42000_S_flash_0_S_partitions_S_partition_10000_P_label_FOREACH_PROP_ELEM_SEP(fn, sep) fn(DT_N_S_soc_S_flash_controller_3ff42000_S_flash_0_S_partitions_S_partition_10000, label, 0)
+#define DT_N_S_soc_S_flash_controller_3ff42000_S_flash_0_S_partitions_S_partition_10000_P_label_FOREACH_PROP_ELEM_VARGS(fn, ...) fn(DT_N_S_soc_S_flash_controller_3ff42000_S_flash_0_S_partitions_S_partition_10000, label, 0, __VA_ARGS__)
+#define DT_N_S_soc_S_flash_controller_3ff42000_S_flash_0_S_partitions_S_partition_10000_P_label_FOREACH_PROP_ELEM_SEP_VARGS(fn, sep, ...) fn(DT_N_S_soc_S_flash_controller_3ff42000_S_flash_0_S_partitions_S_partition_10000, label, 0, __VA_ARGS__)
+#define DT_N_S_soc_S_flash_controller_3ff42000_S_flash_0_S_partitions_S_partition_10000_P_label_LEN 1
 #define DT_N_S_soc_S_flash_controller_3ff42000_S_flash_0_S_partitions_S_partition_10000_P_label_EXISTS 1
 #define DT_N_S_soc_S_flash_controller_3ff42000_S_flash_0_S_partitions_S_partition_10000_P_read_only 0
 #define DT_N_S_soc_S_flash_controller_3ff42000_S_flash_0_S_partitions_S_partition_10000_P_read_only_EXISTS 1
@@ -8298,14 +7385,6 @@
 #define DT_N_S_soc_S_flash_controller_3ff42000_S_flash_0_S_partitions_S_partition_10000_P_reg_IDX_0_EXISTS 1
 #define DT_N_S_soc_S_flash_controller_3ff42000_S_flash_0_S_partitions_S_partition_10000_P_reg_IDX_1 1048576
 #define DT_N_S_soc_S_flash_controller_3ff42000_S_flash_0_S_partitions_S_partition_10000_P_reg_IDX_1_EXISTS 1
-#define DT_N_S_soc_S_flash_controller_3ff42000_S_flash_0_S_partitions_S_partition_10000_P_reg_FOREACH_PROP_ELEM(fn) fn(DT_N_S_soc_S_flash_controller_3ff42000_S_flash_0_S_partitions_S_partition_10000, reg, 0) \
-	fn(DT_N_S_soc_S_flash_controller_3ff42000_S_flash_0_S_partitions_S_partition_10000, reg, 1)
-#define DT_N_S_soc_S_flash_controller_3ff42000_S_flash_0_S_partitions_S_partition_10000_P_reg_FOREACH_PROP_ELEM_SEP(fn, sep) fn(DT_N_S_soc_S_flash_controller_3ff42000_S_flash_0_S_partitions_S_partition_10000, reg, 0) DT_DEBRACKET_INTERNAL sep \
-	fn(DT_N_S_soc_S_flash_controller_3ff42000_S_flash_0_S_partitions_S_partition_10000, reg, 1)
-#define DT_N_S_soc_S_flash_controller_3ff42000_S_flash_0_S_partitions_S_partition_10000_P_reg_FOREACH_PROP_ELEM_VARGS(fn, ...) fn(DT_N_S_soc_S_flash_controller_3ff42000_S_flash_0_S_partitions_S_partition_10000, reg, 0, __VA_ARGS__) \
-	fn(DT_N_S_soc_S_flash_controller_3ff42000_S_flash_0_S_partitions_S_partition_10000, reg, 1, __VA_ARGS__)
-#define DT_N_S_soc_S_flash_controller_3ff42000_S_flash_0_S_partitions_S_partition_10000_P_reg_FOREACH_PROP_ELEM_SEP_VARGS(fn, sep, ...) fn(DT_N_S_soc_S_flash_controller_3ff42000_S_flash_0_S_partitions_S_partition_10000, reg, 0, __VA_ARGS__) DT_DEBRACKET_INTERNAL sep \
-	fn(DT_N_S_soc_S_flash_controller_3ff42000_S_flash_0_S_partitions_S_partition_10000, reg, 1, __VA_ARGS__)
 #define DT_N_S_soc_S_flash_controller_3ff42000_S_flash_0_S_partitions_S_partition_10000_P_reg_EXISTS 1
 
 /*
@@ -8374,34 +7453,13 @@
 #define DT_N_S_soc_S_flash_controller_3ff42000_S_flash_0_S_partitions_S_partition_110000_P_label_STRING_UNQUOTED image-1
 #define DT_N_S_soc_S_flash_controller_3ff42000_S_flash_0_S_partitions_S_partition_110000_P_label_STRING_TOKEN image_1
 #define DT_N_S_soc_S_flash_controller_3ff42000_S_flash_0_S_partitions_S_partition_110000_P_label_STRING_UPPER_TOKEN IMAGE_1
-#define DT_N_S_soc_S_flash_controller_3ff42000_S_flash_0_S_partitions_S_partition_110000_P_label_FOREACH_PROP_ELEM(fn) fn(DT_N_S_soc_S_flash_controller_3ff42000_S_flash_0_S_partitions_S_partition_110000, label, 0) \
-	fn(DT_N_S_soc_S_flash_controller_3ff42000_S_flash_0_S_partitions_S_partition_110000, label, 1) \
-	fn(DT_N_S_soc_S_flash_controller_3ff42000_S_flash_0_S_partitions_S_partition_110000, label, 2) \
-	fn(DT_N_S_soc_S_flash_controller_3ff42000_S_flash_0_S_partitions_S_partition_110000, label, 3) \
-	fn(DT_N_S_soc_S_flash_controller_3ff42000_S_flash_0_S_partitions_S_partition_110000, label, 4) \
-	fn(DT_N_S_soc_S_flash_controller_3ff42000_S_flash_0_S_partitions_S_partition_110000, label, 5) \
-	fn(DT_N_S_soc_S_flash_controller_3ff42000_S_flash_0_S_partitions_S_partition_110000, label, 6)
-#define DT_N_S_soc_S_flash_controller_3ff42000_S_flash_0_S_partitions_S_partition_110000_P_label_FOREACH_PROP_ELEM_SEP(fn, sep) fn(DT_N_S_soc_S_flash_controller_3ff42000_S_flash_0_S_partitions_S_partition_110000, label, 0) DT_DEBRACKET_INTERNAL sep \
-	fn(DT_N_S_soc_S_flash_controller_3ff42000_S_flash_0_S_partitions_S_partition_110000, label, 1) DT_DEBRACKET_INTERNAL sep \
-	fn(DT_N_S_soc_S_flash_controller_3ff42000_S_flash_0_S_partitions_S_partition_110000, label, 2) DT_DEBRACKET_INTERNAL sep \
-	fn(DT_N_S_soc_S_flash_controller_3ff42000_S_flash_0_S_partitions_S_partition_110000, label, 3) DT_DEBRACKET_INTERNAL sep \
-	fn(DT_N_S_soc_S_flash_controller_3ff42000_S_flash_0_S_partitions_S_partition_110000, label, 4) DT_DEBRACKET_INTERNAL sep \
-	fn(DT_N_S_soc_S_flash_controller_3ff42000_S_flash_0_S_partitions_S_partition_110000, label, 5) DT_DEBRACKET_INTERNAL sep \
-	fn(DT_N_S_soc_S_flash_controller_3ff42000_S_flash_0_S_partitions_S_partition_110000, label, 6)
-#define DT_N_S_soc_S_flash_controller_3ff42000_S_flash_0_S_partitions_S_partition_110000_P_label_FOREACH_PROP_ELEM_VARGS(fn, ...) fn(DT_N_S_soc_S_flash_controller_3ff42000_S_flash_0_S_partitions_S_partition_110000, label, 0, __VA_ARGS__) \
-	fn(DT_N_S_soc_S_flash_controller_3ff42000_S_flash_0_S_partitions_S_partition_110000, label, 1, __VA_ARGS__) \
-	fn(DT_N_S_soc_S_flash_controller_3ff42000_S_flash_0_S_partitions_S_partition_110000, label, 2, __VA_ARGS__) \
-	fn(DT_N_S_soc_S_flash_controller_3ff42000_S_flash_0_S_partitions_S_partition_110000, label, 3, __VA_ARGS__) \
-	fn(DT_N_S_soc_S_flash_controller_3ff42000_S_flash_0_S_partitions_S_partition_110000, label, 4, __VA_ARGS__) \
-	fn(DT_N_S_soc_S_flash_controller_3ff42000_S_flash_0_S_partitions_S_partition_110000, label, 5, __VA_ARGS__) \
-	fn(DT_N_S_soc_S_flash_controller_3ff42000_S_flash_0_S_partitions_S_partition_110000, label, 6, __VA_ARGS__)
-#define DT_N_S_soc_S_flash_controller_3ff42000_S_flash_0_S_partitions_S_partition_110000_P_label_FOREACH_PROP_ELEM_SEP_VARGS(fn, sep, ...) fn(DT_N_S_soc_S_flash_controller_3ff42000_S_flash_0_S_partitions_S_partition_110000, label, 0, __VA_ARGS__) DT_DEBRACKET_INTERNAL sep \
-	fn(DT_N_S_soc_S_flash_controller_3ff42000_S_flash_0_S_partitions_S_partition_110000, label, 1, __VA_ARGS__) DT_DEBRACKET_INTERNAL sep \
-	fn(DT_N_S_soc_S_flash_controller_3ff42000_S_flash_0_S_partitions_S_partition_110000, label, 2, __VA_ARGS__) DT_DEBRACKET_INTERNAL sep \
-	fn(DT_N_S_soc_S_flash_controller_3ff42000_S_flash_0_S_partitions_S_partition_110000, label, 3, __VA_ARGS__) DT_DEBRACKET_INTERNAL sep \
-	fn(DT_N_S_soc_S_flash_controller_3ff42000_S_flash_0_S_partitions_S_partition_110000, label, 4, __VA_ARGS__) DT_DEBRACKET_INTERNAL sep \
-	fn(DT_N_S_soc_S_flash_controller_3ff42000_S_flash_0_S_partitions_S_partition_110000, label, 5, __VA_ARGS__) DT_DEBRACKET_INTERNAL sep \
-	fn(DT_N_S_soc_S_flash_controller_3ff42000_S_flash_0_S_partitions_S_partition_110000, label, 6, __VA_ARGS__)
+#define DT_N_S_soc_S_flash_controller_3ff42000_S_flash_0_S_partitions_S_partition_110000_P_label_IDX_0 "image-1"
+#define DT_N_S_soc_S_flash_controller_3ff42000_S_flash_0_S_partitions_S_partition_110000_P_label_IDX_0_EXISTS 1
+#define DT_N_S_soc_S_flash_controller_3ff42000_S_flash_0_S_partitions_S_partition_110000_P_label_FOREACH_PROP_ELEM(fn) fn(DT_N_S_soc_S_flash_controller_3ff42000_S_flash_0_S_partitions_S_partition_110000, label, 0)
+#define DT_N_S_soc_S_flash_controller_3ff42000_S_flash_0_S_partitions_S_partition_110000_P_label_FOREACH_PROP_ELEM_SEP(fn, sep) fn(DT_N_S_soc_S_flash_controller_3ff42000_S_flash_0_S_partitions_S_partition_110000, label, 0)
+#define DT_N_S_soc_S_flash_controller_3ff42000_S_flash_0_S_partitions_S_partition_110000_P_label_FOREACH_PROP_ELEM_VARGS(fn, ...) fn(DT_N_S_soc_S_flash_controller_3ff42000_S_flash_0_S_partitions_S_partition_110000, label, 0, __VA_ARGS__)
+#define DT_N_S_soc_S_flash_controller_3ff42000_S_flash_0_S_partitions_S_partition_110000_P_label_FOREACH_PROP_ELEM_SEP_VARGS(fn, sep, ...) fn(DT_N_S_soc_S_flash_controller_3ff42000_S_flash_0_S_partitions_S_partition_110000, label, 0, __VA_ARGS__)
+#define DT_N_S_soc_S_flash_controller_3ff42000_S_flash_0_S_partitions_S_partition_110000_P_label_LEN 1
 #define DT_N_S_soc_S_flash_controller_3ff42000_S_flash_0_S_partitions_S_partition_110000_P_label_EXISTS 1
 #define DT_N_S_soc_S_flash_controller_3ff42000_S_flash_0_S_partitions_S_partition_110000_P_read_only 0
 #define DT_N_S_soc_S_flash_controller_3ff42000_S_flash_0_S_partitions_S_partition_110000_P_read_only_EXISTS 1
@@ -8410,14 +7468,6 @@
 #define DT_N_S_soc_S_flash_controller_3ff42000_S_flash_0_S_partitions_S_partition_110000_P_reg_IDX_0_EXISTS 1
 #define DT_N_S_soc_S_flash_controller_3ff42000_S_flash_0_S_partitions_S_partition_110000_P_reg_IDX_1 1048576
 #define DT_N_S_soc_S_flash_controller_3ff42000_S_flash_0_S_partitions_S_partition_110000_P_reg_IDX_1_EXISTS 1
-#define DT_N_S_soc_S_flash_controller_3ff42000_S_flash_0_S_partitions_S_partition_110000_P_reg_FOREACH_PROP_ELEM(fn) fn(DT_N_S_soc_S_flash_controller_3ff42000_S_flash_0_S_partitions_S_partition_110000, reg, 0) \
-	fn(DT_N_S_soc_S_flash_controller_3ff42000_S_flash_0_S_partitions_S_partition_110000, reg, 1)
-#define DT_N_S_soc_S_flash_controller_3ff42000_S_flash_0_S_partitions_S_partition_110000_P_reg_FOREACH_PROP_ELEM_SEP(fn, sep) fn(DT_N_S_soc_S_flash_controller_3ff42000_S_flash_0_S_partitions_S_partition_110000, reg, 0) DT_DEBRACKET_INTERNAL sep \
-	fn(DT_N_S_soc_S_flash_controller_3ff42000_S_flash_0_S_partitions_S_partition_110000, reg, 1)
-#define DT_N_S_soc_S_flash_controller_3ff42000_S_flash_0_S_partitions_S_partition_110000_P_reg_FOREACH_PROP_ELEM_VARGS(fn, ...) fn(DT_N_S_soc_S_flash_controller_3ff42000_S_flash_0_S_partitions_S_partition_110000, reg, 0, __VA_ARGS__) \
-	fn(DT_N_S_soc_S_flash_controller_3ff42000_S_flash_0_S_partitions_S_partition_110000, reg, 1, __VA_ARGS__)
-#define DT_N_S_soc_S_flash_controller_3ff42000_S_flash_0_S_partitions_S_partition_110000_P_reg_FOREACH_PROP_ELEM_SEP_VARGS(fn, sep, ...) fn(DT_N_S_soc_S_flash_controller_3ff42000_S_flash_0_S_partitions_S_partition_110000, reg, 0, __VA_ARGS__) DT_DEBRACKET_INTERNAL sep \
-	fn(DT_N_S_soc_S_flash_controller_3ff42000_S_flash_0_S_partitions_S_partition_110000, reg, 1, __VA_ARGS__)
 #define DT_N_S_soc_S_flash_controller_3ff42000_S_flash_0_S_partitions_S_partition_110000_P_reg_EXISTS 1
 
 /*
@@ -8486,58 +7536,13 @@
 #define DT_N_S_soc_S_flash_controller_3ff42000_S_flash_0_S_partitions_S_partition_210000_P_label_STRING_UNQUOTED image-scratch
 #define DT_N_S_soc_S_flash_controller_3ff42000_S_flash_0_S_partitions_S_partition_210000_P_label_STRING_TOKEN image_scratch
 #define DT_N_S_soc_S_flash_controller_3ff42000_S_flash_0_S_partitions_S_partition_210000_P_label_STRING_UPPER_TOKEN IMAGE_SCRATCH
-#define DT_N_S_soc_S_flash_controller_3ff42000_S_flash_0_S_partitions_S_partition_210000_P_label_FOREACH_PROP_ELEM(fn) fn(DT_N_S_soc_S_flash_controller_3ff42000_S_flash_0_S_partitions_S_partition_210000, label, 0) \
-	fn(DT_N_S_soc_S_flash_controller_3ff42000_S_flash_0_S_partitions_S_partition_210000, label, 1) \
-	fn(DT_N_S_soc_S_flash_controller_3ff42000_S_flash_0_S_partitions_S_partition_210000, label, 2) \
-	fn(DT_N_S_soc_S_flash_controller_3ff42000_S_flash_0_S_partitions_S_partition_210000, label, 3) \
-	fn(DT_N_S_soc_S_flash_controller_3ff42000_S_flash_0_S_partitions_S_partition_210000, label, 4) \
-	fn(DT_N_S_soc_S_flash_controller_3ff42000_S_flash_0_S_partitions_S_partition_210000, label, 5) \
-	fn(DT_N_S_soc_S_flash_controller_3ff42000_S_flash_0_S_partitions_S_partition_210000, label, 6) \
-	fn(DT_N_S_soc_S_flash_controller_3ff42000_S_flash_0_S_partitions_S_partition_210000, label, 7) \
-	fn(DT_N_S_soc_S_flash_controller_3ff42000_S_flash_0_S_partitions_S_partition_210000, label, 8) \
-	fn(DT_N_S_soc_S_flash_controller_3ff42000_S_flash_0_S_partitions_S_partition_210000, label, 9) \
-	fn(DT_N_S_soc_S_flash_controller_3ff42000_S_flash_0_S_partitions_S_partition_210000, label, 10) \
-	fn(DT_N_S_soc_S_flash_controller_3ff42000_S_flash_0_S_partitions_S_partition_210000, label, 11) \
-	fn(DT_N_S_soc_S_flash_controller_3ff42000_S_flash_0_S_partitions_S_partition_210000, label, 12)
-#define DT_N_S_soc_S_flash_controller_3ff42000_S_flash_0_S_partitions_S_partition_210000_P_label_FOREACH_PROP_ELEM_SEP(fn, sep) fn(DT_N_S_soc_S_flash_controller_3ff42000_S_flash_0_S_partitions_S_partition_210000, label, 0) DT_DEBRACKET_INTERNAL sep \
-	fn(DT_N_S_soc_S_flash_controller_3ff42000_S_flash_0_S_partitions_S_partition_210000, label, 1) DT_DEBRACKET_INTERNAL sep \
-	fn(DT_N_S_soc_S_flash_controller_3ff42000_S_flash_0_S_partitions_S_partition_210000, label, 2) DT_DEBRACKET_INTERNAL sep \
-	fn(DT_N_S_soc_S_flash_controller_3ff42000_S_flash_0_S_partitions_S_partition_210000, label, 3) DT_DEBRACKET_INTERNAL sep \
-	fn(DT_N_S_soc_S_flash_controller_3ff42000_S_flash_0_S_partitions_S_partition_210000, label, 4) DT_DEBRACKET_INTERNAL sep \
-	fn(DT_N_S_soc_S_flash_controller_3ff42000_S_flash_0_S_partitions_S_partition_210000, label, 5) DT_DEBRACKET_INTERNAL sep \
-	fn(DT_N_S_soc_S_flash_controller_3ff42000_S_flash_0_S_partitions_S_partition_210000, label, 6) DT_DEBRACKET_INTERNAL sep \
-	fn(DT_N_S_soc_S_flash_controller_3ff42000_S_flash_0_S_partitions_S_partition_210000, label, 7) DT_DEBRACKET_INTERNAL sep \
-	fn(DT_N_S_soc_S_flash_controller_3ff42000_S_flash_0_S_partitions_S_partition_210000, label, 8) DT_DEBRACKET_INTERNAL sep \
-	fn(DT_N_S_soc_S_flash_controller_3ff42000_S_flash_0_S_partitions_S_partition_210000, label, 9) DT_DEBRACKET_INTERNAL sep \
-	fn(DT_N_S_soc_S_flash_controller_3ff42000_S_flash_0_S_partitions_S_partition_210000, label, 10) DT_DEBRACKET_INTERNAL sep \
-	fn(DT_N_S_soc_S_flash_controller_3ff42000_S_flash_0_S_partitions_S_partition_210000, label, 11) DT_DEBRACKET_INTERNAL sep \
-	fn(DT_N_S_soc_S_flash_controller_3ff42000_S_flash_0_S_partitions_S_partition_210000, label, 12)
-#define DT_N_S_soc_S_flash_controller_3ff42000_S_flash_0_S_partitions_S_partition_210000_P_label_FOREACH_PROP_ELEM_VARGS(fn, ...) fn(DT_N_S_soc_S_flash_controller_3ff42000_S_flash_0_S_partitions_S_partition_210000, label, 0, __VA_ARGS__) \
-	fn(DT_N_S_soc_S_flash_controller_3ff42000_S_flash_0_S_partitions_S_partition_210000, label, 1, __VA_ARGS__) \
-	fn(DT_N_S_soc_S_flash_controller_3ff42000_S_flash_0_S_partitions_S_partition_210000, label, 2, __VA_ARGS__) \
-	fn(DT_N_S_soc_S_flash_controller_3ff42000_S_flash_0_S_partitions_S_partition_210000, label, 3, __VA_ARGS__) \
-	fn(DT_N_S_soc_S_flash_controller_3ff42000_S_flash_0_S_partitions_S_partition_210000, label, 4, __VA_ARGS__) \
-	fn(DT_N_S_soc_S_flash_controller_3ff42000_S_flash_0_S_partitions_S_partition_210000, label, 5, __VA_ARGS__) \
-	fn(DT_N_S_soc_S_flash_controller_3ff42000_S_flash_0_S_partitions_S_partition_210000, label, 6, __VA_ARGS__) \
-	fn(DT_N_S_soc_S_flash_controller_3ff42000_S_flash_0_S_partitions_S_partition_210000, label, 7, __VA_ARGS__) \
-	fn(DT_N_S_soc_S_flash_controller_3ff42000_S_flash_0_S_partitions_S_partition_210000, label, 8, __VA_ARGS__) \
-	fn(DT_N_S_soc_S_flash_controller_3ff42000_S_flash_0_S_partitions_S_partition_210000, label, 9, __VA_ARGS__) \
-	fn(DT_N_S_soc_S_flash_controller_3ff42000_S_flash_0_S_partitions_S_partition_210000, label, 10, __VA_ARGS__) \
-	fn(DT_N_S_soc_S_flash_controller_3ff42000_S_flash_0_S_partitions_S_partition_210000, label, 11, __VA_ARGS__) \
-	fn(DT_N_S_soc_S_flash_controller_3ff42000_S_flash_0_S_partitions_S_partition_210000, label, 12, __VA_ARGS__)
-#define DT_N_S_soc_S_flash_controller_3ff42000_S_flash_0_S_partitions_S_partition_210000_P_label_FOREACH_PROP_ELEM_SEP_VARGS(fn, sep, ...) fn(DT_N_S_soc_S_flash_controller_3ff42000_S_flash_0_S_partitions_S_partition_210000, label, 0, __VA_ARGS__) DT_DEBRACKET_INTERNAL sep \
-	fn(DT_N_S_soc_S_flash_controller_3ff42000_S_flash_0_S_partitions_S_partition_210000, label, 1, __VA_ARGS__) DT_DEBRACKET_INTERNAL sep \
-	fn(DT_N_S_soc_S_flash_controller_3ff42000_S_flash_0_S_partitions_S_partition_210000, label, 2, __VA_ARGS__) DT_DEBRACKET_INTERNAL sep \
-	fn(DT_N_S_soc_S_flash_controller_3ff42000_S_flash_0_S_partitions_S_partition_210000, label, 3, __VA_ARGS__) DT_DEBRACKET_INTERNAL sep \
-	fn(DT_N_S_soc_S_flash_controller_3ff42000_S_flash_0_S_partitions_S_partition_210000, label, 4, __VA_ARGS__) DT_DEBRACKET_INTERNAL sep \
-	fn(DT_N_S_soc_S_flash_controller_3ff42000_S_flash_0_S_partitions_S_partition_210000, label, 5, __VA_ARGS__) DT_DEBRACKET_INTERNAL sep \
-	fn(DT_N_S_soc_S_flash_controller_3ff42000_S_flash_0_S_partitions_S_partition_210000, label, 6, __VA_ARGS__) DT_DEBRACKET_INTERNAL sep \
-	fn(DT_N_S_soc_S_flash_controller_3ff42000_S_flash_0_S_partitions_S_partition_210000, label, 7, __VA_ARGS__) DT_DEBRACKET_INTERNAL sep \
-	fn(DT_N_S_soc_S_flash_controller_3ff42000_S_flash_0_S_partitions_S_partition_210000, label, 8, __VA_ARGS__) DT_DEBRACKET_INTERNAL sep \
-	fn(DT_N_S_soc_S_flash_controller_3ff42000_S_flash_0_S_partitions_S_partition_210000, label, 9, __VA_ARGS__) DT_DEBRACKET_INTERNAL sep \
-	fn(DT_N_S_soc_S_flash_controller_3ff42000_S_flash_0_S_partitions_S_partition_210000, label, 10, __VA_ARGS__) DT_DEBRACKET_INTERNAL sep \
-	fn(DT_N_S_soc_S_flash_controller_3ff42000_S_flash_0_S_partitions_S_partition_210000, label, 11, __VA_ARGS__) DT_DEBRACKET_INTERNAL sep \
-	fn(DT_N_S_soc_S_flash_controller_3ff42000_S_flash_0_S_partitions_S_partition_210000, label, 12, __VA_ARGS__)
+#define DT_N_S_soc_S_flash_controller_3ff42000_S_flash_0_S_partitions_S_partition_210000_P_label_IDX_0 "image-scratch"
+#define DT_N_S_soc_S_flash_controller_3ff42000_S_flash_0_S_partitions_S_partition_210000_P_label_IDX_0_EXISTS 1
+#define DT_N_S_soc_S_flash_controller_3ff42000_S_flash_0_S_partitions_S_partition_210000_P_label_FOREACH_PROP_ELEM(fn) fn(DT_N_S_soc_S_flash_controller_3ff42000_S_flash_0_S_partitions_S_partition_210000, label, 0)
+#define DT_N_S_soc_S_flash_controller_3ff42000_S_flash_0_S_partitions_S_partition_210000_P_label_FOREACH_PROP_ELEM_SEP(fn, sep) fn(DT_N_S_soc_S_flash_controller_3ff42000_S_flash_0_S_partitions_S_partition_210000, label, 0)
+#define DT_N_S_soc_S_flash_controller_3ff42000_S_flash_0_S_partitions_S_partition_210000_P_label_FOREACH_PROP_ELEM_VARGS(fn, ...) fn(DT_N_S_soc_S_flash_controller_3ff42000_S_flash_0_S_partitions_S_partition_210000, label, 0, __VA_ARGS__)
+#define DT_N_S_soc_S_flash_controller_3ff42000_S_flash_0_S_partitions_S_partition_210000_P_label_FOREACH_PROP_ELEM_SEP_VARGS(fn, sep, ...) fn(DT_N_S_soc_S_flash_controller_3ff42000_S_flash_0_S_partitions_S_partition_210000, label, 0, __VA_ARGS__)
+#define DT_N_S_soc_S_flash_controller_3ff42000_S_flash_0_S_partitions_S_partition_210000_P_label_LEN 1
 #define DT_N_S_soc_S_flash_controller_3ff42000_S_flash_0_S_partitions_S_partition_210000_P_label_EXISTS 1
 #define DT_N_S_soc_S_flash_controller_3ff42000_S_flash_0_S_partitions_S_partition_210000_P_read_only 0
 #define DT_N_S_soc_S_flash_controller_3ff42000_S_flash_0_S_partitions_S_partition_210000_P_read_only_EXISTS 1
@@ -8546,14 +7551,6 @@
 #define DT_N_S_soc_S_flash_controller_3ff42000_S_flash_0_S_partitions_S_partition_210000_P_reg_IDX_0_EXISTS 1
 #define DT_N_S_soc_S_flash_controller_3ff42000_S_flash_0_S_partitions_S_partition_210000_P_reg_IDX_1 262144
 #define DT_N_S_soc_S_flash_controller_3ff42000_S_flash_0_S_partitions_S_partition_210000_P_reg_IDX_1_EXISTS 1
-#define DT_N_S_soc_S_flash_controller_3ff42000_S_flash_0_S_partitions_S_partition_210000_P_reg_FOREACH_PROP_ELEM(fn) fn(DT_N_S_soc_S_flash_controller_3ff42000_S_flash_0_S_partitions_S_partition_210000, reg, 0) \
-	fn(DT_N_S_soc_S_flash_controller_3ff42000_S_flash_0_S_partitions_S_partition_210000, reg, 1)
-#define DT_N_S_soc_S_flash_controller_3ff42000_S_flash_0_S_partitions_S_partition_210000_P_reg_FOREACH_PROP_ELEM_SEP(fn, sep) fn(DT_N_S_soc_S_flash_controller_3ff42000_S_flash_0_S_partitions_S_partition_210000, reg, 0) DT_DEBRACKET_INTERNAL sep \
-	fn(DT_N_S_soc_S_flash_controller_3ff42000_S_flash_0_S_partitions_S_partition_210000, reg, 1)
-#define DT_N_S_soc_S_flash_controller_3ff42000_S_flash_0_S_partitions_S_partition_210000_P_reg_FOREACH_PROP_ELEM_VARGS(fn, ...) fn(DT_N_S_soc_S_flash_controller_3ff42000_S_flash_0_S_partitions_S_partition_210000, reg, 0, __VA_ARGS__) \
-	fn(DT_N_S_soc_S_flash_controller_3ff42000_S_flash_0_S_partitions_S_partition_210000, reg, 1, __VA_ARGS__)
-#define DT_N_S_soc_S_flash_controller_3ff42000_S_flash_0_S_partitions_S_partition_210000_P_reg_FOREACH_PROP_ELEM_SEP_VARGS(fn, sep, ...) fn(DT_N_S_soc_S_flash_controller_3ff42000_S_flash_0_S_partitions_S_partition_210000, reg, 0, __VA_ARGS__) DT_DEBRACKET_INTERNAL sep \
-	fn(DT_N_S_soc_S_flash_controller_3ff42000_S_flash_0_S_partitions_S_partition_210000, reg, 1, __VA_ARGS__)
 #define DT_N_S_soc_S_flash_controller_3ff42000_S_flash_0_S_partitions_S_partition_210000_P_reg_EXISTS 1
 
 /*
@@ -8622,34 +7619,13 @@
 #define DT_N_S_soc_S_flash_controller_3ff42000_S_flash_0_S_partitions_S_partition_250000_P_label_STRING_UNQUOTED storage
 #define DT_N_S_soc_S_flash_controller_3ff42000_S_flash_0_S_partitions_S_partition_250000_P_label_STRING_TOKEN storage
 #define DT_N_S_soc_S_flash_controller_3ff42000_S_flash_0_S_partitions_S_partition_250000_P_label_STRING_UPPER_TOKEN STORAGE
-#define DT_N_S_soc_S_flash_controller_3ff42000_S_flash_0_S_partitions_S_partition_250000_P_label_FOREACH_PROP_ELEM(fn) fn(DT_N_S_soc_S_flash_controller_3ff42000_S_flash_0_S_partitions_S_partition_250000, label, 0) \
-	fn(DT_N_S_soc_S_flash_controller_3ff42000_S_flash_0_S_partitions_S_partition_250000, label, 1) \
-	fn(DT_N_S_soc_S_flash_controller_3ff42000_S_flash_0_S_partitions_S_partition_250000, label, 2) \
-	fn(DT_N_S_soc_S_flash_controller_3ff42000_S_flash_0_S_partitions_S_partition_250000, label, 3) \
-	fn(DT_N_S_soc_S_flash_controller_3ff42000_S_flash_0_S_partitions_S_partition_250000, label, 4) \
-	fn(DT_N_S_soc_S_flash_controller_3ff42000_S_flash_0_S_partitions_S_partition_250000, label, 5) \
-	fn(DT_N_S_soc_S_flash_controller_3ff42000_S_flash_0_S_partitions_S_partition_250000, label, 6)
-#define DT_N_S_soc_S_flash_controller_3ff42000_S_flash_0_S_partitions_S_partition_250000_P_label_FOREACH_PROP_ELEM_SEP(fn, sep) fn(DT_N_S_soc_S_flash_controller_3ff42000_S_flash_0_S_partitions_S_partition_250000, label, 0) DT_DEBRACKET_INTERNAL sep \
-	fn(DT_N_S_soc_S_flash_controller_3ff42000_S_flash_0_S_partitions_S_partition_250000, label, 1) DT_DEBRACKET_INTERNAL sep \
-	fn(DT_N_S_soc_S_flash_controller_3ff42000_S_flash_0_S_partitions_S_partition_250000, label, 2) DT_DEBRACKET_INTERNAL sep \
-	fn(DT_N_S_soc_S_flash_controller_3ff42000_S_flash_0_S_partitions_S_partition_250000, label, 3) DT_DEBRACKET_INTERNAL sep \
-	fn(DT_N_S_soc_S_flash_controller_3ff42000_S_flash_0_S_partitions_S_partition_250000, label, 4) DT_DEBRACKET_INTERNAL sep \
-	fn(DT_N_S_soc_S_flash_controller_3ff42000_S_flash_0_S_partitions_S_partition_250000, label, 5) DT_DEBRACKET_INTERNAL sep \
-	fn(DT_N_S_soc_S_flash_controller_3ff42000_S_flash_0_S_partitions_S_partition_250000, label, 6)
-#define DT_N_S_soc_S_flash_controller_3ff42000_S_flash_0_S_partitions_S_partition_250000_P_label_FOREACH_PROP_ELEM_VARGS(fn, ...) fn(DT_N_S_soc_S_flash_controller_3ff42000_S_flash_0_S_partitions_S_partition_250000, label, 0, __VA_ARGS__) \
-	fn(DT_N_S_soc_S_flash_controller_3ff42000_S_flash_0_S_partitions_S_partition_250000, label, 1, __VA_ARGS__) \
-	fn(DT_N_S_soc_S_flash_controller_3ff42000_S_flash_0_S_partitions_S_partition_250000, label, 2, __VA_ARGS__) \
-	fn(DT_N_S_soc_S_flash_controller_3ff42000_S_flash_0_S_partitions_S_partition_250000, label, 3, __VA_ARGS__) \
-	fn(DT_N_S_soc_S_flash_controller_3ff42000_S_flash_0_S_partitions_S_partition_250000, label, 4, __VA_ARGS__) \
-	fn(DT_N_S_soc_S_flash_controller_3ff42000_S_flash_0_S_partitions_S_partition_250000, label, 5, __VA_ARGS__) \
-	fn(DT_N_S_soc_S_flash_controller_3ff42000_S_flash_0_S_partitions_S_partition_250000, label, 6, __VA_ARGS__)
-#define DT_N_S_soc_S_flash_controller_3ff42000_S_flash_0_S_partitions_S_partition_250000_P_label_FOREACH_PROP_ELEM_SEP_VARGS(fn, sep, ...) fn(DT_N_S_soc_S_flash_controller_3ff42000_S_flash_0_S_partitions_S_partition_250000, label, 0, __VA_ARGS__) DT_DEBRACKET_INTERNAL sep \
-	fn(DT_N_S_soc_S_flash_controller_3ff42000_S_flash_0_S_partitions_S_partition_250000, label, 1, __VA_ARGS__) DT_DEBRACKET_INTERNAL sep \
-	fn(DT_N_S_soc_S_flash_controller_3ff42000_S_flash_0_S_partitions_S_partition_250000, label, 2, __VA_ARGS__) DT_DEBRACKET_INTERNAL sep \
-	fn(DT_N_S_soc_S_flash_controller_3ff42000_S_flash_0_S_partitions_S_partition_250000, label, 3, __VA_ARGS__) DT_DEBRACKET_INTERNAL sep \
-	fn(DT_N_S_soc_S_flash_controller_3ff42000_S_flash_0_S_partitions_S_partition_250000, label, 4, __VA_ARGS__) DT_DEBRACKET_INTERNAL sep \
-	fn(DT_N_S_soc_S_flash_controller_3ff42000_S_flash_0_S_partitions_S_partition_250000, label, 5, __VA_ARGS__) DT_DEBRACKET_INTERNAL sep \
-	fn(DT_N_S_soc_S_flash_controller_3ff42000_S_flash_0_S_partitions_S_partition_250000, label, 6, __VA_ARGS__)
+#define DT_N_S_soc_S_flash_controller_3ff42000_S_flash_0_S_partitions_S_partition_250000_P_label_IDX_0 "storage"
+#define DT_N_S_soc_S_flash_controller_3ff42000_S_flash_0_S_partitions_S_partition_250000_P_label_IDX_0_EXISTS 1
+#define DT_N_S_soc_S_flash_controller_3ff42000_S_flash_0_S_partitions_S_partition_250000_P_label_FOREACH_PROP_ELEM(fn) fn(DT_N_S_soc_S_flash_controller_3ff42000_S_flash_0_S_partitions_S_partition_250000, label, 0)
+#define DT_N_S_soc_S_flash_controller_3ff42000_S_flash_0_S_partitions_S_partition_250000_P_label_FOREACH_PROP_ELEM_SEP(fn, sep) fn(DT_N_S_soc_S_flash_controller_3ff42000_S_flash_0_S_partitions_S_partition_250000, label, 0)
+#define DT_N_S_soc_S_flash_controller_3ff42000_S_flash_0_S_partitions_S_partition_250000_P_label_FOREACH_PROP_ELEM_VARGS(fn, ...) fn(DT_N_S_soc_S_flash_controller_3ff42000_S_flash_0_S_partitions_S_partition_250000, label, 0, __VA_ARGS__)
+#define DT_N_S_soc_S_flash_controller_3ff42000_S_flash_0_S_partitions_S_partition_250000_P_label_FOREACH_PROP_ELEM_SEP_VARGS(fn, sep, ...) fn(DT_N_S_soc_S_flash_controller_3ff42000_S_flash_0_S_partitions_S_partition_250000, label, 0, __VA_ARGS__)
+#define DT_N_S_soc_S_flash_controller_3ff42000_S_flash_0_S_partitions_S_partition_250000_P_label_LEN 1
 #define DT_N_S_soc_S_flash_controller_3ff42000_S_flash_0_S_partitions_S_partition_250000_P_label_EXISTS 1
 #define DT_N_S_soc_S_flash_controller_3ff42000_S_flash_0_S_partitions_S_partition_250000_P_read_only 0
 #define DT_N_S_soc_S_flash_controller_3ff42000_S_flash_0_S_partitions_S_partition_250000_P_read_only_EXISTS 1
@@ -8658,14 +7634,6 @@
 #define DT_N_S_soc_S_flash_controller_3ff42000_S_flash_0_S_partitions_S_partition_250000_P_reg_IDX_0_EXISTS 1
 #define DT_N_S_soc_S_flash_controller_3ff42000_S_flash_0_S_partitions_S_partition_250000_P_reg_IDX_1 24576
 #define DT_N_S_soc_S_flash_controller_3ff42000_S_flash_0_S_partitions_S_partition_250000_P_reg_IDX_1_EXISTS 1
-#define DT_N_S_soc_S_flash_controller_3ff42000_S_flash_0_S_partitions_S_partition_250000_P_reg_FOREACH_PROP_ELEM(fn) fn(DT_N_S_soc_S_flash_controller_3ff42000_S_flash_0_S_partitions_S_partition_250000, reg, 0) \
-	fn(DT_N_S_soc_S_flash_controller_3ff42000_S_flash_0_S_partitions_S_partition_250000, reg, 1)
-#define DT_N_S_soc_S_flash_controller_3ff42000_S_flash_0_S_partitions_S_partition_250000_P_reg_FOREACH_PROP_ELEM_SEP(fn, sep) fn(DT_N_S_soc_S_flash_controller_3ff42000_S_flash_0_S_partitions_S_partition_250000, reg, 0) DT_DEBRACKET_INTERNAL sep \
-	fn(DT_N_S_soc_S_flash_controller_3ff42000_S_flash_0_S_partitions_S_partition_250000, reg, 1)
-#define DT_N_S_soc_S_flash_controller_3ff42000_S_flash_0_S_partitions_S_partition_250000_P_reg_FOREACH_PROP_ELEM_VARGS(fn, ...) fn(DT_N_S_soc_S_flash_controller_3ff42000_S_flash_0_S_partitions_S_partition_250000, reg, 0, __VA_ARGS__) \
-	fn(DT_N_S_soc_S_flash_controller_3ff42000_S_flash_0_S_partitions_S_partition_250000, reg, 1, __VA_ARGS__)
-#define DT_N_S_soc_S_flash_controller_3ff42000_S_flash_0_S_partitions_S_partition_250000_P_reg_FOREACH_PROP_ELEM_SEP_VARGS(fn, sep, ...) fn(DT_N_S_soc_S_flash_controller_3ff42000_S_flash_0_S_partitions_S_partition_250000, reg, 0, __VA_ARGS__) DT_DEBRACKET_INTERNAL sep \
-	fn(DT_N_S_soc_S_flash_controller_3ff42000_S_flash_0_S_partitions_S_partition_250000, reg, 1, __VA_ARGS__)
 #define DT_N_S_soc_S_flash_controller_3ff42000_S_flash_0_S_partitions_S_partition_250000_P_reg_EXISTS 1
 
 /*
@@ -8674,7 +7642,7 @@
  * Node identifier: DT_N_S_soc_S_gpio_S_gpio_3ff44800
  *
  * Binding (compatible = espressif,esp32-gpio):
- *   $ZEPHYR_BASE/dts/bindings/gpio/espressif,esp32-gpio.yaml
+ *   /home/gez/sdks/zephyr/zephyr/dts/bindings/gpio/espressif,esp32-gpio.yaml
  *
  * (Descriptions have moved to the Devicetree Bindings Index
  * in the documentation.)
@@ -8745,14 +7713,6 @@
 #define DT_N_S_soc_S_gpio_S_gpio_3ff44800_P_reg_IDX_0_EXISTS 1
 #define DT_N_S_soc_S_gpio_S_gpio_3ff44800_P_reg_IDX_1 2048
 #define DT_N_S_soc_S_gpio_S_gpio_3ff44800_P_reg_IDX_1_EXISTS 1
-#define DT_N_S_soc_S_gpio_S_gpio_3ff44800_P_reg_FOREACH_PROP_ELEM(fn) fn(DT_N_S_soc_S_gpio_S_gpio_3ff44800, reg, 0) \
-	fn(DT_N_S_soc_S_gpio_S_gpio_3ff44800, reg, 1)
-#define DT_N_S_soc_S_gpio_S_gpio_3ff44800_P_reg_FOREACH_PROP_ELEM_SEP(fn, sep) fn(DT_N_S_soc_S_gpio_S_gpio_3ff44800, reg, 0) DT_DEBRACKET_INTERNAL sep \
-	fn(DT_N_S_soc_S_gpio_S_gpio_3ff44800, reg, 1)
-#define DT_N_S_soc_S_gpio_S_gpio_3ff44800_P_reg_FOREACH_PROP_ELEM_VARGS(fn, ...) fn(DT_N_S_soc_S_gpio_S_gpio_3ff44800, reg, 0, __VA_ARGS__) \
-	fn(DT_N_S_soc_S_gpio_S_gpio_3ff44800, reg, 1, __VA_ARGS__)
-#define DT_N_S_soc_S_gpio_S_gpio_3ff44800_P_reg_FOREACH_PROP_ELEM_SEP_VARGS(fn, sep, ...) fn(DT_N_S_soc_S_gpio_S_gpio_3ff44800, reg, 0, __VA_ARGS__) DT_DEBRACKET_INTERNAL sep \
-	fn(DT_N_S_soc_S_gpio_S_gpio_3ff44800, reg, 1, __VA_ARGS__)
 #define DT_N_S_soc_S_gpio_S_gpio_3ff44800_P_reg_EXISTS 1
 #define DT_N_S_soc_S_gpio_S_gpio_3ff44800_P_gpio_controller 1
 #define DT_N_S_soc_S_gpio_S_gpio_3ff44800_P_gpio_controller_EXISTS 1
@@ -8762,25 +7722,17 @@
 #define DT_N_S_soc_S_gpio_S_gpio_3ff44800_P_status_STRING_UNQUOTED okay
 #define DT_N_S_soc_S_gpio_S_gpio_3ff44800_P_status_STRING_TOKEN okay
 #define DT_N_S_soc_S_gpio_S_gpio_3ff44800_P_status_STRING_UPPER_TOKEN OKAY
+#define DT_N_S_soc_S_gpio_S_gpio_3ff44800_P_status_IDX_0 "okay"
+#define DT_N_S_soc_S_gpio_S_gpio_3ff44800_P_status_IDX_0_EXISTS 1
 #define DT_N_S_soc_S_gpio_S_gpio_3ff44800_P_status_ENUM_IDX 1
+#define DT_N_S_soc_S_gpio_S_gpio_3ff44800_P_status_ENUM_VAL_okay_EXISTS 1
 #define DT_N_S_soc_S_gpio_S_gpio_3ff44800_P_status_ENUM_TOKEN okay
 #define DT_N_S_soc_S_gpio_S_gpio_3ff44800_P_status_ENUM_UPPER_TOKEN OKAY
-#define DT_N_S_soc_S_gpio_S_gpio_3ff44800_P_status_FOREACH_PROP_ELEM(fn) fn(DT_N_S_soc_S_gpio_S_gpio_3ff44800, status, 0) \
-	fn(DT_N_S_soc_S_gpio_S_gpio_3ff44800, status, 1) \
-	fn(DT_N_S_soc_S_gpio_S_gpio_3ff44800, status, 2) \
-	fn(DT_N_S_soc_S_gpio_S_gpio_3ff44800, status, 3)
-#define DT_N_S_soc_S_gpio_S_gpio_3ff44800_P_status_FOREACH_PROP_ELEM_SEP(fn, sep) fn(DT_N_S_soc_S_gpio_S_gpio_3ff44800, status, 0) DT_DEBRACKET_INTERNAL sep \
-	fn(DT_N_S_soc_S_gpio_S_gpio_3ff44800, status, 1) DT_DEBRACKET_INTERNAL sep \
-	fn(DT_N_S_soc_S_gpio_S_gpio_3ff44800, status, 2) DT_DEBRACKET_INTERNAL sep \
-	fn(DT_N_S_soc_S_gpio_S_gpio_3ff44800, status, 3)
-#define DT_N_S_soc_S_gpio_S_gpio_3ff44800_P_status_FOREACH_PROP_ELEM_VARGS(fn, ...) fn(DT_N_S_soc_S_gpio_S_gpio_3ff44800, status, 0, __VA_ARGS__) \
-	fn(DT_N_S_soc_S_gpio_S_gpio_3ff44800, status, 1, __VA_ARGS__) \
-	fn(DT_N_S_soc_S_gpio_S_gpio_3ff44800, status, 2, __VA_ARGS__) \
-	fn(DT_N_S_soc_S_gpio_S_gpio_3ff44800, status, 3, __VA_ARGS__)
-#define DT_N_S_soc_S_gpio_S_gpio_3ff44800_P_status_FOREACH_PROP_ELEM_SEP_VARGS(fn, sep, ...) fn(DT_N_S_soc_S_gpio_S_gpio_3ff44800, status, 0, __VA_ARGS__) DT_DEBRACKET_INTERNAL sep \
-	fn(DT_N_S_soc_S_gpio_S_gpio_3ff44800, status, 1, __VA_ARGS__) DT_DEBRACKET_INTERNAL sep \
-	fn(DT_N_S_soc_S_gpio_S_gpio_3ff44800, status, 2, __VA_ARGS__) DT_DEBRACKET_INTERNAL sep \
-	fn(DT_N_S_soc_S_gpio_S_gpio_3ff44800, status, 3, __VA_ARGS__)
+#define DT_N_S_soc_S_gpio_S_gpio_3ff44800_P_status_FOREACH_PROP_ELEM(fn) fn(DT_N_S_soc_S_gpio_S_gpio_3ff44800, status, 0)
+#define DT_N_S_soc_S_gpio_S_gpio_3ff44800_P_status_FOREACH_PROP_ELEM_SEP(fn, sep) fn(DT_N_S_soc_S_gpio_S_gpio_3ff44800, status, 0)
+#define DT_N_S_soc_S_gpio_S_gpio_3ff44800_P_status_FOREACH_PROP_ELEM_VARGS(fn, ...) fn(DT_N_S_soc_S_gpio_S_gpio_3ff44800, status, 0, __VA_ARGS__)
+#define DT_N_S_soc_S_gpio_S_gpio_3ff44800_P_status_FOREACH_PROP_ELEM_SEP_VARGS(fn, sep, ...) fn(DT_N_S_soc_S_gpio_S_gpio_3ff44800, status, 0, __VA_ARGS__)
+#define DT_N_S_soc_S_gpio_S_gpio_3ff44800_P_status_LEN 1
 #define DT_N_S_soc_S_gpio_S_gpio_3ff44800_P_status_EXISTS 1
 #define DT_N_S_soc_S_gpio_S_gpio_3ff44800_P_compatible {"espressif,esp32-gpio"}
 #define DT_N_S_soc_S_gpio_S_gpio_3ff44800_P_compatible_IDX_0 "espressif,esp32-gpio"
@@ -8797,19 +7749,21 @@
 #define DT_N_S_soc_S_gpio_S_gpio_3ff44800_P_interrupts {22 /* 0x16 */}
 #define DT_N_S_soc_S_gpio_S_gpio_3ff44800_P_interrupts_IDX_0 22
 #define DT_N_S_soc_S_gpio_S_gpio_3ff44800_P_interrupts_IDX_0_EXISTS 1
-#define DT_N_S_soc_S_gpio_S_gpio_3ff44800_P_interrupts_FOREACH_PROP_ELEM(fn) fn(DT_N_S_soc_S_gpio_S_gpio_3ff44800, interrupts, 0)
-#define DT_N_S_soc_S_gpio_S_gpio_3ff44800_P_interrupts_FOREACH_PROP_ELEM_SEP(fn, sep) fn(DT_N_S_soc_S_gpio_S_gpio_3ff44800, interrupts, 0)
-#define DT_N_S_soc_S_gpio_S_gpio_3ff44800_P_interrupts_FOREACH_PROP_ELEM_VARGS(fn, ...) fn(DT_N_S_soc_S_gpio_S_gpio_3ff44800, interrupts, 0, __VA_ARGS__)
-#define DT_N_S_soc_S_gpio_S_gpio_3ff44800_P_interrupts_FOREACH_PROP_ELEM_SEP_VARGS(fn, sep, ...) fn(DT_N_S_soc_S_gpio_S_gpio_3ff44800, interrupts, 0, __VA_ARGS__)
 #define DT_N_S_soc_S_gpio_S_gpio_3ff44800_P_interrupts_EXISTS 1
 #define DT_N_S_soc_S_gpio_S_gpio_3ff44800_P_interrupt_parent DT_N_S_soc_S_interrupt_controller_3ff00104
 #define DT_N_S_soc_S_gpio_S_gpio_3ff44800_P_interrupt_parent_IDX_0 DT_N_S_soc_S_interrupt_controller_3ff00104
 #define DT_N_S_soc_S_gpio_S_gpio_3ff44800_P_interrupt_parent_IDX_0_PH DT_N_S_soc_S_interrupt_controller_3ff00104
 #define DT_N_S_soc_S_gpio_S_gpio_3ff44800_P_interrupt_parent_IDX_0_EXISTS 1
+#define DT_N_S_soc_S_gpio_S_gpio_3ff44800_P_interrupt_parent_FOREACH_PROP_ELEM(fn) fn(DT_N_S_soc_S_gpio_S_gpio_3ff44800, interrupt_parent, 0)
+#define DT_N_S_soc_S_gpio_S_gpio_3ff44800_P_interrupt_parent_FOREACH_PROP_ELEM_SEP(fn, sep) fn(DT_N_S_soc_S_gpio_S_gpio_3ff44800, interrupt_parent, 0)
+#define DT_N_S_soc_S_gpio_S_gpio_3ff44800_P_interrupt_parent_FOREACH_PROP_ELEM_VARGS(fn, ...) fn(DT_N_S_soc_S_gpio_S_gpio_3ff44800, interrupt_parent, 0, __VA_ARGS__)
+#define DT_N_S_soc_S_gpio_S_gpio_3ff44800_P_interrupt_parent_FOREACH_PROP_ELEM_SEP_VARGS(fn, sep, ...) fn(DT_N_S_soc_S_gpio_S_gpio_3ff44800, interrupt_parent, 0, __VA_ARGS__)
 #define DT_N_S_soc_S_gpio_S_gpio_3ff44800_P_interrupt_parent_LEN 1
 #define DT_N_S_soc_S_gpio_S_gpio_3ff44800_P_interrupt_parent_EXISTS 1
 #define DT_N_S_soc_S_gpio_S_gpio_3ff44800_P_wakeup_source 0
 #define DT_N_S_soc_S_gpio_S_gpio_3ff44800_P_wakeup_source_EXISTS 1
+#define DT_N_S_soc_S_gpio_S_gpio_3ff44800_P_zephyr_pm_device_runtime_auto 0
+#define DT_N_S_soc_S_gpio_S_gpio_3ff44800_P_zephyr_pm_device_runtime_auto_EXISTS 1
 
 /*
  * Devicetree node: /soc/rtc@3ff48000/rtc_timer
@@ -8817,7 +7771,7 @@
  * Node identifier: DT_N_S_soc_S_rtc_3ff48000_S_rtc_timer
  *
  * Binding (compatible = espressif,esp32-rtc-timer):
- *   $ZEPHYR_BASE/dts/bindings/counter/espressif,esp32-rtc-timer.yaml
+ *   /home/gez/sdks/zephyr/zephyr/dts/bindings/counter/espressif,esp32-rtc-timer.yaml
  *
  * (Descriptions have moved to the Devicetree Bindings Index
  * in the documentation.)
@@ -8886,25 +7840,17 @@
 #define DT_N_S_soc_S_rtc_3ff48000_S_rtc_timer_P_status_STRING_UNQUOTED okay
 #define DT_N_S_soc_S_rtc_3ff48000_S_rtc_timer_P_status_STRING_TOKEN okay
 #define DT_N_S_soc_S_rtc_3ff48000_S_rtc_timer_P_status_STRING_UPPER_TOKEN OKAY
+#define DT_N_S_soc_S_rtc_3ff48000_S_rtc_timer_P_status_IDX_0 "okay"
+#define DT_N_S_soc_S_rtc_3ff48000_S_rtc_timer_P_status_IDX_0_EXISTS 1
 #define DT_N_S_soc_S_rtc_3ff48000_S_rtc_timer_P_status_ENUM_IDX 1
+#define DT_N_S_soc_S_rtc_3ff48000_S_rtc_timer_P_status_ENUM_VAL_okay_EXISTS 1
 #define DT_N_S_soc_S_rtc_3ff48000_S_rtc_timer_P_status_ENUM_TOKEN okay
 #define DT_N_S_soc_S_rtc_3ff48000_S_rtc_timer_P_status_ENUM_UPPER_TOKEN OKAY
-#define DT_N_S_soc_S_rtc_3ff48000_S_rtc_timer_P_status_FOREACH_PROP_ELEM(fn) fn(DT_N_S_soc_S_rtc_3ff48000_S_rtc_timer, status, 0) \
-	fn(DT_N_S_soc_S_rtc_3ff48000_S_rtc_timer, status, 1) \
-	fn(DT_N_S_soc_S_rtc_3ff48000_S_rtc_timer, status, 2) \
-	fn(DT_N_S_soc_S_rtc_3ff48000_S_rtc_timer, status, 3)
-#define DT_N_S_soc_S_rtc_3ff48000_S_rtc_timer_P_status_FOREACH_PROP_ELEM_SEP(fn, sep) fn(DT_N_S_soc_S_rtc_3ff48000_S_rtc_timer, status, 0) DT_DEBRACKET_INTERNAL sep \
-	fn(DT_N_S_soc_S_rtc_3ff48000_S_rtc_timer, status, 1) DT_DEBRACKET_INTERNAL sep \
-	fn(DT_N_S_soc_S_rtc_3ff48000_S_rtc_timer, status, 2) DT_DEBRACKET_INTERNAL sep \
-	fn(DT_N_S_soc_S_rtc_3ff48000_S_rtc_timer, status, 3)
-#define DT_N_S_soc_S_rtc_3ff48000_S_rtc_timer_P_status_FOREACH_PROP_ELEM_VARGS(fn, ...) fn(DT_N_S_soc_S_rtc_3ff48000_S_rtc_timer, status, 0, __VA_ARGS__) \
-	fn(DT_N_S_soc_S_rtc_3ff48000_S_rtc_timer, status, 1, __VA_ARGS__) \
-	fn(DT_N_S_soc_S_rtc_3ff48000_S_rtc_timer, status, 2, __VA_ARGS__) \
-	fn(DT_N_S_soc_S_rtc_3ff48000_S_rtc_timer, status, 3, __VA_ARGS__)
-#define DT_N_S_soc_S_rtc_3ff48000_S_rtc_timer_P_status_FOREACH_PROP_ELEM_SEP_VARGS(fn, sep, ...) fn(DT_N_S_soc_S_rtc_3ff48000_S_rtc_timer, status, 0, __VA_ARGS__) DT_DEBRACKET_INTERNAL sep \
-	fn(DT_N_S_soc_S_rtc_3ff48000_S_rtc_timer, status, 1, __VA_ARGS__) DT_DEBRACKET_INTERNAL sep \
-	fn(DT_N_S_soc_S_rtc_3ff48000_S_rtc_timer, status, 2, __VA_ARGS__) DT_DEBRACKET_INTERNAL sep \
-	fn(DT_N_S_soc_S_rtc_3ff48000_S_rtc_timer, status, 3, __VA_ARGS__)
+#define DT_N_S_soc_S_rtc_3ff48000_S_rtc_timer_P_status_FOREACH_PROP_ELEM(fn) fn(DT_N_S_soc_S_rtc_3ff48000_S_rtc_timer, status, 0)
+#define DT_N_S_soc_S_rtc_3ff48000_S_rtc_timer_P_status_FOREACH_PROP_ELEM_SEP(fn, sep) fn(DT_N_S_soc_S_rtc_3ff48000_S_rtc_timer, status, 0)
+#define DT_N_S_soc_S_rtc_3ff48000_S_rtc_timer_P_status_FOREACH_PROP_ELEM_VARGS(fn, ...) fn(DT_N_S_soc_S_rtc_3ff48000_S_rtc_timer, status, 0, __VA_ARGS__)
+#define DT_N_S_soc_S_rtc_3ff48000_S_rtc_timer_P_status_FOREACH_PROP_ELEM_SEP_VARGS(fn, sep, ...) fn(DT_N_S_soc_S_rtc_3ff48000_S_rtc_timer, status, 0, __VA_ARGS__)
+#define DT_N_S_soc_S_rtc_3ff48000_S_rtc_timer_P_status_LEN 1
 #define DT_N_S_soc_S_rtc_3ff48000_S_rtc_timer_P_status_EXISTS 1
 #define DT_N_S_soc_S_rtc_3ff48000_S_rtc_timer_P_compatible {"espressif,esp32-rtc-timer"}
 #define DT_N_S_soc_S_rtc_3ff48000_S_rtc_timer_P_compatible_IDX_0 "espressif,esp32-rtc-timer"
@@ -8921,19 +7867,21 @@
 #define DT_N_S_soc_S_rtc_3ff48000_S_rtc_timer_P_interrupts {46 /* 0x2e */}
 #define DT_N_S_soc_S_rtc_3ff48000_S_rtc_timer_P_interrupts_IDX_0 46
 #define DT_N_S_soc_S_rtc_3ff48000_S_rtc_timer_P_interrupts_IDX_0_EXISTS 1
-#define DT_N_S_soc_S_rtc_3ff48000_S_rtc_timer_P_interrupts_FOREACH_PROP_ELEM(fn) fn(DT_N_S_soc_S_rtc_3ff48000_S_rtc_timer, interrupts, 0)
-#define DT_N_S_soc_S_rtc_3ff48000_S_rtc_timer_P_interrupts_FOREACH_PROP_ELEM_SEP(fn, sep) fn(DT_N_S_soc_S_rtc_3ff48000_S_rtc_timer, interrupts, 0)
-#define DT_N_S_soc_S_rtc_3ff48000_S_rtc_timer_P_interrupts_FOREACH_PROP_ELEM_VARGS(fn, ...) fn(DT_N_S_soc_S_rtc_3ff48000_S_rtc_timer, interrupts, 0, __VA_ARGS__)
-#define DT_N_S_soc_S_rtc_3ff48000_S_rtc_timer_P_interrupts_FOREACH_PROP_ELEM_SEP_VARGS(fn, sep, ...) fn(DT_N_S_soc_S_rtc_3ff48000_S_rtc_timer, interrupts, 0, __VA_ARGS__)
 #define DT_N_S_soc_S_rtc_3ff48000_S_rtc_timer_P_interrupts_EXISTS 1
 #define DT_N_S_soc_S_rtc_3ff48000_S_rtc_timer_P_interrupt_parent DT_N_S_soc_S_interrupt_controller_3ff00104
 #define DT_N_S_soc_S_rtc_3ff48000_S_rtc_timer_P_interrupt_parent_IDX_0 DT_N_S_soc_S_interrupt_controller_3ff00104
 #define DT_N_S_soc_S_rtc_3ff48000_S_rtc_timer_P_interrupt_parent_IDX_0_PH DT_N_S_soc_S_interrupt_controller_3ff00104
 #define DT_N_S_soc_S_rtc_3ff48000_S_rtc_timer_P_interrupt_parent_IDX_0_EXISTS 1
+#define DT_N_S_soc_S_rtc_3ff48000_S_rtc_timer_P_interrupt_parent_FOREACH_PROP_ELEM(fn) fn(DT_N_S_soc_S_rtc_3ff48000_S_rtc_timer, interrupt_parent, 0)
+#define DT_N_S_soc_S_rtc_3ff48000_S_rtc_timer_P_interrupt_parent_FOREACH_PROP_ELEM_SEP(fn, sep) fn(DT_N_S_soc_S_rtc_3ff48000_S_rtc_timer, interrupt_parent, 0)
+#define DT_N_S_soc_S_rtc_3ff48000_S_rtc_timer_P_interrupt_parent_FOREACH_PROP_ELEM_VARGS(fn, ...) fn(DT_N_S_soc_S_rtc_3ff48000_S_rtc_timer, interrupt_parent, 0, __VA_ARGS__)
+#define DT_N_S_soc_S_rtc_3ff48000_S_rtc_timer_P_interrupt_parent_FOREACH_PROP_ELEM_SEP_VARGS(fn, sep, ...) fn(DT_N_S_soc_S_rtc_3ff48000_S_rtc_timer, interrupt_parent, 0, __VA_ARGS__)
 #define DT_N_S_soc_S_rtc_3ff48000_S_rtc_timer_P_interrupt_parent_LEN 1
 #define DT_N_S_soc_S_rtc_3ff48000_S_rtc_timer_P_interrupt_parent_EXISTS 1
 #define DT_N_S_soc_S_rtc_3ff48000_S_rtc_timer_P_wakeup_source 0
 #define DT_N_S_soc_S_rtc_3ff48000_S_rtc_timer_P_wakeup_source_EXISTS 1
+#define DT_N_S_soc_S_rtc_3ff48000_S_rtc_timer_P_zephyr_pm_device_runtime_auto 0
+#define DT_N_S_soc_S_rtc_3ff48000_S_rtc_timer_P_zephyr_pm_device_runtime_auto_EXISTS 1
 
 /*
  * Devicetree node: /soc/spi@3ff64000
@@ -8941,7 +7889,7 @@
  * Node identifier: DT_N_S_soc_S_spi_3ff64000
  *
  * Binding (compatible = espressif,esp32-spi):
- *   $ZEPHYR_BASE/dts/bindings/spi/espressif,esp32-spi.yaml
+ *   /home/gez/sdks/zephyr/zephyr/dts/bindings/spi/espressif,esp32-spi.yaml
  *
  * (Descriptions have moved to the Devicetree Bindings Index
  * in the documentation.)
@@ -9021,14 +7969,6 @@
 #define DT_N_S_soc_S_spi_3ff64000_P_reg_IDX_0_EXISTS 1
 #define DT_N_S_soc_S_spi_3ff64000_P_reg_IDX_1 4096
 #define DT_N_S_soc_S_spi_3ff64000_P_reg_IDX_1_EXISTS 1
-#define DT_N_S_soc_S_spi_3ff64000_P_reg_FOREACH_PROP_ELEM(fn) fn(DT_N_S_soc_S_spi_3ff64000, reg, 0) \
-	fn(DT_N_S_soc_S_spi_3ff64000, reg, 1)
-#define DT_N_S_soc_S_spi_3ff64000_P_reg_FOREACH_PROP_ELEM_SEP(fn, sep) fn(DT_N_S_soc_S_spi_3ff64000, reg, 0) DT_DEBRACKET_INTERNAL sep \
-	fn(DT_N_S_soc_S_spi_3ff64000, reg, 1)
-#define DT_N_S_soc_S_spi_3ff64000_P_reg_FOREACH_PROP_ELEM_VARGS(fn, ...) fn(DT_N_S_soc_S_spi_3ff64000, reg, 0, __VA_ARGS__) \
-	fn(DT_N_S_soc_S_spi_3ff64000, reg, 1, __VA_ARGS__)
-#define DT_N_S_soc_S_spi_3ff64000_P_reg_FOREACH_PROP_ELEM_SEP_VARGS(fn, sep, ...) fn(DT_N_S_soc_S_spi_3ff64000, reg, 0, __VA_ARGS__) DT_DEBRACKET_INTERNAL sep \
-	fn(DT_N_S_soc_S_spi_3ff64000, reg, 1, __VA_ARGS__)
 #define DT_N_S_soc_S_spi_3ff64000_P_reg_EXISTS 1
 #define DT_N_S_soc_S_spi_3ff64000_P_pinctrl_0_IDX_0 DT_N_S_pin_controller_S_spim2_default
 #define DT_N_S_soc_S_spi_3ff64000_P_pinctrl_0_IDX_0_PH DT_N_S_pin_controller_S_spim2_default
@@ -9073,25 +8013,17 @@
 #define DT_N_S_soc_S_spi_3ff64000_P_status_STRING_UNQUOTED okay
 #define DT_N_S_soc_S_spi_3ff64000_P_status_STRING_TOKEN okay
 #define DT_N_S_soc_S_spi_3ff64000_P_status_STRING_UPPER_TOKEN OKAY
+#define DT_N_S_soc_S_spi_3ff64000_P_status_IDX_0 "okay"
+#define DT_N_S_soc_S_spi_3ff64000_P_status_IDX_0_EXISTS 1
 #define DT_N_S_soc_S_spi_3ff64000_P_status_ENUM_IDX 1
+#define DT_N_S_soc_S_spi_3ff64000_P_status_ENUM_VAL_okay_EXISTS 1
 #define DT_N_S_soc_S_spi_3ff64000_P_status_ENUM_TOKEN okay
 #define DT_N_S_soc_S_spi_3ff64000_P_status_ENUM_UPPER_TOKEN OKAY
-#define DT_N_S_soc_S_spi_3ff64000_P_status_FOREACH_PROP_ELEM(fn) fn(DT_N_S_soc_S_spi_3ff64000, status, 0) \
-	fn(DT_N_S_soc_S_spi_3ff64000, status, 1) \
-	fn(DT_N_S_soc_S_spi_3ff64000, status, 2) \
-	fn(DT_N_S_soc_S_spi_3ff64000, status, 3)
-#define DT_N_S_soc_S_spi_3ff64000_P_status_FOREACH_PROP_ELEM_SEP(fn, sep) fn(DT_N_S_soc_S_spi_3ff64000, status, 0) DT_DEBRACKET_INTERNAL sep \
-	fn(DT_N_S_soc_S_spi_3ff64000, status, 1) DT_DEBRACKET_INTERNAL sep \
-	fn(DT_N_S_soc_S_spi_3ff64000, status, 2) DT_DEBRACKET_INTERNAL sep \
-	fn(DT_N_S_soc_S_spi_3ff64000, status, 3)
-#define DT_N_S_soc_S_spi_3ff64000_P_status_FOREACH_PROP_ELEM_VARGS(fn, ...) fn(DT_N_S_soc_S_spi_3ff64000, status, 0, __VA_ARGS__) \
-	fn(DT_N_S_soc_S_spi_3ff64000, status, 1, __VA_ARGS__) \
-	fn(DT_N_S_soc_S_spi_3ff64000, status, 2, __VA_ARGS__) \
-	fn(DT_N_S_soc_S_spi_3ff64000, status, 3, __VA_ARGS__)
-#define DT_N_S_soc_S_spi_3ff64000_P_status_FOREACH_PROP_ELEM_SEP_VARGS(fn, sep, ...) fn(DT_N_S_soc_S_spi_3ff64000, status, 0, __VA_ARGS__) DT_DEBRACKET_INTERNAL sep \
-	fn(DT_N_S_soc_S_spi_3ff64000, status, 1, __VA_ARGS__) DT_DEBRACKET_INTERNAL sep \
-	fn(DT_N_S_soc_S_spi_3ff64000, status, 2, __VA_ARGS__) DT_DEBRACKET_INTERNAL sep \
-	fn(DT_N_S_soc_S_spi_3ff64000, status, 3, __VA_ARGS__)
+#define DT_N_S_soc_S_spi_3ff64000_P_status_FOREACH_PROP_ELEM(fn) fn(DT_N_S_soc_S_spi_3ff64000, status, 0)
+#define DT_N_S_soc_S_spi_3ff64000_P_status_FOREACH_PROP_ELEM_SEP(fn, sep) fn(DT_N_S_soc_S_spi_3ff64000, status, 0)
+#define DT_N_S_soc_S_spi_3ff64000_P_status_FOREACH_PROP_ELEM_VARGS(fn, ...) fn(DT_N_S_soc_S_spi_3ff64000, status, 0, __VA_ARGS__)
+#define DT_N_S_soc_S_spi_3ff64000_P_status_FOREACH_PROP_ELEM_SEP_VARGS(fn, sep, ...) fn(DT_N_S_soc_S_spi_3ff64000, status, 0, __VA_ARGS__)
+#define DT_N_S_soc_S_spi_3ff64000_P_status_LEN 1
 #define DT_N_S_soc_S_spi_3ff64000_P_status_EXISTS 1
 #define DT_N_S_soc_S_spi_3ff64000_P_compatible {"espressif,esp32-spi"}
 #define DT_N_S_soc_S_spi_3ff64000_P_compatible_IDX_0 "espressif,esp32-spi"
@@ -9108,15 +8040,15 @@
 #define DT_N_S_soc_S_spi_3ff64000_P_interrupts {30 /* 0x1e */}
 #define DT_N_S_soc_S_spi_3ff64000_P_interrupts_IDX_0 30
 #define DT_N_S_soc_S_spi_3ff64000_P_interrupts_IDX_0_EXISTS 1
-#define DT_N_S_soc_S_spi_3ff64000_P_interrupts_FOREACH_PROP_ELEM(fn) fn(DT_N_S_soc_S_spi_3ff64000, interrupts, 0)
-#define DT_N_S_soc_S_spi_3ff64000_P_interrupts_FOREACH_PROP_ELEM_SEP(fn, sep) fn(DT_N_S_soc_S_spi_3ff64000, interrupts, 0)
-#define DT_N_S_soc_S_spi_3ff64000_P_interrupts_FOREACH_PROP_ELEM_VARGS(fn, ...) fn(DT_N_S_soc_S_spi_3ff64000, interrupts, 0, __VA_ARGS__)
-#define DT_N_S_soc_S_spi_3ff64000_P_interrupts_FOREACH_PROP_ELEM_SEP_VARGS(fn, sep, ...) fn(DT_N_S_soc_S_spi_3ff64000, interrupts, 0, __VA_ARGS__)
 #define DT_N_S_soc_S_spi_3ff64000_P_interrupts_EXISTS 1
 #define DT_N_S_soc_S_spi_3ff64000_P_interrupt_parent DT_N_S_soc_S_interrupt_controller_3ff00104
 #define DT_N_S_soc_S_spi_3ff64000_P_interrupt_parent_IDX_0 DT_N_S_soc_S_interrupt_controller_3ff00104
 #define DT_N_S_soc_S_spi_3ff64000_P_interrupt_parent_IDX_0_PH DT_N_S_soc_S_interrupt_controller_3ff00104
 #define DT_N_S_soc_S_spi_3ff64000_P_interrupt_parent_IDX_0_EXISTS 1
+#define DT_N_S_soc_S_spi_3ff64000_P_interrupt_parent_FOREACH_PROP_ELEM(fn) fn(DT_N_S_soc_S_spi_3ff64000, interrupt_parent, 0)
+#define DT_N_S_soc_S_spi_3ff64000_P_interrupt_parent_FOREACH_PROP_ELEM_SEP(fn, sep) fn(DT_N_S_soc_S_spi_3ff64000, interrupt_parent, 0)
+#define DT_N_S_soc_S_spi_3ff64000_P_interrupt_parent_FOREACH_PROP_ELEM_VARGS(fn, ...) fn(DT_N_S_soc_S_spi_3ff64000, interrupt_parent, 0, __VA_ARGS__)
+#define DT_N_S_soc_S_spi_3ff64000_P_interrupt_parent_FOREACH_PROP_ELEM_SEP_VARGS(fn, sep, ...) fn(DT_N_S_soc_S_spi_3ff64000, interrupt_parent, 0, __VA_ARGS__)
 #define DT_N_S_soc_S_spi_3ff64000_P_interrupt_parent_LEN 1
 #define DT_N_S_soc_S_spi_3ff64000_P_interrupt_parent_EXISTS 1
 #define DT_N_S_soc_S_spi_3ff64000_P_clocks_IDX_0_EXISTS 1
@@ -9131,6 +8063,8 @@
 #define DT_N_S_soc_S_spi_3ff64000_P_clocks_EXISTS 1
 #define DT_N_S_soc_S_spi_3ff64000_P_wakeup_source 0
 #define DT_N_S_soc_S_spi_3ff64000_P_wakeup_source_EXISTS 1
+#define DT_N_S_soc_S_spi_3ff64000_P_zephyr_pm_device_runtime_auto 0
+#define DT_N_S_soc_S_spi_3ff64000_P_zephyr_pm_device_runtime_auto_EXISTS 1
 
 /*
  * Devicetree node: /soc/spi@3ff64000/st7789v@0
@@ -9138,7 +8072,7 @@
  * Node identifier: DT_N_S_soc_S_spi_3ff64000_S_st7789v_0
  *
  * Binding (compatible = sitronix,st7789v):
- *   $ZEPHYR_BASE/dts/bindings/display/sitronix,st7789v.yaml
+ *   /home/gez/sdks/zephyr/zephyr/dts/bindings/display/sitronix,st7789v.yaml
  *
  * (Descriptions have moved to the Devicetree Bindings Index
  * in the documentation.)
@@ -9537,18 +8471,16 @@
 #define DT_N_S_soc_S_spi_3ff64000_S_st7789v_0_P_reg {0 /* 0x0 */}
 #define DT_N_S_soc_S_spi_3ff64000_S_st7789v_0_P_reg_IDX_0 0
 #define DT_N_S_soc_S_spi_3ff64000_S_st7789v_0_P_reg_IDX_0_EXISTS 1
-#define DT_N_S_soc_S_spi_3ff64000_S_st7789v_0_P_reg_FOREACH_PROP_ELEM(fn) fn(DT_N_S_soc_S_spi_3ff64000_S_st7789v_0, reg, 0)
-#define DT_N_S_soc_S_spi_3ff64000_S_st7789v_0_P_reg_FOREACH_PROP_ELEM_SEP(fn, sep) fn(DT_N_S_soc_S_spi_3ff64000_S_st7789v_0, reg, 0)
-#define DT_N_S_soc_S_spi_3ff64000_S_st7789v_0_P_reg_FOREACH_PROP_ELEM_VARGS(fn, ...) fn(DT_N_S_soc_S_spi_3ff64000_S_st7789v_0, reg, 0, __VA_ARGS__)
-#define DT_N_S_soc_S_spi_3ff64000_S_st7789v_0_P_reg_FOREACH_PROP_ELEM_SEP_VARGS(fn, sep, ...) fn(DT_N_S_soc_S_spi_3ff64000_S_st7789v_0, reg, 0, __VA_ARGS__)
 #define DT_N_S_soc_S_spi_3ff64000_S_st7789v_0_P_reg_EXISTS 1
 #define DT_N_S_soc_S_spi_3ff64000_S_st7789v_0_P_spi_max_frequency 20000000
 #define DT_N_S_soc_S_spi_3ff64000_S_st7789v_0_P_spi_max_frequency_EXISTS 1
 #define DT_N_S_soc_S_spi_3ff64000_S_st7789v_0_P_duplex 0
 #define DT_N_S_soc_S_spi_3ff64000_S_st7789v_0_P_duplex_ENUM_IDX 0
+#define DT_N_S_soc_S_spi_3ff64000_S_st7789v_0_P_duplex_ENUM_VAL_0_EXISTS 1
 #define DT_N_S_soc_S_spi_3ff64000_S_st7789v_0_P_duplex_EXISTS 1
 #define DT_N_S_soc_S_spi_3ff64000_S_st7789v_0_P_frame_format 0
 #define DT_N_S_soc_S_spi_3ff64000_S_st7789v_0_P_frame_format_ENUM_IDX 0
+#define DT_N_S_soc_S_spi_3ff64000_S_st7789v_0_P_frame_format_ENUM_VAL_0_EXISTS 1
 #define DT_N_S_soc_S_spi_3ff64000_S_st7789v_0_P_frame_format_EXISTS 1
 #define DT_N_S_soc_S_spi_3ff64000_S_st7789v_0_P_compatible {"sitronix,st7789v"}
 #define DT_N_S_soc_S_spi_3ff64000_S_st7789v_0_P_compatible_IDX_0 "sitronix,st7789v"
@@ -9564,6 +8496,8 @@
 #define DT_N_S_soc_S_spi_3ff64000_S_st7789v_0_P_compatible_EXISTS 1
 #define DT_N_S_soc_S_spi_3ff64000_S_st7789v_0_P_wakeup_source 0
 #define DT_N_S_soc_S_spi_3ff64000_S_st7789v_0_P_wakeup_source_EXISTS 1
+#define DT_N_S_soc_S_spi_3ff64000_S_st7789v_0_P_zephyr_pm_device_runtime_auto 0
+#define DT_N_S_soc_S_spi_3ff64000_S_st7789v_0_P_zephyr_pm_device_runtime_auto_EXISTS 1
 #define DT_N_S_soc_S_spi_3ff64000_S_st7789v_0_P_height 240
 #define DT_N_S_soc_S_spi_3ff64000_S_st7789v_0_P_height_EXISTS 1
 #define DT_N_S_soc_S_spi_3ff64000_S_st7789v_0_P_width 135
@@ -9588,7 +8522,7 @@
 #define DT_CHOSEN_zephyr_flash_EXISTS            1
 
 /* Macros for iterating over all nodes and enabled nodes */
-#define DT_FOREACH_HELPER(fn) fn(DT_N) fn(DT_N_S_chosen) fn(DT_N_S_aliases) fn(DT_N_S_soc) fn(DT_N_S_soc_S_memory_3ffb0000) fn(DT_N_S_soc_S_memory_3ffe5230) fn(DT_N_S_soc_S_memory_3ffe5630) fn(DT_N_S_soc_S_interrupt_controller_3ff00104) fn(DT_N_S_soc_S_rtc_3ff48000) fn(DT_N_S_soc_S_rtc_3ff48000_S_rtc_timer) fn(DT_N_S_soc_S_flash_controller_3ff42000) fn(DT_N_S_soc_S_flash_controller_3ff42000_S_flash_0) fn(DT_N_S_soc_S_flash_controller_3ff42000_S_flash_0_S_partitions) fn(DT_N_S_soc_S_flash_controller_3ff42000_S_flash_0_S_partitions_S_partition_1000) fn(DT_N_S_soc_S_flash_controller_3ff42000_S_flash_0_S_partitions_S_partition_10000) fn(DT_N_S_soc_S_flash_controller_3ff42000_S_flash_0_S_partitions_S_partition_110000) fn(DT_N_S_soc_S_flash_controller_3ff42000_S_flash_0_S_partitions_S_partition_210000) fn(DT_N_S_soc_S_flash_controller_3ff42000_S_flash_0_S_partitions_S_partition_250000) fn(DT_N_S_soc_S_ipm_3ffe5a30) fn(DT_N_S_soc_S_ipi_3f4c0058) fn(DT_N_S_soc_S_ipi_3f4c005c) fn(DT_N_S_soc_S_uart_3ff40000) fn(DT_N_S_soc_S_uart_3ff50000) fn(DT_N_S_soc_S_uart_3ff6e000) fn(DT_N_S_soc_S_pcnt_3ff57000) fn(DT_N_S_soc_S_ledc_3ff59000) fn(DT_N_S_soc_S_mcpwm_3ff5e000) fn(DT_N_S_soc_S_mcpwm_3ff6c000) fn(DT_N_S_soc_S_gpio) fn(DT_N_S_soc_S_gpio_S_gpio_3ff44000) fn(DT_N_S_soc_S_gpio_S_gpio_3ff44800) fn(DT_N_S_soc_S_i2c_3ff53000) fn(DT_N_S_soc_S_i2c_3ff67000) fn(DT_N_S_soc_S_trng_3ff75144) fn(DT_N_S_soc_S_watchdog_3ff5f048) fn(DT_N_S_soc_S_watchdog_3ff60048) fn(DT_N_S_soc_S_spi_3ff64000) fn(DT_N_S_soc_S_spi_3ff64000_S_st7789v_0) fn(DT_N_S_soc_S_spi_3ff65000) fn(DT_N_S_soc_S_can_3ff6b000) fn(DT_N_S_soc_S_counter_3ff5f000) fn(DT_N_S_soc_S_counter_3ff5f024) fn(DT_N_S_soc_S_counter_3ff60000) fn(DT_N_S_soc_S_counter_3ff60024) fn(DT_N_S_soc_S_dac_3ff48800) fn(DT_N_S_soc_S_adc_3ff48800) fn(DT_N_S_soc_S_adc_3ff48890) fn(DT_N_S_cpus) fn(DT_N_S_cpus_S_cpu_0) fn(DT_N_S_cpus_S_cpu_1) fn(DT_N_S_wifi) fn(DT_N_S_eth) fn(DT_N_S_mdio) fn(DT_N_S_pin_controller) fn(DT_N_S_pin_controller_S_uart0_default) fn(DT_N_S_pin_controller_S_uart0_default_S_group1) fn(DT_N_S_pin_controller_S_uart0_default_S_group2) fn(DT_N_S_pin_controller_S_uart1_default) fn(DT_N_S_pin_controller_S_uart1_default_S_group1) fn(DT_N_S_pin_controller_S_uart1_default_S_group2) fn(DT_N_S_pin_controller_S_uart2_default) fn(DT_N_S_pin_controller_S_uart2_default_S_group1) fn(DT_N_S_pin_controller_S_uart2_default_S_group2) fn(DT_N_S_pin_controller_S_spim2_default) fn(DT_N_S_pin_controller_S_spim2_default_S_group1) fn(DT_N_S_pin_controller_S_spim2_default_S_group2) fn(DT_N_S_pin_controller_S_spim3_default) fn(DT_N_S_pin_controller_S_spim3_default_S_group1) fn(DT_N_S_pin_controller_S_spim3_default_S_group2) fn(DT_N_S_pin_controller_S_i2c0_default) fn(DT_N_S_pin_controller_S_i2c0_default_S_group1) fn(DT_N_S_buttons) fn(DT_N_S_buttons_S_button_0) fn(DT_N_S_power_states) fn(DT_N_S_power_states_S_light_sleep) fn(DT_N_S_power_states_S_deep_sleep) fn(DT_N_S_leds) fn(DT_N_S_leds_S_display_bl_node)
+#define DT_FOREACH_HELPER(fn) fn(DT_N) fn(DT_N_S_chosen) fn(DT_N_S_aliases) fn(DT_N_S_soc) fn(DT_N_S_soc_S_memory_3ffb0000) fn(DT_N_S_soc_S_memory_3ffe5230) fn(DT_N_S_soc_S_memory_3ffe5630) fn(DT_N_S_soc_S_interrupt_controller_3ff00104) fn(DT_N_S_soc_S_rtc_3ff48000) fn(DT_N_S_soc_S_rtc_3ff48000_S_rtc_timer) fn(DT_N_S_soc_S_flash_controller_3ff42000) fn(DT_N_S_soc_S_flash_controller_3ff42000_S_flash_0) fn(DT_N_S_soc_S_flash_controller_3ff42000_S_flash_0_S_partitions) fn(DT_N_S_soc_S_flash_controller_3ff42000_S_flash_0_S_partitions_S_partition_1000) fn(DT_N_S_soc_S_flash_controller_3ff42000_S_flash_0_S_partitions_S_partition_10000) fn(DT_N_S_soc_S_flash_controller_3ff42000_S_flash_0_S_partitions_S_partition_110000) fn(DT_N_S_soc_S_flash_controller_3ff42000_S_flash_0_S_partitions_S_partition_210000) fn(DT_N_S_soc_S_flash_controller_3ff42000_S_flash_0_S_partitions_S_partition_250000) fn(DT_N_S_soc_S_ipm_3ffed238) fn(DT_N_S_soc_S_ipi_3f4c0058) fn(DT_N_S_soc_S_ipi_3f4c005c) fn(DT_N_S_soc_S_uart_3ff40000) fn(DT_N_S_soc_S_uart_3ff50000) fn(DT_N_S_soc_S_uart_3ff6e000) fn(DT_N_S_soc_S_pcnt_3ff57000) fn(DT_N_S_soc_S_ledc_3ff59000) fn(DT_N_S_soc_S_mcpwm_3ff5e000) fn(DT_N_S_soc_S_mcpwm_3ff6c000) fn(DT_N_S_soc_S_gpio) fn(DT_N_S_soc_S_gpio_S_gpio_3ff44000) fn(DT_N_S_soc_S_gpio_S_gpio_3ff44800) fn(DT_N_S_soc_S_i2c_3ff53000) fn(DT_N_S_soc_S_i2c_3ff67000) fn(DT_N_S_soc_S_trng_3ff75144) fn(DT_N_S_soc_S_watchdog_3ff5f048) fn(DT_N_S_soc_S_watchdog_3ff60048) fn(DT_N_S_soc_S_spi_3ff64000) fn(DT_N_S_soc_S_spi_3ff64000_S_st7789v_0) fn(DT_N_S_soc_S_spi_3ff65000) fn(DT_N_S_soc_S_can_3ff6b000) fn(DT_N_S_soc_S_counter_3ff5f000) fn(DT_N_S_soc_S_counter_3ff5f024) fn(DT_N_S_soc_S_counter_3ff60000) fn(DT_N_S_soc_S_counter_3ff60024) fn(DT_N_S_soc_S_dac_3ff48800) fn(DT_N_S_soc_S_adc_3ff48800) fn(DT_N_S_soc_S_adc_3ff48890) fn(DT_N_S_cpus) fn(DT_N_S_cpus_S_cpu_0) fn(DT_N_S_cpus_S_cpu_1) fn(DT_N_S_wifi) fn(DT_N_S_eth) fn(DT_N_S_mdio) fn(DT_N_S_pin_controller) fn(DT_N_S_pin_controller_S_uart0_default) fn(DT_N_S_pin_controller_S_uart0_default_S_group1) fn(DT_N_S_pin_controller_S_uart0_default_S_group2) fn(DT_N_S_pin_controller_S_uart1_default) fn(DT_N_S_pin_controller_S_uart1_default_S_group1) fn(DT_N_S_pin_controller_S_uart1_default_S_group2) fn(DT_N_S_pin_controller_S_uart2_default) fn(DT_N_S_pin_controller_S_uart2_default_S_group1) fn(DT_N_S_pin_controller_S_uart2_default_S_group2) fn(DT_N_S_pin_controller_S_spim2_default) fn(DT_N_S_pin_controller_S_spim2_default_S_group1) fn(DT_N_S_pin_controller_S_spim2_default_S_group2) fn(DT_N_S_pin_controller_S_spim3_default) fn(DT_N_S_pin_controller_S_spim3_default_S_group1) fn(DT_N_S_pin_controller_S_spim3_default_S_group2) fn(DT_N_S_pin_controller_S_i2c0_default) fn(DT_N_S_pin_controller_S_i2c0_default_S_group1) fn(DT_N_S_buttons) fn(DT_N_S_buttons_S_button_0) fn(DT_N_S_power_states) fn(DT_N_S_power_states_S_light_sleep) fn(DT_N_S_power_states_S_deep_sleep) fn(DT_N_S_leds) fn(DT_N_S_leds_S_display_bl_node)
 #define DT_FOREACH_OKAY_HELPER(fn) fn(DT_N) fn(DT_N_S_chosen) fn(DT_N_S_aliases) fn(DT_N_S_soc) fn(DT_N_S_soc_S_memory_3ffb0000) fn(DT_N_S_soc_S_memory_3ffe5230) fn(DT_N_S_soc_S_memory_3ffe5630) fn(DT_N_S_soc_S_interrupt_controller_3ff00104) fn(DT_N_S_soc_S_rtc_3ff48000) fn(DT_N_S_soc_S_rtc_3ff48000_S_rtc_timer) fn(DT_N_S_soc_S_flash_controller_3ff42000) fn(DT_N_S_soc_S_flash_controller_3ff42000_S_flash_0) fn(DT_N_S_soc_S_flash_controller_3ff42000_S_flash_0_S_partitions) fn(DT_N_S_soc_S_flash_controller_3ff42000_S_flash_0_S_partitions_S_partition_1000) fn(DT_N_S_soc_S_flash_controller_3ff42000_S_flash_0_S_partitions_S_partition_10000) fn(DT_N_S_soc_S_flash_controller_3ff42000_S_flash_0_S_partitions_S_partition_110000) fn(DT_N_S_soc_S_flash_controller_3ff42000_S_flash_0_S_partitions_S_partition_210000) fn(DT_N_S_soc_S_flash_controller_3ff42000_S_flash_0_S_partitions_S_partition_250000) fn(DT_N_S_soc_S_ipi_3f4c0058) fn(DT_N_S_soc_S_ipi_3f4c005c) fn(DT_N_S_soc_S_uart_3ff40000) fn(DT_N_S_soc_S_gpio) fn(DT_N_S_soc_S_gpio_S_gpio_3ff44000) fn(DT_N_S_soc_S_gpio_S_gpio_3ff44800) fn(DT_N_S_soc_S_i2c_3ff53000) fn(DT_N_S_soc_S_trng_3ff75144) fn(DT_N_S_soc_S_watchdog_3ff5f048) fn(DT_N_S_soc_S_spi_3ff64000) fn(DT_N_S_soc_S_spi_3ff64000_S_st7789v_0) fn(DT_N_S_soc_S_spi_3ff65000) fn(DT_N_S_cpus) fn(DT_N_S_cpus_S_cpu_0) fn(DT_N_S_cpus_S_cpu_1) fn(DT_N_S_pin_controller) fn(DT_N_S_pin_controller_S_uart0_default) fn(DT_N_S_pin_controller_S_uart0_default_S_group1) fn(DT_N_S_pin_controller_S_uart0_default_S_group2) fn(DT_N_S_pin_controller_S_uart1_default) fn(DT_N_S_pin_controller_S_uart1_default_S_group1) fn(DT_N_S_pin_controller_S_uart1_default_S_group2) fn(DT_N_S_pin_controller_S_uart2_default) fn(DT_N_S_pin_controller_S_uart2_default_S_group1) fn(DT_N_S_pin_controller_S_uart2_default_S_group2) fn(DT_N_S_pin_controller_S_spim2_default) fn(DT_N_S_pin_controller_S_spim2_default_S_group1) fn(DT_N_S_pin_controller_S_spim2_default_S_group2) fn(DT_N_S_pin_controller_S_spim3_default) fn(DT_N_S_pin_controller_S_spim3_default_S_group1) fn(DT_N_S_pin_controller_S_spim3_default_S_group2) fn(DT_N_S_pin_controller_S_i2c0_default) fn(DT_N_S_pin_controller_S_i2c0_default_S_group1) fn(DT_N_S_buttons) fn(DT_N_S_buttons_S_button_0) fn(DT_N_S_power_states) fn(DT_N_S_power_states_S_light_sleep) fn(DT_N_S_power_states_S_deep_sleep) fn(DT_N_S_leds) fn(DT_N_S_leds_S_display_bl_node)
 #define DT_COMPAT_fixed_partitions_LABEL_mcuboot DT_N_S_soc_S_flash_controller_3ff42000_S_flash_0_S_partitions_S_partition_1000
 #define DT_COMPAT_fixed_partitions_LABEL_mcuboot_EXISTS 1

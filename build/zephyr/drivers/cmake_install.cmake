@@ -69,6 +69,11 @@ endif()
 
 if(NOT CMAKE_INSTALL_LOCAL_ONLY)
   # Include the install script for the subdirectory.
+  include("/home/gez/workspaces/eclipse/esp_doom/build/zephyr/drivers/cache/cmake_install.cmake")
+endif()
+
+if(NOT CMAKE_INSTALL_LOCAL_ONLY)
+  # Include the install script for the subdirectory.
   include("/home/gez/workspaces/eclipse/esp_doom/build/zephyr/drivers/clock_control/cmake_install.cmake")
 endif()
 

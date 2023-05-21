@@ -2,7 +2,7 @@ MEMORY
 {
   mcuboot_hdr (RX): org = 0x0, len = 0x20
   metadata (RX): org = 0x20, len = 0x20
-  ROM (RX): org = 0x40, len = 4194304 - 0x40
+  ROM (RX): org = 0x40, len = 16777216 - 0x40
   iram0_0_seg(RX): org = 0x40080000, len = 0x20000
   irom0_0_seg(RX): org = 0x400D0020, len = 0x330000-0x20
   dram0_0_seg(RW): org = 0x3FFB0000 + 0x0, len = 0x2c200 - 0x0
@@ -110,25 +110,15 @@ SECTIONS
  initlevel :
  {
   __init_start = .;
-  __init_EARLY_start = .; KEEP(*(SORT(.z_init_EARLY[0-9]_*))); KEEP(*(SORT(.z_init_EARLY[1-9][0-9]_*)));
-  __init_PRE_KERNEL_1_start = .; KEEP(*(SORT(.z_init_PRE_KERNEL_1[0-9]_*))); KEEP(*(SORT(.z_init_PRE_KERNEL_1[1-9][0-9]_*)));
-  __init_PRE_KERNEL_2_start = .; KEEP(*(SORT(.z_init_PRE_KERNEL_2[0-9]_*))); KEEP(*(SORT(.z_init_PRE_KERNEL_2[1-9][0-9]_*)));
-  __init_POST_KERNEL_start = .; KEEP(*(SORT(.z_init_POST_KERNEL[0-9]_*))); KEEP(*(SORT(.z_init_POST_KERNEL[1-9][0-9]_*)));
-  __init_APPLICATION_start = .; KEEP(*(SORT(.z_init_APPLICATION[0-9]_*))); KEEP(*(SORT(.z_init_APPLICATION[1-9][0-9]_*)));
-  __init_SMP_start = .; KEEP(*(SORT(.z_init_SMP[0-9]_*))); KEEP(*(SORT(.z_init_SMP[1-9][0-9]_*)));
+  __init_EARLY_start = .; KEEP(*(SORT(.z_init_EARLY?_*))); KEEP(*(SORT(.z_init_EARLY??_*)));
+  __init_PRE_KERNEL_1_start = .; KEEP(*(SORT(.z_init_PRE_KERNEL_1?_*))); KEEP(*(SORT(.z_init_PRE_KERNEL_1??_*)));
+  __init_PRE_KERNEL_2_start = .; KEEP(*(SORT(.z_init_PRE_KERNEL_2?_*))); KEEP(*(SORT(.z_init_PRE_KERNEL_2??_*)));
+  __init_POST_KERNEL_start = .; KEEP(*(SORT(.z_init_POST_KERNEL?_*))); KEEP(*(SORT(.z_init_POST_KERNEL??_*)));
+  __init_APPLICATION_start = .; KEEP(*(SORT(.z_init_APPLICATION?_*))); KEEP(*(SORT(.z_init_APPLICATION??_*)));
+  __init_SMP_start = .; KEEP(*(SORT(.z_init_SMP?_*))); KEEP(*(SORT(.z_init_SMP??_*)));
   __init_end = .;
  } > drom0_0_seg AT > ROM
- devices :
- {
-  __device_start = .;
-  __device_EARLY_start = .; KEEP(*(SORT(.z_device_EARLY[0-9]_*))); KEEP(*(SORT(.z_device_EARLY[1-9][0-9]_*)));
-  __device_PRE_KERNEL_1_start = .; KEEP(*(SORT(.z_device_PRE_KERNEL_1[0-9]_*))); KEEP(*(SORT(.z_device_PRE_KERNEL_1[1-9][0-9]_*)));
-  __device_PRE_KERNEL_2_start = .; KEEP(*(SORT(.z_device_PRE_KERNEL_2[0-9]_*))); KEEP(*(SORT(.z_device_PRE_KERNEL_2[1-9][0-9]_*)));
-  __device_POST_KERNEL_start = .; KEEP(*(SORT(.z_device_POST_KERNEL[0-9]_*))); KEEP(*(SORT(.z_device_POST_KERNEL[1-9][0-9]_*)));
-  __device_APPLICATION_start = .; KEEP(*(SORT(.z_device_APPLICATION[0-9]_*))); KEEP(*(SORT(.z_device_APPLICATION[1-9][0-9]_*)));
-  __device_SMP_start = .; KEEP(*(SORT(.z_device_SMP[0-9]_*))); KEEP(*(SORT(.z_device_SMP[1-9][0-9]_*)));
-  __device_end = .;
- } > drom0_0_seg AT > ROM
+ device_area : SUBALIGN(4) { _device_list_start = .; KEEP(*(SORT(._device.static.*_?_*))); KEEP(*(SORT(._device.static.*_??_*))); _device_list_end = .; } > drom0_0_seg AT > ROM
  initlevel_error :
  {
   KEEP(*(SORT(.z_init_[_A-Z0-9]*)))
@@ -169,30 +159,10 @@ ztest :
   __symbol_to_keep_end = .;
  } > drom0_0_seg AT > ROM
  shell_area : SUBALIGN(4) { _shell_list_start = .; KEEP(*(SORT_BY_NAME(._shell.static.*))); _shell_list_end = .; } > drom0_0_seg AT > ROM
- shell_root_cmds_sections : ALIGN_WITH_INPUT
- {
-  __shell_root_cmds_start = .;
-  KEEP(*(SORT(.shell_root_cmd_*)));
-  __shell_root_cmds_end = .;
- } > drom0_0_seg AT > ROM
- shell_subcmds_sections : ALIGN_WITH_INPUT
- {
-  __shell_subcmds_start = .;
-  KEEP(*(SORT(.shell_subcmd_*)));
-  __shell_subcmds_end = .;
- } > drom0_0_seg AT > ROM
- shell_dynamic_subcmds_sections : ALIGN_WITH_INPUT
- {
-  __shell_dynamic_subcmds_start = .;
-  KEEP(*(SORT(.shell_dynamic_subcmd_*)));
-  __shell_dynamic_subcmds_end = .;
- } > drom0_0_seg AT > ROM
- font_entry_sections : ALIGN_WITH_INPUT
- {
-  __font_entry_start = .;
-  KEEP(*(SORT_BY_NAME("._cfb_font.*")))
-  __font_entry_end = .;
- } > drom0_0_seg AT > ROM
+ shell_root_cmds_area : SUBALIGN(4) { _shell_root_cmds_list_start = .; KEEP(*(SORT_BY_NAME(._shell_root_cmds.static.*))); _shell_root_cmds_list_end = .; } > drom0_0_seg AT > ROM
+ shell_subcmds_area : SUBALIGN(4) { _shell_subcmds_list_start = .; KEEP(*(SORT_BY_NAME(._shell_subcmds.static.*))); _shell_subcmds_list_end = .; } > drom0_0_seg AT > ROM
+ shell_dynamic_subcmds_area : SUBALIGN(4) { _shell_dynamic_subcmds_list_start = .; KEEP(*(SORT_BY_NAME(._shell_dynamic_subcmds.static.*))); _shell_dynamic_subcmds_list_end = .; } > drom0_0_seg AT > ROM
+ cfb_font_area : SUBALIGN(4) { _cfb_font_list_start = .; KEEP(*(SORT_BY_NAME(._cfb_font.static.*))); _cfb_font_list_end = .; } > drom0_0_seg AT > ROM
          
   _RODATA_SECTION_END :
   {
@@ -251,23 +221,9 @@ ztest :
   KEEP(*(".z_devstate.*"));
                 __device_states_end = .;
         } > dram0_0_seg AT > ROM
- initshell : ALIGN_WITH_INPUT
- {
-  __shell_module_start = .;
-  KEEP(*(".shell_module_*"));
-  __shell_module_end = .;
-  __shell_cmd_start = .;
-  KEEP(*(".shell_cmd_*"));
-  __shell_cmd_end = .;
- } > dram0_0_seg AT > ROM
  log_mpsc_pbuf_area : ALIGN_WITH_INPUT SUBALIGN(4) { _log_mpsc_pbuf_list_start = .; *(SORT_BY_NAME(._log_mpsc_pbuf.static.*)); _log_mpsc_pbuf_list_end = .; } > dram0_0_seg AT > ROM
  log_msg_ptr_area : ALIGN_WITH_INPUT SUBALIGN(4) { _log_msg_ptr_list_start = .; KEEP(*(SORT_BY_NAME(._log_msg_ptr.static.*))); _log_msg_ptr_list_end = .; } > dram0_0_seg AT > ROM
- log_dynamic_sections : ALIGN_WITH_INPUT
- {
-  __log_dynamic_start = .;
-  KEEP(*(SORT(.log_dynamic_*)));
-  __log_dynamic_end = .;
- } > dram0_0_seg AT > ROM
+ log_dynamic_area : ALIGN_WITH_INPUT SUBALIGN(4) { _log_dynamic_list_start = .; KEEP(*(SORT_BY_NAME(._log_dynamic.static.*))); _log_dynamic_list_end = .; } > dram0_0_seg AT > ROM
  k_timer_area : ALIGN_WITH_INPUT SUBALIGN(4) { _k_timer_list_start = .; *(SORT_BY_NAME(._k_timer.static.*)); _k_timer_list_end = .; } > dram0_0_seg AT > ROM
  k_mem_slab_area : ALIGN_WITH_INPUT SUBALIGN(4) { _k_mem_slab_list_start = .; *(SORT_BY_NAME(._k_mem_slab.static.*)); _k_mem_slab_list_end = .; } > dram0_0_seg AT > ROM
  k_heap_area : ALIGN_WITH_INPUT SUBALIGN(4) { _k_heap_list_start = .; *(SORT_BY_NAME(._k_heap.static.*)); _k_heap_list_end = .; } > dram0_0_seg AT > ROM
@@ -280,24 +236,10 @@ ztest :
  k_event_area : ALIGN_WITH_INPUT SUBALIGN(4) { _k_event_list_start = .; *(SORT_BY_NAME(._k_event.static.*)); _k_event_list_end = .; } > dram0_0_seg AT > ROM
  k_queue_area : ALIGN_WITH_INPUT SUBALIGN(4) { _k_queue_list_start = .; *(SORT_BY_NAME(._k_queue.static.*)); _k_queue_list_end = .; } > dram0_0_seg AT > ROM
  k_condvar_area : ALIGN_WITH_INPUT SUBALIGN(4) { _k_condvar_list_start = .; *(SORT_BY_NAME(._k_condvar.static.*)); _k_condvar_list_end = .; } > dram0_0_seg AT > ROM
- _net_buf_pool_area : ALIGN_WITH_INPUT SUBALIGN(4)
- {
-  _net_buf_pool_list = .;
-  KEEP(*(SORT_BY_NAME("._net_buf_pool.static.*")))
- } > dram0_0_seg AT > ROM
+ net_buf_pool_area : ALIGN_WITH_INPUT SUBALIGN(4) { _net_buf_pool_list_start = .; KEEP(*(SORT_BY_NAME(._net_buf_pool.static.*))); _net_buf_pool_list_end = .; } > dram0_0_seg AT > ROM
          
- log_strings_sections : ALIGN_WITH_INPUT
- {
-  __log_strings_start = .;
-  KEEP(*(SORT(.log_strings*)));
-  __log_strings_end = .;
- } > dram0_0_seg AT > ROM
- log_const_sections : ALIGN_WITH_INPUT
- {
-  __log_const_start = .;
-  KEEP(*(SORT(.log_const_*)));
-  __log_const_end = .;
- } > dram0_0_seg AT > ROM
+ log_strings_area : SUBALIGN(4) { _log_strings_list_start = .; KEEP(*(SORT_BY_NAME(._log_strings.static.*))); _log_strings_list_end = .; } > dram0_0_seg AT > ROM
+ log_const_area : SUBALIGN(4) { _log_const_list_start = .; KEEP(*(SORT_BY_NAME(._log_const.static.*))); _log_const_list_end = .; } > dram0_0_seg AT > ROM
  log_backend_area : SUBALIGN(4) { _log_backend_list_start = .; KEEP(*(SORT_BY_NAME(._log_backend.static.*))); _log_backend_list_end = .; } > dram0_0_seg AT > ROM
  log_link_area : SUBALIGN(4) { _log_link_list_start = .; KEEP(*(SORT_BY_NAME(._log_link.static.*))); _log_link_list_end = .; } > dram0_0_seg AT > ROM
          

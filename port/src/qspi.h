@@ -26,7 +26,7 @@
 #ifndef QSPI_H_
 #define QSPI_H_
 #include <stdint.h>
-#include "nrf.h"
+// #include "nrf.h"
 void qspiFlashProgram(uint32_t address, uint8_t* data, uint32_t size);
 void qspiFlashErasePage64k(uint32_t address);
 void qspiFlashErasePage4k(uint32_t address);

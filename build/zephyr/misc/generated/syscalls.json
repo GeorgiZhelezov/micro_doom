@@ -1296,6 +1296,13 @@
     ],
     [
         [
+            "int flash_ex_op",
+            "const struct device *dev, uint16_t code,\n\t\t\t  const uintptr_t in, void *out"
+        ],
+        "flash.h"
+    ],
+    [
+        [
             "int fuel_gauge_get_prop",
             "const struct device *dev, struct fuel_gauge_get_property *props,\n\t\t\t\t  size_t props_len"
         ],
@@ -1305,6 +1312,13 @@
         [
             "int fuel_gauge_set_prop",
             "const struct device *dev, struct fuel_gauge_set_property *props,\n\t\t\t\t  size_t props_len"
+        ],
+        "fuel_gauge.h"
+    ],
+    [
+        [
+            "int fuel_gauge_get_buffer_prop",
+            "const struct device *dev,\n\t\t\t\t\tstruct fuel_gauge_get_buffer_property *prop, void *dst,\n\t\t\t\t\tsize_t dst_len"
         ],
         "fuel_gauge.h"
     ],
@@ -1377,27 +1391,6 @@
             "const struct device *dev"
         ],
         "gpio.h"
-    ],
-    [
-        [
-            "int gpio_keys_enable_interrupt",
-            "const struct device *dev, gpio_keys_callback_handler_t cb"
-        ],
-        "gpio_keys.h"
-    ],
-    [
-        [
-            "int gpio_keys_disable_interrupt",
-            "const struct device *dev"
-        ],
-        "gpio_keys.h"
-    ],
-    [
-        [
-            "int gpio_keys_get_pin",
-            "const struct device *dev, uint32_t idx"
-        ],
-        "gpio_keys.h"
     ],
     [
         [
@@ -1814,6 +1807,104 @@
     ],
     [
         [
+            "ssize_t retained_mem_size",
+            "const struct device *dev"
+        ],
+        "retained_mem.h"
+    ],
+    [
+        [
+            "int retained_mem_read",
+            "const struct device *dev, off_t offset, uint8_t *buffer,\n\t\t\t\tsize_t size"
+        ],
+        "retained_mem.h"
+    ],
+    [
+        [
+            "int retained_mem_write",
+            "const struct device *dev, off_t offset, const uint8_t *buffer,\n\t\t\t\t size_t size"
+        ],
+        "retained_mem.h"
+    ],
+    [
+        [
+            "int retained_mem_clear",
+            "const struct device *dev"
+        ],
+        "retained_mem.h"
+    ],
+    [
+        [
+            "int rtc_set_time",
+            "const struct device *dev, const struct rtc_time *timeptr"
+        ],
+        "rtc.h"
+    ],
+    [
+        [
+            "int rtc_get_time",
+            "const struct device *dev, struct rtc_time *timeptr"
+        ],
+        "rtc.h"
+    ],
+    [
+        [
+            "int rtc_alarm_get_supported_fields",
+            "const struct device *dev, uint16_t id,\n\t\t\t\t\t     uint16_t *mask"
+        ],
+        "rtc.h"
+    ],
+    [
+        [
+            "int rtc_alarm_set_time",
+            "const struct device *dev, uint16_t id, uint16_t mask,\n\t\t\t\t const struct rtc_time *timeptr"
+        ],
+        "rtc.h"
+    ],
+    [
+        [
+            "int rtc_alarm_get_time",
+            "const struct device *dev, uint16_t id, uint16_t *mask,\n\t\t\t\t struct rtc_time *timeptr"
+        ],
+        "rtc.h"
+    ],
+    [
+        [
+            "int rtc_alarm_is_pending",
+            "const struct device *dev, uint16_t id"
+        ],
+        "rtc.h"
+    ],
+    [
+        [
+            "int rtc_alarm_set_callback",
+            "const struct device *dev, uint16_t id,\n\t\t\t\t     rtc_alarm_callback callback, void *user_data"
+        ],
+        "rtc.h"
+    ],
+    [
+        [
+            "int rtc_update_set_callback",
+            "const struct device *dev, rtc_update_callback callback,\n\t\t\t\t      void *user_data"
+        ],
+        "rtc.h"
+    ],
+    [
+        [
+            "int rtc_set_calibration",
+            "const struct device *dev, int32_t calibration"
+        ],
+        "rtc.h"
+    ],
+    [
+        [
+            "int rtc_get_calibration",
+            "const struct device *dev, int32_t *calibration"
+        ],
+        "rtc.h"
+    ],
+    [
+        [
             "int sdhc_hw_reset",
             "const struct device *dev"
         ],
@@ -1895,6 +1986,125 @@
             "const struct device *dev,\n\t\t\t\t enum sensor_channel chan,\n\t\t\t\t struct sensor_value *val"
         ],
         "sensor.h"
+    ],
+    [
+        [
+            "int smbus_configure",
+            "const struct device *dev, uint32_t dev_config"
+        ],
+        "smbus.h"
+    ],
+    [
+        [
+            "int smbus_get_config",
+            "const struct device *dev, uint32_t *dev_config"
+        ],
+        "smbus.h"
+    ],
+    [
+        [
+            "int smbus_smbalert_set_cb",
+            "const struct device *dev,\n\t\t\t\t    struct smbus_callback *cb"
+        ],
+        "smbus.h"
+    ],
+    [
+        [
+            "int smbus_smbalert_remove_cb",
+            "const struct device *dev,\n\t\t\t\t       struct smbus_callback *cb"
+        ],
+        "smbus.h"
+    ],
+    [
+        [
+            "int smbus_host_notify_set_cb",
+            "const struct device *dev,\n\t\t\t\t       struct smbus_callback *cb"
+        ],
+        "smbus.h"
+    ],
+    [
+        [
+            "int smbus_host_notify_remove_cb",
+            "const struct device *dev,\n\t\t\t\t\t  struct smbus_callback *cb"
+        ],
+        "smbus.h"
+    ],
+    [
+        [
+            "int smbus_quick",
+            "const struct device *dev, uint16_t addr,\n\t\t\t  enum smbus_direction direction"
+        ],
+        "smbus.h"
+    ],
+    [
+        [
+            "int smbus_byte_write",
+            "const struct device *dev, uint16_t addr,\n\t\t\t       uint8_t byte"
+        ],
+        "smbus.h"
+    ],
+    [
+        [
+            "int smbus_byte_read",
+            "const struct device *dev, uint16_t addr,\n\t\t\t      uint8_t *byte"
+        ],
+        "smbus.h"
+    ],
+    [
+        [
+            "int smbus_byte_data_write",
+            "const struct device *dev, uint16_t addr,\n\t\t\t\t    uint8_t cmd, uint8_t byte"
+        ],
+        "smbus.h"
+    ],
+    [
+        [
+            "int smbus_byte_data_read",
+            "const struct device *dev, uint16_t addr,\n\t\t\t\t   uint8_t cmd, uint8_t *byte"
+        ],
+        "smbus.h"
+    ],
+    [
+        [
+            "int smbus_word_data_write",
+            "const struct device *dev, uint16_t addr,\n\t\t\t\t    uint8_t cmd, uint16_t word"
+        ],
+        "smbus.h"
+    ],
+    [
+        [
+            "int smbus_word_data_read",
+            "const struct device *dev, uint16_t addr,\n\t\t\t\t   uint8_t cmd, uint16_t *word"
+        ],
+        "smbus.h"
+    ],
+    [
+        [
+            "int smbus_pcall",
+            "const struct device *dev, uint16_t addr,\n\t\t\t  uint8_t cmd, uint16_t send_word, uint16_t *recv_word"
+        ],
+        "smbus.h"
+    ],
+    [
+        [
+            "int smbus_block_write",
+            "const struct device *dev, uint16_t addr,\n\t\t\t\tuint8_t cmd, uint8_t count, uint8_t *buf"
+        ],
+        "smbus.h"
+    ],
+    [
+        [
+            "int smbus_block_read",
+            "const struct device *dev, uint16_t addr,\n\t\t\t       uint8_t cmd, uint8_t *count, uint8_t *buf"
+        ],
+        "smbus.h"
+    ],
+    [
+        [
+            "int smbus_block_pcall",
+            "const struct device *dev,\n\t\t\t\tuint16_t addr, uint8_t cmd,\n\t\t\t\tuint8_t snd_count, uint8_t *snd_buf,\n\t\t\t\tuint8_t *rcv_count, uint8_t *rcv_buf"
+        ],
+        "smbus.h"
     ],
     [
         [
@@ -2220,8 +2430,8 @@
     ],
     [
         [
-            "void nrf_qspi_nor_base_clock_div_force",
-            "const struct device *dev,\n\t\t\t\t\t\t bool force"
+            "void nrf_qspi_nor_xip_enable",
+            "const struct device *dev, bool enable"
         ],
         "nrf_qspi_nor.h"
     ],
@@ -2238,6 +2448,83 @@
             "const struct device *dev,\n\t\t\t\t\t struct maxim_ds3231_syncpoint *syncpoint"
         ],
         "maxim_ds3231.h"
+    ],
+    [
+        [
+            "void sip_supervisory_call",
+            "const struct device *dev, unsigned long function_id,\n\t\t\t\t    unsigned long arg0, unsigned long arg1, unsigned long arg2,\n\t\t\t\t    unsigned long arg3, unsigned long arg4, unsigned long arg5,\n\t\t\t\t    unsigned long arg6, struct arm_smccc_res *res"
+        ],
+        "sip_svc_driver.h"
+    ],
+    [
+        [
+            "bool sip_svc_plat_func_id_valid",
+            "const struct device *dev, uint32_t command,\n\t\t\t\t\t  uint32_t func_id"
+        ],
+        "sip_svc_driver.h"
+    ],
+    [
+        [
+            "uint32_t sip_svc_plat_format_trans_id",
+            "const struct device *dev, uint32_t client_idx,\n\t\t\t\t\t\tuint32_t trans_idx"
+        ],
+        "sip_svc_driver.h"
+    ],
+    [
+        [
+            "uint32_t sip_svc_plat_get_trans_idx",
+            "const struct device *dev, uint32_t trans_id"
+        ],
+        "sip_svc_driver.h"
+    ],
+    [
+        [
+            "void sip_svc_plat_update_trans_id",
+            "const struct device *dev,\n\t\t\t\t\t    struct sip_svc_request *request, uint32_t trans_id"
+        ],
+        "sip_svc_driver.h"
+    ],
+    [
+        [
+            "uint32_t sip_svc_plat_get_error_code",
+            "const struct device *dev, struct arm_smccc_res *res"
+        ],
+        "sip_svc_driver.h"
+    ],
+    [
+        [
+            "int sip_svc_plat_async_res_req",
+            "const struct device *dev, unsigned long *a0,\n\t\t\t\t\t unsigned long *a1, unsigned long *a2, unsigned long *a3,\n\t\t\t\t\t unsigned long *a4, unsigned long *a5, unsigned long *a6,\n\t\t\t\t\t unsigned long *a7, char *buf, size_t size"
+        ],
+        "sip_svc_driver.h"
+    ],
+    [
+        [
+            "int sip_svc_plat_async_res_res",
+            "const struct device *dev, struct arm_smccc_res *res,\n\t\t\t\t\t char *buf, size_t *size, uint32_t *trans_id"
+        ],
+        "sip_svc_driver.h"
+    ],
+    [
+        [
+            "void sip_svc_plat_free_async_memory",
+            "const struct device *dev,\n\t\t\t\t\t      struct sip_svc_request *request"
+        ],
+        "sip_svc_driver.h"
+    ],
+    [
+        [
+            "int bc12_set_role",
+            "const struct device *dev, enum bc12_role role"
+        ],
+        "usb_bc12.h"
+    ],
+    [
+        [
+            "int bc12_set_result_cb",
+            "const struct device *dev, bc12_callback_t cb, void *user_data"
+        ],
+        "usb_bc12.h"
     ],
     [
         [
@@ -2271,6 +2558,55 @@
         [
             "int ivshmem_register_handler",
             "const struct device *dev,\n\t\t\t\t       struct k_poll_signal *signal,\n\t\t\t\t       uint16_t vector"
+        ],
+        "ivshmem.h"
+    ],
+    [
+        [
+            "size_t ivshmem_get_rw_mem_section",
+            "const struct device *dev,\n\t\t\t\t\t    uintptr_t *memmap"
+        ],
+        "ivshmem.h"
+    ],
+    [
+        [
+            "size_t ivshmem_get_output_mem_section",
+            "const struct device *dev,\n\t\t\t\t\t\tuint32_t peer_id,\n\t\t\t\t\t\tuintptr_t *memmap"
+        ],
+        "ivshmem.h"
+    ],
+    [
+        [
+            "uint32_t ivshmem_get_state",
+            "const struct device *dev,\n\t\t\t\t     uint32_t peer_id"
+        ],
+        "ivshmem.h"
+    ],
+    [
+        [
+            "int ivshmem_set_state",
+            "const struct device *dev,\n\t\t\t\tuint32_t state"
+        ],
+        "ivshmem.h"
+    ],
+    [
+        [
+            "uint32_t ivshmem_get_max_peers",
+            "const struct device *dev"
+        ],
+        "ivshmem.h"
+    ],
+    [
+        [
+            "uint16_t ivshmem_get_protocol",
+            "const struct device *dev"
+        ],
+        "ivshmem.h"
+    ],
+    [
+        [
+            "int ivshmem_enable_interrupts",
+            "const struct device *dev,\n\t\t\t\t\tbool enable"
         ],
         "ivshmem.h"
     ],
@@ -2654,8 +2990,29 @@
     ],
     [
         [
-            "int rtio_sqe_copy_in",
-            "struct rtio *r,\n\t\t\t       const struct rtio_sqe *sqes,\n\t\t\t       size_t sqe_count"
+            "int rtio_cqe_get_mempool_buffer",
+            "const struct rtio *r, struct rtio_cqe *cqe,\n\t\t\t\t\t  uint8_t **buff, uint32_t *buff_len"
+        ],
+        "rtio.h"
+    ],
+    [
+        [
+            "void rtio_release_buffer",
+            "struct rtio *r, void *buff, uint32_t buff_len"
+        ],
+        "rtio.h"
+    ],
+    [
+        [
+            "int rtio_sqe_cancel",
+            "struct rtio_sqe *sqe"
+        ],
+        "rtio.h"
+    ],
+    [
+        [
+            "int rtio_sqe_copy_in_get_handles",
+            "struct rtio *r, const struct rtio_sqe *sqes,\n\t\t\t\t\t   struct rtio_sqe **handle, size_t sqe_count"
         ],
         "rtio.h"
     ],
