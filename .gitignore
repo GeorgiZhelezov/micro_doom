@@ -1,0 +1,5 @@
+build/*
+!build/zephyr/.config
+!build/zephyr/zephyr.bin
+!build/zephyr/zephyr.hex
+!build/zephyr/zephyr.dts

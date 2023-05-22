@@ -30,6 +30,8 @@ void user_delay(uint32_t milis)
 	k_busy_wait(milis * 1000);
 }
 
+extern void main_port(void);
+
 void main(void)
 {
 	int ret = 0;
@@ -42,5 +44,7 @@ void main(void)
 	{
 		LOG_INF("Hello World! %s", CONFIG_BOARD);
 		k_sleep(K_MSEC(1000));
+
+		// main_port();
 	}
 }

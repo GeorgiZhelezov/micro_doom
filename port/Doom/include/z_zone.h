@@ -69,7 +69,7 @@
 //#include <assert.h>
 //NOTE redefinition; doesn't seem like this is used so not sure why it's here
 // #define STRINGIFY(x) #x
-// #define TOSTRING(x) STRINGIFY(x)
+#define TOSTRING(x) STRINGIFY(x)
 
 // ZONE MEMORY
 // PU - purge tags.
