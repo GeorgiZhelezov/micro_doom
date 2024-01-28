@@ -3,7 +3,7 @@
 / {
 	#address-cells = < 0x1 >;
 	#size-cells = < 0x1 >;
-	model = "esp32";
+	model = "Espressif ESP32-DEVKITC-WROOM-32D";
 	compatible = "espressif,esp32";
 	chosen {
 		zephyr,canbus = &twai;
@@ -13,6 +13,7 @@
 		zephyr,console = &uart0;
 		zephyr,shell-uart = &uart0;
 		zephyr,flash = &flash0;
+		zephyr,code-partition = &slot0_partition;
 	};
 	aliases {
 		uart-0 = &uart0;
@@ -69,9 +70,9 @@
 			#size-cells = < 0x1 >;
 			flash0: flash@0 {
 				compatible = "soc-nv-flash";
-				reg = < 0x0 0x1000000 >;
 				erase-block-size = < 0x1000 >;
 				write-block-size = < 0x4 >;
+				reg = < 0x0 0x1000000 >;
 				status = "okay";
 				partitions {
 					compatible = "fixed-partitions";
@@ -100,6 +101,12 @@
 					};
 				};
 			};
+		};
+		psram0: psram@3f800000 {
+			device_type = "memory";
+			compatible = "mmio-sram";
+			reg = < 0x3f800000 0x200000 >;
+			status = "disabled";
 		};
 		ipm0: ipm@3ffed238 {
 			compatible = "espressif,esp32-ipm";
@@ -205,6 +212,7 @@
 				interrupts = < 0x16 >;
 				interrupt-parent = < &intc >;
 				ngpios = < 0x20 >;
+				gpio-reserved-ranges = < 0x6 0x6 >, < 0x14 0x1 >, < 0x18 0x1 >, < 0x1c 0x4 >;
 				status = "okay";
 				phandle = < 0x7 >;
 			};
@@ -216,9 +224,26 @@
 				interrupts = < 0x16 >;
 				interrupt-parent = < &intc >;
 				ngpios = < 0x8 >;
+				gpio-reserved-ranges = < 0x6 0x2 >;
 				status = "okay";
 				phandle = < 0x8 >;
 			};
+		};
+		touch: touch@3ff48858 {
+			compatible = "espressif,esp32-touch";
+			reg = < 0x3ff48858 0x38 >;
+			interrupts = < 0x2e >;
+			interrupt-parent = < &intc >;
+			status = "disabled";
+			debounce-interval-ms = < 0x1e >;
+			href-microvolt = < 0x2932e0 >;
+			lref-microvolt = < 0x7a120 >;
+			href-atten-microvolt = < 0xf4240 >;
+			filter-mode = < 0x2 >;
+			filter-debounce-cnt = < 0x1 >;
+			filter-noise-thr = < 0x0 >;
+			filter-jitter-step = < 0x4 >;
+			filter-smooth-level = < 0x1 >;
 		};
 		i2c0: i2c@3ff53000 {
 			compatible = "espressif,esp32-i2c";
@@ -326,7 +351,6 @@
 			interrupts = < 0x2d >;
 			interrupt-parent = < &intc >;
 			clocks = < &rtc 0x16 >;
-			sjw = < 0x1 >;
 			sample-point = < 0x36b >;
 			status = "disabled";
 		};
@@ -399,14 +423,30 @@
 			device_type = "cpu";
 			compatible = "cdns,tensilica-xtensa-lx6";
 			reg = < 0x0 >;
-			clock-frequency = < 0xe4e1c00 >;
 			cpu-power-states = < &light_sleep &deep_sleep >;
+			clock-frequency = < 0xe4e1c00 >;
 		};
 		cpu1: cpu@1 {
 			device_type = "cpu";
 			compatible = "cdns,tensilica-xtensa-lx6";
 			reg = < 0x1 >;
 			clock-frequency = < 0xe4e1c00 >;
+		};
+		power-states {
+			light_sleep: light_sleep {
+				compatible = "zephyr,power-state";
+				power-state-name = "standby";
+				min-residency-us = < 0xc8 >;
+				exit-latency-us = < 0x3c >;
+				phandle = < 0xc >;
+			};
+			deep_sleep: deep_sleep {
+				compatible = "zephyr,power-state";
+				power-state-name = "soft-off";
+				min-residency-us = < 0x7d0 >;
+				exit-latency-us = < 0xd4 >;
+				phandle = < 0xd >;
+			};
 		};
 	};
 	wifi: wifi {
@@ -422,9 +462,10 @@
 	};
 	mdio: mdio {
 		compatible = "espressif,esp32-mdio";
-		protocol = "clause 22";
 		clocks = < &rtc 0x17 >;
 		status = "disabled";
+		#address-cells = < 0x1 >;
+		#size-cells = < 0x0 >;
 	};
 	pinctrl: pin-controller {
 		compatible = "espressif,esp32-pinctrl";
@@ -495,22 +536,7 @@
 		button0: button_0 {
 			gpios = < &gpio0 0x0 0x11 >;
 			label = "BOOT Button";
-		};
-	};
-	power-states {
-		light_sleep: light_sleep {
-			compatible = "zephyr,power-state";
-			power-state-name = "standby";
-			min-residency-us = < 0xc8 >;
-			exit-latency-us = < 0x3c >;
-			phandle = < 0xc >;
-		};
-		deep_sleep: deep_sleep {
-			compatible = "zephyr,power-state";
-			power-state-name = "soft-off";
-			min-residency-us = < 0x7d0 >;
-			exit-latency-us = < 0xd4 >;
-			phandle = < 0xd >;
+			zephyr,code = < 0xb >;
 		};
 	};
 	leds {

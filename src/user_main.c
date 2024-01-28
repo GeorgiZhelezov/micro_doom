@@ -45,6 +45,6 @@ void main(void)
 		LOG_INF("Hello World! %s", CONFIG_BOARD);
 		k_sleep(K_MSEC(1000));
 
-		main_port();
+		// main_port();
 	}
 }
