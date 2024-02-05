@@ -13,6 +13,8 @@
 #include <zephyr/logging/log.h>
 LOG_MODULE_REGISTER(user_main, LOG_LEVEL_INF);
 
+extern void main_port(void);
+
 void user_print_device_info(void)
 {
     LOG_INF("Doom port to ESP32. Detecting MCU data");
@@ -29,8 +31,6 @@ void user_delay(uint32_t milis)
 {
 	k_busy_wait(milis * 1000);
 }
-
-extern void main_port(void);
 
 void main(void)
 {

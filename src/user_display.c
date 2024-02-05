@@ -15,8 +15,8 @@ K_SEM_DEFINE(sem_display, 1, 1);
 static const struct device *display_dev = DEVICE_DT_GET(DT_ALIAS(display_ctrl));
 static const struct gpio_dt_spec display_pin_bl   = GPIO_DT_SPEC_GET(DT_NODELABEL(display_bl), gpios);
 
-uint16_t *test_image              = image_bird;
-const    uint32_t test_image_size = ARRAY_SIZE(image_troll);
+uint16_t *test_image           = image_bird;
+const uint32_t test_image_size = ARRAY_SIZE(image_troll);
 
 const struct display_buffer_descriptor desc =
 {
@@ -40,6 +40,33 @@ static void user_display_swap_bytes(uint16_t *buff, size_t len)
 void user_display_test_image(void)
 {
 	user_display_swap_bytes(test_image, test_image_size);
+	
+	// for (size_t row = 0; row < desc.height; row++)
+	// {
+	// 	for (size_t col = 0; col < desc.width; col++)
+	// 	{
+	// 		if (row && row % 16 == 0)
+	// 		{
+	// 			test_image[row * desc.width + col] = 0xffff;
+	// 		} 
+	// 		else if (col && col % 15 == 0)
+	// 		{
+	// 			test_image[row * desc.width + col] = 0xaaff;
+	// 		}
+	// 		else
+	// 		{
+	// 			test_image [row * desc.width + col] = 0x0;
+	// 		}
+	// 	}
+	// }
+
+	for (size_t i = 0, j = test_image_size - 1; i < j; i++, j--)
+	{
+		size_t temp = test_image[i];
+		test_image[i] = test_image[j];
+		test_image[j] = temp;
+	}
+
 	display_write(display_dev, 0, 0, &desc, test_image);
 }
 
