@@ -25,7 +25,7 @@
 	current-speed = <115200>;
 };
 
-&pinctrl 
+&pinctrl
 {
 	spim2_default: spim2_default 
 	{
@@ -43,7 +43,7 @@
 	};
 };
 
-&spi2 
+&spi2
 {
 	status = "okay";
 	pinctrl-0 = <&spim2_default>;

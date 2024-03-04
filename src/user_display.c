@@ -12,15 +12,15 @@ LOG_MODULE_REGISTER(user_display, LOG_LEVEL_INF);
 
 K_SEM_DEFINE(sem_display, 1, 1);
 
-static const struct device *display_dev = DEVICE_DT_GET(DT_ALIAS(display_ctrl));
-static const struct gpio_dt_spec display_pin_bl   = GPIO_DT_SPEC_GET(DT_NODELABEL(display_bl), gpios);
+static const struct device *display_dev         = DEVICE_DT_GET(DT_ALIAS(display_ctrl));
+static const struct gpio_dt_spec display_pin_bl = GPIO_DT_SPEC_GET(DT_NODELABEL(display_bl), gpios);
 
-uint16_t *test_image           = image_bird;
-const uint32_t test_image_size = ARRAY_SIZE(image_troll);
+uint16_t *test_image             = image_bird;
+const uint32_t test_image_len    = ARRAY_SIZE(image_troll);
 
-const struct display_buffer_descriptor desc =
+const struct display_buffer_descriptor display_buff =
 {
-	.buf_size = test_image_size,
+	.buf_size = test_image_len,
 	.height   = 240,
 	.width    = 135,
 	.pitch    = 1,
@@ -37,37 +37,66 @@ static void user_display_swap_bytes(uint16_t *buff, size_t len)
 	}
 }
 
-void user_display_test_image(void)
+void user_display_image_rotate(void)
 {
-	user_display_swap_bytes(test_image, test_image_size);
-	
-	// for (size_t row = 0; row < desc.height; row++)
-	// {
-	// 	for (size_t col = 0; col < desc.width; col++)
-	// 	{
-	// 		if (row && row % 16 == 0)
-	// 		{
-	// 			test_image[row * desc.width + col] = 0xffff;
-	// 		} 
-	// 		else if (col && col % 15 == 0)
-	// 		{
-	// 			test_image[row * desc.width + col] = 0xaaff;
-	// 		}
-	// 		else
-	// 		{
-	// 			test_image [row * desc.width + col] = 0x0;
-	// 		}
-	// 	}
-	// }
-
-	for (size_t i = 0, j = test_image_size - 1; i < j; i++, j--)
+	for (size_t i = 0, j = test_image_len - 1; i < j; i++, j--)
 	{
 		size_t temp = test_image[i];
 		test_image[i] = test_image[j];
 		test_image[j] = temp;
 	}
+}
 
-	display_write(display_dev, 0, 0, &desc, test_image);
+void user_display_image_mirror()
+{
+	for (size_t i = 0; i < display_buff.height; i++)
+	{
+		for (size_t j = 0; j < display_buff.width / 2; j++)
+		{
+			uint16_t temp = test_image[i * display_buff.width + j];
+			test_image[i * display_buff.width + j] = test_image[i * display_buff.width + (display_buff.width - 1 - j)];
+			test_image[i * display_buff.width + (display_buff.width - 1 - j)] = temp;
+		}
+
+		if (display_buff.width % 2 != 0)
+		{
+			test_image[i * display_buff.width + (display_buff.width / 2)] = test_image[i * display_buff.width + (display_buff.width / 2)];
+		}
+	}
+}
+
+void user_display_test_image(void)
+{
+	for (size_t row = 0; row < display_buff.height; row++)
+	{
+		for (size_t col = 0; col < display_buff.width; col++)
+		{
+			if (row && row % 16 == 0)
+			{
+				// test_image[row * display_buff.width + col] = 0xffff;
+			} 
+			else if (col && col % 15 == 0)
+			{
+				// test_image[row * display_buff.width + col] = 0xaaff;
+			}
+			else
+			{
+				// test_image[row * display_buff.width + col] = 0x0;
+			}
+		}
+	}
+
+	static uint32_t counter = 0;
+	if (counter++ % 2 == 0)
+	{
+		user_display_image_rotate();
+	}
+	else
+	{
+		user_display_image_mirror();
+	}
+
+	display_write(display_dev, 0, 0, &display_buff, test_image);
 }
 
 void user_display_init(void)
@@ -89,4 +118,7 @@ void user_display_init(void)
 	}
 
 	gpio_pin_set_dt(&display_pin_bl, 1);
+
+	user_display_swap_bytes(test_image, test_image_len);
+	// memset(test_image, 0, test_image_len * sizeof(test_image[0]));
 }
