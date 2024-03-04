@@ -3,7 +3,7 @@
 / {
 	#address-cells = < 0x1 >;
 	#size-cells = < 0x1 >;
-	model = "Espressif ESP32-DEVKITC-WROOM-32D";
+	model = "Espressif ESP32-DevkitC PROCPU";
 	compatible = "espressif,esp32";
 	chosen {
 		zephyr,canbus = &twai;
