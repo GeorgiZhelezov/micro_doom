@@ -14,6 +14,8 @@
 		"user_time.h": "c",
 		"user_main.h": "c",
 		"user_display.h": "c",
-		"esp_attr.h": "c"
+		"esp_attr.h": "c",
+		"panel.h": "c",
+		"cfb.h": "c"
 	}
 }
