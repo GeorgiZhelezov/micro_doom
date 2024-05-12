@@ -78,17 +78,17 @@ void user_display_test_image(void)
 	{
 		for (size_t col = 0; col < display_buff_conf.width; col++)
 		{
-			if (row && row % 16 == 0)
+			if (row % 16 == 0)
 			{
 				display_buff[row * display_buff_conf.width + col] = 0xffff;
 			}
-			else if (col && col % 15 == 0)
+			else if (col % 15 == 0)
 			{
 				display_buff[row * display_buff_conf.width + col] = 0xaaff;
 			}
 			else
 			{
-				// display_buff[row * display_buff_conf.width + col] = 0x0;
+				display_buff[row * display_buff_conf.width + col] = 0x0;
 			}
 		}
 	}
@@ -126,5 +126,5 @@ void user_display_init(void)
 	gpio_pin_set_dt(&display_pin_bl, 1);
 
 	user_display_swap_bytes(display_buff, display_buff_len);
-	memset(display_buff, 0, display_buff_conf.buf_size * sizeof(display_buff[0]));
+	// memset(display_buff, 0, display_buff_conf.buf_size * sizeof(display_buff[0]));
 }

@@ -15,7 +15,7 @@ LOG_MODULE_REGISTER(user_main, LOG_LEVEL_INF);
 
 extern void main_port(void);
 
-void main(void)
+int main(void)
 {
 	int ret = 0;
 
@@ -32,4 +32,6 @@ void main(void)
 
 		// main_port();
 	}
+
+	return ret;
 }
