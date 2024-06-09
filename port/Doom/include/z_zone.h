@@ -66,6 +66,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+#include <zephyr/kernel.h>
 //#include <assert.h>
 //NOTE redefinition; doesn't seem like this is used so not sure why it's here
 // #define STRINGIFY(x) #x

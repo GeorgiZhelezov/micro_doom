@@ -1,5 +1,4 @@
 #include <zephyr/kernel.h>
-
 #include <zephyr/posix/time.h>
 
 uint32_t user_get_time(void)

@@ -16,6 +16,9 @@
 		"user_display.h": "c",
 		"esp_attr.h": "c",
 		"panel.h": "c",
-		"cfb.h": "c"
+		"cfb.h": "c",
+		"features.h": "c",
+		"kernel.h": "c",
+		"common.h": "c"
 	}
 }
