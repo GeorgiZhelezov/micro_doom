@@ -9,6 +9,7 @@
 		zephyr,canbus = &twai;
 		zephyr,entropy = &trng0;
 		zephyr,flash-controller = &flash;
+		zephyr,bt-hci = &esp32_bt_hci;
 		zephyr,sram = &sram0;
 		zephyr,console = &uart0;
 		zephyr,shell-uart = &uart0;
@@ -20,7 +21,7 @@
 		i2c-0 = &i2c0;
 		sw0 = &button0;
 		watchdog0 = &wdt0;
-		display-ctrl = &st7789v_st7789v_waveshare_240x240;
+		display-ctrl = &st7789;
 	};
 	soc {
 		#address-cells = < 0x1 >;
@@ -306,32 +307,7 @@
 			#size-cells = < 0x0 >;
 			pinctrl-0 = < &spim2_default >;
 			pinctrl-names = "default";
-			st7789v_st7789v_waveshare_240x240: st7789v@0 {
-				compatible = "sitronix,st7789v";
-				spi-max-frequency = < 0x1312d00 >;
-				reg = < 0x0 >;
-				cmd-data-gpios = < &gpio0 0x10 0x1 >;
-				reset-gpios = < &gpio0 0x17 0x1 >;
-				height = < 0xf0 >;
-				width = < 0x87 >;
-				x-offset = < 0x34 >;
-				y-offset = < 0x28 >;
-				vcom = < 0x19 >;
-				gctrl = < 0x35 >;
-				vrhs = < 0x12 >;
-				vdvs = < 0x20 >;
-				mdac = < 0x0 >;
-				gamma = < 0x1 >;
-				colmod = < 0x5 >;
-				lcm = < 0x2c >;
-				porch-param = [ 0C 0C 00 33 33 ];
-				cmd2en-param = [ 5A 69 02 01 ];
-				pwctrl1-param = [ A4 A1 ];
-				pvgam-param = [ D0 04 0D 11 13 2B 3F 54 4C 18 0D 0B 1F 23 ];
-				nvgam-param = [ D0 04 0C 11 13 2C 3F 44 51 2F 1F 1F 20 23 ];
-				ram-param = [ 00 F0 ];
-				rgb-param = [ CD 08 14 ];
-			};
+			phandle = < 0xe >;
 		};
 		spi3: spi@3ff65000 {
 			compatible = "espressif,esp32-spi";
@@ -477,6 +453,10 @@
 		compatible = "espressif,esp32-wifi";
 		status = "disabled";
 	};
+	esp32_bt_hci: esp32_bt_hci {
+		compatible = "espressif,esp32-bt-hci";
+		status = "okay";
+	};
 	eth: eth {
 		compatible = "espressif,esp32-eth";
 		interrupts = < 0x26 >;
@@ -567,6 +547,39 @@
 		compatible = "gpio-leds";
 		display_bl: display_bl_node {
 			gpios = < &gpio0 0x4 0x0 >;
+		};
+	};
+	mipi_dbi {
+		compatible = "zephyr,mipi-dbi-spi";
+		reset-gpios = < &gpio0 0x17 0x1 >;
+		dc-gpios = < &gpio0 0x10 0x0 >;
+		spi-dev = < &spi2 >;
+		#address-cells = < 0x1 >;
+		#size-cells = < 0x0 >;
+		st7789: st7789@0 {
+			compatible = "sitronix,st7789v";
+			reg = < 0x0 >;
+			mipi-max-frequency = < 0x1e84800 >;
+			mipi-mode = < 0x2 >;
+			height = < 0xf0 >;
+			width = < 0x87 >;
+			x-offset = < 0x34 >;
+			y-offset = < 0x28 >;
+			vcom = < 0x19 >;
+			gctrl = < 0x35 >;
+			vrhs = < 0x12 >;
+			vdvs = < 0x20 >;
+			mdac = < 0x0 >;
+			gamma = < 0x1 >;
+			colmod = < 0x5 >;
+			lcm = < 0x2c >;
+			porch-param = [ 0C 0C 00 33 33 ];
+			cmd2en-param = [ 5A 69 02 01 ];
+			pwctrl1-param = [ A4 A1 ];
+			pvgam-param = [ D0 04 0D 11 13 2B 3F 54 4C 18 0D 0B 1F 23 ];
+			nvgam-param = [ D0 04 0C 11 13 2C 3F 44 51 2F 1F 1F 20 23 ];
+			ram-param = [ 00 F0 ];
+			rgb-param = [ CD 08 14 ];
 		};
 	};
 };

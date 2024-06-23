@@ -19,6 +19,7 @@
 		"cfb.h": "c",
 		"features.h": "c",
 		"kernel.h": "c",
-		"common.h": "c"
+		"common.h": "c",
+		"p_map.h": "c"
 	}
 }

@@ -54,7 +54,7 @@
 static uint32_t flashSize = 0;
 #if USE_SPI_FOR_QSPI_INIT
 static void spiFlashWaitBusy();
-static uint8_t spiFlashRead(volatile uint8_t byte)
+static uint8_t __attribute__((unused)) spiFlashRead(volatile uint8_t byte)
 {
 	//NOTE: doesn't seem to be used anywhere
     volatile uint8_t result = 0;
@@ -70,7 +70,7 @@ static uint8_t spiFlashRead(volatile uint8_t byte)
     NRF_SPIM0->EVENTS_END = 0; */
     return result;
 }
-static void qspiSendCommandSpiMode(uint32_t txSize, uint32_t rxSize, const uint8_t * out, uint8_t * answer)
+static void __attribute__((unused)) qspiSendCommandSpiMode(uint32_t txSize, uint32_t rxSize, const uint8_t * out, uint8_t * answer)
 {
 	// NOTE: not sure this is needed
     // FLASH_NCS_LOW();
@@ -87,7 +87,7 @@ static void qspiSendCommandSpiMode(uint32_t txSize, uint32_t rxSize, const uint8
     // FLASH_NCS_HIGH();
 }
 
-static void spiFlashDriveStrength()
+static void __attribute__((unused)) spiFlashDriveStrength()
 {
 	//NOTE this should be useless
     // set enable write of volatile SR
@@ -102,7 +102,7 @@ static void spiFlashDriveStrength()
     // spiFlashWaitBusy();
 }
 
-static void spiFlashWaitBusy()
+static void __attribute__((unused)) spiFlashWaitBusy()
 {
 	//NOTE spi_flash_wait_busy might be useful but not sure for now
     // volatile uint8_t result;
@@ -115,14 +115,14 @@ static void spiFlashWaitBusy()
     // } while (result & SPI_FLASH_STATUS_REGISTER_BUSY);
     // FLASH_NCS_HIGH();
 }
-static void spiFlashWriteEnable()
+static void __attribute__((unused)) spiFlashWriteEnable()
 {
 	//NOTE spi_flash_write_enable seems useless
     // FLASH_NCS_LOW();
     // spiFlashRead(SPI_FLASH_WRITE_ENABLE_CMD);
     // FLASH_NCS_HIGH();
 }
-static uint8_t spiFlashEnableQSPI()
+static uint8_t __attribute__((unused)) spiFlashEnableQSPI()
 {
 	// spi_flash_enable_qspi should be useless too
     uint8_t sr2 = 0; //for compiling
@@ -225,7 +225,7 @@ void qspiFlashReadId(uint8_t * id, uint8_t * sz)
     // *id = NRF_QSPI->CINSTRDAT0 >> 24; // fourth data byte
     // *sz = NRF_QSPI->CINSTRDAT1;       // fifth data byte
 }
-static void qspiFlashEnableVolatileSrWrite()
+static void __attribute__((unused)) qspiFlashEnableVolatileSrWrite()
 {
 	//NOTE: doesn't seem this is used
     // send custom instrucion
@@ -239,7 +239,7 @@ static void qspiFlashEnableVolatileSrWrite()
     // }
     // NRF_QSPI->EVENTS_READY = 0;
 }
-static void qspiFlashDriveStrength()
+static void __attribute__((unused)) qspiFlashDriveStrength()
 {
 	//NOTE doesn't seem like this is needed
     // // enable volatile SR write
@@ -251,7 +251,7 @@ static void qspiFlashDriveStrength()
     // //
     // qspiWaitFlashReady();
 }
-static uint8_t qspiFlashEnableQspiMode()
+static uint8_t __attribute__((unused)) qspiFlashEnableQspiMode()
 {
 	//NOTE: doesn't seem like this is going to be needed 
     uint8_t sr2 = 0;
@@ -266,7 +266,7 @@ static uint8_t qspiFlashEnableQspiMode()
     return sr2;
 }
 
-static void qspiEnable(uint32_t frequency)
+static void __attribute__((unused)) qspiEnable(uint32_t frequency)
 {
 	//FIXME: add flash enable ? might not be needed
 

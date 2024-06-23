@@ -83,4 +83,6 @@ boolean Check_Sides(mobj_t*, int, int);                    // phares
 void P_MapStart(void);
 void P_MapEnd(void);
 
+void checkInterceptIndex(int i);
+
 #endif // __P_MAP__

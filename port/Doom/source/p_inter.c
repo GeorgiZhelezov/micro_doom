@@ -821,7 +821,6 @@ void P_DamageMobj(mobj_t *target, mobj_t *inflictor, mobj_t *source, int damage)
              * sleeping early; 2/21/98: Place priority on players
              * killough 9/9/98: cleaned up, made more consistent:
              */
-    #warning this can be removed
             if (0 == target->lastenemy_sptr || getLastEnemy(target)->health <= 0 || (!((target->flags ^ getLastEnemy(target)->flags) & MF_FRIEND ) && getTarget(target) != source)) // remember last enemy - killough
             {
                 //P_SetTarget(getLastEnemy(target), target->target);

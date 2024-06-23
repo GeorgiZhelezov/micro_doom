@@ -136,7 +136,7 @@ void InitDisplayGPIO(void)
 //     GPIO_PORT(PORT_NUM_DISPLAY_BACKLIGHT)->OUTSET = (1 << PIN_DISPLAY_BACKLIGHT);
 // #endif
 }
-static void executeDisplayCommands(const uint8_t * cmds)
+static void __attribute__((unused)) executeDisplayCommands(const uint8_t * cmds)
 {
     // Executes a list of commands for the display.
     /* cmds array has the following structure:

@@ -88,6 +88,8 @@
 #include "main.h"
 #include "delay.h"
 
+#include "doomdef.h"
+
 void GetFirstMap(int *ep, int *map); // Ty 08/29/98 - add "-warp x" functionality
 static void D_PageDrawer(void);
 static void D_UpdateFPS(void);
@@ -236,7 +238,7 @@ static void D_Display(void)
         if ((_g->automapmode & am_active))
             AM_Drawer();
 
-            HU_Drawer();
+        HU_Drawer(); //NOTE: HU_Drawer might need an else here due to -Wmisleading-indentation
         draw_stopy = SCREENHEIGHT - 1;
             ST_Drawer(true, false);	// status bar on, do not force refresh
 
@@ -423,14 +425,14 @@ static void D_SetPageName(const char *name)
     _g->pagelump = W_GetNumForName(name);
 }
 
-static void D_DrawTitle1(const char *name)
+static void __attribute__((unused)) D_DrawTitle1(const char *name)
 {
     S_StartMusic(mus_intro);
     _g->pagetic = (TICRATE * 30);
     D_SetPageName(name);
 }
 
-static void D_DrawTitle2(const char *name)
+static void __attribute__((unused)) D_DrawTitle2(const char *name)
 {
     S_StartMusic(mus_dm2ttl);
     D_SetPageName(name);
@@ -677,7 +679,7 @@ static void IdentifyVersion()
         uint32_t doom_iwad_len;
         spiFlashSetAddress((uint32_t) p_doom_iwad_len);
         spiFlashGetData(&doom_iwad_len, sizeof(doom_iwad_len));
-        CheckIWAD2(doom_iwad, doom_iwad_len, &_g->gamemode, &_g->haswolflevels);
+        CheckIWAD2(doom_iwad, doom_iwad_len, (GameMode_t *)&_g->gamemode, &_g->haswolflevels);
 
         /* jff 8/23/98 set gamemission global appropriately in all cases
          * cphipps 12/1999 - no version output here, leave that to the caller

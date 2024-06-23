@@ -211,7 +211,7 @@ static boolean P_CheckMissileRange(mobj_t *actor)
     /* killough 7/18/98: friendly monsters don't attack other friendly
      * monsters or players (except when attacked, and then only once)
      */
-#warning compatibility
+// #warning compatibility
  //   if (actor->flags & getTarget(actor)->flags & MF_FRIEND)
  //       return false;
 
@@ -378,7 +378,7 @@ static boolean P_Move(mobj_t *actor, boolean dropoff) /* killough 9/12/98 */
          * Boom v2.02 and LxDoom return good && (P_Random(pr_trywalk)&3)
          * MBF plays even more games
          */
-         #warning changed to add compatibility
+        //  #warning changed to add compatibility
 //        if (!good)
             return good;
 //        return ((P_Random(__FILE__, __LINE__) >= 230) ^ (good & 1));
