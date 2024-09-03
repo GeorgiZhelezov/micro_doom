@@ -41,7 +41,7 @@ int main(void)
 
 		user_display_test_image();
 
-		main_port();
+		// main_port();
 	}
 
 	return ret;
