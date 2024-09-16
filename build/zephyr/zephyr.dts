@@ -76,7 +76,6 @@
 				erase-block-size = < 0x1000 >;
 				write-block-size = < 0x4 >;
 				reg = < 0x0 0x400000 >;
-				status = "okay";
 				partitions {
 					compatible = "fixed-partitions";
 					#address-cells = < 0x1 >;
@@ -84,23 +83,34 @@
 					boot_partition: partition@1000 {
 						label = "mcuboot";
 						reg = < 0x1000 0xf000 >;
-						read-only;
 					};
-					slot0_partition: partition@10000 {
+					slot0_partition: partition@20000 {
 						label = "image-0";
-						reg = < 0x10000 0x100000 >;
+						reg = < 0x20000 0x150000 >;
 					};
-					slot1_partition: partition@110000 {
+					slot0_appcpu_partition: partition@170000 {
+						label = "image-0-appcpu";
+						reg = < 0x170000 0x80000 >;
+					};
+					slot1_partition: partition@1F0000 {
 						label = "image-1";
-						reg = < 0x110000 0x100000 >;
+						reg = < 0x1f0000 0x150000 >;
 					};
-					scratch_partition: partition@210000 {
-						label = "image-scratch";
-						reg = < 0x210000 0x40000 >;
+					slot1_appcpu_partition: partition@340000 {
+						label = "image-1-appcpu";
+						reg = < 0x340000 0x80000 >;
 					};
-					storage_partition: partition@250000 {
+					storage_partition: partition@3C0000 {
 						label = "storage";
-						reg = < 0x250000 0x6000 >;
+						reg = < 0x3c0000 0x20000 >;
+					};
+					scratch_partition: partition@3E0000 {
+						label = "image-scratch";
+						reg = < 0x3e0000 0x10000 >;
+					};
+					coredump_partition: partition@3F0000 {
+						label = "coredump-partition";
+						reg = < 0x3f0000 0x1000 >;
 					};
 				};
 			};
