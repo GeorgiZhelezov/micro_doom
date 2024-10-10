@@ -111,9 +111,9 @@
 #define SCREENHEIGHTARRAY_PTR 2
 // let's put openings-related data in .openings_bss section
 // this to make sure that openings are in the lower 128k so we can use short ptr
-__attribute__ ((section(".openings_bss"))) short openings[MAXOPENINGS];
-__attribute__ ((section(".openings_bss"))) short floorclip[SCREENWIDTH]; 
-__attribute__ ((section(".openings_bss"))) short ceilingclip[SCREENWIDTH]; 
+short openings[MAXOPENINGS];
+short floorclip[SCREENWIDTH]; 
+short ceilingclip[SCREENWIDTH]; 
 //
 #define MAX_PATCH_WIDTH 320
 // colormap cching

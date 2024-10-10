@@ -116,7 +116,7 @@ typedef struct
 
 } memzone_t;
 
-__attribute__ ((section(".displayData_bss"), aligned (CHUNK_SIZE)))  uint8_t staticZone[MAX_STATIC_ZONE];
+uint8_t staticZone[MAX_STATIC_ZONE];
 
 memzone_t *mainzone;
 void* I_ZoneBase(int *size)

@@ -70,7 +70,7 @@ typedef enum
 } displayMode_t;
 //
 
-__attribute__ ((section(".displayData_bss"))) displayData_t displayData;//
+displayData_t displayData;//
 void initGraphics()
 {
     memset(&displayData, 0, sizeof(displayData));
