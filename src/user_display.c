@@ -6,12 +6,13 @@
 #include <zephyr/drivers/gpio.h>
 #include <zephyr/display/cfb.h>
 
+#include "user_display.h"
 #include "user_test_images.h"
 
 #include <zephyr/logging/log.h>
-LOG_MODULE_REGISTER(user_display, LOG_LEVEL_INF);
+LOG_MODULE_REGISTER(user_display_log, LOG_LEVEL_INF);
 
-K_SEM_DEFINE(sem_display, 1, 1);
+K_SEM_DEFINE(user_display_sem, 1, 1);
 
 static const struct device *display_dev         = DEVICE_DT_GET(DT_ALIAS(display_ctrl));
 static const struct gpio_dt_spec display_pin_bl = GPIO_DT_SPEC_GET(DT_NODELABEL(display_bl), gpios);
@@ -20,19 +21,23 @@ static const struct gpio_dt_spec display_pin_bl = GPIO_DT_SPEC_GET(DT_NODELABEL(
 // uint16_t *display_buff             = &gpu_buff[0][0];
 // const uint32_t display_buff_len    = sizeof(gpu_buff) / 2;
 
-uint16_t *display_buff             = image_bird;
+uint16_t *display_buff             = NULL;
+// uint16_t *display_buff             = image_bird;
 const uint32_t display_buff_len    = ARRAY_SIZE(image_bird);
 
 const struct display_buffer_descriptor display_buff_conf =
 {
 	.buf_size = display_buff_len,
-	.height   = 240,
-	.width    = 135,
+	//important to inverse h and w for proper drawing
+	.height   = USER_SCREEN_WIDTH, 
+	.width    = USER_SCREEN_HEIGHT,
 	.pitch    = 1,
 };
 
 static void user_display_swap_bytes(uint16_t *buff, size_t len)
 {
+	if (buff == NULL || len == 0) { return; }
+	
 	//color correction
 	for (size_t i = 0, temp = 0; i < len; i++)
 	{
@@ -42,67 +47,75 @@ static void user_display_swap_bytes(uint16_t *buff, size_t len)
 	}
 }
 
-void user_display_image_rotate(void)
+void user_display_image_rotate(uint16_t *buff, size_t len)
 {
-	for (size_t i = 0, j = display_buff_len - 1; i < j; i++, j--)
+	if (buff == NULL || len == 0) { return; }
+
+	for (size_t i = 0, j = len - 1; i < j; i++, j--)
 	{
-		size_t temp = display_buff[i];
-		display_buff[i] = display_buff[j];
-		display_buff[j] = temp;
+		size_t temp = buff[i];
+		buff[i] = buff[j];
+		buff[j] = temp;
 	}
 }
 
-void user_display_image_mirror()
+void user_display_image_mirror(uint16_t *buff, size_t width, size_t height)
 {
-	for (size_t i = 0; i < display_buff_conf.height; i++)
+	if (buff == NULL || height == 0 || width == 0) { return; }
+
+	for (size_t i = 0; i < width; i++)
 	{
-		for (size_t j = 0; j < display_buff_conf.width / 2; j++)
+		for (size_t j = 0; j < height / 2; j++)
 		{
-			uint16_t temp = display_buff[i * display_buff_conf.width + j];
-			display_buff[i * display_buff_conf.width + j] = display_buff[i * display_buff_conf.width + (display_buff_conf.width - 1 - j)];
-			display_buff[i * display_buff_conf.width + (display_buff_conf.width - 1 - j)] = temp;
+			uint16_t temp = buff[i * height + j];
+			buff[i * height + j] = buff[i * height + (height - 1 - j)];
+			buff[i * height + (height - 1 - j)] = temp;
 		}
 
-		if (display_buff_conf.width % 2 != 0)
+		if (height % 2 != 0)
 		{
-			display_buff[i * display_buff_conf.width + (display_buff_conf.width / 2)] = display_buff[i * display_buff_conf.width + (display_buff_conf.width / 2)];
+			buff[i * height + (height / 2)] = buff[i * height + (height / 2)];
 		}
 	}
 }
 
 void user_display_test_image(void)
 {
+	uint16_t *buff = display_buff;
+	const uint16_t height = USER_SCREEN_HEIGHT;
+	const uint16_t width = USER_SCREEN_WIDTH;
+	
 	static uint32_t counter = 0;
 
-	for (size_t row = 0; row < display_buff_conf.height; row++)
-	{
-		for (size_t col = 0; col < display_buff_conf.width; col++)
-		{
-			if (row % 16 == 0)
-			{
-				display_buff[row * display_buff_conf.width + col] = 0xffff;
-			}
-			else if (col % 15 == 0)
-			{
-				display_buff[row * display_buff_conf.width + col] = 0xaaff;
-			}
-			else
-			{
-				display_buff[row * display_buff_conf.width + col] = 0x0;
-			}
-		}
-	}
+	// for (size_t row = 0; row < height; row++)
+	// {
+	// 	for (size_t col = 0; col < width; col++)
+	// 	{
+	// 		if (row % 16 == 0)
+	// 		{
+	// 			buff[row * width + col] = 0xffff;
+	// 		}
+	// 		else if (col % 15 == 0)
+	// 		{
+	// 			buff[row * width + col] = 0xaaff;
+	// 		}
+	// 		else
+	// 		{
+	// 			buff[row * width + col] = 0x0;
+	// 		}
+	// 	}
+	// }
 
 	if (counter++ % 2 == 0)
 	{
-		user_display_image_rotate();
+		user_display_image_rotate(buff, width * height);
 	}
 	else
 	{
-		// user_display_image_mirror();
+		user_display_image_mirror(buff, width, height);
 	}
 
-	display_write(display_dev, 0, 0, &display_buff_conf, display_buff);
+	display_write(display_dev, 0, 0, &display_buff_conf, buff);
 }
 
 void user_display_init(void)
