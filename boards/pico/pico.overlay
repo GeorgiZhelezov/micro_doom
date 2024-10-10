@@ -1,4 +1,5 @@
 #include <zephyr/dt-bindings/mipi_dbi/mipi_dbi.h>
+#include <zephyr/dt-bindings/pinctrl/rpi-pico-rp2040-pinctrl.h>
 
 /{
 	aliases 
@@ -18,9 +19,9 @@
 	mipi_dbi
 	{
 		compatible = "zephyr,mipi-dbi-spi";
-		reset-gpios = <&gpio0 23 GPIO_ACTIVE_LOW>;
-		dc-gpios = <&gpio0 16 GPIO_ACTIVE_HIGH>;
-		spi-dev = <&spi2>;
+		reset-gpios = <&gpio0 0 GPIO_ACTIVE_LOW>;
+		dc-gpios = <&gpio0 1 GPIO_ACTIVE_HIGH>;
+		spi-dev = <&spi0>;
 		#address-cells = <1>;
 		#size-cells = <0>;
 
@@ -36,8 +37,10 @@
 			// reg = <0>;
 			// cmd-data-gpios = <&gpio0 16 GPIO_ACTIVE_LOW>;
 			// reset-gpios = <&gpio0 23 GPIO_ACTIVE_LOW>;
-			height = <240>;
-			width = <135>;
+			height = <135>;
+			width = <240>;
+			// height = <240>;
+			// width = <135>;
 			x-offset = <52>;
 			y-offset = <40>;
 			vcom = <0x19>;
@@ -72,26 +75,25 @@
 
 &pinctrl
 {
-	spim2_default: spim2_default 
+	spi0_default: spi0_default 
 	{
 		group1 
 		{
-			pinmux = <SPIM2_MISO_GPIO37>, //miso is not used so put it on some not used pin
-			         <SPIM2_SCLK_GPIO18>,
-			         <SPIM2_CSEL_GPIO5>;
+			pinmux = <SPI0_RX_P20>, //miso is not used so put it on some not used pin
+			         <SPI0_SCK_P2>,
+			         <SPI0_CSN_P5>;
 		};
 		group2 
 		{
-			pinmux = <SPIM2_MOSI_GPIO19>;
-			output-low;
+			pinmux = <RP2040_PINMUX(3, RP2_PINCTRL_GPIO_FUNC_SPI)>;
 		};
 	};
 };
 
-&spi2
+&spi0
 {
 	status = "okay";
-	pinctrl-0 = <&spim2_default>;
+	pinctrl-0 = <&spi0_default>;
 	pinctrl-names = "default";
 
  	// st7789v_st7789v_waveshare_240x240: st7789v@0 
