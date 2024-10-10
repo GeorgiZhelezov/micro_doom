@@ -46,6 +46,7 @@
 #ifndef __DOOMDEF__
 #define __DOOMDEF__
 #include "main.h"
+#include "user_display.h"
 /* use config.h if autoconf made one -- josh */
 #ifdef HAVE_CONFIG_H
 #include "config.h"
@@ -126,8 +127,8 @@ typedef enum
 
 // proff 08/17/98: Changed for high-res
 
-#define SCREENWIDTH_PHYSICAL 240
-#define MAX_SCREENHEIGHT 240
+#define SCREENWIDTH_PHYSICAL USER_SCREEN_WIDTH
+#define MAX_SCREENHEIGHT USER_SCREEN_HEIGHT
 
 // SCREENWIDTH and SCREENHEIGHT define the visible size
 #define HIGHRES

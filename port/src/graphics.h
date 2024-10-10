@@ -29,14 +29,17 @@
 #define SRC_GRAPHICS_H_
 #include <stdbool.h>
 #include <stdint.h>
+
+#include "user_display.h"
+
 #define PIXELS_PER_DMA_LINE 256
-#define NUMBER_OF_DMA_LINES (240 * 240 / 256)
+#define NUMBER_OF_DMA_LINES (USER_SCREEN_HEIGHT * USER_SCREEN_WIDTH / PIXELS_PER_DMA_LINE)
 
 typedef struct
 {
     volatile uint16_t * pPalette;
     uint16_t displayDmaLineBuffer[2][PIXELS_PER_DMA_LINE];
-    uint8_t displayFrameBuffer[2][240 * 240];
+    uint8_t displayFrameBuffer[2][USER_SCREEN_HEIGHT * USER_SCREEN_WIDTH];
     uint8_t currentDisplayDmaLineBuffer;        // small buffer to speed up DMA send
     uint8_t * currentDmaFrameBuffer;            // points to data to be converted, using pPalette on the displayDmaBuffer
     volatile uint8_t displayDmaLineBuffersSent; // how many lines we sent

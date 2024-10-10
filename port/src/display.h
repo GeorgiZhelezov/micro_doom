@@ -32,6 +32,8 @@ extern "C"
 #include "main.h"
 #include "delay.h"
 
+#include "user_display.h"
+
 // Useful macros
 #if MINEWDONGLE
     static inline void DISPLAY_LATCH()
@@ -126,8 +128,8 @@ extern "C"
 #endif
 
 // screen size
-#define SCREEN_WIDTH 240
-#define SCREEN_HEIGHT 240
+#define SCREEN_WIDTH USER_SCREEN_WIDTH
+#define SCREEN_HEIGHT USER_SCREEN_HEIGHT
 #define MAXROWS (SCREEN_HEIGHT / 8)
 #define MAXCOLS (SCREEN_WIDTH / 8)
     void UpdateDisplay(void);
