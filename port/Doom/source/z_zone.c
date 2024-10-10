@@ -82,7 +82,8 @@
 // 4 bytes, on the other, we keey the overhead under 8 bytes/block
 // instead of having to switch to 12 bytes/block.
 #define CHUNK_SIZE 8
-#define MAX_STATIC_ZONE (113600) // 113600
+//TODO: think about this array size
+#define MAX_STATIC_ZONE (113600 / 3) // 113600
 #define MEM_ALIGN CHUNK_SIZE
 //#define ZMALLOC_STAT
 
