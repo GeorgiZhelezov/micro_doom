@@ -1,7 +1,2 @@
 build/*
-!build/zephyr
-build/zephyr/*
-!build/zephyr/.config
-# !build/zephyr/zephyr.bin
-# !build/zephyr/zephyr.hex
-!build/zephyr/zephyr.dts
+.vscode/
