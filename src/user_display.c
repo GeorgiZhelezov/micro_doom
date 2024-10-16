@@ -21,8 +21,7 @@ static const struct gpio_dt_spec display_pin_bl = GPIO_DT_SPEC_GET(DT_NODELABEL(
 // uint16_t *display_buff             = &gpu_buff[0][0];
 // const uint32_t display_buff_len    = sizeof(gpu_buff) / 2;
 
-uint16_t *display_buff             = NULL;
-// uint16_t *display_buff             = image_bird;
+uint16_t *display_buff             = image_bird;
 const uint32_t display_buff_len    = ARRAY_SIZE(image_bird);
 
 const struct display_buffer_descriptor display_buff_conf =
@@ -36,7 +35,9 @@ const struct display_buffer_descriptor display_buff_conf =
 
 static void user_display_swap_bytes(uint16_t *buff, size_t len)
 {
-	if (buff == NULL || len == 0) { return; }
+	static uint8_t swapped = 0;
+
+	if (buff == NULL || len == 0 || swapped != 0) { return; }
 	
 	//color correction
 	for (size_t i = 0, temp = 0; i < len; i++)
@@ -45,6 +46,8 @@ static void user_display_swap_bytes(uint16_t *buff, size_t len)
 		buff[i] = buff[i] >> 8;
 		buff[i] = buff[i] | ((temp & 0x00ff) << 8);
 	}
+
+	swapped = 1;
 }
 
 void user_display_image_rotate(uint16_t *buff, size_t len)
@@ -86,6 +89,8 @@ void user_display_test_image(void)
 	const uint16_t width = USER_SCREEN_WIDTH;
 	
 	static uint32_t counter = 0;
+
+	user_display_swap_bytes(display_buff, display_buff_len);
 
 	// for (size_t row = 0; row < height; row++)
 	// {
@@ -137,7 +142,4 @@ void user_display_init(void)
 	}
 
 	gpio_pin_set_dt(&display_pin_bl, 1);
-
-	user_display_swap_bytes(display_buff, display_buff_len);
-	// memset(display_buff, 0, display_buff_conf.buf_size * sizeof(display_buff[0]));
 }

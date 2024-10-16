@@ -1,5 +1,6 @@
 #include <zephyr/dt-bindings/mipi_dbi/mipi_dbi.h>
 #include <zephyr/dt-bindings/pinctrl/rpi-pico-rp2040-pinctrl.h>
+#include <zephyr/dt-bindings/dma/rpi_pico_dma.h>
 
 /{
 	aliases 
@@ -32,11 +33,6 @@
 			mipi-max-frequency = <32000000>;
 			mipi-mode = <MIPI_DBI_MODE_SPI_4WIRE>;
 
-			// compatible = "sitronix,st7789v";
-			// spi-max-frequency = <20000000>;
-			// reg = <0>;
-			// cmd-data-gpios = <&gpio0 16 GPIO_ACTIVE_LOW>;
-			// reset-gpios = <&gpio0 23 GPIO_ACTIVE_LOW>;
 			height = <135>;
 			width = <240>;
 			// height = <240>;
@@ -67,12 +63,6 @@
 // 	reg = <0x0 0x1000000>; //16MB
 // };
 
-&uart0
-{
-	status = "okay";
-	current-speed = <115200>;
-};
-
 &pinctrl
 {
 	spi0_default: spi0_default 
@@ -85,10 +75,12 @@
 		};
 		group2 
 		{
-			pinmux = <RP2040_PINMUX(3, RP2_PINCTRL_GPIO_FUNC_SPI)>;
+			pinmux = <RP2040_PINMUX(3, RP2_PINCTRL_GPIO_FUNC_SPI)>; //mosi
 		};
 	};
 };
+
+&dma  { status = "okay"; };
 
 &spi0
 {
@@ -96,128 +88,8 @@
 	pinctrl-0 = <&spi0_default>;
 	pinctrl-names = "default";
 
- 	// st7789v_st7789v_waveshare_240x240: st7789v@0 
-	// {
-	// 	compatible = "sitronix,st7789v";
-	// 	spi-max-frequency = <20000000>;
-	// 	reg = <0>;
-	// 	cmd-data-gpios = <&gpio0 16 GPIO_ACTIVE_LOW>;
-	// 	reset-gpios = <&gpio0 23 GPIO_ACTIVE_LOW>;
-	// 	height = <240>;
-	// 	width = <135>;
-	// 	x-offset = <52>;
-	// 	y-offset = <40>;
-	// 	vcom = <0x19>;
-	// 	gctrl = <0x35>;
-	// 	vrhs = <0x12>;
-	// 	vdvs = <0x20>;
-	// 	mdac = <0x0>;
-	// 	gamma = <0x01>;
-	// 	colmod = <0x05>;
-	// 	lcm = <0x2c>;
-	// 	porch-param = [ 0c 0c 00 33 33  ];
-	// 	cmd2en-param = [ 5a 69 02 01  ];
-	// 	pwctrl1-param = [ a4 a1  ];
-	// 	pvgam-param = [ D0 04 0D 11 13 2B 3F 54 4C 18 0D 0B 1F 23  ];
-	// 	nvgam-param = [ D0 04 0C 11 13 2C 3F 44 51 2F 1F 1F 20 23  ];
-	// 	ram-param = [ 00 F0  ];
-	// 	rgb-param = [ CD 08 14  ];
-	// };
+	//node, channel, slot, priority?
+	dmas =  <&dma 0 RPI_PICO_DMA_SLOT_SPI0_TX 0>, 
+			<&dma 1 RPI_PICO_DMA_SLOT_SPI0_RX 0>;
+ 	dma-names = "tx", "rx";
 };
-
-//  / {
-// 	chosen {
-// 		zephyr,display = &st7789v_st7789v_waveshare_240x240;
-// 	};
-// };
-
-// &arduino_spi {
-// 	status = "okay";
-// 	cs-gpios = <&arduino_header 16 GPIO_ACTIVE_LOW>;	/* D10 */
-
-// 	st7789v_st7789v_waveshare_240x240: st7789v@0 {
-// 		compatible = "sitronix,st7789v";
-// 		spi-max-frequency = <20000000>;
-// 		reg = <0>;
-// 		cmd-data-gpios = <&arduino_header 15 GPIO_ACTIVE_LOW>;	/* D9 */
-// 		reset-gpios = <&arduino_header 14 GPIO_ACTIVE_LOW>;	/* D8 */
-// 		width = <240>;
-// 		height = <240>;
-// 		x-offset = <0>;
-// 		y-offset = <0>;
-// 		vcom = <0x19>;
-// 		gctrl = <0x35>;
-// 		vrhs = <0x12>;
-// 		vdvs = <0x20>;
-// 		mdac = <0x00>;
-// 		gamma = <0x01>;
-// 		colmod = <0x05>;
-// 		lcm = <0x2c>;
-// 		porch-param = [0c 0c 00 33 33];
-// 		cmd2en-param = [5a 69 02 01];
-// 		pwctrl1-param = [a4 a1];
-// 		pvgam-param = [D0 04 0D 11 13 2B 3F 54 4C 18 0D 0B 1F 23];
-// 		nvgam-param = [D0 04 0C 11 13 2C 3F 44 51 2F 1F 1F 20 23];
-// 		ram-param = [00 F0];
-// 		rgb-param = [CD 08 14];
-// 	};
-// };
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-//  / {
-// 	chosen {
-// 		zephyr,display = &st7789v_st7789v_tl019fqv01;
-// 	};
-// };
-
-// &arduino_spi {
-// 	status = "okay";
-// 	cs-gpios = <&arduino_header 16 GPIO_ACTIVE_LOW>;	/* D10 */
-
-// 	st7789v_st7789v_tl019fqv01: st7789v@0 {
-// 		compatible = "sitronix,st7789v";
-// 		spi-max-frequency = <20000000>;
-// 		reg = <0>;
-// 		cmd-data-gpios = <&arduino_header 15 GPIO_ACTIVE_LOW>;	/* D9 */
-// 		reset-gpios = <&arduino_header 14 GPIO_ACTIVE_LOW>;	/* D8 */
-// 		width = <320>;
-// 		height = <170>;
-// 		x-offset = <0>;
-// 		y-offset = <35>;
-// 		vcom = <0x2b>;
-// 		gctrl = <0x35>;
-// 		vrhs = <0x0f>;
-// 		vdvs = <0x20>;
-// 		mdac = <0x60>;
-// 		gamma = <0x01>;
-// 		colmod = <0x55>;
-// 		lcm = <0x2c>;
-// 		porch-param = [0c 0c 00 33 33];
-// 		cmd2en-param = [5a 69 02 01];
-// 		pwctrl1-param = [52 a1];
-// 		pvgam-param = [D0 00 02 07 0B 1A 31 54 40 29 12 12 12 17];
-// 		nvgam-param = [D0 00 02 07 05 15 2D 44 44 1C 18 16 1C 1D];
-// 		ram-param = [00 F8];
-// 		rgb-param = [CD 08 14];
-// 	};
-// };
