@@ -33,17 +33,22 @@
 			mipi-max-frequency = <32000000>;
 			mipi-mode = <MIPI_DBI_MODE_SPI_4WIRE>;
 
-			height = <135>;
-			width = <240>;
 			// height = <240>;
 			// width = <135>;
-			x-offset = <52>;
-			y-offset = <40>;
+			// x-offset = <52>;
+			// y-offset = <40>;
+			// mdac = <0x00>;
+
+			height = <135>;
+			width = <240>;
+			x-offset = <40>;
+			y-offset = <52>;
+			mdac = <0xa0>;
+
 			vcom = <0x19>;
 			gctrl = <0x35>;
 			vrhs = <0x12>;
 			vdvs = <0x20>;
-			mdac = <0x0>;
 			// inversion-off;
 			gamma = <0x01>;
 			colmod = <0x55>;

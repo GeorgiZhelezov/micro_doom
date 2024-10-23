@@ -302,12 +302,14 @@ void main_port(void)
     BeginUpdateDisplay();
     displayPrintln(1, "Doom port to nRF52840");
     displayPrintln(1, "by Nicola Wrachien (next-hack)");
+    displayPrintln(1, "re-port to %s", CONFIG_BOARD);
+    displayPrintln(1, "by gez");
     displayPrintln(1, "");
     // measure refresh time!
-    uint32_t oldTime = user_get_time();
+    uint32_t oldTime = user_get_time_us();
     startDisplayRefresh(0);
-    oldTime = user_get_time() - oldTime;
-    displayPrintln(1, "Frame refresh time %d us!", oldTime);
+    oldTime = user_get_time_us() - oldTime;
+    displayPrintln(1, "Frame refresh time %lu us!", oldTime);
     displayPrintln(1, "");
 #if MINEWDONGLE && DEBUG_MINEGW
     enableUsb();

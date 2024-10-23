@@ -3,6 +3,6 @@
 
 #include <stdint.h>
 
-uint32_t user_get_time(void);
+uint32_t user_get_time_us(void);
 
 #endif

@@ -32,6 +32,8 @@
 #include "font8x8.h"
 #include "printf.h"
 #include <string.h>
+
+#include "user_display.h"
 //
 #define LE2BE16(x) ((uint16_t)(((x >> 8) & 0xFF) | (x << 8)))
 #define RGB(r, g, b) (((r >> 3) << (6 + 5)) | ((g >> 2) << 5) | ((g >> 3) << (0)))
@@ -54,7 +56,7 @@
                                   "ORR %[pix2], %[pix2], %[pix3], LSL #16\n\t" \
                                   "STR.w %[pix2], [%[dmabuff], #4 + " XSTR(2 * START_PIX) "]\n\t"
 //
-static inline void fillNextDmaLineBuffer();
+static inline void fillNextDmaLineBuffer(uint16_t **buff, uint16_t *len);
 //
 const uint16_t palette16[] =    // a gift who those who recognize this palette!
 { 
@@ -105,7 +107,6 @@ void startDisplayRefresh(uint8_t bufferNumber)
         displayData.dmaBusy = 1;
         displayData.displayDmaLineBuffersSent = 0;
         displayData.currentDmaFrameBuffer = displayData.displayFrameBuffer[bufferNumber];
-        fillNextDmaLineBuffer();
 
 		//FIXME: add display refresh functionality
 		
@@ -120,6 +121,15 @@ void startDisplayRefresh(uint8_t bufferNumber)
         // #endif
         // //
         // NRF_SPIM3->TASKS_START = 1;
+
+        while (displayData.displayDmaLineBuffersSent < NUMBER_OF_DMA_LINES)
+        {
+            uint16_t *buff = NULL;
+            uint16_t len = 0;
+            fillNextDmaLineBuffer(&buff, &len);
+            user_display_write(buff, len);
+        }
+        displayData.dmaBusy = 0;
     }
 }
 //
@@ -224,8 +234,10 @@ void displayPrintln(bool update, const char *format, ...)
     }
 }
 #pragma GCC optimize ("Ofast")  // we need to compile this code to be as fast as possible.
-static inline void fillNextDmaLineBuffer()
+static inline void fillNextDmaLineBuffer(uint16_t **buff_out, uint16_t *len_out)
 {
+    if (buff_out == NULL || len_out == NULL) { return; }
+    
     uint16_t * pLineBuffer = displayData.displayDmaLineBuffer[displayData.currentDisplayDmaLineBuffer];
 // displayData.pPalette is volatile.
 // #if SLOW_WAY // left only for reference
@@ -284,6 +296,8 @@ static inline void fillNextDmaLineBuffer()
 #endif
     displayData.displayDmaLineBuffersSent++;
 	//FIXME also no clue how to connect this
+    *buff_out = displayData.displayDmaLineBuffer[displayData.currentDisplayDmaLineBuffer];
+    *len_out = sizeof(displayData.displayDmaLineBuffer[displayData.currentDisplayDmaLineBuffer]);
     // NRF_SPIM3->TXD.MAXCNT = PIXELS_PER_DMA_LINE * 2;
     // NRF_SPIM3->TXD.PTR = (uint32_t) displayData.displayDmaLineBuffer[displayData.currentDisplayDmaLineBuffer];
     displayData.currentDisplayDmaLineBuffer = 1 - displayData.currentDisplayDmaLineBuffer;

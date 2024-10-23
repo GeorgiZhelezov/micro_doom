@@ -82,15 +82,15 @@ void user_display_image_mirror(uint16_t *buff, size_t width, size_t height)
 	}
 }
 
-void user_display_test_image(void)
+int user_display_test_image(void)
 {
+	int ret = 0;
+
 	uint16_t *buff = display_buff;
 	const uint16_t height = USER_SCREEN_HEIGHT;
 	const uint16_t width = USER_SCREEN_WIDTH;
 	
 	static uint32_t counter = 0;
-
-	user_display_swap_bytes(display_buff, display_buff_len);
 
 	// for (size_t row = 0; row < height; row++)
 	// {
@@ -120,7 +120,59 @@ void user_display_test_image(void)
 		user_display_image_mirror(buff, width, height);
 	}
 
-	display_write(display_dev, 0, 0, &display_buff_conf, buff);
+	ret = display_write(display_dev, 0, 0, &display_buff_conf, buff);
+	if (ret != 0) { LOG_INF("display write error %d", ret); }
+
+	return ret;
+}
+
+int user_display_write(uint16_t *buff, uint16_t len)
+{
+	if (buff == NULL || len == 0) { return -EINVAL; }
+
+	int ret = 0;
+	
+	struct display_buffer_descriptor conf =
+	{
+		.buf_size = len,
+		.height   = USER_SCREEN_HEIGHT, 
+		.width    = USER_SCREEN_WIDTH,
+		.pitch    = 1,
+	};
+
+	static uint16_t x = 0, y = 0;
+
+	// const uint16_t black = 0x0;
+	// const uint16_t yellow = 0xFFE0;
+	// const uint16_t green = 0x07E0;
+	// const uint16_t red = 0xF800;
+	// const uint16_t blue = 0x001F;
+	// const uint16_t cyan = 0x07FF;
+	// uint8_t palette_counter = 0;
+	// uint16_t palette[] = { red, green };
+	// uint16_t colors[30] = { 0 };
+	// buff = colors;
+
+	// while(1)
+	// {
+		// for (size_t i = 0; i < ARRAY_SIZE(colors); i++)
+		// {
+		// 	colors[i] = palette[palette_counter];
+		// }
+		// palette_counter = (palette_counter + 1 ) % ARRAY_SIZE(palette);
+		// conf.buf_size = sizeof(colors);
+
+		ret = display_write(display_dev, x, y, &conf, buff);
+		if (ret != 0 ) { LOG_INF("display_write error %d", ret); }
+
+		y = (y + (x + (conf.buf_size / 2)) / conf.width) % conf.height;
+		x = (x + (conf.buf_size / 2)) % conf.width;
+
+	// 	k_busy_wait(100 * 1000);
+	// }
+
+
+	return ret;
 }
 
 void user_display_init(void)

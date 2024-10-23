@@ -9,7 +9,8 @@
 
 extern struct k_sem user_display_sem;
 
-void user_display_test_image(void);
+int user_display_test_image(void);
+int user_display_write(uint16_t *buff, uint16_t len);
 void user_display_image_rotate(uint16_t *buff, size_t len);
 void user_display_image_mirror(uint16_t *buff, size_t width, size_t height);
 void user_display_init(void);
