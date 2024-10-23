@@ -64,10 +64,27 @@
 	};
 };
 
-// &flash0
-// {
-// 	reg = <0x0 0x1000000>; //16MB
-// };
+/delete-node/ &code_partition;
+&flash0
+{
+	reg = <0x10000000 DT_SIZE_M(16)>; //address, size(16MB)
+
+	partitions
+	{
+		code_partition: partition@100 
+		{
+			label = "code-partition";
+			reg = < 0x100 DT_SIZE_K(512) >;
+			read-only;
+		};
+		wad_partition: partition@80100
+		{
+			label = "wad-partition";
+			reg = < 0x80100 (DT_SIZE_M(16) - 0x80100) >;
+			read-only;
+		};
+	};
+};
 
 &pinctrl
 {
