@@ -7,6 +7,7 @@
 #include <zephyr/kernel.h>
 
 #include "user_display.h"
+#include "user_flash.h"
 
 #include <zephyr/logging/log.h>
 LOG_MODULE_REGISTER(user_main, LOG_LEVEL_INF);
@@ -32,6 +33,7 @@ int main(void)
 {
 	int ret = 0;
 
+	user_flash_init();
 	user_display_init();
 
 	while(1)

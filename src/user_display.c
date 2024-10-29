@@ -10,7 +10,7 @@
 #include "user_test_images.h"
 
 #include <zephyr/logging/log.h>
-LOG_MODULE_REGISTER(user_display_log, LOG_LEVEL_INF);
+LOG_MODULE_DECLARE(user_main, LOG_LEVEL_INF);
 
 K_SEM_DEFINE(user_display_sem, 1, 1);
 
@@ -175,23 +175,27 @@ int user_display_write(uint16_t *buff, uint16_t len)
 	return ret;
 }
 
-void user_display_init(void)
+int user_display_init(void)
 {
 	int ret = 0;
 	gpio_pin_configure_dt(&display_pin_bl, GPIO_OUTPUT_INACTIVE);
 	gpio_pin_set_dt(&display_pin_bl, 0);
 
-	if (!device_is_ready(display_dev))
+	ret = device_is_ready(display_dev);
+	if (ret == 0)
 	{
 		LOG_INF("DISPLAY DEV NOT READY");
-		return;
+		return ret;
 	}
 	
 	ret = display_blanking_off(display_dev);
 	if (ret)
 	{
 		LOG_INF("BLANKING OFF ERR %d ", ret);
+		return ret;
 	}
 
 	gpio_pin_set_dt(&display_pin_bl, 1);
+	
+	return ret;
 }

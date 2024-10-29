@@ -71,16 +71,27 @@
 
 	partitions
 	{
+		second_stage_bootloader: partition@0 
+		{
+			label = "second_stage_bootloader";
+			reg = < 0x0 0x100 >;
+			read-only;
+		};
 		code_partition: partition@100 
 		{
 			label = "code-partition";
 			reg = < 0x100 DT_SIZE_K(512) >;
 			read-only;
 		};
-		wad_partition: partition@80100
+		cache_partition: partition@81000
+		{
+			label = "cache-partition";
+			reg = < 0x81000 (DT_SIZE_K(128) + 0x81000) >;
+		};
+		wad_partition: partition@a1000
 		{
 			label = "wad-partition";
-			reg = < 0x80100 (DT_SIZE_M(16) - 0x80100) >;
+			reg = < 0xa1000 (DT_SIZE_M(16) - 0xa1000) >;
 			read-only;
 		};
 	};
