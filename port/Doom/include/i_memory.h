@@ -89,12 +89,20 @@ static inline void* getLongPtr(unsigned short shortPointer)
 { // Special case: short pointer being all 0 => NULL
     if (!shortPointer)
         return 0;
-    return (void*) (((unsigned int) shortPointer << 2) | RAM_PTR_BASE);
+
+    volatile unsigned int temp = (shortPointer << 2);
+    temp |= RAM_PTR_BASE;
+    // return (void*) (((unsigned int) shortPointer << 2) | RAM_PTR_BASE);
+
+    return (void*) temp;
 }
 static inline unsigned short getShortPtr(void *longPtr)
 {
+    volatile unsigned short temp = (unsigned int)longPtr >> 2;
+    temp &= 0x7fff;
 
-    return ((unsigned int) longPtr) >> 2;
+    // return ((unsigned int) longPtr) >> 2;
+    return temp;
 }
 
 static inline packedAddress_t getPackedAddress(void *addr)
@@ -116,9 +124,10 @@ static inline packedAddress_t getPackedAddress(void *addr)
         case (PACKED_MEMORY_ADDRESS2 >> 24) & 0xFF:
             highAddrBits = 0x80;
             break;
-        case (PACKED_MEMORY_ADDRESS3 >> 24) & 0xFF:
-            highAddrBits = 0xC0;
-            break;
+        //NOTE: uncommenting this causes duplicate case error
+        // case (PACKED_MEMORY_ADDRESS3 >> 24) & 0xFF:
+        //     highAddrBits = 0xC0;
+        //     break;
     }
     ret.addrBytes[2] = ((intaddr >> 16) & 0x3F) | highAddrBits;
     return ret;

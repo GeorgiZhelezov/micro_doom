@@ -45,21 +45,32 @@
 #define I_SPI_SUPPORT_H_
 #include <stdint.h>
 #include "string.h"
+
+#include "user_flash.h"
+
 //
 extern uint8_t *currentSpiAddress;
 static inline uint8_t spiFlashGetByte()
 {
-    return *currentSpiAddress++;
+    // return *currentSpiAddress++;
+    uint8_t buff = 0;
+    user_flash_read(&buff, sizeof(buff), (uint32_t)currentSpiAddress);
+    currentSpiAddress++;
+    return buff;
 }
 static inline short spiFlashGetShort()
 {
-   uint16_t s = *currentSpiAddress++;
-    s |= (*currentSpiAddress++ << 8);
-    return (short) s; 
+  //  uint16_t s = *currentSpiAddress++;
+  //   s |= (*currentSpiAddress++ << 8);
+  //   return (short) s; 
     /*
     short s = *((short*) currentSpiAddress);
     currentSpiAddress+=2;
     return s;*/
+    uint16_t buff = 0;
+    user_flash_read(&buff, sizeof(buff), (uint32_t)currentSpiAddress);
+    currentSpiAddress += 2;
+    return (short)buff;
 }
 static inline uint8_t spiFlashGetByteFromAddress(const void *addr)
 {
@@ -69,7 +80,8 @@ static inline uint8_t spiFlashGetByteFromAddress(const void *addr)
 static inline void* spiFlashGetData(void *dest, unsigned int length)
 {
   uint32_t *b  = (void*) currentSpiAddress;
-  memcpy(dest, b, length);
+  user_flash_read(dest, length, (uint32_t)b);
+  // memcpy(dest, b, length);
   currentSpiAddress += length;
   return dest;
 }
