@@ -63,7 +63,7 @@
 
 // proff 08/18/98: Changed for high-res
 #define ST_HEIGHT 32
-#define ST_WIDTH  320
+#define ST_WIDTH  320 //TODO: might need to change this size
 #define ST_Y      (SCREENHEIGHT - ST_HEIGHT)
 #define ST_SCALED_HEIGHT ST_HEIGHT
 #define ST_SCALED_WIDTH  SCREENWIDTH

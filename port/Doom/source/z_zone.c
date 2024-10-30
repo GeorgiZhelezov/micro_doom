@@ -83,7 +83,7 @@
 // instead of having to switch to 12 bytes/block.
 #define CHUNK_SIZE 8
 //TODO: think about this array size
-#define MAX_STATIC_ZONE (113600 / 3) // 113600
+#define MAX_STATIC_ZONE (113600) // 113600
 #define MEM_ALIGN CHUNK_SIZE
 //#define ZMALLOC_STAT
 
@@ -117,9 +117,9 @@ typedef struct
 
 } memzone_t;
 
-uint8_t staticZone[MAX_STATIC_ZONE];
+uint8_t staticZone[MAX_STATIC_ZONE] = { 0 };
 
-memzone_t *mainzone;
+memzone_t *mainzone = NULL;
 void* I_ZoneBase(int *size)
 {
     *size = sizeof(staticZone);
@@ -164,7 +164,7 @@ void Z_ClearZone(memzone_t *zone)
 //
 void Z_Init(void)
 {
-    memblock_t *block;
+    memblock_t *block = NULL;
     int size;
 
     mainzone = (memzone_t*) I_ZoneBase(&size);
@@ -208,10 +208,10 @@ static inline memblock_t* getMemblockNext(memblock_t *mb)
 void* Z_Malloc2(int size, int tag, void **user, const char *sz)
 {
     int extra;
-    memblock_t *start;
-    memblock_t *rover;
-    memblock_t *newblock;
-    memblock_t *base;
+    memblock_t *start = NULL;
+    memblock_t *rover = NULL;
+    memblock_t *newblock = NULL;
+    memblock_t *base = NULL;
     void *result;
 
     if (!size)

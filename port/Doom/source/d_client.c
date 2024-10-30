@@ -145,7 +145,7 @@ void TryRunTics(void)
     //         : : [newStack] "r" ((uint8_t*) displayData.displayFrameBuffer[displayData.workingBuffer] + sizeof(displayData.displayFrameBuffer[0]) - SCREENWIDTH * ST_HEIGHT - 4)
     // );
     // // actually run doom game
-    // TryRunTics2();
+    TryRunTics2();
     // // restore stack
     // __asm volatile
     // (

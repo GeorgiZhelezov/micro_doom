@@ -321,141 +321,143 @@ static void __attribute__((unused)) qspiEnable(uint32_t frequency)
 void qspiInit()
 {
 	//FIXME: add flash init
-//   // Some QSPI by default do not have QSPI mode enabled.
-//   // therefore we first need to make sure the QSPI mode is enabled.
-//   #if USE_SPI_FOR_QSPI_INIT
-//     // let us use SPI0, just to check, then we will disable it
-//     // enable short between end and start, so that continuous send is possible
-//     // SPI 0: clock connected,
-//     NRF_SPIM0->PSEL.SCK = (PORT_NUM_FLASHSPI_CLK << SPIM_PSEL_SCK_PORT_Pos) | (PIN_FLASHSPI_CLK << SPIM_PSEL_SCK_PIN_Pos) |
-//                           (SPIM_PSEL_SCK_CONNECT_Connected << SPIM_PSEL_SCK_CONNECT_Pos);
-//     // SPI 0 & 1: MISO connected. Note that in dual read mode, MOSI pin is an input
-//     NRF_SPIM0->PSEL.MISO = (PORT_NUM_FLASHSPI_MISO << SPIM_PSEL_MISO_PORT_Pos) | (PIN_FLASHSPI_MISO << SPIM_PSEL_MISO_PIN_Pos) |
-//                            (SPIM_PSEL_MISO_CONNECT_Connected << SPIM_PSEL_MISO_CONNECT_Pos);
-//     // SPI 0 & 1: MOSI DISCONNECTED
-//     NRF_SPIM0->PSEL.MOSI = (PORT_NUM_FLASHSPI_MOSI << SPIM_PSEL_MOSI_PORT_Pos) | (PIN_FLASHSPI_MOSI << SPIM_PSEL_MOSI_PIN_Pos) |
-//                            (SPIM_PSEL_MOSI_CONNECT_Connected << SPIM_PSEL_MOSI_CONNECT_Pos);
-//     // set frequency to 8 MHz. Sigh, so slow the maximum one!
-//     NRF_SPIM0->FREQUENCY = SPIM_FREQUENCY_FREQUENCY_M8 << SPIM_FREQUENCY_FREQUENCY_Pos;
-//     // ORC: don't care. Config: good the reset value.
-//     // Enable and configure easy dma for SPIM0
-//     NRF_SPIM0->RXD.LIST = SPIM_RXD_LIST_LIST_ArrayList << SPIM_RXD_LIST_LIST_Pos;
-//     NRF_SPIM0->TXD.LIST = SPIM_TXD_LIST_LIST_Disabled << SPIM_TXD_LIST_LIST_Pos;
-//     // Enable SPI
-//     NRF_SPIM0->ENABLE = SPIM_ENABLE_ENABLE_Enabled << SPIM_ENABLE_ENABLE_Pos;
-//     // set chip select and other pin drive strength
-//     GPIO_PORT(PORT_NUM_FLASHSPI_NCS)->PIN_CNF[PIN_FLASHSPI_NCS] =
-//         (GPIO_PIN_CNF_DIR_Output << GPIO_PIN_CNF_DIR_Pos) | (GPIO_PIN_CNF_DRIVE_H0H1 << GPIO_PIN_CNF_DRIVE_Pos) |
-//         (GPIO_PIN_CNF_INPUT_Connect << GPIO_PIN_CNF_INPUT_Pos) | (GPIO_PIN_CNF_PULL_Disabled << GPIO_PIN_CNF_PULL_Pos) |
-//         (GPIO_PIN_CNF_SENSE_Disabled << GPIO_PIN_CNF_SENSE_Pos);
-//     GPIO_PORT(PORT_NUM_FLASHSPI_CLK)->PIN_CNF[PIN_FLASHSPI_CLK] =
-//         (GPIO_PIN_CNF_DIR_Output << GPIO_PIN_CNF_DIR_Pos) | (GPIO_PIN_CNF_DRIVE_H0H1 << GPIO_PIN_CNF_DRIVE_Pos) |
-//         (GPIO_PIN_CNF_INPUT_Connect << GPIO_PIN_CNF_INPUT_Pos) | (GPIO_PIN_CNF_PULL_Disabled << GPIO_PIN_CNF_PULL_Pos) |
-//         (GPIO_PIN_CNF_SENSE_Disabled << GPIO_PIN_CNF_SENSE_Pos);
-//     GPIO_PORT(PORT_NUM_FLASHSPI_WP)->PIN_CNF[PIN_FLASHSPI_WP] =
-//         (GPIO_PIN_CNF_DIR_Input << GPIO_PIN_CNF_DIR_Pos) | (GPIO_PIN_CNF_DRIVE_H0H1 << GPIO_PIN_CNF_DRIVE_Pos) |
-//         (GPIO_PIN_CNF_INPUT_Connect << GPIO_PIN_CNF_INPUT_Pos) | (GPIO_PIN_CNF_PULL_Pullup << GPIO_PIN_CNF_PULL_Pos) |
-//         (GPIO_PIN_CNF_SENSE_Disabled << GPIO_PIN_CNF_SENSE_Pos);
-//     GPIO_PORT(PORT_NUM_FLASHSPI_HOLD)->PIN_CNF[PIN_FLASHSPI_HOLD] =
-//         (GPIO_PIN_CNF_DIR_Input << GPIO_PIN_CNF_DIR_Pos) | (GPIO_PIN_CNF_DRIVE_H0H1 << GPIO_PIN_CNF_DRIVE_Pos) |
-//         (GPIO_PIN_CNF_INPUT_Connect << GPIO_PIN_CNF_INPUT_Pos) | (GPIO_PIN_CNF_PULL_Pullup << GPIO_PIN_CNF_PULL_Pos) |
-//         (GPIO_PIN_CNF_SENSE_Disabled << GPIO_PIN_CNF_SENSE_Pos);
-//     GPIO_PORT(PORT_NUM_FLASHSPI_MOSI)->PIN_CNF[PIN_FLASHSPI_MOSI] =
-//         (GPIO_PIN_CNF_DIR_Input << GPIO_PIN_CNF_DIR_Pos) | (GPIO_PIN_CNF_DRIVE_H0H1 << GPIO_PIN_CNF_DRIVE_Pos) |
-//         (GPIO_PIN_CNF_INPUT_Connect << GPIO_PIN_CNF_INPUT_Pos) | (GPIO_PIN_CNF_PULL_Pullup << GPIO_PIN_CNF_PULL_Pos) |
-//         (GPIO_PIN_CNF_SENSE_Disabled << GPIO_PIN_CNF_SENSE_Pos);
-//     GPIO_PORT(PORT_NUM_FLASHSPI_MISO)->PIN_CNF[PIN_FLASHSPI_MISO] =
-//         (GPIO_PIN_CNF_DIR_Input << GPIO_PIN_CNF_DIR_Pos) | (GPIO_PIN_CNF_DRIVE_H0H1 << GPIO_PIN_CNF_DRIVE_Pos) |
-//         (GPIO_PIN_CNF_INPUT_Connect << GPIO_PIN_CNF_INPUT_Pos) | (GPIO_PIN_CNF_PULL_Pullup << GPIO_PIN_CNF_PULL_Pos) |
-//         (GPIO_PIN_CNF_SENSE_Disabled << GPIO_PIN_CNF_SENSE_Pos);
+  /*
+  // Some QSPI by default do not have QSPI mode enabled.
+  // therefore we first need to make sure the QSPI mode is enabled.
+  #if USE_SPI_FOR_QSPI_INIT
+    // let us use SPI0, just to check, then we will disable it
+    // enable short between end and start, so that continuous send is possible
+    // SPI 0: clock connected,
+    NRF_SPIM0->PSEL.SCK = (PORT_NUM_FLASHSPI_CLK << SPIM_PSEL_SCK_PORT_Pos) | (PIN_FLASHSPI_CLK << SPIM_PSEL_SCK_PIN_Pos) |
+                          (SPIM_PSEL_SCK_CONNECT_Connected << SPIM_PSEL_SCK_CONNECT_Pos);
+    // SPI 0 & 1: MISO connected. Note that in dual read mode, MOSI pin is an input
+    NRF_SPIM0->PSEL.MISO = (PORT_NUM_FLASHSPI_MISO << SPIM_PSEL_MISO_PORT_Pos) | (PIN_FLASHSPI_MISO << SPIM_PSEL_MISO_PIN_Pos) |
+                           (SPIM_PSEL_MISO_CONNECT_Connected << SPIM_PSEL_MISO_CONNECT_Pos);
+    // SPI 0 & 1: MOSI DISCONNECTED
+    NRF_SPIM0->PSEL.MOSI = (PORT_NUM_FLASHSPI_MOSI << SPIM_PSEL_MOSI_PORT_Pos) | (PIN_FLASHSPI_MOSI << SPIM_PSEL_MOSI_PIN_Pos) |
+                           (SPIM_PSEL_MOSI_CONNECT_Connected << SPIM_PSEL_MOSI_CONNECT_Pos);
+    // set frequency to 8 MHz. Sigh, so slow the maximum one!
+    NRF_SPIM0->FREQUENCY = SPIM_FREQUENCY_FREQUENCY_M8 << SPIM_FREQUENCY_FREQUENCY_Pos;
+    // ORC: don't care. Config: good the reset value.
+    // Enable and configure easy dma for SPIM0
+    NRF_SPIM0->RXD.LIST = SPIM_RXD_LIST_LIST_ArrayList << SPIM_RXD_LIST_LIST_Pos;
+    NRF_SPIM0->TXD.LIST = SPIM_TXD_LIST_LIST_Disabled << SPIM_TXD_LIST_LIST_Pos;
+    // Enable SPI
+    NRF_SPIM0->ENABLE = SPIM_ENABLE_ENABLE_Enabled << SPIM_ENABLE_ENABLE_Pos;
+    // set chip select and other pin drive strength
+    GPIO_PORT(PORT_NUM_FLASHSPI_NCS)->PIN_CNF[PIN_FLASHSPI_NCS] =
+        (GPIO_PIN_CNF_DIR_Output << GPIO_PIN_CNF_DIR_Pos) | (GPIO_PIN_CNF_DRIVE_H0H1 << GPIO_PIN_CNF_DRIVE_Pos) |
+        (GPIO_PIN_CNF_INPUT_Connect << GPIO_PIN_CNF_INPUT_Pos) | (GPIO_PIN_CNF_PULL_Disabled << GPIO_PIN_CNF_PULL_Pos) |
+        (GPIO_PIN_CNF_SENSE_Disabled << GPIO_PIN_CNF_SENSE_Pos);
+    GPIO_PORT(PORT_NUM_FLASHSPI_CLK)->PIN_CNF[PIN_FLASHSPI_CLK] =
+        (GPIO_PIN_CNF_DIR_Output << GPIO_PIN_CNF_DIR_Pos) | (GPIO_PIN_CNF_DRIVE_H0H1 << GPIO_PIN_CNF_DRIVE_Pos) |
+        (GPIO_PIN_CNF_INPUT_Connect << GPIO_PIN_CNF_INPUT_Pos) | (GPIO_PIN_CNF_PULL_Disabled << GPIO_PIN_CNF_PULL_Pos) |
+        (GPIO_PIN_CNF_SENSE_Disabled << GPIO_PIN_CNF_SENSE_Pos);
+    GPIO_PORT(PORT_NUM_FLASHSPI_WP)->PIN_CNF[PIN_FLASHSPI_WP] =
+        (GPIO_PIN_CNF_DIR_Input << GPIO_PIN_CNF_DIR_Pos) | (GPIO_PIN_CNF_DRIVE_H0H1 << GPIO_PIN_CNF_DRIVE_Pos) |
+        (GPIO_PIN_CNF_INPUT_Connect << GPIO_PIN_CNF_INPUT_Pos) | (GPIO_PIN_CNF_PULL_Pullup << GPIO_PIN_CNF_PULL_Pos) |
+        (GPIO_PIN_CNF_SENSE_Disabled << GPIO_PIN_CNF_SENSE_Pos);
+    GPIO_PORT(PORT_NUM_FLASHSPI_HOLD)->PIN_CNF[PIN_FLASHSPI_HOLD] =
+        (GPIO_PIN_CNF_DIR_Input << GPIO_PIN_CNF_DIR_Pos) | (GPIO_PIN_CNF_DRIVE_H0H1 << GPIO_PIN_CNF_DRIVE_Pos) |
+        (GPIO_PIN_CNF_INPUT_Connect << GPIO_PIN_CNF_INPUT_Pos) | (GPIO_PIN_CNF_PULL_Pullup << GPIO_PIN_CNF_PULL_Pos) |
+        (GPIO_PIN_CNF_SENSE_Disabled << GPIO_PIN_CNF_SENSE_Pos);
+    GPIO_PORT(PORT_NUM_FLASHSPI_MOSI)->PIN_CNF[PIN_FLASHSPI_MOSI] =
+        (GPIO_PIN_CNF_DIR_Input << GPIO_PIN_CNF_DIR_Pos) | (GPIO_PIN_CNF_DRIVE_H0H1 << GPIO_PIN_CNF_DRIVE_Pos) |
+        (GPIO_PIN_CNF_INPUT_Connect << GPIO_PIN_CNF_INPUT_Pos) | (GPIO_PIN_CNF_PULL_Pullup << GPIO_PIN_CNF_PULL_Pos) |
+        (GPIO_PIN_CNF_SENSE_Disabled << GPIO_PIN_CNF_SENSE_Pos);
+    GPIO_PORT(PORT_NUM_FLASHSPI_MISO)->PIN_CNF[PIN_FLASHSPI_MISO] =
+        (GPIO_PIN_CNF_DIR_Input << GPIO_PIN_CNF_DIR_Pos) | (GPIO_PIN_CNF_DRIVE_H0H1 << GPIO_PIN_CNF_DRIVE_Pos) |
+        (GPIO_PIN_CNF_INPUT_Connect << GPIO_PIN_CNF_INPUT_Pos) | (GPIO_PIN_CNF_PULL_Pullup << GPIO_PIN_CNF_PULL_Pos) |
+        (GPIO_PIN_CNF_SENSE_Disabled << GPIO_PIN_CNF_SENSE_Pos);
 
-//     GPIO_PORT(PORT_NUM_FLASHSPI_HOLD)->OUTSET = (1 << PIN_FLASHSPI_HOLD);
-//     GPIO_PORT(PORT_NUM_FLASHSPI_WP)->OUTSET = (1 << PIN_FLASHSPI_WP);
-//     // send read ID command
-//     const uint8_t readMgdIdCmd[] = {SPI_FLASH_MFG_ID, 0, 0, 0, 0, 0};
-//     uint8_t answerBuffer[16];
-//     qspiSendCommandSpiMode(sizeof(readMgdIdCmd), sizeof(readMgdIdCmd), readMgdIdCmd, answerBuffer);
-//     uint8_t id = answerBuffer[4];
-//     uint8_t sz = answerBuffer[5];
-//     //
-//     FLASH_NCS_HIGH();
-//     flashSize = 4096 * 1024 << (sz - ID_4M);
-//     //
-//     printf("MFG ID: 0x%02x 0x%02x, size %d\r\n", id, sz, flashSize);
-//     //
-//     printf("Enabling QSPI\r\n");
-//     uint8_t sr2 = spiFlashEnableQSPI();
-//     printf("SR 2 is %x\r\n", sr2);
-//     // Set high drive strenght
-//     spiFlashDriveStrength();
-//     // now the flash can be used as QSPI flash. Let's disable SPIM0
-//     NRF_SPIM0->TASKS_STOP = 1;
-//     while (0 == NRF_SPIM0->EVENTS_STOPPED)
-//     {
-//     }
-//     NRF_SPIM0->EVENTS_STOPPED = 0;
-//     // Disable SPI
-//     NRF_SPIM0->ENABLE = 0;
-//     // now enable QSPI
-//     qspiEnable(32000000);
-// #else
-//     const uint8_t portNums[] = 
-//     {
-//         PORT_NUM_QSPI_D0, 
-//         PORT_NUM_QSPI_D1,
-//         PORT_NUM_QSPI_D2, 
-//         PORT_NUM_QSPI_D3,
-//         PORT_NUM_FLASHSPI_CLK, 
-//         PORT_NUM_FLASHSPI_NCS
-//     };
-//     const uint8_t gpioNums[] = 
-//     {
-//         PIN_QSPI_D0,
-//         PIN_QSPI_D1,
-//         PIN_QSPI_D2,
-//         PIN_QSPI_D3,
-//         PIN_QSPI_CLK,
-//         PIN_QSPI_NCS
-//     };
+    GPIO_PORT(PORT_NUM_FLASHSPI_HOLD)->OUTSET = (1 << PIN_FLASHSPI_HOLD);
+    GPIO_PORT(PORT_NUM_FLASHSPI_WP)->OUTSET = (1 << PIN_FLASHSPI_WP);
+    // send read ID command
+    const uint8_t readMgdIdCmd[] = {SPI_FLASH_MFG_ID, 0, 0, 0, 0, 0};
+    uint8_t answerBuffer[16];
+    qspiSendCommandSpiMode(sizeof(readMgdIdCmd), sizeof(readMgdIdCmd), readMgdIdCmd, answerBuffer);
+    uint8_t id = answerBuffer[4];
+    uint8_t sz = answerBuffer[5];
+    //
+    FLASH_NCS_HIGH();
+    flashSize = 4096 * 1024 << (sz - ID_4M);
+    //
+    printf("MFG ID: 0x%02x 0x%02x, size %d\r\n", id, sz, flashSize);
+    //
+    printf("Enabling QSPI\r\n");
+    uint8_t sr2 = spiFlashEnableQSPI();
+    printf("SR 2 is %x\r\n", sr2);
+    // Set high drive strenght
+    spiFlashDriveStrength();
+    // now the flash can be used as QSPI flash. Let's disable SPIM0
+    NRF_SPIM0->TASKS_STOP = 1;
+    while (0 == NRF_SPIM0->EVENTS_STOPPED)
+    {
+    }
+    NRF_SPIM0->EVENTS_STOPPED = 0;
+    // Disable SPI
+    NRF_SPIM0->ENABLE = 0;
+    // now enable QSPI
+    qspiEnable(32000000);
+#else
+    const uint8_t portNums[] = 
+    {
+        PORT_NUM_QSPI_D0, 
+        PORT_NUM_QSPI_D1,
+        PORT_NUM_QSPI_D2, 
+        PORT_NUM_QSPI_D3,
+        PORT_NUM_FLASHSPI_CLK, 
+        PORT_NUM_FLASHSPI_NCS
+    };
+    const uint8_t gpioNums[] = 
+    {
+        PIN_QSPI_D0,
+        PIN_QSPI_D1,
+        PIN_QSPI_D2,
+        PIN_QSPI_D3,
+        PIN_QSPI_CLK,
+        PIN_QSPI_NCS
+    };
 
-//     // set fast gpio anyway
-//     for (int i = 0; i < sizeof(portNums); i++)
-//     {
-//         const uint32_t v = (GPIO_PIN_CNF_DIR_Output << GPIO_PIN_CNF_DIR_Pos) | (GPIO_PIN_CNF_DRIVE_H0H1 << GPIO_PIN_CNF_DRIVE_Pos) |
-//                            (GPIO_PIN_CNF_INPUT_Connect << GPIO_PIN_CNF_INPUT_Pos) | (GPIO_PIN_CNF_PULL_Pullup << GPIO_PIN_CNF_PULL_Pos) |
-//                            (GPIO_PIN_CNF_SENSE_Disabled << GPIO_PIN_CNF_SENSE_Pos);
-//         if (portNums[i] == P1)
-//         {
-//             GPIO_PORT(P1)->PIN_CNF[gpioNums[i]] = v;
-//         }
-//         else
-//         {
-//             GPIO_PORT(P0)->PIN_CNF[gpioNums[i]] = v;
-//         }
-//     }
-//     // set low freq mode
-//     qspiEnable(2000000);
-//     //
-//     uint8_t id, sz;
-//     //
-//     qspiFlashReadId(&id, &sz);
-//     flashSize = 4096 * 1024 << (sz - ID_4M);
-//     //
-//     printf("MFG ID: 0x%02x 0x%02x, size %d\r\n", id, sz, flashSize);
-//     //
-//     printf("Enabling QSPI mode\r\n");
-//     uint8_t sr2 = qspiFlashEnableQspiMode();
-//     printf("SR 2 is %x\r\n", sr2);
-//     // Set high drive strength
-//     qspiFlashDriveStrength();
-//     // now the flash can be used as QSPI flash, at high speed mode.
-//     // let's deactivae it and start it again.
-//     NRF_QSPI->TASKS_DEACTIVATE = 1;
-//     delay(1); // wait 1 ms. Unluckily deactivate task does not trigger a ready event...
-//     NRF_QSPI->EVENTS_READY = 0;
-//     // set high freq mode
-//     qspiEnable(32000000);
+    // set fast gpio anyway
+    for (int i = 0; i < sizeof(portNums); i++)
+    {
+        const uint32_t v = (GPIO_PIN_CNF_DIR_Output << GPIO_PIN_CNF_DIR_Pos) | (GPIO_PIN_CNF_DRIVE_H0H1 << GPIO_PIN_CNF_DRIVE_Pos) |
+                           (GPIO_PIN_CNF_INPUT_Connect << GPIO_PIN_CNF_INPUT_Pos) | (GPIO_PIN_CNF_PULL_Pullup << GPIO_PIN_CNF_PULL_Pos) |
+                           (GPIO_PIN_CNF_SENSE_Disabled << GPIO_PIN_CNF_SENSE_Pos);
+        if (portNums[i] == P1)
+        {
+            GPIO_PORT(P1)->PIN_CNF[gpioNums[i]] = v;
+        }
+        else
+        {
+            GPIO_PORT(P0)->PIN_CNF[gpioNums[i]] = v;
+        }
+    }
+    // set low freq mode
+    qspiEnable(2000000);
+    //
+    uint8_t id, sz;
+    //
+    qspiFlashReadId(&id, &sz);
+    flashSize = 4096 * 1024 << (sz - ID_4M);
+    //
+    printf("MFG ID: 0x%02x 0x%02x, size %d\r\n", id, sz, flashSize);
+    //
+    printf("Enabling QSPI mode\r\n");
+    uint8_t sr2 = qspiFlashEnableQspiMode();
+    printf("SR 2 is %x\r\n", sr2);
+    // Set high drive strength
+    qspiFlashDriveStrength();
+    // now the flash can be used as QSPI flash, at high speed mode.
+    // let's deactivae it and start it again.
+    NRF_QSPI->TASKS_DEACTIVATE = 1;
+    delay(1); // wait 1 ms. Unluckily deactivate task does not trigger a ready event...
+    NRF_QSPI->EVENTS_READY = 0;
+    // set high freq mode
+    qspiEnable(32000000);
 
-// #endif
-//     printf("Reading using XIP %x\r\n", *((uint32_t *)0x12000004));
+#endif
+    printf("Reading using XIP %x\r\n", *((uint32_t *)0x12000004)); 
+    */
 }
