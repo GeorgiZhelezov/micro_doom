@@ -132,8 +132,11 @@ const int key_map_follow = KEYD_USE;
 const int key_map_zoomin = KEYD_SL;
 const int key_map_zoomout = KEYD_SR;
 
-#define SAVEGAME_ADDRESS ((qspiFlashGetSize() - 4096) | EXT_FLASH_BASE)
-#define SETTINGS_ADDRESS ((qspiFlashGetSize() - 2 * 4096) | EXT_FLASH_BASE)
+// #define SAVEGAME_ADDRESS ((qspiFlashGetSize() - 4096) | EXT_FLASH_BASE)
+// #define SETTINGS_ADDRESS ((qspiFlashGetSize() - 2 * 4096) | EXT_FLASH_BASE)
+
+#define SAVEGAME_ADDRESS USER_GAME_SAVES_PARTITION_BASE_ADDRESS
+#define SETTINGS_ADDRESS USER_GAME_SETTINGS_PARTITION_BASE_ADDRESS
 
 // phares
 

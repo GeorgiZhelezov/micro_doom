@@ -29,6 +29,8 @@
 #include "i_memory.h"
 #include "delay.h"
 
+#include "user_flash.h"
+
 #define SPI_FLASH_WRITE_ENABLE_CMD 0x06
 #define SPI_FLASH_PAGE_PROGRAM_CMD 0x02
 #define SPI_FLASH_STATUS_REGISTER_READ_CMD 0x05
@@ -51,7 +53,8 @@
 #define FLASH_NCS_HIGH() do{ /* NRF_P0->OUTSET = (1 << PIN_FLASHSPI_NCS); */ } while(0)
 
 //
-static uint32_t flashSize = 0;
+// static uint32_t flashSize = 0;
+static const uint32_t flashSize = USER_FLASH_SIZE;
 #if USE_SPI_FOR_QSPI_INIT
 static void spiFlashWaitBusy();
 static uint8_t __attribute__((unused)) spiFlashRead(volatile uint8_t byte)
@@ -181,7 +184,18 @@ void qspiFlashProgram(uint32_t address, uint8_t * data, uint32_t size)
     // while (0 == NRF_QSPI->EVENTS_READY)
     //     ;
     // NRF_QSPI->EVENTS_READY = 0;
-    qspiWaitFlashReady();
+    // qspiWaitFlashReady();
+
+    switch (address)
+    {
+        case USER_GAME_SAVES_PARTITION_BASE_ADDRESS:
+            user_flash_write(data, size, address, USER_GAME_SAVES_PARTITION_ID);
+            break;
+        case USER_GAME_SETTINGS_PARTITION_BASE_ADDRESS:
+            user_flash_write(data, size, address, USER_GAME_SETTINGS_PARTITION_ID);
+            break;
+        default: while (1) { __asm__ volatile("nop"); } break;
+    }
 }
 void qspiFlashErasePage64k(uint32_t address)
 {
@@ -193,7 +207,7 @@ void qspiFlashErasePage64k(uint32_t address)
     // while (!NRF_QSPI->EVENTS_READY)
     //     ;
     // NRF_QSPI->EVENTS_READY = 0;
-    qspiWaitFlashReady();
+    // qspiWaitFlashReady();
 }
 void qspiFlashErasePage4k(uint32_t address)
 {
@@ -205,7 +219,19 @@ void qspiFlashErasePage4k(uint32_t address)
     // while (!NRF_QSPI->EVENTS_READY)
     //     ;
     // NRF_QSPI->EVENTS_READY = 0;
-    qspiWaitFlashReady();
+    // qspiWaitFlashReady();
+
+    switch (address)
+    {
+        case USER_GAME_SAVES_PARTITION_BASE_ADDRESS:
+            user_flash_erase_page(address, USER_GAME_SAVES_PARTITION_ID);
+            break;
+        case USER_GAME_SETTINGS_PARTITION_BASE_ADDRESS:
+            user_flash_erase_page(address, USER_GAME_SETTINGS_PARTITION_ID);
+            break;
+        default:
+            while (1) { __asm__ volatile("nop"); } break;
+    }
 }
 void qspiFlashReadId(uint8_t * id, uint8_t * sz)
 {

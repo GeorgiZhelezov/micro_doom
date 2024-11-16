@@ -2164,7 +2164,9 @@ FASTFUN static inline void R_DrawSpan(unsigned int y, unsigned int x1, unsigned 
         position += step;
         quadPix |= (colormap[source[((position >> 4) & 0x0fc0) | (position >> 26)]]) << 24;
         position += step;
-        *qDest++ = quadPix;
+        // *qDest++ = quadPix;
+        memcpy(qDest, &quadPix, sizeof(quadPix));
+        qDest++;
 
         quadPix = colormap[source[((position >> 4) & 0x0fc0) | (position >> 26)]];
         position += step;
@@ -2174,7 +2176,9 @@ FASTFUN static inline void R_DrawSpan(unsigned int y, unsigned int x1, unsigned 
         position += step;
         quadPix |= (colormap[source[((position >> 4) & 0x0fc0) | (position >> 26)]]) << 24;
         position += step;
-        *qDest++ = quadPix;
+        // *qDest++ = quadPix;
+        memcpy(qDest, &quadPix, sizeof(quadPix));
+        qDest++;
 
         quadPix = colormap[source[((position >> 4) & 0x0fc0) | (position >> 26)]];
         position += step;
@@ -2184,7 +2188,9 @@ FASTFUN static inline void R_DrawSpan(unsigned int y, unsigned int x1, unsigned 
         position += step;
         quadPix |= (colormap[source[((position >> 4) & 0x0fc0) | (position >> 26)]]) << 24;
         position += step;
-        *qDest++ = quadPix;
+        // *qDest++ = quadPix;
+        memcpy(qDest, &quadPix, sizeof(quadPix));
+        qDest++;
 
         quadPix = colormap[source[((position >> 4) & 0x0fc0) | (position >> 26)]];
         position += step;
@@ -2194,7 +2200,9 @@ FASTFUN static inline void R_DrawSpan(unsigned int y, unsigned int x1, unsigned 
         position += step;
         quadPix |= (colormap[source[((position >> 4) & 0x0fc0) | (position >> 26)]]) << 24;
         position += step;
-        *qDest++ = quadPix;
+        // *qDest++ = quadPix;
+        memcpy(qDest, &quadPix, sizeof(quadPix));
+        qDest++;
 
     #endif
     }
@@ -4236,7 +4244,8 @@ static inline void fastOpeningsCopy(short *dest, short * source, int num)
     int32_t *d = (int32_t*) dest;
     for (int i = 0; i < num / 2; i++)
     {
-    *d++ = *s++;
+        // *d++ = *s++;
+        memcpy(d, s, sizeof(*d));
     }
     // copy any odd opening
     if (num & 1)

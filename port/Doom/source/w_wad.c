@@ -70,6 +70,9 @@
 #include "i_spi_support.h"
 // #include "nrf.h"
 #include "main.h"
+
+#include "user_flash.h"
+
 #define FLASH_ALIGNMENT 4
 /* Flash organization
  * After 256k, 8k Aligned
@@ -205,6 +208,8 @@ void flashErasePage(uint32_t *pageAddress)
     // NRF_NVMC->CONFIG = NVMC_CONFIG_WEN_Ren << NVMC_CONFIG_WEN_Pos;
     // while (NRF_NVMC->READY == NVMC_READY_READY_Busy){}
 
+    user_flash_erase_page((uint32_t) pageAddress, USER_CACHE_PARTITION_ID);
+
     nh_enable_irq();
 }
 void programFlashWord(uint32_t *address, uint32_t word)
@@ -223,6 +228,9 @@ void programFlashWord(uint32_t *address, uint32_t word)
         // while (NRF_NVMC->READY == NVMC_READY_READY_Busy){}
         // NRF_NVMC->CONFIG = NVMC_CONFIG_WEN_Ren << NVMC_CONFIG_WEN_Pos;
         // while (NRF_NVMC->READY == NVMC_READY_READY_Busy){}
+
+        user_flash_write(&word, sizeof(word), (uint32_t) address, USER_CACHE_PARTITION_ID);
+        
         nh_enable_irq();
     }
 }

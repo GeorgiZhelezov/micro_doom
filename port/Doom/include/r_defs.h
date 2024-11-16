@@ -200,10 +200,17 @@ static inline void* getSectorFloorData(sector_t *psec)
 //static inline const struct line_s*  getSectorLineByIndex(sector_t *psec, int i) {return (const struct line_s*) unpackAddress(getSectorLines(psec)[i]);}
 static inline const struct line_s** getSectorLines(sector_t *psec)
 {
+    // const struct line_s **temp = unpackAddress(psec->lines_ppptr);
+    // return temp;
+
     return (const struct line_s**) unpackAddress(psec->lines_ppptr);
 }
 static inline const struct line_s* getSectorLineByIndex(sector_t *psec, int i)
 {
+    // const struct line_s **line = getSectorLines(psec);
+    // const struct line_s *temp = *(line + i);
+    // return temp;
+
     return getSectorLines(psec)[i];
 }
 

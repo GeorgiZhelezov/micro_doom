@@ -197,7 +197,7 @@ static void I_UploadNewPalette(int pal)
             uint16_t g = gammatable[_g->gamma][p_wad_immutable_flash_data->palette_lump[pal * 256 * 3 + 3 * i + 1]] >> 2;
             uint16_t b = gammatable[_g->gamma][p_wad_immutable_flash_data->palette_lump[pal * 256 * 3 + 3 * i + 2]] >> 3;
             uint16_t rgb = (r << (6 + 5)) | (g << 5) | (b << (0));
-            rgb = (rgb >> 8) | (rgb << 8);
+            // rgb = (rgb >> 8) | (rgb << 8);
             _g->current_palette[i] = rgb;
         }
     }
@@ -209,7 +209,7 @@ static void I_UploadNewPalette(int pal)
             uint16_t g = p_wad_immutable_flash_data->palette_lump[pal * 256 * 3 + 3 * i + 1] >> 2;
             uint16_t b = p_wad_immutable_flash_data->palette_lump[pal * 256 * 3 + 3 * i + 2] >> 3;
             uint16_t rgb = (r << (6 + 5)) | (g << 5) | (b << (0));
-            rgb = (rgb >> 8) | (rgb << 8);
+            // rgb = (rgb >> 8) | (rgb << 8);
             _g->current_palette[i] = rgb;
         }
     }

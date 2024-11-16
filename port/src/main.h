@@ -41,6 +41,7 @@
 // 1: BLE DONGLE, 0 = ADAFRUIT CLUE
 #define MINEWDONGLE 1
 #define DEBUG_OUT_PRINTF 0
+// #define ZMALLOC_STAT
 //various configurations
 #define CACHE_ALL_COLORMAP_TO_RAM 0 // this wastes 8.25 more kB, and typically 900 us are saved. Remember to reduce zone memory!
 #define USE_SPI_FOR_QSPI_INIT 1    
@@ -56,7 +57,7 @@
     #define SHOW_FPS true
 #else
     #define START_MAP 1
-    #define SHOW_FPS false
+    #define SHOW_FPS true
 #endif
 // utilities for accessing ports easily, regardless they are in P0 and P1
 #define PORT(t) NRF_P ## t 

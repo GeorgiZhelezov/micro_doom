@@ -54,7 +54,7 @@ static inline uint8_t spiFlashGetByte()
 {
     // return *currentSpiAddress++;
     uint8_t buff = 0;
-    user_flash_read(&buff, sizeof(buff), (uint32_t)currentSpiAddress);
+    user_flash_read(&buff, sizeof(buff), (uint32_t)currentSpiAddress, USER_WAD_PARTITION_ID);
     currentSpiAddress++;
     return buff;
 }
@@ -68,7 +68,7 @@ static inline short spiFlashGetShort()
     currentSpiAddress+=2;
     return s;*/
     uint16_t buff = 0;
-    user_flash_read(&buff, sizeof(buff), (uint32_t)currentSpiAddress);
+    user_flash_read(&buff, sizeof(buff), (uint32_t)currentSpiAddress, USER_WAD_PARTITION_ID);
     currentSpiAddress += 2;
     return (short)buff;
 }
@@ -80,7 +80,21 @@ static inline uint8_t spiFlashGetByteFromAddress(const void *addr)
 static inline void* spiFlashGetData(void *dest, unsigned int length)
 {
   uint32_t *b  = (void*) currentSpiAddress;
-  user_flash_read(dest, length, (uint32_t)b);
+
+  switch ((uint32_t)b)
+  {
+  case USER_GAME_SETTINGS_PARTITION_BASE_ADDRESS:
+    user_flash_read(dest, length, (uint32_t)b, USER_GAME_SETTINGS_PARTITION_ID);
+    break;
+  case USER_GAME_SAVES_PARTITION_BASE_ADDRESS:
+    user_flash_read(dest, length, (uint32_t)b, USER_GAME_SAVES_PARTITION_ID);
+    break;
+
+  default:
+    user_flash_read(dest, length, (uint32_t)b, USER_WAD_PARTITION_ID);
+    break;
+  }
+
   // memcpy(dest, b, length);
   currentSpiAddress += length;
   return dest;

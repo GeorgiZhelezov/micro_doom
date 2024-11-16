@@ -74,11 +74,15 @@
 #include <stdio.h>
 #include <stdlib.h>
 // #include "nrf.h"
+
+#include "user_time.h"
+
 unsigned int I_GetTimeMicrosecs()
 {
 	//FIXME: add get microseconds function
     // return NRF_TIMER3->CC[0];
-    return 0;
+
+    return user_get_time_us();
 }
 
 unsigned int I_GetTime(void)

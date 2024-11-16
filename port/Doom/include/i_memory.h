@@ -57,7 +57,7 @@
 #define PACKED_MEMORY_ADDRESS0 RAM_PTR_BASE
 #define PACKED_MEMORY_ADDRESS1 RAM_PTR_BASE
 #define PACKED_MEMORY_ADDRESS2 EXT_FLASH_BASE
-#define PACKED_MEMORY_ADDRESS3 FLASH_PTR_BASE
+#define PACKED_MEMORY_ADDRESS3 USER_CACHE_PARTITION_BASE_ADDRESS
 //
 // #define WAD_ADDRESS (EXT_FLASH_BASE + 4)
 
@@ -67,11 +67,15 @@
 #define FLASH_CODE_KB USER_CODE_PARTITION_SIZE_KB
 // #define FLASH_ADDRESS (0x00000000 + FLASH_CODE_KB * 1024)
 
-#define FLASH_ADDRESS (FLASH_PTR_BASE + FLASH_CODE_KB * 1024)
+// #define FLASH_ADDRESS (FLASH_PTR_BASE + FLASH_CODE_KB * 1024)
+
+#define FLASH_ADDRESS USER_CACHE_PARTITION_BASE_ADDRESS
 #define FLASH_IMMUTABLE_REGION_ADDRESS FLASH_ADDRESS
 #define FLASH_IMMUTABLE_REGION 0
 #define FLASH_LEVEL_REGION 1
-#define FLASH_CACHE_REGION_SIZE ((1024 - FLASH_CODE_KB) * 1024)
+// #define FLASH_CACHE_REGION_SIZE ((1024 - FLASH_CODE_KB) * 1024)
+
+#define FLASH_CACHE_REGION_SIZE USER_CACHE_PARTITION_SIZE
 // #define FLASH_BLOCK_SIZE 4096
 
 #define FLASH_BLOCK_SIZE USER_FLASH_ERASE_SIZE
@@ -90,59 +94,89 @@ static inline void* getLongPtr(unsigned short shortPointer)
     if (!shortPointer)
         return 0;
 
-    volatile unsigned int temp = (shortPointer << 2);
-    temp |= RAM_PTR_BASE;
-    // return (void*) (((unsigned int) shortPointer << 2) | RAM_PTR_BASE);
-
-    return (void*) temp;
+    // volatile unsigned int temp = (shortPointer << 2);
+    // temp |= RAM_PTR_BASE;
+    // return (void*) temp;
+    return (void*) (((unsigned int) shortPointer << 2) | RAM_PTR_BASE);
 }
 static inline unsigned short getShortPtr(void *longPtr)
 {
-    volatile unsigned short temp = (unsigned int)longPtr >> 2;
-    temp &= 0x7fff;
+    // volatile unsigned short temp = (unsigned int)longPtr >> 2;
+    // // temp &= 0x7fff;
 
-    // return ((unsigned int) longPtr) >> 2;
-    return temp;
+    // uint32_t reverted = (uint32_t) getLongPtr(temp);
+    // if ((uint32_t) longPtr != reverted)
+    // {
+    //     while(1)
+    //     {
+    //         __asm__ volatile("nop");
+    //     }
+    // }
+
+    // return temp;
+    return ((unsigned int) longPtr) >> 2;
 }
 
 static inline packedAddress_t getPackedAddress(void *addr)
 {
     packedAddress_t ret;
     unsigned int intaddr = (uint32_t) addr;
-    uint8_t highaddr = intaddr >> 24;
+    // uint8_t highaddr = intaddr >> 24;
+    uint32_t highaddr = intaddr;
     uint8_t highAddrBits = 0;
-    ret.addrBytes[0] = intaddr;
-    ret.addrBytes[1] = intaddr >> 8;
+
+    
     switch (highaddr)
     {
-        case (PACKED_MEMORY_ADDRESS0 >> 24) & 0xFF:
-            highAddrBits = 0x0;
-            break;
-        /*case (PACKED_MEMORY_ADDRESS1 >> 24) & 0xFF:
-            highAddrBits = 0x40;
-            break;*/
-        case (PACKED_MEMORY_ADDRESS2 >> 24) & 0xFF:
-            highAddrBits = 0x80;
-            break;
-        //NOTE: uncommenting this causes duplicate case error
-        // case (PACKED_MEMORY_ADDRESS3 >> 24) & 0xFF:
-        //     highAddrBits = 0xC0;
-        //     break;
+    case USER_RAM_BASE_ADDRESS ... (USER_RAM_BASE_ADDRESS + USER_RAM_SIZE):
+        intaddr -= USER_RAM_BASE_ADDRESS;
+        highAddrBits = 0x0;
+        break;
+    case USER_WAD_PARTITION_BASE_ADDRESS ... (USER_WAD_PARTITION_BASE_ADDRESS + USER_WAD_PARTITION_SIZE):
+        intaddr -= USER_WAD_PARTITION_BASE_ADDRESS;
+        highAddrBits = 0x40;
+        break;
+    case USER_CACHE_PARTITION_BASE_ADDRESS ... (USER_CACHE_PARTITION_BASE_ADDRESS + USER_CACHE_PARTITION_SIZE):
+        intaddr -= USER_CACHE_PARTITION_BASE_ADDRESS;
+        highAddrBits = 0x80;
+        break;
+    default:
+        while (1) { __asm__ volatile("nop"); }
+        break;
     }
+    ret.addrBytes[0] = intaddr;
+    ret.addrBytes[1] = intaddr >> 8;
     ret.addrBytes[2] = ((intaddr >> 16) & 0x3F) | highAddrBits;
+    // LOG_INF("packed %08x to %02x%02x%02x", (uint32_t) addr, ret.addrBytes[0], ret.addrBytes[1], ret.addrBytes[2]);
+    // k_busy_wait(20 * 1000);
+
     return ret;
 }
 
+// static void* unpackAddress(volatile packedAddress_t a) // passed by copy, because it is shorted than a pointer!
 static inline void* unpackAddress(packedAddress_t a) // passed by copy, because it is shorted than a pointer!
 {
     const uint32_t addresses[] =
-    { PACKED_MEMORY_ADDRESS0, PACKED_MEMORY_ADDRESS1, PACKED_MEMORY_ADDRESS2, PACKED_MEMORY_ADDRESS3 };
+    {
+        PACKED_MEMORY_ADDRESS0, 
+        // PACKED_MEMORY_ADDRESS1, 
+        PACKED_MEMORY_ADDRESS2, 
+        PACKED_MEMORY_ADDRESS3
+    };
 
     if (!a.addrBytes[2] && !a.addrBytes[1] && !a.addrBytes[0])
     {
         return NULL;
     }
-    return (void*) (addresses[a.addrBytes[2] >> 6] | (a.addrBytes[0]) | (a.addrBytes[1] << 8) | ((a.addrBytes[2] & 0x3F) << 16));
+    // volatile uint32_t temp = (addresses[a.addrBytes[2] >> 6] | (a.addrBytes[0]) | (a.addrBytes[1] << 8) | ((a.addrBytes[2] & 0x3F) << 16));
+    // volatile uint32_t temp = 0;
+    // temp |= a.addrBytes[0];
+    // temp |= ((uint32_t) a.addrBytes[1] << 8);
+    // temp |= ((uint32_t) (a.addrBytes[2] & 0x3f) << 16);
+    // temp += addresses[a.addrBytes[2] >> 6];
+    // uint32_t val = temp;
+    // return (void *) val;
+    return (void*) (addresses[a.addrBytes[2] >> 6] + ((a.addrBytes[0]) | (a.addrBytes[1] << 8) | ((a.addrBytes[2] & 0x3F) << 16)));
 }
 
 #endif /* DOOM_INCLUDE_I_MEMORY_H_ */

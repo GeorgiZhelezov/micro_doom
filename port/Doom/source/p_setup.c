@@ -476,6 +476,10 @@ static void P_LoadReject(int lumpnum)
 static void P_AddLineToSector(const line_t *li, sector_t *sector)
 {
     //sector->lines[sector->linecount++] = li;
+
+    // const struct line_s **temp = getSectorLines(sector);
+    // temp[sector->linecount++] = li;
+
     getSectorLines(sector)[sector->linecount++] = li; // getPackedAddress(li);
 }
 // modified to return totallines (needed by P_LoadReject)

@@ -117,7 +117,7 @@ typedef struct
 
 } memzone_t;
 
-uint8_t staticZone[MAX_STATIC_ZONE] = { 0 };
+__aligned(8) uint8_t staticZone[MAX_STATIC_ZONE] = { 0 };
 
 memzone_t *mainzone = NULL;
 void* I_ZoneBase(int *size)
@@ -125,29 +125,40 @@ void* I_ZoneBase(int *size)
     *size = sizeof(staticZone);
     return staticZone;
 }
-static inline unsigned short getShortPtrDW(volatile void *ptr)
+static inline void *getLongPtrDW(unsigned short ptrdw);
+static inline unsigned short getShortPtrDW(void *ptr)
 {
-    volatile uint32_t a = (unsigned int) ptr;
-    volatile uint32_t b = a >> 2;
-    volatile uint32_t c = b & 0x7fff;
-    volatile unsigned short d = (unsigned short) c;
+    // volatile uint32_t a = (unsigned int) ptr;
+    // volatile uint32_t b = a >> 3;
+    // volatile uint32_t c = b & 0x7fff;
+    // volatile unsigned short d = (unsigned short) c;
     
-    volatile unsigned short temp = ( (unsigned int) ptr >> 2) & 0x7FFF;
-    
-    // return ( (unsigned int) ptr >> 3) & 0x7FFF;
-    return temp;
+    // volatile unsigned short temp = (unsigned int) ptr >> 3;
+    // temp &= 0x7fff;
+
+    // volatile uint32_t reverted = getLongPtrDW(temp);
+    // if ((uint32_t) ptr != reverted)
+    // {
+    //     while(1)
+    //     {
+    //         __asm__ volatile("nop");
+    //     }
+    // }
+
+    // return temp;
+    return ( (unsigned int) ptr >> 3) & 0x7FFF;
 }
 static inline void *getLongPtrDW(volatile unsigned short ptrdw)
 {
-    volatile unsigned int temp = (RAM_PTR_BASE | ((unsigned int)ptrdw << 2));
-
-    if (!temp)
-        return 0;
-    return (void*) (unsigned int)temp;
-
-    // if (!ptrdw)
+    // volatile unsigned int temp = (unsigned int)ptrdw << 3;
+    // temp |= RAM_PTR_BASE;
+    // if (!temp)
     //     return 0;
-    // return (void*) (RAM_PTR_BASE | (  ptrdw << 3));
+    // return (void*) temp;
+
+    if (!ptrdw)
+        return 0;
+    return (void*) (RAM_PTR_BASE | (  ptrdw << 3));
 }
 //
 // Z_ClearZone
@@ -203,24 +214,24 @@ void Z_Init(void)
 extern inline unsigned short getShortPtr(void *longPtr);
 static inline memblock_t* getMemblockPrev(memblock_t *mb)
 {
-    volatile unsigned short temp = (unsigned short)mb->prev_sptrdw;
+    // volatile unsigned short temp = (unsigned short)mb->prev_sptrdw;
+    // return (memblock_t*) getLongPtrDW(temp);
     
-    // return (memblock_t*) getLongPtrDW(mb->prev_sptrdw);
-    return (memblock_t*) getLongPtrDW(temp);
+    return (memblock_t*) getLongPtrDW(mb->prev_sptrdw);
 }
 static inline void** getMemblockUser(memblock_t *mb)
 {
-    volatile unsigned short temp = (unsigned short)mb->user_spptr;
+    // volatile unsigned short temp = (unsigned short)mb->user_spptr;
+    // return (void**) getLongPtr(temp);
     
-    // return (void**) getLongPtr(mb->user_spptr);
-    return (void**) getLongPtr(temp);
+    return (void**) getLongPtr(mb->user_spptr);
 }
 static inline memblock_t* getMemblockNext(memblock_t *mb)
 {
-    volatile unsigned short temp = (unsigned short)mb->next_sptrdw;
+    // volatile unsigned short temp = (unsigned short)mb->next_sptrdw;
+    // return (memblock_t*) getLongPtrDW(temp);
     
-    // return (memblock_t*) getLongPtrDW(mb->next_sptrdw);
-    return (memblock_t*) getLongPtrDW(temp);
+    return (memblock_t*) getLongPtrDW(mb->next_sptrdw);
 }
 //
 // Z_Malloc
@@ -337,7 +348,8 @@ void* Z_Malloc2(int size, int tag, void **user, const char *sz)
 #ifdef ZMALLOC_STAT
     if (free_memory < largest_occupied)
         largest_occupied = free_memory;
-    printf("Mall: occ. %d lrgst %d Addr %04x. BlkSz %d %s\r\n", -free_memory, -largest_occupied, getShortPtr(base), (base->ssize << 2), sz);
+    // printf("Mall: occ. %d lrgst %d Addr %04x. BlkSz %d %s\r\n", -free_memory, -largest_occupied, getShortPtr(base), (base->ssize << 2), sz);
+    printf("malloc | mem_taken:%d largest_taken:%d base_addr:0x%04x base_size:%d arg:%s\r\n", -free_memory, -largest_occupied, getShortPtr(base), (base->ssize << 2), sz);
 #endif
 
     return result;
@@ -389,7 +401,8 @@ void (Z_Free)(void *p)
             mainzone->rover = block;
     }
 #ifdef ZMALLOC_STAT
-    printf("Free: occ. %d lrgst %d Addr %04x. BlkSz %d\r\n", -free_memory, -largest_occupied, getShortPtr(block), (block->ssize << 2));
+    // printf("Free: occ. %d lrgst %d Addr %04x. BlkSz %d\r\n", -free_memory, -largest_occupied, getShortPtr(block), (block->ssize << 2));
+    printf("free | mem_taken:%d largest_taken:%d block_addr:0x%04x block_size:%d\r\n", -free_memory, -largest_occupied, getShortPtr(block), (block->ssize << 2));
 #endif
 }
 
