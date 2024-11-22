@@ -38,12 +38,12 @@
 
 typedef struct
 {
-    volatile uint16_t * pPalette;
+    uint16_t * pPalette;
     uint16_t displayDmaLineBuffer[2][PIXELS_PER_DMA_LINE];
     uint8_t displayFrameBuffer[2][USER_SCREEN_HEIGHT * USER_SCREEN_WIDTH];
     uint8_t currentDisplayDmaLineBuffer;        // small buffer to speed up DMA send
     uint8_t * currentDmaFrameBuffer;            // points to data to be converted, using pPalette on the displayDmaBuffer
-    volatile uint8_t displayDmaLineBuffersSent; // how many lines we sent
+    uint8_t displayDmaLineBuffersSent; // how many lines we sent
     uint8_t workingBuffer;
     uint8_t displayMode;
     volatile uint8_t dmaBusy;
