@@ -1,0 +1,111 @@
+#include <zephyr/dt-bindings/mipi_dbi/mipi_dbi.h>
+#include <zephyr/dt-bindings/pinctrl/esp32-pinctrl.h>
+
+/{
+	aliases 
+	{
+		// display-ctrl = &st7789;
+		display-ctrl = &sdl_dc;
+	};
+
+	leds
+	{
+		compatible = "gpio-leds";
+		display_bl: display_bl_node 
+		{
+			gpios = <&gpio0 4 GPIO_ACTIVE_HIGH>;
+		};
+	};
+
+	// mipi_dbi
+	// {
+	// 	compatible = "zephyr,mipi-dbi-spi";
+	// 	reset-gpios = <&gpio0 23 GPIO_ACTIVE_LOW>;
+	// 	dc-gpios = <&gpio0 16 GPIO_ACTIVE_HIGH>;
+	// 	spi-dev = <&spi0>;
+	// 	#address-cells = <1>;
+	// 	#size-cells = <0>;
+
+	// 	st7789: st7789@0 
+	// 	{
+	// 		compatible = "sitronix,st7789v";
+	// 		reg = <0>;
+	// 		mipi-max-frequency = <32000000>;
+	// 		mipi-mode = "MIPI_DBI_MODE_SPI_4WIRE";
+
+	// 		height = <135>;
+	// 		width = <240>;
+	// 		x-offset = <40>;
+	// 		y-offset = <52>;
+	// 		mdac = <0xa0>;
+
+	// 		vcom = <0x19>;
+	// 		gctrl = <0x35>;
+	// 		vrhs = <0x12>;
+	// 		vdvs = <0x20>;
+	// 		// inversion-off;
+	// 		gamma = <0x01>;
+	// 		colmod = <0x55>;
+	// 		lcm = <0x2c>;
+	// 		porch-param = [ 0c 0c 00 33 33  ];
+	// 		cmd2en-param = [ 5a 69 02 01  ];
+	// 		pwctrl1-param = [ a4 a1  ];
+	// 		pvgam-param = [ D0 04 0D 11 13 2B 3F 54 4C 18 0D 0B 1F 23  ];
+	// 		nvgam-param = [ D0 04 0C 11 13 2C 3F 44 51 2F 1F 1F 20 23  ];
+	// 		ram-param = [ 00 F8  ];
+	// 		rgb-param = [ CD 08 14  ];
+	// 	};
+	// };
+
+	sram0: memory@3ffb0000 {
+		compatible = "mmio-sram";
+		reg = < 0x3ffb0000 0x2c200 >;
+	};
+};
+
+/delete-node/ &slot0_partition;
+/delete-node/ &slot1_partition;
+/delete-node/ &storage_partition;
+/delete-node/ &scratch_partition;
+&flash0
+{
+	reg = <0x0 DT_SIZE_M(16)>; //address, size(16MB)
+
+	partitions
+	{
+		slot0_partition: partition@20000
+		{
+			label = "image-0";
+			reg = < 0x20000 DT_SIZE_K(512) >;
+			read-only;
+		};
+		cache_partition: partition@a0000
+		{
+			label = "cache-partition";
+			reg = < 0xa0000 DT_SIZE_K(128) >;
+		};
+		game_settings_partition: partition@c0000
+		{
+			label = "game-settings-partition";
+			reg = < 0xc0000 0x1000 >;
+		};
+		game_saves_partition: partition@c1000
+		{
+			label = "game-saves-partition";
+			reg = < 0xc1000 0x1000 >;
+		};
+		wad_partition: partition@c2000
+		{
+			label = "wad-partition";
+			reg = < 0xc2000 (DT_SIZE_M(16) - 0xc2000) >;
+			read-only;
+		};
+	};
+};
+
+&sdl_dc
+{
+	// status = "disabled";
+	height = < 135 >;
+	width = < 240 >;
+};
