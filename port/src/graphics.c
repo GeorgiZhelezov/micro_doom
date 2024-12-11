@@ -122,13 +122,33 @@ void startDisplayRefresh(uint8_t bufferNumber)
         // //
         // NRF_SPIM3->TASKS_START = 1;
 
-        while (displayData.displayDmaLineBuffersSent < NUMBER_OF_DMA_LINES)
+        // while (displayData.displayDmaLineBuffersSent < NUMBER_OF_DMA_LINES)
+        // {
+        //     uint16_t *buff = NULL;
+        //     uint16_t len = 0;
+        //     fillNextDmaLineBuffer(&buff, &len);
+        //     user_display_write(buff, len);
+        // }
+
         {
-            uint16_t *buff = NULL;
-            uint16_t len = 0;
-            fillNextDmaLineBuffer(&buff, &len);
-            user_display_write(buff, len);
+            uint16_t *pLineBuffer = (uint16_t*)displayData.displayFrameBuffer[1 - bufferNumber];
+            uint16_t *pPalette = displayData.pPalette;
+            uint16_t *display_frame = pLineBuffer;
+            uint8_t* current_frame_buffer = displayData.displayFrameBuffer[bufferNumber];
+
+            for (size_t i = 0; i < 2; i++)
+            {
+                for (size_t j = 0; j < (USER_SCREEN_HEIGHT * USER_SCREEN_WIDTH) / 2; j++)
+                {
+                    *pLineBuffer = pPalette[*current_frame_buffer];
+                    pLineBuffer++;
+                    current_frame_buffer++;
+                }
+                pLineBuffer = display_frame;
+                user_display_write(display_frame, USER_SCREEN_HEIGHT * USER_SCREEN_WIDTH);
+            }
         }
+
         displayData.dmaBusy = 0;
     }
 }
@@ -233,73 +253,32 @@ void displayPrintln(bool update, const char *format, ...)
         startDisplayRefresh(displayData.workingBuffer);
     }
 }
-#pragma GCC optimize ("Ofast")  // we need to compile this code to be as fast as possible.
+#pragma GCC optimize ("O0")  // we need to compile this code to be as fast as possible.
 static inline void fillNextDmaLineBuffer(uint16_t **buff_out, uint16_t *len_out)
 {
     if (buff_out == NULL || len_out == NULL) { return; }
     
     uint16_t * pLineBuffer = displayData.displayDmaLineBuffer[displayData.currentDisplayDmaLineBuffer];
-// displayData.pPalette is volatile.
-// #if SLOW_WAY // left only for reference
-#if 1 //NOTE: using C instead of assembly
     uint16_t * pPalette = (uint16_t *)displayData.pPalette;
 
-    for (int i = 0; i < PIXELS_PER_DMA_LINE / 16; i++)
+    for (int i = 0; i < PIXELS_PER_DMA_LINE; i++)
     {
+        /* 
+        original had 4 sets of 4 copies
+        wonder how much that improved rendering
+
         *pLineBuffer++ = pPalette[*displayData.currentDmaFrameBuffer++];
         *pLineBuffer++ = pPalette[*displayData.currentDmaFrameBuffer++];
         *pLineBuffer++ = pPalette[*displayData.currentDmaFrameBuffer++];
         *pLineBuffer++ = pPalette[*displayData.currentDmaFrameBuffer++];
-        //
-        *pLineBuffer++ = pPalette[*displayData.currentDmaFrameBuffer++];
-        *pLineBuffer++ = pPalette[*displayData.currentDmaFrameBuffer++];
-        *pLineBuffer++ = pPalette[*displayData.currentDmaFrameBuffer++];
-        *pLineBuffer++ = pPalette[*displayData.currentDmaFrameBuffer++];
-        //
-        *pLineBuffer++ = pPalette[*displayData.currentDmaFrameBuffer++];
-        *pLineBuffer++ = pPalette[*displayData.currentDmaFrameBuffer++];
-        *pLineBuffer++ = pPalette[*displayData.currentDmaFrameBuffer++];
-        *pLineBuffer++ = pPalette[*displayData.currentDmaFrameBuffer++];
-        //
-        *pLineBuffer++ = pPalette[*displayData.currentDmaFrameBuffer++];
-        *pLineBuffer++ = pPalette[*displayData.currentDmaFrameBuffer++];
-        *pLineBuffer++ = pPalette[*displayData.currentDmaFrameBuffer++];
-        *pLineBuffer++ = pPalette[*displayData.currentDmaFrameBuffer++];
+        */
+        *pLineBuffer = pPalette[*displayData.currentDmaFrameBuffer];
+        pLineBuffer++;
+        displayData.currentDmaFrameBuffer++;
     }
-#else
-    unsigned int pix0, pix1, pix2, pix3, count = 256 / 16;
-    __asm volatile
-    (
-        ".align(4)\n\t"
-        "convert8to16bpploop%=:\n\t"
-        CONVERT_4_PIX(0)
-        CONVERT_4_PIX(4)
-        CONVERT_4_PIX(8)
-        CONVERT_4_PIX(12)
-        "ADD %[dmabuff], #32\n\t"
-        "ADD %[buff], #16\n\t"
-        "SUBS %[cnt], #1\n\t"
-        "BNE convert8to16bpploop%=\n\t"
-        :
-        [pix0] "+r" (pix0),
-        [pix1] "+r" (pix1),
-        [pix2] "+r" (pix2),
-        [pix3] "+r" (pix3),
-        [buff] "+r"  (displayData.currentDmaFrameBuffer),
-        [cnt] "+r"  (count),
-        [dmabuff] "+r" (pLineBuffer)
-        :
-        [palette] "r" (displayData.pPalette)
-        :
-        "cc"
-    );
-#endif
-    displayData.displayDmaLineBuffersSent++;
-	//FIXME also no clue how to connect this
+    displayData.displayDmaLineBuffersSent++; //remove this if reverting to original 4x4 copy
     *buff_out = displayData.displayDmaLineBuffer[displayData.currentDisplayDmaLineBuffer];
     *len_out = sizeof(displayData.displayDmaLineBuffer[displayData.currentDisplayDmaLineBuffer]);
-    // NRF_SPIM3->TXD.MAXCNT = PIXELS_PER_DMA_LINE * 2;
-    // NRF_SPIM3->TXD.PTR = (uint32_t) displayData.displayDmaLineBuffer[displayData.currentDisplayDmaLineBuffer];
     displayData.currentDisplayDmaLineBuffer = 1 - displayData.currentDisplayDmaLineBuffer;
 }
 void SPIM3_IRQHandler(void)

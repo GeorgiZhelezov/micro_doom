@@ -58,7 +58,7 @@
 #include "user_main.h"
 #include "user_time.h"
 
-#pragma GCC optimize("Ofast")
+// #pragma GCC optimize("Ofast")
 //
 void uartConfig()
 {

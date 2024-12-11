@@ -53,7 +53,9 @@ int user_flash_read(void *buff, size_t len, uint32_t addr, const uint8_t partiti
 		goto exit;
 	}
 
+	// LOG_PRINTK("read id:%d at %08x ", partition_id, addr);
 	addr -= eval_partition_addr(partition_id);
+	// LOG_PRINTK("eval %08x\r\n", addr);
 
 	ret = flash_area_read(fa, addr, buff, len);
 	if (ret < 0)
@@ -62,6 +64,7 @@ int user_flash_read(void *buff, size_t len, uint32_t addr, const uint8_t partiti
 		while(1)
 		{
 			arch_nop();
+			k_panic();
 		}
 		goto exit;
 	}
@@ -89,7 +92,9 @@ int user_flash_write(void *buff, size_t len, uint32_t addr, const uint8_t partit
 		goto exit;
 	}
 
+	// LOG_PRINTK("write id:%d at %08x ", partition_id, addr);
 	addr -= eval_partition_addr(partition_id);
+	// LOG_PRINTK("eval %08x\r\n", addr);
 
 	ret = flash_area_write(fa, addr, buff, len);
 	if (ret < 0)
@@ -148,22 +153,22 @@ int user_flash_init(void)
 	ret = device_is_ready(wad_partition_device);
 	if (ret == 0) { LOG_INF("flash not ready"); }
 
-	// const struct flash_area *fa = NULL;
+	const struct flash_area *fa = NULL;
 
-	// ret = flash_area_open(USER_CACHE_PARTITION_ID, &fa);
-	// if (ret < 0) { LOG_INF("could not open cache for reset"); }
-	// ret = flash_area_erase(fa, 0, USER_CACHE_PARTITION_SIZE);
-	// if (ret < 0) { LOG_INF("could not erase cache for reset"); }
+	ret = flash_area_open(USER_CACHE_PARTITION_ID, &fa);
+	if (ret < 0) { LOG_INF("could not open cache for reset"); }
+	ret = flash_area_erase(fa, 0, USER_CACHE_PARTITION_SIZE);
+	if (ret < 0) { LOG_INF("could not erase cache for reset"); }
 
-	// ret = flash_area_open(USER_GAME_SAVES_PARTITION_ID, &fa);
-	// if (ret < 0) { LOG_INF("could not open cache for reset"); }
-	// ret = flash_area_erase(fa, 0, USER_GAME_SAVES_PARTITION_SIZE);
-	// if (ret < 0) { LOG_INF("could not erase cache for reset"); }
+	ret = flash_area_open(USER_GAME_SAVES_PARTITION_ID, &fa);
+	if (ret < 0) { LOG_INF("could not open cache for reset"); }
+	ret = flash_area_erase(fa, 0, USER_GAME_SAVES_PARTITION_SIZE);
+	if (ret < 0) { LOG_INF("could not erase cache for reset"); }
 
-	// ret = flash_area_open(USER_GAME_SETTINGS_PARTITION_ID, &fa);
-	// if (ret < 0) { LOG_INF("could not open cache for reset"); }
-	// ret = flash_area_erase(fa, 0, USER_GAME_SETTINGS_PARTITION_SIZE);
-	// if (ret < 0) { LOG_INF("could not erase cache for reset"); }
+	ret = flash_area_open(USER_GAME_SETTINGS_PARTITION_ID, &fa);
+	if (ret < 0) { LOG_INF("could not open cache for reset"); }
+	ret = flash_area_erase(fa, 0, USER_GAME_SETTINGS_PARTITION_SIZE);
+	if (ret < 0) { LOG_INF("could not erase cache for reset"); }
 
 	return ret;
 }

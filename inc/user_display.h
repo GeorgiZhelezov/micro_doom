@@ -4,8 +4,8 @@
 #include <zephyr/kernel.h>
 #include <zephyr/devicetree.h>
 
-#define USER_SCREEN_HEIGHT DT_PROP(DT_NODELABEL(st7789), height)
-#define USER_SCREEN_WIDTH DT_PROP(DT_NODELABEL(st7789), width)
+#define USER_SCREEN_HEIGHT DT_PROP(DT_ALIAS(display_ctrl), height)
+#define USER_SCREEN_WIDTH DT_PROP(DT_ALIAS(display_ctrl), width)
 
 extern struct k_sem user_display_sem;
 

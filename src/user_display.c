@@ -131,46 +131,44 @@ int user_display_write(uint16_t *buff, uint16_t len)
 	if (buff == NULL || len == 0) { return -EINVAL; }
 
 	int ret = 0;
-	
+
 	struct display_buffer_descriptor conf =
 	{
 		.buf_size = len,
 		.height   = USER_SCREEN_HEIGHT, 
 		.width    = USER_SCREEN_WIDTH,
-		.pitch    = 1,
+		.pitch    = USER_SCREEN_WIDTH,
 	};
 
 	static uint16_t x = 0, y = 0;
 
-	// const uint16_t black = 0x0;
-	// const uint16_t yellow = 0xFFE0;
-	// const uint16_t green = 0x07E0;
-	// const uint16_t red = 0xF800;
-	// const uint16_t blue = 0x001F;
-	// const uint16_t cyan = 0x07FF;
-	// uint8_t palette_counter = 0;
-	// uint16_t palette[] = { red, green };
-	// uint16_t colors[30] = { 0 };
-	// buff = colors;
-
-	// while(1)
-	// {
-		// for (size_t i = 0; i < ARRAY_SIZE(colors); i++)
-		// {
-		// 	colors[i] = palette[palette_counter];
-		// }
-		// palette_counter = (palette_counter + 1 ) % ARRAY_SIZE(palette);
-		// conf.buf_size = sizeof(colors);
+	if (x > 0)
+	{
+		uint16_t leftover = conf.width - x;
+		uint32_t temp_size = conf.buf_size;
+		//multiply by 2 to scale for 2 bytes of color per pixel
+		conf.buf_size = leftover * 2;
 
 		ret = display_write(display_dev, x, y, &conf, buff);
 		if (ret != 0 ) { LOG_INF("display_write error %d", ret); }
 
-		y = (y + (x + (conf.buf_size / 2)) / conf.width) % conf.height;
-		x = (x + (conf.buf_size / 2)) % conf.width;
+		buff += leftover;
+		//multiply by 2 to scale for 2 bytes of color per pixel
+		conf.buf_size = temp_size - leftover * 2;
 
-	// 	k_busy_wait(100 * 1000);
-	// }
+		x = (x + leftover) % conf.width;
+		if (x == 0)
+		{
+			y = (y + 1) % conf.height;
+		}
+	}
 
+	ret = display_write(display_dev, x, y, &conf, buff);
+	if (ret != 0 ) { LOG_INF("display_write error %d", ret); }
+
+	//divide due to 2 bytes of color per pixel
+	y = (y + (x + (conf.buf_size / 2)) / conf.width) % conf.height;
+	x = (x + (conf.buf_size / 2)) % conf.width;
 
 	return ret;
 }
