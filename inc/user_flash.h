@@ -44,9 +44,70 @@
 #define USER_GAME_SAVES_PARTITION_SIZE 		 	DT_REG_SIZE(USER_GAME_SAVES_PARTITION_NODE)
 #define USER_GAME_SAVES_PARTITION_SIZE_KB 		(USER_GAME_SAVES_PARTITION_SIZE / 1024)
 
+/**
+ * @brief Flash initialization
+ * @details Checks if the flash device driver is ready
+ * 
+ * @return 
+ * - -EBUSY if busy
+ * 
+ * - True if not busy
+ */
 int user_flash_init(void);
+
+/**
+ * @brief Read data from flash to a buffer
+ * 
+ * @note The underlying Zephyr flash API requires the address offset from the base address of the
+ * 		 partition, but this function requires the physical address. This is done just so I can figure
+ * 		 out where data wants to be read/written/erased. Might change the function later to require
+ * 		 just the physical address and offsets/partitions are calculated internally.
+ * 
+ * @param buff buffer to write flash data to
+ * @param len length of buff
+ * @param addr address in flash to read data from
+ * @param partition_id desired partition to read from
+ * @return 
+ * - 0 on success
+ * 
+ * - negative errno on failure
+ */
 int user_flash_read(void *buff, size_t len, uint32_t addr, const uint8_t partition_id);
+
+/**
+ * @brief Write data to flash from a buffer
+ * 
+ *  * @note The underlying Zephyr flash API requires the address offset from the base address of the
+ * 		 partition, but this function requires the physical address. This is done just so I can figure
+ * 		 out where data wants to be read/written/erased. Might change the function later to require
+ * 		 just the physical address and offsets/partitions are calculated internally.
+ * 
+ * @param buff buffer to write to flash 
+ * @param len length of buff
+ * @param addr address in flash to write data to
+ * @param partition_id desired partition to write data to
+ * @return
+ * - 0 on success
+ * 
+ * - negative errno on failure
+ */
 int user_flash_write(void *buff, size_t len, uint32_t addr, const uint8_t partition_id);
+
+/**
+ * @brief Erase a whole flash page
+ * 
+ *  * @note The underlying Zephyr flash API requires the address offset from the base address of the
+ * 		 partition, but this function requires the physical address. This is done just so I can figure
+ * 		 out where data wants to be read/written/erased. Might change the function later to require
+ * 		 just the physical address and offsets/partitions are calculated internally.
+ * 
+ * @param addr address of the flash page
+ * @param partition_id desired partition to erase a page from
+ * @return
+ * - 0 on success
+ * 
+ * - negative errno on failure 
+ */
 int user_flash_erase_page(uint32_t addr, const uint8_t partition_id);
 
 #endif

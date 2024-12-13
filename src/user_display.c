@@ -183,7 +183,7 @@ int user_display_init(void)
 	if (ret == 0)
 	{
 		LOG_INF("DISPLAY DEV NOT READY");
-		return ret;
+		return -EBUSY;
 	}
 	
 	ret = display_blanking_off(display_dev);
