@@ -2,12 +2,8 @@
 
 cmake_minimum_required(VERSION 3.20.0)
 
-set(BOARD esp32)
-set(CONF_FILE boards/esp32.conf)
-set(DTC_OVERLAY_FILE boards/esp32.overlay)
-
 find_package(Zephyr REQUIRED HINTS $ENV{ZEPHYR_BASE})
-project(esp_doom)
+project(micro_doom)
 
 include_directories(
 	./inc
