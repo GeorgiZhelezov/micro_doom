@@ -66,7 +66,7 @@
  *
  *-----------------------------------------------------------------------------*/
 
-#pragma GCC optimize ("Ofast")  // we need to compile this code to be as fast as possible.
+// #pragma GCC optimize ("Ofast")  // we need to compile this code to be as fast as possible.
 #pragma GCC optimize ("align-functions=16")
 #include "main.h"
 #define D_SHRT_MAX 0x7FFF

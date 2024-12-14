@@ -137,7 +137,7 @@ int user_display_write(uint16_t *buff, uint16_t len)
 		.buf_size = len,
 		.height   = USER_SCREEN_HEIGHT, 
 		.width    = USER_SCREEN_WIDTH,
-		.pitch    = USER_SCREEN_WIDTH,
+		.pitch    = 1,
 	};
 
 	static uint16_t x = 0, y = 0;

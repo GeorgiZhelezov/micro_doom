@@ -240,7 +240,7 @@ static void D_Display(void)
 
         HU_Drawer(); //NOTE: HU_Drawer might need an else here due to -Wmisleading-indentation
         draw_stopy = SCREENHEIGHT - 1;
-            ST_Drawer(true, false);	// status bar on, do not force refresh
+            ST_Drawer(true, true);	// status bar on, do not force refresh
 
     }
 
