@@ -132,15 +132,16 @@ int user_display_write(uint16_t *buff, uint16_t len)
 
 	int ret = 0;
 
+	static uint16_t x = 0, y = 0;
+
 	struct display_buffer_descriptor conf =
 	{
 		.buf_size = len,
 		.height   = USER_SCREEN_HEIGHT, 
 		.width    = USER_SCREEN_WIDTH,
-		.pitch    = 1,
+		.pitch    = USER_SCREEN_WIDTH,
 	};
 
-	static uint16_t x = 0, y = 0;
 
 	if (x > 0)
 	{
@@ -149,6 +150,8 @@ int user_display_write(uint16_t *buff, uint16_t len)
 		//multiply by 2 to scale for 2 bytes of color per pixel
 		conf.buf_size = leftover * 2;
 
+		conf.width = conf.width - x;
+		conf.height = conf.height - y;
 		ret = display_write(display_dev, x, y, &conf, buff);
 		if (ret != 0 ) { LOG_INF("display_write error %d", ret); }
 
@@ -163,6 +166,8 @@ int user_display_write(uint16_t *buff, uint16_t len)
 		}
 	}
 
+	conf.width = conf.width - x;
+	conf.height = conf.height - y;
 	ret = display_write(display_dev, x, y, &conf, buff);
 	if (ret != 0 ) { LOG_INF("display_write error %d", ret); }
 

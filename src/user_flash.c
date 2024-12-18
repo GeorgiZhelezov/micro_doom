@@ -7,6 +7,9 @@
 #include <zephyr/devicetree.h>
 
 #include "user_flash.h"
+#ifdef CONFIG_BOARD_NATIVE_SIM
+#include "../wad/demo.h"
+#endif
 
 #include <zephyr/logging/log.h>
 LOG_MODULE_DECLARE(user_main, LOG_LEVEL_INF);
@@ -49,6 +52,7 @@ int user_flash_read(void *buff, size_t len, uint32_t addr, const uint8_t partiti
 		while(1)
 		{
 			arch_nop();
+			k_panic();
 		}
 		goto exit;
 	}
@@ -88,6 +92,7 @@ int user_flash_write(void *buff, size_t len, uint32_t addr, const uint8_t partit
 		while(1)
 		{
 			arch_nop();
+			k_panic();
 		}
 		goto exit;
 	}
@@ -103,6 +108,7 @@ int user_flash_write(void *buff, size_t len, uint32_t addr, const uint8_t partit
 		while(1)
 		{
 			arch_nop();
+			k_panic();
 		}
 		goto exit;
 	}
@@ -124,6 +130,7 @@ int user_flash_erase_page(uint32_t addr, const uint8_t partition_id)
 		while(1)
 		{
 			arch_nop();
+			k_panic();
 		}
 		goto exit;
 	}
@@ -137,6 +144,7 @@ int user_flash_erase_page(uint32_t addr, const uint8_t partition_id)
 		while(1)
 		{
 			arch_nop();
+			k_panic();
 		}
 		goto exit;
 	}
@@ -170,6 +178,15 @@ int user_flash_init(void)
 	if (ret < 0) { LOG_INF("could not open cache for reset"); }
 	ret = flash_area_erase(fa, 0, USER_GAME_SETTINGS_PARTITION_SIZE);
 	if (ret < 0) { LOG_INF("could not erase cache for reset"); }
+
+#ifdef CONFIG_BOARD_NATIVE_SIM
+	ret = flash_area_open(USER_WAD_PARTITION_ID, &fa);
+	if (ret < 0) { LOG_INF("could not open wad for reset"); }
+	ret = flash_area_erase(fa, 0, USER_WAD_PARTITION_SIZE);
+	if (ret < 0) { LOG_INF("could not erase wad for reset"); }
+	ret = user_flash_write(demo_wad, sizeof(demo_wad), USER_WAD_PARTITION_BASE_ADDRESS, USER_WAD_PARTITION_ID);
+	if (ret < 0) { LOG_INF("could not write wad partition"); }
+#endif
 
 	return ret;
 }
