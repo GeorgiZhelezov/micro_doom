@@ -59,7 +59,7 @@
 
 	sram0: memory@3ffb0000 {
 		compatible = "mmio-sram";
-		reg = < 0x3ffb0000 0x2c200 >;
+		reg = < 0x3ffb0000 0x3e800 >;
 	};
 };
 
@@ -70,7 +70,8 @@
 &flash0
 {
 	reg = <0x0 DT_SIZE_M(16)>; //address, size(16MB)
-
+	erase-block-size = <4096>;
+	write-block-size = <4>;
 	partitions
 	{
 		slot0_partition: partition@20000
