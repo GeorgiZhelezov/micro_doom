@@ -1,6 +1,6 @@
 #include <zephyr/dt-bindings/mipi_dbi/mipi_dbi.h>
 #include <zephyr/dt-bindings/pinctrl/rpi-pico-rp2040-pinctrl.h>
-#include <zephyr/dt-bindings/dma/rpi_pico_dma.h>
+#include <zephyr/dt-bindings/dma/rpi-pico-dma-rp2040.h>
 
 /{
 	aliases 
@@ -119,7 +119,7 @@
 		};
 		group2 
 		{
-			pinmux = <RP2040_PINMUX(3, RP2_PINCTRL_GPIO_FUNC_SPI)>; //mosi
+			pinmux = <SPI0_TX_P3>; //mosi
 		};
 	};
 };
