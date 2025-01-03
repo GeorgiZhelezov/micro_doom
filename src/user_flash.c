@@ -164,20 +164,20 @@ int user_flash_init(void)
 	const struct flash_area *fa = NULL;
 
 	//just for testing
-	ret = flash_area_open(USER_CACHE_PARTITION_ID, &fa);
-	if (ret < 0) { LOG_INF("could not open cache for reset"); }
-	ret = flash_area_erase(fa, 0, USER_CACHE_PARTITION_SIZE);
-	if (ret < 0) { LOG_INF("could not erase cache for reset"); }
+	// ret = flash_area_open(USER_CACHE_PARTITION_ID, &fa);
+	// if (ret < 0) { LOG_INF("could not open cache for reset"); }
+	// ret = flash_area_erase(fa, 0, USER_CACHE_PARTITION_SIZE);
+	// if (ret < 0) { LOG_INF("could not erase cache for reset"); }
 
-	ret = flash_area_open(USER_GAME_SAVES_PARTITION_ID, &fa);
-	if (ret < 0) { LOG_INF("could not open cache for reset"); }
-	ret = flash_area_erase(fa, 0, USER_GAME_SAVES_PARTITION_SIZE);
-	if (ret < 0) { LOG_INF("could not erase cache for reset"); }
+	// ret = flash_area_open(USER_GAME_SAVES_PARTITION_ID, &fa);
+	// if (ret < 0) { LOG_INF("could not open cache for reset"); }
+	// ret = flash_area_erase(fa, 0, USER_GAME_SAVES_PARTITION_SIZE);
+	// if (ret < 0) { LOG_INF("could not erase cache for reset"); }
 
-	ret = flash_area_open(USER_GAME_SETTINGS_PARTITION_ID, &fa);
-	if (ret < 0) { LOG_INF("could not open cache for reset"); }
-	ret = flash_area_erase(fa, 0, USER_GAME_SETTINGS_PARTITION_SIZE);
-	if (ret < 0) { LOG_INF("could not erase cache for reset"); }
+	// ret = flash_area_open(USER_GAME_SETTINGS_PARTITION_ID, &fa);
+	// if (ret < 0) { LOG_INF("could not open cache for reset"); }
+	// ret = flash_area_erase(fa, 0, USER_GAME_SETTINGS_PARTITION_SIZE);
+	// if (ret < 0) { LOG_INF("could not erase cache for reset"); }
 
 #ifdef CONFIG_BOARD_NATIVE_SIM
 	ret = flash_area_open(USER_WAD_PARTITION_ID, &fa);

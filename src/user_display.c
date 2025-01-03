@@ -17,22 +17,6 @@ K_SEM_DEFINE(user_display_sem, 1, 1);
 static const struct device *display_dev         = DEVICE_DT_GET(DT_ALIAS(display_ctrl));
 static const struct gpio_dt_spec display_pin_bl = GPIO_DT_SPEC_GET(DT_NODELABEL(display_bl), gpios);
 
-// uint16_t gpu_buff[240][135];
-// uint16_t *display_buff             = &gpu_buff[0][0];
-// const uint32_t display_buff_len    = sizeof(gpu_buff) / 2;
-
-uint16_t *display_buff             = image_bird;
-const uint32_t display_buff_len    = ARRAY_SIZE(image_bird);
-
-const struct display_buffer_descriptor display_buff_conf =
-{
-	.buf_size = display_buff_len,
-	//important to inverse h and w for proper drawing
-	.height   = USER_SCREEN_WIDTH, 
-	.width    = USER_SCREEN_HEIGHT,
-	.pitch    = 1,
-};
-
 static void user_display_swap_bytes(uint16_t *buff, size_t len)
 {
 	static uint8_t swapped = 0;
@@ -86,7 +70,18 @@ int user_display_test_image(void)
 {
 	int ret = 0;
 
-	uint16_t *buff = display_buff;
+	const uint32_t display_buff_len    = ARRAY_SIZE(image_bird);
+
+	const struct display_buffer_descriptor display_buff_conf =
+	{
+		.buf_size = display_buff_len,
+		//important to inverse h and w for proper drawing
+		.height   = USER_SCREEN_WIDTH, 
+		.width    = USER_SCREEN_HEIGHT,
+		.pitch    = 2,
+	};
+
+	uint16_t *buff = image_bird;
 	const uint16_t height = USER_SCREEN_HEIGHT;
 	const uint16_t width = USER_SCREEN_WIDTH;
 	
@@ -137,14 +132,14 @@ int user_display_write(uint16_t *buff, uint16_t len)
 		.buf_size = len,
 		.height   = USER_SCREEN_HEIGHT, 
 		.width    = USER_SCREEN_WIDTH,
-		.pitch    = 1,
+		.pitch    = 2, //2 bytes per pixel in rgb565 mode
 	};
 
 	static uint16_t x = 0, y = 0;
 
 	if (x > 0)
 	{
-		uint16_t leftover = conf.width - x;
+		uint16_t leftover = USER_SCREEN_WIDTH - x;
 		uint32_t temp_size = conf.buf_size;
 		//multiply by 2 to scale for 2 bytes of color per pixel
 		conf.buf_size = leftover * 2;
@@ -156,10 +151,10 @@ int user_display_write(uint16_t *buff, uint16_t len)
 		//multiply by 2 to scale for 2 bytes of color per pixel
 		conf.buf_size = temp_size - leftover * 2;
 
-		x = (x + leftover) % conf.width;
+		x = (x + leftover) % USER_SCREEN_WIDTH;
 		if (x == 0)
 		{
-			y = (y + 1) % conf.height;
+			y = (y + 1) % USER_SCREEN_HEIGHT;
 		}
 	}
 
@@ -167,8 +162,8 @@ int user_display_write(uint16_t *buff, uint16_t len)
 	if (ret != 0 ) { LOG_INF("display_write error %d", ret); }
 
 	//divide due to 2 bytes of color per pixel
-	y = (y + (x + (conf.buf_size / 2)) / conf.width) % conf.height;
-	x = (x + (conf.buf_size / 2)) % conf.width;
+	y = (y + (x + (conf.buf_size / 2)) / USER_SCREEN_WIDTH) % USER_SCREEN_HEIGHT;
+	x = (x + (conf.buf_size / 2)) % USER_SCREEN_WIDTH;
 
 	return ret;
 }

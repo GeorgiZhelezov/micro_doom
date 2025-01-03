@@ -1,10 +1,10 @@
-# WIP Can you run DOOM on [Zephyr](https://zephyrproject.org/)
+# WIP Running DOOM on [Zephyr](https://zephyrproject.org/)
 
 The goal is to make a port of [next-hack](https://github.com/next-hack/nRF52840Doom)'s port 
 of [GBADoom](https://github.com/doomhack/GBADoom) for 
 [his nRF52840 board](https://next-hack.com/index.php/2021/11/13/porting-doom-to-an-nrf52840-based-usb-bluetooth-le-dongle/), 
-to my Raspberry Pi Pico ([T-Pico](https://lilygo.cc/en-bg/products/t-pico?variant=42295946641589), [repo](https://github.com/Xinyuan-LilyGO/T-PicoC3)) 
-and ESP32 ([T-Display](https://lilygo.cc/en-bg/products/lilygo%C2%AE-ttgo-t-display-1-14-inch-lcd-esp32-control-board), [repo](https://github.com/Xinyuan-LilyGO/TTGO-T-Display)) 
+to my Raspberry Pi Pico ([T-Pico shop](https://lilygo.cc/en-bg/products/t-pico?variant=42295946641589), [repo](https://github.com/Xinyuan-LilyGO/T-PicoC3)) 
+and ESP32 ([T-Display shop](https://lilygo.cc/en-bg/products/lilygo%C2%AE-ttgo-t-display-1-14-inch-lcd-esp32-control-board), [repo](https://github.com/Xinyuan-LilyGO/TTGO-T-Display)) 
 boards using the Zephyr RTOS. 
 
 I found these boards on AliExpress form LYLGO and decided that it would be cool to try this, 
@@ -23,11 +23,13 @@ will be needed (I2C, UART?).
 	- optimize for RAM to fit levels and BLE stack
 - make it run on `native_sim`
 - add some sort of controller support via BLE
-- stream audio via BLE ?
+- make audio work
+- stream audio via BLE (would require custom implementation) ?
+- optimize and cleanup the code
 
 ## Building
 
-Firstly, you will have to get the Zephyr project up and running on your system 
+Firstly, you will have to get the Zephyr SDK on your system 
 ([Getting Started guide](https://docs.zephyrproject.org/latest/develop/getting_started/index.html)).
 After you can successfully compile, say their hello_world example, you can build this project by doing the following in your terminal:
 
@@ -47,12 +49,19 @@ for the [native_sim](https://docs.zephyrproject.org/latest/boards/native/native_
 west build -p=always -b native_sim
 ```
 
-## Flashing
+## Flashing the app
 
-By default `west` uses a J-LINK debugger for the `rpi_pico` and for the `esp32_devkitc_wroom` - the on-board USB to UART converter. You can, of course use whatever method you like with the `-r` option.
+By default `west` uses a J-LINK debugger for the `rpi_pico` and for the `esp32_devkitc_wroom` - the on-board USB to UART converter. You can, of course use whatever method you like with the `-r` argument.
 ```
 west flash
 ```
+
+## Flashing the demo wad
+
+Use the [supplied shareware wad](wad/doom1_shareware.wad), since it includes modifications from the `MCUDoomWadUtil` 
+tool in `next-hack`'s port. 
+For the `rpi_pico` target, the wad is expected at flash offset `0xa3000`, and for 
+the `esp32_devkitc_wroom` target - at offset `0xc2000`
 
 ## Running
 
@@ -60,3 +69,9 @@ The `native_sim` target uses the SDL2 library for display drawing and can be ran
 ```
 west build -t run
 ```
+
+## Demo
+
+Ammo shows FPS * 10.
+
+https://github.com/user-attachments/assets/5b878f2c-c894-4278-942b-954c7286ba15

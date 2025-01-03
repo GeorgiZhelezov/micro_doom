@@ -1,5 +1,3 @@
-# SPDX-License-Identifier: Apache-2.0
-
 cmake_minimum_required(VERSION 3.20.0)
 
 find_package(Zephyr REQUIRED HINTS $ENV{ZEPHYR_BASE})
@@ -11,80 +9,82 @@ include_directories(
 	./port/Doom/include
 )
 
-target_sources(app PRIVATE src/user_main.c)
-target_sources(app PRIVATE src/user_display.c)
-target_sources(app PRIVATE src/user_flash.c)
-target_sources(app PRIVATE src/user_time.c)
+target_sources(app PRIVATE 
+	src/user_main.c
+	src/user_display.c
+	src/user_flash.c
+	src/user_time.c
 
-target_sources(app PRIVATE port/src/display.c)
-target_sources(app PRIVATE port/src/main.c)
-target_sources(app PRIVATE port/src/printf.c)
-# target_sources(app PRIVATE port/src/usb.c)
-# target_sources(app PRIVATE port/src/usbCdc.c)
-# target_sources(app PRIVATE port/src/usbDeviceImplementation.c)
-# target_sources(app PRIVATE port/src/ymodem.c)
-target_sources(app PRIVATE port/src/display.c)
-target_sources(app PRIVATE port/src/font8x8.c)
-target_sources(app PRIVATE port/src/graphics.c)
-target_sources(app PRIVATE port/src/pwm_audio.c)
-target_sources(app PRIVATE port/src/qspi.c)
-target_sources(app PRIVATE port/src/keyboard.c)
+	port/src/display.c
+	port/src/main.c
+	port/src/printf.c
+	# port/src/usb.c
+	# port/src/usbCdc.c
+	# port/src/usbDeviceImplementation.c
+	# port/src/ymodem.c
+	port/src/display.c
+	port/src/font8x8.c
+	port/src/graphics.c
+	port/src/pwm_audio.c
+	port/src/qspi.c
+	port/src/keyboard.c
 
-target_sources(app PRIVATE port/Doom/source/am_map.c)
-target_sources(app PRIVATE port/Doom/source/d_client.c)
-target_sources(app PRIVATE port/Doom/source/d_items.c)
-target_sources(app PRIVATE port/Doom/source/d_main.c)
-target_sources(app PRIVATE port/Doom/source/doom_iwad.c)
-target_sources(app PRIVATE port/Doom/source/f_finale.c)
-target_sources(app PRIVATE port/Doom/source/f_wipe.c)
-target_sources(app PRIVATE port/Doom/source/g_game.c)
-target_sources(app PRIVATE port/Doom/source/global_data.c)
-target_sources(app PRIVATE port/Doom/source/hu_lib.c)
-target_sources(app PRIVATE port/Doom/source/hu_stuff.c)
-target_sources(app PRIVATE port/Doom/source/i_audio.c)
-target_sources(app PRIVATE port/Doom/source/i_main.c)
-target_sources(app PRIVATE port/Doom/source/i_spi_support.c)
-target_sources(app PRIVATE port/Doom/source/i_video.c)
-target_sources(app PRIVATE port/Doom/source/info.c)
-target_sources(app PRIVATE port/Doom/source/m_bbox.c)
-target_sources(app PRIVATE port/Doom/source/m_cheat.c)
-target_sources(app PRIVATE port/Doom/source/m_menu.c)
-target_sources(app PRIVATE port/Doom/source/m_random.c)
-target_sources(app PRIVATE port/Doom/source/p_ceilng.c)
-target_sources(app PRIVATE port/Doom/source/p_doors.c)
-target_sources(app PRIVATE port/Doom/source/p_enemy.c)
-target_sources(app PRIVATE port/Doom/source/p_floor.c)
-target_sources(app PRIVATE port/Doom/source/p_genlin.c)
-target_sources(app PRIVATE port/Doom/source/p_inter.c)
-target_sources(app PRIVATE port/Doom/source/p_lights.c)
-target_sources(app PRIVATE port/Doom/source/p_map.c)
-target_sources(app PRIVATE port/Doom/source/p_maputl.c)
-target_sources(app PRIVATE port/Doom/source/p_mobj.c)
-target_sources(app PRIVATE port/Doom/source/p_plats.c)
-target_sources(app PRIVATE port/Doom/source/p_pspr.c)
-target_sources(app PRIVATE port/Doom/source/p_setup.c)
-target_sources(app PRIVATE port/Doom/source/p_sight.c)
-target_sources(app PRIVATE port/Doom/source/p_spec.c)
-target_sources(app PRIVATE port/Doom/source/p_switch.c)
-target_sources(app PRIVATE port/Doom/source/p_telept.c)
-target_sources(app PRIVATE port/Doom/source/p_tick.c)
-target_sources(app PRIVATE port/Doom/source/p_user.c)
-target_sources(app PRIVATE port/Doom/source/r_data.c)
-target_sources(app PRIVATE port/Doom/source/r_draw.c)
-target_sources(app PRIVATE port/Doom/source/r_fast_stuff.c)
-target_sources(app PRIVATE port/Doom/source/r_main.c)
-target_sources(app PRIVATE port/Doom/source/r_patch.c)
-target_sources(app PRIVATE port/Doom/source/r_plane.c)
-target_sources(app PRIVATE port/Doom/source/r_things.c)
-target_sources(app PRIVATE port/Doom/source/s_sound.c)
-target_sources(app PRIVATE port/Doom/source/sounds.c)
-target_sources(app PRIVATE port/Doom/source/st_gfx.c)
-target_sources(app PRIVATE port/Doom/source/st_lib.c)
-target_sources(app PRIVATE port/Doom/source/st_stuff.c)
-target_sources(app PRIVATE port/Doom/source/tables.c)
-target_sources(app PRIVATE port/Doom/source/v_video.c)
-target_sources(app PRIVATE port/Doom/source/version.c)
-target_sources(app PRIVATE port/Doom/source/w_wad.c)
-target_sources(app PRIVATE port/Doom/source/wi_stuff.c)
-target_sources(app PRIVATE port/Doom/source/z_bmalloc.c)
-target_sources(app PRIVATE port/Doom/source/z_zone.c)
+	port/Doom/source/am_map.c
+	port/Doom/source/d_client.c
+	port/Doom/source/d_items.c
+	port/Doom/source/d_main.c
+	port/Doom/source/doom_iwad.c
+	port/Doom/source/f_finale.c
+	port/Doom/source/f_wipe.c
+	port/Doom/source/g_game.c
+	port/Doom/source/global_data.c
+	port/Doom/source/hu_lib.c
+	port/Doom/source/hu_stuff.c
+	port/Doom/source/i_audio.c
+	port/Doom/source/i_main.c
+	port/Doom/source/i_spi_support.c
+	port/Doom/source/i_video.c
+	port/Doom/source/info.c
+	port/Doom/source/m_bbox.c
+	port/Doom/source/m_cheat.c
+	port/Doom/source/m_menu.c
+	port/Doom/source/m_random.c
+	port/Doom/source/p_ceilng.c
+	port/Doom/source/p_doors.c
+	port/Doom/source/p_enemy.c
+	port/Doom/source/p_floor.c
+	port/Doom/source/p_genlin.c
+	port/Doom/source/p_inter.c
+	port/Doom/source/p_lights.c
+	port/Doom/source/p_map.c
+	port/Doom/source/p_maputl.c
+	port/Doom/source/p_mobj.c
+	port/Doom/source/p_plats.c
+	port/Doom/source/p_pspr.c
+	port/Doom/source/p_setup.c
+	port/Doom/source/p_sight.c
+	port/Doom/source/p_spec.c
+	port/Doom/source/p_switch.c
+	port/Doom/source/p_telept.c
+	port/Doom/source/p_tick.c
+	port/Doom/source/p_user.c
+	port/Doom/source/r_data.c
+	port/Doom/source/r_draw.c
+	port/Doom/source/r_fast_stuff.c
+	port/Doom/source/r_main.c
+	port/Doom/source/r_patch.c
+	port/Doom/source/r_plane.c
+	port/Doom/source/r_things.c
+	port/Doom/source/s_sound.c
+	port/Doom/source/sounds.c
+	port/Doom/source/st_gfx.c
+	port/Doom/source/st_lib.c
+	port/Doom/source/st_stuff.c
+	port/Doom/source/tables.c
+	port/Doom/source/v_video.c
+	port/Doom/source/version.c
+	port/Doom/source/w_wad.c
+	port/Doom/source/wi_stuff.c
+	port/Doom/source/z_bmalloc.c
+	port/Doom/source/z_zone.c
+)
