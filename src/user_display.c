@@ -130,33 +130,12 @@ int user_display_write(uint16_t *buff, uint16_t len)
 	struct display_buffer_descriptor conf =
 	{
 		.buf_size = len,
-		.height   = USER_SCREEN_HEIGHT, 
+		.height   = USER_SCREEN_HEIGHT / 2,
 		.width    = USER_SCREEN_WIDTH,
-		.pitch    = 2, //2 bytes per pixel in rgb565 mode
+		.pitch    = USER_SCREEN_WIDTH,
 	};
 
 	static uint16_t x = 0, y = 0;
-
-	if (x > 0)
-	{
-		uint16_t leftover = USER_SCREEN_WIDTH - x;
-		uint32_t temp_size = conf.buf_size;
-		//multiply by 2 to scale for 2 bytes of color per pixel
-		conf.buf_size = leftover * 2;
-
-		ret = display_write(display_dev, x, y, &conf, buff);
-		if (ret != 0 ) { LOG_INF("display_write error %d", ret); }
-
-		buff += leftover;
-		//multiply by 2 to scale for 2 bytes of color per pixel
-		conf.buf_size = temp_size - leftover * 2;
-
-		x = (x + leftover) % USER_SCREEN_WIDTH;
-		if (x == 0)
-		{
-			y = (y + 1) % USER_SCREEN_HEIGHT;
-		}
-	}
 
 	ret = display_write(display_dev, x, y, &conf, buff);
 	if (ret != 0 ) { LOG_INF("display_write error %d", ret); }
@@ -189,6 +168,28 @@ int user_display_init(void)
 	}
 
 	gpio_pin_set_dt(&display_pin_bl, 1);
+
+	//blank padding rows in case height is not even
+	if (USER_SCREEN_HEIGHT < USER_SCREEN_PHYSICAL_HEIGHT)
+	{
+		uint8_t blank[USER_SCREEN_WIDTH * USER_SCREEN_PIXEL_SIZE] = { 0 };
+		struct display_buffer_descriptor desc = 
+		{
+			.buf_size = sizeof(blank),
+			.height = 1,
+			.width = USER_SCREEN_WIDTH,
+		};
+
+		for (uint8_t i = 0; i < USER_SCREEN_PHYSICAL_HEIGHT - USER_SCREEN_HEIGHT; i++)
+		{
+			ret = display_write(display_dev, 0, USER_SCREEN_HEIGHT + i, &desc, blank);
+			if (ret < 0)
+			{
+				LOG_INF("failed to clear padding rows %d", ret);
+				return ret;
+			}
+		}
+	}
 	
 	return ret;
 }

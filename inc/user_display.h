@@ -4,8 +4,19 @@
 #include <zephyr/kernel.h>
 #include <zephyr/devicetree.h>
 
-#define USER_SCREEN_HEIGHT DT_PROP(DT_ALIAS(display_ctrl), height)
-#define USER_SCREEN_WIDTH DT_PROP(DT_ALIAS(display_ctrl), width)
+#define USER_SCREEN_PHYSICAL_HEIGHT (DT_PROP(DT_ALIAS(display_ctrl), height))
+#define USER_SCREEN_PHYSICAL_WIDTH (DT_PROP(DT_ALIAS(display_ctrl), width))
+
+#define USER_SCREEN_HEIGHT (USER_SCREEN_PHYSICAL_HEIGHT - (USER_SCREEN_PHYSICAL_HEIGHT % 2))
+#define USER_SCREEN_WIDTH (USER_SCREEN_PHYSICAL_WIDTH - (USER_SCREEN_PHYSICAL_WIDTH % 2))
+
+#if defined(CONFIG_ST7789V_RGB565) || defined(CONFIG_ST7789V_BGR565)
+#define USER_SCREEN_PIXEL_SIZE 2
+#endif
+
+#ifdef CONFIG_ST7789V_RGB888
+#define USER_SCREEN_PIXEL_SIZE 3
+#endif
 
 extern struct k_sem user_display_sem;
 
@@ -55,6 +66,7 @@ void user_display_image_mirror(uint16_t *buff, size_t width, size_t height);
  * @brief Display initialization
  * 
  * @note Initializes with whatever settings are given in the overlay for offsets, voltages...
+ * 		 Also takes care of blanking any padding rows in case the screen height is not even
  * 
  * @return
  * - 0 on success
