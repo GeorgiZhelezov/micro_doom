@@ -70,7 +70,7 @@
 #include "lprintf.h"
 #include "global_data.h"
 
-#include <signal.h>
+// #include <signal.h>
 #include <stdio.h>
 #include <stdlib.h>
 // #include "nrf.h"

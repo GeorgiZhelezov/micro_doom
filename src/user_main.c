@@ -1,9 +1,3 @@
-/*
- * Copyright (c) 2012-2014 Wind River Systems, Inc.
- *
- * SPDX-License-Identifier: Apache-2.0
- */
-
 #include <zephyr/kernel.h>
 
 #include "user_display.h"
@@ -17,11 +11,6 @@ extern void main_port(void);
 void user_print_char(char c)
 {
 	LOG_PRINTK("%c", c);
-}
-
-void user_delay(uint32_t millis)
-{
-	k_busy_wait(millis * 1000);
 }
 
 void user_print_device_info(void)

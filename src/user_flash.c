@@ -161,9 +161,9 @@ int user_flash_init(void)
 	ret = device_is_ready(wad_partition_device);
 	if (ret == 0) { LOG_INF("flash not ready"); return -EBUSY; }
 
-	const struct flash_area *fa = NULL;
 
 	//just for testing
+	const struct flash_area *fa = NULL;
 	// ret = flash_area_open(USER_CACHE_PARTITION_ID, &fa);
 	// if (ret < 0) { LOG_INF("could not open cache for reset"); }
 	// ret = flash_area_erase(fa, 0, USER_CACHE_PARTITION_SIZE);

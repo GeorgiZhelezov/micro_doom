@@ -37,7 +37,7 @@
 #define SRC_DELAY_H_
 #include <stdint.h>
 // #include "nrf.h"
-#include "user_main.h"
+#include "user_time.h"
 
 static inline void delay(uint32_t milliseconds)
 {
