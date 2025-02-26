@@ -60,6 +60,8 @@
 /delete-node/ &slot0_appcpu_partition;
 /delete-node/ &slot1_partition;
 /delete-node/ &slot1_appcpu_partition;
+/delete-node/ &slot0_lpcore_partition;
+/delete-node/ &slot1_lpcore_partition;
 /delete-node/ &storage_partition;
 /delete-node/ &scratch_partition;
 /delete-node/ &coredump_partition;
@@ -75,25 +77,25 @@
 			reg = < 0x20000 DT_SIZE_K(512) >;
 			read-only;
 		};
-		cache_partition: partition@a0000
-		{
-			label = "cache-partition";
-			reg = < 0xa0000 DT_SIZE_K(128) >;
-		};
-		game_settings_partition: partition@c0000
+		game_settings_partition: partition@a0000
 		{
 			label = "game-settings-partition";
-			reg = < 0xc0000 0x1000 >;
+			reg = < 0xa0000 0x1000 >;
 		};
-		game_saves_partition: partition@c1000
+		game_saves_partition: partition@a1000
 		{
 			label = "game-saves-partition";
-			reg = < 0xc1000 0x1000 >;
+			reg = < 0xa1000 0x1000 >;
 		};
-		wad_partition: partition@c2000
+		cache_partition: partition@a2000
+		{
+			label = "cache-partition";
+			reg = < 0xa2000 (0x22b000 - 0xa2000) >;
+		};
+		wad_partition: partition@22b000
 		{
 			label = "wad-partition";
-			reg = < 0xc2000 (DT_SIZE_M(16) - 0xc2000) >;
+			reg = < 0x22b000 (DT_SIZE_M(16) - 0x22b000) >;
 			read-only;
 		};
 	};

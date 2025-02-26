@@ -1,4 +1,4 @@
-# WIP Running DOOM on [Zephyr](https://zephyrproject.org/)
+# Running DOOM on [Zephyr](https://zephyrproject.org/)
 
 The goal is to make a port of [next-hack](https://github.com/next-hack/nRF52840Doom)'s port 
 of [GBADoom](https://github.com/doomhack/GBADoom) for 
@@ -17,7 +17,10 @@ play more complex levels in addition to the BLE stack on top of all this. The Pi
 capabilities, but the board does have an ESP32C3 on the other side so some "transport layer" between both
 will be needed (I2C, UART?).
 
-## WIP things to do:
+> [!NOTE]
+> This project is still in a work-in-progress phase.
+
+## Things to do:
 - make it run on `esp32_devkitc_wroom`
 	- fix all the prohibited loads from pointer dereferencing to FLASH
 	- optimize for RAM to fit levels and BLE stack
@@ -60,8 +63,9 @@ west flash
 
 Use the [supplied shareware wad](wad/doom1_shareware.wad), since it includes modifications from the `MCUDoomWadUtil` 
 tool in `next-hack`'s port. 
-For the `rpi_pico` target, the wad is expected at flash offset `0xa3000`, and for 
-the `esp32_devkitc_wroom` target - at offset `0xc2000`
+
+> [!IMPORTANT]
+> All board targets expect the wad to be at flash offset `0x22b000`.
 
 ## Running
 
