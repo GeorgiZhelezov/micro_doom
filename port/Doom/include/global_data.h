@@ -544,7 +544,11 @@ typedef struct globals_t
     fixed_t bmaporgx, bmaporgy;     // origin of block map
 
 //mobj_t    **blocklinks;           // for thing chains
+#ifdef CONFIG_DOOM_NO_COMPACT_PTR
+    size_t *blocklinks_sptrs;
+#else
     unsigned short *blocklinks_sptrs;
+#endif
 //
 // REJECT
 // For fast sight rejection.

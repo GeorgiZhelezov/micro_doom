@@ -81,9 +81,13 @@
 // even for 256kB ram. On one hand, on some blocks it will waste
 // 4 bytes, on the other, we keey the overhead under 8 bytes/block
 // instead of having to switch to 12 bytes/block.
+#ifdef CONFIG_DOOM_NO_COMPACT_PTR
+#define CHUNK_SIZE 12
+#else
 #define CHUNK_SIZE 8
+#endif // CONFIG_DOOM_NO_COMPACT_PTR
 //TODO: think about this array size
-#define MAX_STATIC_ZONE (113600) // 113600
+#define MAX_STATIC_ZONE (CONFIG_DOOM_ALLOCATOR_MAX_STATIC_ZONE_SIZE) // 113600
 #define MEM_ALIGN CHUNK_SIZE
 //#define ZMALLOC_STAT
 
@@ -91,19 +95,31 @@
 
 typedef struct memblock
 {
+#ifdef CONFIG_DOOM_NO_COMPACT_PTR
+    // uint32_t magic_head;
+    size_t next_sptrdw;
+    size_t tag;
+    size_t prev_sptrdw;
+    size_t user_spptr;  // short pointer to pointer.
+    size_t ssize;    // short size
+    // uint32_t magic_tail;
+#else
     unsigned int next_sptrdw:15;
     unsigned int tag :2;
     unsigned int prev_sptrdw:15;
     unsigned short user_spptr;  // short pointer to pointer.
     unsigned short ssize;    // short size
+#endif // CONFIG_DOOM_NO_COMPACT_PTR
 } memblock_t;
 /* size of block header
  * cph - base on sizeof(memblock_t), which can be larger than CHUNK_SIZE on
  * 64bit architectures */
 static const int HEADER_SIZE = (sizeof(memblock_t) + CHUNK_SIZE - 1) & ~(CHUNK_SIZE - 1);
 
+#ifdef ZMALLOC_STAT
 static int free_memory = 0;
 static int largest_occupied = 0;
+#endif
 
 typedef struct
 {
@@ -125,41 +141,31 @@ void* I_ZoneBase(int *size)
     *size = sizeof(staticZone);
     return staticZone;
 }
-static inline void *getLongPtrDW(unsigned short ptrdw);
+
+#ifdef CONFIG_DOOM_NO_COMPACT_PTR
+static inline size_t getShortPtrDW(void *ptr)
+{
+    return (size_t) ptr;
+}
+static inline void *getLongPtrDW(size_t ptrdw)
+{
+    if (!ptrdw)
+        return 0;
+    return (void*) ptrdw;
+}
+#else
 static inline unsigned short getShortPtrDW(void *ptr)
 {
-    // volatile uint32_t a = (unsigned int) ptr;
-    // volatile uint32_t b = a >> 3;
-    // volatile uint32_t c = b & 0x7fff;
-    // volatile unsigned short d = (unsigned short) c;
-    
-    // volatile unsigned short temp = (unsigned int) ptr >> 3;
-    // temp &= 0x7fff;
-
-    // volatile uint32_t reverted = getLongPtrDW(temp);
-    // if ((uint32_t) ptr != reverted)
-    // {
-    //     while(1)
-    //     {
-    //         __asm__ volatile("nop");
-    //     }
-    // }
-
-    // return temp;
     return ( (unsigned int) ptr >> 3) & 0x7FFF;
 }
-static inline void *getLongPtrDW(volatile unsigned short ptrdw)
+static inline void *getLongPtrDW(unsigned short ptrdw)
 {
-    // volatile unsigned int temp = (unsigned int)ptrdw << 3;
-    // temp |= RAM_PTR_BASE;
-    // if (!temp)
-    //     return 0;
-    // return (void*) temp;
-
     if (!ptrdw)
         return 0;
     return (void*) (RAM_PTR_BASE | (  ptrdw << 3));
 }
+#endif // CONFIG_DOOM_NO_COMPACT_PTR
+
 //
 // Z_ClearZone
 //
@@ -211,26 +217,16 @@ void Z_Init(void)
     block->ssize = (mainzone->size - sizeof(memzone_t)) >> 2;
 }
 
-extern inline unsigned short getShortPtr(void *longPtr);
 static inline memblock_t* getMemblockPrev(memblock_t *mb)
 {
-    // volatile unsigned short temp = (unsigned short)mb->prev_sptrdw;
-    // return (memblock_t*) getLongPtrDW(temp);
-    
     return (memblock_t*) getLongPtrDW(mb->prev_sptrdw);
 }
 static inline void** getMemblockUser(memblock_t *mb)
 {
-    // volatile unsigned short temp = (unsigned short)mb->user_spptr;
-    // return (void**) getLongPtr(temp);
-    
     return (void**) getLongPtr(mb->user_spptr);
 }
 static inline memblock_t* getMemblockNext(memblock_t *mb)
 {
-    // volatile unsigned short temp = (unsigned short)mb->next_sptrdw;
-    // return (memblock_t*) getLongPtrDW(temp);
-    
     return (memblock_t*) getLongPtrDW(mb->next_sptrdw);
 }
 //
@@ -277,6 +273,7 @@ void* Z_Malloc2(int size, int tag, void **user, const char *sz)
         {
             // scanned all the way around the list
             printf("Z_Malloc: failed on allocation of %i bytes", size);
+            k_panic();
             while (1);
         }
         if (rover->tag != PU_FREE)
@@ -323,7 +320,9 @@ void* Z_Malloc2(int size, int tag, void **user, const char *sz)
         base->next_sptrdw = getShortPtrDW(newblock);
         base->ssize = size >> 2;
     }
+#ifdef ZMALLOC_STAT
     free_memory -= base->ssize << 2;
+#endif
     // no need to write else base->ssize = base->ssize...
     //
 
@@ -332,7 +331,11 @@ void* Z_Malloc2(int size, int tag, void **user, const char *sz)
         printf("Z_Malloc: an owner is required for purgable blocks");
         while (1);
     }
+#ifdef CONFIG_DOOM_NO_COMPACT_PTR
+    size_t userspptr = getShortPtr(user);
+#else
     uint16_t userspptr = getShortPtr(user);
+#endif
 
     base->user_spptr = userspptr;
     base->tag = tag;
@@ -366,9 +369,10 @@ void (Z_Free)(void *p)
     {
         *(getMemblockUser(block)) = NULL;
     }
+#ifdef ZMALLOC_STAT
     // free memory
     free_memory += (block->ssize << 2);
-
+#endif
     // mark this block as free
     block->tag = PU_FREE;
     block->user_spptr = 0;

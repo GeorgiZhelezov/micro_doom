@@ -603,6 +603,17 @@ static void ST_createWidgets(void)
     ST_AMMOY, p_wad_immutable_flash_data->tallnum, &_g->plyr->ammo[weaponinfo[_g->plyr->readyweapon].ammo], &_g->st_statusbaron,
     ST_AMMOWIDTH);
 
+#ifdef CONFIG_DOOM_NO_COMPACT_PTR
+    // health percentage
+    STlib_initPercent(&_g->st_health,
+    ST_HEALTHX,
+    ST_HEALTHY, p_wad_immutable_flash_data->tallnum, &_g->plyr->health, &_g->st_statusbaron, (const patch_t *)(uint32_t)&p_wad_immutable_flash_data->tallpercent);
+
+    // armor percentage - should be colored later
+    STlib_initPercent(&_g->st_armor,
+    ST_ARMORX,
+    ST_ARMORY, p_wad_immutable_flash_data->tallnum, &_g->plyr->armorpoints, &_g->st_statusbaron, (const patch_t *)(uint32_t)&p_wad_immutable_flash_data->tallpercent);
+#else
     // health percentage
     STlib_initPercent(&_g->st_health,
     ST_HEALTHX,
@@ -612,6 +623,7 @@ static void ST_createWidgets(void)
     STlib_initPercent(&_g->st_armor,
     ST_ARMORX,
     ST_ARMORY, p_wad_immutable_flash_data->tallnum, &_g->plyr->armorpoints, &_g->st_statusbaron, p_wad_immutable_flash_data->tallpercent);
+#endif
 
     // weapons owned
     for (i = 0; i < 6; i++)

@@ -169,7 +169,7 @@ int user_display_init(void)
 
 	gpio_pin_set_dt(&display_pin_bl, 1);
 
-#ifndef CONFIG_BOARD_NATIVE_SIM
+#ifdef CONFIG_DOOM_DISPLAY_PADDING
 	//blank padding rows in case height is not even
 	if (USER_SCREEN_HEIGHT < USER_SCREEN_PHYSICAL_HEIGHT)
 	{

@@ -111,9 +111,16 @@
 #define SCREENHEIGHTARRAY_PTR 2
 // let's put openings-related data in .openings_bss section
 // this to make sure that openings are in the lower 128k so we can use short ptr
+#ifdef CONFIG_DOOM_NO_COMPACT_PTR
 short openings[MAXOPENINGS];
 short floorclip[SCREENWIDTH]; 
 short ceilingclip[SCREENWIDTH]; 
+#else
+//FIXME: crucial to really know where these sections are auto added
+__attribute__ ((section(".openings_bss"))) short openings[MAXOPENINGS];
+__attribute__ ((section(".openings_bss"))) short floorclip[SCREENWIDTH];
+__attribute__ ((section(".openings_bss"))) short ceilingclip[SCREENWIDTH];
+#endif
 //
 #define MAX_PATCH_WIDTH 320
 // colormap cching
@@ -353,24 +360,84 @@ FASTFUN static PUREFUNC int R_PointOnSide(fixed_t x, fixed_t y, const mapnode_t 
 // 2021-03-13: forgot that switches have changeable textures...
 FASTFUN static inline short getSideTopTexture(const line_t *line, const side_t *side)
 {
-    if (!line->const_special || side == &_g->sides[line->sidenum[1]])
-        return side->toptexture;
+#ifdef CONFIG_DOOM_NO_COMPACT_PTR
+    line_t temp_line;
+    user_flash_read_game_resource(&temp_line, sizeof(temp_line), (uint32_t)line);
+    side_t temp_side;
+    user_flash_read_game_resource(&temp_side, sizeof(temp_side), (uint32_t)side);
+
+    if (!temp_line.const_special || side == &_g->sides[temp_line.sidenum[1]])
+    {
+        debugi("%s: returning %d\r\n", __func__, temp_side.toptexture);
+        return temp_side.toptexture;
+    }
     // otherwise we are asking for side 0 of a special texture.
+    debugi("%s: returning %d\r\n", __func__, _g->switch_texture_mid[_g->linesChangeableTextureIndex[temp_line.lineno]]);
+    return _g->switch_texture_top[_g->linesChangeableTextureIndex[temp_line.lineno]];
+#else
+    if (!line->const_special || side == &_g->sides[line->sidenum[1]])
+    {
+        debugi("%s: returning %d\r\n", __func__, side->toptexture);
+        return side->toptexture;
+    }
+    // otherwise we are asking for side 0 of a special texture.
+    debugi("%s: returning %d\r\n", __func__, _g->switch_texture_mid[_g->linesChangeableTextureIndex[line->lineno]]);
     return _g->switch_texture_top[_g->linesChangeableTextureIndex[line->lineno]];
+#endif
 }
 FASTFUN static inline short getSideMidTexture(const line_t *line, const side_t *side)
 {
-    if (!line->const_special || side == &_g->sides[line->sidenum[1]])
-        return side->midtexture;
+#ifdef CONFIG_DOOM_NO_COMPACT_PTR
+    line_t temp_line;
+    user_flash_read_game_resource(&temp_line, sizeof(temp_line), (uint32_t)line);
+    side_t temp_side;
+    user_flash_read_game_resource(&temp_side, sizeof(temp_side), (uint32_t)side);
+
+    if (!temp_line.const_special || side == &_g->sides[temp_line.sidenum[1]])
+    {
+        debugi("%s: returning %d\r\n", __func__, temp_side.midtexture);
+        return temp_side.midtexture;
+    }
     // otherwise we are asking for side 0 of a special texture.
+    debugi("%s: returning %d\r\n", __func__, _g->switch_texture_mid[_g->linesChangeableTextureIndex[temp_line.lineno]]);
+    return _g->switch_texture_mid[_g->linesChangeableTextureIndex[temp_line.lineno]];
+#else
+    if (!line->const_special || side == &_g->sides[line->sidenum[1]])
+    {
+        debugi("%s: returning %d\r\n", __func__, side->midtexture);
+        return side->midtexture;
+    }
+    // otherwise we are asking for side 0 of a special texture.
+    debugi("%s: returning %d\r\n", __func__, _g->switch_texture_mid[_g->linesChangeableTextureIndex[line->lineno]]);
     return _g->switch_texture_mid[_g->linesChangeableTextureIndex[line->lineno]];
+#endif
 }
 FASTFUN static inline short getSideBottomTexture(const line_t *line, const side_t *side)
 {
-    if (!line->const_special || side == &_g->sides[line->sidenum[1]])
-        return side->bottomtexture;
+#ifdef CONFIG_DOOM_NO_COMPACT_PTR
+    line_t temp_line;
+    user_flash_read_game_resource(&temp_line, sizeof(temp_line), (uint32_t)line);
+    side_t temp_side;
+    user_flash_read_game_resource(&temp_side, sizeof(temp_side), (uint32_t)side);
+
+    if (!temp_line.const_special || side == &_g->sides[temp_line.sidenum[1]])
+    {
+        debugi("%s: returning %d\r\n", __func__, temp_side.bottomtexture);
+        return temp_side.bottomtexture;
+    }
     // otherwise we are asking for side 0 of a special texture.
+    debugi("%s: returning %d\r\n", __func__, _g->switch_texture_mid[_g->linesChangeableTextureIndex[temp_line.lineno]]);
+    return _g->switch_texture_bot[_g->linesChangeableTextureIndex[temp_line.lineno]];
+#else
+    if (!line->const_special || side == &_g->sides[line->sidenum[1]])
+    {
+        debugi("%s: returning %d\r\n", __func__, side->bottomtexture);
+        return side->bottomtexture;
+    }
+    // otherwise we are asking for side 0 of a special texture.
+    debugi("%s: returning %d\r\n", __func__, _g->switch_texture_mid[_g->linesChangeableTextureIndex[line->lineno]]);
     return _g->switch_texture_bot[_g->linesChangeableTextureIndex[line->lineno]];
+#endif
 }
 //
 // R_PointInSubsector
@@ -384,8 +451,24 @@ FASTFUN subsector_t* R_PointInSubsector(fixed_t x, fixed_t y)
     if (numnodes == 0)
         return _g->subsectors;
 
+#ifdef CONFIG_DOOM_NO_COMPACT_PTR
+    mapnode_t temp_node;
+
     while (!(nodenum & NF_SUBSECTOR))
+    {
+        user_flash_read_game_resource(&temp_node, sizeof(temp_node), (uint32_t)(nodes + nodenum));
+        debugi("%s read node at %08x nodenum:%d x:%d y:%d\r\n", __func__, (uint32_t)(nodes + nodenum), nodenum, x, y);
+        nodenum = temp_node.children[R_PointOnSide(x, y, &temp_node)];
+        debugi("%s updated nodenum to %d\r\n", __func__, nodenum);
+    }
+#else
+    while (!(nodenum & NF_SUBSECTOR))
+    {
+        debugi("%s read node at %08x nodenum:%d x:%d y:%d\r\n", __func__, (uint32_t)(nodes + nodenum), nodenum, x, y);
         nodenum = nodes[nodenum].children[R_PointOnSide(x, y, nodes + nodenum)];
+        debugi("%s updated nodenum to %d\r\n", __func__, nodenum);
+    }
+#endif
     return &_g->subsectors[nodenum & ~NF_SUBSECTOR];
 }
 
@@ -549,7 +632,32 @@ FASTFUN static const lighttable_t* R_ColourMap(int lightlevel)
 
 FASTFUN inline static void R_DrawColumnPixel(pixel *dest, const byte *source, const byte *colormap, unsigned int frac)
 {
+#ifdef CONFIG_DOOM_NO_COMPACT_PTR
+    byte temp_source_byte;
+    if (user_flash_is_resource_in_flash((uint32_t)(source + (frac >> COLBITS))))
+    {
+        user_flash_read_game_resource(&temp_source_byte, sizeof(temp_source_byte), (uint32_t)(source + (frac >> COLBITS)));
+    }
+    else
+    {
+        temp_source_byte = *(source + (frac >> COLBITS));
+    }
+
+    if (user_flash_is_resource_in_flash((uint32_t)&colormap[temp_source_byte]))
+    {
+        byte temp_colormap_byte;
+        user_flash_read_game_resource(&temp_colormap_byte, sizeof(temp_colormap_byte), (uint32_t)&colormap[temp_source_byte]);
+        *dest = temp_colormap_byte;
+    }
+    else
+    {
+        *dest = colormap[temp_source_byte];
+    }
+    // debugi("%s wrote %x to dest\r\n", __func__, *dest);
+#else
     *dest = colormap[source[frac >> COLBITS]];
+    // debugi("%s wrote %x to dest\r\n", __func__, *dest);
+#endif
 }
 
 FASTFUN /*__attribute__((used, section(".data")))*/ static void R_DrawColumn(const draw_column_vars_t *dcvars)
@@ -594,7 +702,11 @@ FASTFUN /*__attribute__((used, section(".data")))*/ static void R_DrawColumn(con
     }
     else if (count > MIN_PIXEL_TO_DRAW_FOR_CACHING_COLORMAP)
     {
+#ifdef CONFIG_DOOM_NO_COMPACT_PTR
+        user_flash_read_game_resource(colorMap, sizeof(colorMap), (uint32_t)dcvars->colormap);
+#else
         memcpy(colorMap, dcvars->colormap, 256);
+#endif
         currentCachedColorMap = (uint8_t*) dcvars->colormap;
         colormap = colorMap;
     }
@@ -965,11 +1077,35 @@ FASTFUN static inline void R_DrawMaskedColumn(R_DrawColumn_f colfunc, draw_colum
         fclip_x = mfloorclip[dcvars->x];
         cclip_x = mceilingclip[dcvars->x];
     }
+#ifdef CONFIG_DOOM_NO_COMPACT_PTR
+    column_t temp_column;
+    //read first column for the loop
+    if (user_flash_is_resource_in_flash((uint32_t)column))
+    {
+        user_flash_read_game_resource(&temp_column, sizeof(temp_column), (uint32_t)column);
+    }
+    else
+    {
+        temp_column = *column;
+    }
+    while (temp_column.topdelta != 0xff)
+    {
+        debugi("%s column topdelta:%d len:%d\r\n", __func__, temp_column.topdelta, temp_column.length);
+#else
     while (column->topdelta != 0xff)
     {
+        debugi("%s column topdelta:%d len:%d\r\n", __func__, column->topdelta, column->length);
+#endif
         // calculate unclipped screen coordinates for post
+#ifdef CONFIG_DOOM_NO_COMPACT_PTR
+        const int topscreen = sprtopscreen + spryscale * temp_column.topdelta;
+        const int bottomscreen = topscreen + spryscale * temp_column.length;
+        debugi("%s topscreen:%d botscreen:%d\r\n", __func__, topscreen, bottomscreen);
+#else
         const int topscreen = sprtopscreen + spryscale * column->topdelta;
         const int bottomscreen = topscreen + spryscale * column->length;
+        debugi("%s topscreen:%d botscreen:%d\r\n", __func__, topscreen, bottomscreen);
+#endif
 
         int yh = (bottomscreen - 1) >> FRACBITS;
         int yl = (topscreen + FRACUNIT - 1) >> FRACBITS;
@@ -985,8 +1121,13 @@ FASTFUN static inline void R_DrawMaskedColumn(R_DrawColumn_f colfunc, draw_colum
             if (yh < viewheight && yl <= yh)
             {
                 dcvars->source = (const byte*) column + 3;
-
+#ifdef CONFIG_DOOM_NO_COMPACT_PTR
+                dcvars->texturemid = basetexturemid - (temp_column.topdelta << FRACBITS);
+                debugi("%s dcvars.texmid:%d\r\n", __func__, dcvars->texturemid);
+#else
                 dcvars->texturemid = basetexturemid - (column->topdelta << FRACBITS);
+                debugi("%s dcvars.texmid:%d\r\n", __func__, dcvars->texturemid);
+#endif
 
                 dcvars->yh = yh;
                 dcvars->yl = yl;
@@ -996,29 +1137,67 @@ FASTFUN static inline void R_DrawMaskedColumn(R_DrawColumn_f colfunc, draw_colum
                 colfunc(dcvars);
             }
         }
+#ifdef CONFIG_DOOM_NO_COMPACT_PTR
+        column = (const column_t*) ((const byte*) column + temp_column.length + 4);
+        //read next column for the loop
+        if (user_flash_is_resource_in_flash((uint32_t)column))
+        {
+            user_flash_read_game_resource(&temp_column, sizeof(temp_column), (uint32_t)column);
+        }
+        else
+        {
+            temp_column = *column;
+        }
+#else
         column = (const column_t*) ((const byte*) column + column->length + 4);
+#endif
     }
 
     dcvars->texturemid = basetexturemid;
 }
 static inline uint32_t getColumnOffsetData(patch_t *patch, int colindex)
 {
+    debugi("%s cachedcolumnoffsetdatapatch at %08x patch at %08x\r\n", __func__, (uint32_t)cachedColumnOffsetDataPatch, (uint32_t)patch);
     if (cachedColumnOffsetDataPatch == patch)
     {
+        debugi("%s returning columnoffsetdata[%d]=%d\r\n", __func__, colindex, columnOffsetData[colindex]);
         return columnOffsetData[colindex];
     }
     else
     {
+#ifdef CONFIG_DOOM_NO_COMPACT_PTR
+        uint32_t temp_columnoffsetdata;
+        user_flash_read_game_resource(&temp_columnoffsetdata, sizeof(temp_columnoffsetdata), ((uint32_t)patch + 8 + 4 * colindex));
+        debugi("%s returning data %x read at %08x\r\n",
+               __func__, 
+               temp_columnoffsetdata,
+               ((uint32_t)patch + 8 + 4 * colindex));
+        return temp_columnoffsetdata;
+#else
+        debugi("%s returning data %x read at %08x\r\n",
+               __func__, 
+               *((uint32_t*) ((uint32_t) patch + 8 + 4 * colindex)),
+               ((uint32_t) patch + 8 + 4 * colindex));
         return *((uint32_t*) ((uint32_t) patch + 8 + 4 * colindex));
+#endif
     }
 }
 static inline void getColumnDataNonBlocking(const patch_t *patch, int colindex, uint8_t *columnData)
 {
 	//FIXME: add flash column read non-blocking
-	
+    debugi("%s patch at %08x colindex:%d\r\n", __func__, (uint32_t)patch, colindex);
     uint32_t co = getColumnOffsetData((patch_t*) patch, colindex);
     uint32_t cnt = co >> 24;
     co = co & 0xFFFFFF;
+
+#ifdef CONFIG_DOOM_NO_COMPACT_PTR
+    debugi("%s copying %d bytes to columndata from %08x\r\n", __func__, cnt, (uint32_t)patch + co);
+    user_flash_read_game_resource(columnData, cnt, (uint32_t)patch + co);
+#else
+    debugi("%s copying %d bytes to columndata from %08x\r\n", __func__, cnt, (uint32_t)patch + co);
+    memcpy(columnData, (void *)((uint32_t)patch + co), cnt);
+#endif
+
     // NRF_QSPI->READ.CNT = cnt;
     // NRF_QSPI->READ.SRC = (uint32_t) patch + co;
     // NRF_QSPI->READ.DST = (uint32_t) columnData;
@@ -1033,6 +1212,13 @@ FASTFUN static inline column_t* getColumnData(const patch_t *patch, int colindex
     uint32_t co = getColumnOffsetData((patch_t *) patch, colindex);
     uint32_t cnt = co >> 24;
     co = co & 0xFFFFFF;
+#ifdef CONFIG_DOOM_NO_COMPACT_PTR
+    debugi("%s copying %d bytes to columndata from %08x\r\n", __func__, cnt, (uint32_t)patch + co);
+    user_flash_read_game_resource(columnData, cnt, (uint32_t)patch + co);
+#else
+    debugi("%s copying %d bytes to columndata from %08x\r\n", __func__, cnt, (uint32_t)patch + co);
+    memcpy(columnData, (void *)((uint32_t)patch + co), cnt);
+#endif
     // NRF_QSPI->READ.CNT = cnt;
     // NRF_QSPI->READ.SRC = ((uint32_t) patch + co);
     // NRF_QSPI->READ.DST = (uint32_t) columnData;
@@ -1072,6 +1258,7 @@ FASTFUN static inline column_t* getColumnData(const patch_t *patch, int colindex
 }
 static inline void cachePatchColumnOffsetData(patch_t *patch, int width, int startX, int stopX)
 {
+    debugi("%s patch is at %08x cached_data at %08x width:%d startx:%d stopx:%d\r\n", __func__, (uint32_t)patch, (uint32_t)cachedColumnOffsetDataPatch, width, startX, stopX);
     // this function will cache the whole coloffset data, but only when needed
     if (!isOnExternalFlash(patch))
         return;     // do not cache data already in flash
@@ -1087,7 +1274,13 @@ static inline void cachePatchColumnOffsetData(patch_t *patch, int width, int sta
     {
         // set cached address
         cachedColumnOffsetDataPatch = patch;
+#ifdef CONFIG_DOOM_NO_COMPACT_PTR
+        debugi("%s writing %d bytes to columnoffsetdata from %08x\r\n", __func__, 4*width, (uint32_t)patch + 8);
+        user_flash_read_game_resource(columnOffsetData, 4 * width, (uint32_t)patch + 8);
+#else
+        debugi("%s writing %d bytes to columnoffsetdata from %08x\r\n", __func__, 4*width, ((uint32_t) patch + 8));
         memcpy(columnOffsetData, (void*) ((uint32_t) patch + 8), 4 * width); 
+#endif
     }
 #else
     // cache only when convenient. Each random access of words would take about 260 cycles.
@@ -1178,7 +1371,15 @@ FASTFUN static void R_DrawVisSprite(const vissprite_t *vis)
     {
         for (dcvars.x = vis->x1; dcvars.x <= vis->x2; dcvars.x++, frac += vis->xiscale)
         {
+#ifdef CONFIG_DOOM_NO_COMPACT_PTR
+            int temp_columnof;
+            user_flash_read_game_resource(&temp_columnof, sizeof(temp_columnof), (uint32_t)(patch->columnofs + (frac >> FRACBITS)));
+            const column_t *column = (const column_t*) ((const byte*) patch + (0xFFFFFF & temp_columnof));
+            debugi("%s column at %08x\r\n", __func__, (uint32_t)column);
+#else
             const column_t *column = (const column_t*) ((const byte*) patch + (0xFFFFFF & patch->columnofs[frac >> FRACBITS]));
+            debugi("%s column at %08x\r\n", __func__, (uint32_t)column);
+#endif
             R_DrawMaskedColumn(colfunc, &dcvars, column);
         }
     }
@@ -1200,7 +1401,16 @@ FASTFUN static void R_DrawVisSprite(const vissprite_t *vis)
         frac += vis->xiscale;
         // set first buffer
         uint32_t bufferNumber = 0;
+#ifdef CONFIG_DOOM_NO_COMPACT_PTR
+        uint32_t temp_patchsizeoffsets_addr;
+        user_flash_read_game_resource(&temp_patchsizeoffsets_addr,sizeof(temp_patchsizeoffsets_addr), (uint32_t)&p_wad_immutable_flash_data->patchLumpSizeOffsets);
+        temp_patchsizeoffsets_addr += (vis->lumpNum * sizeof(patchsizeoffsets_t));
+        patchsizeoffsets_t temp_patchsizeoffsets;
+        user_flash_read_game_resource(&temp_patchsizeoffsets,sizeof(temp_patchsizeoffsets), temp_patchsizeoffsets_addr);
+        cachePatchColumnOffsetData((patch_t*) patch, temp_patchsizeoffsets.width, vis->x1 , vis->x2);
+#else
         cachePatchColumnOffsetData((patch_t*) patch, p_wad_immutable_flash_data->patchLumpSizeOffsets[vis->lumpNum].width, vis->x1 , vis->x2);
+#endif
         getColumnDataNonBlocking(patch, colindex, columnBuffer[bufferNumber]);
         // Check if we are going to draw a column twice. TODO: improve this!
         fixed_t absXiscale = D_abs(vis->xiscale);
@@ -1351,10 +1561,30 @@ FASTFUN static inline column_t* R_GetColumn(const texture_t *texture, int texcol
 #else
 FASTFUN static inline column_t* R_GetColumn(const texture_t *texture, int texcolumn, uint8_t *columnData)
 {
+#ifdef CONFIG_DOOM_NO_COMPACT_PTR
+    texture_t temp_texture;
+    user_flash_read_game_resource(&temp_texture, sizeof(temp_texture), (uint32_t)texture);
+    const unsigned int widthmask = temp_texture.widthmask;
+#else
     const unsigned int widthmask = texture->widthmask;
+#endif
 
     const int xc = texcolumn & widthmask;
     //simple texture.
+#ifdef CONFIG_DOOM_NO_COMPACT_PTR
+    const patch_t *patch = temp_texture.patches[0].patch;
+    int temp_columnof; //IMPORTANT: overflow due to xc here again
+    user_flash_read_game_resource(&temp_columnof, sizeof(temp_columnof), (uint32_t)(patch->columnofs + xc));
+
+    if (!isOnExternalFlash(patch))
+    {
+        return (column_t*) ((byte*) patch + (0xFFFFFF & temp_columnof));
+    }
+    else
+    {
+        return getColumnData(patch, xc, columnData);
+    }
+#else
     const patch_t *patch = texture->patches[0].patch;
     if (!isOnExternalFlash(patch))
     {
@@ -1364,13 +1594,20 @@ FASTFUN static inline column_t* R_GetColumn(const texture_t *texture, int texcol
     {
         return getColumnData(patch, xc, columnData);
     }
+#endif
 }
 
 #endif
 
 FASTFUN inline static column_t* R_GetColumnNonBlocking(const texture_t *texture, int texcolumn, uint8_t *columnData, bool *wasOnExternalFlash)
 {
+#ifdef CONFIG_DOOM_NO_COMPACT_PTR
+    texture_t temp_texture;
+    user_flash_read_game_resource(&temp_texture, sizeof(temp_texture), (uint32_t)texture);
+    const unsigned int widthmask = temp_texture.widthmask;
+#else
     const unsigned int widthmask = texture->widthmask;
+#endif
 
     const int xc = texcolumn & widthmask;
 #if MULTIPATCH_TEXTURE_SUPPORT
@@ -1435,8 +1672,26 @@ FASTFUN inline static column_t* R_GetColumnNonBlocking(const texture_t *texture,
     }
     *wasOnExternalFlash = false;
     return NULL;
+#else
+
+    #ifdef CONFIG_DOOM_NO_COMPACT_PTR
+    const patch_t *patch = temp_texture.patches[0].patch;
+    int temp_columnof; //IMPORTANT: overflow due to xc here again
+    user_flash_read_game_resource(&temp_columnof, sizeof(temp_columnof), (uint32_t)(patch->columnofs + xc));
+
+        if (!isOnExternalFlash(patch))
+        {
+            *wasOnExternalFlash = false;
+            return (column_t*) ((byte*) patch + (0xFFFFFF & temp_columnof));
+        }
+        else
+        {
+            *wasOnExternalFlash = true;
+            getColumnDataNonBlocking(patch, xc, columnData);
+            return (column_t*) columnData;
+        }
     #else
-            //simple texture.
+            // simple texture.
         const patch_t *patch = texture->patches[0].patch;
         if (!isOnExternalFlash(patch))
         {
@@ -1450,7 +1705,8 @@ FASTFUN inline static column_t* R_GetColumnNonBlocking(const texture_t *texture,
             return (column_t*) columnData;
         }
 
-    #endif
+    #endif //CONFIG_DOOM_NO_COMPACT_PTR
+#endif //MULTIPATCH_TEXTURE_SUPPORT
 }
 
 
@@ -1466,6 +1722,21 @@ FASTFUN static inline const texture_t* R_GetOrLoadTexture(int tex_num)
     return tex;
 }
 static const uint32_t openingPtrs[] = {0, (uint32_t) negonearray,  (uint32_t) screenheightarray};
+#ifdef CONFIG_DOOM_NO_COMPACT_PTR
+FASTFUN static inline short* openingSsptrToAddr(size_t ssptr)
+{
+    if (ssptr <= SCREENHEIGHTARRAY_PTR)
+    {
+        return (short *)openingPtrs[ssptr];
+    }
+
+    return (short *)ssptr;
+}
+FASTFUN static inline size_t openingAddrToSsptr(short *ptr)
+{
+    return (size_t)ptr;
+}
+#else
 FASTFUN static inline short* openingSsptrToAddr(unsigned short ssptr)
 {
    if (ssptr <= SCREENHEIGHTARRAY_PTR)
@@ -1496,6 +1767,7 @@ FASTFUN static inline unsigned short openingAddrToSsptr(short *ptr)
     
   //return 1 + ((((uint32_t) ptr) - ( (uint32_t) &openings[0])) >> 1);
 }
+#endif
 //
 // R_RenderMaskedSegRange
 //
@@ -1512,19 +1784,35 @@ FASTFUN static void R_RenderMaskedSegRange(const drawseg_t *ds, int x1, int x2)
 
     curline = ds->curline;  // OPTIMIZE: get rid of LIGHTSEGSHIFT globally
 
+#ifdef CONFIG_DOOM_NO_COMPACT_PTR
+    seg_t temp_curline;
+    user_flash_read_game_resource(&temp_curline, sizeof(temp_curline), (uint32_t)curline);
+    frontsector = SG_FRONTSECTOR(&temp_curline);
+    backsector = SG_BACKSECTOR(&temp_curline);
+
+    texnum = getSideMidTexture(&_g->lines[temp_curline.linenum], &_g->sides[temp_curline.sidenum]);
+#else
     frontsector = SG_FRONTSECTOR(curline);
     backsector = SG_BACKSECTOR(curline);
 
     texnum = getSideMidTexture(&_g->lines[curline->linenum], &_g->sides[curline->sidenum]);
+#endif
     texnum = texturetranslation[texnum];
     // next-hack: added back lighting
 
     int lightnum = (frontsector->lightlevel >> LIGHTSEGSHIFT) + extralight;
 
+#ifdef CONFIG_DOOM_NO_COMPACT_PTR
+    if (temp_curline.v1.y == temp_curline.v2.y)
+        lightnum--;
+    else if (temp_curline.v1.x == temp_curline.v2.x)
+        lightnum++;
+#else
     if (curline->v1.y == curline->v2.y)
         lightnum--;
     else if (curline->v1.x == curline->v2.x)
         lightnum++;
+#endif
 
     if (lightnum < 0)
         walllights = 0;
@@ -1547,7 +1835,13 @@ FASTFUN static void R_RenderMaskedSegRange(const drawseg_t *ds, int x1, int x2)
     mceilingclip = (ycoord_t*) openingSsptrToAddr(ds->sprtopclip_ssptr);
     mfloorceiling_ptr_size = sizeof(short);
     // find positioning
+#ifdef CONFIG_DOOM_NO_COMPACT_PTR
+    line_t temp_line;
+    user_flash_read_game_resource(&temp_line, sizeof(temp_line), (uint32_t)(_g->lines + temp_curline.linenum));
+    if (temp_line.flags & ML_DONTPEGBOTTOM)
+#else
     if (_g->lines[curline->linenum].flags & ML_DONTPEGBOTTOM)
+#endif
     {
         dcvars.texturemid =
                 frontsector->floorheight > backsector->floorheight ? frontsector->floorheight : backsector->floorheight;
@@ -1559,7 +1853,13 @@ FASTFUN static void R_RenderMaskedSegRange(const drawseg_t *ds, int x1, int x2)
                 frontsector->ceilingheight < backsector->ceilingheight ? frontsector->ceilingheight : backsector->ceilingheight;
         dcvars.texturemid = dcvars.texturemid - viewz;
     }
+#ifdef CONFIG_DOOM_NO_COMPACT_PTR
+    side_t temp_side;
+    user_flash_read_game_resource(&temp_side, sizeof(temp_side), (uint32_t)(_g->sides + temp_curline.sidenum));
+    dcvars.texturemid += (temp_side.rowoffset << FRACBITS);
+#else
     dcvars.texturemid += (_g->sides[curline->sidenum].rowoffset << FRACBITS);
+#endif
     const texture_t *texture = R_GetOrLoadTexture(texnum);
     if (fixedcolormap)
         dcvars.colormap = fixedcolormap;
@@ -1610,7 +1910,13 @@ FASTFUN static void R_RenderMaskedSegRange(const drawseg_t *ds, int x1, int x2)
       int xc = maskedtexturecol[x];
       // get the first column
       //
+#ifdef CONFIG_DOOM_NO_COMPACT_PTR
+      texture_t temp_texture;
+      user_flash_read_game_resource(&temp_texture, sizeof(temp_texture), (uint32_t)texture);
+      cachePatchColumnOffsetData((patch_t *)temp_texture.patches[0].patch, temp_texture.width, x1, x2);
+#else
       cachePatchColumnOffsetData( (patch_t*) texture->patches[0].patch, texture->width, x1 , x2);
+#endif
       //
       column = R_GetColumnNonBlocking(texture, xc, columnBuffer[bufferNumber], &wasOnExternalFlash);
       //
@@ -1625,7 +1931,14 @@ FASTFUN static void R_RenderMaskedSegRange(const drawseg_t *ds, int x1, int x2)
                   if (index >= MAXLIGHTSCALE)
                       index = MAXLIGHTSCALE - 1;
 
+#ifdef CONFIG_DOOM_NO_COMPACT_PTR
+                  uint32_t temp_colormaps_addr;
+                  user_flash_read_game_resource(&temp_colormaps_addr, sizeof(temp_colormaps_addr), (uint32_t)&p_wad_immutable_flash_data->colormaps);
+
+                  dcvars.colormap = (lighttable_t *)(temp_colormaps_addr + 256 * scalelight[walllights][index]);
+#else
                   dcvars.colormap = p_wad_immutable_flash_data->colormaps + 256 * scalelight[walllights][index];
+#endif
               }
               sprtopscreen = centeryfrac - FixedMul(dcvars.texturemid, spryscale);
               //
@@ -1655,7 +1968,14 @@ FASTFUN static void R_RenderMaskedSegRange(const drawseg_t *ds, int x1, int x2)
               if (index >= MAXLIGHTSCALE)
                   index = MAXLIGHTSCALE - 1;
 
+#ifdef CONFIG_DOOM_NO_COMPACT_PTR
+              uint32_t temp_colormaps_addr;
+              user_flash_read_game_resource(&temp_colormaps_addr, sizeof(temp_colormaps_addr), (uint32_t)&p_wad_immutable_flash_data->colormaps);
+
+              dcvars.colormap = (lighttable_t *)(temp_colormaps_addr + 256 * scalelight[walllights][index]);
+#else
               dcvars.colormap = p_wad_immutable_flash_data->colormaps + 256 * scalelight[walllights][index];
+#endif
           }
           sprtopscreen = centeryfrac - FixedMul(dcvars.texturemid, spryscale);
           //
@@ -1672,7 +1992,7 @@ FASTFUN static void R_RenderMaskedSegRange(const drawseg_t *ds, int x1, int x2)
       }
 
     }
- #endif
+#endif
     curline = NULL; /* cph 2001/11/18 - must clear curline now we're done with it, so R_ColourMap doesn't try using it for other things */
 }
 
@@ -1680,10 +2000,21 @@ FASTFUN static void R_RenderMaskedSegRange(const drawseg_t *ds, int x1, int x2)
 
 FASTFUN static PUREFUNC int R_PointOnSegSide(fixed_t x, fixed_t y, const seg_t *line)
 {
+#ifdef CONFIG_DOOM_NO_COMPACT_PTR
+    seg_t temp_seg;
+    user_flash_read_game_resource(&temp_seg, sizeof(temp_seg), (uint32_t)line);
+    const fixed_t lx = temp_seg.v1.x;
+    const fixed_t ly = temp_seg.v1.y;
+    const fixed_t ldx = temp_seg.v2.x - lx;
+    const fixed_t ldy = temp_seg.v2.y - ly;
+    debugi("%s lx:%d ly:%d ldx:%d ldy:%d\r\n", __func__, lx, ly, ldx, ldy);
+#else
     const fixed_t lx = line->v1.x;
     const fixed_t ly = line->v1.y;
     const fixed_t ldx = line->v2.x - lx;
     const fixed_t ldy = line->v2.y - ly;
+    debugi("%s lx:%d ly:%d ldx:%d ldy:%d\r\n", __func__, lx, ly, ldx, ldy);
+#endif
 
     if (!ldx)
         return x <= lx ? ldy > 0 : ldy < 0;
@@ -1712,8 +2043,27 @@ FASTFUN static void R_DrawSprite(const vissprite_t *spr)
 
     fixed_t scale;
     fixed_t lowscale;
+
+    debugi("%s vissprite: colormapidx:%d x1:%d x2:%d lumpnum:%d scale:%d texmid:%d mobjflags:%d\r\n",
+           __func__,
+           spr->colormap_idx,
+           spr->x1,
+           spr->x2,
+           spr->lumpNum,
+           spr->scale,
+           spr->texturemid,
+           spr->mobjflags);
+
     for (int x = spr->x1; x <= spr->x2; x++)
     {
+        debugi("%s clipbot[%d]: old %d new %d cliptop[%d]: old %d new %d\r\n",
+               __func__,
+               x,
+               clipbot[x],
+               draw_stopy + 1,
+               x,
+               cliptop[x],
+               draw_starty - 1);
         clipbot[x] = draw_stopy + 1;
         cliptop[x] = draw_starty - 1;
     }
@@ -1764,6 +2114,12 @@ FASTFUN static void R_DrawSprite(const vissprite_t *spr)
             {
                 if (clipbot[x] == draw_stopy + 1)
                 {
+                    debugi("%s clipbot[%d]: old %d new %d offset:%x\r\n",
+                           __func__,
+                           x,
+                           clipbot[x],
+                           openingSsptrToAddr(ds->sprbottomclip_ssptr)[x],
+                           &clipbot[x] - floorclip);
                     clipbot[x] = openingSsptrToAddr(ds->sprbottomclip_ssptr)[x];
                 }
             }
@@ -1776,6 +2132,12 @@ FASTFUN static void R_DrawSprite(const vissprite_t *spr)
             {
                 if (cliptop[x] == draw_starty - 1)
                 {
+                    debugi("%s cliptop[%d]: old %d new %d offset:%x\r\n",
+                           __func__,
+                           x,
+                           cliptop[x],
+                           openingSsptrToAddr(ds->sprtopclip_ssptr)[x],
+                           &cliptop[x] - ceilingclip);
                     cliptop[x] = openingSsptrToAddr(ds->sprtopclip_ssptr)[x];
                 }
             }
@@ -1805,11 +2167,39 @@ FASTFUN static void R_DrawPSprite(pspdef_t *psp, int lightlevel)
     fixed_t topoffset;
 
     // decide which patch to use
+#ifdef CONFIG_DOOM_NO_COMPACT_PTR
+    spritedef_t temp_sprdef;
+    uint32_t temp_sprites_addr;
+    user_flash_read_game_resource(&temp_sprites_addr, sizeof(temp_sprites_addr), (uint32_t)&p_wad_immutable_flash_data->sprites);
+    temp_sprites_addr = temp_sprites_addr + sizeof(spritedef_t) * psp->state->sprite;
+    user_flash_read_game_resource(&temp_sprdef, sizeof(temp_sprdef), temp_sprites_addr);
+    debugi("%s sprdef is at %08x numframes:%d\r\n", __func__, temp_sprites_addr, temp_sprdef.numframes);
+
+    spriteframe_t temp_sprframe;
+    uint32_t temp_sprframe_addr = (uint32_t) (&getSpriteFrames(&temp_sprdef)[psp->state->frame & FF_FRAMEMASK]);
+    user_flash_read_game_resource(&temp_sprframe, sizeof(temp_sprframe), temp_sprframe_addr);
+    debugi("%s sprframe is at 0x%08X flipmask:%d rotate:%d lumps:\r\n",
+           __func__, temp_sprframe_addr, temp_sprframe.flipmask, temp_sprframe.rotate);
+    // for (size_t i = 0; i < ARRAY_SIZE(temp_sprframe.lump); i++)
+    // {
+    //     debugi("%d\r\n", temp_sprframe.lump[i]);
+    // }
+
+    flip = (boolean) SPR_FLIPPED((&temp_sprframe), 0);
+#else
     sprdef = &p_wad_immutable_flash_data->sprites[psp->state->sprite];
+    debugi("%s sprdef is at %08x numframes:%d\r\n", __func__, (uint32_t)sprdef, sprdef->numframes);
 
     sprframe = &(getSpriteFrames(sprdef)[psp->state->frame & FF_FRAMEMASK]);
+    debugi("%s sprframe is at 0x%08X flipmask:%d rotate:%d lumps:\r\n",
+        __func__, (uint32_t)sprframe, sprframe->flipmask, sprframe->rotate);
+    for (size_t i = 0; i < ARRAY_SIZE(sprframe->lump); i++)
+    // {
+    //     debugi("%d\r\n", sprframe->lump[i]);
+    // }
 
     flip = (boolean) SPR_FLIPPED(sprframe, 0);
+#endif
     patchsizeoffsets_t *patch;
   /*  
     patch_t *cachedPatch = (patch_t*) W_CacheLumpNum(sprframe->lump[0] + _g->firstspritelump);
@@ -1825,8 +2215,22 @@ FASTFUN static void R_DrawPSprite(pspdef_t *psp, int lightlevel)
     {
         patch = cachedPatch;
     }*/
+#ifdef CONFIG_DOOM_NO_COMPACT_PTR
+    uint32_t lumpNum = temp_sprframe.lump[0] + _g->firstspritelump;
+
+    uint32_t temp_patch_addr;
+    user_flash_read_game_resource(&temp_patch_addr, sizeof(temp_patch_addr), (uint32_t)&p_wad_immutable_flash_data->patchLumpSizeOffsets);
+    temp_patch_addr = temp_patch_addr + lumpNum * sizeof(patchsizeoffsets_t);
+
+    patchsizeoffsets_t temp_patch;
+    user_flash_read_game_resource(&temp_patch, sizeof(temp_patch), temp_patch_addr);
+    debugi("%s lumpnum:%d patch at %08x\r\n", __func__, lumpNum, temp_patch_addr);
+    patch = &temp_patch;
+#else
     uint32_t lumpNum = sprframe->lump[0] + _g->firstspritelump;
     patch = &p_wad_immutable_flash_data->patchLumpSizeOffsets[lumpNum];
+    debugi("%s lumpnum:%d patch at %08x\r\n", __func__, lumpNum, (uint32_t)patch);
+#endif
     // calculate edges of the shape
     fixed_t tx;
     tx = psp->sx - 160 * FRACUNIT;
@@ -1889,7 +2293,17 @@ FASTFUN static void R_DrawPSprite(pspdef_t *psp, int lightlevel)
         vis->colormap_idx = FULL_COLOR_MAP_IDX; // full bright // killough 3/20/98
     else
     {
+#ifdef CONFIG_DOOM_NO_COMPACT_PTR
+        uint32_t temp_colormap_addr;
+        user_flash_read_game_resource(&temp_colormap_addr, sizeof(temp_colormap_addr), (uint32_t)&p_wad_immutable_flash_data->colormaps);
+        temp_colormap_addr = temp_colormap_addr + 256 * scalelight[spritelights][0];
+
+        current_colormap_ptr = (lighttable_t *)temp_colormap_addr;
+        // debugi("%s current colormap ptr is %08x\r\n", __func__, (uint32_t)current_colormap_ptr);
+#else
         current_colormap_ptr = p_wad_immutable_flash_data->colormaps + 256 * scalelight[spritelights][0];
+        // debugi("%s current colormap ptr is %08x\r\n", __func__, (uint32_t)current_colormap_ptr);
+#endif  
         vis->colormap_idx = CURRENT_COLOR_MAP_IDX;
     }
     R_DrawVisSprite(vis);
@@ -2061,7 +2475,30 @@ FASTFUN static void R_DrawMasked(void)
 FASTFUN inline static void R_DrawSpanPixel(pixel *dest, const byte *source, const byte *colormap, unsigned int position)
 {
 #ifdef HIGHRES
+    #ifdef CONFIG_DOOM_NO_COMPACT_PTR
+    
+    byte temp_source_byte;
+    user_flash_read_game_resource(&temp_source_byte, sizeof(temp_source_byte), (uint32_t)&source[((position >> 4) & 0x0fc0) | (position >> 26)]);
+    // debugi("%s position:%d source at %08x\r\n", __func__, position, (uint32_t)&source[((position >> 4) & 0x0fc0) | (position >> 26)]);
+    if (user_flash_is_resource_in_flash((uint32_t)&colormap[temp_source_byte]))
+    {
+        byte temp_colormap_byte;
+        user_flash_read_game_resource(&temp_colormap_byte, sizeof(temp_colormap_byte), (uint32_t)&colormap[temp_source_byte]);
+        *dest = temp_colormap_byte;
+    }
+    else
+    {
+        *dest = colormap[temp_source_byte];
+    }
+    // debugi("%s wrote %x to *dest pixel\r\n", __func__, *dest);
+    
+    #else
+
+    // debugi("%s position:%d source at %08x\r\n", __func__, position, (uint32_t)&source[((position >> 4) & 0x0fc0) | (position >> 26)]);
     *dest = colormap[source[((position >> 4) & 0x0fc0) | (position >> 26)]];
+    // debugi("%s wrote %x to *dest pixel\r\n", __func__, *dest);
+    
+    #endif /* CONFIG_DOOM_NO_COMPACT_PTR */
 #else
     unsigned int color = colormap[source[((position >> 4) & 0x0fc0) | (position >> 26)]];
 
@@ -2081,22 +2518,30 @@ FASTFUN static inline void R_DrawSpan(unsigned int y, unsigned int x1, unsigned 
     if (currentCachedColorMap == dsvars->colormap)
     {
         colormap = colorMap;
+        // debugi("%s colormap set to ram\r\n", __func__);
     }
     else if (x2 - x1 > MIN_PIXEL_TO_DRAW_FOR_CACHING_COLORMAP)
     {
+#ifdef CONFIG_DOOM_NO_COMPACT_PTR
+        user_flash_read_game_resource(colorMap, sizeof(colorMap), (uint32_t)dsvars->colormap);
+#else
         memcpy(colorMap, dsvars->colormap, 256);
+#endif
         currentCachedColorMap = (uint8_t*) dsvars->colormap;
         colormap = colorMap;
+        // debugi("%s updated ram colormap from dsvars.colormap at %08x cachedmap at %08x\r\n", __func__, (uint32_t)dsvars->colormap, (uint32_t)currentCachedColorMap);
     }
     else
     {
         colormap = dsvars->colormap;
+        // debugi("%s colormap set to dsvars.colormap at %08x\r\n", __func__, (uint32_t)dsvars->colormap);
     }
 #endif
     pixel *dest = ((pixel*) drawvars.byte_topleft) + ScreenYToOffset(y) + x1;
     uint32_t * qDest = (uint32_t*) dest;
     const unsigned int step = dsvars->step;
     unsigned int position = dsvars->position;
+    // debugi("%s step:%d position:%d\r\n", __func__, step, position);
 
     unsigned int l = (count >> 4);
     while (l--)
@@ -2154,7 +2599,71 @@ FASTFUN static inline void R_DrawSpan(unsigned int y, unsigned int x1, unsigned 
         dest += 1;
         position += step;
     #else
+#ifdef CONFIG_DOOM_NO_COMPACT_PTR
+    byte temp_source_byte, temp_colormap_byte;
+    user_flash_read_game_resource(&temp_source_byte, sizeof(temp_source_byte), (uint32_t)&source[((position >> 4) & 0x0fc0) | (position >> 26)]);
+    uint32_t quadPix;
+    // debugi("%s position:%d source_byte:%d source is at %08x\r\n", __func__, position, temp_source_byte, (uint32_t)&source[((position >> 4) & 0x0fc0) | (position >> 26)]);
+
+    for (uint8_t i = 0; i < 4; i++)
+    {
+        if (user_flash_is_resource_in_flash((uint32_t)&colormap[temp_source_byte]))
+        {
+            user_flash_read_game_resource(&temp_colormap_byte, sizeof(temp_colormap_byte), (uint32_t)&colormap[temp_source_byte]);
+            quadPix = temp_colormap_byte;
+        }
+        else
+        {
+            quadPix = colormap[temp_source_byte];
+        }
+        position += step;
+        user_flash_read_game_resource(&temp_source_byte, sizeof(temp_source_byte), (uint32_t)&source[((position >> 4) & 0x0fc0) | (position >> 26)]);
+
+        if (user_flash_is_resource_in_flash((uint32_t)&colormap[temp_source_byte]))
+        {
+            user_flash_read_game_resource(&temp_colormap_byte, sizeof(temp_colormap_byte), (uint32_t)&colormap[temp_source_byte]);
+            quadPix |= temp_colormap_byte << 8;
+        }
+        else
+        {
+            quadPix |= colormap[temp_source_byte] << 8;
+        }
+        position += step;
+        user_flash_read_game_resource(&temp_source_byte, sizeof(temp_source_byte), (uint32_t)&source[((position >> 4) & 0x0fc0) | (position >> 26)]);
+
+        if (user_flash_is_resource_in_flash((uint32_t)&colormap[temp_source_byte]))
+        {
+            user_flash_read_game_resource(&temp_colormap_byte, sizeof(temp_colormap_byte), (uint32_t)&colormap[temp_source_byte]);
+            quadPix |= temp_colormap_byte << 16;
+        }
+        else
+        {
+            quadPix |= colormap[temp_source_byte] << 16;
+        }
+        position += step;
+        user_flash_read_game_resource(&temp_source_byte, sizeof(temp_source_byte), (uint32_t)&source[((position >> 4) & 0x0fc0) | (position >> 26)]);
+
+        if (user_flash_is_resource_in_flash((uint32_t)&colormap[temp_source_byte]))
+        {
+            user_flash_read_game_resource(&temp_colormap_byte, sizeof(temp_colormap_byte), (uint32_t)&colormap[temp_source_byte]);
+            quadPix |= temp_colormap_byte << 24;
+        }
+        else
+        {
+            quadPix |= colormap[temp_source_byte] << 24;
+        }
+        position += step;
+        user_flash_read_game_resource(&temp_source_byte, sizeof(temp_source_byte), (uint32_t)&source[((position >> 4) & 0x0fc0) | (position >> 26)]);
+
+        *qDest++ = quadPix;
+        // memcpy(qDest, &quadPix, sizeof(quadPix));
+        // qDest++;
+        // debugi("%s wrote %08x pixel\r\n", __func__, quadPix);
+    }
+    
+#else
       uint32_t quadPix;
+    //   debugi("%s position:%d source_byte:%d source is at %08x\r\n", __func__, position, source[((position >> 4) & 0x0fc0) | (position >> 26)], (uint32_t)&source[((position >> 4) & 0x0fc0) | (position >> 26)]);
       
         quadPix = colormap[source[((position >> 4) & 0x0fc0) | (position >> 26)]];
         position += step;
@@ -2167,6 +2676,7 @@ FASTFUN static inline void R_DrawSpan(unsigned int y, unsigned int x1, unsigned 
         // *qDest++ = quadPix;
         memcpy(qDest, &quadPix, sizeof(quadPix));
         qDest++;
+        // debugi("%s wrote %08x pixel\r\n", __func__, quadPix);
 
         quadPix = colormap[source[((position >> 4) & 0x0fc0) | (position >> 26)]];
         position += step;
@@ -2179,6 +2689,7 @@ FASTFUN static inline void R_DrawSpan(unsigned int y, unsigned int x1, unsigned 
         // *qDest++ = quadPix;
         memcpy(qDest, &quadPix, sizeof(quadPix));
         qDest++;
+        // debugi("%s wrote %08x pixel\r\n", __func__, quadPix);
 
         quadPix = colormap[source[((position >> 4) & 0x0fc0) | (position >> 26)]];
         position += step;
@@ -2191,6 +2702,7 @@ FASTFUN static inline void R_DrawSpan(unsigned int y, unsigned int x1, unsigned 
         // *qDest++ = quadPix;
         memcpy(qDest, &quadPix, sizeof(quadPix));
         qDest++;
+        // debugi("%s wrote %08x pixel\r\n", __func__, quadPix);
 
         quadPix = colormap[source[((position >> 4) & 0x0fc0) | (position >> 26)]];
         position += step;
@@ -2203,7 +2715,8 @@ FASTFUN static inline void R_DrawSpan(unsigned int y, unsigned int x1, unsigned 
         // *qDest++ = quadPix;
         memcpy(qDest, &quadPix, sizeof(quadPix));
         qDest++;
-
+        // debugi("%s wrote %08x pixel\r\n", __func__, quadPix);
+#endif /* CONFIG_DOOM_NO_COMPACT_PTR */
     #endif
     }
     dest = (pixel*) qDest;
@@ -2312,8 +2825,15 @@ FASTFUN static void R_MapPlane(unsigned int y, unsigned int x1, unsigned int x2,
 
         if (index >= MAXLIGHTZ)
             index = MAXLIGHTZ - 1;
-
+#ifdef CONFIG_DOOM_NO_COMPACT_PTR
+        uint32_t temp_colormaps_addr;
+        user_flash_read_game_resource(&temp_colormaps_addr, sizeof(temp_colormaps_addr), (uint32_t)&p_wad_immutable_flash_data->colormaps);
+        dsvars->colormap = (lighttable_t *)(temp_colormaps_addr + 256 * zlight[planezlight][index]);
+        // debugi("%s dcvars colormap at %08x\r\n", __func__, (uint32_t)dsvars->colormap);
+#else
         dsvars->colormap = p_wad_immutable_flash_data->colormaps + 256 * zlight[planezlight][index];
+        // debugi("%s dcvars colormap at %08x\r\n", __func__, (uint32_t)dsvars->colormap);
+#endif
     }
     R_DrawSpan(y, x1, x2, dsvars);
 }
@@ -2382,7 +2902,13 @@ FASTFUN static void R_DoDrawPlane(visplane_t *pl)
             dcvars.iscale = skyiscale;
             // sky drawing not optimized, because it is likely to be in the internal flash.
             const texture_t *tex = R_GetOrLoadTexture(_g->skytexture);
+#ifdef CONFIG_DOOM_NO_COMPACT_PTR
+            texture_t temp_texture;
+            user_flash_read_game_resource(&temp_texture, sizeof(temp_texture), (uint32_t)tex);
+            cachePatchColumnOffsetData((patch_t *) temp_texture.patches[0].patch, temp_texture.width,  pl->minx, pl->maxx);
+#else
             cachePatchColumnOffsetData((patch_t *) tex->patches[0].patch, tex->width,  pl->minx, pl->maxx);
+#endif
             uint8_t columnData[MAX_COLUMN_DATA];
             int oldXc = 0xFF000000;
             const column_t *column = column; // self assignment to suppress warning without code generation
@@ -2519,9 +3045,41 @@ FASTFUN static void R_ProjectSprite(mobj_t *thing, int lightlevel)
     if (D_abs(tx) > (tz << 2))
         return;
 
+debugi("project sprites\r\n");
     // decide which patch to use for sprite relative to player
+#ifdef CONFIG_DOOM_NO_COMPACT_PTR
+
+    spritedef_t temp_spritedef;
+    uint32_t temp_spritedef_addr;
+    user_flash_read_game_resource(&temp_spritedef_addr, sizeof(temp_spritedef_addr), (uint32_t) &p_wad_immutable_flash_data->sprites);
+    temp_spritedef_addr = temp_spritedef_addr + thing->sprite * sizeof(temp_spritedef);
+    user_flash_read_game_resource(&temp_spritedef, sizeof(temp_spritedef), temp_spritedef_addr);
+    debugi("spritedef_addr 0x%08X numframes:%d\r\n", temp_spritedef_addr, temp_spritedef.numframes);
+
+    spriteframe_t temp_spriteframe;
+    uint32_t temp_spriteframe_addr = (uint32_t) (&getSpriteFrames(&temp_spritedef)[thing->frame & FF_FRAMEMASK]);
+    user_flash_read_game_resource(&temp_spriteframe, sizeof(temp_spriteframe), temp_spriteframe_addr);
+    debugi("spriteframe_addr 0x%08X flipmask:%d rotate:%d lumps:\r\n",
+           temp_spriteframe_addr, temp_spriteframe.flipmask, temp_spriteframe.rotate);
+    // for (size_t i = 0; i < ARRAY_SIZE(temp_spriteframe.lump); i++)
+    // {
+    //     debugi("%d ", temp_spriteframe.lump[i]);
+    // }
+    // debugi("\r\n");
+
+    const spriteframe_t *sprframe = &temp_spriteframe;
+#else
     const spritedef_t *sprdef = &p_wad_immutable_flash_data->sprites[thing->sprite];
+    debugi("spritedef_addr 0x%08X numframes:%d\r\n", (uint32_t) (sprdef), sprdef->numframes);
     const spriteframe_t *sprframe = (const spriteframe_t*) &(getSpriteFrames(sprdef)[thing->frame & FF_FRAMEMASK]);
+    debugi("spriteframe_addr 0x%08X flipmask:%d rotate:%d lumps:\r\n",
+           (uint32_t)(sprframe), sprframe->flipmask, sprframe->rotate);
+    // for (size_t i = 0; i < ARRAY_SIZE(sprframe->lump); i++)
+    // {
+    //     debugi("%d ", sprframe->lump[i]);
+    // }
+    // debugi("\r\n");
+#endif
 
     unsigned int rot = 0;
 
@@ -2536,9 +3094,20 @@ FASTFUN static void R_ProjectSprite(mobj_t *thing, int lightlevel)
     uint32_t lumpNum = sprframe->lump[rot] + _g->firstspritelump;
     
 
-
+#ifdef CONFIG_DOOM_NO_COMPACT_PTR
+    patchsizeoffsets_t temp_patch;
+    uint32_t temp_patchlumpsizeoffsets_addr;
+    user_flash_read_game_resource(&temp_patchlumpsizeoffsets_addr, sizeof(temp_patchlumpsizeoffsets_addr), (uint32_t)&p_wad_immutable_flash_data->patchLumpSizeOffsets);
+    temp_patchlumpsizeoffsets_addr = temp_patchlumpsizeoffsets_addr + lumpNum * sizeof(temp_patch);
+    user_flash_read_game_resource(&temp_patch, sizeof(temp_patch), temp_patchlumpsizeoffsets_addr);
+    patchsizeoffsets_t *patch = &temp_patch;
+    debugi("patch addr:0x%08X ", temp_patchlumpsizeoffsets_addr);
+#else
     patchsizeoffsets_t *patch;
     patch = &p_wad_immutable_flash_data->patchLumpSizeOffsets[lumpNum];
+    debugi("patch addr:0x%08X ", (uint32_t) patch);
+#endif
+    debugi("patch height:%d width:%d topoffset:%d leftoffset:%d\r\n", patch->height, patch->width, patch->topoffset, patch->leftoffset);
 /*
     patch_t *p_patch = (patch_t*) W_CacheLumpNum(lumpNum);
     patch_t tpatch;
@@ -3255,14 +3824,101 @@ typedef union
 
 FASTFUN inline static void* R_GetSinglePatchTextureColumnNonBlocking(const texture_t *texture, int texcolumn,  uint8_t *columnData,   fixed_t iscale, dmaOperation_t *dmaOperation, uint32_t isTop)
 {
+    //IMPORTANT: there is supposedly an overflow where patch.columnofs[xc] goes above its size 
+    // must check if that's safe or not
+#ifdef CONFIG_DOOM_NO_COMPACT_PTR
+    texture_t temp_texture;
+    if (user_flash_is_resource_in_flash((uint32_t)texture))
+    {
+        user_flash_read_game_resource(&temp_texture, sizeof(temp_texture), (uint32_t)texture);
+    }
+    else
+    {
+        temp_texture = *texture;
+    }
+    const unsigned int widthmask = temp_texture.widthmask;
+    debugi("%s: texture:%08x widthmask:%d texcolumn:%d iscale:%d istop:%d\r\n",
+           __func__,
+           (uint32_t)texture,
+           widthmask,
+           texcolumn,
+           iscale,
+           isTop);
+    debugi("%s: texture h:%d w:%d w_mask:%x overlap:%d patch_count:%d patch_addr:%08x patch_x:%d patch_y:%d\r\n",
+           __func__,
+           temp_texture.height,
+           temp_texture.width,
+           temp_texture.widthmask,
+           temp_texture.overlapped,
+           temp_texture.patchcount,
+           (uint32_t)temp_texture.patches[0].patch,
+           temp_texture.patches[0].originx,
+           temp_texture.patches[0].originy);
+#else
     const unsigned int widthmask = texture->widthmask;
+    debugi("%s: texture:%08x widthmask:%d texcolumn:%d iscale:%d istop:%d\r\n",
+           __func__,
+           (uint32_t)texture,
+           widthmask,
+           texcolumn,
+           iscale,
+           isTop);
+    debugi("%s: texture h:%d w:%d w_mask:%x overlap:%d patch_count:%d patch_addr:%08x patch_x:%d patch_y:%d\r\n",
+           __func__,
+           texture->height,
+           texture->width,
+           texture->widthmask,
+           texture->overlapped,
+           texture->patchcount,
+           (uint32_t)texture->patches[0].patch,
+           texture->patches[0].originx,
+           texture->patches[0].originy);
+#endif
 
     const int xc = texcolumn & widthmask;
     //simple texture.
+#ifdef CONFIG_DOOM_NO_COMPACT_PTR
+    const patch_t *patch = temp_texture.patches[0].patch;
+#else
     const patch_t *patch = texture->patches[0].patch;
+#endif
     if (!isOnExternalFlash(patch))
     {
+#ifdef CONFIG_DOOM_NO_COMPACT_PTR
+        int temp_columnof;
+        user_flash_read_game_resource(&temp_columnof, sizeof(temp_columnof), (uint32_t)(patch->columnofs + xc));
+        patch_t temp_patch; //not needed, beware of xc overflow
+        user_flash_read_game_resource(&temp_patch, sizeof(temp_patch), (uint32_t)patch);
+        debugi("%s: patch h:%d w:%d leftoff:%d topoff:%d\r\n",
+               __func__,
+               temp_patch.height,
+               temp_patch.width,
+               temp_patch.leftoffset,
+               temp_patch.topoffset);
+        debugi("%s: columnnonblocking:%08x patch:%08x xc:%d columnofs:%d result:%08x\r\n",
+               __func__,
+               (uint32_t)(((byte *)patch + (0xFFFFFF & temp_columnof) + 3)),
+               (uint32_t)patch,
+               xc,
+               temp_columnof,
+               (0xFFFFFF & temp_columnof) + 3);
+        return ((byte *)patch + (0xFFFFFF & temp_columnof) + 3);
+#else
+        debugi("%s: patch h:%d w:%d leftoff:%d topoff:%d\r\n",
+               __func__,
+               patch->height,
+               patch->width,
+               patch->leftoffset,
+               patch->topoffset);
+        debugi("%s: columnnonblocking:%08x patch:%08x xc:%d columnofs:%d result:%08x\r\n",
+               __func__,
+               (uint32_t)(((byte *)patch + (0xFFFFFF & patch->columnofs[xc]) + 3)),
+               (uint32_t)patch,
+               xc,
+               patch->columnofs[xc],
+               (0xFFFFFF & patch->columnofs[xc]) + 3);
         return ((byte*) patch + (0xFFFFFF & patch->columnofs[xc]) + 3);
+#endif
     }
     else
     {   
@@ -3289,6 +3945,14 @@ FASTFUN inline static void* R_GetSinglePatchTextureColumnNonBlocking(const textu
         uint32_t co = getColumnOffsetData((patch_t*) patch, xc);
         uint32_t cnt = co >> 24;
         co = co & 0xFFFFFF;
+#ifdef CONFIG_DOOM_NO_COMPACT_PTR
+        debugi("%s copying %d bytes to columndata from %08x\r\n", __func__, cnt - 4, (uint32_t)patch + co + 3);
+        user_flash_read_game_resource(columnData, cnt - 4, (uint32_t)patch + co + 3);
+#else
+        debugi("%s copying %d bytes to columndata from %08x\r\n", __func__, cnt - 4, (uint32_t)patch + co + 3);
+        memcpy(columnData, (void *)((uint32_t)patch + co + 3), cnt - 4);
+#endif
+        
 		//FIXME: add texture data size read
         // NRF_QSPI->READ.CNT = cnt - 4;
         // NRF_QSPI->READ.SRC = (uint32_t) patch + co + 3;
@@ -3662,7 +4326,7 @@ static inline void R_RenderSegLoop(int rw_x)
       if (rw_x >= rw_stopx)
         return;
       //uint8_t columnData[MAX_COLUMN_DATA];
-      void  *nextColumnDataPtr;
+      void  *nextColumnDataPtr = NULL;
       dmaOperation_t dmaOperation = {.pendingDmaOperation  = 0};
       int bufferNumber = 0;
       fixed_t iscale = FixedReciprocal((unsigned) rw_scale);
@@ -3764,16 +4428,31 @@ static inline void R_RenderSegLoop(int rw_x)
 
               // calculate lighting
               int index = rw_scale >> LIGHTSCALESHIFT;
-
+            // debugi("index:%d rw_scale:%d\r\n", index, rw_scale);
               if (index >= MAXLIGHTSCALE)
                   index = MAXLIGHTSCALE - 1;
 
+#ifdef CONFIG_DOOM_NO_COMPACT_PTR
+              uint32_t temp_colormaps_addr;
+              user_flash_read_game_resource(&temp_colormaps_addr, sizeof(temp_colormaps_addr), (uint32_t)&p_wad_immutable_flash_data->colormaps);
+
+              dcvars.colormap = (lighttable_t *)(temp_colormaps_addr + 256 * scalelight[walllights][index]);
+              lighttable_t test_table;
+              user_flash_read_game_resource(&test_table, sizeof(test_table), (uint32_t)dcvars.colormap);
+            //   debugi("lighttable:0x%x\r\n", test_table);
+            //   debugi("colormap0x%x walllights:%d index:%d\r\n", (uint32_t)dcvars.colormap, walllights, index);
+#else
               dcvars.colormap = p_wad_immutable_flash_data->colormaps + 256 * scalelight[walllights][index];
+            //   debugi("lighttable:0x%x\r\n", *dcvars.colormap);
+            //   debugi("colormap%p walllights:%d index:%d\r\n", dcvars.colormap, walllights, index);
+#endif
 
               dcvars.x = rw_x;
 
               dcvars.iscale = iscale;
+            //   debugi("dcavrs.iscale=%d\r\n", dcvars.iscale);
               iscale =  FixedReciprocal((unsigned)rw_scale + rw_scalestep) ;
+            //   debugi("iscale=%d\r\n", iscale);
           }
 
           // load next column. Only if this is not the last one!
@@ -3781,9 +4460,19 @@ static inline void R_RenderSegLoop(int rw_x)
           {
             bufferNumber = 1 - bufferNumber;
             nextColumnDataPtr = R_GetSinglePatchTextureColumnNonBlocking (tex, texturecolumn, columnBuffer[bufferNumber], iscale, &dmaOperation, 1);
+#ifdef CONFIG_DOOM_NO_COMPACT_PTR
+            // debugi("%s: nextcolumndataptr:%08x\r\n", __func__, (uint32_t)nextColumnDataPtr);
+#else
+            // debugi("%s: nextcolumndataptr:%08x\r\n", __func__, (uint32_t)nextColumnDataPtr);
+#endif
           }
           R_DrawColumn(&dcvars);
           dcvars.source = nextColumnDataPtr;
+#ifdef CONFIG_DOOM_NO_COMPACT_PTR
+        //   debugi("dcvars.source=%08x\r\n", (uint32_t)dcvars.source);
+#else
+        //   debugi("dcvars.source=%08x\r\n", (uint32_t)dcvars.source);
+#endif
           cc_rwx = draw_stopy + 1;
           fc_rwx = draw_starty - 1;
 
@@ -3897,7 +4586,15 @@ static inline void R_RenderSegLoop(int rw_x)
 
                 if (index >= MAXLIGHTSCALE)
                     index = MAXLIGHTSCALE - 1;
+#ifdef CONFIG_DOOM_NO_COMPACT_PTR
+                uint32_t temp_colormap_addr;
+                user_flash_read_game_resource(&temp_colormap_addr, sizeof(temp_colormap_addr), ((uint32_t)&p_wad_immutable_flash_data->colormaps));
+                nextColorMap = (lighttable_t*)(temp_colormap_addr + 256 * scalelight[walllights][index]);
+                // debugi("%s nextcolormap at %08x\r\n", __func__, (uint32_t)nextColorMap);
+#else
                 nextColorMap = p_wad_immutable_flash_data->colormaps + 256 * scalelight[walllights][index];
+                // debugi("%s nextcolormap at %08x\r\n", __func__, (uint32_t)nextColorMap);
+#endif
                 iscale = FixedReciprocal((unsigned) rw_scale);
             }
 
@@ -4284,23 +4981,82 @@ FASTFUN static void R_StoreWallRange(const int start, const int stop)
         return;
     }
 
+#ifdef CONFIG_DOOM_NO_COMPACT_PTR
+    seg_t temp_curline;
+    user_flash_read_game_resource(&temp_curline, sizeof(temp_curline), (uint32_t)curline);
+    linedata_t *linedata = &_g->linedata[temp_curline.linenum];
+#else
     linedata_t *linedata = &_g->linedata[curline->linenum];
-
+#endif
+    debugi("%s[0]:linedata flags:%u special:%u validcount:%u curline at %08x\r\n",
+           __func__,
+           linedata->r_flags,
+           linedata->special,
+           linedata->validcount,
+           (uint32_t)curline);
     // mark the segment as visible for auto map
     linedata->r_flags |= RF_MAPPED; // 2020-03-14 next-hack was ML_MAPPED, changed to RF_MAPPED
 
+#ifdef CONFIG_DOOM_NO_COMPACT_PTR
+    side_t temp_sidedef;
+    user_flash_read_game_resource(&temp_sidedef, sizeof(temp_sidedef), (uint32_t)&_g->sides[temp_curline.sidenum]);
+    line_t temp_linedef;
+    user_flash_read_game_resource(&temp_linedef, sizeof(temp_linedef), (uint32_t)&_g->lines[temp_curline.linenum]);
+    sidedef = &_g->sides[temp_curline.sidenum];
+    linedef = &_g->lines[temp_curline.linenum];
+    rw_normalangle = temp_curline.angle + ANG90;
+
+    debugi("%s[1]:sidedef sec_num:%d texoff:%d rowoff:%d toptex:%d midtex:%d bottex:%d\r\n",
+           __func__,
+           temp_sidedef.sector_num,
+           temp_sidedef.textureoffset,
+           temp_sidedef.rowoffset,
+           temp_sidedef.toptexture,
+           temp_sidedef.midtexture,
+           temp_sidedef.bottomtexture);
+    debugi("%s[2]:linedef lineno:%d slopetype:%d flags:%d dx:%d dy:%d\r\n",
+           __func__,
+           temp_linedef.lineno,
+           temp_linedef.slopetype,
+           temp_linedef.flags,
+           temp_linedef.dx,
+           temp_linedef.dy);
+#else
     sidedef = &_g->sides[curline->sidenum];
     linedef = &_g->lines[curline->linenum];
 
     // calculate rw_distance for scale calculation
     rw_normalangle = curline->angle + ANG90;
 
+    debugi("%s[1]:sidedef sec_num:%d texoff:%d rowoff:%d toptex:%d midtex:%d bottex:%d\r\n",
+           __func__,
+           sidedef->sector_num,
+           sidedef->textureoffset,
+           sidedef->rowoffset,
+           sidedef->toptexture,
+           sidedef->midtexture,
+           sidedef->bottomtexture);
+    debugi("%s[2]:linedef lineno:%d slopetype:%d flags:%d dx:%d dy:%d\r\n",
+           __func__,
+           linedef->lineno,
+           linedef->slopetype,
+           linedef->flags,
+           linedef->dx,
+           linedef->dy);
+#endif
     offsetangle = rw_normalangle - rw_angle1;
 
     if (D_abs(offsetangle) > ANG90)
         offsetangle = ANG90;
 
+#ifdef CONFIG_DOOM_NO_COMPACT_PTR
+    hyp = (viewx == temp_curline.v1.x && viewy == temp_curline.v1.y) ? 0 : R_PointToDist(temp_curline.v1.x, temp_curline.v1.y);
+    debugi("%s[3]:hyp curline: v1.x:%d v1.y:%d viewx:%d\r\n", __func__, temp_curline.v1.x, temp_curline.v1.y, viewx);
+#else
     hyp = (viewx == curline->v1.x && viewy == curline->v1.y) ? 0 : R_PointToDist(curline->v1.x, curline->v1.y);
+    debugi("%s[3]:hyp curline: v1.x:%d v1.y:%d viewx:%d\r\n", __func__, curline->v1.x, curline->v1.y, viewx);
+#endif
+    debugi("%s[3]:hyp:%d\r\n", __func__, hyp);
 
     rw_distance = FixedMul(hyp, finecosine[offsetangle >> ANGLETOFINESHIFT]);
 
@@ -4336,21 +5092,48 @@ FASTFUN static void R_StoreWallRange(const int start, const int stop)
     if (!backsector)
     {
         // single sided line
+#ifdef CONFIG_DOOM_NO_COMPACT_PTR
+        midtexture = texturetranslation[getSideMidTexture(&_g->lines[temp_curline.linenum], sidedef)];
+#else
         midtexture = texturetranslation[getSideMidTexture(&_g->lines[curline->linenum], sidedef)];
+#endif
+        debugi("%s[4]:midtexture:%d\r\n", __func__, midtexture);
 
         // a single sided line is terminal, so it must mark ends
         markfloor = markceiling = true;
 
+#ifdef CONFIG_DOOM_NO_COMPACT_PTR
+        if (temp_linedef.flags & ML_DONTPEGBOTTOM)
+        {         // bottom of texture at bottom
+            fixed_t temp_textureheight_bottom;
+            user_flash_read_game_resource(&temp_textureheight_bottom, sizeof(temp_textureheight_bottom), (uint32_t)&textureheight[getSideMidTexture(&_g->lines[temp_curline.linenum], sidedef)]);
+            fixed_t vtop = frontsector->floorheight + temp_textureheight_bottom;
+            rw_midtexturemid = vtop - viewz;
+            debugi("%s vtop:%d rw_midtexmid:%d\r\n", __func__, vtop, rw_midtexturemid);
+        }
+#else
         if (linedef->flags & ML_DONTPEGBOTTOM)
         {         // bottom of texture at bottom
             fixed_t vtop = frontsector->floorheight + textureheight[getSideMidTexture(&_g->lines[curline->linenum], sidedef)];
             rw_midtexturemid = vtop - viewz;
+            debugi("%s vtop:%d rw_midtexmid:%d\r\n", __func__, vtop, rw_midtexturemid);
         }
+#endif
         else
             // top of texture at top
             rw_midtexturemid = worldtop;
+        debugi("%s[5]:rw_midtexturemid1:%d\r\n", __func__, rw_midtexturemid);
 
+        debugi("%s textureheight is at %08x\r\n", __func__, (uint32_t)textureheight);
+        debugi("%s reading textureheight[%d] at addr %08x\r\n", __func__, midtexture, (uint32_t)&textureheight[midtexture]);
+#ifdef CONFIG_DOOM_NO_COMPACT_PTR
+        fixed_t temp_textureheight_midtex;
+        user_flash_read_game_resource(&temp_textureheight_midtex, sizeof(temp_textureheight_midtex), (uint32_t)(textureheight + midtexture));
+        rw_midtexturemid += FixedMod((temp_sidedef.rowoffset << FRACBITS), temp_textureheight_midtex);
+#else
         rw_midtexturemid += FixedMod((sidedef->rowoffset << FRACBITS), textureheight[midtexture]);
+#endif
+        debugi("%s[5]:rw_midtexturemid2:%d\r\n", __func__, rw_midtexturemid);
 
         ds_p->silhouette = SIL_BOTH;
         ds_p->sprtopclip_ssptr = SCREENHEIGHTARRAY_PTR; //(short *) screenheightarray;
@@ -4422,23 +5205,60 @@ FASTFUN static void R_StoreWallRange(const int start, const int stop)
 
         if (worldhigh < worldtop)   // top texture
         {
+#ifdef CONFIG_DOOM_NO_COMPACT_PTR
+            short temp_texture_index = getSideTopTexture(linedef, sidedef);
+            fixed_t temp_textureheight1;
+            user_flash_read_game_resource(&temp_textureheight1, sizeof(temp_textureheight1), (uint32_t)(textureheight + temp_texture_index));
+            
+            toptexture = texturetranslation[temp_texture_index];
+            fixed_t temp_textureheight2;
+            user_flash_read_game_resource(&temp_textureheight2, sizeof(temp_textureheight2), (uint32_t)(textureheight + toptexture));
+            if (temp_linedef.flags & ML_DONTPEGTOP)
+            {
+                rw_toptexturemid = worldtop;
+            }
+            else
+            {
+                //for log completeness REMOVE
+                temp_texture_index = getSideTopTexture(linedef, sidedef);
+                rw_toptexturemid = backsector->ceilingheight + temp_textureheight1 - viewz;
+            }
+            // rw_toptexturemid =
+            //         temp_linedef.flags & ML_DONTPEGTOP ? worldtop : backsector->ceilingheight + temp_textureheight1 - viewz;
+            rw_toptexturemid += FixedMod((temp_sidedef.rowoffset << FRACBITS), temp_textureheight2);
+            debugi("%s: toptexture:%d rw_toptexturemid:%d line_flags:%d worldtop:%d\r\n", __func__, toptexture, rw_toptexturemid, temp_linedef.flags, worldtop);
+#else
             toptexture = texturetranslation[getSideTopTexture(linedef, sidedef)];
             rw_toptexturemid =
                     linedef->flags & ML_DONTPEGTOP ? worldtop : backsector->ceilingheight + textureheight[getSideTopTexture(linedef, sidedef)] - viewz;
             rw_toptexturemid += FixedMod((sidedef->rowoffset << FRACBITS), textureheight[toptexture]);
+            debugi("%s: toptexture:%d rw_toptexturemid:%d line_flags:%d worldtop:%d\r\n", __func__, toptexture, rw_toptexturemid, linedef->flags, worldtop);
+#endif
         }
 
         if (worldlow > worldbottom) // bottom texture
         {
             bottomtexture = texturetranslation[getSideBottomTexture(linedef, sidedef)];
+#ifdef CONFIG_DOOM_NO_COMPACT_PTR
+            rw_bottomtexturemid =
+                    temp_linedef.flags & ML_DONTPEGBOTTOM ? worldtop : worldlow;
+            fixed_t temp_textureheight_bottom;
+            user_flash_read_game_resource(&temp_textureheight_bottom, sizeof(temp_textureheight_bottom), (uint32_t)&textureheight[bottomtexture]);
+            rw_bottomtexturemid += FixedMod((temp_sidedef.rowoffset << FRACBITS), temp_textureheight_bottom);
+#else
             rw_bottomtexturemid =
                     linedef->flags & ML_DONTPEGBOTTOM ? worldtop : worldlow;
 
             rw_bottomtexturemid += FixedMod((sidedef->rowoffset << FRACBITS), textureheight[bottomtexture]);
+#endif
         }
 
         // allocate space for masked texture tables
+#ifdef CONFIG_DOOM_NO_COMPACT_PTR
+        if (getSideMidTexture(&_g->lines[temp_curline.linenum], sidedef)) // masked midtexture
+#else
         if (getSideMidTexture(&_g->lines[curline->linenum], sidedef)) // masked midtexture
+#endif
         {
             maskedtexture = true;
             ds_p->maskedtexturecol = maskedtexturecol = _g->lastopening - rw_x;
@@ -4455,7 +5275,13 @@ FASTFUN static void R_StoreWallRange(const int start, const int stop)
 
 //        rw_offset += (sidedef->textureoffset << FRACBITS) + curline->offset;
 // 2021-02-13 next-hack: now textureoffsets are stored in RAM in a separate array. sides are stored in flash
+#ifdef CONFIG_DOOM_NO_COMPACT_PTR
+        rw_offset += (_g->textureoffsets[temp_curline.sidenum] << FRACBITS) + temp_curline.offset;
+        debugi("%s rw_offset:%d\r\n", __func__, rw_offset);
+#else
         rw_offset += (_g->textureoffsets[curline->sidenum] << FRACBITS) + curline->offset;
+        debugi("%s rw_offset:%d\r\n", __func__, rw_offset);
+#endif
 
         rw_centerangle = ANG90 + viewangle - rw_normalangle;
 
@@ -4467,12 +5293,19 @@ FASTFUN static void R_StoreWallRange(const int start, const int stop)
         if (!fixedcolormap)
         {
             int lightnum = (rw_lightlevel >> LIGHTSEGSHIFT) + extralight;
-
+#ifdef CONFIG_DOOM_NO_COMPACT_PTR
+            debugi("%s curline.v1.x:%d curline.v1.y:%d lightnum:%d\r\n", __func__, temp_curline.v1.x, temp_curline.v1.y, lightnum);
+            if (temp_curline.v1.y == temp_curline.v2.y)
+                lightnum--;
+            else if (temp_curline.v1.x == temp_curline.v2.x)
+                lightnum++;
+#else
+            debugi("%s curline.v1.x:%d curline.v1.y:%d lightnum:%d\r\n", __func__, curline->v1.x, curline->v1.y, lightnum);
             if (curline->v1.y == curline->v2.y)
                 lightnum--;
             else if (curline->v1.x == curline->v2.x)
                 lightnum++;
-
+#endif
             if (lightnum < 0)
                 walllights = 0;        //scalelight[0];
             else if (lightnum >= LIGHTLEVELS)
@@ -4610,11 +5443,140 @@ FASTFUN static void R_StoreWallRange(const int start, const int stop)
 // a line, including closure and texture tiling.
 static void R_RecalcLineFlags(void)
 {
-    linedata_t *linedata = &_g->linedata[linedef->lineno];
+#ifdef CONFIG_DOOM_NO_COMPACT_PTR
+    unsigned int temp_lineno;
+    user_flash_read_game_resource(&temp_lineno, sizeof(temp_lineno), (uint32_t)&linedef->lineno);
+    linedata_t *linedata = &_g->linedata[temp_lineno];
+    debugi("%s[0]:linedata[linedef.lineno]:%d\r\n", __func__, temp_lineno);
+    debugi("%s[0]:linedata flags:%u special:%u validcount:%u\r\n",
+        __func__,
+        linedata->r_flags,
+        linedata->special,
+        linedata->validcount);
 
-    const side_t *side = &_g->sides[curline->sidenum];
+    unsigned short temp_sidenum;
+    user_flash_read_game_resource(&temp_sidenum, sizeof(temp_sidenum), (uint32_t)&curline->sidenum);
+    side_t temp_side;
+    user_flash_read_game_resource(&temp_side, sizeof(temp_side), (uint32_t)&_g->sides[temp_sidenum]);
+
+    const side_t *side = &_g->sides[temp_sidenum];
+
+    debugi("%s[1]:side sec_num:%d texoff:%d rowoff:%d toptex:%d midtex:%d bottex:%d\r\n",
+           __func__,
+           temp_side.sector_num,
+           temp_side.textureoffset,
+           temp_side.rowoffset,
+           temp_side.toptexture,
+           temp_side.midtexture,
+           temp_side.bottomtexture);
+
+    line_t temp_linedef;
+    user_flash_read_game_resource(&temp_linedef, sizeof(temp_linedef), (uint32_t)linedef);
 
     linedata->r_validcount = (_g->gametic & VALIDCOUNT_MASK);
+
+    if (backsector)
+    {
+        debugi("%s[2]:backsector ceiling:%d floor:%d cpic:%d fpic:%d linecount:%d validcount:%d special:%d tag:%d\r\n",
+            __func__,
+            backsector->ceilingheight,
+            backsector->floorheight,
+            backsector->ceilingpic,
+            backsector->floorpic,
+            backsector->linecount,
+            backsector->validcount,
+            backsector->special,
+            backsector->tag);
+    } else { debugi("%s[2]:backsector NULL\r\n", __func__); }
+    if (frontsector)
+    {
+        debugi("%s[2]:frontsector ceiling:%d floor:%d cpic:%d fpic:%d linecount:%d validcount:%d special:%d tag:%d\r\n",
+            __func__,
+            frontsector->ceilingheight,
+            frontsector->floorheight,
+            frontsector->ceilingpic,
+            frontsector->floorpic,
+            frontsector->linecount,
+            frontsector->validcount,
+            frontsector->special,
+            frontsector->tag);
+    } else { debugi("%s[2]:frontsector NULL\r\n", __func__); }
+
+    /* First decide if the line is closed, normal, or invisible */
+    if (!(temp_linedef.flags & ML_TWOSIDED) || backsector->ceilingheight <= frontsector->floorheight || backsector->floorheight >= frontsector->ceilingheight || (
+    // if door is closed because back is shut:
+    backsector->ceilingheight <= backsector->floorheight
+
+    // preserve a kind of transparent door/lift special effect:
+    && (backsector->ceilingheight >= frontsector->ceilingheight || getSideTopTexture(linedef, side))
+
+    && (backsector->floorheight <= frontsector->floorheight || getSideBottomTexture(linedef, side))
+
+    // properly render skies (consider door "open" if both ceilings are sky):
+    && (backsector->ceilingpic != _g->skyflatnum || frontsector->ceilingpic != _g->skyflatnum)))
+        linedata->r_flags = (RF_CLOSED | (linedata->r_flags & RF_MAPPED)); // 2020-03-14 next-hack was ML_MAPPED, changed to RF_MAPPED
+    else
+    {
+        // Reject empty lines used for triggers
+        //  and special events.
+        // Identical floor and ceiling on both sides,
+        // identical light levels on both sides,
+        // and no middle texture.
+        // CPhipps - recode for speed, not certain if this is portable though
+        if (backsector->ceilingheight != frontsector->ceilingheight || backsector->floorheight != frontsector->floorheight || getSideMidTexture(linedef, side) || backsector->ceilingpic != frontsector->ceilingpic || backsector->floorpic != frontsector->floorpic || backsector->lightlevel != frontsector->lightlevel)
+        {
+            linedata->r_flags = (linedata->r_flags & RF_MAPPED);
+            return; // 2020-03-14 next-hack was ML_MAPPED, changed to RF_MAPPED
+        }
+        else
+            linedata->r_flags = (RF_IGNORE | (linedata->r_flags & RF_MAPPED)); // 2020-03-14 next-hack was ML_MAPPED, changed to RF_MAPPED
+    }
+#else
+    linedata_t *linedata = &_g->linedata[linedef->lineno];
+    debugi("%s[0]:linedata[linedef.lineno]:%d\r\n", __func__, linedef->lineno);
+    debugi("%s[0]:linedata flags:%u special:%u validcount:%u\r\n",
+        __func__,
+        linedata->r_flags,
+        linedata->special,
+        linedata->validcount);
+    const side_t *side = &_g->sides[curline->sidenum];
+    debugi("%s[1]:side sec_num:%d texoff:%d rowoff:%d toptex:%d midtex:%d bottex:%d\r\n",
+           __func__,
+           side->sector_num,
+           side->textureoffset,
+           side->rowoffset,
+           side->toptexture,
+           side->midtexture,
+           side->bottomtexture);
+
+    linedata->r_validcount = (_g->gametic & VALIDCOUNT_MASK);
+
+    if (backsector)
+    {
+        debugi("%s[2]:backsector ceiling:%d floor:%d cpic:%d fpic:%d linecount:%d validcount:%d special:%d tag:%d\r\n",
+            __func__,
+            backsector->ceilingheight,
+            backsector->floorheight,
+            backsector->ceilingpic,
+            backsector->floorpic,
+            backsector->linecount,
+            backsector->validcount,
+            backsector->special,
+            backsector->tag);
+    } else { debugi("%s[2]:backsector NULL\r\n", __func__); }
+    if (frontsector)
+    {
+        debugi("%s[2]:frontsector ceiling:%d floor:%d cpic:%d fpic:%d linecount:%d validcount:%d special:%d tag:%d\r\n",
+            __func__,
+            frontsector->ceilingheight,
+            frontsector->floorheight,
+            frontsector->ceilingpic,
+            frontsector->floorpic,
+            frontsector->linecount,
+            frontsector->validcount,
+            frontsector->special,
+            frontsector->tag);
+    } else { debugi("%s[2]:frontsector NULL\r\n", __func__); }
 
     /* First decide if the line is closed, normal, or invisible */
     if (!(linedef->flags & ML_TWOSIDED) || backsector->ceilingheight <= frontsector->floorheight || backsector->floorheight >= frontsector->ceilingheight || (
@@ -4645,6 +5607,7 @@ static void R_RecalcLineFlags(void)
         else
             linedata->r_flags = (RF_IGNORE | (linedata->r_flags & RF_MAPPED)); // 2020-03-14 next-hack was ML_MAPPED, changed to RF_MAPPED
     }
+#endif
 }
 
 // CPhipps -
@@ -4706,6 +5669,18 @@ static void R_AddLine(const seg_t *line)
 
     curline = line;
 
+#ifdef CONFIG_DOOM_NO_COMPACT_PTR
+    seg_t temp_seg;
+    user_flash_read_game_resource(&temp_seg, sizeof(temp_seg), (uint32_t)line);
+    line = &temp_seg;
+#endif
+    debugi("%s[0]:seg line angle:%d frontsec:%d backsec:%d linenum:%d sidenum:%d\r\n",
+           __func__,
+           line->angle,
+           line->frontsectornum,
+           line->backsectornum,
+           line->linenum,
+           line->sidenum);
     angle1 = R_PointToAngle(line->v1.x, line->v1.y);
     angle2 = R_PointToAngle(line->v2.x, line->v2.y);
 
@@ -4761,8 +5736,23 @@ static void R_AddLine(const seg_t *line)
     backsector = SG_BACKSECTOR(line);
 
     /* cph - roll up linedef properties in flags */
-    linedef = &_g->lines[curline->linenum];
+    linedef = &_g->lines[line->linenum];
+#ifdef CONFIG_DOOM_NO_COMPACT_PTR
+    unsigned int temp_lineno;
+    user_flash_read_game_resource(&temp_lineno, sizeof(temp_lineno), (uint32_t)&linedef->lineno);
+    linedata_t *linedata = &_g->linedata[temp_lineno];
+#else
     linedata_t *linedata = &_g->linedata[linedef->lineno];
+#endif
+    debugi("%s[1]:linedata flags:%u special:%u validcount:%u angle1:%d angle2:%d x1:%d x2:%d\r\n",
+           __func__,
+           linedata->r_flags,
+           linedata->special,
+           linedata->validcount,
+           angle1,
+           angle2,
+           x1,
+           x2);
 
     if (linedata->r_validcount != (_g->gametic & VALIDCOUNT_MASK))
         R_RecalcLineFlags();
@@ -4791,6 +5781,36 @@ static void R_Subsector(int num)
 
     sub = &_g->subsectors[num];
     frontsector = sub->sector;
+
+    debugi("%s: sub firstline:%d numlines:%d | arg num:%d\r\n", __func__, sub->firstline, sub->numlines, num);
+
+    if (backsector)
+    {
+        debugi("%s[0]:backsector ceiling:%d floor:%d cpic:%d fpic:%d linecount:%d validcount:%d special:%d tag:%d\r\n",
+            __func__,
+            backsector->ceilingheight,
+            backsector->floorheight,
+            backsector->ceilingpic,
+            backsector->floorpic,
+            backsector->linecount,
+            backsector->validcount,
+            backsector->special,
+            backsector->tag);
+    } else { debugi("%s[0]:backsector NULL\r\n", __func__); }
+    if (frontsector)
+    {
+        debugi("%s[0]:frontsector ceiling:%d floor:%d cpic:%d fpic:%d linecount:%d validcount:%d special:%d tag:%d\r\n",
+            __func__,
+            frontsector->ceilingheight,
+            frontsector->floorheight,
+            frontsector->ceilingpic,
+            frontsector->floorpic,
+            frontsector->linecount,
+            frontsector->validcount,
+            frontsector->special,
+            frontsector->tag);
+    } else { debugi("%s[0]:frontsector NULL\r\n", __func__); }
+
     count = sub->numlines;
     line = &_g->segs[sub->firstline];
     if (frontsector->floorheight < viewz)
@@ -4855,17 +5875,35 @@ static boolean R_CheckBBox(const short *bspcoord)
 
         // Find the corners of the box
         // that define the edges from current viewpoint.
+#ifdef CONFIG_DOOM_NO_COMPACT_PTR
+        short temp_bspcoord[4];
+        user_flash_read_game_resource(temp_bspcoord, sizeof(temp_bspcoord), (uint32_t)bspcoord);
+        boxpos = (viewx <= ((fixed_t) temp_bspcoord[BOXLEFT] << FRACBITS) ? 0 :
+                  viewx < ((fixed_t) temp_bspcoord[BOXRIGHT] << FRACBITS) ? 1 : 2) + (
+                viewy >= ((fixed_t) temp_bspcoord[BOXTOP] << FRACBITS) ? 0 :
+                viewy > ((fixed_t) temp_bspcoord[BOXBOTTOM] << FRACBITS) ? 4 : 8);
+        debugi("%s: boxpos:%d\r\n", __func__, boxpos);
+#else
         boxpos = (viewx <= ((fixed_t) bspcoord[BOXLEFT] << FRACBITS) ? 0 :
                   viewx < ((fixed_t) bspcoord[BOXRIGHT] << FRACBITS) ? 1 : 2) + (
                 viewy >= ((fixed_t) bspcoord[BOXTOP] << FRACBITS) ? 0 :
                 viewy > ((fixed_t) bspcoord[BOXBOTTOM] << FRACBITS) ? 4 : 8);
+        debugi("%s: boxpos:%d\r\n", __func__, boxpos);
+#endif
 
         if (boxpos == 5)
             return true;
 
         check = checkcoord[boxpos];
+#ifdef CONFIG_DOOM_NO_COMPACT_PTR
+        angle1 = R_PointToAngle(((fixed_t) temp_bspcoord[check[0]] << FRACBITS), ((fixed_t) temp_bspcoord[check[1]] << FRACBITS)) - viewangle;
+        angle2 = R_PointToAngle(((fixed_t) temp_bspcoord[check[2]] << FRACBITS), ((fixed_t) temp_bspcoord[check[3]] << FRACBITS)) - viewangle;
+        debugi("%s: angle1:%d angle2:%d\r\n", __func__, angle1, angle2);
+#else
         angle1 = R_PointToAngle(((fixed_t) bspcoord[check[0]] << FRACBITS), ((fixed_t) bspcoord[check[1]] << FRACBITS)) - viewangle;
         angle2 = R_PointToAngle(((fixed_t) bspcoord[check[2]] << FRACBITS), ((fixed_t) bspcoord[check[3]] << FRACBITS)) - viewangle;
+        debugi("%s: angle1:%d angle2:%d\r\n", __func__, angle1, angle2);
+#endif
     }
 
     // cph - replaced old code, which was unclear and badly commented
@@ -4960,6 +5998,30 @@ static void R_RenderBSPNode(int bspnum)
 
             bsp = &nodes[bspnum];
 
+#ifdef CONFIG_DOOM_NO_COMPACT_PTR
+            mapnode_t temp_node;
+            user_flash_read_game_resource(&temp_node, sizeof(temp_node), (uint32_t)bsp);
+            debugi("%s bsp at %08x bsp.dx:%d bsp.dy:%d bsp.x:%d bsp.y:%d bsp.child[0]:%d bsp.child[1]:%d\r\n",
+                   __func__,
+                   (uint32_t)bsp,
+                   temp_node.dx,
+                   temp_node.dy,
+                   temp_node.x,
+                   temp_node.y,
+                   temp_node.children[0],
+                   temp_node.children[1]);
+            bsp = &temp_node;
+#else
+            debugi("%s bsp at %08x bsp.dx:%d bsp.dy:%d bsp.x:%d bsp.y:%d bsp.child[0]:%d bsp.child[1]:%d\r\n",
+                   __func__,
+                   (uint32_t)bsp,
+                   bsp->dx,
+                   bsp->dy,
+                   bsp->x,
+                   bsp->y,
+                   bsp->children[0],
+                   bsp->children[1]);
+#endif
             side = R_PointOnSide(viewx, viewy, bsp);
 
             bspstack[sp++] = bspnum;
@@ -4997,7 +6059,39 @@ static void R_RenderBSPNode(int bspnum)
             bsp = &nodes[bspnum];
         }
 
+#ifdef CONFIG_DOOM_NO_COMPACT_PTR
+        mapnode_t temp_node;
+        user_flash_read_game_resource(&temp_node, sizeof(temp_node), (uint32_t)bsp);
+        bspnum = temp_node.children[side ^ 1];
+        debugi("%s bspnum at %08x bspnum:%d side:%d\r\n",
+               __func__,
+               (uint32_t)&bsp->children[side ^ 1],
+               bspnum,
+               side);
+        debugi("%s bsp.dx:%d bsp.dy:%d bsp.x:%d bsp.y:%d bsp.child[0]:%d bsp.child[1]:%d\r\n",
+               __func__,
+               temp_node.dx,
+               temp_node.dy,
+               temp_node.x,
+               temp_node.y,
+               temp_node.children[0],
+               temp_node.children[1]);
+#else
         bspnum = bsp->children[side ^ 1];
+        debugi("%s bspnum at %08x bspnum:%d side:%d\r\n",
+               __func__,
+               (uint32_t)&bsp->children[side ^ 1],
+               bspnum,
+               side);
+        debugi("%s bsp.dx:%d bsp.dy:%d bsp.x:%d bsp.y:%d bsp.child[0]:%d bsp.child[1]:%d\r\n",
+               __func__,
+               bsp->dx,
+               bsp->dy,
+               bsp->x,
+               bsp->y,
+               bsp->children[0],
+               bsp->children[1]);
+#endif
     }
 }
 
@@ -5140,20 +6234,73 @@ void V_DrawPatchNoScale(int x, int y, const patch_t *patch)
 
     if (false == isOnExternalFlash(patch))
     {
+#ifdef CONFIG_DOOM_NO_COMPACT_PTR
+        patch_t temp_patch;
+        user_flash_read_game_resource(&temp_patch, sizeof(temp_patch), (uint32_t)patch);
+        y -= temp_patch.topoffset;
+        x -= temp_patch.leftoffset;
+        debugi("%s patch is at %08x x:%d y:%d patch.h:%d patch.w:%d patch.topoff:%d patch.leftoff:%d\r\n",
+               __func__,
+               (uint32_t)patch,
+               x,
+               y,
+               temp_patch.height,
+               temp_patch.width,
+               temp_patch.topoffset,
+               temp_patch.leftoffset);
+#else
         y -= patch->topoffset;
         x -= patch->leftoffset;
+        debugi("%s patch is at %08x x:%d y:%d patch.h:%d patch.w:%d patch.topoff:%d patch.leftoff:%d\r\n",
+        __func__,
+        (uint32_t)patch,
+        x,
+        y,
+        patch->height,
+        patch->width,
+        patch->topoffset,
+        patch->leftoffset);
+#endif
         byte *desttop = (byte*) _g->screens[0].data;
 #ifndef HIGHRES
       desttop += (ScreenYToOffset(y) << 1) + x;
   #else
         desttop += (ScreenYToOffset(y)) + x;
 #endif
+#ifdef CONFIG_DOOM_NO_COMPACT_PTR
+        unsigned int width = temp_patch.width;
+#else
         unsigned int width = patch->width;
+#endif
 
         for (unsigned int col = 0; col < width; col++, desttop++)
         {
+#ifdef CONFIG_DOOM_NO_COMPACT_PTR
+            //IMPORTANT: overflow here on columnofs as well
+            int temp_columnof;
+            user_flash_read_game_resource(&temp_columnof, sizeof(temp_columnof), (uint32_t)(patch->columnofs + col));
+            column_t temp_column;
+            const column_t *column = (const column_t*) ((const byte*) patch + (0xFFFFFF & temp_columnof));
+            user_flash_read_game_resource(&temp_column, sizeof(temp_column), (uint32_t)(column));
+            debugi("%s column at %08x topdelta:%d len:%d\r\n", __func__, (uint32_t)column, temp_column.topdelta, temp_column.length);
+#else
             const column_t *column = (const column_t*) ((const byte*) patch + (0xFFFFFF & patch->columnofs[col]));
+            debugi("%s column at %08x topdelta:%d len:%d\r\n", __func__, (uint32_t)column, column->topdelta, column->length);
+#endif
             // step through the posts in a column
+#ifdef CONFIG_DOOM_NO_COMPACT_PTR
+            while (temp_column.topdelta != 0xff)
+            {
+                const byte *source = (const byte*) column + 3;
+                byte *dest = desttop + (ScreenYToOffset(temp_column.topdelta));
+
+                // next-hack 2021-03-15: clip to boundary
+                int starty = temp_column.topdelta + y;
+                int stopy = temp_column.topdelta + y + temp_column.length - 1;
+                int count = temp_column.length;
+                debugi("%s column at %08x source at %08x\r\n", __func__, (uint32_t)column, (uint32_t)source);
+                debugi("%s starty:%d stopy:%d count:%d\r\n", __func__, starty, stopy, count);
+#else
             while (column->topdelta != 0xff)
             {
                 const byte *source = (const byte*) column + 3;
@@ -5163,6 +6310,9 @@ void V_DrawPatchNoScale(int x, int y, const patch_t *patch)
                 int starty = column->topdelta + y;
                 int stopy = column->topdelta + y + column->length - 1;
                 int count = column->length;
+                debugi("%s column at %08x source at %08x\r\n", __func__, (uint32_t)column, (uint32_t)source);
+                debugi("%s starty:%d stopy:%d count:%d\r\n", __func__, starty, stopy, count);
+#endif
 
                 //
                 if (starty < draw_starty)
@@ -5290,13 +6440,26 @@ void V_DrawPatchNoScale(int x, int y, const patch_t *patch)
                 {
                     while (count--)
                     {
+#ifdef CONFIG_DOOM_NO_COMPACT_PTR
+                        byte temp_color;
+                        user_flash_read_game_resource(&temp_color, sizeof(temp_color), (uint32_t)source);
+                        source++;
+                        unsigned int color = temp_color;
+#else
                         unsigned int color = *source++;
+#endif
+                        // debugi("%s color:%d\r\n", __func__, color);
                         *dest = color;
                         dest += SCREENWIDTH_PHYSICAL;
                     }
                 }
                 #endif
+#ifdef CONFIG_DOOM_NO_COMPACT_PTR
+                column = (const column_t*) ((const byte*) column + temp_column.length + 4);
+                user_flash_read_game_resource(&temp_column, sizeof(temp_column), (uint32_t)column);
+#else
                 column = (const column_t*) ((const byte*) column + column->length + 4);
+#endif
             }
         }
     }
@@ -5620,11 +6783,30 @@ static boolean P_CrossSubsector(int num)
     fixed_t opentop = 0, openbottom = 0;
     const sector_t *front = NULL, *back = NULL;
 
+#ifdef CONFIG_DOOM_NO_COMPACT_PTR
+    const seg_t *old_seg = seg;
+    seg_t temp_seg;
+    seg = &temp_seg;
+    for (count = _g->subsectors[num].numlines; --count >= 0; old_seg++)
+    { // check lines
+        debugi("%s reading seg at %08x\r\n", __func__, (uint32_t)old_seg);
+        user_flash_read_game_resource(&temp_seg, sizeof(temp_seg), (uint32_t)(old_seg));
+
+        int linenum = seg->linenum;
+
+        line_t temp_line;
+        user_flash_read_game_resource(&temp_line, sizeof(temp_line), (uint32_t)(_g->lines + linenum));
+        debugi("%s reading line at %08x\r\n", __func__, (uint32_t)(_g->lines + linenum));
+        const line_t *line = &temp_line;
+#else
     for (count = _g->subsectors[num].numlines; --count >= 0; seg++)
     { // check lines
+        debugi("%s reading seg at %08x\r\n", __func__, (uint32_t)seg);
         int linenum = seg->linenum;
 
         const line_t *line = &_g->lines[linenum];
+        debugi("%s reading line at %08x\r\n", __func__, (uint32_t)line);
+#endif
         divline_t divl;
 
         // allready checked other side?
@@ -5712,6 +6894,14 @@ boolean P_CrossBSPNode(int bspnum)
     {
         const mapnode_t *bsp = nodes + bspnum;
 
+#ifdef CONFIG_DOOM_NO_COMPACT_PTR
+        mapnode_t temp_node;
+        user_flash_read_game_resource(&temp_node, sizeof(temp_node), (uint32_t)(nodes + bspnum));
+        debugi("%s reading bsp at %08x\r\n", __func__, (uint32_t)(nodes + bspnum));
+        bsp = &temp_node;
+#else
+        debugi("%s reading bsp at %08x\r\n", __func__, (uint32_t)(bsp));
+#endif
         divline_t dl;
         dl.x = ((fixed_t) bsp->x << FRACBITS);
         dl.y = ((fixed_t) bsp->y << FRACBITS);

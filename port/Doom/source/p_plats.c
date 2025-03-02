@@ -196,9 +196,27 @@ int EV_DoPlat(const line_t *line, plattype_e type, int amount)
     secnum = -1;
     rtn = 0;
 
+#ifdef CONFIG_DOOM_NO_COMPACT_PTR
+    line_t temp_line;
+    user_flash_read_game_resource(&temp_line, sizeof(temp_line), (uint32_t)line);
+    debugi("%s read line at %08x tag:%d\r\n", __func__, (uint32_t)line, temp_line.tag);
+#else
+    debugi("%s read line at %08x tag:%d\r\n", __func__, (uint32_t)line, line->tag);
+#endif
+
     // Activate all <type> plats that are in_stasis
     switch (type)
     {
+#ifdef CONFIG_DOOM_NO_COMPACT_PTR
+        case perpetualRaise:
+            P_ActivateInStasis(temp_line.tag);
+            break;
+
+        case toggleUpDn:
+            P_ActivateInStasis(temp_line.tag);
+            rtn = 1;
+            break;
+#else
         case perpetualRaise:
             P_ActivateInStasis(line->tag);
             break;
@@ -207,7 +225,7 @@ int EV_DoPlat(const line_t *line, plattype_e type, int amount)
             P_ActivateInStasis(line->tag);
             rtn = 1;
             break;
-
+#endif
         default:
             break;
     }
@@ -232,7 +250,11 @@ int EV_DoPlat(const line_t *line, plattype_e type, int amount)
         plat->sector->floordata_sptr = getShortPtr(plat); //jff 2/23/98 multiple thinkers
         plat->thinker.function = T_PlatRaise;
         plat->crush = false;
+#ifdef CONFIG_DOOM_NO_COMPACT_PTR
+        plat->tag = temp_line.tag;
+#else
         plat->tag = line->tag;
+#endif
 
         //jff 1/26/98 Avoid raise plat bouncing a head off a ceiling and then
         //going down forever -- default low to plat height when triggered
@@ -243,7 +265,13 @@ int EV_DoPlat(const line_t *line, plattype_e type, int amount)
         {
             case raiseToNearestAndChange:
                 plat->speed = PLATSPEED / 2;
+#ifdef CONFIG_DOOM_NO_COMPACT_PTR
+                side_t temp_side;
+                user_flash_read_game_resource(&temp_side, sizeof(temp_side), (uint32_t)(_g->sides + temp_line.sidenum[0]));
+                sec->floorpic = _g->sectors[temp_side.sector_num].floorpic;
+#else
                 sec->floorpic = _g->sectors[_g->sides[line->sidenum[0]].sector_num].floorpic;
+#endif
                 plat->high = P_FindNextHighestFloor(sec, sec->floorheight);
                 plat->wait = 0;
                 plat->status = up;
@@ -322,6 +350,17 @@ int EV_DoPlat(const line_t *line, plattype_e type, int amount)
             default:
                 break;
         }
+        debugi("%s added plat: count:%d speed:%d high:%d low:%d speed:%d status:%d tag:%d type:%d wait:%d\r\n",
+               __func__,
+               plat->count,
+               plat->speed,
+               plat->high,
+               plat->low,
+               plat->speed,
+               plat->status,
+               plat->tag,
+               plat->type,
+               plat->wait);
         P_AddActivePlat(plat);  // add plat to list of active plats
     }
     return rtn;
@@ -417,7 +456,7 @@ void P_AddActivePlat(plat_t *plat)
 // Returns nothing
 //
 void P_RemoveActivePlat(plat_t *plat)
-{
+{   
     platlist_t *list = plat->list;
     plat->sector->floordata_sptr = 0; //jff 2/23/98 multiple thinkers
 

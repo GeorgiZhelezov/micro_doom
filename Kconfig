@@ -1,0 +1,48 @@
+mainmenu "Micro DOOM"
+
+menu "Zephyr"
+source "Kconfig.zephyr"
+endmenu
+
+menu "Micro DOOM"
+
+config DOOM_NO_COMPACT_PTR
+	bool "No compact pointers"
+	default n if BOARD_RPI_PICO
+	help
+		Disables or enables *_sptr variables throughout the codebase for different
+		members of structs, args in function calls... Reduces code size at the expense
+		of performance. Will be forcefully enabled for some targets that cannot have
+		compact pointers due to memory mappings.
+
+config DOOM_FORCE_NO_COMPACT_PTR_BOARDS
+	bool
+	default y if BOARD_NATIVE_SIM || BOARD_ESP32_DEVKITC_WROOM
+	help
+		Internal variable for defining boards where DOOM_NO_COMPACT_PTR should be forced.
+
+config FORCE_DOOM_NO_COMPACT_PTR
+	bool
+	default y if DOOM_FORCE_NO_COMPACT_PTR_BOARDS
+	select DOOM_NO_COMPACT_PTR
+	depends on DOOM_FORCE_NO_COMPACT_PTR_BOARDS
+	help
+		Internal option that forces DOOM_NO_COMPACT_PTR to be enabled for selected targets.
+
+config DOOM_DISPLAY_PADDING
+	bool "Pad display for uneven height"
+	default y if BOARD_RPI_PICO || BOARD_ESP32_DEVKITC_WROOM
+	help
+		Draw a black padding row (squish the screen) if the height of the display is uneven.
+		Reduces drawing latency by only needing to draw two half blocks of the dispaly, 
+		rather than half block + half line + half line + half block.
+
+config DOOM_ALLOCATOR_MAX_STATIC_ZONE_SIZE
+	int "Max size of the allocator mem pool"
+	default 80000 if BOARD_ESP32_DEVKITC_WROOM
+	default 113600 # from base code
+	help
+		Define the maximum size of the staticZone[] mem pool for DOOM's allocator.
+		Originally is set to 113600 bytes, but this may be lowered depending on build target due to RAM limitations.
+
+endmenu

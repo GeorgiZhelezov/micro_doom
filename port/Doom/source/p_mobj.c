@@ -171,7 +171,16 @@ void P_XYMovement(mobj_t *mo)
 
                     if (_g->ceilingline)
                     {
+#ifdef CONFIG_DOOM_NO_COMPACT_PTR
+                        line_t temp_line;
+                        user_flash_read_game_resource(&temp_line, sizeof(temp_line), (uint32_t)_g->ceilingline);
+                        side_t temp_side1;
+                        user_flash_read_game_resource(&temp_side1, sizeof(temp_side1), (uint32_t)(_g->sides + temp_line.sidenum[1]));
+
+                        const sector_t *ceilingBackSector = LN_BACKSECTOR_ALT(&temp_line, temp_side1);
+#else
                         const sector_t *ceilingBackSector = LN_BACKSECTOR(_g->ceilingline);
+#endif
 
                         if (ceilingBackSector && ceilingBackSector->ceilingpic == _g->skyflatnum)
                         {
@@ -526,6 +535,8 @@ mobj_t* P_SpawnMobj(fixed_t x, fixed_t y, fixed_t z, mobjtype_t type)
     const mobjinfo_t *info;
     info = &mobjinfo[type];
 
+    debugi("%s spawning mob at x:%d y:%d z:%d type:%d\r\n", __func__, x, y, z, type);
+
     if (info->flags & MF_STATIC)
         return (mobj_t*) P_SpawnStaticMobj(x, y, z, type);
     mobj = P_GetMobj();    //*/ Z_Malloc (sizeof(*mobj), PU_LEVEL, NULL);
@@ -595,6 +606,7 @@ static_mobj_t* P_SpawnStaticMobj(fixed_t x, fixed_t y, fixed_t z, mobjtype_t typ
     const state_t *st;
     const mobjinfo_t *info;
 
+    debugi("%s spawning static mob at x:%d y:%d z:%d type:%d\r\n", __func__, x, y, z, type);
     mobj = P_GetStaticMobj();  //*/ Z_Malloc (sizeof(*mobj), PU_LEVEL, NULL);
     memset(mobj, 0, sizeof(*mobj));
     // info removed. Redundant and consumes 4 bytes per mobj.

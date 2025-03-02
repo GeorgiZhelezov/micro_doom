@@ -85,10 +85,15 @@ typedef actionf_t think_t;
 /* Doubly linked list of actors. */
 typedef struct thinker_s
 {
+#ifdef CONFIG_DOOM_NO_COMPACT_PTR
+    size_t prev_sptr;
+    size_t next_sptr;
+#else
     //struct thinker_s*   prev;
     unsigned short prev_sptr;
     //struct thinker_s*   next;
     unsigned short next_sptr;
+#endif
     think_t function;
 
 } thinker_t;

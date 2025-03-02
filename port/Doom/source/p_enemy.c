@@ -115,20 +115,76 @@ static void P_RecursiveSound(sector_t *sec, int soundblocks, mobj_t *soundtarget
 //      const line_t *check = sec->lines[i];
         const line_t *check = getSectorLineByIndex(sec, i);
 
+#ifdef CONFIG_DOOM_NO_COMPACT_PTR
+        uint32_t temp_check_addr;
+        user_flash_read_game_resource(&temp_check_addr, sizeof(temp_check_addr), (uint32_t)check);
+        line_t temp_check;
+        user_flash_read_game_resource(&temp_check, sizeof(temp_check), temp_check_addr);
+        debugi("%s check is at %08x check.flags:%d\r\n", __func__, (uint32_t)temp_check_addr, temp_check.flags);
+        if (!(temp_check.flags & ML_TWOSIDED))
+            continue;
+
+        P_LineOpening((const line_t *)temp_check_addr);
+#else
+        debugi("%s check is at %08x check.flags:%d\r\n", __func__, (uint32_t)check, check->flags);
         if (!(check->flags & ML_TWOSIDED))
             continue;
 
         P_LineOpening(check);
+#endif
+
 
         if (_g->openrange <= 0)
             continue;       // closed door
+#ifdef CONFIG_DOOM_NO_COMPACT_PTR
 
+        if (user_flash_is_resource_in_flash((uint32_t)sec))
+        {
+            //not covering if its in flash so fault here just in case
+            other = &_g->sectors[_g->sides[check->sidenum[&_g->sectors[_g->sides[check->sidenum[0]].sector_num] == sec]].sector_num];
+        }
+
+        side_t temp_side_inner;
+        user_flash_read_game_resource(&temp_side_inner, sizeof(temp_side_inner), (uint32_t)&_g->sides[temp_check.sidenum[0]]);
+
+        side_t temp_side_outer;
+        user_flash_read_game_resource(&temp_side_outer, sizeof(temp_side_outer), (uint32_t)&_g->sides[temp_check.sidenum[&_g->sectors[temp_side_inner.sector_num] == sec]]);
+
+        other = &_g->sectors[temp_side_outer.sector_num];
+
+        // other = 
+        // &_g->sectors
+        // [
+        //     _g->sides
+        //     [
+        //         check->sidenum
+        //         [
+        //             &_g->sectors
+        //             [
+        //                 _g->sides
+        //                 [
+        //                     check->sidenum[0]
+        //                 ].sector_num
+        //             ] == sec
+        //         ]
+        //     ].sector_num
+        // ];
+#else
+        //mother of all references
         other = &_g->sectors[_g->sides[check->sidenum[&_g->sectors[_g->sides[check->sidenum[0]].sector_num] == sec]].sector_num];
+#endif
 
+#ifdef CONFIG_DOOM_NO_COMPACT_PTR
+        if (!(temp_check.flags & ML_SOUNDBLOCK))
+            P_RecursiveSound(other, soundblocks, soundtarget);
+        else if (!soundblocks)
+            P_RecursiveSound(other, 1, soundtarget);
+#else
         if (!(check->flags & ML_SOUNDBLOCK))
             P_RecursiveSound(other, soundblocks, soundtarget);
         else if (!soundblocks)
             P_RecursiveSound(other, 1, soundtarget);
+#endif
     }
 }
 

@@ -372,6 +372,7 @@ static void D_UpdateFPS()
     if (elapsed >= 1000000UL)
     {
         _g->fps_framerate = (int) (_g->fps_frames * 10000000 / ((float) elapsed));
+        // _g->fps_framerate = 69;
         _g->fps_frames = 0;
         _g->fps_timebefore = timenow;
     }
@@ -842,6 +843,12 @@ static void D_DoomMainSetup(void)
        const patch_t *patch = W_CacheLumpNum(i);
        spiFlashSetAddress((uint32_t) patch);
        spiFlashGetData(&patchSizeOffsets[i], sizeof (patchsizeoffsets_t));
+
+       debugi("%s patch size offs[%d]: h:%d w:%d topoff:%d leftoff:%d\r\n", __func__, i, 
+       patchSizeOffsets[i].height,
+       patchSizeOffsets[i].width,
+       patchSizeOffsets[i].topoffset,
+       patchSizeOffsets[i].leftoffset);
     }
     p_wad_immutable_flash_data->patchLumpSizeOffsets = writeBufferToFlashRegion(patchSizeOffsets, sizeof(patchsizeoffsets_t) * _g->numlumps, FLASH_IMMUTABLE_REGION, true);
     Z_Free(patchSizeOffsets);

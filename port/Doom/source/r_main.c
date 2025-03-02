@@ -242,7 +242,16 @@ void R_SetupFrame(player_t * player)
     viewsin = finesine[viewangle >> ANGLETOFINESHIFT];
     viewcos = finecosine[viewangle >> ANGLETOFINESHIFT];
 
+#ifdef CONFIG_DOOM_NO_COMPACT_PTR
+    uint32_t temp_colormaps_addr;
+    user_flash_read_game_resource(&temp_colormaps_addr, sizeof(temp_colormaps_addr), (uint32_t)&p_wad_immutable_flash_data->colormaps);
+ 
+    fullcolormap = (const lighttable_t *)temp_colormaps_addr;
+    // debugi("%s fullcolormap at %08x\r\n", __func__, (uint32_t)fullcolormap);
+#else
     fullcolormap = &p_wad_immutable_flash_data->colormaps[0];
+    // debugi("%s fullcolormap at %08x\r\n", __func__, (uint32_t)fullcolormap);
+#endif
     if (player->fixedcolormap)
     {
         fixedcolormap = fullcolormap // killough 3/20/98: use fullcolormap

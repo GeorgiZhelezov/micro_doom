@@ -120,7 +120,15 @@ void** storeLumpArrayToFlash(boolean levelChanged)
     }
     else
     {  // do not reload
+#ifdef CONFIG_DOOM_NO_COMPACT_PTR
+        uint32_t temp_leveldata_addr;
+        user_flash_read_game_resource(&temp_leveldata_addr, sizeof(temp_leveldata_addr), (uint32_t)&p_wad_immutable_flash_data->levelData);
+        uint32_t temp_lumpprtarray_addr;
+        user_flash_read_game_resource(&temp_lumpprtarray_addr, sizeof(temp_lumpprtarray_addr), (uint32_t)&((wad_level_flash_data_t *)temp_leveldata_addr)->lumpAddressTable);
+        lumpPtrArray = (void **)temp_lumpprtarray_addr;
+#else
         lumpPtrArray = p_wad_immutable_flash_data->levelData->lumpAddressTable;
+#endif
         printf("level not changed, retrieving old lumpAddressTable 0x%x\r\n", lumpPtrArray);
     }
     Z_Free(oldLumpPtrArrayAddress);
@@ -151,6 +159,13 @@ void initImmutableFlashRegion()
     p_wad_immutable_flash_data->palette_lump = writeLumpToFlashRegion(W_GetNumForName("PLAYPAL"), FLASH_IMMUTABLE_REGION, true);
     // get the colormap
     p_wad_immutable_flash_data->colormaps = writeLumpToFlashRegion(W_GetNumForName("COLORMAP"), FLASH_IMMUTABLE_REGION, true);
+#ifdef CONFIG_DOOM_NO_COMPACT_PTR
+    debugi("%s pallete lump at %08x\r\n", __func__, (uint32_t)p_wad_immutable_flash_data->palette_lump);
+    debugi("%s colormaps at %08x\r\n", __func__, (uint32_t)p_wad_immutable_flash_data->colormaps);
+#else
+    debugi("%s pallete lump at %08x\r\n", __func__, (uint32_t)p_wad_immutable_flash_data->palette_lump);
+    debugi("%s colormaps at %08x\r\n", __func__, (uint32_t)p_wad_immutable_flash_data->colormaps);
+#endif
     //
     #if CACHE_ALL_COLORMAP_TO_RAM
         memcpy (ramColorMap, p_wad_immutable_flash_data->colormaps, sizeof (ramColorMap));
@@ -173,13 +188,37 @@ void initLumpPtrTable(void)
     //
     lumpPtrArrayStoredInFlash = false;
     // update - just for sake of completeness, but we actually won't use it - colormaps and playpal lumps
+#ifdef CONFIG_DOOM_NO_COMPACT_PTR
+    uint32_t temp_addr;
+
+    user_flash_read_game_resource(&temp_addr, sizeof(temp_addr), (uint32_t)&p_wad_immutable_flash_data->colormaps);
+    lumpPtrArray[W_GetNumForName("COLORMAP")] = (void *)temp_addr;
+
+    user_flash_read_game_resource(&temp_addr, sizeof(temp_addr), (uint32_t)&p_wad_immutable_flash_data->palette_lump);
+    lumpPtrArray[W_GetNumForName("PLAYPAL")] = (void *)temp_addr;
+
+    debugi("%s lumpptrarray[colormap] is at %08x\r\n", __func__, (uint32_t)lumpPtrArray[W_GetNumForName("COLORMAP")]);
+    debugi("%s lumpptrarray[playpal] is at %08x\r\n", __func__, (uint32_t)lumpPtrArray[W_GetNumForName("PLAYPAL")]);
+#else
     lumpPtrArray[W_GetNumForName("COLORMAP")] = p_wad_immutable_flash_data->colormaps;
     lumpPtrArray[W_GetNumForName("PLAYPAL")] = p_wad_immutable_flash_data->palette_lump;
+
+    debugi("%s lumpptrarray[colormap] is at %08x\r\n", __func__, (uint32_t)lumpPtrArray[W_GetNumForName("COLORMAP")]);
+    debugi("%s lumpptrarray[playpal] is at %08x\r\n", __func__, (uint32_t)lumpPtrArray[W_GetNumForName("PLAYPAL")]);
+#endif
     //
 }
 void getFileLumpByNum(int n, filelump_t *fl)
 {
+#ifdef CONFIG_DOOM_NO_COMPACT_PTR
+    wadinfo_t temp_wad;
+    user_flash_read_game_resource(&temp_wad, sizeof(temp_wad), (uint32_t)doom_iwad);
+    debugi("%s get file lump id %d at addr %08x\r\n", __func__, n, WAD_ADDRESS + temp_wad.infotableofs + n * sizeof(filelump_t));
+    spiFlashSetAddress(WAD_ADDRESS + temp_wad.infotableofs + n * sizeof(filelump_t));
+#else
+    debugi("%s get file lump id %d at addr %08x\r\n", __func__, n, WAD_ADDRESS + p_wad_immutable_flash_data->wadHeader.infotableofs + n * sizeof(filelump_t));
     spiFlashSetAddress(WAD_ADDRESS + p_wad_immutable_flash_data->wadHeader.infotableofs + n * sizeof(filelump_t));
+#endif
     spiFlashGetData(fl, sizeof(filelump_t));
 }
 // get how much space we have in flash, taking into account if we already stored the lump pointer table or not.
@@ -216,7 +255,13 @@ void programFlashWord(uint32_t *address, uint32_t word)
 {
 	//FIXME: add flash write word
 	
+#ifdef CONFIG_DOOM_NO_COMPACT_PTR
+    uint32_t temp_word;
+    user_flash_read_game_resource(&temp_word, sizeof(temp_word), (uint32_t) address);
+    if (temp_word == 0xFFFFFFFF)
+#else
     if (*address == 0xFFFFFFFF)
+#endif
     {
         nh_disable_irq();
         // enable write
@@ -237,7 +282,13 @@ void programFlashWord(uint32_t *address, uint32_t word)
 void storeWordToFlash(uint32_t *dest, uint32_t word, uint8_t flashRegion, boolean isHeader)
 {
     // first check if dest is compatible, i.e. is the same as sourceo r it is erased
+#ifdef CONFIG_DOOM_NO_COMPACT_PTR
+    uint32_t temp_word;
+    user_flash_read_game_resource(&temp_word, sizeof(temp_word), (uint32_t)dest);
+    if (!(temp_word == word || temp_word == 0xFFFFFFFF))
+#else
     if (!(*dest == word || *dest == 0xFFFFFFFF))
+#endif
     {
         // we need to erase before writing. However we need to find the limits...
         uint32_t pageAddress = ((uint32_t) dest) & ~(FLASH_BLOCK_SIZE - 1); // page that will be erased
@@ -275,9 +326,15 @@ void storeWordToFlash(uint32_t *dest, uint32_t word, uint8_t flashRegion, boolea
         Z_Free(tmp);
     }
     // write word
+#ifdef CONFIG_DOOM_NO_COMPACT_PTR
+    if (!(temp_word == word))
+    {
+        if (temp_word == 0xFFFFFFFF)
+#else
     if (!(*dest == word))
     {
         if (*dest == 0xFFFFFFFF)
+#endif
             programFlashWord(dest, word);
         else
         {
@@ -306,6 +363,9 @@ void* writeBufferToFlashRegion(void *buffer, int size, uint8_t flashRegion, bool
     }
     uint32_t *s = buffer;
     uint32_t *d = address;
+
+    // debugi("%s writing to range %08x - %08x\r\n", __func__, (uint32_t)d, (uint32_t)d + size);
+    
     for (int i = 0; i < size / 4; i++)
     {
         storeWordToFlash(d++, *s++, flashRegion, false);
@@ -421,15 +481,32 @@ void* storeLevelValues(boolean levelChanged)
     {
         // store header
         uint32_t *src = (uint32_t*) p_wad_level_flash_data;
+
+#ifdef CONFIG_DOOM_NO_COMPACT_PTR
+        uint32_t leveldata_addr;
+        user_flash_read_game_resource(&leveldata_addr, sizeof(leveldata_addr), (uint32_t)&p_wad_immutable_flash_data->levelData);
+
+        for (int i = 0; i < sizeof(*p_wad_level_flash_data) / sizeof(uint32_t);
+                i++)
+        {
+            storeWordToFlash((uint32_t*)leveldata_addr + i, src[i], FLASH_LEVEL_REGION, true);
+#else
         for (int i = 0; i < sizeof(*p_wad_level_flash_data) / sizeof(uint32_t);
                 i++)
         {
             storeWordToFlash((uint32_t*) p_wad_immutable_flash_data->levelData + i, src[i], FLASH_LEVEL_REGION, true);
+#endif
         }
     }
     printf("Freeing p_wad_level_flash_data %0x\r\n", (uint32_t) p_wad_level_flash_data);
     Z_Free(p_wad_level_flash_data);
+#ifdef CONFIG_DOOM_NO_COMPACT_PTR
+    uint32_t temp_leveldata_addr;
+    user_flash_read_game_resource(&temp_leveldata_addr, sizeof(temp_leveldata_addr), (uint32_t)&p_wad_immutable_flash_data->levelData);
+    return (uint32_t*) temp_leveldata_addr;
+#else
     return (uint32_t*) p_wad_immutable_flash_data->levelData;
+#endif
 }
 //
 // GLOBALS
@@ -574,7 +651,10 @@ static const filelump_t* PUREFUNC FindLumpByNum(int num)
 {
     wadinfo_t header;
     if (num < 0)
+    {
+        debugi("%s returns NULL, num:%d < 0", __func__, num);
         return NULL;
+    }
     spiFlashSetAddress((uint32_t) p_doom_iwad_len);
     uint32_t wadLength;
     spiFlashGetData(&wadLength, sizeof(uint32_t));
@@ -585,10 +665,13 @@ static const filelump_t* PUREFUNC FindLumpByNum(int num)
 
         if (num >= header.numlumps)
         {
+            debugi("%s returns NULL, num:%d >= header.numlumps:%d", __func__, num, header.numlumps);
             return NULL;
         }
+        debugi("%s returns filelump at %08x\r\n", __func__, (WAD_ADDRESS + header.infotableofs + num * sizeof(filelump_t)));
         return (filelump_t*) (WAD_ADDRESS + header.infotableofs + num * sizeof(filelump_t));
     }
+    debugi("%s returns NULL, at end of func\r\n", __func__);
     return NULL;
 }
 
@@ -615,7 +698,11 @@ int PUREFUNC W_CheckNumForName(const char *name)
 {
     const filelump_t *lump = NULL;
 
-    return FindLumpByName(name, &lump);
+    int i = FindLumpByName(name, &lump);
+
+    debugi("%s lump %.8s returned id %d\r\n", __func__, name, i);
+    
+    return i;
 }
 
 // W_GetNumForName
@@ -683,10 +770,12 @@ int PUREFUNC W_LumpLength(int lump)
         spiFlashSetAddress((uint32_t) &l->size);
         int size;
         spiFlashGetData(&size, sizeof(size));
+        debugi("%s retruns size:%d of lump_id:%d\r\n", __func__, lump, size);
         return size;
     }
 
     I_Error("W_LumpLength: %i >= numlumps", lump);
+    debugi("%s retruns size:0 of lump_id:%d\r\n", __func__, lump);
 
     return 0;
 }
@@ -700,8 +789,11 @@ static const void* PUREFUNC W_GetLumpPtr(int lump)
         spiFlashSetAddress((uint32_t) &l->filepos);
         int filepos;
         spiFlashGetData(&filepos, sizeof(filepos));
+        debugi("%s returns addr:%08x for lump id:%d\r\n", __func__, WAD_ADDRESS + filepos, lump);
         return (const uint8_t*) WAD_ADDRESS + filepos;
     }
+
+    debugi("%s returns NULL\r\n", __func__);
     return NULL;
 }
 void* getAddressOrCacheLumpNum(int lump, boolean storeInFlash, uint8_t flashRegion)
@@ -710,6 +802,7 @@ void* getAddressOrCacheLumpNum(int lump, boolean storeInFlash, uint8_t flashRegi
     if (lump > _g->numlumps)
     {
         printf("Attempt to load a non existent lump. %d Blocking\r\n", lump);
+        k_panic();
         while (1);
     }
     if (lumpPtrArray == NULL && !storeInFlash)
@@ -717,8 +810,35 @@ void* getAddressOrCacheLumpNum(int lump, boolean storeInFlash, uint8_t flashRegi
         return (void*) W_GetLumpPtr(lump);
     }
     //
+#ifdef CONFIG_DOOM_NO_COMPACT_PTR
+    if (user_flash_is_resource_in_flash((uint32_t)(lumpPtrArray + lump)))
+    {
+        uint32_t temp_lump_data;
+        user_flash_read_game_resource(&temp_lump_data, sizeof(temp_lump_data), (uint32_t)(lumpPtrArray + lump));
+        // debugi("%s checking lumpptrarray[%d] %08x\r\n", __func__, lump, temp_lump_data);
+        if (temp_lump_data != 0xFFFFFFFF && temp_lump_data)
+        {
+            // debugi("%s returning lumpptrarray[%d] %08x\r\n", __func__, lump, temp_lump_data);
+            return (void*)temp_lump_data;
+        }
+    }
+    else
+    {
+        // debugi("%s checking lumpptrarray[%d] %08x\r\n", __func__, lump, (uint32_t)(lumpPtrArray[lump]));
+        if (lumpPtrArray[lump] != (void*) 0xFFFFFFFF && lumpPtrArray[lump])
+        {
+            // debugi("%s returning lumpptrarray[%d] %08x\r\n", __func__, lump, (uint32_t)lumpPtrArray[lump]);
+            return lumpPtrArray[lump];
+        }
+    }
+#else
+    // debugi("%s checking lumpptrarray[%d] %08x\r\n", __func__, lump, (uint32_t)lumpPtrArray[lump]);
     if (lumpPtrArray[lump] != (void*) 0xFFFFFFFF && lumpPtrArray[lump])
+    {
+        // debugi("%s returning lumpptrarray[%d] %08x\r\n", __func__, lump, (uint32_t)lumpPtrArray[lump]);
         return lumpPtrArray[lump];
+    }
+#endif
 
     void *address;
     if (storeInFlash)
@@ -742,5 +862,9 @@ const void* /*PUREFUNC*/W_CacheLumpNum(int lump)
     // printf("Caching lump %d ... ", lump);
     void *addr = getAddressOrCacheLumpNum(lump, false, 0);
     // printf("cached to --> 0x%08x\r\n",  addr);
+    // if (user_flash_is_resource_in_flash((uint32_t)addr))
+    // {
+    //     debugi("%s poking for lump id %d at %08x\r\n", __func__, lump, (uint32_t)addr);
+    // }
     return addr;
 }

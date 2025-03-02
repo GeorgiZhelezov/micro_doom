@@ -84,6 +84,7 @@ void STlib_initNum(st_number_t *n, int x, int y, const patch_t **pl, short *num,
     n->num = num;
     n->on = on;
     n->p = pl;
+    // debugi("%s n.x:%d n.y:%d n.w:%d n.num:%d n.on:%d\r\n", __func__, n->x, n->y, n->width, *n->num, *n->on);
 }
 
 /*
@@ -106,6 +107,30 @@ static void STlib_drawNum(st_number_t *n, int cm, boolean refresh)
     int num = *n->num;
 
     int w;
+#ifdef CONFIG_DOOM_NO_COMPACT_PTR
+    uint32_t temp_patch0_addr;
+    user_flash_read_game_resource(&temp_patch0_addr, sizeof(temp_patch0_addr), (uint32_t)&n->p[0]);
+    patch_t temp_patch0;
+    user_flash_read_game_resource(&temp_patch0, sizeof(temp_patch0), temp_patch0_addr);
+    uint32_t temp_width_addr = (uint32_t)(&((patch_t*)temp_patch0_addr)->width);
+    // debugi("%s patch0 is at %08x width:%d width at %08x\r\n",
+    //        __func__,
+    //        temp_patch0_addr,
+    //        temp_patch0.width,
+    //        temp_width_addr);
+    if (isOnExternalFlash(temp_width_addr))
+    {
+        spiFlashSetAddress((uint32_t) temp_width_addr);
+        w = spiFlashGetShort();
+    }
+    else
+        w = temp_patch0.width;
+#else
+    // debugi("%s patch0 is at %08x width:%d width at %08x\r\n",
+        //    __func__,
+        //    (uint32_t)n->p[0],
+        //    n->p[0]->width,
+        //    (uint32_t)&n->p[0]->width);
     if (isOnExternalFlash(&n->p[0]->width))
     {
         spiFlashSetAddress((uint32_t) &n->p[0]->width);
@@ -113,6 +138,7 @@ static void STlib_drawNum(st_number_t *n, int cm, boolean refresh)
     }
     else
         w = n->p[0]->width;
+#endif
     int x = n->x;
 
     int neg;
@@ -140,8 +166,15 @@ static void STlib_drawNum(st_number_t *n, int cm, boolean refresh)
     //jff 2/16/98 add color translation to digit output
     // in the special case of 0, you draw 0
     if (!num)
+    {
         // CPhipps - patch drawing updated, reformatted
+        // debugi("%s num:%d\r\n", __func__, num);
+#ifdef CONFIG_DOOM_NO_COMPACT_PTR
+        V_DrawPatchNoScale(x - w, n->y, (const patch_t*)temp_patch0_addr);
+#else
         V_DrawPatchNoScale(x - w, n->y, n->p[0]);
+#endif
+    }
 
     // draw the new number
     //jff 2/16/98 add color translation to digit output
@@ -149,7 +182,17 @@ static void STlib_drawNum(st_number_t *n, int cm, boolean refresh)
     {
         // CPhipps - patch drawing updated, reformatted
         x -= w;
+        // debugi("%s num:%d numdigits:%d\r\n", __func__, num, numdigits);
+#ifdef CONFIG_DOOM_NO_COMPACT_PTR
+        uint32_t temp_patch_addr;
+        user_flash_read_game_resource(&temp_patch_addr, sizeof(temp_patch_addr), (uint32_t)&n->p[num % 10]);
+
+        // debugi("%s variable patch at %08x\r\n", __func__, temp_patch_addr);
+        V_DrawPatchNoScale(x, n->y, (const patch_t*)temp_patch_addr);
+#else
+        // debugi("%s variable patch at %08x\r\n", __func__, (uint32_t)n->p[num%10]);
         V_DrawPatchNoScale(x, n->y, n->p[num % 10]);
+#endif
         num /= 10;
     }
 }
@@ -168,7 +211,10 @@ static void STlib_drawNum(st_number_t *n, int cm, boolean refresh)
 void STlib_updateNum(st_number_t *n, int cm, boolean refresh)
 {
     if (*n->on)
+    {
+        // debugi("%s n.num:%d n.oldnum:%d n.width:%d n.x:%d n.y:%d cm:%d\r\n", __func__, *n->num, n->oldnum, n->width, n->x, n->y, cm);
         STlib_drawNum(n, cm, refresh);
+    }
 }
 
 //
@@ -241,7 +287,18 @@ void STlib_updateMultIcon(st_multicon_t *mi, boolean refresh)
         return;
 
     if (*mi->inum != -1)  // killough 2/16/98: redraw only if != -1
+    {
+#ifdef CONFIG_DOOM_NO_COMPACT_PTR
+        uint32_t temp_patch_addr;
+        user_flash_read_game_resource(&temp_patch_addr, sizeof(temp_patch_addr), (uint32_t)&mi->p[*mi->inum]);
+        // debugi("%s multiicon patch at %08x\r\n", __func__, temp_patch_addr);
+        V_DrawPatchNoScale(mi->x, mi->y, (const patch_t*)temp_patch_addr);
+#else
+        // debugi("%s multiicon patch at %08x\r\n", __func__, (uint32_t)mi->p[*mi->inum]);
         V_DrawPatchNoScale(mi->x, mi->y, mi->p[*mi->inum]);
+#endif
+
+    }
 
     mi->oldinum = *mi->inum;
 

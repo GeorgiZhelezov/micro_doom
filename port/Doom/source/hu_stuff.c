@@ -379,12 +379,22 @@ void HU_Start(void)
     HU_MSGHEIGHT, (const patch_t*) hu_font, // nh FIXME possible bug
     HU_FONTSTART, &_g->message_on);
 
+#ifdef CONFIG_DOOM_NO_COMPACT_PTR
+    patch_t temp_font_patch;
+    user_flash_read_game_resource(&temp_font_patch, sizeof(temp_font_patch), (uint32_t)hu_font[0]);
+    short temp_hud_titley = ((SCREENHEIGHT-ST_SCALED_HEIGHT) - 1 - temp_font_patch.height);
+    HUlib_initTextLine(&_g->w_title,
+    HU_TITLEX,
+    temp_hud_titley, (const patch_t*) hu_font, // nh FIXME possible bug, gez:lovely
+    HU_FONTSTART);
+#else
     //jff 2/16/98 added some HUD widgets
     // create the map title widget - map title display in lower left of automap
     HUlib_initTextLine(&_g->w_title,
     HU_TITLEX,
     HU_TITLEY, (const patch_t*) hu_font, // nh FIXME possible bug
     HU_FONTSTART);
+#endif
 
     // initialize the automap's level title widget
     if (_g->gamestate == GS_LEVEL) /* cph - stop SEGV here when not in level */

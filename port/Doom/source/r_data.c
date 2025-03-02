@@ -351,7 +351,27 @@ static const texture_t* R_LoadTexture(int texture_num, boolean cacheToFlash, uin
         }
         else
         {
+#ifdef CONFIG_DOOM_NO_COMPACT_PTR
+            patch_t temp_patch;
+            user_flash_read_game_resource(&temp_patch, sizeof(temp_patch), (uint32_t) patch->patch);
+            ppw = temp_patch.width;
+            debugi("%s patch at %08x ppw:%d patch.h:%d patch.leftoff:%d patch.topoff:%d\r\n",
+                   __func__,
+                   (uint32_t)patch->patch,
+                   ppw,
+                   temp_patch.height,
+                   temp_patch.leftoffset,
+                   temp_patch.topoffset);
+#else
             ppw = patch->patch->width;
+            debugi("%s patch at %08x ppw:%d patch.h:%d patch.leftoff:%d patch.topoff:%d\r\n",
+                   __func__,
+                   (uint32_t)patch->patch,
+                   ppw,
+                   patch->patch->height,
+                   patch->patch->leftoffset,
+                   patch->patch->topoffset);
+#endif
         }
         int r1 = l1 + ppw;
 

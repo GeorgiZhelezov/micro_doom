@@ -205,7 +205,7 @@ void S_StartSoundAtVolume(mobj_t *origin, int sfx_id, int volume)
     const sfxinfo_t *sfx;
 
     int sep = NORM_SEP;
-
+    debugi("%s origin x:%d y:%d\r\n", __func__, origin->x, origin->y);
     //jff 1/22/98 return if sound is not enabled
     if (nosfxparm)
         return;
@@ -250,6 +250,21 @@ void S_StartSoundAtVolume(mobj_t *origin, int sfx_id, int volume)
             return;
         }
     }
+    debugi("%s sfx: name:%s prio:%d singulatiry:%d ticks:%d vol:%d\r\n", __func__, sfx->name, sfx->priority, sfx->singularity, sfx->ticks, sfx->volume);
+    for (int i = 0; i < numChannels; i++)
+    {
+        debugi("%s g.channels[%d]: handle:%d is_pick:%d sfx- name:%s prio:%d sing:%d ticks:%d vol:%d tickend:%d\r\n",
+               __func__,
+               i,
+               _g->channels[i].handle,
+               _g->channels[i].is_pickup,
+                _g->channels[i].sfxinfo ? _g->channels[i].sfxinfo->name ? _g->channels[i].sfxinfo->name : "(null)" : "(null)",
+                _g->channels[i].sfxinfo ? _g->channels[i].sfxinfo->priority : 0,
+                _g->channels[i].sfxinfo ? _g->channels[i].sfxinfo->singularity: 0,
+                _g->channels[i].sfxinfo ? _g->channels[i].sfxinfo->ticks : 0,
+                _g->channels[i].sfxinfo ? _g->channels[i].sfxinfo->volume : 0,
+               _g->channels[i].tickend);
+    }
 
     // kill old sound
     for (cnum = 0; cnum < numChannels; cnum++)
@@ -269,6 +284,7 @@ void S_StartSoundAtVolume(mobj_t *origin, int sfx_id, int volume)
         return;
     }
     int h = I_StartSound(sfx_id, cnum, volume, sep);
+    debugi("%s h:%d sfx_id:%d cnum:%d vol:%d sep:%d\r\n", __func__, h, sfx_id, cnum, volume, sep);
     if (h != -1)
     {
         _g->channels[cnum].handle = h;
@@ -298,7 +314,8 @@ void S_StartSound2(degenmobj_t *origin, int sfx_id)
     //function for these cases which cobbles toget a temp
     //mobj_t-like struct to pass to the sound code.
 
-    static_mobj_t tmpMobj;
+    volatile static uint8_t index = 0;
+    volatile static static_mobj_t tmpMobj[MAX_CHANNELS];
 // next-hack: due to mobj_t member reordering, this stuff cannot be used. We can use a static_mobj_t instead,
 // which is smaller than a regular mobj_t
     /*   struct fake_mobj
@@ -307,9 +324,18 @@ void S_StartSound2(degenmobj_t *origin, int sfx_id)
      degenmobj_t origin;
      } fm;*/
 
-    tmpMobj.x = origin->x;
-    tmpMobj.y = origin->y;
-    S_StartSoundAtVolume((mobj_t*) &tmpMobj, sfx_id, _g->snd_SfxVolume);
+    /* 
+    gez: 
+    originally there was a single tmpMobj on the stack but pointers are later
+    assigned to this, so eventually they'll point to invalid places in RAM regarding
+    sound origin coordinates, consequently sound should have had randodm interruptions.
+    this static vars fix sadly wastes around 350 bytes.
+    */
+    index %= MAX_CHANNELS;
+    tmpMobj[index].x = origin->x;
+    tmpMobj[index].y = origin->y;
+    S_StartSoundAtVolume((mobj_t*) &tmpMobj[index], sfx_id, _g->snd_SfxVolume);
+    index++;
 }
 
 void S_StopSound(void *origin)
@@ -507,13 +533,61 @@ void S_StopChannel(int cnum)
         // check to see
         //  if other channels are playing the sound
         for (i = 0; i < numChannels; i++)
+        {
+            // volatile mobj_t *check1_org = (mobj_t *)c->origin;
+            // volatile mobj_t *check2_org = (mobj_t *)_g->channels[i].origin;
+            // volatile const sfxinfo_t *check1_sfx = c->sfxinfo;
+            // volatile const sfxinfo_t *check2_sfx = _g->channels[i].sfxinfo;
+            // debugi("%s check1 cnum:%d handle:%d ispick:%d tickend:%d\r\n",
+            //        __func__,
+            //        cnum,
+            //        c->handle,
+            //        c->is_pickup,
+            //        c->tickend);
+            // debugi("%s check1 cnum:%d sfxinfo: name:%s prio:%d sing:%d ticks:%d vol:%d\r\n",
+            //        __func__,
+            //        cnum,
+            //        check1_sfx ? check1_sfx->name ? check1_sfx->name : "(null)" : "(null)",
+            //        check1_sfx ? check1_sfx->priority : 0,
+            //        check1_sfx ? check1_sfx->singularity : 0,
+            //        check1_sfx ? check1_sfx->ticks : 0,
+            //        check1_sfx ? check1_sfx->volume : 0);
+            // debugi("%s check1 cnum:%d org: x:%d y:%d\r\n",
+            //        __func__,
+            //        cnum,
+            //        check1_org ? check1_org->x : 0,
+            //        check1_org ? check1_org->y : 0);
+
+
+            // debugi("%s check2 indx:%d handle:%d ispick:%d tickend:%d\r\n",
+            //        __func__,
+            //        i,
+            //        _g->channels[i].handle,
+            //        _g->channels[i].is_pickup,
+            //        _g->channels[i].tickend);
+            // debugi("%s check2 indx:%d sfxinfo: name:%s prio:%d sing:%d ticks:%d vol:%d\r\n",
+            //        __func__,
+            //        i,
+            //        check2_sfx ? check2_sfx->name ? check2_sfx->name : "(null)" : "(null)",
+            //        check2_sfx ? check2_sfx->priority : 0,
+            //        check2_sfx ? check2_sfx->singularity : 0,
+            //        check2_sfx ? check2_sfx->ticks : 0,
+            //        check2_sfx ? check2_sfx->volume : 0);
+            // debugi("%s check2 indx:%d org: x:%d y:%d\r\n",
+            //        __func__,
+            //        i,
+            //        check2_org ? check2_org->x : 0,
+            //        check2_org ? check2_org->y : 0);
+
             if (cnum != i && c->sfxinfo == _g->channels[i].sfxinfo)
                 break;
+        }
 
         // degrade usefulness of sound data
         c->sfxinfo = 0;
         c->tickend = 0;
     }
+    debugi("%s killing cnum:%d with id:%d vol:%d\r\n", __func__, cnum, soundChannels[cnum].sfxIdx, soundChannels[cnum].volume);
     soundChannels[cnum].sfxIdx = 0;
     soundChannels[cnum].volume = 0;
 }
@@ -609,11 +683,34 @@ static int S_getChannel(void *origin, const sfxinfo_t *sfxinfo, int is_pickup)
 
     // Find an open channel
     for (cnum = 0; cnum < numChannels && _g->channels[cnum].sfxinfo; cnum++)
+    {
+        debugi("%s finding cnum:%d sfxinfo: name:%s prio:%d sing:%d ticks:%d vol:%d\r\n",
+               __func__,
+               cnum,
+               _g->channels[cnum].sfxinfo->name ? _g->channels[cnum].sfxinfo->name : "(null)",
+               _g->channels[cnum].sfxinfo->priority,
+               _g->channels[cnum].sfxinfo->singularity,
+               _g->channels[cnum].sfxinfo->ticks,
+               _g->channels[cnum].sfxinfo->volume);
+
+        if (origin && _g->channels[cnum].origin)
+        {
+            mobj_t *temp_origin = (mobj_t *)origin;
+            mobj_t *temp_gorigin = (mobj_t *)_g->channels[cnum].origin;
+            debugi("%s comparing origin x:%d y:%d to g_origin[%d]: x:%d y:%d\r\n",
+                   __func__,
+                   temp_origin->x,
+                   temp_origin->y,
+                   cnum,
+                   temp_gorigin->x,
+                   temp_gorigin->y);
+        }
         if (origin && _g->channels[cnum].origin == origin && _g->channels[cnum].is_pickup == is_pickup)
         {
             S_StopChannel(cnum);
             break;
         }
+    }
 
     // None available
     if (cnum == numChannels)

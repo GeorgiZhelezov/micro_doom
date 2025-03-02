@@ -76,10 +76,31 @@ boolean P_CheckSight(mobj_t *t1, mobj_t *t2)
     //
     // Check in REJECT table.
 
+#ifdef CONFIG_DOOM_NO_COMPACT_PTR
+    byte temp_byte;
+    user_flash_read_game_resource(&temp_byte, sizeof(temp_byte), (uint32_t)(_g->rejectmatrix + (pnum >> 3)));
+    debugi("%s reading rejectmatrix[%d] at %08x pnum:%d rejmatrix[pnum>>3]:%d\r\n",
+           __func__,
+           pnum >> 3,
+           (uint32_t)(_g->rejectmatrix + (pnum >> 3)),
+           pnum,
+           temp_byte);
+    if (temp_byte & (1 << (pnum & 7))) // can't possibly be connected
+    {
+        return false;
+    }
+#else
+    debugi("%s reading rejectmatrix[%d] at %08x pnum:%d rejmatrix[pnum>>3]:%d\r\n",
+           __func__,
+           pnum >> 3,
+           (uint32_t)(&_g->rejectmatrix[pnum >> 3]),
+           pnum,
+           _g->rejectmatrix[pnum >> 3]);
     if (_g->rejectmatrix[pnum >> 3] & (1 << (pnum & 7))) // can't possibly be connected
     {
         return false;
     }
+#endif
     /* killough 11/98: shortcut for melee situations
      * same subsector? obviously visible
      * cph - compatibility optioned for demo sync, cf HR06-UV.LMP */

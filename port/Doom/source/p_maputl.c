@@ -82,6 +82,30 @@ fixed_t CONSTFUNC P_AproxDistance(fixed_t dx, fixed_t dy)
 
 int PUREFUNC P_PointOnLineSide(fixed_t x, fixed_t y, const line_t *line)
 {
+#ifdef CONFIG_DOOM_NO_COMPACT_PTR
+    line_t temp_line;
+    user_flash_read_game_resource(&temp_line, sizeof(temp_line), (uint32_t)line);
+    debugi("%s x:%d y:%d line at %08x line.dx:%d line.dy:%d line.v1.x:%d line.v1.y:%d\r\n",
+           __func__,
+           x,
+           y,
+           (uint32_t)line,
+           temp_line.dx,
+           temp_line.dy,
+           temp_line.v1.x,
+           temp_line.v1.y);
+    line = &temp_line;
+#else
+    debugi("%s x:%d y:%d line at %08x line.dx:%d line.dy:%d line.v1.x:%d line.v1.y:%d\r\n",
+           __func__,
+           x,
+           y,
+           (uint32_t)line,
+           line->dx,
+           line->dy,
+           line->v1.x,
+           line->v1.y);
+#endif
     return !line->dx ? x <= line->v1.x ? line->dy > 0 : line->dy < 0
            :
            !line->dy ? y <= line->v1.y ? line->dx < 0 : line->dx > 0:
@@ -98,6 +122,25 @@ int PUREFUNC P_PointOnLineSide(fixed_t x, fixed_t y, const line_t *line)
 int PUREFUNC P_BoxOnLineSide(const fixed_t *tmbox, const line_t *ld)
 {
     int p;
+#ifdef CONFIG_DOOM_NO_COMPACT_PTR
+    line_t temp_line;
+    user_flash_read_game_resource(&temp_line, sizeof(temp_line), (uint32_t)ld);
+    debugi("%s line at %08x line.slopetype:%d\r\n", __func__, (uint32_t)ld, temp_line.slopetype);
+    switch (temp_line.slopetype)
+    {
+
+        default: // shut up compiler warnings -- killough
+        case ST_HORIZONTAL:
+            return (tmbox[BOXBOTTOM] > temp_line.v1.y) == (p = tmbox[BOXTOP] > temp_line.v1.y) ? p ^ (temp_line.dx < 0) : -1;
+        case ST_VERTICAL:
+            return (tmbox[BOXLEFT] < temp_line.v1.x) == (p = tmbox[BOXRIGHT] < temp_line.v1.x) ? p ^ (temp_line.dy < 0) : -1;
+        case ST_POSITIVE:
+            return P_PointOnLineSide(tmbox[BOXRIGHT], tmbox[BOXBOTTOM], ld) == (p = P_PointOnLineSide(tmbox[BOXLEFT], tmbox[BOXTOP], ld)) ? p : -1;
+        case ST_NEGATIVE:
+            return (P_PointOnLineSide(tmbox[BOXLEFT], tmbox[BOXBOTTOM], ld)) == (p = P_PointOnLineSide(tmbox[BOXRIGHT], tmbox[BOXTOP], ld)) ? p : -1;
+    }
+#else
+    debugi("%s line at %08x line.slopetype:%d\r\n", __func__, (uint32_t)ld, ld->slopetype);
     switch (ld->slopetype)
     {
 
@@ -111,6 +154,7 @@ int PUREFUNC P_BoxOnLineSide(const fixed_t *tmbox, const line_t *ld)
         case ST_NEGATIVE:
             return (P_PointOnLineSide(tmbox[BOXLEFT], tmbox[BOXBOTTOM], ld)) == (p = P_PointOnLineSide(tmbox[BOXRIGHT], tmbox[BOXTOP], ld)) ? p : -1;
     }
+#endif
 }
 
 //
@@ -134,10 +178,17 @@ static int PUREFUNC P_PointOnDivlineSide(fixed_t x, fixed_t y, const divline_t *
 
 static void P_MakeDivline(const line_t *li, divline_t *dl)
 {
+#ifdef CONFIG_DOOM_NO_COMPACT_PTR
+    line_t temp_line;
+    user_flash_read_game_resource(&temp_line, sizeof(temp_line), (uint32_t)li);
+    li = &temp_line;
+#endif
     dl->x = li->v1.x;
     dl->y = li->v1.y;
     dl->dx = li->dx;
     dl->dy = li->dy;
+
+    debugi("%s x:%d y:%d dx:%d dy:%d\r\n", __func__, dl->x, dl->y, dl->dx, dl->dy);
 }
 
 //
@@ -166,6 +217,24 @@ fixed_t PUREFUNC P_InterceptVector2(const divline_t *v2, const divline_t *v1)
 
 void P_LineOpening(const line_t *linedef)
 {
+#ifdef CONFIG_DOOM_NO_COMPACT_PTR
+    line_t temp_line;
+    user_flash_read_game_resource(&temp_line, sizeof(temp_line), (uint32_t)linedef);
+    if (temp_line.sidenum[1] == NO_INDEX)      // single sided line
+    {
+        _g->openrange = 0;
+        return;
+    }
+    side_t temp_side0;
+    user_flash_read_game_resource(&temp_side0, sizeof(temp_side0), (uint32_t)(_g->sides + temp_line.sidenum[0]));
+    side_t temp_side1;
+    user_flash_read_game_resource(&temp_side1, sizeof(temp_side1), (uint32_t)(_g->sides + temp_line.sidenum[1]));
+
+    _g->openfrontsector = LN_FRONTSECTOR_ALT(temp_line, temp_side0);
+    _g->openbacksector = LN_BACKSECTOR_ALT(&temp_line, temp_side1);
+
+    debugi("%s openfrontsec.ceilh:%d openfrontsec.floorh:%d\r\n", __func__, _g->openfrontsector->ceilingheight, _g->openfrontsector->floorheight);
+#else
     if (linedef->sidenum[1] == NO_INDEX)      // single sided line
     {
         _g->openrange = 0;
@@ -174,6 +243,8 @@ void P_LineOpening(const line_t *linedef)
 
     _g->openfrontsector = LN_FRONTSECTOR(linedef);
     _g->openbacksector = LN_BACKSECTOR(linedef);
+    debugi("%s openfrontsec.ceilh:%d openfrontsec.floorh:%d\r\n", __func__, _g->openfrontsector->ceilingheight, _g->openfrontsector->floorheight);
+#endif
 
     if (_g->openfrontsector->ceilingheight < _g->openbacksector->ceilingheight)
         _g->opentop = _g->openfrontsector->ceilingheight;
@@ -270,6 +341,7 @@ void P_UnsetThingPosition(mobj_t *thing)
 // killough 5/3/98: reformatted, cleaned up
 void P_SetThingPosition(mobj_t *thing)
 {                                                      // link into subsector
+    debugi("%s setting thing pos x:%d y:%d flags:%d\r\n", __func__, thing->x, thing->y, thing->flags);
     subsector_t *ss = setMobjSubesctor(thing, R_PointInSubsector(thing->x, thing->y));
     if (!(thing->flags & MF_NOSECTOR ))
     {
@@ -308,7 +380,11 @@ void P_SetThingPosition(mobj_t *thing)
         int blocky = (thing->y - _g->bmaporgy) >> MAPBLOCKSHIFT;
         if (blockx >= 0 && blockx < _g->bmapwidth && blocky >= 0 && blocky < _g->bmapheight)
         {
+#ifdef CONFIG_DOOM_NO_COMPACT_PTR
+            size_t *link = &_g->blocklinks_sptrs[blocky * _g->bmapwidth + blockx];
+#else
             unsigned short *link = &_g->blocklinks_sptrs[blocky * _g->bmapwidth + blockx];
+#endif
             thing->bprev_sptr = 0;
             thing->bnext_sptr = *link;
             if (*link)
@@ -347,7 +423,15 @@ boolean P_BlockLinesIterator(int x, int y, boolean func(const line_t*))
     if (x < 0 || y < 0 || x >= _g->bmapwidth || y >= _g->bmapheight)
         return true;
 
+#ifdef CONFIG_DOOM_NO_COMPACT_PTR
+    short temp;
+    user_flash_read_game_resource(&temp, sizeof(temp), (uint32_t)(_g->blockmap + (y * _g->bmapwidth + x)));
+    int offset = temp;
+    debugi("%s: offset read at %08x offset:%d\r\n", __func__, (uint32_t)(_g->blockmap + (y * _g->bmapwidth + x)), offset);
+#else
     const int offset = _g->blockmap[y * _g->bmapwidth + x];
+    debugi("%s: offset read at %08x offset:%d\r\n", __func__, (uint32_t)&_g->blockmap[y * _g->bmapwidth + x], offset);
+#endif
     const short *list = _g->blockmaplump + offset; // original was reading         // phares
 
     // delmiting 0 as linedef 0     // phares
@@ -360,12 +444,25 @@ boolean P_BlockLinesIterator(int x, int y, boolean func(const line_t*))
 
     const uint16_t vcount = _g->validcount;
 
-    for (; *list != -1; list++)                                   // phares
+#ifdef CONFIG_DOOM_NO_COMPACT_PTR
+    for (; ; list++)                                   // phares
     {
-        const int lineno = *list;
+        short temp_list;
+        user_flash_read_game_resource(&temp_list, sizeof(temp_list), (uint32_t)list);   
+        if (temp_list == -1) { break; }
+
+        const int lineno = temp_list;
 
         linedata_t *lt = &_g->linedata[lineno];
 
+        debugi("%s: list iteration at %08x lineno:%d lt.validcount:%d vcount:%d x:%d y:%d\r\n",
+               __func__,
+               (uint32_t)list,
+               lineno,
+               lt->validcount,
+               vcount,
+               x,
+               y);
         if (lt->validcount == vcount)
             continue;       // line has already been checked
 
@@ -376,7 +473,32 @@ boolean P_BlockLinesIterator(int x, int y, boolean func(const line_t*))
         if (!func(ld))
             return false;
     }
+#else
+    for (; *list != -1; list++)                                   // phares
+    {
+        const int lineno = *list;
 
+        linedata_t *lt = &_g->linedata[lineno];
+
+        debugi("%s: list iteration at %08x lineno:%d lt.validcount:%d vcount:%d x:%d y:%d\r\n",
+               __func__,
+               (uint32_t)list,
+               lineno,
+               lt->validcount,
+               vcount,
+               x,
+               y);
+        if (lt->validcount == vcount)
+            continue;       // line has already been checked
+
+        lt->validcount = vcount;
+
+        const line_t *ld = &_g->lines[lineno];
+
+        if (!func(ld))
+            return false;
+    }
+#endif
     return true;  // everything was checked
 }
 
@@ -434,8 +556,17 @@ boolean PIT_AddLineIntercepts(const line_t *ld)
     // avoid precision problems with two routines
     if (_g->trace.dx > FRACUNIT * 16 || _g->trace.dy > FRACUNIT * 16 || _g->trace.dx < -FRACUNIT * 16 || _g->trace.dy < -FRACUNIT * 16)
     {
+#ifdef CONFIG_DOOM_NO_COMPACT_PTR
+        line_t temp_line;
+        user_flash_read_game_resource(&temp_line, sizeof(temp_line), (uint32_t)ld);
+        s1 = P_PointOnDivlineSide(temp_line.v1.x, temp_line.v1.y, &_g->trace);
+        s2 = P_PointOnDivlineSide(temp_line.v2.x, temp_line.v2.y, &_g->trace);
+        debugi("%s line at %08x s1:%d s2:%d\r\n", __func__, (uint32_t)ld, s1, s2);
+#else
         s1 = P_PointOnDivlineSide(ld->v1.x, ld->v1.y, &_g->trace);
         s2 = P_PointOnDivlineSide(ld->v2.x, ld->v2.y, &_g->trace);
+        debugi("%s line at %08x s1:%d s2:%d\r\n", __func__, (uint32_t)ld, s1, s2);
+#endif
     }
     else
     {

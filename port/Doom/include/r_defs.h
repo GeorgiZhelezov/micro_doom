@@ -156,6 +156,13 @@ typedef struct
     int floorpic :10;    // 11 bit
     int ceilingpic :10;  // 10 bit
 
+#ifdef CONFIG_DOOM_NO_COMPACT_PTR
+    size_t floordata_sptr;
+    size_t ceilingdata_sptr;
+    size_t touching_thinglist_sptr;
+    size_t thinglist_sptr;
+    size_t soundtarget_sptr;
+#else
     // thinker_t for reversable actions
     //void *floordata;    // jff 2/22/98 make thinkers on
     unsigned short floordata_sptr;
@@ -170,6 +177,7 @@ typedef struct
     //  mobj_t *soundtarget;   // thing that made a sound (or null)
     unsigned short soundtarget_sptr;
     //unsigned short thinglist_sptr;
+#endif
     //
 // 2021-02-13 next-hack save some bytes...
     short special;
@@ -200,18 +208,17 @@ static inline void* getSectorFloorData(sector_t *psec)
 //static inline const struct line_s*  getSectorLineByIndex(sector_t *psec, int i) {return (const struct line_s*) unpackAddress(getSectorLines(psec)[i]);}
 static inline const struct line_s** getSectorLines(sector_t *psec)
 {
-    // const struct line_s **temp = unpackAddress(psec->lines_ppptr);
-    // return temp;
-
     return (const struct line_s**) unpackAddress(psec->lines_ppptr);
 }
 static inline const struct line_s* getSectorLineByIndex(sector_t *psec, int i)
 {
-    // const struct line_s **line = getSectorLines(psec);
-    // const struct line_s *temp = *(line + i);
-    // return temp;
-
+#ifdef CONFIG_DOOM_NO_COMPACT_PTR
+    debugi("%s: returns %08x\r\n", __func__, (uint32_t)(getSectorLines(psec) + i));
+    return (const struct line_s*)(getSectorLines(psec) + i);
+#else
+    debugi("%s: returns %08x\r\n", __func__, (uint32_t)(&getSectorLines(psec)[i]));
     return getSectorLines(psec)[i];
+#endif
 }
 
 //
@@ -297,9 +304,18 @@ typedef struct line_s
 } line_t;
 
 //#define LN_FRONTSECTOR(l) (_g->sides[(l)->sidenum[0]].sector)
+#ifdef CONFIG_DOOM_NO_COMPACT_PTR
+#define LN_FRONTSECTOR_ALT(line, side) (&_g->sectors[side.sector_num])  //nh: replaced to sector num (saves ram)
+#define LN_FRONTSECTOR(l) (&_g->sectors[_g->sides[(l)->sidenum[0]].sector_num])  //nh: replaced to sector num (saves ram)
+#define LN_BACKSECTOR_ALT(line, side) ((line)->sidenum[1] != NO_INDEX ? &_g->sectors[side.sector_num] : NULL)
+#define LN_BACKSECTOR(l) ((l)->sidenum[1] != NO_INDEX ? &_g->sectors[_g->sides[(l)->sidenum[1]].sector_num] : NULL)
+#else
+// #define LN_FRONTSECTOR_ALT(line, side) (&_g->sectors[side.sector_num])  //nh: replaced to sector num (saves ram)
+// #define LN_BACKSECTOR_ALT(line, side) ((line)->sidenum[1] != NO_INDEX ? &_g->sectors[side.sector_num] : NULL)
+
 #define LN_FRONTSECTOR(l) (&_g->sectors[_g->sides[(l)->sidenum[0]].sector_num])  //nh: replaced to sector num (saves ram)
 #define LN_BACKSECTOR(l) ((l)->sidenum[1] != NO_INDEX ? &_g->sectors[_g->sides[(l)->sidenum[1]].sector_num] : NULL)
-
+#endif
 #define LN_SPECIAL(l) (_g->linedata[(l)->lineno].special)
 
 // phares 3/14/98
@@ -320,6 +336,15 @@ typedef struct line_s
 
 typedef struct msecnode_s
 {
+#ifdef CONFIG_DOOM_NO_COMPACT_PTR
+    size_t m_sector_sptr;
+    size_t m_thing_sptr;
+    size_t m_tprev_sptr;
+    size_t m_tnext_sptr;
+    size_t m_sprev_sptr;
+    size_t m_snext_sptr;
+    size_t visited; // killough 4/4/98, 4/7/98: used in search algorithms
+#else
 //  sector_t          *m_sector; // a sector containing this object
     unsigned short m_sector_sptr;
 //  struct mobj_s     *m_thing;  // this object
@@ -333,6 +358,7 @@ typedef struct msecnode_s
 //  struct msecnode_s *m_snext;  // next msecnode_t for this sector
     unsigned short m_snext_sptr;
 //  boolean visited; // killough 4/4/98, 4/7/98: used in search algorithms
+#endif
 
 } __attribute__ ((aligned (4))) msecnode_t;
 static inline sector_t* getMsecnodeSector(const msecnode_t *p_msn)
@@ -422,7 +448,11 @@ typedef struct subsector_s
     unsigned short numlines, firstline;
 } subsector_t;
 
+#ifdef CONFIG_DOOM_NO_COMPACT_PTR
+static inline subsector_t* getSubSectorPtr(size_t shortPointer)
+#else
 static inline subsector_t* getSubSectorPtr(unsigned short shortPointer)
+#endif
 {
     return (subsector_t*) getLongPtr(shortPointer);
 }
@@ -460,7 +490,11 @@ typedef struct drawseg_s
     fixed_t tsilheight;                   // do not clip sprites below this
 //  short *sprtopclip, *sprbottomclip;
     short *maskedtexturecol; // dropoff overflow. NOTE: can't use short ptr, as it does not point to 4-byte aligned memory.
+#ifdef CONFIG_DOOM_NO_COMPACT_PTR
+    size_t sprtopclip_ssptr, sprbottomclip_ssptr;
+#else
     unsigned short sprtopclip_ssptr, sprbottomclip_ssptr; // short pointer to short
+#endif
     // Pointers to lists for sprite clipping,
     // all three adjusted so [x1] is first value.
  #if SCREENWIDTH > 255
@@ -626,10 +660,17 @@ typedef struct visplane
   byte    pad4;
 #endif
 } visplane_t;
+#ifdef CONFIG_DOOM_NO_COMPACT_PTR
+static inline sector_t* getSectorPtr(size_t shortPointer)
+{
+    return (sector_t*) getLongPtr(shortPointer);
+}
+#else
 static inline sector_t* getSectorPtr(unsigned short shortPointer)
 {
     return (sector_t*) getLongPtr(shortPointer);
 }
+#endif
 static inline msecnode_t* getTouchingSectorList(mobj_t *pmobj)
 {
     return (msecnode_t*) getLongPtr(pmobj->touching_sectorlist_sptr);

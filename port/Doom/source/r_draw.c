@@ -75,7 +75,15 @@ void R_SetDefaultDrawColumnVars(draw_column_vars_t *dcvars)
     dcvars->x = dcvars->yl = dcvars->yh = 0;
     dcvars->iscale = dcvars->texturemid = 0;
     dcvars->source = NULL;
+#ifdef CONFIG_DOOM_NO_COMPACT_PTR
+    uint32_t temp_colormaps_addr;
+    user_flash_read_game_resource(&temp_colormaps_addr, sizeof(temp_colormaps_addr), (uint32_t)&p_wad_immutable_flash_data->colormaps);
+    dcvars->colormap = (lighttable_t *)(temp_colormaps_addr);
+    // debugi("%s dcvars colormap at %08x\r\n", __func__, (uint32_t)dcvars->colormap);
+#else
     dcvars->colormap = p_wad_immutable_flash_data->colormaps;
+    // debugi("%s dcvars colormap at %08x\r\n", __func__, (uint32_t)dcvars->colormap);
+#endif
     dcvars->translation = NULL;
 }
 

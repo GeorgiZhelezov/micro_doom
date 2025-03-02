@@ -92,6 +92,7 @@ int I_StartSound(int id, int channel, int vol, int sep)
         return -1;
     // 2021/05/15 next-hack
     //
+    debugi("%s id:%d channel:%d vol:%d sep:%d\r\n", __func__, id, channel, vol, sep);
     soundChannels[channel].lastAudioBufferIdx = 0xFFFF;
     soundChannels[channel].offset = 0;
     soundChannels[channel].sfxIdx = id;

@@ -233,8 +233,36 @@ static int untouched(const line_t *ld)
 static                                          // killough 3/26/98: make static
 boolean PIT_CheckLine(const line_t *ld)
 {
+    debugi("%s ld at %08x\r\n", __func__, (uint32_t)ld);
+#ifdef CONFIG_DOOM_NO_COMPACT_PTR
+    line_t temp_line;
+    user_flash_read_game_resource(&temp_line, sizeof(temp_line), (uint32_t)ld);
+    debugi("%s g.tmbbox[t]:%d g.tmbbox[b]:%d g.tmbbox[l]:%d g.tmbbox[r]:%d line.tmbbox[t]:%d line.tmbbox[b]:%d line.tmbbox[l]:%d line.tmbbox[r]:%d\r\n",
+           __func__,
+           _g->tmbbox[BOXTOP],
+           _g->tmbbox[BOXBOTTOM],
+           _g->tmbbox[BOXLEFT],
+           _g->tmbbox[BOXRIGHT],
+           temp_line.bbox[BOXTOP],
+           temp_line.bbox[BOXBOTTOM],
+           temp_line.bbox[BOXLEFT],
+           temp_line.bbox[BOXRIGHT]);
+    if (_g->tmbbox[BOXRIGHT] <= temp_line.bbox[BOXLEFT] || _g->tmbbox[BOXLEFT] >= temp_line.bbox[BOXRIGHT] || _g->tmbbox[BOXTOP] <= temp_line.bbox[BOXBOTTOM] || _g->tmbbox[BOXBOTTOM] >= temp_line.bbox[BOXTOP])
+        return true; // didn't hit it
+#else
+    debugi("%s g.tmbbox[t]:%d g.tmbbox[b]:%d g.tmbbox[l]:%d g.tmbbox[r]:%d line.tmbbox[t]:%d line.tmbbox[b]:%d line.tmbbox[l]:%d line.tmbbox[r]:%d\r\n",
+           __func__,
+           _g->tmbbox[BOXTOP],
+           _g->tmbbox[BOXBOTTOM],
+           _g->tmbbox[BOXLEFT],
+           _g->tmbbox[BOXRIGHT],
+           ld->bbox[BOXTOP],
+           ld->bbox[BOXBOTTOM],
+           ld->bbox[BOXLEFT],
+           ld->bbox[BOXRIGHT]);
     if (_g->tmbbox[BOXRIGHT] <= ld->bbox[BOXLEFT] || _g->tmbbox[BOXLEFT] >= ld->bbox[BOXRIGHT] || _g->tmbbox[BOXTOP] <= ld->bbox[BOXBOTTOM] || _g->tmbbox[BOXBOTTOM] >= ld->bbox[BOXTOP])
         return true; // didn't hit it
+#endif
 
     if (P_BoxOnLineSide(_g->tmbbox, ld) != -1)
         return true; // didn't hit it
@@ -249,22 +277,50 @@ boolean PIT_CheckLine(const line_t *ld)
     // so two special lines that are only 8 pixels apart
     // could be crossed in either order.
 
+#ifdef CONFIG_DOOM_NO_COMPACT_PTR
+    side_t temp_side1;
+    user_flash_read_game_resource(&temp_side1, sizeof(temp_side1), (uint32_t)(_g->sides + temp_line.sidenum[1]));
+
+    // debugi("%s ln backsector at %08x\t\n", __func__, (uint32_t)LN_BACKSECTOR_ALT(&temp_line, temp_side1));
+    if (!LN_BACKSECTOR_ALT(&temp_line, temp_side1)) // one sided line
+    {
+        _g->blockline = ld;
+        debugi("%s blockline at %08x\r\n", __func__, (uint32_t)_g->blockline);
+        return _g->tmunstuck && !untouched(ld) && FixedMul(_g->tmx - _g->tmthing->x, temp_line.dy) > FixedMul(_g->tmy - _g->tmthing->y, temp_line.dx);
+    }
+#else
     // killough 7/24/98: allow player to move out of 1s wall, to prevent sticking
+    // debugi("%s ln backsector at %08x\t\n", __func__, (uint32_t)LN_BACKSECTOR(ld));
     if (!LN_BACKSECTOR(ld)) // one sided line
     {
         _g->blockline = ld;
+        debugi("%s blockline at %08x\r\n", __func__, (uint32_t)_g->blockline);
         return _g->tmunstuck && !untouched(ld) && FixedMul(_g->tmx - _g->tmthing->x, ld->dy) > FixedMul(_g->tmy - _g->tmthing->y, ld->dx);
     }
+#endif
+
 
     // killough 8/10/98: allow bouncing objects to pass through as missiles
     if (!(_g->tmthing->flags & (MF_MISSILE )))
     {
+#ifdef CONFIG_DOOM_NO_COMPACT_PTR
+        debugi("%s line.flags:%d\r\n", __func__, temp_line.flags);
+        if (temp_line.flags & ML_BLOCKING)           // explicitly blocking everything
+            return _g->tmunstuck && !untouched(ld); // killough 8/1/98: allow escape
+        // killough 8/9/98: monster-blockers don't affect friends
+        debugi("%s line.flags:%d g.tmthing.flags:%d\r\n", __func__, temp_line.flags, _g->tmthing->flags);
+        if (!((_g->tmthing->flags & MF_FRIEND ) || _g->tmthing->player_sptr) && (temp_line.flags & ML_BLOCKMONSTERS))
+            return false; // block monsters only
+#else
+        debugi("%s line.flags:%d\r\n", __func__, ld->flags);
         if (ld->flags & ML_BLOCKING)           // explicitly blocking everything
             return _g->tmunstuck && !untouched(ld); // killough 8/1/98: allow escape
 
         // killough 8/9/98: monster-blockers don't affect friends
+        debugi("%s line.flags:%d g.tmthing.flags:%d\r\n", __func__, ld->flags, _g->tmthing->flags);
         if (!((_g->tmthing->flags & MF_FRIEND ) || _g->tmthing->player_sptr) && (ld->flags & ML_BLOCKMONSTERS))
             return false; // block monsters only
+#endif
     }
 
     // set openrange, opentop, openbottom
@@ -293,7 +349,13 @@ boolean PIT_CheckLine(const line_t *ld)
 
     // if contacted a special line, add it to the list
 
+#ifdef CONFIG_DOOM_NO_COMPACT_PTR
+    debugi("%s ln_special:%d\r\n", __func__, LN_SPECIAL(&temp_line));
+    if (LN_SPECIAL(&temp_line))
+#else
+    debugi("%s ln_special:%d\r\n", __func__, LN_SPECIAL(ld));
     if (LN_SPECIAL(ld))
+#endif
     {
         // 1/11/98 killough: remove limit on lines hit, by array doubling
         if (_g->numspechit < 4)
@@ -671,12 +733,27 @@ boolean P_TryMove(mobj_t *thing, fixed_t x, fixed_t y, boolean dropoff) // killo
 
     if (!(thing->flags & (MF_TELEPORT | MF_NOCLIP )))
         while (_g->numspechit--)
+        {
+#ifdef CONFIG_DOOM_NO_COMPACT_PTR
+            line_t temp_line;
+            user_flash_read_game_resource(&temp_line, sizeof(temp_line), (uint32_t)_g->spechit[_g->numspechit]);
+            debugi("%s spechit lnspecial:%d\r\n", __func__, LN_SPECIAL(&temp_line));
+            if (LN_SPECIAL(&temp_line)) // see if the line was crossed
+            {
+                int oldside;
+                if ((oldside = P_PointOnLineSide(oldx, oldy, _g->spechit[_g->numspechit])) != P_PointOnLineSide(thing->x, thing->y, _g->spechit[_g->numspechit]))
+                    P_CrossSpecialLine(_g->spechit[_g->numspechit], oldside, thing);
+            }
+#else
+            debugi("%s spechit lnspecial:%d\r\n", __func__, LN_SPECIAL(_g->spechit[_g->numspechit]));
             if (LN_SPECIAL(_g->spechit[_g->numspechit])) // see if the line was crossed
             {
                 int oldside;
                 if ((oldside = P_PointOnLineSide(oldx, oldy, _g->spechit[_g->numspechit])) != P_PointOnLineSide(thing->x, thing->y, _g->spechit[_g->numspechit]))
                     P_CrossSpecialLine(_g->spechit[_g->numspechit], oldside, thing);
             }
+#endif
+        }
 
     return true;
 }
@@ -769,7 +846,23 @@ void P_HitSlideLine(const line_t *ld)
 
     /* killough 10/98: only bounce if hit hard (prevents wobbling)
      * cph - DEMOSYNC - should only affect players in Boom demos? */
+#ifdef CONFIG_DOOM_NO_COMPACT_PTR
+    line_t temp_line;
+    user_flash_read_game_resource(&temp_line, sizeof(temp_line), (uint32_t)ld);
+    debugi("%s line at %08x slopetype:%d\r\n", __func__, (uint32_t)ld, temp_line.slopetype);
+    if (temp_line.slopetype == ST_HORIZONTAL)
+    {
+        _g->tmymove = 0; // no more movement in the Y direction
+        return;
+    }
 
+    if (temp_line.slopetype == ST_VERTICAL)
+    {                                                          // phares
+        _g->tmxmove = 0; // no more movement in the X direction
+        return;
+    }
+#else
+    debugi("%s line at %08x slopetype:%d\r\n", __func__, (uint32_t)ld, ld->slopetype);
     if (ld->slopetype == ST_HORIZONTAL)
     {
         _g->tmymove = 0; // no more movement in the Y direction
@@ -781,13 +874,19 @@ void P_HitSlideLine(const line_t *ld)
         _g->tmxmove = 0; // no more movement in the X direction
         return;
     }
+#endif
 
     // The wall is angled. Bounce if the angle of approach is         // phares
     // less than 45 degrees.                                          // phares
 
     side = P_PointOnLineSide(_g->slidemo->x, _g->slidemo->y, ld);
-
+#ifdef CONFIG_DOOM_NO_COMPACT_PTR
+    lineangle = R_PointToAngle2(0, 0, temp_line.dx, temp_line.dy);
+    debugi("%s lineangle:%d\r\n", __func__, lineangle);
+#else
     lineangle = R_PointToAngle2(0, 0, ld->dx, ld->dy);
+    debugi("%s lineangle:%d\r\n", __func__, lineangle);
+#endif
     if (side == 1)
         lineangle += ANG180;
 
@@ -833,7 +932,15 @@ boolean PTR_SlideTraverse(intercept_t *in)
 
     li = in->d.line;
 
+#ifdef CONFIG_DOOM_NO_COMPACT_PTR
+    line_t temp_line;
+    user_flash_read_game_resource(&temp_line, sizeof(temp_line), (uint32_t)li);
+    debugi("%s line at %08x flags:%d\r\n", __func__, (uint32_t)li, temp_line.flags);
+    if (!(temp_line.flags & ML_TWOSIDED))
+#else
+    debugi("%s line at %08x flags:%d\r\n", __func__, (uint32_t)li, li->flags);
     if (!(li->flags & ML_TWOSIDED))
+#endif
     {
         if (P_PointOnLineSide(_g->slidemo->x, _g->slidemo->y, li))
             return true; // don't hit the back side
@@ -842,7 +949,6 @@ boolean PTR_SlideTraverse(intercept_t *in)
 
     // set openrange, opentop, openbottom.
     // These define a 'window' from one sector to another across a line
-
     P_LineOpening(li);
 
     if (_g->openrange < getMobjHeight(_g->slidemo))
@@ -1014,9 +1120,17 @@ boolean PTR_AimTraverse(intercept_t *in)
     if (isaline)
     {
         li = in->d.line;
-
+#ifdef CONFIG_DOOM_NO_COMPACT_PTR
+        line_t temp_line;
+        user_flash_read_game_resource(&temp_line, sizeof(temp_line), (uint32_t)li);
+        debugi("%s line at %08x flags:%d\r\n", __func__, (uint32_t)li, temp_line.flags);
+        if (!(temp_line.flags & ML_TWOSIDED))
+            return false;   // stop
+#else
+        debugi("%s line at %08x flags:%d\r\n", __func__, (uint32_t)li, li->flags);
         if (!(li->flags & ML_TWOSIDED))
             return false;   // stop
+#endif
 
         // Crosses a two sided line.
         // A two sided line will restrict
@@ -1029,6 +1143,22 @@ boolean PTR_AimTraverse(intercept_t *in)
 
         dist = FixedMul(_g->attackrange, in->frac);
 
+#ifdef CONFIG_DOOM_NO_COMPACT_PTR
+        side_t temp_side0;
+        user_flash_read_game_resource(&temp_side0, sizeof(temp_side0), (uint32_t)(_g->sides + temp_line.sidenum[0]));
+        side_t temp_side1;
+        user_flash_read_game_resource(&temp_side1, sizeof(temp_side1), (uint32_t)(_g->sides + temp_line.sidenum[1]));
+
+        debugi("%s frontsec_floorh:%d backsec_floorh:%d\r\n", __func__, LN_FRONTSECTOR_ALT(temp_line, temp_side0)->floorheight, LN_BACKSECTOR_ALT(&temp_line, temp_side1)->floorheight);
+        if (LN_FRONTSECTOR_ALT(temp_line, temp_side0)->floorheight != LN_BACKSECTOR_ALT(&temp_line, temp_side1)->floorheight)
+        {
+            slope = FixedDiv(_g->openbottom - _g->shootz, dist);
+
+            if (slope > _g->bottomslope)
+                _g->bottomslope = slope;
+        }
+#else
+        debugi("%s frontsec_floorh:%d backsec_floorh:%d\r\n", __func__, LN_FRONTSECTOR(li)->floorheight, LN_BACKSECTOR(li)->floorheight);
         if (LN_FRONTSECTOR(li)->floorheight != LN_BACKSECTOR(li)->floorheight)
         {
             slope = FixedDiv(_g->openbottom - _g->shootz, dist);
@@ -1036,13 +1166,25 @@ boolean PTR_AimTraverse(intercept_t *in)
             if (slope > _g->bottomslope)
                 _g->bottomslope = slope;
         }
+#endif
 
+#ifdef CONFIG_DOOM_NO_COMPACT_PTR
+        debugi("%s frontsec_ceilh:%d backsec_ceilh:%d\r\n", __func__, LN_FRONTSECTOR_ALT(temp_line, temp_side0)->ceilingheight, LN_BACKSECTOR_ALT(&temp_line, temp_side1)->ceilingheight);
+        if (LN_FRONTSECTOR_ALT(temp_line, temp_side0)->ceilingheight != LN_BACKSECTOR_ALT(&temp_line, temp_side1)->ceilingheight)
+        {
+            slope = FixedDiv(_g->opentop - _g->shootz, dist);
+            if (slope < _g->topslope)
+                _g->topslope = slope;
+        }
+#else
+        debugi("%s frontsec_ceilh:%d backsec_ceilh:%d\r\n", __func__, LN_FRONTSECTOR(li)->ceilingheight, LN_BACKSECTOR(li)->ceilingheight);
         if (LN_FRONTSECTOR(li)->ceilingheight != LN_BACKSECTOR(li)->ceilingheight)
         {
             slope = FixedDiv(_g->opentop - _g->shootz, dist);
             if (slope < _g->topslope)
                 _g->topslope = slope;
         }
+#endif
 
         if (_g->topslope <= _g->bottomslope)
             return false;   // stop
@@ -1115,11 +1257,36 @@ boolean PTR_ShootTraverse(intercept_t *in)
     if (isaline)
     {
         const line_t *li = in->d.line;
+#ifdef CONFIG_DOOM_NO_COMPACT_PTR
+        line_t temp_line;
+        user_flash_read_game_resource(&temp_line, sizeof(temp_line), (uint32_t)li);
+        side_t temp_side0;
+        user_flash_read_game_resource(&temp_side0, sizeof(temp_side0), (uint32_t)(_g->sides + temp_line.sidenum[0]));
+        side_t temp_side1;
+        user_flash_read_game_resource(&temp_side1, sizeof(temp_side1), (uint32_t)(_g->sides + temp_line.sidenum[1]));
 
+        debugi("%s line at %08x flags:%d special:%d\r\n",
+               __func__,
+               (uint32_t)li,
+               temp_line.flags,
+               LN_SPECIAL(&temp_line));
+        if (LN_SPECIAL(&temp_line))
+            P_ShootSpecialLine(_g->shootthing, li); //intentional left li
+#else
+        debugi("%s line at %08x flags:%d special:%d\r\n",
+               __func__,
+               (uint32_t)li,
+               li->flags,
+               LN_SPECIAL(li));
         if (LN_SPECIAL(li))
             P_ShootSpecialLine(_g->shootthing, li);
+#endif
 
+#ifdef CONFIG_DOOM_NO_COMPACT_PTR
+        if (temp_line.flags & ML_TWOSIDED)
+#else
         if (li->flags & ML_TWOSIDED)
+#endif
         {  // crosses a two sided (really 2s) line
             P_LineOpening(li);
             dist = FixedMul(_g->attackrange, in->frac);
@@ -1127,13 +1294,21 @@ boolean PTR_ShootTraverse(intercept_t *in)
             // killough 11/98: simplify
            // e6y: emulation of missed back side on two-sided lines.
             // backsector can be NULL if overrun_missedbackside_emulate is 1
+#ifdef CONFIG_DOOM_NO_COMPACT_PTR
+            if (!LN_BACKSECTOR_ALT(&temp_line, temp_side1))
+#else
             if (!LN_BACKSECTOR(li))
+#endif
             {
               if ((slope = FixedDiv(_g->openbottom - _g->shootz , dist)) <= _g->aimslope &&
                   (slope = FixedDiv(_g->opentop - _g->shootz , dist)) >= _g->aimslope)
                 return true;      // shot continues
             }
+#ifdef CONFIG_DOOM_NO_COMPACT_PTR
+            else if ((LN_FRONTSECTOR_ALT(temp_line, temp_side0)->floorheight == LN_BACKSECTOR_ALT(&temp_line, temp_side1)->floorheight || (slope = FixedDiv(_g->openbottom - _g->shootz, dist)) <= _g->aimslope) && (LN_FRONTSECTOR_ALT(temp_line, temp_side0)->ceilingheight == LN_BACKSECTOR_ALT(&temp_line, temp_side1)->ceilingheight || (slope = FixedDiv(_g->opentop - _g->shootz, dist)) >= _g->aimslope))
+#else
             else if ((LN_FRONTSECTOR(li)->floorheight == LN_BACKSECTOR(li)->floorheight || (slope = FixedDiv(_g->openbottom - _g->shootz, dist)) <= _g->aimslope) && (LN_FRONTSECTOR(li)->ceilingheight == LN_BACKSECTOR(li)->ceilingheight || (slope = FixedDiv(_g->opentop - _g->shootz, dist)) >= _g->aimslope))
+#endif
                 return true;      // shot continues
         }
 
@@ -1145,6 +1320,25 @@ boolean PTR_ShootTraverse(intercept_t *in)
         y = _g->trace.y + FixedMul(_g->trace.dy, frac);
         z = _g->shootz + FixedMul(_g->aimslope, FixedMul(frac, _g->attackrange));
 
+#ifdef CONFIG_DOOM_NO_COMPACT_PTR
+        if (LN_FRONTSECTOR_ALT(temp_line, temp_side0)->ceilingpic == _g->skyflatnum)
+        {
+            // don't shoot the sky!
+
+            if (z > LN_FRONTSECTOR_ALT(temp_line, temp_side0)->ceilingheight)
+                return false;
+
+            // it's a sky hack wall
+
+            if (LN_BACKSECTOR_ALT(&temp_line, temp_side1) && LN_BACKSECTOR_ALT(&temp_line, temp_side1)->ceilingpic == _g->skyflatnum)
+
+                // fix bullet-eaters -- killough:
+                // WARNING: Almost all demos will lose sync without this
+                // demo_compatibility flag check!!! killough 1/18/98
+                if (demo_compatibility || LN_BACKSECTOR_ALT(&temp_line, temp_side1)->ceilingheight < z)
+                    return false;
+        }
+#else
         if (LN_FRONTSECTOR(li)->ceilingpic == _g->skyflatnum)
         {
             // don't shoot the sky!
@@ -1162,6 +1356,7 @@ boolean PTR_ShootTraverse(intercept_t *in)
                 if (demo_compatibility || LN_BACKSECTOR(li)->ceilingheight < z)
                     return false;
         }
+#endif
 
         // Spawn bullet puffs.
 
@@ -1288,7 +1483,15 @@ boolean PTR_UseTraverse(intercept_t *in)
 {
     int side;
 
+#ifdef CONFIG_DOOM_NO_COMPACT_PTR
+    line_t temp_line;
+    user_flash_read_game_resource(&temp_line, sizeof(temp_line), (uint32_t)in->d.line);
+    debugi("%s line at %08x ln_special:%d\r\n", __func__, (uint32_t)in->d.line, LN_SPECIAL(&temp_line));
+    if (!LN_SPECIAL(&temp_line))
+#else
+    debugi("%s line at %08x ln_special:%d\r\n", __func__, (uint32_t)in->d.line, LN_SPECIAL(in->d.line));
     if (!LN_SPECIAL(in->d.line))
+#endif
     {
         P_LineOpening(in->d.line);
         if (_g->openrange <= 0)
@@ -1314,9 +1517,15 @@ boolean PTR_UseTraverse(intercept_t *in)
 
     //WAS can't use for than one special line in a row
     //jff 3/21/98 NOW multiple use allowed with enabling line flag
-
+#ifdef CONFIG_DOOM_NO_COMPACT_PTR
+    debugi("%s line flags:%d\r\n", __func__, temp_line.flags);
+    return ((temp_line.flags & ML_PASSUSE)) ?
+    true : false;
+#else
+    debugi("%s line flags:%d\r\n", __func__, in->d.line->flags);
     return ((in->d.line->flags & ML_PASSUSE)) ?
     true : false;
+#endif
 }
 
 // Returns false if a "oof" sound should be made because of a blocking
@@ -1332,14 +1541,31 @@ boolean PTR_UseTraverse(intercept_t *in)
 boolean PTR_NoWayTraverse(intercept_t *in)
 {
     const line_t *ld = in->d.line;
+#ifdef CONFIG_DOOM_NO_COMPACT_PTR
+    line_t temp_line;
+    user_flash_read_game_resource(&temp_line, sizeof(temp_line), (uint32_t)ld);
     // This linedef
-    return LN_SPECIAL(ld) || !(                 // Ignore specials
+    boolean ret = LN_SPECIAL(&temp_line) || !(                 // Ignore specials
+    (temp_line.flags & ML_BLOCKING) || (            // Always blocking
+    P_LineOpening(ld),                      // Find openings
+    _g->openrange <= 0 ||                       // No opening
+    _g->openbottom > _g->usething->z + 24 * FRACUNIT || // Too high it blocks
+    _g->opentop < _g->usething->z + getMobjHeight(_g->usething) // Too low it blocks
+    ));
+    debugi("%s line at %08x func rets %d\r\n", __func__, (uint32_t)ld, ret);
+    return ret;
+#else
+    // This linedef
+    boolean ret = LN_SPECIAL(ld) || !(                 // Ignore specials
     (ld->flags & ML_BLOCKING) || (            // Always blocking
     P_LineOpening(ld),                      // Find openings
     _g->openrange <= 0 ||                       // No opening
     _g->openbottom > _g->usething->z + 24 * FRACUNIT || // Too high it blocks
     _g->opentop < _g->usething->z + getMobjHeight(_g->usething) // Too low it blocks
     ));
+    debugi("%s line at %08x func rets %d\r\n", __func__, (uint32_t)ld, ret);
+    return ret;
+#endif
 }
 
 //
@@ -1559,7 +1785,7 @@ boolean P_CheckSector(sector_t *sector, boolean crunch)
     // 2021-02-28 next-hack. Removed boolean and used the most significant bit
     // of one address (not used)
 //  for (n=sector->touching_thinglist; n; n=n->m_snext)
-#if 0
+#ifdef CONFIG_DOOM_NO_COMPACT_PTR
   for (n=getSectorTouchingThingList(sector); n; n=getMsecnodeSNext(n))
   {
     n->visited = false;
@@ -1671,7 +1897,9 @@ msecnode_t* P_AddSecnode(sector_t *s, mobj_t *thing, msecnode_t *nextnode)
     node = P_GetSecnode();
 
     // killough 4/4/98, 4/7/98: mark new nodes unvisited.
-    //node->visited = 0;
+#ifdef CONFIG_DOOM_NO_COMPACT_PTR
+    node->visited = 0;
+#endif
 
     node->m_sector_sptr = getShortPtr(s);       // sector
     node->m_thing_sptr = getShortPtr(thing);     // mobj
@@ -1761,9 +1989,36 @@ void P_DelSeclist(msecnode_t *node)
 
 boolean PIT_GetSectors(const line_t *ld)
 {
+    debugi("%s: ld is at %08x\r\n", __func__, (uint32_t)ld);
+#ifdef CONFIG_DOOM_NO_COMPACT_PTR
+    line_t temp_line;
+    user_flash_read_game_resource(&temp_line, sizeof(temp_line), (uint32_t)ld);
+    debugi("%s g.tmbbox[t]:%d g.tmbbox[b]:%d g.tmbbox[l]:%d g.tmbbox[r]:%d line.tmbbox[t]:%d line.tmbbox[b]:%d line.tmbbox[l]:%d line.tmbbox[r]:%d\r\n",
+           __func__,
+           _g->tmbbox[BOXTOP],
+           _g->tmbbox[BOXBOTTOM],
+           _g->tmbbox[BOXLEFT],
+           _g->tmbbox[BOXRIGHT],
+           temp_line.bbox[BOXTOP],
+           temp_line.bbox[BOXBOTTOM],
+           temp_line.bbox[BOXLEFT],
+           temp_line.bbox[BOXRIGHT]);
+    if (_g->tmbbox[BOXRIGHT] <= temp_line.bbox[BOXLEFT] || _g->tmbbox[BOXLEFT] >= temp_line.bbox[BOXRIGHT] || _g->tmbbox[BOXTOP] <= temp_line.bbox[BOXBOTTOM] || _g->tmbbox[BOXBOTTOM] >= temp_line.bbox[BOXTOP])
+        return true;
+#else
+    debugi("%s g.tmbbox[t]:%d g.tmbbox[b]:%d g.tmbbox[l]:%d g.tmbbox[r]:%d line.tmbbox[t]:%d line.tmbbox[b]:%d line.tmbbox[l]:%d line.tmbbox[r]:%d\r\n",
+           __func__,
+           _g->tmbbox[BOXTOP],
+           _g->tmbbox[BOXBOTTOM],
+           _g->tmbbox[BOXLEFT],
+           _g->tmbbox[BOXRIGHT],
+           ld->bbox[BOXTOP],
+           ld->bbox[BOXBOTTOM],
+           ld->bbox[BOXLEFT],
+           ld->bbox[BOXRIGHT]);
     if (_g->tmbbox[BOXRIGHT] <= ld->bbox[BOXLEFT] || _g->tmbbox[BOXLEFT] >= ld->bbox[BOXRIGHT] || _g->tmbbox[BOXTOP] <= ld->bbox[BOXBOTTOM] || _g->tmbbox[BOXBOTTOM] >= ld->bbox[BOXTOP])
         return true;
-
+#endif
     if (P_BoxOnLineSide(_g->tmbbox, ld) != -1)
         return true;
 
@@ -1774,8 +2029,15 @@ boolean PIT_GetSectors(const line_t *ld)
     // allowed to move to this position, then the sector_list
     // will be attached to the Thing's mobj_t at touching_sectorlist.
 
-    _g->sector_list = P_AddSecnode(LN_FRONTSECTOR(ld), _g->tmthing, _g->sector_list);
+#ifdef CONFIG_DOOM_NO_COMPACT_PTR
+    side_t temp_side0, temp_side1;
+    user_flash_read_game_resource(&temp_side0, sizeof(temp_side0), (uint32_t)(_g->sides + temp_line.sidenum[0]));
+    user_flash_read_game_resource(&temp_side1, sizeof(temp_side1), (uint32_t)(_g->sides + temp_line.sidenum[1]));
 
+    _g->sector_list = P_AddSecnode(LN_FRONTSECTOR_ALT(temp_line, temp_side0), _g->tmthing, _g->sector_list);
+#else
+    _g->sector_list = P_AddSecnode(LN_FRONTSECTOR(ld), _g->tmthing, _g->sector_list);
+#endif
     /* Don't assume all lines are 2-sided, since some Things
      * like MT_TFOG are allowed regardless of whether their radius takes
      * them beyond an impassable linedef.
@@ -1784,10 +2046,13 @@ boolean PIT_GetSectors(const line_t *ld)
      * Use sidedefs instead of 2s flag to determine two-sidedness.
      * killough 8/1/98: avoid duplicate if same sector on both sides
      * cph - DEMOSYNC? */
-
+#ifdef CONFIG_DOOM_NO_COMPACT_PTR
+    if (LN_BACKSECTOR_ALT(&temp_line, temp_side1) && LN_BACKSECTOR_ALT(&temp_line, temp_side1) != LN_FRONTSECTOR_ALT(temp_line, temp_side0))
+        _g->sector_list = P_AddSecnode(LN_BACKSECTOR_ALT(&temp_line, temp_side1), _g->tmthing, _g->sector_list);
+#else
     if (LN_BACKSECTOR(ld) && LN_BACKSECTOR(ld) != LN_FRONTSECTOR(ld))
         _g->sector_list = P_AddSecnode(LN_BACKSECTOR(ld), _g->tmthing, _g->sector_list);
-
+#endif
     return true;
 }
 

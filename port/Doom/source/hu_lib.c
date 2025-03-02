@@ -149,7 +149,15 @@ void HUlib_drawTextLine(hu_textline_t *l, boolean drawcursor)
             x = x - x % 80 + 80;
         else if (c != ' ' && c >= l->sc && c <= '_')
         {
+#ifdef CONFIG_DOOM_NO_COMPACT_PTR
+            patch_t temp_patch;
+            user_flash_read_game_resource(&temp_patch, sizeof(temp_patch), (uint32_t)l->f[c - l->sc]);
+            w = temp_patch.width;
+            // debugi("%s w:%d font is at %08x\r\n", __func__, w, (uint32_t)l->f[c - l->sc]);
+#else
             w = l->f[c - l->sc]->width;
+            // debugi("%s w:%d font is at %08x\r\n", __func__, w, (uint32_t)l->f[c-l->sc]);
+#endif
             if (x + w > SCREENWIDTH_PHYSICAL)
                 break;
             // killough 1/18/98 -- support multiple lines:

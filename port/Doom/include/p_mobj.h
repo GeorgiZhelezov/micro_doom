@@ -266,8 +266,13 @@ enum
 // size here, and an array that has null size if the size is correct, otherwise
 // it will have a negative size, generating an error.
 //
+#ifdef CONFIG_DOOM_NO_COMPACT_PTR
+#define MOBJ_SIZE sizeof(mobj_t)
+#define STATIC_MOBJ_SIZE sizeof(static_mobj_t)
+#else
 #define MOBJ_SIZE 92
 #define STATIC_MOBJ_SIZE 44
+#endif
 //
 typedef struct mobj_s
 {
@@ -278,12 +283,19 @@ typedef struct mobj_s
     unsigned int flags;  // must be 32bit at least
     // Interaction info, by BLOCKMAP.
     // Links in blocks (if needed).
+#ifdef CONFIG_DOOM_NO_COMPACT_PTR
+    size_t bnext_sptr;
+    size_t bprev_sptr;
+    size_t snext_sptr;
+    size_t sprev_sptr;
+#else
     unsigned short bnext_sptr;
     unsigned short bprev_sptr;
     // sector linked list. Note: short pointers.
     unsigned short snext_sptr;
     unsigned short sprev_sptr;
     // a linked list of sectors where this object appears
+#endif
     // For movement checking.
     short tics:14;   // state tic counter
     unsigned short lastlook:2;
@@ -295,8 +307,13 @@ typedef struct mobj_s
     //short              movedir;        // 0-8
 
     //
+#ifdef CONFIG_DOOM_NO_COMPACT_PTR
+    size_t subsector_sptr;
+    size_t touching_sectorlist_sptr;
+#else
     unsigned short subsector_sptr;
     unsigned short touching_sectorlist_sptr;
+#endif
     //
     // Info for drawing: position.
     fixed_t x;
@@ -323,6 +340,12 @@ typedef struct mobj_s
     fixed_t momx;
     fixed_t momy;
     fixed_t momz;
+#ifdef CONFIG_DOOM_NO_COMPACT_PTR
+    size_t player_sptr;
+    size_t lastenemy_sptr;
+    size_t target_sptr;
+    size_t tracer_sptr;
+#else
     // Additional info record for player avatars only.
     // Only valid if type == MT_PLAYER
     unsigned short player_sptr;
@@ -337,6 +360,7 @@ typedef struct mobj_s
     // Thing being chased/attacked for tracers.
     //struct mobj_s*      tracer;
     unsigned short tracer_sptr;
+#endif
     //
     //
     //    const state_t*      state;
@@ -370,6 +394,12 @@ typedef struct static_mobj_s
     // killough 11/98: the lowest floor over all contacted Sectors.
     unsigned int flags;  // must be 32bit at least
     // Interaction info, by BLOCKMAP.
+#ifdef CONFIG_DOOM_NO_COMPACT_PTR
+    size_t bnext_sptr;
+    size_t bprev_sptr;
+    size_t snext_sptr;
+    size_t sprev_sptr;
+#else
     // Links in blocks (if needed).
     unsigned short bnext_sptr;
     unsigned short bprev_sptr;
@@ -377,6 +407,7 @@ typedef struct static_mobj_s
     unsigned short snext_sptr;
     unsigned short sprev_sptr;
     // a linked list of sectors where this object appears
+#endif
     // For movement checking.
     short tics:14;   // state tic counter
     unsigned short lastlook:2;
@@ -389,8 +420,13 @@ typedef struct static_mobj_s
     //short              movedir;        // 0-8
 
     //
+#ifdef CONFIG_DOOM_NO_COMPACT_PTR
+    size_t subsector_sptr;
+    size_t touching_sectorlist_sptr;
+#else
     unsigned short subsector_sptr;
     unsigned short touching_sectorlist_sptr;
+#endif
     //
     // Info for drawing: position.
     fixed_t x;

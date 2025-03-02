@@ -172,7 +172,16 @@ static void P_StartButton(const line_t *line, bwhere_e w, int texture, int time)
             _g->buttonlist[i].btimer = time;
             /* use sound origin of line itself - no need to compatibility-wrap
              * as the popout code gets it wrong whatever its value */
+#ifdef CONFIG_DOOM_NO_COMPACT_PTR
+            line_t temp_line;
+            user_flash_read_game_resource(&temp_line, sizeof(temp_line), (uint32_t)line);
+            side_t temp_side0;
+            user_flash_read_game_resource(&temp_side0, sizeof(temp_side0), (uint32_t)(_g->sides + temp_line.sidenum[0]));
+    
+            _g->buttonlist[i].soundorg = &LN_FRONTSECTOR_ALT(temp_line, temp_side0)->soundorg;
+#else
             _g->buttonlist[i].soundorg = &LN_FRONTSECTOR(line)->soundorg;
+#endif
             return;
         }
 
@@ -200,19 +209,80 @@ void P_ChangeSwitchTexture(const line_t *line, int useAgain)
     // ttop = &_g->sides[line->sidenum[0]].toptexture;
     //tmid = &_g->sides[line->sidenum[0]].midtexture;
     //tbot = &_g->sides[line->sidenum[0]].bottomtexture;
+#ifdef CONFIG_DOOM_NO_COMPACT_PTR
+    line_t temp_line;
+    user_flash_read_game_resource(&temp_line, sizeof(temp_line), (uint32_t)line);
+
+    ttop = &_g->switch_texture_top[_g->linesChangeableTextureIndex[temp_line.lineno]];
+    tmid = &_g->switch_texture_mid[_g->linesChangeableTextureIndex[temp_line.lineno]];
+    tbot = &_g->switch_texture_bot[_g->linesChangeableTextureIndex[temp_line.lineno]];
+#else
     ttop = &_g->switch_texture_top[_g->linesChangeableTextureIndex[line->lineno]];
     tmid = &_g->switch_texture_mid[_g->linesChangeableTextureIndex[line->lineno]];
     tbot = &_g->switch_texture_bot[_g->linesChangeableTextureIndex[line->lineno]];
+#endif
     //
     sound = sfx_swtchn;
 
     /* don't zero line->special until after exit switch test */
+#ifdef CONFIG_DOOM_NO_COMPACT_PTR
+    if (!useAgain)
+        LN_SPECIAL(&temp_line) = 0;
+#else
     if (!useAgain)
         LN_SPECIAL(line) = 0;
+#endif
 
     /* search for a texture to change */
     texture = NULL;
     position = 0;
+#ifdef CONFIG_DOOM_NO_COMPACT_PTR
+	uint32_t temp_switchlist_addr;
+	user_flash_read_game_resource(&temp_switchlist_addr, sizeof(temp_switchlist_addr), (uint32_t)&p_wad_immutable_flash_data->switchlist);
+    for (i = 0; i < _g->numswitches * 2; i++)
+    { /* this could be more efficient... */
+		short temp_switch;
+		user_flash_read_game_resource(&temp_switch, sizeof(temp_switch), temp_switchlist_addr + i * sizeof(temp_switch));
+		if (temp_switch == *ttop)
+		{
+			texture = ttop;
+			position = top;
+			break;
+		}
+		else if (temp_switch == *tmid)
+		{
+			texture = tmid;
+			position = middle;
+			break;
+		}
+		else if (temp_switch == *tbot)
+		{
+			texture = tbot;
+			position = bottom;
+			break;
+		}
+	}
+	if (texture == NULL)
+	{
+		return; /* no switch texture was found to change */
+	}
+	uint16_t temp_texture;
+	user_flash_read_game_resource(&temp_texture, sizeof(temp_texture), (temp_switchlist_addr + ((i ^ 1) * sizeof(temp_texture))));
+	debugi("%s read switch texture %d at %08x ttop:%d tmid:%d tbot:%d pos:%d\r\n",
+		   __func__,
+		   temp_texture,
+		   (temp_switchlist_addr + ((i ^ 1) * sizeof(temp_texture))),
+		   *ttop,
+		   *tmid,
+		   *tbot,
+		   position);
+	*texture = temp_texture;
+
+	side_t temp_side0;
+    user_flash_read_game_resource(&temp_side0, sizeof(temp_side0), (uint32_t)(_g->sides + temp_line.sidenum[0]));
+
+    S_StartSound2(&LN_FRONTSECTOR_ALT(temp_line, temp_side0)->soundorg, sound);
+#else
     for (i = 0; i < _g->numswitches * 2; i++)
     { /* this could be more efficient... */
         if (p_wad_immutable_flash_data->switchlist[i] == *ttop)
@@ -237,8 +307,16 @@ void P_ChangeSwitchTexture(const line_t *line, int useAgain)
     if (texture == NULL)
         return; /* no switch texture was found to change */
     *texture = p_wad_immutable_flash_data->switchlist[i ^ 1];
-
-    S_StartSound2(&LN_FRONTSECTOR(line)->soundorg, sound);
+	debugi("%s read switch texture %d at %08x ttop:%d tmid:%d tbot:%d pos:%d\r\n",
+		   __func__,
+		   *texture,
+		   (uint32_t)&p_wad_immutable_flash_data->switchlist[i ^ 1],
+		   *ttop,
+		   *tmid,
+		   *tbot,
+		   position);
+	S_StartSound2(&LN_FRONTSECTOR(line)->soundorg, sound);
+#endif
 
     if (useAgain)
         P_StartButton(line, position, p_wad_immutable_flash_data->switchlist[i], BUTTONTIME);
@@ -257,6 +335,15 @@ void P_ChangeSwitchTexture(const line_t *line, int useAgain)
 //
 boolean P_UseSpecialLine(mobj_t *thing, const line_t *line, int side)
 {
+#ifdef CONFIG_DOOM_NO_COMPACT_PTR
+    const line_t *old_line = line;
+    line_t temp_line;
+    user_flash_read_game_resource(&temp_line, sizeof(temp_line), (uint32_t)line);
+    debugi("%s ln_special:%d for line at %08x\r\n", __func__, LN_SPECIAL(&temp_line), (uint32_t)line);
+    line = &temp_line;
+#else
+    debugi("%s ln_special:%d for line at %08x\r\n", __func__, LN_SPECIAL(line), (uint32_t)line);
+#endif
 
     // e6y
     // b.m. side test was broken in boom201
@@ -310,8 +397,13 @@ boolean P_UseSpecialLine(mobj_t *thing, const line_t *line, int side)
         {
             if (!thing->player_sptr)
                 return false;   // monsters disallowed from unlocking doors
+#ifdef CONFIG_DOOM_NO_COMPACT_PTR
+            if (!P_CanUnlockGenDoor(old_line, getMobjPlayer(thing)))
+                return false;
+#else
             if (!P_CanUnlockGenDoor(line, getMobjPlayer(thing)))
                 return false;
+#endif
             if (!line->tag && ((LN_SPECIAL(line) & 6) != 6)) //jff 2/27/98 all non-manual
                 return false;                   // generalized types require tag
 
@@ -350,21 +442,44 @@ boolean P_UseSpecialLine(mobj_t *thing, const line_t *line, int side)
             {
                 case PushOnce:
                     if (!side)
+#ifdef CONFIG_DOOM_NO_COMPACT_PTR
+                        if (linefunc(old_line))
+                            LN_SPECIAL(&temp_line) = 0;
+#else
                         if (linefunc(line))
                             LN_SPECIAL(line) = 0;
+#endif
                     return true;
                 case PushMany:
+#ifdef CONFIG_DOOM_NO_COMPACT_PTR
+                    if (!side)
+                        linefunc(old_line);
+                    return true;
+#else
                     if (!side)
                         linefunc(line);
                     return true;
+#endif
                 case SwitchOnce:
+#ifdef CONFIG_DOOM_NO_COMPACT_PTR
+                    if (linefunc(old_line))
+                        P_ChangeSwitchTexture(old_line, 0);
+                    return true;
+#else
                     if (linefunc(line))
                         P_ChangeSwitchTexture(line, 0);
                     return true;
+#endif
                 case SwitchMany:
+#ifdef CONFIG_DOOM_NO_COMPACT_PTR
+                    if (linefunc(old_line))
+                        P_ChangeSwitchTexture(old_line, 1);
+                    return true;
+#else
                     if (linefunc(line))
                         P_ChangeSwitchTexture(line, 1);
                     return true;
+#endif
                 default:  // if not a switch/push type, do nothing here
                     return false;
             }
@@ -395,11 +510,21 @@ boolean P_UseSpecialLine(mobj_t *thing, const line_t *line, int side)
         }
     }
 
+#ifdef CONFIG_DOOM_NO_COMPACT_PTR
+    if (!P_CheckTag(old_line))  //jff 2/27/98 disallow zero tag on some types
+        return false;
+#else
     if (!P_CheckTag(line))  //jff 2/27/98 disallow zero tag on some types
         return false;
+#endif
 
     // Dispatch to handler according to linedef type
+#ifdef CONFIG_DOOM_NO_COMPACT_PTR
+    line = old_line;
+    switch (LN_SPECIAL(&temp_line))
+#else
     switch (LN_SPECIAL(line))
+#endif
     {
         // Manual doors, push type with no tag
         case 1:             // Vertical Door
@@ -604,7 +729,11 @@ boolean P_UseSpecialLine(mobj_t *thing, const line_t *line, int side)
             // added inner switch, relaxed check to demo_compatibility
 
         default:
+#ifdef CONFIG_DOOM_NO_COMPACT_PTR
+            switch (LN_SPECIAL(&temp_line))
+#else
             switch (LN_SPECIAL(line))
+#endif
             {
                 //jff 1/29/98 added linedef types to fill all functions out so that
                 // all possess SR, S1, WR, W1 types

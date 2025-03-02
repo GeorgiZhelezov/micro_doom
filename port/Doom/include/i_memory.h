@@ -45,6 +45,8 @@
 #define DOOM_INCLUDE_I_MEMORY_H_
 #include <stdint.h>
 
+#include <string.h>
+
 #include "user_flash.h"
 
 // #define RAM_PTR_BASE 0x20000000UL
@@ -86,63 +88,73 @@
 
 typedef struct
 {
+#ifdef CONFIG_DOOM_NO_COMPACT_PTR
+    uint8_t addrBytes[sizeof(void *)];
+#else
     uint8_t addrBytes[3];
+#endif
 } __attribute((packed)) packedAddress_t;
 
-static inline void* getLongPtr(unsigned short shortPointer)
+#ifdef CONFIG_DOOM_NO_COMPACT_PTR
+static inline void* getLongPtr(size_t shortPointer)
 { // Special case: short pointer being all 0 => NULL
     if (!shortPointer)
         return 0;
 
-    // volatile unsigned int temp = (shortPointer << 2);
-    // temp |= RAM_PTR_BASE;
-    // return (void*) temp;
+    return (void*) shortPointer;
+}
+
+static inline size_t getShortPtr(void *longPtr)
+{
+    return ((size_t) longPtr);
+}
+#else
+static inline void* getLongPtr(unsigned short shortPointer)
+{ // Special case: short pointer being all 0 => NULL
+    if (!shortPointer)
+        return 0;
     return (void*) (((unsigned int) shortPointer << 2) | RAM_PTR_BASE);
 }
 static inline unsigned short getShortPtr(void *longPtr)
 {
-    // volatile unsigned short temp = (unsigned int)longPtr >> 2;
-    // // temp &= 0x7fff;
-
-    // uint32_t reverted = (uint32_t) getLongPtr(temp);
-    // if ((uint32_t) longPtr != reverted)
-    // {
-    //     while(1)
-    //     {
-    //         __asm__ volatile("nop");
-    //     }
-    // }
-
-    // return temp;
     return ((unsigned int) longPtr) >> 2;
 }
+#endif // CONFIG_DOOM_NO_COMPACT_PTR
 
 static inline packedAddress_t getPackedAddress(void *addr)
 {
+#ifdef CONFIG_DOOM_NO_COMPACT_PTR
+    packedAddress_t ret;
+    memcpy(ret.addrBytes, &addr, sizeof(void *));
+    return ret;
+#else
     packedAddress_t ret;
     unsigned int intaddr = (uint32_t) addr;
     // uint8_t highaddr = intaddr >> 24;
     uint32_t highaddr = intaddr;
     uint8_t highAddrBits = 0;
 
-    
-    switch (highaddr)
+    if (highaddr >= USER_RAM_BASE_ADDRESS &&
+        highaddr < USER_RAM_BASE_ADDRESS + USER_RAM_SIZE)
     {
-    case USER_RAM_BASE_ADDRESS ... (USER_RAM_BASE_ADDRESS + USER_RAM_SIZE):
         intaddr -= USER_RAM_BASE_ADDRESS;
         highAddrBits = 0x0;
-        break;
-    case USER_WAD_PARTITION_BASE_ADDRESS ... (USER_WAD_PARTITION_BASE_ADDRESS + USER_WAD_PARTITION_SIZE):
+    }
+    else if (highaddr >= USER_WAD_PARTITION_BASE_ADDRESS &&
+             highaddr < USER_WAD_PARTITION_BASE_ADDRESS + USER_WAD_PARTITION_SIZE)
+    {
         intaddr -= USER_WAD_PARTITION_BASE_ADDRESS;
         highAddrBits = 0x40;
-        break;
-    case USER_CACHE_PARTITION_BASE_ADDRESS ... (USER_CACHE_PARTITION_BASE_ADDRESS + USER_CACHE_PARTITION_SIZE):
+    }
+    else if (highaddr >= USER_CACHE_PARTITION_BASE_ADDRESS &&
+             highaddr < USER_CACHE_PARTITION_BASE_ADDRESS + USER_CACHE_PARTITION_SIZE)
+    {
         intaddr -= USER_CACHE_PARTITION_BASE_ADDRESS;
         highAddrBits = 0x80;
-        break;
-    default:
-        while (1) { __asm__ volatile("nop"); }
-        break;
+    }
+    else
+    {
+        k_panic();
     }
     ret.addrBytes[0] = intaddr;
     ret.addrBytes[1] = intaddr >> 8;
@@ -151,11 +163,18 @@ static inline packedAddress_t getPackedAddress(void *addr)
     // k_busy_wait(20 * 1000);
 
     return ret;
+#endif // CONFIG_DOOM_NO_COMPACT_PTR
 }
 
 // static void* unpackAddress(volatile packedAddress_t a) // passed by copy, because it is shorted than a pointer!
 static inline void* unpackAddress(packedAddress_t a) // passed by copy, because it is shorted than a pointer!
 {
+#ifdef CONFIG_DOOM_NO_COMPACT_PTR
+    // void *ret;
+    uint32_t ret;
+    memcpy(&ret, a.addrBytes, sizeof(void *));
+    return (void*)ret;
+#else
     const uint32_t addresses[] =
     {
         PACKED_MEMORY_ADDRESS0, 
@@ -177,6 +196,7 @@ static inline void* unpackAddress(packedAddress_t a) // passed by copy, because 
     // uint32_t val = temp;
     // return (void *) val;
     return (void*) (addresses[a.addrBytes[2] >> 6] + ((a.addrBytes[0]) | (a.addrBytes[1] << 8) | ((a.addrBytes[2] & 0x3F) << 16)));
+#endif // CONFIG_DOOM_NO_COMPACT_PTR
 }
 
 #endif /* DOOM_INCLUDE_I_MEMORY_H_ */

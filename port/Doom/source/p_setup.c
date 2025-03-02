@@ -279,7 +279,16 @@ static void P_LoadLineDefs(int lump)
 
     for (i = 0; i < _g->numlines; i++)
     {
+#ifdef CONFIG_DOOM_NO_COMPACT_PTR
+        debugi("%s: reading line at %08x for special\r\n", __func__, (uint32_t)(_g->lines + i));
+        line_t temp_line;
+        user_flash_read_game_resource(&temp_line, sizeof(temp_line), (uint32_t)(_g->lines + i));
+        _g->linedata[i].special = temp_line.const_special;
+#else
+        debugi("%s: reading line at %08x for special\r\n", __func__, (uint32_t)(&_g->lines[i]));
         _g->linedata[i].special = _g->lines[i].const_special;
+#endif
+        debugi("%s[0]: special %d\r\n", __func__, _g->linedata[i].special);
     }
 }
 
@@ -306,7 +315,15 @@ static void P_LoadSideDefs(int lump)
     int n = 0, ma = 0, mi = 0;
     for (i = 0; i < _g->numsides; i++)
     {
+#ifdef CONFIG_DOOM_NO_COMPACT_PTR
+        debugi("%s: reading side at %08x\r\n", __func__, (uint32_t)(_g->sides + i));
+        side_t *sd, temp_sd;
+        user_flash_read_game_resource(&temp_sd, sizeof(temp_sd), (uint32_t)(_g->sides + i));
+        sd = &temp_sd;
+#else
         register side_t *sd = _g->sides + i;
+        debugi("%s: reading side at %08x\r\n", __func__, (uint32_t)sd);
+#endif
         _g->textureoffsets[i] = sd->textureoffset;
         // nh: to count how much we can squeeze
         if (n < sd->midtexture)
@@ -319,6 +336,8 @@ static void P_LoadSideDefs(int lump)
             ma = sd->textureoffset;
         if (mi > sd->textureoffset)
             mi = sd->textureoffset;
+
+        debugi("%s[0]: top:%d mid:%d bot:%d off:%d\r\n", __func__, sd->toptexture, sd->midtexture, sd->bottomtexture, sd->textureoffset);
     }
     // 2021-03-13: forgot that switches have changeable textures...
     // is a line special? Then we must reserve a memory location to store its texture numbers
@@ -326,10 +345,21 @@ static void P_LoadSideDefs(int lump)
     int l = 0;
     for (i = 0; i < _g->numlines; i++)
     {
+#ifdef CONFIG_DOOM_NO_COMPACT_PTR
+        debugi("%s: reading line at %08x for special\r\n", __func__, (uint32_t)(_g->lines + i));
+        line_t temp_line;
+        user_flash_read_game_resource(&temp_line, sizeof(temp_line), (uint32_t)(_g->lines + i));
+        if (temp_line.const_special)
+        {
+            l++;
+        }
+#else
+        debugi("%s: reading line at %08x for special\r\n", __func__, (uint32_t)(&_g->lines[i]));
         if (_g->lines[i].const_special)
         {
             l++;
         }
+#endif
     }
     // then allocate spaces
     _g->linesChangeableTextureIndex = Z_Calloc(_g->numlines, sizeof(*_g->linesChangeableTextureIndex), PU_LEVEL, 0);
@@ -339,12 +369,19 @@ static void P_LoadSideDefs(int lump)
     l = 0;
     for (i = 0; i < _g->numlines; i++)
     {
-        if (_g->lines[i].const_special)
+#ifdef CONFIG_DOOM_NO_COMPACT_PTR
+        debugi("%s: reading line at %08x for special\r\n", __func__, (uint32_t)(_g->lines + i));
+        line_t temp_line;
+        user_flash_read_game_resource(&temp_line, sizeof(temp_line), (uint32_t)(_g->lines + i));
+        if (temp_line.const_special)
         {
             // set the changeableTextureIndex
             _g->linesChangeableTextureIndex[i] = l;
-            int side0num = _g->lines[i].sidenum[0];
-            side_t *sd = _g->sides + side0num;
+            int side0num = temp_line.sidenum[0];
+            side_t temp_side;
+            user_flash_read_game_resource(&temp_side, sizeof(temp_side), (uint32_t)(_g->sides + side0num));
+            side_t *sd = &temp_side;
+            debugi("%s: reading side at %08x for textures\r\n", __func__, (uint32_t)(_g->sides + side0num));
             // set texture index
             _g->switch_texture_top[l] = sd->toptexture;
             _g->switch_texture_mid[l] = sd->midtexture;
@@ -352,6 +389,23 @@ static void P_LoadSideDefs(int lump)
             // point to next slot
             l++;
         }
+#else
+        debugi("%s: reading line at %08x for special\r\n", __func__, (uint32_t)(&_g->lines[i]));
+        if (_g->lines[i].const_special)
+        {
+            // set the changeableTextureIndex
+            _g->linesChangeableTextureIndex[i] = l;
+            int side0num = _g->lines[i].sidenum[0];
+            side_t *sd = _g->sides + side0num;
+            debugi("%s: reading side at %08x for textures\r\n", __func__, (uint32_t)sd);
+            // set texture index
+            _g->switch_texture_top[l] = sd->toptexture;
+            _g->switch_texture_mid[l] = sd->midtexture;
+            _g->switch_texture_bot[l] = sd->bottomtexture;
+            // point to next slot
+            l++;
+        }
+#endif
     }
     printf("Number of textures %d, max offset %d, min offset %d. Special %d\r\n", n, ma, mi, l);
 }
@@ -369,7 +423,15 @@ static void P_LoadSideDefsTextures()
     {
         // TODO: instead of loading finding everytime TEXTUREx lumps by name we could cache it
         // it would save some time.
+#ifdef CONFIG_DOOM_NO_COMPACT_PTR
+        side_t *sd, temp_sd;
+        user_flash_read_game_resource(&temp_sd, sizeof(temp_sd), (uint32_t)(_g->sides + i));
+        debugi("%s: reading side at %08x\r\n", __func__, (uint32_t)(_g->sides + i));
+        sd = &temp_sd;
+#else
         register side_t *sd = _g->sides + i;
+        debugi("%s: reading side at %08x\r\n", __func__, (uint32_t)(sd));
+#endif   
         if (!texSizes[sd->midtexture])
         {
             texSizes[sd->midtexture] = getTextureStructSize(sd->midtexture);
@@ -390,7 +452,15 @@ static void P_LoadSideDefsTextures()
     printf(">>>Size before %d\r\n", size);
     for (i = 0; i < _g->numsides; i++)
     {
+#ifdef CONFIG_DOOM_NO_COMPACT_PTR
+        debugi("%s: reading side at %08x\r\n", __func__, (uint32_t)(_g->sides + i));
+        side_t *sd, temp_sd;
+        user_flash_read_game_resource(&temp_sd, sizeof(temp_sd), (uint32_t)(_g->sides + i));
+        sd = &temp_sd;
+#else
         register side_t *sd = _g->sides + i;
+        debugi("%s: reading side at %08x\r\n", __func__, (uint32_t)(sd));
+#endif
         R_GetTexture(sd->midtexture, true, &size);
         R_GetTexture(sd->toptexture, true, &size);
         R_GetTexture(sd->bottomtexture, true, &size);
@@ -433,10 +503,21 @@ static void P_LoadBlockMap(int lump)
     p_wad_level_flash_data->blockmaplump = writeLumpToFlashRegion(lump, FLASH_LEVEL_REGION, true);
     _g->blockmaplump = p_wad_level_flash_data->blockmaplump;
 
+#ifdef CONFIG_DOOM_NO_COMPACT_PTR
+    short temp_blockmaplump[4];
+    user_flash_read_game_resource(temp_blockmaplump, sizeof(temp_blockmaplump), (uint32_t)_g->blockmaplump);
+    _g->bmaporgx   = temp_blockmaplump[0] << FRACBITS;
+    _g->bmaporgy   = temp_blockmaplump[1] << FRACBITS;
+    _g->bmapwidth  = temp_blockmaplump[2];
+    _g->bmapheight = temp_blockmaplump[3];
+#else
     _g->bmaporgx = _g->blockmaplump[0] << FRACBITS;
     _g->bmaporgy = _g->blockmaplump[1] << FRACBITS;
     _g->bmapwidth = _g->blockmaplump[2];
     _g->bmapheight = _g->blockmaplump[3];
+#endif
+    debugi("%s reading blockmaplump from %08x\r\n", __func__, (uint32_t)_g->blockmaplump);
+    debugi("%s bmaporgx:%d bmaporgy:%d bmapw:%d bmaph:%d\r\n", __func__, _g->bmaporgx, _g->bmaporgy, _g->bmapwidth, _g->bmapheight);
 
     // clear out mobj chains - CPhipps - use calloc
     _g->blocklinks_sptrs = Z_Calloc(_g->bmapwidth * _g->bmapheight, sizeof(*_g->blocklinks_sptrs), PU_LEVEL, 0);
@@ -479,7 +560,6 @@ static void P_AddLineToSector(const line_t *li, sector_t *sector)
 
     // const struct line_s **temp = getSectorLines(sector);
     // temp[sector->linecount++] = li;
-
     getSectorLines(sector)[sector->linecount++] = li; // getPackedAddress(li);
 }
 // modified to return totallines (needed by P_LoadReject)
@@ -492,12 +572,35 @@ static int P_GroupLines(void)
     // figgi
     for (i = 0; i < _g->numsubsectors; i++)
     {
+#ifdef CONFIG_DOOM_NO_COMPACT_PTR
+        _g->subsectors[i].sector = NULL;
+        for (j = 0; j < _g->subsectors[i].numlines; j++)
+        {
+            seg_t temp_seg;
+            user_flash_read_game_resource(&temp_seg, sizeof(temp_seg), (uint32_t)(_g->segs + _g->subsectors[i].firstline + j));
+            debugi("%s[0]: linenum:%d sidenum:%d angle:%d off:%d\r\n", __func__, temp_seg.linenum, temp_seg.sidenum, temp_seg.angle, temp_seg.offset);
+            debugi("%s: reading segment at %08x\r\n", __func__, (uint32_t)(_g->segs + _g->subsectors[i].firstline + j));
+            if (temp_seg.sidenum != NO_INDEX)
+            {
+                side_t temp_side;
+                user_flash_read_game_resource(&temp_side, sizeof(temp_side), (uint32_t)(_g->sides + temp_seg.sidenum));
+                debugi("%s[0]: top:%d mid:%d bot:%d off:%d\r\n", __func__, temp_side.toptexture, temp_side.midtexture, temp_side.bottomtexture, temp_side.textureoffset);
+                _g->subsectors[i].sector = (_g->sectors + temp_side.sector_num);
+                break;
+            }
+        }
+        if (_g->subsectors[i].sector == NULL)
+            I_Error("P_GroupLines: Subsector a part of no sector!\n");
+#else
         const seg_t *seg = &_g->segs[_g->subsectors[i].firstline];
         _g->subsectors[i].sector = NULL;
         for (j = 0; j < _g->subsectors[i].numlines; j++)
         {
+            debugi("%s[0]: linenum:%d sidenum:%d angle:%d off:%d\r\n", __func__, seg->linenum, seg->sidenum, seg->angle, seg->offset);
+            debugi("%s: reading segment at %08x\r\n", __func__, (uint32_t)seg);
             if (seg->sidenum != NO_INDEX)
             {
+                debugi("%s[0]: top:%d mid:%d bot:%d off:%d\r\n", __func__, _g->sides[seg->sidenum].toptexture, _g->sides[seg->sidenum].midtexture, _g->sides[seg->sidenum].bottomtexture, _g->sides[seg->sidenum].textureoffset);
                 _g->subsectors[i].sector = &_g->sectors[_g->sides[seg->sidenum].sector_num];
                 break;
             }
@@ -505,11 +608,39 @@ static int P_GroupLines(void)
         }
         if (_g->subsectors[i].sector == NULL)
             I_Error("P_GroupLines: Subsector a part of no sector!\n");
+#endif
     }
 
+#ifdef CONFIG_DOOM_NO_COMPACT_PTR
+    for (i = 0, li = _g->lines; i < _g->numlines; i++, li++)
+    {
+        debugi("%s reading line at %08x\r\n", __func__, (uint32_t)li);
+        line_t temp_line;
+        user_flash_read_game_resource(&temp_line, sizeof(temp_line), (uint32_t)(li));
+        debugi("%s[1] line: dx=%d dy=%d flags=%d lineno=%d slopetype=%d\r\n", __func__, temp_line.dx, temp_line.dy, temp_line.flags, temp_line.lineno, temp_line.slopetype);
+
+        side_t temp_side0, temp_side1;
+        user_flash_read_game_resource(&temp_side0, sizeof(temp_side0), (uint32_t)(_g->sides + temp_line.sidenum[0]));
+        user_flash_read_game_resource(&temp_side1, sizeof(temp_side1), (uint32_t)(_g->sides + temp_line.sidenum[1]));
+        debugi("%s[1]: top:%d mid:%d bot:%d off:%d\r\n", __func__, temp_side0.toptexture, temp_side0.midtexture, temp_side0.bottomtexture, temp_side0.textureoffset);
+        debugi("%s[1]: top:%d mid:%d bot:%d off:%d\r\n", __func__, temp_side1.toptexture, temp_side1.midtexture, temp_side1.bottomtexture, temp_side1.textureoffset);
+
+        LN_FRONTSECTOR_ALT(temp_line, temp_side0)->linecount++;
+        if (LN_BACKSECTOR_ALT(&temp_line, temp_side1) && LN_BACKSECTOR_ALT(&temp_line, temp_side1) != LN_FRONTSECTOR_ALT(temp_line, temp_side0))
+        {
+            LN_BACKSECTOR_ALT(&temp_line, temp_side1)->linecount++;
+            total++;
+        }
+    }
+#else
     // count number of lines in each sector
     for (i = 0, li = _g->lines; i < _g->numlines; i++, li++)
     {
+        debugi("%s reading line at %08x\r\n", __func__, (uint32_t)li);
+        debugi("%s[1] line: dx=%d dy=%d flags=%d lineno=%d slopetype=%d\r\n", __func__, li->dx, li->dy, li->flags, li->lineno, li->slopetype);
+        debugi("%s[1]: top:%d mid:%d bot:%d off:%d\r\n", __func__, _g->sides[li->sidenum[0]].toptexture, _g->sides[li->sidenum[0]].midtexture, _g->sides[li->sidenum[0]].bottomtexture, _g->sides[li->sidenum[0]].textureoffset);
+        debugi("%s[1]: top:%d mid:%d bot:%d off:%d\r\n", __func__, _g->sides[li->sidenum[1]].toptexture, _g->sides[li->sidenum[1]].midtexture, _g->sides[li->sidenum[1]].bottomtexture, _g->sides[li->sidenum[1]].textureoffset);
+
         LN_FRONTSECTOR(li)->linecount++;
         if (LN_BACKSECTOR(li) && LN_BACKSECTOR(li) != LN_FRONTSECTOR(li))
         {
@@ -517,6 +648,7 @@ static int P_GroupLines(void)
             total++;
         }
     }
+#endif // CONFIG_DOOM_NO_COMPACT_PTR
 // now we have the total number of lines.
     line_t **linebuffer = Z_Malloc(total * sizeof(line_t*), PU_STATIC, 0);
     line_t **lineBufferArray = linebuffer;
@@ -535,13 +667,41 @@ static int P_GroupLines(void)
         }
     }
 
+#ifdef CONFIG_DOOM_NO_COMPACT_PTR
     // Enter those lines
     for (i = 0, li = _g->lines; i < _g->numlines; i++, li++)
     {
+        debugi("%s reading line at %08x\r\n", __func__, (uint32_t)li);
+        
+        line_t temp_line;
+        user_flash_read_game_resource(&temp_line, sizeof(temp_line), (uint32_t)(li));
+        debugi("%s[2] line: dx=%d dy=%d flags=%d lineno=%d slopetype=%d\r\n", __func__, temp_line.dx, temp_line.dy, temp_line.flags, temp_line.lineno, temp_line.slopetype);
+
+        side_t temp_side0, temp_side1;
+        user_flash_read_game_resource(&temp_side0, sizeof(temp_side0), (uint32_t)(_g->sides + temp_line.sidenum[0]));
+        user_flash_read_game_resource(&temp_side1, sizeof(temp_side1), (uint32_t)(_g->sides + temp_line.sidenum[1]));
+        debugi("%s[2]: top:%d mid:%d bot:%d off:%d\r\n", __func__, temp_side0.toptexture, temp_side0.midtexture, temp_side0.bottomtexture, temp_side0.textureoffset);
+        debugi("%s[2]: top:%d mid:%d bot:%d off:%d\r\n", __func__, temp_side1.toptexture, temp_side1.midtexture, temp_side1.bottomtexture, temp_side1.textureoffset);
+
+        P_AddLineToSector(li, LN_FRONTSECTOR_ALT(temp_line, temp_side0));
+        if (LN_BACKSECTOR_ALT(&temp_line, temp_side1) && LN_BACKSECTOR_ALT(&temp_line, temp_side1) != LN_FRONTSECTOR_ALT(temp_line, temp_side0))
+            P_AddLineToSector(li, LN_BACKSECTOR_ALT(&temp_line, temp_side1));
+    }
+#else
+    // Enter those lines
+    for (i = 0, li = _g->lines; i < _g->numlines; i++, li++)
+    {
+        debugi("%s reading line at %08x\r\n", __func__, (uint32_t)li);
+
+        debugi("%s[2] line: dx=%d dy=%d flags=%d lineno=%d slopetype=%d\r\n", __func__, li->dx, li->dy, li->flags, li->lineno, li->slopetype);
+        debugi("%s[2]: top:%d mid:%d bot:%d off:%d\r\n", __func__, _g->sides[li->sidenum[0]].toptexture, _g->sides[li->sidenum[0]].midtexture, _g->sides[li->sidenum[0]].bottomtexture, _g->sides[li->sidenum[0]].textureoffset);
+        debugi("%s[2]: top:%d mid:%d bot:%d off:%d\r\n", __func__, _g->sides[li->sidenum[1]].toptexture, _g->sides[li->sidenum[1]].midtexture, _g->sides[li->sidenum[1]].bottomtexture, _g->sides[li->sidenum[1]].textureoffset);
+
         P_AddLineToSector(li, LN_FRONTSECTOR(li));
         if (LN_BACKSECTOR(li) && LN_BACKSECTOR(li) != LN_FRONTSECTOR(li))
             P_AddLineToSector(li, LN_BACKSECTOR(li));
     }
+#endif // CONFIG_DOOM_NO_COMPACT_PTR
 
     // store buffer to flash
     line_t **flashArrayAddress = writeBufferToFlashRegion(lineBufferArray, total * sizeof(line_t*), FLASH_LEVEL_REGION, true);
@@ -564,6 +724,21 @@ static int P_GroupLines(void)
         {
             const line_t *pline = getSectorLineByIndex(sector, l);
 
+#ifdef CONFIG_DOOM_NO_COMPACT_PTR
+            uint32_t temp_line_addr;
+            user_flash_read_game_resource(&temp_line_addr, sizeof(uint32_t), (uint32_t)pline); 
+
+            line_t temp_line;
+            user_flash_read_game_resource(&temp_line, sizeof(temp_line), temp_line_addr);
+            // user_flash_read_game_resource(&temp_line, sizeof(temp_line), (uint32_t)(pline));
+            debugi("%s[3]: dx=%d dy=%d flags=%d lineno=%d slopetype=%d\r\n", __func__, temp_line.dx, temp_line.dy, temp_line.flags, temp_line.lineno, temp_line.slopetype);
+            pline = &temp_line;
+
+            debugi("%s pline is at %08x\r\n", __func__, (uint32_t)temp_line_addr);
+#else
+            debugi("%s[3]: dx=%d dy=%d flags=%d lineno=%d slopetype=%d\r\n", __func__, pline->dx, pline->dy, pline->flags, pline->lineno, pline->slopetype);
+            debugi("%s pline is at %08x\r\n", __func__, (uint32_t)pline);
+#endif
             M_AddToBox(bbox, pline->v1.x, pline->v1.y);
             M_AddToBox(bbox, pline->v2.x, pline->v2.y);
         }
@@ -622,10 +797,21 @@ void P_SetupLevel(int episode, int map, int playermask, skill_t skill)
     boolean differentLevel = false;
     if (levelDataAlreadyInitialized) // && (uint32_t) p_wad_immutable_flash_data->levelData > (uint32_t) p_wad_immutable_flash_data && p_wad_immutable_flash_data->levelData < FLASH_SIZE)
     {
+#ifdef CONFIG_DOOM_NO_COMPACT_PTR
+        uint32_t temp_map_episode;
+        user_flash_read_game_resource(&temp_map_episode, sizeof(temp_map_episode), (uint32_t)&p_wad_level_flash_data->mapEpisode);
+        uint16_t temp_map = temp_map_episode & 0xff;
+        uint16_t temp_episode = (temp_map_episode >> 16) & 0xff;
+        if (temp_map != map || temp_episode != episode || false == levelDataAlreadyInitialized)
+        {
+            differentLevel = true;
+        }
+#else
         if (p_wad_level_flash_data->map != map || p_wad_level_flash_data->episode != episode || false == levelDataAlreadyInitialized)
         {
             differentLevel = true;
         }
+#endif
     }
     else
     {
@@ -641,10 +827,18 @@ void P_SetupLevel(int episode, int map, int playermask, skill_t skill)
         // reset only those pointer in ram
         for (int i = 0; i < _g->numtextures; i++)
         {
+#ifdef CONFIG_DOOM_NO_COMPACT_PTR
+            if ((uint32_t)textures[i] &&
+                !user_flash_is_resource_in_flash((uint32_t)textures[i]))
+            {
+                textures[i] = 0;
+            }
+#else
             if ((uint32_t) textures[i] >= RAM_PTR_BASE)
             {
                 textures[i] = 0;
             }
+#endif
         }
     }
     /*  if (false == levelDataAlreadyInitialized || p_wad_level_flash_data->map != map || p_wad_level_flash_data->episode != episode || false == levelDataAlreadyInitialized)

@@ -205,9 +205,24 @@ static void I_UploadNewPalette(int pal)
     {   // save some cycles for those playing with 0 gamma.
            for (int i = 0; i < 256; i++)
         {
+#ifdef CONFIG_DOOM_NO_COMPACT_PTR
+            uint16_t r, g, b;
+            uint32_t temp_palette_lump_addr;
+            user_flash_read_game_resource(&temp_palette_lump_addr, sizeof(temp_palette_lump_addr), (uint32_t)&p_wad_immutable_flash_data->palette_lump);
+            uint32_t r_addr = (temp_palette_lump_addr + pal * 256 * 3 + 3 * i);
+            uint32_t g_addr = (temp_palette_lump_addr + pal * 256 * 3 + 3 * i + 1);
+            uint32_t b_addr = (temp_palette_lump_addr + pal * 256 * 3 + 3 * i + 2);
+            user_flash_read_game_resource(&r, 1, r_addr);
+            user_flash_read_game_resource(&g, 1, g_addr);
+            user_flash_read_game_resource(&b, 1, b_addr);
+            r >>= 3;
+            g >>= 2;
+            b >>= 3;
+#else
             uint16_t r = p_wad_immutable_flash_data->palette_lump[pal * 256 * 3 + 3 * i] >> 3;
             uint16_t g = p_wad_immutable_flash_data->palette_lump[pal * 256 * 3 + 3 * i + 1] >> 2;
             uint16_t b = p_wad_immutable_flash_data->palette_lump[pal * 256 * 3 + 3 * i + 2] >> 3;
+#endif
             uint16_t rgb = (r << (6 + 5)) | (g << 5) | (b << (0));
             // rgb = (rgb >> 8) | (rgb << 8);
             _g->current_palette[i] = rgb;

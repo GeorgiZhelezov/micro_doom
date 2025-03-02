@@ -154,7 +154,17 @@ void updateSound()
         if (soundChannels[ch].volume && soundChannels[ch].sfxIdx)
         {
             // get lump
+#ifdef CONFIG_DOOM_NO_COMPACT_PTR
+            uint32_t temp_sound_lumpnum_addr;
+            user_flash_read_game_resource(&temp_sound_lumpnum_addr, sizeof(temp_sound_lumpnum_addr), (uint32_t)&p_wad_immutable_flash_data->soundLumps);
+            temp_sound_lumpnum_addr = temp_sound_lumpnum_addr + soundChannels[ch].sfxIdx * sizeof(p_wad_immutable_flash_data->soundLumps);
+            int lumpNum;
+            user_flash_read_game_resource(&lumpNum, sizeof(lumpNum), temp_sound_lumpnum_addr);
+            debugi("%s sound lumpnum:%d at %08x\r\n", __func__, lumpNum, temp_sound_lumpnum_addr);
+#else
             int lumpNum = p_wad_immutable_flash_data->soundLumps[soundChannels[ch].sfxIdx]; // W_CheckNumForName(S_sfx[soundChannels[ch].sfxIdx].name);
+            debugi("%s sound lumpnum:%d at %08x\r\n", __func__, lumpNum, (uint32_t)&p_wad_immutable_flash_data->soundLumps[soundChannels[ch].sfxIdx]);
+#endif
             if (lumpNum == -1)
                 continue;
             const void * lumpPtr = W_CacheLumpNum(lumpNum);

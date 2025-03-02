@@ -425,7 +425,33 @@ int EV_VerticalDoor(const line_t *line, mobj_t *thing)
     //  Check for locks
     player = getMobjPlayer(thing);
 
+#ifdef CONFIG_DOOM_NO_COMPACT_PTR
+    line_t temp_line;
+    user_flash_read_game_resource(&temp_line, sizeof(temp_line), (uint32_t)line);
+    debugi("%s line at %08x dx:%d dy:%d special:%d flags:%d slopetype:%d tag:%d LNSPECIAL:%d\r\n",
+           __func__,
+           (uint32_t)line,
+           temp_line.dx,
+           temp_line.dy,
+           temp_line.const_special,
+           temp_line.flags,
+           temp_line.slopetype,
+           temp_line.tag,
+           LN_SPECIAL(&temp_line));
+    switch (LN_SPECIAL(&temp_line))
+#else
+    debugi("%s line at %08x dx:%d dy:%d special:%d flags:%d slopetype:%d tag:%d LNSPECIAL:%d\r\n",
+           __func__,
+           (uint32_t)line,
+           line->dx,
+           line->dy,
+           line->const_special,
+           line->flags,
+           line->slopetype,
+           line->tag,
+           LN_SPECIAL(line));
     switch (LN_SPECIAL(line))
+#endif
     {
         case 26: // Blue Lock
         case 32:
@@ -468,14 +494,48 @@ int EV_VerticalDoor(const line_t *line, mobj_t *thing)
     }
 
     // if the wrong side of door is pushed, give oof sound
+#ifdef CONFIG_DOOM_NO_COMPACT_PTR
+    debugi("%s line.sidenum[1]:%d\r\n", __func__, temp_line.sidenum[1]);
+    if (temp_line.sidenum[1] == NO_INDEX)                     // killough
+#else
+    debugi("%s line.sidenum[1]:%d\r\n", __func__, line->sidenum[1]);
     if (line->sidenum[1] == NO_INDEX)                     // killough
+#endif
     {
         S_StartSound(player->mo, sfx_oof);           // killough 3/20/98
         return 0;
     }
 
     // get the sector on the second side of activating linedef
+#ifdef CONFIG_DOOM_NO_COMPACT_PTR
+    side_t temp_side;
+    user_flash_read_game_resource(&temp_side, sizeof(temp_side), (uint32_t)(_g->sides + temp_line.sidenum[1]));
+    sec = &_g->sectors[temp_side.sector_num];
+    debugi("%s sec is at g.sectors[%d] ceilh:%d ceilpic:%d floorh:%d floorpic:%d lightlevel:%d linecount:%d tag:%d validcount:%d\r\n",
+           __func__,
+           temp_side.sector_num,
+           sec->ceilingheight,
+           sec->ceilingpic,
+           sec->floorheight,
+           sec->floorpic,
+           sec->lightlevel,
+           sec->linecount,
+           sec->tag,
+           sec->validcount);
+#else
     sec = &_g->sectors[_g->sides[line->sidenum[1]].sector_num];
+    debugi("%s sec is at g.sectors[%d] ceilh:%d ceilpic:%d floorh:%d floorpic:%d lightlevel:%d linecount:%d tag:%d validcount:%d\r\n",
+           __func__,
+           _g->sides[line->sidenum[1]].sector_num,
+           sec->ceilingheight,
+           sec->ceilingpic,
+           sec->floorheight,
+           sec->floorpic,
+           sec->lightlevel,
+           sec->linecount,
+           sec->tag,
+           sec->validcount);
+#endif
     //secnum = sec-_g->sectors;
 
     /* if door already has a thinker, use it
@@ -489,7 +549,11 @@ int EV_VerticalDoor(const line_t *line, mobj_t *thing)
     door = getSectorCeilingData(sec);
 
     /* If this is a repeatable line, and the door is already moving, then we can just reverse the current action. Note that in prboom 2.3.0 I erroneously removed the if-this-is-repeatable check, hence the prboom_4_compatibility clause below (foolishly assumed that already moving implies repeatable - but it could be moving due to another switch, e.g. lv19-509) */
+#ifdef CONFIG_DOOM_NO_COMPACT_PTR
+    if (door && ((LN_SPECIAL(&temp_line) == 1) || (LN_SPECIAL(&temp_line) == 117) || (LN_SPECIAL(&temp_line) == 26) || (LN_SPECIAL(&temp_line) == 27) || (LN_SPECIAL(&temp_line) == 28)))
+#else
     if (door && ((LN_SPECIAL(line) == 1) || (LN_SPECIAL(line) == 117) || (LN_SPECIAL(line) == 26) || (LN_SPECIAL(line) == 27) || (LN_SPECIAL(line) == 28)))
+#endif
     {
         /* For old demos we have to emulate the old buggy behavior and
          * mess up non-T_VerticalDoor actions.
@@ -543,7 +607,25 @@ int EV_VerticalDoor(const line_t *line, mobj_t *thing)
     }
 
     // emit proper sound
+#ifdef CONFIG_DOOM_NO_COMPACT_PTR
+    debugi("%s line special:%d dx:%d dy:%d flags:%d lineno:%d slopetype:%d\r\n", __func__,
+           LN_SPECIAL(&temp_line),
+           temp_line.dx,
+           temp_line.dy,
+           temp_line.flags,
+           temp_line.lineno,
+           temp_line.slopetype);
+    switch (LN_SPECIAL(&temp_line))
+#else
+    debugi("%s line special:%d dx:%d dy:%d flags:%d lineno:%d slopetype:%d\r\n", __func__,
+           LN_SPECIAL(line),
+           line->dx,
+           line->dy,
+           line->flags,
+           line->lineno,
+           line->slopetype);
     switch (LN_SPECIAL(line))
+#endif
     {
         case 117: // blazing door raise
         case 118: // blazing door open
@@ -568,10 +650,23 @@ int EV_VerticalDoor(const line_t *line, mobj_t *thing)
     door->line = line; // jff 1/31/98 remember line that triggered us
 
     /* killough 10/98: use gradual lighting changes if nonzero tag given */
+#ifdef CONFIG_DOOM_NO_COMPACT_PTR
+    door->lighttag = temp_line.tag;
+    debugi("%s door.lighttag:%d\r\n", __func__, door->lighttag);
+#else
     door->lighttag = line->tag;
+    debugi("%s door.lighttag:%d\r\n", __func__, door->lighttag);
+#endif
 
+#ifdef CONFIG_DOOM_NO_COMPACT_PTR
+    debugi("%s lnspecial:%d\r\n", __func__, LN_SPECIAL(&temp_line));
+    // set the type of door from the activating linedef type
+    switch (LN_SPECIAL(&temp_line))
+#else
+    debugi("%s lnspecial:%d\r\n", __func__, LN_SPECIAL(line));
     // set the type of door from the activating linedef type
     switch (LN_SPECIAL(line))
+#endif
     {
         case 1:
         case 26:
@@ -585,7 +680,11 @@ int EV_VerticalDoor(const line_t *line, mobj_t *thing)
         case 33:
         case 34:
             door->type = dopen;
+#ifdef CONFIG_DOOM_NO_COMPACT_PTR
+            LN_SPECIAL(&temp_line) = 0;
+#else
             LN_SPECIAL(line) = 0;
+#endif
             break;
 
         case 117: // blazing door raise
@@ -594,7 +693,11 @@ int EV_VerticalDoor(const line_t *line, mobj_t *thing)
             break;
         case 118: // blazing door open
             door->type = blazeOpen;
+#ifdef CONFIG_DOOM_NO_COMPACT_PTR
+            LN_SPECIAL(&temp_line) = 0;
+#else
             LN_SPECIAL(line) = 0;
+#endif
             door->speed = VDOORSPEED * 4;
             break;
 

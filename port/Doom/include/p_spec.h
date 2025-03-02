@@ -664,7 +664,11 @@ typedef struct
     fixed_t floordestheight;
     fixed_t speed;
 //  sector_t* sector;
+#ifdef CONFIG_DOOM_NO_COMPACT_PTR
+    size_t sector_sptr;
+#else
     unsigned short sector_sptr;
+#endif
     short newspecial;
     short oldspecial;   //jff 3/14/98 add to fix bug in change transfers
     short texture;
