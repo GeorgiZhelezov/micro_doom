@@ -38,9 +38,10 @@
 // #include "nrf.h"
 #include "graphics.h"
 
+#include "user_debug.h"
 // 1: BLE DONGLE, 0 = ADAFRUIT CLUE
 #define MINEWDONGLE 1
-#define DEBUG_OUT_PRINTF 0
+#define DEBUG_OUT_PRINTF 1
 // #define ZMALLOC_STAT
 //various configurations
 #define CACHE_ALL_COLORMAP_TO_RAM 0 // this wastes 8.25 more kB, and typically 900 us are saved. Remember to reduce zone memory!

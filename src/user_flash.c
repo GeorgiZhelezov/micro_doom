@@ -9,6 +9,7 @@
 #include "user_flash.h"
 #ifdef CONFIG_BOARD_NATIVE_SIM
 #include "../wad/demo.h"
+#include "../wad/game.h"
 #endif
 
 #include <zephyr/logging/log.h>
@@ -154,6 +155,41 @@ exit:
 	return ret;
 }
 
+int user_flash_is_resource_in_flash(const uint32_t addr)
+{
+	if ((addr >= USER_WAD_PARTITION_BASE_ADDRESS &&
+		 addr < USER_WAD_PARTITION_BASE_ADDRESS + USER_WAD_PARTITION_SIZE) ||
+
+		(addr >= USER_CACHE_PARTITION_BASE_ADDRESS &&
+		 addr < USER_CACHE_PARTITION_BASE_ADDRESS + USER_CACHE_PARTITION_SIZE))
+	{
+		return 1;
+	}
+	return 0;
+}
+
+int user_flash_read_game_resource(void *buff, size_t len, uint32_t addr)
+{
+	int ret = 0;
+
+	if (addr >= USER_WAD_PARTITION_BASE_ADDRESS &&
+		addr < USER_WAD_PARTITION_BASE_ADDRESS + USER_WAD_PARTITION_SIZE)
+	{
+		ret = user_flash_read(buff, len, addr, USER_WAD_PARTITION_ID);
+	}
+	else if (addr >= USER_CACHE_PARTITION_BASE_ADDRESS &&
+			 addr < USER_CACHE_PARTITION_BASE_ADDRESS + USER_CACHE_PARTITION_SIZE)
+	{
+		ret = user_flash_read(buff, len, addr, USER_CACHE_PARTITION_ID);
+	}
+	else
+	{
+		k_panic();
+	}
+
+	return ret;
+}
+
 int user_flash_init(void)
 {
 	int ret;
@@ -184,7 +220,7 @@ int user_flash_init(void)
 	if (ret < 0) { LOG_INF("could not open wad for reset"); }
 	ret = flash_area_erase(fa, 0, USER_WAD_PARTITION_SIZE);
 	if (ret < 0) { LOG_INF("could not erase wad for reset"); }
-	ret = user_flash_write(demo_wad, sizeof(demo_wad), USER_WAD_PARTITION_BASE_ADDRESS, USER_WAD_PARTITION_ID);
+	ret = user_flash_write(doom_game_wad, sizeof(doom_game_wad), USER_WAD_PARTITION_BASE_ADDRESS, USER_WAD_PARTITION_ID);
 	if (ret < 0) { LOG_INF("could not write wad partition"); }
 #endif
 
