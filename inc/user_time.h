@@ -26,7 +26,7 @@
 		uint64_t delta_ns =                                                      \
 			(delta_cycles * 1000000000ULL) / CONFIG_SYS_CLOCK_HW_CYCLES_PER_SEC; \
 		uint64_t delta_us = delta_ns / 1000ULL;                                  \
-		printk("%s %4d:%s took %4llu us (%llu ns)\r\n", t, __LINE__, __func__,   \
+		debugi("%s %4d:%s took %4llu us (%llu ns)\r\n", t, __LINE__, __func__,   \
 			   delta_us,                                                         \
 			   delta_ns);                                                        \
 		k_busy_wait(20 * 1000);                                                  \
@@ -36,7 +36,7 @@
  * @brief Wrapper for getting the current time in microseconds
  * 
  * @return 
- * - current CLOCK_MONOTONIC time in microseconds 
+ * - current time in microseconds 
  */
 uint32_t user_get_time_us(void);
 
@@ -46,5 +46,15 @@ uint32_t user_get_time_us(void);
  * @param millis milliseconds to delay
  */
 void user_delay(uint32_t millis);
+
+/**
+ * @brief Timer initialization
+ * 
+ * @return
+ * - 0 on success
+ * 
+ * - negative on failure
+ */
+int user_timer_init(void);
 
 #endif
