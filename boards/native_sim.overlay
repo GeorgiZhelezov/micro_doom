@@ -1,5 +1,5 @@
 #include <zephyr/dt-bindings/mipi_dbi/mipi_dbi.h>
-#include <zephyr/dt-bindings/pinctrl/esp32-pinctrl.h>
+#include <zephyr/dt-bindings/input/input-event-codes.h>
 
 /{
 	aliases 
@@ -17,10 +17,49 @@
 		};
 	};
 
+	gpio_keys
+	{
+		compatible = "gpio-keys";
+		key_right:  key_right  { gpios = <&gpio0 0 GPIO_ACTIVE_HIGH>; zephyr,code = <INPUT_KEY_RIGHT>;     };
+		key_left:   key_left   { gpios = <&gpio0 1 GPIO_ACTIVE_HIGH>; zephyr,code = <INPUT_KEY_LEFT>;      };
+		key_down:   key_down   { gpios = <&gpio0 2 GPIO_ACTIVE_HIGH>; zephyr,code = <INPUT_KEY_DOWN>;      };
+		key_up:     key_up     { gpios = <&gpio0 3 GPIO_ACTIVE_HIGH>; zephyr,code = <INPUT_KEY_UP>;        };
+		key_fire:   key_fire   { gpios = <&gpio0 4 GPIO_ACTIVE_HIGH>; zephyr,code = <INPUT_KEY_LEFTCTRL>;  };
+		key_enter:  key_enter  { gpios = <&gpio0 5 GPIO_ACTIVE_HIGH>; zephyr,code = <INPUT_KEY_SPACE>;     };
+		key_strafe: key_strafe { gpios = <&gpio0 6 GPIO_ACTIVE_HIGH>; zephyr,code = <INPUT_KEY_LEFTALT>;   };
+		key_run:    key_run    { gpios = <&gpio0 7 GPIO_ACTIVE_HIGH>; zephyr,code = <INPUT_KEY_LEFTSHIFT>; };
+		key_menu:   key_menu   { gpios = <&gpio0 8 GPIO_ACTIVE_HIGH>; zephyr,code = <INPUT_KEY_ESC>;       };
+		key_wtog:   key_wtog   { gpios = <&gpio0 9 GPIO_ACTIVE_HIGH>; zephyr,code = <INPUT_KEY_TAB>;       };
+	};
+
 	//dummy ram
 	sram0: memory@3ffb0000 {
 		compatible = "mmio-sram";
 		reg = < 0x3ffb0000 0x3e800 >;
+	};
+};
+
+&gpio0 
+{
+	ngpios = <10>;
+	sdl_gpio
+	{
+		compatible = "zephyr,gpio-emul-sdl";
+		// sdl2 lib internal scan codes
+		scancodes = 
+		<
+			/* must match gpio_keys order */
+			79  /* SDL_SCANCODE_RIGHT */
+			80  /* SDL_SCANCODE_LEFT */
+			81  /* SDL_SCANCODE_DOWN */
+			82  /* SDL_SCANCODE_UP */
+			224 /* SDL_SCANCODE_LCTRL */
+			44  /* SDL_SCANCODE_SPACE */
+			226 /* SDL_SCANCODE_LALT */
+			225 /* SDL_SCANCODE_LSHIFT */
+			41  /* SDL_SCANCODE_ESCAPE */
+			43  /* SDL_SCANCODE_TAB */
+		>;
 	};
 };
 

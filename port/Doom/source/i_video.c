@@ -81,14 +81,17 @@
 #include "graphics.h"
 #include "keyboard.h"
 
+#include "user_controls.h"
+
 #define NO_PALETTE_CHANGE 255
 
 uint16_t palette[256];
 
-uint8_t keysDown()
+uint16_t keysDown()
 {
-  uint8_t buttons = 0;
-  getKeys(&buttons);
+  uint16_t buttons = 0;
+//   getKeys(&buttons);
+  user_contorls_get_state(&buttons);
   return buttons;
 }
 //
@@ -98,7 +101,7 @@ void I_StartTic(void)
 {
     static uint16_t oldGameKeyState = 0;
     // get which keys are currently pressed
-    uint8_t hwKeyState = keysDown();
+    uint16_t hwKeyState = keysDown();
     // translate between the hardware key state and the game key state
     uint16_t gameKeyState = 0;
 

@@ -69,7 +69,7 @@ void I_FinishUpdateBlock(void);
  * Can call D_PostEvent.
  */
 void I_StartTic(void);
-uint8_t keysDown();
+uint16_t keysDown();
 /* I_StartFrame
  * Called by D_DoomLoop,
  * called before processing any tics in a frame

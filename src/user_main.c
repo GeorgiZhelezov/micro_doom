@@ -3,6 +3,7 @@
 #include "user_display.h"
 #include "user_flash.h"
 #include "user_time.h"
+#include "user_controls.h"
 
 #include <zephyr/logging/log.h>
 LOG_MODULE_REGISTER(user_main, LOG_LEVEL_INF);
@@ -26,6 +27,7 @@ int main(void)
 	user_flash_init();
 	user_display_init();
 	user_timer_init();
+	user_controls_init();
 
 	while(1)
 	{

@@ -15,6 +15,7 @@ target_sources(app PRIVATE
 	src/user_flash.c
 	src/user_time.c
 	src/user_debug.c
+	src/user_controls.c
 
 	port/src/display.c
 	port/src/main.c
