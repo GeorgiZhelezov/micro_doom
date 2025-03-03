@@ -282,7 +282,7 @@ boolean PIT_CheckLine(const line_t *ld)
     user_flash_read_game_resource(&temp_side1, sizeof(temp_side1), (uint32_t)(_g->sides + temp_line.sidenum[1]));
 
     // debugi("%s ln backsector at %08x\t\n", __func__, (uint32_t)LN_BACKSECTOR_ALT(&temp_line, temp_side1));
-    if (!LN_BACKSECTOR_ALT(&temp_line, temp_side1)) // one sided line
+    if (temp_line.sidenum[1] == NO_INDEX) // one sided line; NOTE: replaced if (!LN_BACKSECTOR_ALT(&temp_line, temp_side1)) for compiler warning
     {
         _g->blockline = ld;
         debugi("%s blockline at %08x\r\n", __func__, (uint32_t)_g->blockline);
@@ -291,7 +291,7 @@ boolean PIT_CheckLine(const line_t *ld)
 #else
     // killough 7/24/98: allow player to move out of 1s wall, to prevent sticking
     // debugi("%s ln backsector at %08x\t\n", __func__, (uint32_t)LN_BACKSECTOR(ld));
-    if (!LN_BACKSECTOR(ld)) // one sided line
+    if (ld->sidenum[1] == NO_INDEX) // one sided line; NOTE: replaced if (!LN_BACKSECTOR(ld)) for compiler warning
     {
         _g->blockline = ld;
         debugi("%s blockline at %08x\r\n", __func__, (uint32_t)_g->blockline);
@@ -1295,9 +1295,9 @@ boolean PTR_ShootTraverse(intercept_t *in)
            // e6y: emulation of missed back side on two-sided lines.
             // backsector can be NULL if overrun_missedbackside_emulate is 1
 #ifdef CONFIG_DOOM_NO_COMPACT_PTR
-            if (!LN_BACKSECTOR_ALT(&temp_line, temp_side1))
+            if (temp_line.sidenum[1] == NO_INDEX) //NOTE: replaced if (!LN_BACKSECTOR_ALT(&temp_line, temp_side1)) for compiler warning
 #else
-            if (!LN_BACKSECTOR(li))
+            if (li->sidenum[1] == NO_INDEX) //NOTE: replaced if (!LN_BACKSECTOR(li)) for compiler warning
 #endif
             {
               if ((slope = FixedDiv(_g->openbottom - _g->shootz , dist)) <= _g->aimslope &&

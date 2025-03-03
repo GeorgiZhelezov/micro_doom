@@ -164,6 +164,7 @@ static uint8_t qspiCustomSendOpCodeAndOneByte(uint8_t opCode, uint8_t param)
     return 0; //for compiling
 }
 
+__unused
 static void qspiWaitFlashReady()
 {
     uint8_t sr;

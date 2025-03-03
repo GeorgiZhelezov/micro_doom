@@ -287,8 +287,8 @@ int divisions;
 extern int lumpByNameRequest;
 static void D_DoomLoop(void)
 {
-    int oldMaxDivisions = 0;
-    int oldLumpByNameRequests = 0;
+    __unused int oldMaxDivisions = 0;
+    __unused int oldLumpByNameRequests = 0;
 #if DEBUG_SETUP
     // this to launch directly a new game without having to press keys...
     // useful if you are in a hurry and want to test if new code is faster or slower.
@@ -458,15 +458,15 @@ const demostates[][4] =
         { D_DrawTitle1, "TITLEPIC" },
     },
 
+#elif defined(BOARD_ESP32_DEVKITC_WROOM)
+    {
+        { G_DeferedPlayDemo, "demo3" },
+        { G_DeferedPlayDemo, "demo3" },
+        { G_DeferedPlayDemo, "demo3" },
+        { G_DeferedPlayDemo, "demo3" },
+    },
 #else
     {
-        { G_DeferedPlayDemo, "demo3" },
-        { G_DeferedPlayDemo, "demo3" },
-        { G_DeferedPlayDemo, "demo3" },
-        { G_DeferedPlayDemo, "demo3" },
-    },
-#if 0
-    {
         { D_SetPageName, "TITLEPIC" },
         { D_SetPageName, "TITLEPIC" },
         { D_SetPageName, "TITLEPIC" },
@@ -493,7 +493,6 @@ const demostates[][4] =
         { G_DeferedPlayDemo, "demo3" },
         { G_DeferedPlayDemo, "demo3" },
     },
-    #endif
 #endif
     {
         { NULL, NULL },

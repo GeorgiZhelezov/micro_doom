@@ -801,7 +801,7 @@ void A_Look(mobj_t *actor)
         if (actor->flags & MF_AMBUSH)
         {
             demodbgprintf("Ambush\r\n");
-            fixed_t dist = P_AproxDistance(actor->x - targ->x, actor->y - targ->y);
+            __unused fixed_t dist = P_AproxDistance(actor->x - targ->x, actor->y - targ->y);
 
             if (P_CheckSight(actor, getTarget(actor)))
             {

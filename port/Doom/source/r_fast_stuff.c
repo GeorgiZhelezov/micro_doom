@@ -1845,7 +1845,13 @@ FASTFUN static void R_RenderMaskedSegRange(const drawseg_t *ds, int x1, int x2)
     {
         dcvars.texturemid =
                 frontsector->floorheight > backsector->floorheight ? frontsector->floorheight : backsector->floorheight;
+#ifdef CONFIG_DOOM_NO_COMPACT_PTR
+        fixed_t temp_textureheight;
+        user_flash_read_game_resource(&temp_textureheight, sizeof(temp_textureheight), (uint32_t)(textureheight + texnum));
+        dcvars.texturemid = dcvars.texturemid + temp_textureheight - viewz;
+#else
         dcvars.texturemid = dcvars.texturemid + textureheight[texnum] - viewz;
+#endif
     }
     else
     {
@@ -2158,8 +2164,6 @@ FASTFUN static void R_DrawSprite(const vissprite_t *spr)
 FASTFUN static void R_DrawPSprite(pspdef_t *psp, int lightlevel)
 {
     int x1, x2;
-    spritedef_t *sprdef;
-    spriteframe_t *sprframe;
     boolean flip;
     vissprite_t *vis;
     vissprite_t avis;
@@ -2187,6 +2191,9 @@ FASTFUN static void R_DrawPSprite(pspdef_t *psp, int lightlevel)
 
     flip = (boolean) SPR_FLIPPED((&temp_sprframe), 0);
 #else
+    spritedef_t *sprdef;
+    spriteframe_t *sprframe;
+
     sprdef = &p_wad_immutable_flash_data->sprites[psp->state->sprite];
     debugi("%s sprdef is at %08x numframes:%d\r\n", __func__, (uint32_t)sprdef, sprdef->numframes);
 
@@ -4493,13 +4500,13 @@ static inline void R_RenderSegLoop(int rw_x)
         dmaOperation_t dmaOperation = {.pendingDmaOperation  = 0};
         bool validTop = false;
         bool validBot = false;
-        bool wasOnExternalFlash = false;
+        __unused bool wasOnExternalFlash = false;
         uint32_t nBuff = 0;
         draw_column_vars_t topDcvars;
         draw_column_vars_t botDcvars;
         void *nextTopColumnPtr, *nextBotColumnPtr;
         //
-        texture_t *toptex, *bottex;
+        texture_t *toptex = NULL, *bottex = NULL;
         if (toptexture)
         {
             toptex = (texture_t*) R_GetOrLoadTexture(toptexture);            
@@ -4569,8 +4576,8 @@ static inline void R_RenderSegLoop(int rw_x)
             }
 
             // texturecolumn and lighting are independent of wall tiers
-            lighttable_t *nextColorMap;
-            fixed_t iscale;
+            lighttable_t *nextColorMap = NULL;
+            fixed_t iscale = 0;
             if (segtextured)
             {
                uint32_t index;

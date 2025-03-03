@@ -695,15 +695,13 @@ static int S_getChannel(void *origin, const sfxinfo_t *sfxinfo, int is_pickup)
 
         if (origin && _g->channels[cnum].origin)
         {
-            mobj_t *temp_origin = (mobj_t *)origin;
-            mobj_t *temp_gorigin = (mobj_t *)_g->channels[cnum].origin;
             debugi("%s comparing origin x:%d y:%d to g_origin[%d]: x:%d y:%d\r\n",
                    __func__,
-                   temp_origin->x,
-                   temp_origin->y,
+                   ((mobj_t *)origin)->x,
+                   ((mobj_t *)origin)->y,
                    cnum,
-                   temp_gorigin->x,
-                   temp_gorigin->y);
+                   ((mobj_t *)_g->channels[cnum].origin)->x,
+                   ((mobj_t *)_g->channels[cnum].origin)->y);
         }
         if (origin && _g->channels[cnum].origin == origin && _g->channels[cnum].is_pickup == is_pickup)
         {

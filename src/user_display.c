@@ -17,6 +17,7 @@ K_SEM_DEFINE(user_display_sem, 1, 1);
 static const struct device *display_dev         = DEVICE_DT_GET(DT_ALIAS(display_ctrl));
 static const struct gpio_dt_spec display_pin_bl = GPIO_DT_SPEC_GET(DT_NODELABEL(display_bl), gpios);
 
+__unused
 static void user_display_swap_bytes(uint16_t *buff, size_t len)
 {
 	static uint8_t swapped = 0;
