@@ -119,7 +119,13 @@ void V_DrawBackground(const char *flatname)
 
 inline static void PatchDrawColPix(byte *dest, const byte *source, unsigned int frac)
 {
+#ifdef CONFIG_DOOM_NO_COMPACT_PTR
+    byte temp;
+    user_flash_read_game_resource(&temp, sizeof(temp), (uint32_t)(source + (frac >> FRACBITS)));
+    *dest = temp;
+#else
     *dest = source[frac >> FRACBITS];
+#endif
 }
 
 inline static void PatchDrawColumn(byte *dest, const byte *source, unsigned int frac, fixed_t fracstep, unsigned int count)
@@ -269,8 +275,15 @@ inline static void PatchDrawColumn(byte *dest, const byte *source, unsigned int 
 
 void V_DrawPatch(int x, int y, int scrn, const patch_t* patch)
 {
+#ifdef CONFIG_DOOM_NO_COMPACT_PTR
+    patch_t temp_patch;
+    user_flash_read_game_resource(&temp_patch, sizeof(temp_patch), (uint32_t)patch);
+    y -= temp_patch.topoffset;
+    x -= temp_patch.leftoffset;
+#else
     y -= patch->topoffset;
     x -= patch->leftoffset;
+#endif
 
     int   col = 0;
 
@@ -283,8 +296,13 @@ void V_DrawPatch(int x, int y, int scrn, const patch_t* patch)
     const int byte_pitch = (SCREENPITCH);
 
     const int left = ( x * DX ) >> FRACBITS;
+#ifdef CONFIG_DOOM_NO_COMPACT_PTR
+    const int right =  ((x + temp_patch.width) *  DX) >> FRACBITS;
+    const int bottom = ((y + temp_patch.height) * DY) >> FRACBITS;
+#else
     const int right =  ((x + patch->width) *  DX) >> FRACBITS;
     const int bottom = ((y + patch->height) * DY) >> FRACBITS;
+#endif
 
 
     for (int dc_x=left; dc_x<right; dc_x++, col+=DXI)
@@ -294,18 +312,34 @@ void V_DrawPatch(int x, int y, int scrn, const patch_t* patch)
         if(dc_x < 0)
             continue;
 
+#ifdef CONFIG_DOOM_NO_COMPACT_PTR
+        int temp_columnof;
+        user_flash_read_game_resource(&temp_columnof, sizeof(temp_columnof), (uint32_t)(patch->columnofs + colindex));
+        const column_t *column = (const column_t*) ((const byte*) patch + (0xFFFFFF & temp_columnof));
+        column_t temp_column;
+        user_flash_read_game_resource(&temp_column, sizeof(temp_column), (uint32_t)(column));
+#else
         const column_t* column = (const column_t *)((const byte*)patch + (0xFFFFFF & patch->columnofs[colindex]));
-
+#endif
         if (dc_x >= 240)
             break;
 
         // step through the posts in a column
+#ifdef CONFIG_DOOM_NO_COMPACT_PTR
+        while (temp_column.topdelta != 0xff)
+        {
+            const byte* source = (const byte*)column + 3; //intentionally left column here
+            const int topdelta = temp_column.topdelta;
+            int dc_yl = (((y + topdelta) * DY) >> FRACBITS);
+            int dc_yh = (((y + topdelta + temp_column.length) * DY) >> FRACBITS);
+#else
         while (column->topdelta != 0xff)
         {
             const byte* source = (const byte*)column + 3;
             const int topdelta = column->topdelta;
             int dc_yl = (((y + topdelta) * DY) >> FRACBITS);
             int dc_yh = (((y + topdelta + column->length) * DY) >> FRACBITS);
+#endif
 
             if ((dc_yl >= SCREENHEIGHT) || (dc_yl > bottom))
             {
@@ -326,8 +360,12 @@ void V_DrawPatch(int x, int y, int scrn, const patch_t* patch)
                 {
                     PatchDrawColumn(dest, source, frac, fracstep, count);
                 }
-
+#ifdef CONFIG_DOOM_NO_COMPACT_PTR
+            column = (const column_t *)((const byte *)column + temp_column.length + 4 );
+            user_flash_read_game_resource(&temp_column, sizeof(temp_column), (uint32_t)column);
+#else
             column = (const column_t *)((const byte *)column + column->length + 4 );
+#endif
         }
     }
 }

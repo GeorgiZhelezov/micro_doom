@@ -299,7 +299,11 @@ void storeWordToFlash(uint32_t *dest, uint32_t word, uint8_t flashRegion, boolea
         {
             startCopyAddress = pageAddress + sizeof(wad_immutable_flash_data_t);
         }
+#ifdef CONFIG_DOOM_NO_COMPACT_PTR
+        else if (flashRegion == FLASH_LEVEL_REGION && pageAddress == (uint32_t) &p_wad_immutable_flash_data->levelData && !isHeader)
+#else
         else if (flashRegion == FLASH_LEVEL_REGION && pageAddress == (uint32_t) p_wad_immutable_flash_data->levelData && !isHeader)
+#endif
         {
             startCopyAddress = pageAddress + sizeof(wad_level_flash_data_t);
         }
@@ -310,7 +314,11 @@ void storeWordToFlash(uint32_t *dest, uint32_t word, uint8_t flashRegion, boolea
                 i < (stopCopyAddress - startCopyAddress) / sizeof(uint32_t);
                 i++)
         {
+#ifdef CONFIG_DOOM_NO_COMPACT_PTR
+            user_flash_read_game_resource(&tmp[i], sizeof(tmp[i]), (uint32_t)((uint32_t*) startCopyAddress + i));
+#else
             tmp[i] = *((uint32_t*) startCopyAddress + i);
+#endif
         }
         // erase
         printf("Erasing page 0x%08X Start Copy Addr 0x%08X Stop Copy Addr 0x%08X\r\n. ", pageAddress, startCopyAddress, stopCopyAddress);
@@ -324,6 +332,9 @@ void storeWordToFlash(uint32_t *dest, uint32_t word, uint8_t flashRegion, boolea
         }
         // free buffer
         Z_Free(tmp);
+#ifdef CONFIG_DOOM_NO_COMPACT_PTR
+        user_flash_read_game_resource(&temp_word, sizeof(temp_word), (uint32_t)dest);
+#endif
     }
     // write word
 #ifdef CONFIG_DOOM_NO_COMPACT_PTR
