@@ -193,8 +193,23 @@ static void AM_findMinMaxBoundaries(void)
     _g->min_x = _g->min_y = INT_MAX;
     _g->max_x = _g->max_y = -INT_MAX;
 
+#ifdef CONFIG_DOOM_NO_COMPACT_PTR
+    vertex_t temp_vertex;
+#endif
     for (i = 0; i < _g->numvertexes; i++)
     {
+#ifdef CONFIG_DOOM_NO_COMPACT_PTR
+        user_flash_read_game_resource(&temp_vertex, sizeof(temp_vertex), (uint32_t)(_g->vertexes + i));
+        if (temp_vertex.x < _g->min_x)
+            _g->min_x = temp_vertex.x;
+        else if (temp_vertex.x > _g->max_x)
+            _g->max_x = temp_vertex.x;
+
+        if (temp_vertex.y < _g->min_y)
+            _g->min_y = temp_vertex.y;
+        else if (temp_vertex.y > _g->max_y)
+            _g->max_y = temp_vertex.y;
+#else
         if (_g->vertexes[i].x < _g->min_x)
             _g->min_x = _g->vertexes[i].x;
         else if (_g->vertexes[i].x > _g->max_x)
@@ -204,6 +219,7 @@ static void AM_findMinMaxBoundaries(void)
             _g->min_y = _g->vertexes[i].y;
         else if (_g->vertexes[i].y > _g->max_y)
             _g->max_y = _g->vertexes[i].y;
+#endif
     }
 
     //  _g->max_w = (_g->max_x >>= FRACTOMAPBITS) - (_g->min_x >>= FRACTOMAPBITS);//e6y
@@ -864,9 +880,29 @@ static void AM_drawWalls(void)
     int i;
     mline_t l;
 
+#ifdef CONFIG_DOOM_NO_COMPACT_PTR
+    line_t temp_line;
+    side_t temp_side0, temp_side1;
+#endif
+
     // draw the unclipped visible portions of all lines
     for (i = 0; i < _g->numlines; i++)
     {
+#ifdef CONFIG_DOOM_NO_COMPACT_PTR
+        user_flash_read_game_resource(&temp_line, sizeof(temp_line), (uint32_t)(_g->lines + i));
+        user_flash_read_game_resource(&temp_side0, sizeof(temp_side0), (uint32_t)(_g->sides + temp_line.sidenum[0]));
+        user_flash_read_game_resource(&temp_side1, sizeof(temp_side1), (uint32_t)(_g->sides + temp_line.sidenum[1]));
+
+        l.a.x = temp_line.v1.x >> FRACTOMAPBITS; // e6y
+        l.a.y = temp_line.v1.y >> FRACTOMAPBITS; // e6y
+        l.b.x = temp_line.v2.x >> FRACTOMAPBITS; // e6y
+        l.b.y = temp_line.v2.y >> FRACTOMAPBITS; // e6y
+
+        const sector_t * backsector = LN_BACKSECTOR_ALT(&temp_line, temp_side1);
+        const sector_t * frontsector = LN_FRONTSECTOR_ALT(temp_line, temp_side0);
+
+        const unsigned int line_special = LN_SPECIAL(&temp_line);
+#else
         l.a.x = _g->lines[i].v1.x >> FRACTOMAPBITS; // e6y
         l.a.y = _g->lines[i].v1.y >> FRACTOMAPBITS; // e6y
         l.b.x = _g->lines[i].v2.x >> FRACTOMAPBITS; // e6y
@@ -876,7 +912,7 @@ static void AM_drawWalls(void)
         const sector_t * frontsector = LN_FRONTSECTOR(&_g->lines[i]);
 
         const unsigned int line_special = LN_SPECIAL(&_g->lines[i]);
-
+#endif
         if (_g->automapmode & am_rotate)
         {
             AM_rotate(&l.a.x, &l.a.y, ANG90 - _g->player.mo->angle, _g->player.mo->x, _g->player.mo->y);
@@ -886,13 +922,23 @@ static void AM_drawWalls(void)
         // if line has been seen or IDDT has been used
         if (_g->linedata[i].r_flags & RF_MAPPED) // 2020-03-14 next-hack was ML_MAPPED, changed to RF_MAPPED
         {
+#ifdef CONFIG_DOOM_NO_COMPACT_PTR
+            if (temp_line.flags & ML_DONTDRAW)
+                continue;
+#else
             if (_g->lines[i].flags & ML_DONTDRAW)
                 continue;
+#endif
             {
                 /* cph - show keyed doors and lines */
                 int amd;
+#ifdef CONFIG_DOOM_NO_COMPACT_PTR
+                if ((mapcolor_bdor || mapcolor_ydor || mapcolor_rdor) && !(temp_line.flags & ML_SECRET) && /* non-secret */
+                    (amd = AM_DoorColor(line_special)) != -1)
+#else
                 if ((mapcolor_bdor || mapcolor_ydor || mapcolor_rdor) && !(_g->lines[i].flags & ML_SECRET) && /* non-secret */
                     (amd = AM_DoorColor(line_special)) != -1)
+#endif
                 {
                     {
                         switch (amd)
@@ -939,17 +985,31 @@ static void AM_drawWalls(void)
             else /* now for 2S lines */
             {
                 // jff 1/10/98 add color change for all teleporter types
+#ifdef CONFIG_DOOM_NO_COMPACT_PTR
+                if (mapcolor_tele && !(temp_line.flags & ML_SECRET) &&
+                    (line_special == 39 || line_special == 97 || line_special == 125 || line_special == 126))
+#else
                 if (mapcolor_tele && !(_g->lines[i].flags & ML_SECRET) &&
                     (line_special == 39 || line_special == 97 || line_special == 125 || line_special == 126))
+#endif
                 { // teleporters
                     AM_drawMline(&l, mapcolor_tele);
                 }
+#ifdef CONFIG_DOOM_NO_COMPACT_PTR
+                else if (temp_line.flags & ML_SECRET) // secret door
+#else
                 else if (_g->lines[i].flags & ML_SECRET) // secret door
+#endif
                 {
                     AM_drawMline(&l, mapcolor_wall); // wall color
                 }
+#ifdef CONFIG_DOOM_NO_COMPACT_PTR
+                else if (mapcolor_clsd && !(temp_line.flags & ML_SECRET) && // non-secret closed door
+                        ((backsector->floorheight == backsector->ceilingheight) || (frontsector->floorheight == frontsector->ceilingheight)))
+#else
                 else if (mapcolor_clsd && !(_g->lines[i].flags & ML_SECRET) && // non-secret closed door
-                         ((backsector->floorheight == backsector->ceilingheight) || (frontsector->floorheight == frontsector->ceilingheight)))
+                        ((backsector->floorheight == backsector->ceilingheight) || (frontsector->floorheight == frontsector->ceilingheight)))
+#endif
                 {
                     AM_drawMline(&l, mapcolor_clsd); // non-secret closed door
                 }                                    // jff 1/6/98 show secret sector 2S lines
@@ -975,7 +1035,11 @@ static void AM_drawWalls(void)
         }                                      // now draw the lines only visible because the player has computermap
         else if (_g->player.powers[pw_allmap]) // computermap visible lines
         {
+#ifdef CONFIG_DOOM_NO_COMPACT_PTR
+            if (!(temp_line.flags & ML_DONTDRAW)) // invisible flag lines do not show
+#else
             if (!(_g->lines[i].flags & ML_DONTDRAW)) // invisible flag lines do not show
+#endif
             {
                 if (mapcolor_flat || !backsector || backsector->floorheight != frontsector->floorheight ||
                     backsector->ceilingheight != frontsector->ceilingheight)
