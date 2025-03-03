@@ -61,13 +61,31 @@
 //---------------------------------------------------------------------------
 int R_NumPatchWidth(int lump)
 {
-
+#ifdef CONFIG_DOOM_NO_COMPACT_PTR
+    uint32_t temp_offsets_addr;
+    user_flash_read_game_resource(&temp_offsets_addr, sizeof(temp_offsets_addr), (uint32_t)&p_wad_immutable_flash_data->patchLumpSizeOffsets);
+    temp_offsets_addr = (uint32_t)((patchsizeoffsets_t*)temp_offsets_addr + lump);
+    patchsizeoffsets_t temp_offsets;
+    user_flash_read_game_resource(&temp_offsets, sizeof(temp_offsets), temp_offsets_addr);
+    return temp_offsets.width;
+#else
     return p_wad_immutable_flash_data->patchLumpSizeOffsets[lump].width;
+#endif
 }
 
 //---------------------------------------------------------------------------
 int R_NumPatchHeight(int lump)
 {
+#ifdef CONFIG_DOOM_NO_COMPACT_PTR
+    uint32_t temp_offsets_addr;
+    user_flash_read_game_resource(&temp_offsets_addr, sizeof(temp_offsets_addr), (uint32_t)&p_wad_immutable_flash_data->patchLumpSizeOffsets);
+    temp_offsets_addr = (uint32_t)((patchsizeoffsets_t*)temp_offsets_addr + lump);
+    patchsizeoffsets_t temp_offsets;
+    user_flash_read_game_resource(&temp_offsets, sizeof(temp_offsets), temp_offsets_addr);
+    return temp_offsets.height;
+#else
     return p_wad_immutable_flash_data->patchLumpSizeOffsets[lump].height;
+#endif
+
 }
 

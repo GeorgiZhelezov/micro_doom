@@ -450,10 +450,19 @@ void WI_drawOnLnode  // draw stuff at a location by episode/map#
             spiFlashGetData(&tmpPatch, sizeof(tmpPatch));
             patch = &tmpPatch;
         }
+#ifdef CONFIG_DOOM_NO_COMPACT_PTR
+        patch_t temp_patch;
+        user_flash_read_game_resource(&temp_patch, sizeof(temp_patch), (uint32_t)patch);
+        left = lnodes[_g->wbs->epsd][n].x - temp_patch.leftoffset;
+        top = lnodes[_g->wbs->epsd][n].y - temp_patch.topoffset;
+        right = left + temp_patch.width;
+        bottom = top + temp_patch.height;
+#else
         left = lnodes[_g->wbs->epsd][n].x - patch->leftoffset;
         top = lnodes[_g->wbs->epsd][n].y - patch->topoffset;
         right = left + patch->width;
         bottom = top + patch->height;
+#endif
         if (left >= 0 && right < 320 && top >= 0 && bottom < 200)
         {
             fits = true;
@@ -496,7 +505,13 @@ static int WI_drawNum(int x, int y, int n, int digits)
     }
     else
     {
+#ifdef CONFIG_DOOM_NO_COMPACT_PTR
+        patch_t temp_patch;
+        user_flash_read_game_resource(&temp_patch, sizeof(temp_patch), (uint32_t)_g->num[0]);
+        fontwidth = temp_patch.width;
+#else
         fontwidth = _g->num[0]->width;
+#endif
     }
     int neg;
     int temp;
@@ -944,7 +959,13 @@ void WI_drawStats(void)
     }
     else
     {
+#ifdef CONFIG_DOOM_NO_COMPACT_PTR
+        patch_t temp_patch;
+        user_flash_read_game_resource(&temp_patch, sizeof(temp_patch), (uint32_t)_g->num[0]);
+        lh = (3 * temp_patch.height) / 2;
+#else
         lh = (3 * _g->num[0]->height) / 2;
+#endif
     }
 
     WI_slamBackground();
