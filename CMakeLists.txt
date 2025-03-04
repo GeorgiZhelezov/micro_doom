@@ -5,6 +5,7 @@ project(micro_doom)
 
 include_directories(
 	inc
+	wad
 	port/src
 	port/Doom/include
 )

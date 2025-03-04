@@ -9,9 +9,9 @@
 #include "user_flash.h"
 #ifdef CONFIG_BOARD_NATIVE_SIM
 #ifdef GITHUB_ACTIONS_BUILD
-#include "../wad/demo.h"
+#include "demo.h"
 #else
-#include "../wad/game.h"
+#include "game.h"
 #endif
 #endif
 
