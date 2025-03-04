@@ -8,8 +8,11 @@
 
 #include "user_flash.h"
 #ifdef CONFIG_BOARD_NATIVE_SIM
+#ifdef GITHUB_ACTIONS_BUILD
 #include "../wad/demo.h"
+#else
 #include "../wad/game.h"
+#endif
 #endif
 
 #include <zephyr/logging/log.h>
@@ -220,7 +223,7 @@ int user_flash_init(void)
 	if (ret < 0) { LOG_INF("could not open wad for reset"); }
 	ret = flash_area_erase(fa, 0, USER_WAD_PARTITION_SIZE);
 	if (ret < 0) { LOG_INF("could not erase wad for reset"); }
-	ret = user_flash_write(doom_game_wad, sizeof(doom_game_wad), USER_WAD_PARTITION_BASE_ADDRESS, USER_WAD_PARTITION_ID);
+	ret = user_flash_write(doom_wad, sizeof(doom_wad), USER_WAD_PARTITION_BASE_ADDRESS, USER_WAD_PARTITION_ID);
 	if (ret < 0) { LOG_INF("could not write wad partition"); }
 #endif
 

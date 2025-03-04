@@ -4,6 +4,7 @@ build/*
 # wads
 wad/*
 !wad/doom1_shareware.wad
+!wad/demo.h
 
 # bin file created when running native_sim target to emulate flash
 flash.bin

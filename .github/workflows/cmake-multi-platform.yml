@@ -83,14 +83,14 @@ jobs:
         if: matrix.os == 'ubuntu-latest'
         run: |
           source ~/zephyrproject/zephyr/zephyr-env.sh
-          west build -b ${{ matrix.board }} $GITHUB_WORKSPACE -DCMAKE_BUILD_TYPE=${{ matrix.build_type }}
+          west build -b ${{ matrix.board }} $GITHUB_WORKSPACE -DCMAKE_BUILD_TYPE=${{ matrix.build_type }} -- -DGITHUB_ACTTIONS_BUILD
 
       - name: Configure CMake (Windows)
         if: matrix.os == 'windows-latest'
         shell: bash
         run: |
           source ~/zephyrproject/zephyr/zephyr-env.sh
-          west build -b ${{ matrix.board }} $GITHUB_WORKSPACE -DCMAKE_BUILD_TYPE=${{ matrix.build_type }}
+          west build -b ${{ matrix.board }} $GITHUB_WORKSPACE -DCMAKE_BUILD_TYPE=${{ matrix.build_type }} -- -DGITHUB_ACTTIONS_BUILD
 
       - name: Build
         run: cmake --build ${{ steps.strings.outputs.build-output-dir }} --config ${{ matrix.build_type }}
