@@ -4,9 +4,9 @@ find_package(Zephyr REQUIRED HINTS $ENV{ZEPHYR_BASE})
 project(micro_doom)
 
 include_directories(
-	./inc
-	./port/src
-	./port/Doom/include
+	inc
+	port/src
+	port/Doom/include
 )
 
 target_sources(app PRIVATE 

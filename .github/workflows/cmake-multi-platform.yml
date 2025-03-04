@@ -65,9 +65,9 @@ jobs:
           ls -l
           echo "ls -l c/zephyr-sdk/"
           ls -l C:/zephyr-sdk/
-          C:/zephyr-sdk/setup.cmd -- -t arm-zephyr-eabi -t xtensa-espressif_esp32_zephyr-elf -t x86_64-zephyr-elf
-          C:/zephyr-sdk/setup.cmd -h
-          C:/zephyr-sdk/setup.cmd -c
+          C:/zephyr-sdk/zephyr-sdk-0.17.0/setup.cmd -- -t arm-zephyr-eabi -t xtensa-espressif_esp32_zephyr-elf -t x86_64-zephyr-elf
+          C:/zephyr-sdk/zephyr-sdk-0.17.0/setup.cmd -h
+          C:/zephyr-sdk/zephyr-sdk-0.17.0/setup.cmd -c
 
       - name: Install Zephyr SDK & West
         shell: bash
