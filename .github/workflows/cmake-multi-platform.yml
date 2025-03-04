@@ -1,0 +1,93 @@
+name: Zephyr Build on Multiple Platforms
+
+on:
+  push:
+    branches: [ "master" ]
+  pull_request:
+    branches: [ "master" ]
+
+jobs:
+  build:
+    runs-on: ${{ matrix.os }}
+
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ubuntu-latest, windows-latest]
+        board: [rpi_pico, esp32_devkitc_wroom, native_sim]
+        build_type: [Release]
+
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+
+      - name: Set reusable strings
+        id: strings
+        shell: bash
+        run: |
+          echo "build-output-dir=${{ github.workspace }}/build" >> "$GITHUB_OUTPUT"
+
+      - name: Install Dependencies (Linux)
+        if: matrix.os == 'ubuntu-latest'
+        run: |
+          sudo apt update
+          sudo apt install -y cmake ninja-build gperf \
+              ccache dfu-util device-tree-compiler wget \
+              python3-dev python3-pip python3-setuptools \
+              python3-tk python3-wheel xz-utils file \
+              make gcc g++ git doxygen python3-yaml \
+              unzip virtualenv rsync
+
+      - name: Install Dependencies (Windows)
+        if: matrix.os == 'windows-latest'
+        run: |
+          choco install -y cmake ninja git python
+          python -m pip install --upgrade pip
+
+      - name: Install Zephyr SDK (Linux)
+        if: matrix.os == 'ubuntu-latest'
+        run: |
+          wget https://github.com/zephyrproject-rtos/sdk-ng/releases/download/v0.16.3/zephyr-sdk-0.16.3_linux-x86_64.tar.gz
+          sudo tar -xvf zephyr-sdk-0.16.3_linux-x86_64.tar.gz -C /opt
+          sudo mv /opt/zephyr-sdk-0.16.3 /opt/zephyr-sdk
+          /opt/zephyr-sdk/setup.sh -t arm-zephyr-eabi,xtensa-espressif_esp32
+
+      - name: Install Zephyr SDK (Windows)
+        if: matrix.os == 'windows-latest'
+        shell: bash
+        run: |
+          curl -L -O https://github.com/zephyrproject-rtos/sdk-ng/releases/download/v0.16.3/zephyr-sdk-0.16.3_windows-x86_64.zip
+          unzip zephyr-sdk-0.16.3_windows-x86_64.zip -d C:/zephyr-sdk
+          echo "C:/zephyr-sdk" >> $GITHUB_PATH
+          C:/zephyr-sdk/setup.cmd -- -t arm-zephyr-eabi,xtensa-espressif_esp32
+
+      - name: Install Zephyr Toolchain & West
+        shell: bash
+        run: |
+          pip3 install --user west
+          echo "$HOME/.local/bin" >> $GITHUB_PATH
+          west init ~/zephyrproject
+          cd ~/zephyrproject
+          west update
+          west zephyr-export
+          pip3 install --user -r zephyr/scripts/requirements.txt
+
+      - name: Configure CMake (Linux)
+        if: matrix.os == 'ubuntu-latest'
+        run: |
+          source ~/zephyrproject/zephyr/zephyr-env.sh
+          west build -b ${{ matrix.board }} $GITHUB_WORKSPACE -DCMAKE_BUILD_TYPE=${{ matrix.build_type }}
+
+      - name: Configure CMake (Windows)
+        if: matrix.os == 'windows-latest'
+        shell: bash
+        run: |
+          source ~/zephyrproject/zephyr/zephyr-env.sh
+          west build -b ${{ matrix.board }} $GITHUB_WORKSPACE -DCMAKE_BUILD_TYPE=${{ matrix.build_type }}
+
+      - name: Build
+        run: cmake --build ${{ steps.strings.outputs.build-output-dir }} --config ${{ matrix.build_type }}
+
+      - name: Test (if applicable)
+        working-directory: ${{ steps.strings.outputs.build-output-dir }}
+        run: ctest --build-config ${{ matrix.build_type }}
