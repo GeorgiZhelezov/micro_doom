@@ -65,8 +65,6 @@ jobs:
           ls -l
           echo "ls -l c/zephyr-sdk/"
           ls -l C:/zephyr-sdk/
-          echo "ls -l c\zephyr-sdk"
-          ls -l C:\zephyr-sdk
           C:/zephyr-sdk/setup.cmd -- -t arm-zephyr-eabi -t xtensa-espressif_esp32_zephyr-elf -t x86_64-zephyr-elf
           C:/zephyr-sdk/setup.cmd -h
           C:/zephyr-sdk/setup.cmd -c
@@ -86,14 +84,14 @@ jobs:
         if: matrix.os == 'ubuntu-latest'
         run: |
           source ~/zephyrproject/zephyr/zephyr-env.sh
-          west build -b ${{ matrix.board }} $GITHUB_WORKSPACE -DCMAKE_BUILD_TYPE=${{ matrix.build_type }} -DGITHUB_ACTTIONS_BUILD
+          west build -b ${{ matrix.board }} $GITHUB_WORKSPACE -DCMAKE_BUILD_TYPE=${{ matrix.build_type }} -DGITHUB_ACTTIONS_BUILD=1
 
       - name: Configure CMake (Windows)
         if: matrix.os == 'windows-latest'
         shell: bash
         run: |
           source ~/zephyrproject/zephyr/zephyr-env.sh
-          west build -b ${{ matrix.board }} $GITHUB_WORKSPACE -DCMAKE_BUILD_TYPE=${{ matrix.build_type }} -DGITHUB_ACTTIONS_BUILD
+          west build -b ${{ matrix.board }} $GITHUB_WORKSPACE -DCMAKE_BUILD_TYPE=${{ matrix.build_type }} -DGITHUB_ACTTIONS_BUILD=1
 
       - name: Build
         run: cmake --build ${{ steps.strings.outputs.build-output-dir }} --config ${{ matrix.build_type }}
