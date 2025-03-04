@@ -41,7 +41,7 @@ jobs:
       - name: Install Dependencies (Windows)
         if: matrix.os == 'windows-latest'
         run: |
-          choco install -y cmake ninja git python
+          choco install -y cmake ninja git python wget
           python -m pip install --upgrade pip
 
       - name: Install Zephyr Toolchain (Linux)
@@ -80,14 +80,14 @@ jobs:
         if: matrix.os == 'ubuntu-latest'
         run: |
           source ~/zephyrproject/zephyr/zephyr-env.sh
-          west build -b ${{ matrix.board }} $GITHUB_WORKSPACE -DCMAKE_BUILD_TYPE=${{ matrix.build_type }} -DGITHUB_ACTTIONS_BUILD=1
+          west build -b ${{ matrix.board }} $GITHUB_WORKSPACE -DCMAKE_BUILD_TYPE=${{ matrix.build_type }} -DGITHUB_ACTIONS_BUILD=1
 
       - name: Configure CMake (Windows)
         if: matrix.os == 'windows-latest'
         shell: bash
         run: |
           source ~/zephyrproject/zephyr/zephyr-env.sh
-          west build -b ${{ matrix.board }} $GITHUB_WORKSPACE -DCMAKE_BUILD_TYPE=${{ matrix.build_type }} -DGITHUB_ACTTIONS_BUILD=1
+          west build -b ${{ matrix.board }} $GITHUB_WORKSPACE -DCMAKE_BUILD_TYPE=${{ matrix.build_type }} -DGITHUB_ACTIONS_BUILD=1
 
       - name: Build
         run: cmake --build ${{ steps.strings.outputs.build-output-dir }} --config ${{ matrix.build_type }}

@@ -7,13 +7,14 @@
 #include <zephyr/devicetree.h>
 
 #include "user_flash.h"
+
 #ifdef CONFIG_BOARD_NATIVE_SIM
-#ifdef GITHUB_ACTIONS_BUILD
+	#ifdef CONFIG_GITHUB_ACTIONS_BUILD
 #include "demo.h"
-#else
+	#else
 #include "game.h"
-#endif
-#endif
+	#endif
+#endif //CONFIG_BOARD_NATIVE_SIM
 
 #include <zephyr/logging/log.h>
 LOG_MODULE_DECLARE(user_main, LOG_LEVEL_INF);
