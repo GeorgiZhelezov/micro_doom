@@ -3,11 +3,8 @@
 #include <zephyr/drivers/gpio.h>
 
 #ifdef CONFIG_BOARD_NATIVE_SIM
-
-#include "user_controls.h"
-
-// #include "sdl_events_bottom.h"
 extern int sdl_handle_pending_events(void);
+#endif
 
 typedef struct
 {
@@ -41,6 +38,7 @@ typedef struct
 // #define KEY_UP (1 << 6)
 // #define KEY_CHGW (1<< 7)  
 
+#ifdef CONFIG_BOARD_NATIVE_SIM
 static keymap_t keys[] =
 {
 	{ .key = GPIO_DT_SPEC_GET(DT_NODELABEL(key_enter), gpios)  },
@@ -65,14 +63,13 @@ static keymap_t keys[] =
 	{ .key = GPIO_DT_SPEC_GET(DT_NODELABEL(key_menu), gpios)   },
 	{ .key = GPIO_DT_SPEC_GET(DT_NODELABEL(key_wtog), gpios)   }, */
 };
+#endif
 
-extern uint32_t SDL_GetRelativeMouseState(int *x, int *y);
 int user_contorls_get_state(uint16_t *out_keys)
 {
 	int ret = 0;
 
-	int x,y;
-
+#ifdef CONFIG_BOARD_NATIVE_SIM
 	for (size_t i = 0; i < ARRAY_SIZE(keys) && i < NUM_BITS(*out_keys); i++)
 	{
 		__unused int handled = sdl_handle_pending_events();
@@ -81,10 +78,13 @@ int user_contorls_get_state(uint16_t *out_keys)
 		{
 			*out_keys = *out_keys | (1 << i);
 		}
-		SDL_GetRelativeMouseState(&x, &y);
-		printk("%d %d\r\n", x, y);
+		// SDL_GetRelativeMouseState(&x, &y);
+		// printk("%d %d\r\n", x, y);
 		// printk("pin_state:%d pin:%d handled:%d\r\n", pin_state, keys[i].key.pin, handled);
 	}
+#else
+	//TODO: implement rpi_pico and esp32 controls logic
+#endif
 
 	return ret;
 }
@@ -92,16 +92,14 @@ int user_contorls_get_state(uint16_t *out_keys)
 int user_controls_init(void)
 {
 	int ret = 0;
+
+#ifdef CONFIG_BOARD_NATIVE_SIM
 	for (size_t i = 0; i < ARRAY_SIZE(keys); i++)
 	{
 		ret = gpio_pin_configure_dt(&keys[i].key, GPIO_INPUT);  
-		if (ret) { goto on_fail; }
+		if (ret) { printk("failed to init controls, %d\r\n", ret); k_panic(); }
 	}
-
-on_fail:
-	if (ret) { printk("failed to init controls, %d\r\n", ret); k_panic(); }
+#endif
 
 	return ret;
 }
-
-#endif //CONFIG_BOARD_NATIVE_SIM
