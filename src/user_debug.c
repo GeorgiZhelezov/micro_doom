@@ -21,8 +21,8 @@ void printk_custom(const char *fmt, ...)
 
 	va_end(ap);
 }
-#include <zephyr/posix/time.h>
-void printk(const char *fmt, ...)
+
+void doomk(const char *fmt, ...)
 {
 	uint32_t i = indexer();
 	// return;

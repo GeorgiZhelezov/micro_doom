@@ -44,7 +44,7 @@ jobs:
           choco install -y cmake ninja git python
           python -m pip install --upgrade pip
 
-      - name: Install Zephyr SDK (Linux)
+      - name: Install Zephyr Toolchain (Linux)
         if: matrix.os == 'ubuntu-latest'
         run: |
           wget https://github.com/zephyrproject-rtos/sdk-ng/releases/download/v0.17.0/zephyr-sdk-0.17.0_linux-x86_64_minimal.tar.xz
@@ -54,18 +54,18 @@ jobs:
           sudo /opt/zephyr-sdk/setup.sh -h
           sudo /opt/zephyr-sdk/setup.sh -c
 
-      - name: Install Zephyr SDK (Windows)
+      - name: Install Zephyr Toolchain (Windows)
         if: matrix.os == 'windows-latest'
         shell: bash
         run: |
           curl -L -O https://github.com/zephyrproject-rtos/sdk-ng/releases/download/v0.17.0/zephyr-sdk-0.17.0_windows-x86_64_minimal.7z
-          unzip zephyr-sdk-0.17.0_windows-x86_64_minimal.7z -d C:/zephyr-sdk
-          echo "C:/zephyr-sdk" >> $GITHUB_PATH
-          C:/zephyr-sdk/setup.cmd -- -t arm-zephyr-eabi -t xtensa-espressif_esp32_zephyr-elf -t x86_64-zephyr-elf
-          C:/zephyr-sdk/setup.cmd -h
-          C:/zephyr-sdk/setup.cmd -c
+          7z x zephyr-sdk-0.17.0_windows-x86_64_minimal.7z -oC:\zephyr-sdk
+          echo "C:\zephyr-sdk" >> $GITHUB_PATH
+          C:\zephyr-sdk\setup.cmd -- -t arm-zephyr-eabi -t xtensa-espressif_esp32_zephyr-elf -t x86_64-zephyr-elf
+          C:\zephyr-sdk\setup.cmd -h
+          C:\zephyr-sdk\setup.cmd -c
 
-      - name: Install Zephyr Toolchain & West
+      - name: Install Zephyr SDK & West
         shell: bash
         run: |
           pip3 install --user west
