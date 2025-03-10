@@ -61,6 +61,8 @@
     #define KEY_FIRE (1 << 2) 
     #define KEY_USE (1 << 0)
     #define KEY_CHGW (1<< 7)  
+    #define KEY_MENU (1<< 8)  
+    #define KEY_RUN (1<< 9)  
     #define KEY_UP (1 << 6)
     #define KEY_DOWN (1 << 4)  
     #define KEY_LEFT (1 << 3)  

@@ -148,6 +148,14 @@ void I_StartTic(void)
     if ((hwKeyState & (KEY_USE | KEY_CHGW)) == (KEY_USE | KEY_CHGW))
         gameKeyState |= 1 << KEYD_MAP1;
 #endif
+    if (hwKeyState & KEY_MENU)
+    {
+        gameKeyState |= 1 << KEYD_MENU;
+    }
+    if (hwKeyState & KEY_RUN)
+    {
+        gameKeyState |= 1 << KEYD_SPEED;
+    }
     // Get which keys have changed since last time
     uint16_t keys_changed = oldGameKeyState ^ gameKeyState;
 
@@ -209,24 +217,24 @@ static void I_UploadNewPalette(int pal)
            for (int i = 0; i < 256; i++)
         {
 #ifdef CONFIG_DOOM_NO_COMPACT_PTR
-            uint16_t r, g, b;
+            struct
+            {
+                uint8_t r, g, b;
+            } color;
             uint32_t temp_palette_lump_addr;
             user_flash_read_game_resource(&temp_palette_lump_addr, sizeof(temp_palette_lump_addr), (uint32_t)&p_wad_immutable_flash_data->palette_lump);
-            uint32_t r_addr = (temp_palette_lump_addr + pal * 256 * 3 + 3 * i);
-            uint32_t g_addr = (temp_palette_lump_addr + pal * 256 * 3 + 3 * i + 1);
-            uint32_t b_addr = (temp_palette_lump_addr + pal * 256 * 3 + 3 * i + 2);
-            user_flash_read_game_resource(&r, 1, r_addr);
-            user_flash_read_game_resource(&g, 1, g_addr);
-            user_flash_read_game_resource(&b, 1, b_addr);
-            r >>= 3;
-            g >>= 2;
-            b >>= 3;
+            uint32_t color_addr = (temp_palette_lump_addr + pal * 256 * 3 + 3 * i);
+            user_flash_read_game_resource(&color, sizeof(color), color_addr);
+            color.r >>= 3;
+            color.g >>= 2;
+            color.b >>= 3;
+            uint16_t rgb = (color.r << (6 + 5)) | (color.g << 5) | (color.b << (0));
 #else
             uint16_t r = p_wad_immutable_flash_data->palette_lump[pal * 256 * 3 + 3 * i] >> 3;
             uint16_t g = p_wad_immutable_flash_data->palette_lump[pal * 256 * 3 + 3 * i + 1] >> 2;
             uint16_t b = p_wad_immutable_flash_data->palette_lump[pal * 256 * 3 + 3 * i + 2] >> 3;
-#endif
             uint16_t rgb = (r << (6 + 5)) | (g << 5) | (b << (0));
+#endif
             // rgb = (rgb >> 8) | (rgb << 8);
             _g->current_palette[i] = rgb;
         }

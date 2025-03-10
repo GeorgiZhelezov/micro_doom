@@ -37,6 +37,8 @@ typedef struct
 // #define KEY_RIGHT (1 << 5) 
 // #define KEY_UP (1 << 6)
 // #define KEY_CHGW (1<< 7)  
+// #define KEY_MENU (1<< 8)  
+// #define KEY_RUN (1<< 9)  
 
 #ifdef CONFIG_BOARD_NATIVE_SIM
 static keymap_t keys[] =
@@ -49,8 +51,8 @@ static keymap_t keys[] =
 	{ .key = GPIO_DT_SPEC_GET(DT_NODELABEL(key_right), gpios)  },
 	{ .key = GPIO_DT_SPEC_GET(DT_NODELABEL(key_up), gpios)     },
 	{ .key = GPIO_DT_SPEC_GET(DT_NODELABEL(key_wtog), gpios)   },
-	{ .key = GPIO_DT_SPEC_GET(DT_NODELABEL(key_run), gpios)    },
 	{ .key = GPIO_DT_SPEC_GET(DT_NODELABEL(key_menu), gpios)   },
+	{ .key = GPIO_DT_SPEC_GET(DT_NODELABEL(key_run), gpios)    },
 
 /* 	{ .key = GPIO_DT_SPEC_GET(DT_NODELABEL(key_right), gpios)  },
 	{ .key = GPIO_DT_SPEC_GET(DT_NODELABEL(key_left), gpios)   },
