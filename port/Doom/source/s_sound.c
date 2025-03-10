@@ -205,7 +205,7 @@ void S_StartSoundAtVolume(mobj_t *origin, int sfx_id, int volume)
     const sfxinfo_t *sfx;
 
     int sep = NORM_SEP;
-    debugi("%s origin x:%d y:%d\r\n", __func__, origin->x, origin->y);
+    if (origin) { debugi("%s origin x:%d y:%d\r\n", __func__, origin->x, origin->y); }
     //jff 1/22/98 return if sound is not enabled
     if (nosfxparm)
         return;
