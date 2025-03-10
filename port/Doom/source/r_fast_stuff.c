@@ -1441,7 +1441,7 @@ FASTFUN static void R_DrawVisSprite(const vissprite_t *vis)
         {   
             // the sprite is magnified, so at least one column would be drawn twice. Not loading a column might save us 1 us, offsetting the
             // additional checks
-            for (uint8_t x = vis->x1; x <= vis->x2;  )
+            for (uint16_t x = vis->x1; x <= vis->x2;  )
             {
                 // set start x
                 dcvars.x = x;
