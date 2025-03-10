@@ -11,7 +11,7 @@ ESP32
 (
 	[T-Display shop](https://lilygo.cc/en-bg/products/lilygo%C2%AE-ttgo-t-display-1-14-inch-lcd-esp32-control-board) /
 	[repo](https://github.com/Xinyuan-LilyGO/TTGO-T-Display)
-)
+),
 ESP32S3
 (
 	[T-Display-S3 shop](https://lilygo.cc/products/t-display-s3?variant=42284559827125) /
@@ -40,7 +40,7 @@ will be needed (I2C, UART?).
 > This project is still in a work-in-progress phase.
 
 ## Some things to do:
-- ~~make it fully run on `esp32_devkitc_wroom`, `esp32s3_devkitc` and `native_sim`
+- make it fully run on `esp32_devkitc_wroom`, `esp32s3_devkitc` and `native_sim`
 	- fix all the prohibited loads from pointer dereferencing to FLASH
 	- optimize for RAM to fit levels and BLE stack
 - add some sort of controller support via BLE
