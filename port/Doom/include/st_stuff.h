@@ -69,7 +69,11 @@
 #define ST_SCALED_WIDTH  SCREENWIDTH
 #define ST_SCALED_Y      (SCREENHEIGHT - ST_SCALED_HEIGHT)
 // nh: reduction constant from GBA port to ours
+#if SCREENWIDTH == 320
+#define ST_C 160/160 + 36 //offsets UI elements to the middle-ish for wider screens
+#else
 #define ST_C 160/160
+#endif
 //
 // STATUS BAR DATA
 //

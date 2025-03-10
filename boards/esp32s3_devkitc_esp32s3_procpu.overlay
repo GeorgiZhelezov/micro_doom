@@ -1,0 +1,133 @@
+#include <zephyr/dt-bindings/mipi_dbi/mipi_dbi.h>
+#include <zephyr/dt-bindings/pinctrl/esp32s3-pinctrl.h>
+
+/ {
+    aliases
+	{
+        display-ctrl = &st7789;
+    };
+
+    leds
+	{
+        compatible = "gpio-leds";
+        display_bl: display_bl_node
+		{
+            gpios = <&gpio1 (38 - 32) GPIO_ACTIVE_HIGH>;
+        };
+        display_power: display_power_node //not used when using supplying power via USB
+		{
+            gpios = <&gpio0 15 GPIO_ACTIVE_HIGH>;
+        };
+    };
+
+    mipi_dbi
+	{
+        compatible = "zephyr,mipi-dbi-bitbang";
+        reset-gpios = <&gpio0 5 GPIO_ACTIVE_LOW>;
+        dc-gpios = <&gpio0 7 GPIO_ACTIVE_HIGH>;
+        wr-gpios = <&gpio0 8 GPIO_ACTIVE_HIGH>;
+        rd-gpios = <&gpio0 9 GPIO_ACTIVE_HIGH>;
+        cs-gpios = <&gpio0 6 GPIO_ACTIVE_LOW>;
+
+        data-gpios = <&gpio1 (39 - 32) GPIO_ACTIVE_HIGH>,
+                     <&gpio1 (40 - 32) GPIO_ACTIVE_HIGH>,
+                     <&gpio1 (41 - 32) GPIO_ACTIVE_HIGH>,
+                     <&gpio1 (42 - 32) GPIO_ACTIVE_HIGH>,
+                     <&gpio1 (45 - 32) GPIO_ACTIVE_HIGH>,
+                     <&gpio1 (46 - 32) GPIO_ACTIVE_HIGH>,
+                     <&gpio1 (47 - 32) GPIO_ACTIVE_HIGH>,
+                     <&gpio1 (48 - 32) GPIO_ACTIVE_HIGH>;
+
+        #address-cells = <1>;
+        #size-cells = <0>;
+
+        st7789: st7789@0
+		{
+            compatible = "sitronix,st7789v";
+            reg = <0>;
+            mipi-max-frequency = <0>; //not used with bitbanging
+            mipi-mode = "MIPI_DBI_MODE_8080_BUS_8_BIT";
+
+            // height = <135>;
+            // width = <240>;
+			// x-offset = <40>;
+			// y-offset = <52>;
+
+            height = <170>;
+            width = <320>;
+			x-offset = <0>;
+			y-offset = <35>;
+            mdac = <0xa0>;
+
+            vcom = <0x19>;
+            gctrl = <0x35>;
+            vrhs = <0x12>;
+            vdvs = <0x20>;
+            gamma = <0x01>;
+            colmod = <0x55>;
+            lcm = <0x2c>;
+            porch-param = [ 0c 0c 00 33 33 ];
+            cmd2en-param = [ 5a 69 02 01 ];
+            pwctrl1-param = [ a4 a1 ];
+            pvgam-param = [ D0 04 0D 11 13 2B 3F 54 4C 18 0D 0B 1F 23 ];
+            nvgam-param = [ D0 04 0C 11 13 2C 3F 44 51 2F 1F 1F 20 23 ];
+            ram-param = [ 00 F8 ];
+            rgb-param = [ CD 08 14 ];
+        };
+    };
+};
+
+/delete-node/ &slot0_appcpu_partition;
+/delete-node/ &slot1_partition;
+/delete-node/ &slot1_appcpu_partition;
+/delete-node/ &slot0_lpcore_partition;
+/delete-node/ &slot1_lpcore_partition;
+/delete-node/ &storage_partition;
+/delete-node/ &scratch_partition;
+/delete-node/ &coredump_partition;
+
+&flash0
+{
+    reg = <0x0 DT_SIZE_M(16)>; // Address, size (16MB)
+
+    partitions {
+        slot0_partition: partition@20000
+		{
+            label = "image-0";
+            reg = <0x20000 DT_SIZE_K(512)>;
+            read-only;
+        };
+        game_settings_partition: partition@a0000
+		{
+            label = "game-settings-partition";
+            reg = <0xa0000 0x1000>;
+        };
+        game_saves_partition: partition@a1000
+		{
+            label = "game-saves-partition";
+            reg = <0xa1000 0x1000>;
+        };
+        cache_partition: partition@a2000
+		{
+            label = "cache-partition";
+            reg = <0xa2000 (0x22b000 - 0xa2000)>;
+        };
+        wad_partition: partition@22b000
+		{
+            label = "wad-partition";
+            reg = <0x22b000 (DT_SIZE_M(16) - 0x22b000)>;
+            read-only;
+        };
+    };
+};
+
+&uart0
+{
+    status = "okay";
+    current-speed = <115200>;
+};
+
+&usb_serial
+{
+	status = "okay";
+};

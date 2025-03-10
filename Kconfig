@@ -17,7 +17,7 @@ config DOOM_NO_COMPACT_PTR
 
 config DOOM_FORCE_NO_COMPACT_PTR_BOARDS
 	bool
-	default y if BOARD_NATIVE_SIM || BOARD_ESP32_DEVKITC_WROOM
+	default y if BOARD_NATIVE_SIM || BOARD_ESP32_DEVKITC_WROOM || BOARD_ESP32S3_DEVKITC
 	help
 		Internal variable for defining boards where DOOM_NO_COMPACT_PTR should be forced.
 
@@ -31,7 +31,7 @@ config FORCE_DOOM_NO_COMPACT_PTR
 
 config DOOM_DISPLAY_PADDING
 	bool "Pad display for uneven height"
-	default y if BOARD_RPI_PICO || BOARD_ESP32_DEVKITC_WROOM
+	default y if BOARD_RPI_PICO || BOARD_ESP32_DEVKITC_WROOM || BOARD_ESP32S3_DEVKITC
 	help
 		Draw a black padding row (squish the screen) if the height of the display is uneven.
 		Reduces drawing latency by only needing to draw two half blocks of the dispaly, 
