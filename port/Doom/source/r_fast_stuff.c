@@ -160,8 +160,11 @@ angle_t viewangle;
 
 static byte solidcol[MAX_SCREENWIDTH];
 
+#if SCREENWIDTH < 255
 static byte spanstart[MAX_SCREENHEIGHT - ST_SCALED_HEIGHT];   // killough 2/8/98
-
+#else
+static uint16_t spanstart[MAX_SCREENHEIGHT - ST_SCALED_HEIGHT];   // killough 2/8/98
+#endif
 static const seg_t *curline;
 static side_t *sidedef;
 static const line_t *linedef;
