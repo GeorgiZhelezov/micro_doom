@@ -17,7 +17,6 @@ ESP32S3
 	[T-Display-S3 shop](https://lilygo.cc/products/t-display-s3?variant=42284559827125) /
 	[repo](https://github.com/Xinyuan-LilyGO/T-Display-S3)
 )
-
 boards using the Zephyr RTOS. 
 
 I found these boards on AliExpress form LYLGO and decided that it would be cool to try this, 
