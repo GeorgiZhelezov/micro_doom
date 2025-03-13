@@ -1,10 +1,44 @@
 cmake_minimum_required(VERSION 3.20.0)
 
+if(BOARD MATCHES "^esp32s3_devkitc")
+	set(SEG_REV_LIST "dongle" "nodongle")
+
+	string(REGEX MATCH "^[^@]+" SEG_BOARD ${BOARD})
+	string(REGEX MATCH "/.*$" SEG_QUALIFIERS ${BOARD})
+
+	string(REGEX MATCH "@([^/]+)" SEG_REV ${BOARD})
+
+	if(SEG_REV)
+		set(SEG_REV_STRIPPED "${CMAKE_MATCH_1}")
+
+		string(REGEX REPLACE "@[^/]+" "" BOARD ${BOARD})
+
+		set(BOARD ${BOARD} CACHE STRING "Modified board without specifier" FORCE)
+
+		set(TEMP_CONF "${SEG_BOARD}_${SEG_REV_STRIPPED}.conf")
+		string(REPLACE "/" "_" TEMP_CONF ${TEMP_CONF})
+		set(TEMP_CONF "boards/${TEMP_CONF}")
+
+		set(TEMP_OVERLAY "${SEG_BOARD}_${SEG_REV_STRIPPED}.overlay")
+		string(REPLACE "/" "_" TEMP_OVERLAY ${TEMP_OVERLAY})
+		set(TEMP_OVERLAY "boards/${TEMP_OVERLAY}")
+
+		set(DTC_OVERLAY_FILE ${TEMP_OVERLAY})
+		set(CONF_FILE ${TEMP_CONF})
+	else()
+		message(FATAL_ERROR "No revision given for ${BOARD} from list: ${SEG_REV_LIST}")
+	endif()
+endif()
+
+# message(STATUS "FINAL BOARD: ${BOARD}")
+# message(STATUS "FINAL overlay: ${DTC_OVERLAY_FILE}")
+# message(STATUS "FINAL conf: ${CONF_FILE}")
+
 find_package(Zephyr REQUIRED HINTS $ENV{ZEPHYR_BASE})
 project(micro_doom)
 
 if(GITHUB_ACTIONS_BUILD)
-  add_definitions(-DCONFIG_GITHUB_ACTIONS_BUILD)
+	add_definitions(-DCONFIG_GITHUB_ACTIONS_BUILD)
 endif()
 
 include_directories(
