@@ -12,10 +12,15 @@ ESP32
 	[T-Display shop](https://lilygo.cc/en-bg/products/lilygo%C2%AE-ttgo-t-display-1-14-inch-lcd-esp32-control-board) /
 	[repo](https://github.com/Xinyuan-LilyGO/TTGO-T-Display)
 ),
-ESP32S3
+ESP32S3 nodongle
 (
 	[T-Display-S3 shop](https://lilygo.cc/products/t-display-s3?variant=42284559827125) /
 	[repo](https://github.com/Xinyuan-LilyGO/T-Display-S3)
+)
+ESP32S3 dongle
+(
+	[T-Dongle-S3 shop](https://lilygo.cc/products/t-dongle-s3) /
+	[repo](https://github.com/Xinyuan-LilyGO/T-Dongle-S3/)
 )
 boards using the Zephyr RTOS. 
 
@@ -69,7 +74,11 @@ west build -p=always -b esp32_devkitc_wroom/esp32/procpu
 
 for the [esp32s3_devkitc](https://docs.zephyrproject.org/latest/boards/espressif/esp32s3_devkitc/doc/index.html) target:
 ```
-west build -p=always -b esp32s3_devkitc/esp32s3/procpu
+if building for the 170x320 non-dongle board:
+west build -p=always -b esp32s3_devkitc@nodongle/esp32s3/procpu
+
+if building for the 80x160 dongle board:
+west build -p=always -b esp32s3_devkitc@dongle/esp32s3/procpu
 ```
 
 for the [native_sim](https://docs.zephyrproject.org/latest/boards/native/native_sim/doc/index.html) target:
