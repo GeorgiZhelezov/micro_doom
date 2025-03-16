@@ -321,7 +321,7 @@ void V_DrawPatch(int x, int y, int scrn, const patch_t* patch)
 #else
         const column_t* column = (const column_t *)((const byte*)patch + (0xFFFFFF & patch->columnofs[colindex]));
 #endif
-        if (dc_x >= 240)
+        if (dc_x >= SCREENWIDTH)
             break;
 
         // step through the posts in a column
