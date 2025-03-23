@@ -203,7 +203,7 @@ int user_flash_init(void)
 
 
 	//just for testing
-	const struct flash_area *fa = NULL;
+	__unused const struct flash_area *fa = NULL;
 	// ret = flash_area_open(USER_CACHE_PARTITION_ID, &fa);
 	// if (ret < 0) { LOG_INF("could not open cache for reset"); }
 	// ret = flash_area_erase(fa, 0, USER_CACHE_PARTITION_SIZE);

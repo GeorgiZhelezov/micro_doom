@@ -69,11 +69,7 @@
 #define ST_SCALED_WIDTH  SCREENWIDTH
 #define ST_SCALED_Y      (SCREENHEIGHT - ST_SCALED_HEIGHT)
 // nh: reduction constant from GBA port to ours
-#if SCREENWIDTH == 320
-#define ST_C 160/160 + 36 //offsets UI elements to the middle-ish for wider screens
-#else
 #define ST_C 160/160
-#endif
 //
 // STATUS BAR DATA
 //
@@ -120,10 +116,6 @@
 #define ST_GODFACE              (ST_NUMPAINFACES*ST_FACESTRIDE)
 #define ST_DEADFACE             (ST_GODFACE+1)
 
-// proff 08/18/98: Changed for high-res
-#define ST_FACESX               (ST_X+104 * ST_C)
-#define ST_FACESY               (ST_Y)
-
 #define ST_EVILGRINCOUNT        (2*TICRATE)
 //Fix Status bar face timing ~Kippykip
 //#define ST_STRAIGHTFACECOUNT    (TICRATE*2)
@@ -142,7 +134,10 @@
 //       into a buffer,
 //       or into the frame buffer?
 // I dunno, why don't you go and find out!!!  killough
-#if 1
+#if SCREENWIDTH < 320
+// proff 08/18/98: Changed for high-res
+#define ST_FACESX               (ST_X+104 * ST_C)
+#define ST_FACESY               (ST_Y)
 // AMMO number pos.
 #define ST_AMMOWIDTH            3
 // proff 08/18/98: Changed for high-res
@@ -245,108 +240,113 @@
 
 #else
 #define ST_YC 1
+#define ST_Y_OFFS (SCREENHEIGHT - 200)
 // AMMO number pos.
 #define ST_AMMOWIDTH    3
 #define ST_AMMOX      44
-#define ST_AMMOY      171 * ST_YC
+#define ST_AMMOY      171 * ST_YC + ST_Y_OFFS
 
 // HEALTH number pos.
 #define ST_HEALTHWIDTH    3
 #define ST_HEALTHX      90
-#define ST_HEALTHY      171  * ST_YC
+#define ST_HEALTHY      171  * ST_YC + ST_Y_OFFS
 
 // Weapon pos.
 #define ST_ARMSX      111
-#define ST_ARMSY      172  * ST_YC
+#define ST_ARMSY      172  * ST_YC + ST_Y_OFFS
 #define ST_ARMSBGX      104
-#define ST_ARMSBGY      168  * ST_YC
+#define ST_ARMSBGY      168  * ST_YC + ST_Y_OFFS
 #define ST_ARMSXSPACE   12
 #define ST_ARMSYSPACE   10
 
 // Frags pos.
 #define ST_FRAGSX     138
-#define ST_FRAGSY     171  * ST_YC
+#define ST_FRAGSY     171  * ST_YC + ST_Y_OFFS
 #define ST_FRAGSWIDTH   2
 
 // ARMOR number pos.
 #define ST_ARMORWIDTH   3
 #define ST_ARMORX     221
-#define ST_ARMORY     171  * ST_YC
+#define ST_ARMORY     171  * ST_YC + ST_Y_OFFS
 
 // Key icon positions.
 #define ST_KEY0WIDTH    8
 #define ST_KEY0HEIGHT   5
 #define ST_KEY0X      239
-#define ST_KEY0Y      171  * ST_YC
+#define ST_KEY0Y      171  * ST_YC + ST_Y_OFFS
 #define ST_KEY1WIDTH    ST_KEY0WIDTH
 #define ST_KEY1X      239
-#define ST_KEY1Y      181  * ST_YC
+#define ST_KEY1Y      181  * ST_YC + ST_Y_OFFS
 #define ST_KEY2WIDTH    ST_KEY0WIDTH
 #define ST_KEY2X      239
-#define ST_KEY2Y      191  * ST_YC
+#define ST_KEY2Y      191  * ST_YC + ST_Y_OFFS
 
 // Ammunition counter.
 #define ST_AMMO0WIDTH   3
 #define ST_AMMO0HEIGHT    6
 #define ST_AMMO0X     288
-#define ST_AMMO0Y     173  * ST_YC
+#define ST_AMMO0Y     173  * ST_YC + ST_Y_OFFS
 #define ST_AMMO1WIDTH   ST_AMMO0WIDTH
 #define ST_AMMO1X     288
-#define ST_AMMO1Y     179  * ST_YC
+#define ST_AMMO1Y     179  * ST_YC + ST_Y_OFFS
 #define ST_AMMO2WIDTH   ST_AMMO0WIDTH
 #define ST_AMMO2X     288
-#define ST_AMMO2Y     191  * ST_YC
+#define ST_AMMO2Y     191  * ST_YC + ST_Y_OFFS
 #define ST_AMMO3WIDTH   ST_AMMO0WIDTH
 #define ST_AMMO3X     288
-#define ST_AMMO3Y     185  * ST_YC
+#define ST_AMMO3Y     185  * ST_YC + ST_Y_OFFS
 
 // Indicate maximum ammunition.
 // Only needed because backpack exists.
 #define ST_MAXAMMO0WIDTH    3
 #define ST_MAXAMMO0HEIGHT   5
 #define ST_MAXAMMO0X    314
-#define ST_MAXAMMO0Y    173  * ST_YC
+#define ST_MAXAMMO0Y    173  * ST_YC + ST_Y_OFFS
 #define ST_MAXAMMO1WIDTH    ST_MAXAMMO0WIDTH
 #define ST_MAXAMMO1X    314
-#define ST_MAXAMMO1Y    179  * ST_YC
+#define ST_MAXAMMO1Y    179  * ST_YC + ST_Y_OFFS
 #define ST_MAXAMMO2WIDTH    ST_MAXAMMO0WIDTH
 #define ST_MAXAMMO2X    314
-#define ST_MAXAMMO2Y    191  * ST_YC
+#define ST_MAXAMMO2Y    191  * ST_YC + ST_Y_OFFS
 #define ST_MAXAMMO3WIDTH    ST_MAXAMMO0WIDTH
 #define ST_MAXAMMO3X    314
-#define ST_MAXAMMO3Y    185  * ST_YC
+#define ST_MAXAMMO3Y    185  * ST_YC + ST_Y_OFFS
 
 // pistol
 #define ST_WEAPON0X     110
-#define ST_WEAPON0Y     172  * ST_YC
+#define ST_WEAPON0Y     172  * ST_YC + ST_Y_OFFS
 
 // shotgun
 #define ST_WEAPON1X     122
-#define ST_WEAPON1Y     172  * ST_YC
+#define ST_WEAPON1Y     172  * ST_YC + ST_Y_OFFS
 
 // chain gun
 #define ST_WEAPON2X     134
-#define ST_WEAPON2Y     172  * ST_YC
+#define ST_WEAPON2Y     172  * ST_YC + ST_Y_OFFS
 
 // missile launcher
 #define ST_WEAPON3X     110
-#define ST_WEAPON3Y     181  * ST_YC
+#define ST_WEAPON3Y     181  * ST_YC + ST_Y_OFFS
 
 // plasma gun
 #define ST_WEAPON4X     122
-#define ST_WEAPON4Y     181  * ST_YC
+#define ST_WEAPON4Y     181  * ST_YC + ST_Y_OFFS
 
  // bfg
 #define ST_WEAPON5X     134
-#define ST_WEAPON5Y     181  * ST_YC
+#define ST_WEAPON5Y     181  * ST_YC + ST_Y_OFFS
 
 // WPNS title
 #define ST_WPNSX      109
-#define ST_WPNSY      191  * ST_YC
+#define ST_WPNSY      191  * ST_YC + ST_Y_OFFS
 
  // DETH title
 #define ST_DETHX      109
-#define ST_DETHY      191  * ST_YC
+#define ST_DETHY      191  * ST_YC + ST_Y_OFFS
+
+// proff 08/18/98: Changed for high-res
+#define ST_FACESX               (ST_X+143 * ST_C)
+#define ST_FACESY               (ST_Y)
 #endif
 
 //

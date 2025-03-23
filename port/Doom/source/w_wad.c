@@ -71,6 +71,8 @@
 // #include "nrf.h"
 #include "main.h"
 
+#include "st_gfx.h"
+
 #include "user_flash.h"
 
 #define FLASH_ALIGNMENT 4
@@ -165,6 +167,10 @@ void initImmutableFlashRegion()
 #else
     debugi("%s pallete lump at %08x\r\n", __func__, (uint32_t)p_wad_immutable_flash_data->palette_lump);
     debugi("%s colormaps at %08x\r\n", __func__, (uint32_t)p_wad_immutable_flash_data->colormaps);
+#endif
+#if SCREENWIDTH == 320
+    //point to st bar in flash for later drawing
+    gfx_stbar = (const unsigned char*) W_CacheLumpName("STBAR");
 #endif
     //
     #if CACHE_ALL_COLORMAP_TO_RAM

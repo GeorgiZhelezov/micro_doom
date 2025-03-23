@@ -57,7 +57,7 @@
 
 #include "i_spi_support.h"
 
-extern const unsigned char gfx_stbar[SCREENWIDTH * 32];
+#include "st_gfx.h"
 //
 // STlib_init()
 //
@@ -353,13 +353,17 @@ void ST_refreshBackground(void)
     if (_g->st_statusbaron)
     {
 
+#if SCREENWIDTH == 320
+        V_DrawPatchNoScale(0, SCREENHEIGHT - ST_HEIGHT, (const patch_t *)gfx_stbar);
+#else
         const unsigned int st_offset = ((SCREENHEIGHT - ST_SCALED_HEIGHT) * SCREENWIDTH_PHYSICAL);
         uint32_t *d = (uint32_t*) (((uint8_t*) _g->screens[0].data) + st_offset);
         uint32_t *s = (uint32_t*) gfx_stbar;
-        for (int i = 0; i < sizeof(gfx_stbar) / sizeof(uint32_t); i++)
+        for (int i = 0; i < gfx_stbar_len / sizeof(uint32_t); i++)
         {
 
             *d++ = *s++;
         }
+#endif
     }
 }
