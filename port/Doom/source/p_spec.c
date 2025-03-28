@@ -2400,7 +2400,13 @@ void P_UpdateSpecials(void)
             if (!_g->buttonlist[i].btimer)
             {
                 // 2021/09/26 next-hack: oops, forgot to translate lineno to actual array index...
+#ifdef CONFIG_DOOM_NO_COMPACT_PTR
+                line_t temp_line;
+                user_flash_read_game_resource(&temp_line, sizeof(temp_line), (uint32_t)_g->buttonlist[i].line);
+                uint16_t idx = _g->linesChangeableTextureIndex[temp_line.lineno];
+#else
                 uint16_t idx = _g->linesChangeableTextureIndex[_g->buttonlist[i].line->lineno];
+#endif
                 switch (_g->buttonlist[i].where)
                 {
                     /*

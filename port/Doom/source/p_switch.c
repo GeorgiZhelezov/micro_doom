@@ -282,6 +282,20 @@ void P_ChangeSwitchTexture(const line_t *line, int useAgain)
     user_flash_read_game_resource(&temp_side0, sizeof(temp_side0), (uint32_t)(_g->sides + temp_line.sidenum[0]));
 
     S_StartSound2(&LN_FRONTSECTOR_ALT(temp_line, temp_side0)->soundorg, sound);
+
+    if (useAgain)
+    {
+        short temp_button_texture;
+
+        uint32_t temp_button_texture_addr;
+        user_flash_read_game_resource(&temp_button_texture_addr, sizeof(temp_button_texture_addr), (uint32_t)(&p_wad_immutable_flash_data->switchlist));
+        temp_button_texture_addr += (i * sizeof(temp_button_texture));
+
+        user_flash_read_game_resource(&temp_button_texture, sizeof(temp_button_texture), temp_button_texture_addr);
+
+        P_StartButton(line, position, temp_button_texture, BUTTONTIME);
+    }
+
 #else
     for (i = 0; i < _g->numswitches * 2; i++)
     { /* this could be more efficient... */
@@ -316,10 +330,11 @@ void P_ChangeSwitchTexture(const line_t *line, int useAgain)
 		   *tbot,
 		   position);
 	S_StartSound2(&LN_FRONTSECTOR(line)->soundorg, sound);
-#endif
+
 
     if (useAgain)
         P_StartButton(line, position, p_wad_immutable_flash_data->switchlist[i], BUTTONTIME);
+#endif
 }
 
 //
