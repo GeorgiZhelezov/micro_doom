@@ -4951,8 +4951,7 @@ static inline void fastOpeningsCopy(short *dest, short * source, int num)
     int32_t *d = (int32_t*) dest;
     for (int i = 0; i < num / 2; i++)
     {
-        // *d++ = *s++;
-        memcpy(d, s, sizeof(*d));
+        *d++ = *s++;
     }
     // copy any odd opening
     if (num & 1)
