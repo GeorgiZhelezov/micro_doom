@@ -8,7 +8,6 @@
 #include <zephyr/logging/log.h>
 LOG_MODULE_REGISTER(user_main, LOG_LEVEL_INF);
 
-extern void main_port(void);
 
 void user_print_char(char c)
 {
@@ -25,19 +24,19 @@ int main(void)
 	int ret = 0;
 
 	user_flash_init();
-	user_display_init();
+	// user_display_init();
 	user_timer_init();
 	user_controls_init();
 
-	while(1)
-	{
-		LOG_INF("Hello World! %s", CONFIG_BOARD);
-		k_sleep(K_MSEC(1000));
+	// while(1)
+	// {
+	// 	LOG_INF("Hello World! %s", CONFIG_BOARD);
+	// 	k_sleep(K_MSEC(1000));
 
-		// user_display_test_image();
+	// 	// user_display_test_image();
 
-		main_port();
-	}
+	// 	main_port();
+	// }
 
 	return ret;
 }
