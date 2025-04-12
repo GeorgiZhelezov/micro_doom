@@ -112,4 +112,5 @@ west build -t run
 
 Ammo shows FPS * 10.
 
-https://github.com/user-attachments/assets/5b878f2c-c894-4278-942b-954c7286ba15
+https://github.com/user-attachments/assets/df838975-1c3d-4e9f-82ec-f4c3acb3f11a
+
