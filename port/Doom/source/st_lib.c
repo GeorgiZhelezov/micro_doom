@@ -248,7 +248,9 @@ void STlib_initPercent(st_percent_t *p, int x, int y, const patch_t **pl, short 
 void STlib_updatePercent(st_percent_t *per, int cm, int refresh)
 {
     STlib_updateNum(&per->n, cm, refresh);
-    //V_DrawPatchNoScale(per->n.x, per->n.y, per->p); - Percentage is in the GBA Doom II Hud graphic ~Kippykip
+#if SCREENWIDTH != 240
+    V_DrawPatchNoScale(per->n.x, per->n.y, per->p);// - Percentage is in the GBA Doom II Hud graphic ~Kippykip
+#endif
 }
 
 //

@@ -19,4 +19,4 @@ void game_thread(void *p1, void *p2, void *p3)
 	}
 }
 
-K_THREAD_DEFINE(game_thread_id, 1024, game_thread, NULL, NULL, NULL, GAME_THREAD_PRIORITY, 0, 0);
+K_THREAD_DEFINE(game_thread_id, 1024 * 10, game_thread, NULL, NULL, NULL, GAME_THREAD_PRIORITY, 0, 0);

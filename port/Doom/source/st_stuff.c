@@ -604,15 +604,18 @@ static void ST_createWidgets(void)
     ST_AMMOWIDTH);
 
 #ifdef CONFIG_DOOM_NO_COMPACT_PTR
+    uint32_t temp_percent_addr;
+    user_flash_read_game_resource(&temp_percent_addr, sizeof(temp_percent_addr), (uint32_t)&p_wad_immutable_flash_data->tallpercent);
+
     // health percentage
     STlib_initPercent(&_g->st_health,
     ST_HEALTHX,
-    ST_HEALTHY, p_wad_immutable_flash_data->tallnum, &_g->plyr->health, &_g->st_statusbaron, (const patch_t *)(uint32_t)&p_wad_immutable_flash_data->tallpercent);
+    ST_HEALTHY, p_wad_immutable_flash_data->tallnum, &_g->plyr->health, &_g->st_statusbaron, (const patch_t *)temp_percent_addr);
 
     // armor percentage - should be colored later
     STlib_initPercent(&_g->st_armor,
     ST_ARMORX,
-    ST_ARMORY, p_wad_immutable_flash_data->tallnum, &_g->plyr->armorpoints, &_g->st_statusbaron, (const patch_t *)(uint32_t)&p_wad_immutable_flash_data->tallpercent);
+    ST_ARMORY, p_wad_immutable_flash_data->tallnum, &_g->plyr->armorpoints, &_g->st_statusbaron, (const patch_t *)temp_percent_addr);
 #else
     // health percentage
     STlib_initPercent(&_g->st_health,
