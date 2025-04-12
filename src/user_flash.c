@@ -19,7 +19,13 @@
 #include <zephyr/logging/log.h>
 LOG_MODULE_DECLARE(user_main, LOG_LEVEL_INF);
 
-static const struct device *wad_partition_device = DEVICE_DT_GET(DT_MTD_FROM_FIXED_PARTITION(USER_WAD_PARTITION_NODE));
+static const struct device *partitions[] =
+{
+	DEVICE_DT_GET(DT_MTD_FROM_FIXED_PARTITION(USER_WAD_PARTITION_NODE)),
+	DEVICE_DT_GET(DT_MTD_FROM_FIXED_PARTITION(USER_CACHE_PARTITION_NODE)),
+	DEVICE_DT_GET(DT_MTD_FROM_FIXED_PARTITION(USER_GAME_SETTINGS_PARTITION_NODE)),
+	DEVICE_DT_GET(DT_MTD_FROM_FIXED_PARTITION(USER_GAME_SAVES_PARTITION_NODE)),
+};
 
 static inline uint32_t eval_partition_addr(const uint8_t partition_id)
 {
@@ -198,9 +204,15 @@ int user_flash_init(void)
 {
 	int ret;
 
-	ret = device_is_ready(wad_partition_device);
-	if (ret == 0) { LOG_INF("flash not ready"); return -EBUSY; }
-
+	for (uint8_t i = 0; i < ARRAY_SIZE(partitions); i++)
+	{
+		ret = device_is_ready(partitions[i]);
+		if (ret == 0)
+		{
+			LOG_INF("flash not ready");
+			return -EBUSY;
+		}
+	}
 
 	//just for testing
 	__unused const struct flash_area *fa = NULL;
