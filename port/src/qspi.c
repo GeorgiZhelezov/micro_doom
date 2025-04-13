@@ -231,7 +231,7 @@ void qspiFlashErasePage4k(uint32_t address)
             user_flash_erase_page(address, USER_GAME_SETTINGS_PARTITION_ID);
             break;
         default:
-            while (1) { __asm__ volatile("nop"); } break;
+            while (1) { k_panic(); } break;
     }
 }
 void qspiFlashReadId(uint8_t * id, uint8_t * sz)

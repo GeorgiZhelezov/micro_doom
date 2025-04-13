@@ -12,6 +12,7 @@
 	#ifdef CONFIG_GITHUB_ACTIONS_BUILD
 #include "demo.h"
 	#else
+// #include "demo.h"
 #include "game.h"
 	#endif
 #endif //CONFIG_BOARD_NATIVE_SIM
