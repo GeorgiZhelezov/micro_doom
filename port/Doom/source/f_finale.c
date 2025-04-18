@@ -290,7 +290,13 @@ static void F_TextWrite(void)
                 continue;
             }
 
+#ifdef CONFIG_DOOM_NO_COMPACT_PTR
+            patch_t temp_patch;
+            user_flash_read_game_resource(&temp_patch, sizeof(temp_patch), (uint32_t)hu_font[c]);
+            w = temp_patch.width;
+#else
             w = hu_font[c]->width;
+#endif
             // CPhipps - patch drawing updated
             V_DrawPatchNoScale(cx, cy, hu_font[c]);
             cx += w;
