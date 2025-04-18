@@ -769,8 +769,11 @@ int P_FindSectorFromLineTag(const line_t *line, int start)
 
 #ifdef CONFIG_DOOM_NO_COMPACT_PTR
     line_t temp_line;
-    user_flash_read_game_resource(&temp_line, sizeof(temp_line), (uint32_t)line);
-    line = &temp_line;
+    if (user_flash_is_resource_in_flash((uint32_t)line))
+    {
+        user_flash_read_game_resource(&temp_line, sizeof(temp_line), (uint32_t)line);
+        line = &temp_line;
+    }
 #endif
     for (i = start + 1; i < _g->numsectors; i++)
     {

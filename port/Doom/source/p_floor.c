@@ -720,17 +720,39 @@ int EV_BuildStairs(const line_t *line, stair_e type)
                 for (i = 0; i < sec->linecount; i++)
                 {
 //        sector_t* tsec = LN_FRONTSECTOR((sec->lines[i]));
+#ifdef CONFIG_DOOM_NO_COMPACT_PTR
+                    uint32_t temp_line_address;
+                    user_flash_read_game_resource(&temp_line_address, sizeof(temp_line_address), (uint32_t)(getSectorLineByIndex(sec, i)));
+
+                    line_t temp_line;
+                    user_flash_read_game_resource(&temp_line, sizeof(temp_line), temp_line_address);
+
+                    side_t temp_side0;
+                    user_flash_read_game_resource(&temp_side0, sizeof(temp_side0), (uint32_t)(_g->sides + temp_line.sidenum[0]));
+                    side_t temp_side1;
+                    user_flash_read_game_resource(&temp_side1, sizeof(temp_side1), (uint32_t)(_g->sides + temp_line.sidenum[1]));
+
+                    sector_t *tsec = LN_FRONTSECTOR_ALT(temp_line, temp_side0);
+                    int newsecnum;
+                    if (!(temp_line.flags & ML_TWOSIDED))
+                        continue;
+#else
                     sector_t *tsec = LN_FRONTSECTOR(getSectorLineByIndex(sec, i));
                     int newsecnum;
                     if (!(getSectorLineByIndex(sec, i)->flags & ML_TWOSIDED))
                         continue;
+#endif
 
                     newsecnum = tsec - _g->sectors;
 
                     if (secnum != newsecnum)
                         continue;
 
+#ifdef CONFIG_DOOM_NO_COMPACT_PTR
+                    tsec = LN_BACKSECTOR_ALT(&temp_line, temp_side1);
+#else
                     tsec = LN_BACKSECTOR((getSectorLineByIndex(sec, i)));
+#endif
                     if (!tsec)
                         continue;     //jff 5/7/98 if no backside, continue
                     newsecnum = tsec - _g->sectors;
