@@ -8,7 +8,6 @@
 #include <zephyr/logging/log.h>
 LOG_MODULE_REGISTER(user_main, LOG_LEVEL_INF);
 
-
 void user_print_char(char c)
 {
 	LOG_PRINTK("%c", c);

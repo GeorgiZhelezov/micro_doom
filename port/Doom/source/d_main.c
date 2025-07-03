@@ -457,8 +457,7 @@ const demostates[][4] =
         { D_DrawTitle2, "TITLEPIC" },
         { D_DrawTitle1, "TITLEPIC" },
     },
-
-#elif defined(CONFIG_BOARD_ESP32_DEVKITC_WROOM)
+#elif defined(CONFIG_BOARD_ESP32_DEVKITC)
     {
         { G_DeferedPlayDemo, "demo3" },
         { G_DeferedPlayDemo, "demo3" },
