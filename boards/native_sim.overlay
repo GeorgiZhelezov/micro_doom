@@ -1,5 +1,6 @@
 #include <zephyr/dt-bindings/mipi_dbi/mipi_dbi.h>
 #include <zephyr/dt-bindings/input/input-event-codes.h>
+#include <zephyr/dt-bindings/display/panel.h>
 
 /{
 	aliases 
@@ -106,6 +107,15 @@
 &sdl_dc
 {
 	// status = "disabled";
-	height = < 135 >;
-	width = < 240 >;
+
+	// height = < 80 >;
+	// width = < 160 >;
+
+	// height = < 135 >;
+	// width = < 240 >;
+
+	height = < 170 >;
+	width = < 320 >;
+
+	pixel-format = <PANEL_PIXEL_FORMAT_RGB_565>;
 };
