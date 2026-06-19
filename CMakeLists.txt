@@ -1,6 +1,6 @@
 cmake_minimum_required(VERSION 3.20.0)
 
-if(BOARD MATCHES "^esp32s3_devkitc")
+if(BOARD MATCHES "^esp32s3_devkitc" AND NOT (DEFINED DTC_OVERLAY_FILE AND DEFINED CONF_FILE))
 	set(SEG_REV_LIST "dongle" "nodongle")
 
 	string(REGEX MATCH "^[^@]+" SEG_BOARD ${BOARD})
@@ -23,8 +23,8 @@ if(BOARD MATCHES "^esp32s3_devkitc")
 		string(REPLACE "/" "_" TEMP_OVERLAY ${TEMP_OVERLAY})
 		set(TEMP_OVERLAY "boards/${TEMP_OVERLAY}")
 
-		set(DTC_OVERLAY_FILE ${TEMP_OVERLAY})
-		set(CONF_FILE ${TEMP_CONF})
+		set(DTC_OVERLAY_FILE ${TEMP_OVERLAY} CACHE FILEPATH "Device tree overlay file for ${BOARD}" FORCE)
+		set(CONF_FILE ${TEMP_CONF} CACHE FILEPATH "Configuration file for ${BOARD}" FORCE)
 	else()
 		message(FATAL_ERROR "No revision given for ${BOARD} from list: ${SEG_REV_LIST}")
 	endif()
