@@ -3,6 +3,7 @@
 
 #include <zephyr/kernel.h>
 #include <zephyr/devicetree.h>
+#include <zephyr/dt-bindings/display/panel.h>
 
 #define USER_SCREEN_PHYSICAL_HEIGHT (DT_PROP(DT_ALIAS(display_ctrl), height))
 #define USER_SCREEN_PHYSICAL_WIDTH (DT_PROP(DT_ALIAS(display_ctrl), width))
@@ -10,17 +11,15 @@
 #define USER_SCREEN_HEIGHT (USER_SCREEN_PHYSICAL_HEIGHT - (USER_SCREEN_PHYSICAL_HEIGHT % 2))
 #define USER_SCREEN_WIDTH (USER_SCREEN_PHYSICAL_WIDTH - (USER_SCREEN_PHYSICAL_WIDTH % 2))
 
-#if defined(CONFIG_ST7789V_RGB565) || \
-	defined(CONFIG_ST7789V_BGR565) || \
-	defined(CONFIG_ST7735R) || \
-	defined(CONFIG_SDL_DISPLAY_DEFAULT_PIXEL_FORMAT_RGB_565) || \
-	defined(CONFIG_SDL_DISPLAY_DEFAULT_PIXEL_FORMAT_BRG_565)
-#define USER_SCREEN_PIXEL_SIZE 2
-#endif
+/* Pixel format now lives in devicetree (the Kconfig pixel-format symbols were
+ * removed). Derive bytes-per-pixel from the display controller's pixel-format. */
+#define USER_SCREEN_PIXEL_FORMAT (DT_PROP(DT_ALIAS(display_ctrl), pixel_format))
 
-#if defined(CONFIG_ST7789V_RGB888) || \
-	defined(CONFIG_SDL_DISPLAY_DEFAULT_PIXEL_FORMAT_RGB_888)
+#if (USER_SCREEN_PIXEL_FORMAT == PANEL_PIXEL_FORMAT_RGB_888) || \
+	(USER_SCREEN_PIXEL_FORMAT == PANEL_PIXEL_FORMAT_BGR_888)
 #define USER_SCREEN_PIXEL_SIZE 3
+#else
+#define USER_SCREEN_PIXEL_SIZE 2
 #endif
 
 extern struct k_sem user_display_sem;
