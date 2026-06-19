@@ -4,6 +4,7 @@
 
 #include <zephyr/device.h>
 #include <zephyr/drivers/gpio.h>
+#include <zephyr/drivers/pwm.h>
 #include <zephyr/display/cfb.h>
 
 #include "user_display.h"
@@ -14,8 +15,10 @@ LOG_MODULE_DECLARE(user_main, LOG_LEVEL_INF);
 
 K_SEM_DEFINE(user_display_sem, 1, 1);
 
-static const struct device *display_dev         = DEVICE_DT_GET(DT_ALIAS(display_ctrl));
-static const struct gpio_dt_spec display_pin_bl = GPIO_DT_SPEC_GET(DT_NODELABEL(display_bl), gpios);
+static const struct device *display_dev = DEVICE_DT_GET(DT_ALIAS(display_ctrl));
+#if !defined(CONFIG_BOARD_NATIVE_SIM)
+static const struct device *pwm_dev = DEVICE_DT_GET(DT_NODELABEL(ledc0));
+#endif
 
 __unused
 static void user_display_swap_bytes(uint16_t *buff, size_t len)
@@ -151,8 +154,14 @@ int user_display_write(uint16_t *buff, uint16_t len)
 int user_display_init(void)
 {
 	int ret = 0;
-	gpio_pin_configure_dt(&display_pin_bl, GPIO_OUTPUT_INACTIVE);
-	gpio_pin_set_dt(&display_pin_bl, 0);
+
+#if !defined(CONFIG_BOARD_NATIVE_SIM)
+	/* Check if PWM device is ready */
+	if (!device_is_ready(pwm_dev)) {
+		LOG_INF("PWM device not ready");
+		return -EBUSY;
+	}
+#endif
 
 	ret = device_is_ready(display_dev);
 	if (ret == 0)
@@ -168,7 +177,14 @@ int user_display_init(void)
 		return ret;
 	}
 
-	gpio_pin_set_dt(&display_pin_bl, 1);
+#if !defined(CONFIG_BOARD_NATIVE_SIM)
+	/* Set backlight to 25% brightness - PWM period 1ms, duty 250us */
+	ret = pwm_set(pwm_dev, 0, PWM_USEC(1000), PWM_USEC(1000), PWM_POLARITY_NORMAL);
+	if (ret) {
+		LOG_INF("PWM backlight set failed: %d", ret);
+		return ret;
+	}
+#endif
 
 #ifdef CONFIG_DOOM_DISPLAY_PADDING
 	//blank padding rows in case height is not even
