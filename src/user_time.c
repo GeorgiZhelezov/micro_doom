@@ -3,8 +3,6 @@
 
 #include <zephyr/kernel.h>
 
-#include <zephyr/posix/time.h>
-
 #ifdef CONFIG_BOARD_NATIVE_SIM
 #include "nsi_timer_model.h"
 #endif
@@ -20,9 +18,13 @@ uint32_t user_get_time_us(void)
 
 	return (sec * 1e6 + nsec / 1e3) - base_time;
 #else
-	struct timespec ts;
-	clock_gettime(CLOCK_MONOTONIC, &ts);
-	return (ts.tv_sec * 1e6 + ts.tv_nsec / 1e3);
+	int64_t ticks = k_uptime_ticks();
+	uint32_t us = k_ticks_to_us_near32(ticks);
+	return us;
+
+	// struct timespec ts;
+	// clock_gettime(CLOCK_MONOTONIC, &ts);
+	// return (ts.tv_sec * 1e6 + ts.tv_nsec / 1e3);
 #endif
 }
 
