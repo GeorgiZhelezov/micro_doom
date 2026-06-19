@@ -3,8 +3,6 @@
 
 #include <stdint.h>
 
-#include <zephyr/posix/time.h>
-
 /**
  * @brief Performance profiler macro. See \@details.
  * 
