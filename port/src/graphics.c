@@ -72,6 +72,11 @@ typedef enum
 } displayMode_t;
 //
 
+/* The double framebuffer scales with the panel (480x800 -> 768KB); on SoCs
+ * with external RAM it must live there - it does not fit internal SRAM. */
+#ifdef CONFIG_ESP_SPIRAM
+__attribute__((section(".ext_ram.bss")))
+#endif
 displayData_t displayData;//
 void initGraphics()
 {
