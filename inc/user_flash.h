@@ -5,7 +5,13 @@
 #include <zephyr/devicetree.h>
 #include <zephyr/storage/flash_map.h>
 
+/* Main system SRAM node: most boards call it sram0, the ESP32-P4 calls it
+ * sramhp. */
+#if DT_NODE_EXISTS(DT_NODELABEL(sram0))
 #define USER_RAM_NODE 			DT_NODELABEL(sram0)
+#else
+#define USER_RAM_NODE 			DT_NODELABEL(sramhp)
+#endif
 #define USER_RAM_BASE_ADDRESS 	DT_REG_ADDR(USER_RAM_NODE)
 #define USER_RAM_SIZE 			DT_REG_SIZE(USER_RAM_NODE)
 
