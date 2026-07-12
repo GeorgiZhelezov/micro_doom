@@ -29,12 +29,10 @@ int main(void)
 
 	// while(1)
 	// {
-	// 	LOG_INF("Hello World! %s", CONFIG_BOARD);
-	// 	k_sleep(K_MSEC(1000));
+		// LOG_INF("Hello World! %s", CONFIG_BOARD);
+		// k_sleep(K_MSEC(1000));
 
-	// 	// user_display_test_image();
-
-	// 	main_port();
+		// user_display_test_image();
 	// }
 
 	return ret;
