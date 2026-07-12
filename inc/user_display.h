@@ -8,8 +8,17 @@
 #define USER_SCREEN_PHYSICAL_HEIGHT (DT_PROP(DT_ALIAS(display_ctrl), height))
 #define USER_SCREEN_PHYSICAL_WIDTH (DT_PROP(DT_ALIAS(display_ctrl), width))
 
+#if defined(CONFIG_SOC_SERIES_ESP32P4)
+/* The Guition panel is portrait 480x800, but the engine only has render
+ * tables for up to 320x170 (landscape). Render the game at 320x170 and let
+ * user_display_write() rotate 90 degrees + pixel-double it into the panel
+ * (640x340 centered in the 800x480 landscape orientation). */
+#define USER_SCREEN_HEIGHT 170
+#define USER_SCREEN_WIDTH  320
+#else
 #define USER_SCREEN_HEIGHT (USER_SCREEN_PHYSICAL_HEIGHT - (USER_SCREEN_PHYSICAL_HEIGHT % 2))
 #define USER_SCREEN_WIDTH (USER_SCREEN_PHYSICAL_WIDTH - (USER_SCREEN_PHYSICAL_WIDTH % 2))
+#endif
 
 /* Pixel format now lives in devicetree (the Kconfig pixel-format symbols were
  * removed). Derive bytes-per-pixel from the display controller's pixel-format. */
