@@ -1,0 +1,163 @@
+/*
+ * Guition JC4880P443C-I-W : ESP32-P4 (v1.3) + Sitronix ST7701S panel (MIPI-DSI).
+ * Panel: 4.3" IPS, 480x800, 2-lane DSI. Board also has GT911 touch + ES8311
+ * audio (not wired here). 32MB PSRAM, 16MB flash. Built on the in-tree
+ * esp32p4_function_ev_board target (chip rev v1.3, CPU 360 MHz, LDO3 2.5 V
+ * for the D-PHY all come from the board). Display stack: upstream
+ * espressif,esp-mipi-dsi host + espressif,esp-dsi-display scanout +
+ * sitronix,st7701 panel driver.
+ *
+ * Pins (Guition schematic): panel RESET = GPIO5 (FPC1 pin23), backlight =
+ * GPIO23 (net LCD_PWM, active-high). DSI data/clk are fixed-function.
+ * Timings, lane rate and DPI clock match the esp_lcd_st7701 IDF reference;
+ * the ST7701 values are the Guition vendor init. Not expressible with the
+ * upstream binding: B9 second byte (0x1F), BB=03, BC=00 (panel works without).
+ */
+
+#include <zephyr/dt-bindings/display/panel.h>
+#include <zephyr/dt-bindings/mipi_dsi/mipi_dsi.h>
+
+/ {
+	chosen {
+		/* External UART adapter on UART0 (the board's own USB is not used). */
+		zephyr,console = &uart0;
+		zephyr,shell-uart = &uart0;
+	};
+
+	aliases {
+		display-ctrl = &st7701;
+	};
+};
+
+/delete-node/ &ek79007;
+
+&mipi_dsi {
+	phy-clock = <500000000>;
+	dpi-clock-frequency = <30000000>;
+
+	st7701: panel-controller@0 {
+		compatible = "sitronix,st7701";
+		reg = <0>;
+		data-lanes = <2>;
+		pixel-format = <MIPI_DSI_PIXFMT_RGB565>;
+		width = <480>;
+		height = <800>;
+		reset-gpios = <&gpio0 5 GPIO_ACTIVE_LOW>;
+		bl-gpios = <&gpio0 23 GPIO_ACTIVE_HIGH>;
+
+		display-timings {
+			compatible = "zephyr,panel-timing";
+			hsync-len = <12>;
+			hfront-porch = <42>;
+			hback-porch = <42>;
+			vsync-len = <8>;
+			vfront-porch = <60>;
+			vback-porch = <2>;
+			hsync-active = <0>;
+			vsync-active = <0>;
+			de-active = <1>;
+			pixelclk-active = <0>;
+		};
+
+		bk3-ef = [ef 08];
+		lneset = [c0 63 00];
+		porctrl = [c1 0d 02];
+		invsel = [c2 17 08];
+		cc-control = [cc 10];
+		pvgamctrl = [b0 40 c9 94 0e 10 05 0b 09 08 26 04 52 10 69 6b 69];
+		nvgamctrl = [b1 40 d2 98 0c 92 07 09 08 07 25 02 0e 0c 6e 78 55];
+
+		vrhs = <0x5d>;
+		vcom = <0x4e>;
+		vghss = <0x87>;
+		vgls = <0x4e>;
+		pwctlr1 = <0x85>;
+		pwctlr2 = <0x21>;
+		b9 = <0x10>;
+		spd1 = <0x78>;
+		spd2 = <0x78>;
+		mipiset1 = <0x88>;
+
+		gip-e0 = [e0 00 3a 02];
+		gip-e1 = [e1 04 a0 00 a0 05 a0 00 a0 00 40 40];
+		gip-e2 = [e2 30 00 40 40 32 a0 00 a0 00 a0 00 a0 00];
+		gip-e3 = [e3 00 00 33 33];
+		gip-e4 = [e4 44 44];
+		gip-e5 = [e5 09 2e a0 a0 0b 30 a0 a0 05 2a a0 a0 07 2c a0 a0];
+		gip-e6 = [e6 00 00 33 33];
+		gip-e7 = [e7 44 44];
+		gip-e8 = [e8 08 2d a0 a0 0a 2f a0 a0 04 29 a0 a0 06 2b a0 a0];
+		gip-eb = [eb 00 00 4e 4e 00 00 00];
+		gip-ec = [ec 08 01];
+		gip-ed = [ed b0 2b 98 a4 56 7f ff ff ff ff f7 65 4a 89 b2 0b];
+		gip-ef = [ef 08 08 08 45 3f 54];
+	};
+};
+
+&dsi_display {
+	pixel-format = <PANEL_PIXEL_FORMAT_RGB_565>;
+	width = <480>;
+	height = <800>;
+};
+
+/* The Function-EV-Board touch controller is not on this board. */
+&gt911 {
+	status = "disabled";
+};
+
+/*
+ * Flash: keep board boot/sys partitions; replace the upgrade/lpcore/storage
+ * partitions with the DOOM layout the port expects (node labels must match
+ * inc/user_flash.h: wad_partition, cache_partition, game_settings_partition,
+ * game_saves_partition).
+ *
+ * Base layout is inherited from
+ *   <espressif/partitions_0x2000_default_16M.dtsi>
+ * (boot@2000, sys@10000, slot0@20000, slot1, lpcore x2, storage,
+ * coredump). We drop everything past slot0 and resize slot0.
+ * TODO: verify slot0 is large enough for the P4 image; bump if linking fails.
+ */
+/delete-node/ &slot0_partition;
+/delete-node/ &slot1_partition;
+/delete-node/ &slot0_lpcore_partition;
+/delete-node/ &slot1_lpcore_partition;
+/delete-node/ &storage_partition;
+/delete-node/ &coredump_partition;
+
+&flash0 {
+    partitions {
+        slot0_partition: partition@20000 {
+            label = "image-0";
+            reg = <0x20000 DT_SIZE_K(640)>;   /* 0x20000 .. 0xC0000 */
+            read-only;
+        };
+
+        game_settings_partition: partition@c0000 {
+            compatible = "zephyr,mapped-partition";
+            label = "game-settings-partition";
+            reg = <0xc0000 0x1000>;
+        };
+
+        game_saves_partition: partition@c1000 {
+            compatible = "zephyr,mapped-partition";
+            label = "game-saves-partition";
+            reg = <0xc1000 0x1000>;
+        };
+
+        cache_partition: partition@c2000 {
+            compatible = "zephyr,mapped-partition";
+            label = "cache-partition";
+            reg = <0xc2000 (0x22b000 - 0xc2000)>;
+        };
+
+        /* Same offset as every other board target (fits the full 14.5MB
+         * doom1.wad with ~3KB to spare on a 16MB flash). */
+        wad_partition: partition@22b000 {
+            compatible = "zephyr,mapped-partition";
+            label = "wad-partition";
+            reg = <0x22b000 (DT_SIZE_M(16) - 0x22b000)>;
+            read-only;
+        };
+    };
+};
+
