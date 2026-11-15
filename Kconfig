@@ -45,4 +45,12 @@ config DOOM_ALLOCATOR_MAX_STATIC_ZONE_SIZE
 		Define the maximum size of the staticZone[] mem pool for DOOM's allocator.
 		Originally is set to 113600 bytes, but this may be lowered depending on build target due to RAM limitations.
 
+config DOOM_GAME_THREAD_STACK_SIZE
+	int "Game thread stack size"
+	default 65536 if BOARD_ESP32P4_FUNCTION_EV_BOARD || BOARD_NATIVE_SIM
+	default 10240
+	help
+		Stack size of the game thread. The ESP32-P4 (RISC-V) needs extra headroom
+		for the render recursion; the RAM-constrained targets keep the original 10KB.
+
 endmenu
