@@ -89,7 +89,8 @@
  * CHILD of &lcd_cam. The board stubs it as `lcd_cam_disp` (status disabled).
  *
  * Data(D0..D7) / WR(PCLK) / DC pins are routed via the lcd_cam pinctrl group below.
- * CS and reset are plain GPIOs on the controller node. RD (gpio0 9) is unused (i80 write-only).
+ * CS and reset are plain GPIOs on the controller node. RD (gpio0 9) is unused (i80 write-only)
+ * but is held high by the hog below.
  *
  * To use: comment out the `testing` node + its `aliases { display-ctrl = &st7789; }`,
  * uncomment this block, and point the alias at this st7789.
@@ -118,6 +119,19 @@
     // lcd_cam already provides dmas = <&dma 6>, <&dma 7>; dma-names = "rx", "tx";
 };
 
+/* RD (read-strobe, active-low) must be held high, otherwise the panel keeps
+ * driving the shared 8080 data bus and corrupts every write. The upstream
+ * driver has no rd-gpios property, so hog the pin high; hogs are set up at
+ * GPIO_HOGS_INIT_PRIORITY (41), before the MIPI-DBI (80) and display (85)
+ * drivers send the panel init sequence. */
+&gpio0 {
+    lcd_rd_hog {
+        gpio-hog;
+        gpios = <9 GPIO_ACTIVE_HIGH>;
+        output-high;
+    };
+};
+
 &lcd_cam_disp {
     status = "okay";
     #address-cells = <1>;
@@ -125,9 +139,6 @@
 
     reset-gpios = <&gpio0 5 GPIO_ACTIVE_LOW>;
     cs-gpios    = <&gpio0 6 GPIO_ACTIVE_LOW>;
-    /* RD active-low: driven INACTIVE (physical high) at init so the panel
-     * stops driving the shared 8080 data bus during writes. */
-    rd-gpios    = <&gpio0 9 GPIO_ACTIVE_LOW>;
 
     st7789: st7789@0
     {
