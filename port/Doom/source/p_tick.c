@@ -217,6 +217,28 @@ void P_Ticker(void)
     P_UpdateSpecials();
     P_RespawnSpecials();
     P_MapEnd();
+#ifdef DEMO_TRACE
+/* R/T lines every tic; M (full mobj dump) only for leveltime in
+ * [DEMO_TRACE_M0, DEMO_TRACE_M1], off by default. */
+#ifndef DEMO_TRACE_M0
+#define DEMO_TRACE_M0 1
+#define DEMO_TRACE_M1 0
+#endif
+    if (_g->demoplayback && _g->player.mo)
+        printf("T %d %d %d %d %d %u %d %d %d\n", _g->leveltime, _g->prndindex,
+               _g->player.mo->x, _g->player.mo->y, _g->player.mo->z, (unsigned)_g->player.mo->angle,
+               _g->player.mo->momx, _g->player.mo->momy, _g->player.health);
+    if (_g->demoplayback && _g->leveltime >= DEMO_TRACE_M0 && _g->leveltime <= DEMO_TRACE_M1)
+    {
+        for (thinker_t *th = getThinkerNext(&thinkercap); th != &thinkercap; th = getThinkerNext(th))
+        {
+            if (th->function != (think_t)P_MobjThinker) continue;
+            mobj_t *m = (mobj_t *)th;
+            printf("M %d t%d %d %d %d m%d %d %d h%d d%d c%d f%08x\n", _g->leveltime, m->type, m->x, m->y, m->z,
+                   m->momx, m->momy, m->momz, m->health, m->movedir, m->movecount, m->flags);
+        }
+    }
+#endif
     _g->leveltime++;                       // for par times
 }
 

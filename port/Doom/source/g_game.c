@@ -1263,6 +1263,9 @@ static const char *defdemoname;
 
 void G_DeferedPlayDemo(const char *name)
 {
+#ifdef DEMO_TRACE_NAME
+    name = DEMO_TRACE_NAME;
+#endif
     defdemoname = name;
     _g->gameaction = ga_playdemo;
 }
