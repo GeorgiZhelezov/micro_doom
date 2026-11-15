@@ -72,9 +72,10 @@ typedef enum
 } displayMode_t;
 //
 
-/* The double framebuffer scales with the panel (480x800 -> 768KB); on SoCs
- * with external RAM it must live there - it does not fit internal SRAM. */
-#ifdef CONFIG_ESP_SPIRAM
+/* The double framebuffer scales with the panel (480x800 -> 768KB); on the
+ * ESP32-P4 it must live in external RAM - it does not fit internal SRAM.
+ * Other SoCs with PSRAM keep it in faster internal RAM. */
+#if defined(CONFIG_ESP_SPIRAM) && defined(CONFIG_SOC_SERIES_ESP32P4)
 __attribute__((section(".ext_ram.bss")))
 #endif
 displayData_t displayData;//

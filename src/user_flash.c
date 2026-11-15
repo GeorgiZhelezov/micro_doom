@@ -51,6 +51,26 @@ static inline uint32_t eval_partition_addr(const uint8_t partition_id)
 }
 
 
+#ifdef CONFIG_DOOM_CACHE_IN_PSRAM
+/* The cache partition is served from PSRAM: same addresses for the game,
+ * memcpy instead of flash transactions, no erase/wear. Starts out erased
+ * (0xFF), like flash, which the cache code relies on. */
+__attribute__((section(".ext_ram.bss")))
+static uint8_t cache_ram[USER_CACHE_PARTITION_SIZE];
+
+static inline uint8_t *cache_ram_ptr(uint32_t addr, size_t len)
+{
+	if (addr < USER_CACHE_PARTITION_BASE_ADDRESS ||
+	    len > USER_CACHE_PARTITION_SIZE ||
+	    addr - USER_CACHE_PARTITION_BASE_ADDRESS > USER_CACHE_PARTITION_SIZE - len)
+	{
+		LOG_INF("cache access out of range 0x%08x len %u", addr, (unsigned)len);
+		k_panic();
+	}
+	return &cache_ram[addr - USER_CACHE_PARTITION_BASE_ADDRESS];
+}
+#endif
+
 #if defined(CONFIG_SOC_SERIES_ESP32P4)
 /* The esp flash layer can only read/write directly from/to internal DRAM;
  * game buffers may live in PSRAM (or other non-DRAM memory), for which the
@@ -165,6 +185,14 @@ int user_flash_read(void *buff, size_t len, uint32_t addr, const uint8_t partiti
 
 	int ret;
 
+#ifdef CONFIG_DOOM_CACHE_IN_PSRAM
+	if (partition_id == USER_CACHE_PARTITION_ID)
+	{
+		memcpy(buff, cache_ram_ptr(addr, len), len);
+		return 0;
+	}
+#endif
+
 #if defined(CONFIG_SOC_SERIES_ESP32P4) && !defined(P4_MAP_DISABLE)
 	if (p4_addr_mapped(addr, len))
 	{
@@ -213,6 +241,14 @@ int user_flash_write(void *buff, size_t len, uint32_t addr, const uint8_t partit
 
 	int ret;
 
+#ifdef CONFIG_DOOM_CACHE_IN_PSRAM
+	if (partition_id == USER_CACHE_PARTITION_ID)
+	{
+		memcpy(cache_ram_ptr(addr, len), buff, len);
+		return 0;
+	}
+#endif
+
 	const struct flash_area *fa = NULL;
 	ret = flash_area_open(partition_id, &fa);
 	if (fa == NULL || ret)
@@ -254,6 +290,14 @@ exit:
 int user_flash_erase_page(uint32_t addr, const uint8_t partition_id)
 {
 	int ret;
+
+#ifdef CONFIG_DOOM_CACHE_IN_PSRAM
+	if (partition_id == USER_CACHE_PARTITION_ID)
+	{
+		memset(cache_ram_ptr(addr, USER_FLASH_ERASE_SIZE), 0xFF, USER_FLASH_ERASE_SIZE);
+		return 0;
+	}
+#endif
 	
 	const struct flash_area *fa = NULL;
 	ret = flash_area_open(partition_id, &fa);
@@ -383,6 +427,11 @@ int user_flash_init(void)
 			return -EBUSY;
 		}
 	}
+
+#ifdef CONFIG_DOOM_CACHE_IN_PSRAM
+	memset(cache_ram, 0xFF, sizeof(cache_ram));
+	LOG_INF("lump cache in PSRAM: %u KB at %p", (unsigned)(sizeof(cache_ram) / 1024), (void *)cache_ram);
+#endif
 
 	//just for testing
 	__unused const struct flash_area *fa = NULL;

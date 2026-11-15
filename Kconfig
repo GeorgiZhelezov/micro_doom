@@ -45,6 +45,17 @@ config DOOM_ALLOCATOR_MAX_STATIC_ZONE_SIZE
 		Define the maximum size of the staticZone[] mem pool for DOOM's allocator.
 		Originally is set to 113600 bytes, but this may be lowered depending on build target due to RAM limitations.
 
+config DOOM_CACHE_IN_PSRAM
+	bool "Keep the lump cache in PSRAM instead of flash"
+	depends on ESP_SPIRAM
+	help
+		Serve the cache partition (level/immutable lump cache) from a PSRAM
+		buffer instead of the external flash. The game keeps using the same
+		cache-partition addresses; only the flash layer changes. Removes the
+		word-by-word flash writes and sector erases on every level change.
+		PSRAM is volatile, so the cache is rebuilt at every boot (which the
+		game already does).
+
 config DOOM_GAME_THREAD_STACK_SIZE
 	int "Game thread stack size"
 	default 65536 if BOARD_ESP32P4_FUNCTION_EV_BOARD || BOARD_NATIVE_SIM

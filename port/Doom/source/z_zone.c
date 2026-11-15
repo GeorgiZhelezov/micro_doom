@@ -133,9 +133,9 @@ typedef struct
 
 } memzone_t;
 
-/* On SoCs with external RAM keep the allocator pool there - internal SRAM on
- * the ESP32-P4 is only 256KB. */
-#ifdef CONFIG_ESP_SPIRAM
+/* On the ESP32-P4 keep the allocator pool in external RAM - its internal SRAM
+ * is only 256KB. Other SoCs with PSRAM keep it in faster internal RAM. */
+#if defined(CONFIG_ESP_SPIRAM) && defined(CONFIG_SOC_SERIES_ESP32P4)
 __attribute__((section(".ext_ram.bss")))
 #endif
 __aligned(8) uint8_t staticZone[MAX_STATIC_ZONE] = { 0 };
