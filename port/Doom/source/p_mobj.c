@@ -559,7 +559,9 @@ mobj_t* P_SpawnMobj(fixed_t x, fixed_t y, fixed_t z, mobjtype_t type)
     if (_g->gameskill != sk_nightmare)
         mobj->reactiontime = info->reactiontime;
 
-    mobj->lastlook = P_Random (__FILE__,__LINE__, __FUNCTION__) % MAXPLAYERS;
+    /* Vanilla uses MAXPLAYERS == 4 here. The value matters even in single
+     * player: P_LookForPlayers starts its scan from lastlook (demo sync). */
+    mobj->lastlook = P_Random (__FILE__,__LINE__, __FUNCTION__) % 4;
     // do not set the state with P_SetMobjState,
     // because action routines can not be called yet
 

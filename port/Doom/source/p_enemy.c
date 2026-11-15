@@ -711,6 +711,19 @@ static boolean P_LookForPlayers(mobj_t *actor, boolean allaround)
 {
     player_t *player;
     // TODO: restore multiplayer
+
+    /* Vanilla scans players from actor->lastlook up to
+     * stop = (lastlook - 1) & 3. With only player 0 in game the scan always
+     * ends with lastlook == 0, and when it started at 1 it hits stop on
+     * reaching player 0 and gives up without looking. Monsters spawned with
+     * lastlook == 1 therefore skip their first look - needed for demo sync. */
+    if (actor->lastlook == 1)
+    {
+        actor->lastlook = 0;
+        return false;
+    }
+    actor->lastlook = 0;
+
     if (_g->playeringame)
     {
         player = &_g->player;
@@ -725,8 +738,11 @@ static boolean P_LookForPlayers(mobj_t *actor, boolean allaround)
         actor->target_sptr = getShortPtr(player->mo);
         /* killough 9/9/98: give monsters a threshold towards getting players
          * (we don't want it to be too easy for a player with dogs :)
+         * Not vanilla: prboom gates it with comp_pursuit, which is on under
+         * demo_compatibility. Setting it breaks demo sync (infighting).
          */
-        actor->threshold = 60;
+        if (!demo_compatibility)
+            actor->threshold = 60;
 
         return true;
     }

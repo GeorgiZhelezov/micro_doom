@@ -6771,7 +6771,9 @@ static int P_DivlineSide(fixed_t x, fixed_t y, const divline_t *node)
     return !node->dx ? x == node->x ? 2 :
                        x <= node->x ? node->dy > 0 : node->dy < 0
            :
-           !node->dy ? (y) == node->y ? 2 :
+           /* vanilla compares x (not y) against node->y here; prboom keeps
+            * the bug below prboom_4_compatibility. Needed for demo sync. */
+           !node->dy ? (x) == node->y ? 2 :
                        y <= node->y ? node->dx < 0 : node->dx > 0
            :
            (right = ((y - node->y) >> FRACBITS) * (node->dx >> FRACBITS)) < (left = ((x - node->x) >> FRACBITS) * (node->dy >> FRACBITS)) ? 0 :
@@ -6824,8 +6826,13 @@ static boolean P_CrossSubsector(int num)
 
         _g->linedata[linenum].validcount = _g->validcount;
 
-        if (line->bbox[BOXLEFT] > los.bbox[BOXRIGHT] || line->bbox[BOXRIGHT] < los.bbox[BOXLEFT] || line->bbox[BOXBOTTOM] > los.bbox[BOXTOP] || line->bbox[BOXTOP] < los.bbox[BOXBOTTOM])
-            continue;
+        /* killough 4/20/98 quick bounding-box rejection. Not vanilla: with
+         * the P_DivlineSide x/y bug above, vanilla can count a line outside
+         * the LOS box as crossed, so prboom skips this test under
+         * demo_compatibility. */
+        if (!demo_compatibility)
+            if (line->bbox[BOXLEFT] > los.bbox[BOXRIGHT] || line->bbox[BOXRIGHT] < los.bbox[BOXLEFT] || line->bbox[BOXBOTTOM] > los.bbox[BOXTOP] || line->bbox[BOXTOP] < los.bbox[BOXBOTTOM])
+                continue;
 
         // cph - do what we can before forced to check intersection
         if (line->flags & ML_TWOSIDED)
