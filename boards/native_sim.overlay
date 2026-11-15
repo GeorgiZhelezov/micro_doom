@@ -72,34 +72,40 @@
 {
 	// reg = <0x0 DT_SIZE_M(16)>; //address, size(16MB)
 	reg = <0x10000000 DT_SIZE_M(64)>; //address, size(16MB)
+	ranges = <0x0 0x10000000 DT_SIZE_M(64)>; // upstream default maps only 2MB at 0; partitions are relative to reg base
 	partitions
 	{
 		slot0_partition: partition@0
 		{
+			compatible = "zephyr,mapped-partition";
 			label = "image-0";
 			reg = < 0x0 DT_SIZE_K(512) >;
 			read-only;
 		};
 		game_settings_partition: partition@81000
 		{
+			compatible = "zephyr,mapped-partition";
 			label = "game-settings-partition";
 			reg = < 0x81000 0x1000 >;
 		};
 		game_saves_partition: partition@82000
 		{
+			compatible = "zephyr,mapped-partition";
 			label = "game-saves-partition";
 			reg = < 0x82000 0x1000 >;
 		};
 		cache_partition: partition@83000
 		{
+			compatible = "zephyr,mapped-partition";
 			label = "cache-partition";
 			reg = < 0x83000 (0x22b000 - 0x83000) >;
 		};
 		wad_partition: partition@22b000
 		{
+			compatible = "zephyr,mapped-partition";
 			label = "wad-partition";
 			reg = < 0x22b000 (DT_SIZE_M(16) - 0x22b000) >;
-			read-only;
+			/* not read-only: native_sim copies the embedded WAD in at boot */
 		};
 	};
 };
