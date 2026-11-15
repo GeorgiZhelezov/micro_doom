@@ -1,4 +1,5 @@
 #include <zephyr/dt-bindings/mipi_dbi/mipi_dbi.h>
+#include <zephyr/dt-bindings/display/panel.h>
 #include <zephyr/dt-bindings/pinctrl/esp32-pinctrl.h>
 
 /{
@@ -31,6 +32,7 @@
 			reg = <0>;
 			mipi-max-frequency = <80000000>;
 			mipi-mode = "MIPI_DBI_MODE_SPI_4WIRE";
+			pixel-format = <PANEL_PIXEL_FORMAT_RGB_565>;
 
 			height = <135>;
 			width = <240>;
@@ -44,7 +46,6 @@
 			vdvs = <0x20>;
 			// inversion-off;
 			gamma = <0x01>;
-			colmod = <0x55>;
 			lcm = <0x2c>;
 			porch-param = [ 0c 0c 00 33 33  ];
 			cmd2en-param = [ 5a 69 02 01  ];
@@ -63,7 +64,6 @@
 /delete-node/ &slot0_lpcore_partition;
 /delete-node/ &slot1_lpcore_partition;
 /delete-node/ &storage_partition;
-/delete-node/ &scratch_partition;
 /delete-node/ &coredump_partition;
 &flash0
 {
@@ -73,27 +73,32 @@
 	{
 		slot0_partition: partition@20000
 		{
+			compatible = "zephyr,mapped-partition";
 			label = "image-0";
 			reg = < 0x20000 DT_SIZE_K(512) >;
 			read-only;
 		};
 		game_settings_partition: partition@a0000
 		{
+			compatible = "zephyr,mapped-partition";
 			label = "game-settings-partition";
 			reg = < 0xa0000 0x1000 >;
 		};
 		game_saves_partition: partition@a1000
 		{
+			compatible = "zephyr,mapped-partition";
 			label = "game-saves-partition";
 			reg = < 0xa1000 0x1000 >;
 		};
 		cache_partition: partition@a2000
 		{
+			compatible = "zephyr,mapped-partition";
 			label = "cache-partition";
 			reg = < 0xa2000 (0x22b000 - 0xa2000) >;
 		};
 		wad_partition: partition@22b000
 		{
+			compatible = "zephyr,mapped-partition";
 			label = "wad-partition";
 			reg = < 0x22b000 (DT_SIZE_M(16) - 0x22b000) >;
 			read-only;

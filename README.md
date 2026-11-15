@@ -67,9 +67,9 @@ for the [rpi_pico](https://docs.zephyrproject.org/latest/boards/raspberrypi/rpi_
 west build -p=always -b rpi_pico
 ```
 
-for the [esp32_devkitc_wroom](https://docs.zephyrproject.org/latest/boards/espressif/esp32_devkitc_wroom/doc/index.html) target:
+for the [esp32_devkitc](https://docs.zephyrproject.org/latest/boards/espressif/esp32_devkitc/doc/index.html) target:
 ```
-west build -p=always -b esp32_devkitc_wroom/esp32/procpu
+west build -p=always -b esp32_devkitc/esp32/procpu
 ```
 
 for the [esp32s3_devkitc](https://docs.zephyrproject.org/latest/boards/espressif/esp32s3_devkitc/doc/index.html) target:
@@ -88,7 +88,7 @@ west build -p=always -b native_sim
 
 ## Flashing the app
 
-By default `west` uses a J-LINK debugger for the `rpi_pico` and for the `esp32_devkitc_wroom` and `esp32s3_devkitc` - the on-board USB to UART converter. You can, of course use whatever method you like with the `-r` argument.
+By default `west` uses a J-LINK debugger for the `rpi_pico` and for the `esp32_devkitc` and `esp32s3_devkitc` - the on-board USB to UART converter. You can, of course use whatever method you like with the `-r` argument.
 ```
 west flash
 ```

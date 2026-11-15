@@ -32,7 +32,6 @@
 /delete-node/ &slot0_lpcore_partition;
 /delete-node/ &slot1_lpcore_partition;
 /delete-node/ &storage_partition;
-/delete-node/ &scratch_partition;
 /delete-node/ &coredump_partition;
 
 &flash0
@@ -42,6 +41,7 @@
     partitions {
         slot0_partition: partition@20000
 		{
+            compatible = "zephyr,mapped-partition";
             label = "image-0";
             reg = <0x20000 DT_SIZE_K(512)>;
             read-only;
