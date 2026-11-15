@@ -126,57 +126,78 @@ static int bounced_flash_write(const struct flash_area *fa, uint32_t addr, const
 #define bounced_flash_write(fa, addr, buff, len) flash_area_write(fa, addr, buff, len)
 #endif
 
-#if defined(CONFIG_SOC_SERIES_ESP32P4)
+#if defined(CONFIG_SOC_SERIES_ESP32P4) || defined(CONFIG_SOC_SERIES_ESP32S3)
 /* Memory-map the game's read-heavy flash region (cache + WAD partitions) so
- * lump/resource reads run at XIP speed through the L2 cache instead of one
+ * lump/resource reads run at XIP speed through the cache instead of one
  * flash-API transaction per access. Writes still go through the flash API;
  * the mapped window is invalidated afterwards so readers see fresh data. */
 #include <hal/mmu_hal.h>
 #include <hal/mmu_types.h>
 #include <esp_cache.h>
+#include <esp_mmu_map.h>
 
-#define P4_MAP_PA    0xC0000u                  /* covers cache (0xC2000) + wad (0x22b000+) */
-#define P4_MAP_SIZE  (0x1000000u - P4_MAP_PA)  /* up to the 16MB flash end */
-#define P4_MAP_VA    0x40400000u
+#define GAME_MAP_ENABLED 1
+/* from the (64KB page aligned) start of the cache partition to the flash end */
+#define GAME_MAP_PA    (USER_CACHE_PARTITION_BASE_ADDRESS & ~0xFFFFu)
+#define GAME_MAP_SIZE  (USER_FLASH_SIZE - GAME_MAP_PA)
 
-static bool p4_map_ready;
+static uintptr_t game_map_va;
 
-static void p4_flash_map_init(void)
+static void game_flash_map_init(void)
 {
+#if defined(CONFIG_SOC_SERIES_ESP32P4)
+	/* fixed window in the P4 flash/PSRAM address space */
+	const uintptr_t va = 0x40400000u;
 	uint32_t mapped = 0;
 
-	mmu_hal_map_region(0, MMU_TARGET_FLASH0, P4_MAP_VA, P4_MAP_PA, P4_MAP_SIZE, &mapped);
-	if (mapped >= P4_MAP_SIZE)
+	mmu_hal_map_region(0, MMU_TARGET_FLASH0, va, GAME_MAP_PA, GAME_MAP_SIZE, &mapped);
+	if (mapped < GAME_MAP_SIZE)
 	{
-		esp_cache_msync((void *)P4_MAP_VA, P4_MAP_SIZE,
-				ESP_CACHE_MSYNC_FLAG_DIR_M2C);
-		p4_map_ready = true;
-		LOG_INF("game flash window mapped: pa 0x%08x -> va 0x%08x (%u KB)",
-			P4_MAP_PA, P4_MAP_VA, P4_MAP_SIZE / 1024);
+		LOG_INF("game flash map failed (mapped %u of %u)", mapped, GAME_MAP_SIZE);
+		return;
 	}
-	else
+	esp_cache_msync((void *)va, GAME_MAP_SIZE, ESP_CACHE_MSYNC_FLAG_DIR_M2C);
+#else
+	/* let the MMU allocator pick free virtual pages (PSRAM reserves its own) */
+	void *ptr = NULL;
+	esp_err_t err = esp_mmu_map(GAME_MAP_PA, GAME_MAP_SIZE, MMU_TARGET_FLASH0,
+				    MMU_MEM_CAP_READ | MMU_MEM_CAP_8BIT, 0, &ptr);
+
+	if (err != ESP_OK)
 	{
-		LOG_INF("game flash map failed (mapped %u of %u)", mapped, P4_MAP_SIZE);
+		LOG_INF("game flash map failed (%d)", err);
+		return;
 	}
+	const uintptr_t va = (uintptr_t)ptr;
+#endif
+	game_map_va = va;
+	LOG_INF("game flash window mapped: pa 0x%08x -> va 0x%08x (%u KB)",
+		(unsigned)GAME_MAP_PA, (unsigned)va, (unsigned)(GAME_MAP_SIZE / 1024));
 }
 
-static inline bool p4_addr_mapped(uint32_t addr, size_t len)
+static inline bool game_addr_mapped(uint32_t addr, size_t len)
 {
-	return p4_map_ready && addr >= P4_MAP_PA && (addr + len) <= (P4_MAP_PA + P4_MAP_SIZE);
+	return game_map_va && addr >= GAME_MAP_PA && (addr + len) <= (GAME_MAP_PA + GAME_MAP_SIZE);
 }
 
-static inline void p4_map_invalidate(uint32_t addr, size_t len)
+static inline const void *game_map_ptr(uint32_t addr)
 {
-	if (!p4_addr_mapped(addr, len)) { return; }
+	return (const void *)(game_map_va + (addr - GAME_MAP_PA));
+}
+
+static inline void game_map_invalidate(uint32_t addr, size_t len)
+{
+	if (!game_addr_mapped(addr, len)) { return; }
 	/* align out to cache lines */
-	uint32_t start = (P4_MAP_VA + (addr - P4_MAP_PA)) & ~63u;
-	uint32_t end = (P4_MAP_VA + (addr - P4_MAP_PA) + len + 63u) & ~63u;
+	uintptr_t start = (uintptr_t)game_map_ptr(addr) & ~(uintptr_t)63u;
+	uintptr_t end = ((uintptr_t)game_map_ptr(addr) + len + 63u) & ~(uintptr_t)63u;
 
 	esp_cache_msync((void *)start, end - start, ESP_CACHE_MSYNC_FLAG_DIR_M2C);
 }
 #else
-#define p4_addr_mapped(addr, len) 0
-#define p4_map_invalidate(addr, len)
+#define GAME_MAP_ENABLED 0
+#define game_addr_mapped(addr, len) 0
+#define game_map_invalidate(addr, len)
 #endif
 
 int user_flash_read(void *buff, size_t len, uint32_t addr, const uint8_t partition_id)
@@ -193,10 +214,10 @@ int user_flash_read(void *buff, size_t len, uint32_t addr, const uint8_t partiti
 	}
 #endif
 
-#if defined(CONFIG_SOC_SERIES_ESP32P4) && !defined(P4_MAP_DISABLE)
-	if (p4_addr_mapped(addr, len))
+#if GAME_MAP_ENABLED
+	if (game_addr_mapped(addr, len))
 	{
-		memcpy(buff, (const void *)(P4_MAP_VA + (addr - P4_MAP_PA)), len);
+		memcpy(buff, game_map_ptr(addr), len);
 		return 0;
 	}
 #endif
@@ -269,7 +290,7 @@ int user_flash_write(void *buff, size_t len, uint32_t addr, const uint8_t partit
 	ret = bounced_flash_write(fa, addr, buff, len);
 	if (ret >= 0)
 	{
-		p4_map_invalidate(addr + eval_partition_addr(partition_id), len);
+		game_map_invalidate(addr + eval_partition_addr(partition_id), len);
 	}
 	if (ret < 0)
 	{
@@ -317,7 +338,7 @@ int user_flash_erase_page(uint32_t addr, const uint8_t partition_id)
 	ret = flash_area_erase(fa, addr, USER_FLASH_ERASE_SIZE);
 	if (ret >= 0)
 	{
-		p4_map_invalidate(addr + eval_partition_addr(partition_id), USER_FLASH_ERASE_SIZE);
+		game_map_invalidate(addr + eval_partition_addr(partition_id), USER_FLASH_ERASE_SIZE);
 	}
 	if(ret < 0)
 	{
@@ -374,8 +395,8 @@ int user_flash_init(void)
 {
 	int ret;
 
-#if defined(CONFIG_SOC_SERIES_ESP32P4)
-	p4_flash_map_init();
+#if GAME_MAP_ENABLED
+	game_flash_map_init();
 	{
 		/* read-path integrity check: sum the first 64KB of the WAD through
 		 * the flash API and through the MMU map - must match each other and
@@ -393,22 +414,20 @@ int user_flash_init(void)
 			}
 			flash_area_close(fa);
 		}
-		if (p4_map_ready)
+		if (game_map_va)
 		{
-			const uint32_t *m = (const uint32_t *)(P4_MAP_VA +
-				(USER_WAD_PARTITION_BASE_ADDRESS - P4_MAP_PA));
+			const uint32_t *m = game_map_ptr(USER_WAD_PARTITION_BASE_ADDRESS);
 			for (uint32_t i = 0; i < 0x10000 / 4; i++) { sum_map += m[i]; }
 		}
 		LOG_INF("wad sum64k: api=%08x map=%08x %s", sum_api, sum_map,
 			sum_api == sum_map ? "MATCH" : "MISMATCH");
-		if (p4_map_ready)
+		if (game_map_va)
 		{
 			static const uint32_t deep[] = {0x300000, 0x400000, 0x480000};
 
 			for (size_t d = 0; d < ARRAY_SIZE(deep); d++)
 			{
-				const uint32_t *m = (const uint32_t *)(P4_MAP_VA +
-					(USER_WAD_PARTITION_BASE_ADDRESS + deep[d] - P4_MAP_PA));
+				const uint32_t *m = game_map_ptr(USER_WAD_PARTITION_BASE_ADDRESS + deep[d]);
 				uint32_t sm = 0;
 
 				for (uint32_t i = 0; i < 0x10000 / 4; i++) { sm += m[i]; }
