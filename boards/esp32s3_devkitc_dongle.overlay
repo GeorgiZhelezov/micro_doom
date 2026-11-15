@@ -2,6 +2,12 @@
 #include <zephyr/dt-bindings/pinctrl/esp32s3-pinctrl.h>
 
 / {
+    chosen
+    {
+        zephyr,console = &usb_serial;
+        zephyr,shell-uart = &usb_serial;
+    };
+
     aliases
 	{
         display-ctrl = &st7735;
@@ -37,7 +43,7 @@
             x-offset = <1>;
 			y-offset = <26>;
 
-            madctl = < 0x60 >; //set to RGB but display shows RBG so software swap is needed
+            madctl = < 0x68 >; // MX/MV landscape + BGR: the panel has BGR subpixel order
             colmod = < 0x05 >;
             // rgb-is-inverted;
             inversion-on;
@@ -133,6 +139,13 @@
 	pinctrl-0 = <&spim2_default>;
 	pinctrl-names = "default";
 	dma-enabled;
+	/* the GDMA-based SPI driver needs explicit channels */
+	dmas = <&dma 0>, <&dma 1>;
+	dma-names = "rx", "tx";
+};
+
+&dma {
+	status = "okay";
 };
 
 &usb_serial

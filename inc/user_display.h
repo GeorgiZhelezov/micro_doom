@@ -24,6 +24,16 @@
  * removed). Derive bytes-per-pixel from the display controller's pixel-format. */
 #define USER_SCREEN_PIXEL_FORMAT (DT_PROP(DT_ALIAS(display_ctrl), pixel_format))
 
+/* Frames are sent to the panel as RGB565 in CPU (little-endian) byte order.
+ * The ST7789 panels are put in little-endian mode via RAMCTRL (ram-param),
+ * but the ST7735R has no such mode and expects big-endian pixels, so swap
+ * the bytes once in the palette for it. */
+#if DT_NODE_HAS_COMPAT(DT_ALIAS(display_ctrl), sitronix_st7735r)
+#define USER_DISPLAY_PIXEL(c) ((uint16_t)((((c) >> 8) & 0xFF) | ((c) << 8)))
+#else
+#define USER_DISPLAY_PIXEL(c) ((uint16_t)(c))
+#endif
+
 #if (USER_SCREEN_PIXEL_FORMAT == PANEL_PIXEL_FORMAT_RGB_888) || \
 	(USER_SCREEN_PIXEL_FORMAT == PANEL_PIXEL_FORMAT_BGR_888)
 #define USER_SCREEN_PIXEL_SIZE 3
