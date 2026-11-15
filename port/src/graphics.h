@@ -47,6 +47,7 @@ typedef struct
     uint8_t workingBuffer;
     uint8_t displayMode;
     volatile uint8_t dmaBusy;
+    uint8_t wiping;                    // screen melt running: both framebuffers hold live data
 #if NEW_DISPLAY_UPDATE_WAY
     volatile uint8_t doNotDisableShorts;
     volatile uint8_t nextBufferIndex;

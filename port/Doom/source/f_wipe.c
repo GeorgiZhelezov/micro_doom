@@ -133,11 +133,19 @@ static int wipe_doMelt(int ticks, short *y_lookup)
             }
         }
     }
+    if (done)
+    {
+        displayData.wiping = 0;
+    }
     return done;
 }
 
 void wipe_initMelt(short *y_lookup)
 {
+    // Both framebuffers are in use until the melt is done (old screen being
+    // melted + new screen being revealed): tell the display refresh not to
+    // use the other one as conversion scratch.
+    displayData.wiping = 1;
     // setup initial column positions (y<0 => not ready to scroll yet)
     y_lookup[0] = -(M_Random() % 16);
     for (int i = 1; i < SCREENWIDTH; i++)

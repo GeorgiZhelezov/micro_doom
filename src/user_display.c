@@ -272,7 +272,7 @@ int user_display_write(uint16_t *buff, uint16_t len)
 	struct display_buffer_descriptor conf =
 	{
 		.buf_size = len,
-		.height   = USER_SCREEN_HEIGHT / 2,
+		.height   = (len / 2) / USER_SCREEN_WIDTH,
 		.width    = USER_SCREEN_WIDTH,
 		.pitch    = USER_SCREEN_WIDTH,
 	};

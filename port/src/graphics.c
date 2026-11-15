@@ -78,6 +78,7 @@ typedef enum
 __attribute__((section(".ext_ram.bss")))
 #endif
 displayData_t displayData;//
+BUILD_ASSERT(USER_SCREEN_HEIGHT % 2 == 0, "wipe refresh sends the frame two lines at a time");
 void initGraphics()
 {
     memset(&displayData, 0, sizeof(displayData));
@@ -135,6 +136,27 @@ void startDisplayRefresh(uint8_t bufferNumber)
         //     user_display_write(buff, len);
         // }
 
+        if (displayData.wiping)
+        {
+            /* During a screen melt the other framebuffer holds the new screen
+             * the melt is copying from, so it cannot be used as conversion
+             * scratch. Convert and send two lines at a time through the small
+             * line buffers instead (contiguous [2][width] array; the height is
+             * always even). */
+            uint16_t *pPalette = displayData.pPalette;
+            uint8_t *current_frame_buffer = displayData.displayFrameBuffer[bufferNumber];
+            uint16_t *pLines = &displayData.displayDmaLineBuffer[0][0];
+
+            for (size_t y = 0; y < USER_SCREEN_HEIGHT; y += 2)
+            {
+                for (size_t i = 0; i < 2 * USER_SCREEN_WIDTH; i++)
+                {
+                    pLines[i] = pPalette[*current_frame_buffer++];
+                }
+                user_display_write(pLines, sizeof(displayData.displayDmaLineBuffer));
+            }
+        }
+        else
         {
             uint16_t *pLineBuffer = (uint16_t*)displayData.displayFrameBuffer[1 - bufferNumber];
             uint16_t *pPalette = displayData.pPalette;
